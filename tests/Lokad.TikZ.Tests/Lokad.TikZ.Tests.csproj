@@ -6,4 +6,9 @@
     <PackageReference Include="xunit.runner.visualstudio" PrivateAssets="all" />
     <ProjectReference Include="../../src/Lokad.TikZ/Lokad.TikZ.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="../Fixtures/**/*.tikz" Link="Fixtures/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/**/*.json" Link="Reference/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/**/*.svg" Link="Reference/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

@@ -6,3 +6,4 @@
 /BenchmarkDotNet.Artifacts/
 .vs/
 *.user
+**/node_modules/

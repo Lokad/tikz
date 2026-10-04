@@ -3,12 +3,34 @@
 A standalone C#/.NET 10 compiler for a documented TikZ subset, producing
 self-contained SVG without TeX, native libraries, or runtime package dependencies.
 
-The project is in active development. Compatibility is established by focused
-semantic tests and independently authored reference cases against PGF 3.1.11a.
-Unsupported source constructs produce diagnostics.
+The project is in active development. The initial physical-unit line fixture
+is grounded against PGF 3.1.11a with numeric measurements and pixel-identical
+SVG rasterizations at 1x and 4x. This is an initial harness milestone, not a
+general TikZ compatibility claim. Nodes, labels, arrows, and libraries remain
+to be implemented. Unsupported source constructs produce diagnostics.
+
+```csharp
+using Lokad.TikZ;
+
+var result = TikzConverter.Convert(
+    @"\begin{tikzpicture}\draw (0,0)--(1,0);\end{tikzpicture}",
+    TikzOptions.Default,
+    CancellationToken.None);
+
+if (result is TikzSuccess success)
+    Console.WriteLine(success.Svg);
+else if (result is TikzFailure failure)
+    foreach (var diagnostic in failure.Diagnostics)
+        Console.WriteLine($"{diagnostic.Code}: {diagnostic.Message}");
+```
 
 Build and run the ordinary tests with `dotnet test Lokad.TikZ.slnx`. These tests
 do not require a TeX installation. Release packages are produced explicitly with
 `dotnet pack src/Lokad.TikZ -c Release`.
+
+The [reference and visual harness](docs/TESTING.md) is development tooling.
+It produces comparison PNGs, failure crops, machine-readable metrics, source
+traces, and a local inspection viewer. Its browser and TeX dependencies are
+isolated from the production library.
 
 The code is MIT licensed. Upstream reference implementations are not bundled.

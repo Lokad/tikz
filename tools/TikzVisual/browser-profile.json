@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-geometry-v1",
+  "playwrightVersion": "1.63.0",
+  "browserVersion": "153.0.8010.12",
+  "launchArguments": ["--disable-gpu", "--force-color-profile=srgb"],
+  "scales": [1, 4],
+  "primary": { "maxChannelError": 0, "maxMeanForegroundError": 0, "maxEdgeDisplacementPixels": 0, "maxComponentDifference": 0 },
+  "pdf": { "maxChannelError": 128, "maxMeanForegroundError": 24, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 },
+  "maxCanvasPixels": 20000000,
+  "maxCrops": 10
+}

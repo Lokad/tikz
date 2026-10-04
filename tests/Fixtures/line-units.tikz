@@ -1,0 +1,5 @@
+\begin{tikzpicture}[scale=2]
+  \coordinate (start) at (0,0);
+  \coordinate (end) at (1,0);
+  \draw[line width=2pt,blue!60!black,draw opacity=0.8] (start) -- (end);
+\end{tikzpicture}

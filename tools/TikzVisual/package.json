@@ -1,0 +1,8 @@
+{
+  "name": "lokad-tikz-visual",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "compare": "node compare.mjs", "test": "node self-test.mjs" },
+  "devDependencies": { "playwright": "1.63.0" }
+}

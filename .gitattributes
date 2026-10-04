@@ -1,0 +1,12 @@
+* text=auto eol=lf
+*.tikz text eol=lf
+*.tex text eol=lf
+*.json text eol=lf
+*.svg text eol=lf
+*.mjs text eol=lf
+*.md text eol=lf
+*.pdf binary
+*.png binary
+# Keep independently generated SVGs and sanitized oracle logs byte-identical.
+tests/Reference/*/reference.svg -text whitespace=cr-at-eol
+tests/Reference/*/oracle.log -text -whitespace

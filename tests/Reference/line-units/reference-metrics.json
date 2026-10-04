@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "units": "Independent PGF measurements in TeX pt; SVG driver translation in bp; PDF registration from shipped-out positions",
+  "pictureBoundsPt": {
+    "minX": -1,
+    "minY": -1,
+    "maxX": 57.90549,
+    "maxY": 1
+  },
+  "boxPt": {
+    "width": 58.90549,
+    "height": 2,
+    "depth": 0
+  },
+  "anchorsPt": {
+    "start": {
+      "x": 0,
+      "y": 0
+    },
+    "end": {
+      "x": 56.90549,
+      "y": 0
+    }
+  },
+  "svgOriginBp": {
+    "x": 62.764633,
+    "y": 61.768369
+  },
+  "pdfOriginPixels": {
+    "x": 179.6861622431507,
+    "y": 178.35781559386683
+  },
+  "stroke": {
+    "widthPt": 2,
+    "color": "#000099",
+    "opacity": 0.8
+  }
+}

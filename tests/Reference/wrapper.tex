@@ -1,0 +1,28 @@
+\documentclass{article}
+\def\pgfsysdriver{pgfsys-dvisvgm.def}
+\usepackage{tikz}
+\pagestyle{empty}
+\makeatletter
+\typeout{LOKAD-PGF-VERSION \pgfversion}
+\newbox\lokadpicture
+\def\lokadmeasure{%
+  \begingroup
+    \typeout{LOKAD-BOUNDS minx=\the\pgf@picminx; miny=\the\pgf@picminy; maxx=\the\pgf@picmaxx; maxy=\the\pgf@picmaxy}
+    \pgftransformreset
+    \pgfpointanchor{start}{center}
+    \typeout{LOKAD-ANCHOR-start x=\the\pgf@x; y=\the\pgf@y}
+    \pgfpointanchor{end}{center}
+    \typeout{LOKAD-ANCHOR-end x=\the\pgf@x; y=\the\pgf@y}
+  \endgroup
+}
+\begin{document}
+\setbox\lokadpicture=\hbox{\input{case.tikz}\unskip}
+\typeout{LOKAD-BOX width=\the\wd\lokadpicture; height=\the\ht\lokadpicture; depth=\the\dp\lokadpicture}
+\hbox{%
+  \ifnum\pdfoutput>0%
+    \pdfsavepos
+    \write16{LOKAD-PAGE-ORIGIN xsp=\the\pdflastxpos; ysp=\the\pdflastypos; pageheight=\the\pdfpageheight}%
+  \fi
+  \box\lokadpicture
+}
+\end{document}

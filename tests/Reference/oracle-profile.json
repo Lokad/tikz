@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "pgf-3.1.11a-geometry",
+  "latexVersion": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+  "dvisvgmVersion": "dvisvgm 3.4.3",
+  "pdfRasterizerVersion": "pdftoppm version 24.04.0",
+  "pgfVersion": "3.1.11a",
+  "fontProfile": "default-Computer-Modern-10pt; geometry-only fixture",
+  "scales": [1, 4],
+  "processTimeoutSeconds": 60,
+  "maxCapturedCharacters": 1000000
+}
