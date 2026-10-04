@@ -35,7 +35,9 @@ jobs:
       - run: npm exec --prefix tools/TikzVisual -- playwright install chromium
       - run: dotnet restore Lokad.TikZ.slnx --locked-mode
       - run: dotnet run --project tools/TikzReference -c Release -- compare --reference cached --out artifacts/comparisons
+      - run: dotnet run --project tools/TikzFontData -c Release -- compare
       - run: npm test --prefix tools/TikzVisual
+      - run: npm run test:fonts --prefix tools/TikzVisual
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -43,4 +45,6 @@ jobs:
           path: |
             artifacts/comparisons/
             artifacts/comparator-mutations/
+            artifacts/font-comparisons/
+            artifacts/font-comparator-mutations/
           if-no-files-found: error

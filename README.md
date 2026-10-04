@@ -35,4 +35,10 @@ It produces comparison PNGs, failure crops, machine-readable metrics, source
 traces, and a local inspection viewer. Its browser and TeX dependencies are
 isolated from the production library.
 
-The code is MIT licensed. Upstream reference implementations are not bundled.
+The [bundled font-data prototype](tools/TikzFontData/README.md) has six
+Latin Modern faces with independent TeX metric checks and exact atlas
+comparisons. It prepares label support; the converter still rejects labels.
+
+The code is MIT licensed. Bundled font data retains its separate
+[GUST Font License / LPPL notices](THIRD-PARTY-NOTICES.md).
+Upstream reference implementations are not bundled.

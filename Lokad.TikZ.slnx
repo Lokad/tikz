@@ -6,6 +6,7 @@
     <Project Path="tests/Lokad.TikZ.Tests/Lokad.TikZ.Tests.csproj" />
   </Folder>
   <Folder Name="/tools/">
+    <Project Path="tools/TikzFontData/TikzFontData.csproj" />
     <Project Path="tools/TikzReference/TikzReference.csproj" />
   </Folder>
 </Solution>

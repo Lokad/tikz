@@ -90,7 +90,7 @@ fingerprint, build configuration, and options. Fix the implicated compiler
 stage, rerun the focused case, and then run the corpus. Do not change an
 expected reference or loosen a threshold to hide a candidate defect.
 
-The 39-case self-test requires a passing `line-units` bundle. It repeats unchanged
+The 41-case self-test requires a passing `line-units` bundle. It repeats unchanged
 pairs, mutates geometry/units/stroke/color/opacity/clipping/canvas size, removes
 or adds drawing, and tests mostly blank canvases. Synthetic outlined glyph,
 minus, baseline, and arrowhead mutations test the comparator; they make no
@@ -150,3 +150,21 @@ profiles, the intentional precision perturbations correctly return mismatch
 and an aggregate exit code of `1`. A harness error still returns `2`. Review
 the raw measurements and [recorded calibration](../tools/TikzVisual/CALIBRATION.md)
 before changing a profile. Text and new geometry need new evidence.
+
+## Font-data experiment
+
+The [font generator](../tools/TikzFontData/README.md) has separate explicit
+`generate`, live `verify`, and cached `compare` commands. Ordinary tests
+check all six embedded fonts against independent TeX glyph, font-dimension,
+and pair measurements. Cached atlas comparisons use the existing pinned
+browser and write inspection bundles to `artifacts/font-comparisons/`.
+They use exact primary pixels and a fixed physical frame, independently
+checked baselines, and declared bp coordinate registration. This is an
+extraction prototype; node layout, text shaping, the converter's eventual
+CSS glyph placement, and secondary PDF text calibration remain separate
+conformance work.
+
+Inspection crops have an opaque white background so small black glyphs stay
+visible in image tools using a dark transparency background. Full reference,
+actual, and raw difference PNGs retain their original alpha; numerical and
+raster verdicts use those original captures.

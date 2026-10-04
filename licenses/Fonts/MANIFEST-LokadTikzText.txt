@@ -1,0 +1,50 @@
+LokadTikzText derived font data, 2026-10-05
+
+Original font copyright: 2003--2021 B. Jackowski and J.M. Nowacki,
+on behalf of TeX Users Groups.
+Derived data copyright: 2026 Lokad.
+License: GUST Font License 1.0, applying LPPL 1.3c or later.
+Maintenance status: maintained. Current maintainer: Lokad.
+
+This derived work consists of:
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzText-regular-10.json
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzText-bold-10.json
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzText-italic-10.json
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzText-regular-12.json
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzText-bold-12.json
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzText-italic-12.json
+  src/Lokad.TikZ/Resources/Fonts/provenance.json
+  tools/TikzFontData/font-profile.json
+  THIRD-PARTY-NOTICES.md (font notice)
+  licenses/Fonts/MANIFEST-LokadTikzText.txt
+
+The font data is embedded in the assembly and also distributed as JSON
+alongside it under font-data/ in the NuGet package. The provenance and
+font-profile manifest are distributed under font-data/ as well.
+Independent reference fixtures under tests/Reference/Fonts/ are further
+font-derived development data in the source repository, with the same
+font license; they are not components of the shipped font-data work.
+
+Changes from Latin Modern: six-font subset, EC/Cork encoding, JSON metrics,
+flattened pair rules, SVG outline paths rounded to six decimal places.
+Font faces and resource filenames use the distinct LokadTikzText name.
+No original installed font file is replaced. No original font author's
+support or endorsement is implied.
+
+The complete original work, including Type 1 sources and metrics, is available:
+  https://ctan.org/tex-archive/fonts/lm
+  https://mirrors.ctan.org/fonts/lm.zip
+  https://www.gust.org.pl/projects/e-foundry/latin-modern
+
+Input names and SHA-256 hashes: tools/TikzFontData/font-profile.json
+Resource hashes and generation evidence:
+  src/Lokad.TikZ/Resources/Fonts/provenance.json
+
+Upstream notices and licenses are included verbatim in this directory:
+  GUST-FONT-LICENSE.txt
+  LPPL-1.3c.txt
+  README-Latin-Modern.txt
+  MANIFEST-Latin-Modern.txt
+
+The upstream README says 2.005 (2021-03-21); the upstream manifest says
+2.004 (2009-10-30). These labels are preserved without alteration.

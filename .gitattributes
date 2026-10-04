@@ -10,3 +10,8 @@
 # Keep independently generated SVGs and sanitized oracle logs byte-identical.
 tests/Reference/*/reference.svg -text whitespace=cr-at-eol
 tests/Reference/*/oracle.log -text -whitespace
+# Upstream license texts are retained byte for byte, including line endings.
+licenses/Fonts/GUST-FONT-LICENSE.txt -text -whitespace
+licenses/Fonts/LPPL-1.3c.txt -text -whitespace
+licenses/Fonts/README-Latin-Modern.txt -text -whitespace
+licenses/Fonts/MANIFEST-Latin-Modern.txt -text -whitespace

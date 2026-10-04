@@ -1,0 +1,38 @@
+% Trusted generator input. Font, size, and pair placeholders are replaced
+% only from the checked-in font manifest and validated TFM tables.
+\documentclass{article}
+\pagestyle{empty}
+\font\lokadfont=@@FONT@@ at @@SIZE@@pt
+\newcount\lokadslot
+\newcount\lokadrow
+\newcount\lokadcolumn
+\begin{document}
+\lokadfont\frenchspacing
+\lokadslot=0
+\loop
+  \setbox0=\hbox{\char\lokadslot}
+  \typeout{LOKAD-GLYPH \number\lokadslot;\number\wd0;\number\ht0;\number\dp0;\number\fontcharwd\lokadfont\lokadslot;\number\fontcharht\lokadfont\lokadslot;\number\fontchardp\lokadfont\lokadslot;\number\fontcharic\lokadfont\lokadslot}
+  \advance\lokadslot by1
+\ifnum\lokadslot<256\repeat
+\lokadslot=1
+\loop
+  \typeout{LOKAD-PARAM \number\lokadslot;\number\fontdimen\lokadslot\lokadfont}
+  \advance\lokadslot by1
+\ifnum\lokadslot<@@PARAMETERS@@\repeat
+@@PAIRS@@
+% Every glyph has a separately terminated cell: no inter-cell ligature or
+% kerning can affect extraction or the independent atlas comparison.
+\setbox0=\vbox{\offinterlineskip
+  \lokadrow=0
+  \loop
+    \hbox{\lokadcolumn=0
+      \loop
+        \lokadslot=\lokadrow\multiply\lokadslot by16\advance\lokadslot by\lokadcolumn
+        \hbox to24pt{\char\lokadslot\hss}%
+        \advance\lokadcolumn by1
+      \ifnum\lokadcolumn<16\repeat}
+    \kern16pt
+    \advance\lokadrow by1
+  \ifnum\lokadrow<16\repeat}
+\shipout\box0
+\end{document}

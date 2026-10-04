@@ -72,7 +72,9 @@ export async function compareBundle(bundle, renderer) {
       y: (referenceInfo.viewBox[1] - input.referenceOriginBp.y) * 4 / 3,
       width: referenceInfo.width, height: referenceInfo.height
     };
-    const actualBox = { x: actualInfo.viewBox[0], y: actualInfo.viewBox[1], width: actualInfo.width, height: actualInfo.height };
+    if (input.actualUnits && !['cssPixels', 'bp'].includes(input.actualUnits)) throw new Error('Unsupported actual SVG coordinate units.');
+    const actualUnitScale = input.actualUnits === 'bp' ? 4 / 3 : 1;
+    const actualBox = { x: actualInfo.viewBox[0] * actualUnitScale, y: actualInfo.viewBox[1] * actualUnitScale, width: actualInfo.width, height: actualInfo.height };
     const padding = 8;
     const minX = Math.floor(Math.min(referenceBox.x, actualBox.x)) - padding;
     const minY = Math.floor(Math.min(referenceBox.y, actualBox.y)) - padding;
@@ -206,10 +208,14 @@ export async function compareBundle(bundle, renderer) {
           const crop = (canvas, name) => {
             const margin = 4 * scale, x = Math.max(0, region.x - margin), y = Math.max(0, region.y - margin);
             const w = Math.min(canvas.width - x, region.width + 2 * margin), h = Math.min(canvas.height - y, region.height + 2 * margin);
-            const out = makeCanvas(w, h); context(out).drawImage(canvas, x, y, w, h, 0, 0, w, h); save(`crops/${index}-${name}.png`, out);
+            const out = makeCanvas(w, h), ctx = context(out);
+            // Inspection crops must remain legible when an image tool displays
+            // transparency on a dark background. Raw comparison PNGs retain it.
+            ctx.fillStyle = 'white'; ctx.fillRect(0, 0, w, h);
+            ctx.drawImage(canvas, x, y, w, h, 0, 0, w, h); save(`crops/${index}-${name}.png`, out);
           };
           crop(a, 'reference'); crop(b, 'actual'); crop(result.amplified, 'difference');
-          regional.push({ ...region, rectanglePixels: rectangle, scale, attribution });
+          regional.push({ ...region, rectanglePixels: rectangle, scale, attribution, cropBackground: 'white' });
         }
       }
       if (pdfImages) {

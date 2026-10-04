@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "profile": "latin-modern-ec-10-12-v1",
+  "manifestSha256": "0f1fd5e433f78ca8e21ebbc12045ee96259316235aa25e4e3758b96561000fe9",
+  "wrapperSha256": "934347fc5e4a82dc4b12e39870d4a996371a9bc56e7bf89dcce218778970eb6a",
+  "tools": [
+    {
+      "name": "latex",
+      "version": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+      "sha256": "37659e30ba4537584b6418de22ce310247128edbc1481fc97fd9b24260f11caf"
+    },
+    {
+      "name": "dvisvgm",
+      "version": "dvisvgm 3.4.3",
+      "sha256": "74a03e974afc08f5b24417bbe08af792be6634eacfa16c1ce6f870cad95f53fa"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "ec-lmr10.tfm",
+      "sha256": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5"
+    },
+    {
+      "name": "ec-lmbx10.tfm",
+      "sha256": "0895c940bd2e763b70dcab18ebf27fd3f93c2490f43b2a8c028fc7fc24b2e855"
+    },
+    {
+      "name": "ec-lmri10.tfm",
+      "sha256": "372f968b4eeb47bf6a6c941c8793bce118d1800f12e194a351c7493ecc158f2a"
+    },
+    {
+      "name": "ec-lmr12.tfm",
+      "sha256": "299021120f0a29ef61278a2363903bd8defbb8faaade458eb79067342aecb56f"
+    },
+    {
+      "name": "ec-lmbx12.tfm",
+      "sha256": "d19c45859d453c0802699d27aa2bff735574b9bc97d8791aa76e3c7de6c38a36"
+    },
+    {
+      "name": "ec-lmri12.tfm",
+      "sha256": "879072f2a2086f46e61934977f2e919bb6f196c08442b5b62242e78e576820ce"
+    },
+    {
+      "name": "lmr10.pfb",
+      "sha256": "84eb01245abb17c0530ca3909427256d73df8bed2d7243b9f2717ca08c010ac8"
+    },
+    {
+      "name": "lmbx10.pfb",
+      "sha256": "4acd67f9ece59a12e073aa863dbb1d5cea194f7f7b88ecce4659184d8275aa42"
+    },
+    {
+      "name": "lmri10.pfb",
+      "sha256": "1239c71330ac8f0584e22f4d6abd0f016421fc73c545b15512ccf80b263f5c66"
+    },
+    {
+      "name": "lmr12.pfb",
+      "sha256": "d5fd4fdecfdbc8f97e955964aa2574927182303df178fe0c2e568fe9056e326c"
+    },
+    {
+      "name": "lmbx12.pfb",
+      "sha256": "fb9b7cf1d13a8a837c2c6b238e7255f8d6f4cd6608bf3024ee68e43d04f01a08"
+    },
+    {
+      "name": "lmri12.pfb",
+      "sha256": "78dc9fcb4af454305a5564d568eace838c375f3bf3d82337b0e87fdeb00e2d2c"
+    },
+    {
+      "name": "lm-ec.enc",
+      "sha256": "7f9932c402d22a937b853406cfdf4166b80260e3ff21a03fe9a4c05105a2918c"
+    },
+    {
+      "name": "lm.map",
+      "sha256": "d40c55f3e00607c98ae0d99112dcb56e18e9b9ea8febac443cfd6533469ac90d"
+    },
+    {
+      "name": "GUST-FONT-LICENSE.txt",
+      "sha256": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050"
+    },
+    {
+      "name": "README-Latin-Modern.txt",
+      "sha256": "7cac4a4a78985ccb1ed429bb2eddf32eeb2e413c94493c7b268385bb7b525250"
+    },
+    {
+      "name": "MANIFEST-Latin-Modern.txt",
+      "sha256": "402c79f4ede8548a6fe6f82f42f0288cb0243ba2403dfdeeaadf55d189a46fae"
+    },
+    {
+      "name": "lppl.txt",
+      "sha256": "5f05fcf6ef25a6c31bccd2df7c0c46b23107bbeb2ce5cdba74efb5cc357f4dbb"
+    }
+  ],
+  "fonts": [
+    {
+      "font": "regular-10",
+      "glyphs": 256,
+      "pairs": 2499,
+      "ligatures": 15,
+      "exactIndependentMetrics": true,
+      "resourceBytes": 386304,
+      "resourceSha256": "812adc5acef0d9f10dcaaf000b2dec512aa9f9ad8e9417395e431c4c3f81347d",
+      "metricsSha256": "b688252c8f6a1d98120f33ce8d750d60ad800d3cff70b4daca7587207491f6de",
+      "atlasSha256": "5062f29f0c7b331d6031c58b6c4be7685d7d832af9633987f28328d697dfb1aa",
+      "wrapperSha256": "17289909a7c777fc9e67d8357b0beedb013b1fce7517594f4b811ccc94edc52d"
+    },
+    {
+      "font": "bold-10",
+      "glyphs": 256,
+      "pairs": 2492,
+      "ligatures": 15,
+      "exactIndependentMetrics": true,
+      "resourceBytes": 368757,
+      "resourceSha256": "5b2fc5524c4f79ad6605b232792f26736be0a8874ce320e8e9c34efb4f48c8b4",
+      "metricsSha256": "8d72da2c9febcfc733d5f779b5cec5d00440b1a4d1e03bb8398ff79c1fd28287",
+      "atlasSha256": "58ddbb01365d93627f89b2a4f63c84893158e55eccc30c0bacb4858f90edabc9",
+      "wrapperSha256": "e9cf60d62f725cdd356a660df947ca6ea88a90535db9f83c2d2291abc3d030d8"
+    },
+    {
+      "font": "italic-10",
+      "glyphs": 256,
+      "pairs": 3731,
+      "ligatures": 15,
+      "exactIndependentMetrics": true,
+      "resourceBytes": 565581,
+      "resourceSha256": "3615ab4308ba253c423785bdd135206efa10a8f461b02d655774b9af88046e0b",
+      "metricsSha256": "89fb310c3ff935d469254084fa2842c87d79f1747536d9c9591f33a9379dc874",
+      "atlasSha256": "97a801e12a2fe3e8ca0520665d4337973fde305143bf6862c91c995531704ad5",
+      "wrapperSha256": "43475405c431292dec7aac77b0c689a7f73348dbff01deafa2fd0ed033464c8f"
+    },
+    {
+      "font": "regular-12",
+      "glyphs": 256,
+      "pairs": 2499,
+      "ligatures": 15,
+      "exactIndependentMetrics": true,
+      "resourceBytes": 391467,
+      "resourceSha256": "e1931badd0660c569c64d88c244b91d3010a0db4c455c89146e60b02f41b4792",
+      "metricsSha256": "0514a7e23be101986787f4237ca84df092e12eb949058c6f572548d2133973cd",
+      "atlasSha256": "c08a4ce967837129a164b85390f6611b5ab62831b15903db4d2752a74e84e6e9",
+      "wrapperSha256": "c691fe7f4a8e33aeb29ef91245cfa9868641a024aa71e6dde5e2f2681bf61f2c"
+    },
+    {
+      "font": "bold-12",
+      "glyphs": 256,
+      "pairs": 2492,
+      "ligatures": 15,
+      "exactIndependentMetrics": true,
+      "resourceBytes": 371387,
+      "resourceSha256": "d900d9e51a9dbe55ee988d4985edd38a14b28c3620e79dff095d9b071806402d",
+      "metricsSha256": "4f6d859c07b4df5e897a48cd531ee3ccd7f58fc678314ab762dda37dcf7742f2",
+      "atlasSha256": "d312b6ffdae93604384b48c2fe7d8e8ef5695c63e59bee5de87f277f30258be3",
+      "wrapperSha256": "2ee6963cba542ffb790f85315a3bb8c33daa0b550219264dfe2650220d3fb286"
+    },
+    {
+      "font": "italic-12",
+      "glyphs": 256,
+      "pairs": 3731,
+      "ligatures": 15,
+      "exactIndependentMetrics": true,
+      "resourceBytes": 560919,
+      "resourceSha256": "828e03ab3d83b68ea2f472e60fc2edf93021332d874f59faafaa768bd27c589e",
+      "metricsSha256": "69e4d300ee9de2b55de24b114c34993ad14e6d9562725a26860344d02a440504",
+      "atlasSha256": "3c2b691a1755d18ac3f6477f80c65683b3c2ea1a7b510b317189e48320bbf8ca",
+      "wrapperSha256": "a16f6e18f879978c8877223c0bd011692f12e16d5f80b15c720fe07887ae5956"
+    }
+  ],
+  "arguments": [
+    "latex -disable-write18 -disable-installer -interaction=nonstopmode -halt-on-error -recorder atlas.tex",
+    "dvisvgm --no-fonts --exact-bbox --bbox=min --precision=6 --fontmap=\u003Cpinned lm.map\u003E --cache=none --output=atlas.svg atlas.dvi"
+  ]
+}

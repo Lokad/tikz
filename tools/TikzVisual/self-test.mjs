@@ -18,7 +18,7 @@ const renderer = await createRenderer();
 const results = [];
 const hash = value => createHash('sha256').update(value).digest('hex');
 
-async function check(name, svg, expected, synthetic = false, toleranceProfile = 'line-units') {
+async function check(name, svg, expected, synthetic = false, toleranceProfile = 'line-units', actualUnits = undefined) {
   const folder = path.join(output, name);
   if (!folder.startsWith(output + path.sep)) throw new Error('Mutation output escapes its directory.');
   await rm(folder, { recursive: true, force: true });
@@ -33,6 +33,7 @@ async function check(name, svg, expected, synthetic = false, toleranceProfile = 
   // a fabricated numeric failure and never send mutated source to TeX.
   input.numeric = { passed: true, checks: [], note: 'Comparator-only mutation; numeric checking exercised separately.' };
   delete input.pdf;
+  if (actualUnits) input.actualUnits = actualUnits;
   let actual = svg, scene = originalScene;
   if (synthetic) {
     input.referenceOriginBp = { x: 0, y: 0 };
@@ -86,6 +87,11 @@ try {
   const arrow = '<path d="M60 7L66 10L60 13Z" fill="#000"/>';
   const line = '<path d="M35 10H60" stroke="#000" stroke-width="1" fill="none"/>';
   const reference = svg(glyph + minus + arrow + line);
+  const offsetFrame = reference.replace('viewBox="0 0 120 20"', 'viewBox="-8 -4 120 20"');
+  const bpCandidate = offsetFrame.replace('viewBox="-8 -4 120 20"', 'viewBox="-6 -3 90 15"')
+    .replace(/(<svg[^>]+>)/, '$1<g transform="scale(.75)">').replace('</svg>', '</g></svg>');
+  await check('bp-coordinate-registration', [offsetFrame, bpCandidate], 'pass', true, 'line-units', 'bp');
+  await check('wrong-bp-coordinate-registration', [offsetFrame, bpCandidate], 'mismatch', true);
   await check('synthetic-identical', [reference, reference], 'pass', true);
   await check('missing-glyph', [reference, svg(minus + arrow + line)], 'mismatch', true);
   await check('missing-minus', [reference, svg(glyph + arrow + line)], 'mismatch', true);
