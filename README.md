@@ -3,11 +3,13 @@
 A standalone C#/.NET 10 compiler for a documented TikZ subset, producing
 self-contained SVG without TeX, native libraries, or runtime package dependencies.
 
-The project is in active development. The initial physical-unit line fixture
-is grounded against PGF 3.1.11a with numeric measurements and pixel-identical
-SVG rasterizations at 1x and 4x. This is an initial harness milestone, not a
-general TikZ compatibility claim. Nodes, labels, arrows, and libraries remain
-to be implemented. Unsupported source constructs produce diagnostics.
+The project is in active development. Six geometry fixtures are grounded
+against PGF 3.1.11a with independent numeric measurements and SVG comparisons
+at 1x and 4x. Lines, relative coordinates, and scoped clipping have exact
+primary pixels; transformed coordinates, curves, and rectangle cropping use
+small, independently calibrated allowances. This evidence covers the listed
+fixtures. Nodes, labels, arrows, and libraries remain to be implemented.
+Unsupported source constructs produce diagnostics.
 
 ```csharp
 using Lokad.TikZ;

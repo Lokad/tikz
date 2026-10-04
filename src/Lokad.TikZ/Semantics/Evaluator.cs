@@ -89,8 +89,7 @@ internal sealed class Evaluator(Budget budget)
                 case MoveOperation move: path.Move(Point(move.Point)); break;
                 case LineOperation line:
                     var end = Point(line.Point);
-                    if (line.Kind == "vh") path.Line(new(path.Current.X, end.Y));
-                    if (line.Kind == "hv") path.Line(new(end.X, path.Current.Y));
+                    if (line.Kind is "vh" or "hv") path.Line(FrameCorner(path.Current, end, state, line.Kind == "hv", line.Source));
                     path.Line(end);
                     break;
                 case CurveOperation curve:
@@ -103,7 +102,8 @@ internal sealed class Evaluator(Budget budget)
                 case RectangleOperation rectangle:
                     var origin = path.Current;
                     var corner = Point(rectangle.End);
-                    path.Move(origin); path.Line(new(corner.X, origin.Y)); path.Line(corner); path.Line(new(origin.X, corner.Y)); path.Close();
+                    path.Move(origin); path.Line(FrameCorner(origin, corner, state, false, rectangle.Source));
+                    path.Line(corner); path.Line(FrameCorner(origin, corner, state, true, rectangle.Source)); path.Close(); path.Move(corner);
                     break;
                 case EllipseOperation ellipse:
                     var center = path.Current;
@@ -125,12 +125,17 @@ internal sealed class Evaluator(Budget budget)
             }
         }
         var bounds = path.Bounds;
-        _scene.PictureBounds = _scene.PictureBounds.Union(state.Paint.Stroke ? bounds.Inflate(state.Paint.Width / 2) : bounds);
+        if (state.RelevantForPictureSize)
+        {
+            var picture = path.ControlBounds;
+            _scene.PictureBounds = _scene.PictureBounds.Union(state.Paint.Stroke ? picture.Inflate(state.Paint.Width / 2) : picture);
+        }
         if (statement.Command == "\\clip")
         {
             var id = _scene.Clips.Count;
             _scene.Clips.Add(new(path, state.Paint.FillRule));
             parent.Clips.Add(id);
+            parent.RelevantForPictureSize = false;
         }
         if (state.Paint.Fill || state.Paint.Stroke)
         {
@@ -155,6 +160,23 @@ internal sealed class Evaluator(Budget budget)
         return radius;
     }
     private static Point TransformVector(EvaluationState state, Point point) => state.Transform.Apply(point) - state.Transform.Apply(default);
+    private static Point FrameCorner(Point start, Point end, EvaluationState state, bool horizontalFirst, Source source)
+    {
+        var t = state.Transform;
+        var delta = end - start;
+        var determinant = t.A * t.D - t.B * t.C;
+        Point xLeg;
+        if (delta.X == 0 && delta.Y == 0) xLeg = default;
+        else if (determinant != 0)
+        {
+            var x = (t.D * delta.X - t.C * delta.Y) / determinant;
+            xLeg = new(t.A * x, t.B * x);
+        }
+        else if (t.A == 0 && t.B == 0) xLeg = default;
+        else if (t.C == 0 && t.D == 0) xLeg = delta;
+        else throw new CompileError("TIKZ004", "Cannot resolve orthogonal corners under this singular transform.", source);
+        return horizontalFirst ? start + xLeg : end - xLeg;
+    }
     private void DrawArc(GraphicPath path, Point center, double rx, double ry, double start, double end, EvaluationState state, bool closed, Source source)
     {
         if (!double.IsFinite(start) || !double.IsFinite(end)) throw new CompileError("TIKZ004", "Non-finite angle.", source);

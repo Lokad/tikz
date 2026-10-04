@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "units": "Independent PGF measurements in TeX pt; SVG driver translation in bp; PDF registration from shipped-out positions",
+  "schemaVersion": 2,
+  "units": "Independent PGF bounds, anchors, soft-path coordinates and widths in TeX pt; paint from the pinned SVG driver; SVG translation in bp; PDF registration from shipped-out positions",
   "pictureBoundsPt": {
     "minX": -1,
     "minY": -1,
@@ -34,5 +34,54 @@
     "widthPt": 2,
     "color": "#000099",
     "opacity": 0.8
-  }
+  },
+  "paths": [
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 56.90549,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 2,
+      "strokeColor": "#000099",
+      "fillColor": "none",
+      "strokeOpacity": 0.8,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    }
+  ],
+  "clips": []
 }

@@ -27,6 +27,22 @@ internal sealed class GraphicPath(Budget budget, Source source)
     public void Cubic(Point a, Point b, Point p) { RequireMove(); Add(new(SegmentKind.Cubic, p, a, b)); }
     public void Close() { RequireMove(); Add(new(SegmentKind.Close, _start, default, default)); }
     private void RequireMove() { if (!_hasMove) Move(default); }
+    // PGF picture sizes include control points, independently of the tighter
+    // painted-curve extrema used for ink and clipping calculations.
+    public Bounds ControlBounds
+    {
+        get
+        {
+            var bounds = Bounds.Empty;
+            foreach (var segment in Segments)
+            {
+                budget.Charge(source);
+                bounds = bounds.Add(segment.End);
+                if (segment.Kind == SegmentKind.Cubic) bounds = bounds.Add(segment.A).Add(segment.B);
+            }
+            return bounds;
+        }
+    }
     public Bounds Bounds
     {
         get

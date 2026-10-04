@@ -2,6 +2,11 @@
   "schemaVersion": 1,
   "profile": "pgf-3.1.11a-geometry",
   "cases": [
-    { "id": "line-units", "source": "tests/Fixtures/line-units.tikz", "features": ["units", "coordinates", "scale", "stroke", "color", "opacity"], "numericTolerancePixels": 0.02 }
+    { "id": "line-units", "source": "tests/Fixtures/line-units.tikz", "features": ["units", "coordinates", "scale", "stroke", "color", "opacity"], "numericTolerancePixels": 0.02 },
+    { "id": "relative-coordinates", "source": "tests/Fixtures/relative-coordinates.tikz", "features": ["relative-coordinates", "compound-paths", "round-joins"], "numericTolerancePixels": 0.02 },
+    { "id": "ordered-transforms", "source": "tests/Fixtures/ordered-transforms.tikz", "features": ["coordinate-bases", "transform-order", "orthogonal-paths", "style-order", "scope-restoration"], "numericTolerancePixels": 0.02, "anchors": ["start", "end", "turn"], "anchorBindings": [{ "path": 0, "segment": 0, "anchor": "start" }, { "path": 0, "segment": 1, "anchor": "end" }] },
+    { "id": "cubic-controls", "source": "tests/Fixtures/cubic-controls.tikz", "features": ["cubic-curves", "relative-controls", "control-point-picture-bounds"], "numericTolerancePixels": 0.02 },
+    { "id": "rotated-rectangle", "source": "tests/Fixtures/rotated-rectangle.tikz", "features": ["rectangles", "rotation", "scaling", "fill", "fill-opacity"], "numericTolerancePixels": 0.02 },
+    { "id": "clip-scope", "source": "tests/Fixtures/clip-scope.tikz", "features": ["clipping", "clip-scope", "picture-bounds", "fill"], "numericTolerancePixels": 0.02 }
   ]
 }

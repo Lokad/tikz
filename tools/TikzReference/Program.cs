@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Lokad.TikZ;
@@ -10,7 +11,7 @@ using Lokad.TikZ.Graphics;
 
 return await ReferenceTool.Run(args);
 
-internal static class ReferenceTool
+internal static partial class ReferenceTool
 {
     private static readonly JsonSerializerOptions Json = new(JsonSerializerDefaults.Web) { WriteIndented = true, NewLine = "\n" };
     private const double PtToPixels = 96 / 72.27;
@@ -46,9 +47,9 @@ internal static class ReferenceTool
                 }
                 var referenceMode = options.GetValueOrDefault("reference", "cached");
                 if (referenceMode != "cached") throw new InvalidOperationException("Use generate-reference explicitly, then compare --reference cached.");
-                var output = options.GetValueOrDefault("out", "artifacts/comparisons");
+                var output = options.GetValueOrDefault("out", args[0] == "calibrate-reference" ? "artifacts/calibration" : "artifacts/comparisons");
                 if (selected.Length > 1 || !options.ContainsKey("case")) output = Path.Combine(output, c.Id);
-                var result = await Compare(c, ArtifactDirectory(output));
+                var result = await Compare(c, ArtifactDirectory(output), args[0] == "calibrate-reference");
                 reports.Add(new { caseId = c.Id, exitCode = result, report = Relative(Path.Combine(output, "report.json")) });
                 exitCode = Math.Max(exitCode, result);
             }
@@ -70,8 +71,8 @@ internal static class ReferenceTool
 
     private static Dictionary<string, string> Arguments(string[] args)
     {
-        if (args.Length == 0 || args[0] is not ("compare" or "generate-reference"))
-            throw new InvalidOperationException("Usage: TikzReference <generate-reference|compare> [--case id] [--reference cached] [--out artifacts/...]");
+        if (args.Length == 0 || args[0] is not ("compare" or "generate-reference" or "calibrate-reference"))
+            throw new InvalidOperationException("Usage: TikzReference <generate-reference|compare|calibrate-reference> [--case id] [--reference cached] [--out artifacts/...]");
         var result = new Dictionary<string, string>(StringComparer.Ordinal);
         for (var i = 1; i < args.Length; i += 2)
         {
@@ -101,11 +102,21 @@ internal static class ReferenceTool
         foreach (var folder in new[] { unprobed, probed, pdf }) Directory.CreateDirectory(folder);
         File.WriteAllText(Path.Combine(unprobed, "case.tikz"), source);
         File.WriteAllText(Path.Combine(unprobed, "case.tex"), wrapper);
-        var instrumentation = source.Replace("\\end{tikzpicture}", "\\lokadmeasure\\end{tikzpicture}", StringComparison.Ordinal);
-        File.WriteAllText(Path.Combine(probed, "case.tikz"), instrumentation);
-        File.WriteAllText(Path.Combine(probed, "case.tex"), wrapper);
-        File.WriteAllText(Path.Combine(pdf, "case.tikz"), instrumentation);
-        File.WriteAllText(Path.Combine(pdf, "case.tex"), wrapper.Replace("\\def\\pgfsysdriver{pgfsys-dvisvgm.def}\n", "", StringComparison.Ordinal));
+        var instrumentedWrapper = wrapper.Replace("\\begin{document}", "\\lokadprobestrue\n\\begin{document}", StringComparison.Ordinal);
+        var anchors = new StringBuilder();
+        foreach (var name in c.AnchorNames)
+        {
+            if (!Regex.IsMatch(name, "^[a-z][a-z0-9-]*$")) throw new InvalidOperationException("Invalid trusted probe anchor name.");
+            anchors.Append("\\pgfpointanchor{").Append(name).Append("}{center}\n")
+                .Append("\\typeout{LOKAD-ANCHOR-").Append(name).Append(" x=\\the\\pgf@x; y=\\the\\pgf@y}\n");
+        }
+        foreach (var folder in new[] { probed, pdf })
+        {
+            File.WriteAllText(Path.Combine(folder, "case.tikz"), source);
+            File.WriteAllText(Path.Combine(folder, "anchors.tex"), anchors.ToString());
+        }
+        File.WriteAllText(Path.Combine(probed, "case.tex"), instrumentedWrapper);
+        File.WriteAllText(Path.Combine(pdf, "case.tex"), instrumentedWrapper.Replace("\\def\\pgfsysdriver{pgfsys-dvisvgm.def}\n", "", StringComparison.Ordinal));
         foreach (var folder in new[] { unprobed, probed })
         {
             await Require(latex.Executable, [.. texArgs, "case.tex"], folder);
@@ -123,7 +134,7 @@ internal static class ReferenceTool
         var pdfLog = Text(Path.Combine(pdf, "case.log"));
         var pdfBox = Box(pdfLog);
         if (pdfBox != measuredBox) throw new InvalidOperationException("Primary SVG and ordinary PDF routes have different TeX boxes.");
-        var metrics = Measurements(log, pdfLog, Path.Combine(probed, "reference.svg"));
+        var metrics = Measurements(log, pdfLog, Path.Combine(probed, "reference.svg"), c);
         var generated = Path.Combine(work, "baseline");
         Directory.CreateDirectory(generated);
         File.Copy(Path.Combine(probed, "reference.svg"), Path.Combine(generated, "reference.svg"));
@@ -150,10 +161,10 @@ internal static class ReferenceTool
         foreach (var f in Directory.GetFiles(generated)) File.Copy(f, Path.Combine(baseline, Path.GetFileName(f)), true);
     }
 
-    private static async Task<int> Compare(ReferenceCase c, string output)
+    private static async Task<int> Compare(ReferenceCase c, string output, bool calibration)
     {
         ResetDirectory(output);
-        try { return await CompareCore(c, output); }
+        try { return await CompareCore(c, output, calibration); }
         catch (Exception e) when (e is not OutOfMemoryException)
         {
             Write(Path.Combine(output, "report.json"), new { schemaVersion = 1, caseId = c.Id, verdict = "harness-failure", diagnostics = new[] { Sanitize(e.Message) } });
@@ -162,7 +173,7 @@ internal static class ReferenceTool
         }
     }
 
-    private static async Task<int> CompareCore(ReferenceCase c, string output)
+    private static async Task<int> CompareCore(ReferenceCase c, string output, bool calibration)
     {
         var baseline = At($"tests/Reference/{c.Id}");
         var provenance = Read<Provenance>(Path.Combine(baseline, "provenance.json"));
@@ -181,6 +192,7 @@ internal static class ReferenceTool
         if (required.Any(f => !provenance.Artifacts.ContainsKey(f))) throw new InvalidOperationException("Reference artifact manifest is incomplete.");
         foreach (var f in required.Append("provenance.json")) File.Copy(Path.Combine(baseline, f), Path.Combine(output, f));
         File.WriteAllText(Path.Combine(output, "source.tikz"), source);
+        if (calibration) return await Calibrate(c, output);
         GraphicsScene? scene = null;
         var conversionOptions = new TikzOptions { IdPrefix = "candidate" };
         var conversion = TikzConverter.ConvertWithTrace(source, conversionOptions, CancellationToken.None, value => scene = value);
@@ -194,13 +206,14 @@ internal static class ReferenceTool
         File.WriteAllText(Path.Combine(output, "actual.svg"), success.Svg);
         Write(Path.Combine(output, "actual-scene.json"), Scene(scene!, success));
         var reference = Read<ReferenceMetrics>(Path.Combine(baseline, "reference-metrics.json"));
+        if (reference.SchemaVersion != 2) throw new InvalidOperationException("Reference measurements need schema version 2 path probes.");
         var checks = NumericChecks(reference, scene!, success, c.NumericTolerancePixels);
         var git = await Process(ResolveExecutable("git"), ["rev-parse", "HEAD"], Root);
         var fingerprint = await WorkingTreeFingerprint();
         Write(Path.Combine(output, "candidate-provenance.json"), new { schemaVersion = 1, commit = git.Output.Trim(), workingTreeSha256 = fingerprint,
             configuration = BuildConfiguration, assemblySha256 = HashFile(typeof(TikzConverter).Assembly.Location), options = conversionOptions });
         Write(Path.Combine(output, "comparison-input.json"), new { schemaVersion = 1, caseId = c.Id, referenceMode = "cached", referenceOriginBp = reference.SvgOriginBp,
-            numericTolerancePixels = c.NumericTolerancePixels, numeric = new { passed = checks.All(x => x.Passed), checks }, pdf = new { originPixels = reference.PdfOriginPixels } });
+            toleranceProfile = c.Id, numericTolerancePixels = c.NumericTolerancePixels, numeric = new { passed = checks.All(x => x.Passed), checks }, pdf = new { originPixels = reference.PdfOriginPixels } });
         var render = await Process(ResolveExecutable("node"), [At("tools/TikzVisual/compare.mjs"), output], Root);
         if (render.ExitCode is not (0 or 1) || !File.Exists(Path.Combine(output, "report.json")))
             throw new InvalidOperationException("Visual runner failed: " + render.Output);
@@ -215,8 +228,12 @@ internal static class ReferenceTool
         paths = scene.Paths.Select((p, i) => new { semanticId = $"path-{i}", svgElementId = $"candidate-p{i}", source = p.Source.Location,
             geometryBounds = p.Path.Bounds.Pixels, inkBounds = p.Path.Bounds.Inflate(p.Paint.Stroke ? p.Paint.Width / 2 : 0).Pixels,
             paint = new { stroke = p.Paint.Stroke, fill = p.Paint.Fill, strokeColor = p.Paint.StrokeColor.Svg, fillColor = p.Paint.FillColor.Svg,
-                strokeWidthPixels = p.Paint.Width * 4 / 3, p.Paint.StrokeOpacity, p.Paint.FillOpacity, p.Paint.Cap, p.Paint.Join }, clips = p.Clips,
+                strokeWidthPixels = p.Paint.Width * 4 / 3, p.Paint.StrokeOpacity, p.Paint.FillOpacity, p.Paint.Cap, p.Paint.Join, p.Paint.FillRule,
+                dashPixels = p.Paint.Dash.Select(d => d * 4 / 3), dashPhasePixels = p.Paint.DashPhase * 4 / 3 }, clips = p.Clips,
             segments = p.Path.Segments.Select(s => new { kind = s.Kind.ToString(), end = new XY(s.End.X * 4 / 3, -s.End.Y * 4 / 3),
+                control1 = new XY(s.A.X * 4 / 3, -s.A.Y * 4 / 3), control2 = new XY(s.B.X * 4 / 3, -s.B.Y * 4 / 3) }) }),
+        clips = scene.Clips.Select((c, i) => new { semanticId = $"clip-{i}", svgElementId = $"candidate-c{i}", c.FillRule,
+            segments = c.Path.Segments.Select(s => new { kind = s.Kind.ToString(), end = new XY(s.End.X * 4 / 3, -s.End.Y * 4 / 3),
                 control1 = new XY(s.A.X * 4 / 3, -s.A.Y * 4 / 3), control2 = new XY(s.B.X * 4 / 3, -s.B.Y * 4 / 3) }) }), statistics = success.Statistics
     };
 
@@ -242,38 +259,53 @@ internal static class ReferenceTool
             Number($"anchor.{name}.x", point.X * PtToPixels, actual.X * 4 / 3);
             Number($"anchor.{name}.y", -point.Y * PtToPixels, -actual.Y * 4 / 3);
         }
-        Number("paintedPathCount", 1, scene.Paths.Count, "count", 0);
-        if (scene.Paths.Count != 1) return checks;
-        Number("stroke.width", reference.Stroke.WidthPt * PtToPixels, scene.Paths[0].Paint.Width * 4 / 3);
-        Number("stroke.opacity", reference.Stroke.Opacity, scene.Paths[0].Paint.StrokeOpacity, "unit interval", 0.000001);
-        var actualColor = scene.Paths[0].Paint.StrokeColor.Svg;
-        checks.Add(new("stroke.color", reference.Stroke.Color, actualColor, "sRGB hex", null, 0, reference.Stroke.Color == actualColor));
+        void Equal(string name, object expected, object actual, string units = "value")
+            => checks.Add(new(name, expected, actual, units, null, 0, expected.Equals(actual)));
+        void Segments(string name, ReferenceSegment[] expected, GraphicPath actual)
+        {
+            var converted = NormalizeSegments(actual.Segments.Select(s => new ReferenceSegment(s.Kind.ToString(), Point(s.End), Point(s.A), Point(s.B))));
+            Number(name + ".segmentCount", expected.Length, converted.Length, "count", 0);
+            for (var i = 0; i < Math.Min(expected.Length, converted.Length); i++)
+            {
+                Equal($"{name}.segment.{i}.kind", expected[i].Kind, converted[i].Kind);
+                Coordinates($"{name}.segment.{i}.end", expected[i].End, converted[i].End);
+                if (expected[i].Kind == "Cubic" && converted[i].Kind == "Cubic")
+                {
+                    Coordinates($"{name}.segment.{i}.control1", expected[i].Control1, converted[i].Control1);
+                    Coordinates($"{name}.segment.{i}.control2", expected[i].Control2, converted[i].Control2);
+                }
+            }
+            static XY Point(Lokad.TikZ.Geometry.Point p) => new(p.X * 72.27 / 72, p.Y * 72.27 / 72);
+            void Coordinates(string id, XY e, XY a) { Number(id + ".x", e.X * PtToPixels, a.X * PtToPixels); Number(id + ".y", e.Y * PtToPixels, a.Y * PtToPixels); }
+        }
+        Number("paintedPathCount", reference.Paths.Length, scene.Paths.Count, "count", 0);
+        for (var i = 0; i < Math.Min(reference.Paths.Length, scene.Paths.Count); i++)
+        {
+            var expected = reference.Paths[i]; var actual = scene.Paths[i]; var name = $"path.{i}";
+            Segments(name, expected.Segments, actual.Path);
+            Equal(name + ".stroke", expected.Stroke, actual.Paint.Stroke);
+            Equal(name + ".fill", expected.Fill, actual.Paint.Fill);
+            if (expected.Stroke)
+            {
+                Number(name + ".stroke.width", expected.WidthPt * PtToPixels, actual.Paint.Width * 4 / 3);
+                Number(name + ".stroke.opacity", expected.StrokeOpacity, actual.Paint.StrokeOpacity, "unit interval", 0.000001);
+                Equal(name + ".stroke.color", expected.StrokeColor, actual.Paint.StrokeColor.Svg, "sRGB hex");
+                Equal(name + ".stroke.cap", expected.Cap, actual.Paint.Cap);
+                Equal(name + ".stroke.join", expected.Join, actual.Paint.Join);
+                Number(name + ".dash.count", expected.DashPt.Length, actual.Paint.Dash.Length, "count", 0);
+                for (var d = 0; d < Math.Min(expected.DashPt.Length, actual.Paint.Dash.Length); d++) Number($"{name}.dash.{d}", expected.DashPt[d] * PtToPixels, actual.Paint.Dash[d] * 4 / 3);
+                Number(name + ".dash.phase", expected.DashPhasePt * PtToPixels, actual.Paint.DashPhase * 4 / 3);
+            }
+            if (expected.Fill)
+            {
+                Number(name + ".fill.opacity", expected.FillOpacity, actual.Paint.FillOpacity, "unit interval", 0.000001);
+                Equal(name + ".fill.color", expected.FillColor, actual.Paint.FillColor.Svg, "sRGB hex");
+                Equal(name + ".fill.rule", expected.FillRule, actual.Paint.FillRule);
+            }
+        }
+        Number("clipCount", reference.Clips.Length, scene.Clips.Count, "count", 0);
+        for (var i = 0; i < Math.Min(reference.Clips.Length, scene.Clips.Count); i++) Segments($"clip.{i}", reference.Clips[i].Segments, scene.Clips[i].Path);
         return checks;
-    }
-
-    private static ReferenceMetrics Measurements(string log, string pdfLog, string svgFile)
-    {
-        var bounds = Match(log, @"LOKAD-BOUNDS minx=([-\d.]+)pt; miny=([-\d.]+)pt; maxx=([-\d.]+)pt; maxy=([-\d.]+)pt");
-        var anchors = Regex.Matches(log, @"LOKAD-ANCHOR-([a-z]+) x=([-\d.]+)pt; y=([-\d.]+)pt")
-            .ToDictionary(m => m.Groups[1].Value, m => new XY(Parse(m.Groups[2].Value), Parse(m.Groups[3].Value)));
-        if (anchors.Count != 2 || !anchors.ContainsKey("start") || !anchors.ContainsKey("end")) throw new InvalidOperationException("Incomplete independent anchor measurements.");
-        var svg = XDocument.Load(svgFile);
-        var originGroup = svg.Descendants().FirstOrDefault(e => e.Name.LocalName == "g" && (e.Attribute("transform")?.Value ?? "").StartsWith("translate(", StringComparison.Ordinal))
-            ?? throw new InvalidOperationException("Primary SVG driver origin transform missing.");
-        var origin = Match(originGroup.Attribute("transform")!.Value, @"^translate\(([-\d.]+),([-\d.]+)\)scale\(([-\d.]+),([-\d.]+)\)$");
-        if (Math.Abs(origin[2] - 72 / 72.27) > 0.000001 || Math.Abs(origin[3] + 72 / 72.27) > 0.000001)
-            throw new InvalidOperationException("Unexpected primary driver physical transform.");
-        var path = svg.Descendants().Single(e => e.Name.LocalName == "path");
-        string Attribute(string name) => path.AncestorsAndSelf().Select(e => e.Attribute(name)?.Value).FirstOrDefault(v => v is not null)
-            ?? throw new InvalidOperationException("Required reference paint property missing: " + name);
-        var color = Attribute("stroke");
-        if (Regex.IsMatch(color, "^#[0-9a-fA-F]{3}$")) color = "#" + string.Concat(color[1..].Select(c => new string(c, 2)));
-        if (!Regex.IsMatch(color, "^#[0-9a-fA-F]{6}$")) throw new InvalidOperationException("Unsupported reference color syntax.");
-        var page = Match(pdfLog, @"LOKAD-PAGE-ORIGIN xsp=(\d+); ysp=(\d+); pageheight=([-\d.]+)pt");
-        return new(1, "Independent PGF measurements in TeX pt; SVG driver translation in bp; PDF registration from shipped-out positions",
-            new(bounds[0], bounds[1], bounds[2], bounds[3]), Box(log), anchors, new(origin[0], origin[1]),
-            new((page[0] / 65536 - bounds[0]) * PtToPixels, (page[2] - page[1] / 65536 + bounds[1]) * PtToPixels),
-            new(Parse(Attribute("stroke-width")), color.ToLowerInvariant(), Parse(Attribute("stroke-opacity"))));
     }
 
     private static BoxDimensions Box(string log)
@@ -284,7 +316,8 @@ internal static class ReferenceTool
 
     private static double[] Match(string text, string regex)
     {
-        var match = Regex.Match(text, regex, RegexOptions.CultureInvariant);
+        // TeX wraps typeout records at max_print_line, including inside numbers.
+        var match = Regex.Match(text.Replace("\n", "", StringComparison.Ordinal), regex, RegexOptions.CultureInvariant);
         if (!match.Success) throw new InvalidOperationException("Required independent measurement missing: " + regex);
         return match.Groups.Cast<Group>().Skip(1).Select(g => Parse(g.Value)).ToArray();
     }
@@ -412,12 +445,20 @@ internal static class ReferenceTool
 
     private sealed record OracleProfile(int SchemaVersion, string Id, string LatexVersion, string DvisvgmVersion, string PdfRasterizerVersion, string PgfVersion, string FontProfile, int[] Scales, int ProcessTimeoutSeconds, int MaxCapturedCharacters);
     private sealed record CaseManifest(int SchemaVersion, string Profile, ReferenceCase[] Cases);
-    private sealed record ReferenceCase(string Id, string Source, string[] Features, double NumericTolerancePixels);
+    private sealed record ReferenceCase(string Id, string Source, string[] Features, double NumericTolerancePixels)
+    {
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public string[]? Anchors { get; init; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public AnchorBinding[]? AnchorBindings { get; init; }
+        [JsonIgnore] public string[] AnchorNames => Anchors ?? ["start", "end"];
+    }
+    private sealed record AnchorBinding(int Path, int Segment, string Anchor);
     private sealed record XY(double X, double Y);
     private sealed record PhysicalBounds(double MinX, double MinY, double MaxX, double MaxY);
     private sealed record BoxDimensions(double Width, double Height, double Depth);
     private sealed record ReferenceStroke(double WidthPt, string Color, double Opacity);
-    private sealed record ReferenceMetrics(int SchemaVersion, string Units, PhysicalBounds PictureBoundsPt, BoxDimensions BoxPt, Dictionary<string, XY> AnchorsPt, XY SvgOriginBp, XY PdfOriginPixels, ReferenceStroke Stroke);
+    private sealed record ReferenceMetrics(int SchemaVersion, string Units, PhysicalBounds PictureBoundsPt, BoxDimensions BoxPt, Dictionary<string, XY> AnchorsPt, XY SvgOriginBp, XY PdfOriginPixels, ReferenceStroke Stroke, ReferencePath[] Paths, ReferencePath[] Clips);
+    private sealed record ReferenceSegment(string Kind, XY End, XY Control1, XY Control2);
+    private sealed record ReferencePath(ReferenceSegment[] Segments, bool Stroke, bool Fill, double WidthPt, string StrokeColor, string FillColor, double StrokeOpacity, double FillOpacity, string Cap, string Join, string FillRule, double[] DashPt, double DashPhasePt);
     private sealed record NumericCheck(string Name, object Expected, object Actual, string Units, double? AbsoluteError, double Tolerance, bool Passed);
     private sealed record ProcessResult(int ExitCode, string Output);
     private sealed record ToolIdentity(string Name, string Version, string Sha256);

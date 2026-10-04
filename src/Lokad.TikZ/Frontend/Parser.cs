@@ -147,7 +147,7 @@ internal sealed class Parser(Source source, Budget budget)
             else throw new CompileError("TIKZ002", "Unsupported path operation.", origin);
             if (operations.Count > budget.Limits.MaxSegments) Budget.Fail(origin, "path operations");
         }
-        return new(command.Value, options, operations, command);
+        return new(command.Value, options, operations, new Source(command.Text, command.Offset, source.Offset + _reader.Position - command.Offset));
     }
     private Source ShapeOptions(string key)
     {

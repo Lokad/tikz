@@ -1,9 +1,18 @@
 # Grounding against TikZ
 
-The initial required corpus contains `line-units`: named coordinates, physical
-units, `scale=2`, an unscaled 2 TeX pt stroke, an xcolor mixture, and opacity.
-Other converter geometry is still under development and is not covered by this
-initial fidelity claim. Extend the independent corpus with each feature.
+The required corpus currently contains six independently authored fixtures:
+
+| Fixture | Grounded behavior |
+| --- | --- |
+| `line-units` | Physical units, named coordinates, unscaled stroke, color mixture, opacity |
+| `relative-coordinates` | Compound paths, distinct `+`/`++` reference updates, round joins |
+| `ordered-transforms` | Basis lengths, transform order, transformed orthogonal corners, styles and scope restoration |
+| `cubic-controls` | Absolute/relative cubic controls, PGF picture bounds including control points |
+| `rotated-rectangle` | Rectangle order under rotation/scaling, fill and opacity |
+| `clip-scope` | Clip geometry, inherited clipping, PGF picture-size suppression and scope restoration |
+
+These fixtures establish behavior for their concrete forms. Circles, arcs,
+dashes, text, and other combinations still need their own oracle evidence.
 
 ## Ordinary .NET tests
 
@@ -12,8 +21,9 @@ dotnet test Lokad.TikZ.slnx
 ```
 
 These tests consume checked-in PGF measurements and need neither TeX nor a
-browser. They cover physical measurements, error behavior, limits,
-cancellation, culture independence, and repeated/concurrent conversion.
+browser. They cover independent bounds, anchors, path segments and paint,
+error behavior, limits, cancellation, culture independence, and
+repeated/concurrent conversion.
 
 ## Cached visual conformance
 
@@ -38,11 +48,13 @@ dotnet run --project tools/TikzReference -- compare --case line-units --referenc
 ```
 
 Both SVGs are rerendered in the same pinned Chromium process at 1x and 4x.
-The initial primary profile requires exact pixels, including alpha and fixed
-light/dark backgrounds. Coordinate registration uses the measured physical
-origin; images are never fitted or automatically aligned. Native dimensions
-are checked separately. Missing tools, incompatible manifests, and missing
-reference artifacts fail instead of skipping a case.
+The primary profile requires exact pixels by default, including alpha and
+fixed light/dark backgrounds. Three fixtures have explicit precision allowances
+documented with [oracle-only calibration evidence](../tools/TikzVisual/CALIBRATION.md).
+Coordinate registration uses the measured physical origin; images are never
+fitted or automatically aligned. Native dimensions are checked separately.
+Missing tools, incompatible manifests, and missing reference artifacts fail
+instead of skipping a case.
 
 The cached baseline also includes ordinary pdfLaTeX output rasterized by
 Poppler 24.04.0 at 96 and 384 DPI. Cached comparison needs no PDF rasterizer.
@@ -71,18 +83,23 @@ fingerprint, build configuration, and options. Fix the implicated compiler
 stage, rerun the focused case, and then run the corpus. Do not change an
 expected reference or loosen a threshold to hide a candidate defect.
 
-The self-test requires a passing `line-units` bundle. It repeats unchanged
+The 30-case self-test requires a passing `line-units` bundle. It repeats unchanged
 pairs, mutates geometry/units/stroke/color/opacity/clipping/canvas size, removes
 or adds drawing, and tests mostly blank canvases. Synthetic outlined glyph,
 minus, baseline, and arrowhead mutations test the comparator; they make no
-claim that the converter already supports those features. Adversarial source
-is never sent to TeX.
+claim that the converter already supports those features. Each fixture-specific
+profile must also reject displacement, doubled strokes, and disappearing faint
+content. Foreground error includes every visible sample, including low alpha;
+edge/component masks have their own threshold. Adversarial source is never
+sent to TeX.
 
 ## Explicit live reference generation
 
 Only trusted repository fixtures from `tests/Reference/cases.json` are accepted.
-The initial wrapper/probes are deliberately specific to `line-units` and must
-be extended when new semantic quantities are introduced.
+The wrapper records PGF bounds, TeX box dimensions, manifest-selected anchors,
+soft-path segments and stroke widths. Paint is read from the independent SVG
+driver. New semantic quantities such as node text metrics require additional
+probes; geometry hooks alone cannot validate them.
 
 ```text
 dotnet run --project tools/TikzReference -- generate-reference --case line-units
@@ -100,3 +117,24 @@ Generation compares instrumented and uninstrumented SVGs byte for byte and
 checks their TeX box dimensions. The separate ordinary PDF driver supplies
 measured page positions for its registration. Fixtures, wrappers, measurements,
 and tool profiles have hashes; modified cached artifacts are rejected.
+
+## Oracle-only precision calibration
+
+```text
+dotnet run --project tools/TikzReference -- calibrate-reference --out artifacts/calibration
+```
+
+This command never invokes Lokad.TikZ and never writes a baseline. It rewrites
+the oracle's measured paths in CSS units, preserving paint and clipping, and
+compares that representation with the original oracle SVG. Separate variants
+perturb coordinates by four TeX scaled points and expand the frame by that
+fixed amount. Declared anchor bindings additionally test PGF's measured anchor
+against its painted endpoint after a transform round trip. No values are
+chosen by fitting images.
+
+The command produces the usual images and reports in each variant directory.
+It is a measurement experiment, not the required conformance gate: under exact
+profiles, the intentional precision perturbations correctly return mismatch
+and an aggregate exit code of `1`. A harness error still returns `2`. Review
+the raw measurements and [recorded calibration](../tools/TikzVisual/CALIBRATION.md)
+before changing a profile. Text and new geometry need new evidence.

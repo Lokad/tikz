@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=latex 2025.9.25)  4 OCT 2026 22:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=latex 2025.9.25)  4 OCT 2026 22:39
 entering extended mode
  %&-line parsing enabled.
 **./case.tex
@@ -401,25 +401,36 @@ File: l3backend-dvips.def 2025-06-09 L3 backend support: dvips
 No file case.aux.
 \openout1 = `case.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 (case.tikz
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=draw,; width=2.0pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {0.0pt}{0.0pt}\pgfsyssoftpat
+h@linetotoken {56.90549pt}{0.0pt}
+LOKAD-PATH-END
 LOKAD-BOUNDS minx=-1.0pt; miny=-1.0pt; maxx=57.90549pt; maxy=1.0pt
+(anchors.tex
 LOKAD-ANCHOR-start x=0.0pt; y=0.0pt
 LOKAD-ANCHOR-end x=56.90549pt; y=0.0pt
-)
+))
 LOKAD-BOX width=58.90549pt; height=2.0pt; depth=0.0pt
 
 
@@ -432,10 +443,10 @@ L3 programming layer <2025-09-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 11560 strings out of 468130
- 249469 string characters out of 5425798
- 620889 words of memory out of 5000000
- 40030 multiletter control sequences out of 15000+600000
+ 11574 strings out of 468130
+ 249779 string characters out of 5425798
+ 620958 words of memory out of 5000000
+ 40041 multiletter control sequences out of 15000+600000
  626825 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,5n,107p,421b,515s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -443,7 +454,7 @@ Here is how much of TeX's memory you used:
 Output written on case.dvi (1 page, 1020 bytes).
 
 --- Ordinary PDF oracle ---
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.25)  4 OCT 2026 22:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.25)  4 OCT 2026 22:39
 entering extended mode
  %&-line parsing enabled.
 **./case.tex
@@ -839,20 +850,20 @@ File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
 No file case.aux.
 \openout1 = `case.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 
 (<local>\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\s
 upp-pdf.mkii
@@ -879,10 +890,21 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 opdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 )) (case.tikz
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=draw,; width=2.0pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {0.0pt}{0.0pt}\pgfsyssoftpat
+h@linetotoken {56.90549pt}{0.0pt}
+LOKAD-PATH-END
 LOKAD-BOUNDS minx=-1.0pt; miny=-1.0pt; maxx=57.90549pt; maxy=1.0pt
+(anchors.tex
 LOKAD-ANCHOR-start x=0.0pt; y=0.0pt
 LOKAD-ANCHOR-end x=56.90549pt; y=0.0pt
-)
+))
 LOKAD-BOX width=58.90549pt; height=2.0pt; depth=0.0pt
 
 
@@ -897,10 +919,10 @@ L3 programming layer <2025-09-02>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 11761 strings out of 468129
- 251202 string characters out of 5425772
- 617122 words of memory out of 5000000
- 40218 multiletter control sequences out of 15000+600000
+ 11775 strings out of 468129
+ 251509 string characters out of 5425772
+ 617170 words of memory out of 5000000
+ 40229 multiletter control sequences out of 15000+600000
  626825 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,5n,107p,404b,498s stack positions out of 10000i,1000n,20000p,200000b,200000s

@@ -2,7 +2,7 @@ import { readFile, writeFile, mkdir, cp, rm, access } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createRenderer, compareBundle } from './compare.mjs';
+import { createRenderer, compareBundle, profile } from './compare.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const baseline = path.join(root, 'artifacts/comparisons/line-units');
@@ -18,7 +18,7 @@ const renderer = await createRenderer();
 const results = [];
 const hash = value => createHash('sha256').update(value).digest('hex');
 
-async function check(name, svg, expected, synthetic = false) {
+async function check(name, svg, expected, synthetic = false, toleranceProfile = 'line-units') {
   const folder = path.join(output, name);
   if (!folder.startsWith(output + path.sep)) throw new Error('Mutation output escapes its directory.');
   await rm(folder, { recursive: true, force: true });
@@ -27,6 +27,7 @@ async function check(name, svg, expected, synthetic = false) {
     await cp(path.join(baseline, file), path.join(folder, file));
   const input = structuredClone(originalInput);
   input.caseId = name;
+  input.toleranceProfile = toleranceProfile;
   input.referenceMode = synthetic ? 'comparator-synthetic' : 'cached-with-controlled-candidate-mutation';
   // Test raster/dimension rejection independently: never force a mismatch via
   // a fabricated numeric failure and never send mutated source to TeX.
@@ -95,6 +96,16 @@ try {
   const blank = await check('blank-area-dilution', [blankReference, blankActual], 'mismatch', true);
   if (blank.primary.checks[0].meanForegroundError < 10 || blank.primary.checks[0].foregroundPixels >= 100)
     throw new Error('Foreground error was diluted by blank canvas area.');
+
+  // Every calibrated primary allowance must continue to catch displacement,
+  // stroke scaling, and disappearing low-opacity content. The mean error uses
+  // all visible samples, including alpha below the edge-mask threshold.
+  for (const name of Object.keys(profile.cases ?? {})) {
+    await check(`${name}-translation`, original.replace('<path ', '<path transform="translate(.5 .25)" '), 'mismatch', false, name);
+    await check(`${name}-stroke-scaling`, original.replace(/stroke-width="([^"]+)"/, (_, width) => `stroke-width="${Number(width) * 2}"`), 'mismatch', false, name);
+    const faint = svg('<path d="M5 10H20" stroke="#000" stroke-width="1" stroke-opacity=".01"/>', 1000, 200);
+    await check(`${name}-missing-faint-stroke`, [faint, svg('', 1000, 200)], 'mismatch', true, name);
+  }
 
   // A malformed or missing artifact is an infrastructure error, never a pass.
   const missingFolder = path.join(output, 'missing-artifact');

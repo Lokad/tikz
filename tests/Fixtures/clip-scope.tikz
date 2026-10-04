@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+  \coordinate (start) at (-.5,0);
+  \coordinate (end) at (2,1);
+  \begin{scope}
+    \clip (0,0) rectangle (1,1);
+    \fill[blue] (-1,-1) rectangle (3,3);
+  \end{scope}
+  \draw[red,line width=1pt] (start) -- (end);
+\end{tikzpicture}

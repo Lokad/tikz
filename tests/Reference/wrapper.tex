@@ -4,15 +4,32 @@
 \pagestyle{empty}
 \makeatletter
 \typeout{LOKAD-PGF-VERSION \pgfversion}
+\newif\iflokadprobes
 \newbox\lokadpicture
+% Capture the picture rather than whitespace left by pre-picture key commands.
+\let\lokadoriginalpicture\tikzpicture
+\def\tikzpicture{\unskip\lokadoriginalpicture}
+\def\lokadrecordpath#1{%
+  \begingroup
+    \pgfgetpath\lokadsoftpath
+    \typeout{LOKAD-PATH-BEGIN actions=#1; width=\the\pgflinewidth}
+    \typeout{LOKAD-SOFTPATH \meaning\lokadsoftpath}
+    \typeout{LOKAD-PATH-END}
+  \endgroup
+}
+\AtBeginDocument{%
+  \iflokadprobes
+    \let\lokadoriginalusepath\pgfusepath
+    \def\pgfusepath#1{\lokadrecordpath{#1}\lokadoriginalusepath{#1}}%
+    \let\lokadoriginalendpicture\endtikzpicture
+    \def\endtikzpicture{\lokadmeasure\lokadoriginalendpicture}%
+  \fi
+}
 \def\lokadmeasure{%
   \begingroup
     \typeout{LOKAD-BOUNDS minx=\the\pgf@picminx; miny=\the\pgf@picminy; maxx=\the\pgf@picmaxx; maxy=\the\pgf@picmaxy}
     \pgftransformreset
-    \pgfpointanchor{start}{center}
-    \typeout{LOKAD-ANCHOR-start x=\the\pgf@x; y=\the\pgf@y}
-    \pgfpointanchor{end}{center}
-    \typeout{LOKAD-ANCHOR-end x=\the\pgf@x; y=\the\pgf@y}
+    \input{anchors.tex}%
   \endgroup
 }
 \begin{document}

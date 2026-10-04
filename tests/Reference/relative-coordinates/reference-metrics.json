@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "units": "Independent PGF bounds, anchors, soft-path coordinates and widths in TeX pt; paint from the pinned SVG driver; SVG translation in bp; PDF registration from shipped-out positions",
+  "pictureBoundsPt": {
+    "minX": -0.5,
+    "minY": -0.5,
+    "maxX": 57.40549,
+    "maxY": 28.95274
+  },
+  "boxPt": {
+    "width": 57.90549,
+    "height": 29.45274,
+    "depth": 0
+  },
+  "anchorsPt": {
+    "start": {
+      "x": 0,
+      "y": 0
+    },
+    "end": {
+      "x": 56.90549,
+      "y": 28.45274
+    }
+  },
+  "svgOriginBp": {
+    "x": 62.266501,
+    "y": 81.646569
+  },
+  "pdfOriginPixels": {
+    "x": 179.02198623650895,
+    "y": 204.8620826328353
+  },
+  "stroke": {
+    "widthPt": 1,
+    "color": "#0000ff",
+    "opacity": 1
+  },
+  "paths": [
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 28.45274,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 0,
+            "y": 28.45274
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 28.45274,
+            "y": 28.45274
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 42.67911,
+            "y": 14.22638
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 56.90549,
+            "y": 28.45274
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 1,
+      "strokeColor": "#0000ff",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "round",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    }
+  ],
+  "clips": []
+}

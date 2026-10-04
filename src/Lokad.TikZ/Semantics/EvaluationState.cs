@@ -10,6 +10,7 @@ internal sealed class EvaluationState
     public Point YBasis { get; set; } = new(0, 72 / 2.54);
     public Paint Paint { get; set; } = new();
     public List<int> Clips { get; set; } = [];
+    public bool RelevantForPictureSize { get; set; } = true;
     public Dictionary<string, List<Option>> Styles { get; set; } = new(StringComparer.Ordinal);
     public Dictionary<string, Number> Variables { get; set; } = new(StringComparer.Ordinal);
     public EvaluationState Clone(Budget budget, Source source)
@@ -17,7 +18,7 @@ internal sealed class EvaluationState
         budget.Charge(source, Styles.Count + Variables.Count + Clips.Count + 1);
         return new()
         {
-            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint,
+            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, RelevantForPictureSize = RelevantForPictureSize,
             Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal)
         };
     }

@@ -1,12 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "chromium-153-geometry-v1",
+  "id": "chromium-153-geometry-v2",
   "playwrightVersion": "1.63.0",
   "browserVersion": "153.0.8010.12",
   "launchArguments": ["--disable-gpu", "--force-color-profile=srgb"],
   "scales": [1, 4],
   "primary": { "maxChannelError": 0, "maxMeanForegroundError": 0, "maxEdgeDisplacementPixels": 0, "maxComponentDifference": 0 },
   "pdf": { "maxChannelError": 128, "maxMeanForegroundError": 24, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 },
+  "cases": {
+    "ordered-transforms": {
+      "primary": { "maxChannelError": 12, "maxMeanForegroundError": 0.125, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 },
+      "pdf": { "maxChannelError": 224, "maxMeanForegroundError": 32, "maxEdgeDisplacementRasterPixels": 1.5, "maxComponentDifference": 0 }
+    },
+    "cubic-controls": {
+      "primary": { "maxChannelError": 10, "maxMeanForegroundError": 0.05, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 },
+      "pdf": { "maxChannelError": 144, "maxMeanForegroundError": 24, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 }
+    },
+    "rotated-rectangle": {
+      "primary": { "maxChannelError": 1, "maxMeanForegroundError": 0.025, "maxEdgeDisplacementPixels": 0, "maxComponentDifference": 0 }
+    },
+    "clip-scope": {
+      "pdf": { "maxChannelError": 160, "maxMeanForegroundError": 24, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 }
+    }
+  },
   "maxCanvasPixels": 20000000,
   "maxCrops": 10
 }

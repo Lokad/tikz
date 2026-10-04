@@ -1,0 +1,6 @@
+\begin{tikzpicture}
+  \coordinate (start) at (0,0);
+  \coordinate (end) at (2,1);
+  \draw[blue,line width=1pt,line join=round]
+    (start) -- +(1,0) -- +(0,1) -- ++(1,1) -- ++(.5,-.5) -- (end);
+\end{tikzpicture}

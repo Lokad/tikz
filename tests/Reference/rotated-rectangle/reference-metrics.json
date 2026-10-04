@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "units": "Independent PGF bounds, anchors, soft-path coordinates and widths in TeX pt; paint from the pinned SVG driver; SVG translation in bp; PDF registration from shipped-out positions",
+  "pictureBoundsPt": {
+    "minX": -28.45274,
+    "minY": 0,
+    "maxX": 0,
+    "maxY": 113.81097
+  },
+  "boxPt": {
+    "width": 28.45274,
+    "height": 113.81097,
+    "depth": 0
+  },
+  "anchorsPt": {
+    "start": {
+      "x": 0,
+      "y": 0
+    },
+    "end": {
+      "x": -28.45274,
+      "y": 113.81097
+    }
+  },
+  "svgOriginBp": {
+    "x": 90.114813,
+    "y": 166.18777
+  },
+  "pdfOriginPixels": {
+    "x": 216.15306469229975,
+    "y": 317.58368408182866
+  },
+  "stroke": {
+    "widthPt": 0.4,
+    "color": "none",
+    "opacity": 1
+  },
+  "paths": [
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": -28.45274,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": -28.45274,
+            "y": 113.81097
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 0,
+            "y": 113.81097
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Close",
+          "end": {
+            "x": 0,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": false,
+      "fill": true,
+      "widthPt": 0.4,
+      "strokeColor": "none",
+      "fillColor": "#ff8000",
+      "strokeOpacity": 1,
+      "fillOpacity": 0.5,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    }
+  ],
+  "clips": []
+}

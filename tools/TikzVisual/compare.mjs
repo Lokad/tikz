@@ -34,6 +34,8 @@ export async function compareBundle(bundle, renderer) {
   const scene = JSON.parse(await readFile(path.join(bundle, 'actual-scene.json'), 'utf8'));
   const pdfImages = input.pdf ? Object.fromEntries(await Promise.all(profile.scales.map(async scale => [scale,
     'data:image/png;base64,' + (await readFile(path.join(bundle, `pdf-page-${scale}x.png`))).toString('base64')]))) : null;
+  const selected = profile.cases?.[input.toleranceProfile ?? input.caseId] ?? {};
+  const policy = { ...profile, primary: selected.primary ?? profile.primary, pdf: selected.pdf ?? profile.pdf };
   const result = await renderer.page.evaluate(async ({ input, scene, referenceSvg, actualSvg, pdfImages, policy }) => {
     const makeCanvas = (width, height) => {
       if (!Number.isSafeInteger(width) || !Number.isSafeInteger(height) || width < 1 || height < 1 || width * height > policy.maxCanvasPixels)
@@ -154,7 +156,9 @@ export async function compareBundle(bundle, renderer) {
         amplifiedData.data[p] = 255; amplifiedData.data[p + 1] = amplifiedData.data[p + 2] = 255 - Math.min(255, error * 16); amplifiedData.data[p + 3] = 255;
         if (error) { differences[i] = 1; changedPixels++; }
         maxChannelError = Math.max(maxChannelError, error);
-        if (foregroundA[i] || foregroundB[i]) { foregroundPixels++; sum += total; }
+        const visible = values => background === 'white' ? Math.min(values[p], values[p + 1], values[p + 2]) < 255
+          : background === 'black' ? Math.max(values[p], values[p + 1], values[p + 2]) > 0 : values[p + 3] > 0;
+        if (visible(a) || visible(b)) { foregroundPixels++; sum += total; }
       }
       context(raw).putImageData(rawData, 0, 0); context(amplified).putImageData(amplifiedData, 0, 0);
       const aEdges = edges(foregroundA, w, h), bEdges = edges(foregroundB, w, h);
@@ -232,7 +236,7 @@ export async function compareBundle(bundle, renderer) {
     }
     const sheet = makeCanvas(largeReference.width * 3 + 40, largeReference.height + 40), ctx = context(sheet);
     ctx.fillStyle = 'white'; ctx.fillRect(0, 0, sheet.width, sheet.height); ctx.font = '14px sans-serif'; ctx.fillStyle = 'black';
-    for (const [index, [title, canvas]] of [['TikZ reference (4x)', largeReference], ['Lokad.TikZ (4x)', largeActual], ['Difference (16x gain)', largeDiff]].entries()) {
+    for (const [index, [title, canvas]] of [['TikZ reference (4x)', largeReference], [`${input.actualLabel ?? 'Lokad.TikZ'} (4x)`, largeActual], ['Difference (16x gain)', largeDiff]].entries()) {
       const x = 10 + index * (largeReference.width + 10); ctx.fillText(title, x, 18); ctx.drawImage(canvas, x, 28);
     }
     save('comparison.png', sheet);
@@ -244,8 +248,8 @@ export async function compareBundle(bundle, renderer) {
       pdf: { required: Boolean(input.pdf), passed: pdfChecks.length > 0 && pdfChecks.every(c => c.passed) && driverChecks.every(c => c.passed), checks: pdfChecks, driverChecks, cameras: pdfCameras },
       dimensions: { reference: referenceInfo, actual: actualInfo, maxErrorPixels: Math.max(...sizeErrors), passed: sizeErrors.every(e => e <= input.numericTolerancePixels) },
       camera: { minX, minY, width, height, referenceBox, actualBox }, regions: regional,
-      pixelConvention: '8-bit sRGB samples; RGB premultiplied by alpha for errors; alpha channel included; foreground threshold 16/255' };
-  }, { input, scene, referenceSvg, actualSvg, pdfImages, policy: profile });
+      pixelConvention: '8-bit sRGB samples; RGB premultiplied by alpha for errors; alpha channel included; mean error over all visible samples; edge/component masks threshold 16/255' };
+  }, { input, scene, referenceSvg, actualSvg, pdfImages, policy });
   for (const [name, base64] of Object.entries(result.files)) {
     const output = path.join(bundle, name); await mkdir(path.dirname(output), { recursive: true }); await writeFile(output, Buffer.from(base64, 'base64'));
   }
@@ -261,7 +265,8 @@ export async function compareBundle(bundle, renderer) {
   }
   await collect(bundle);
   const report = { schemaVersion: 1, caseId: input.caseId, verdict: verdict ? 'pass' : 'mismatch', referenceMode: input.referenceMode,
-    numeric: input.numeric, renderer: renderer.identity, ...result, artifacts, sourceHash: hash(await readFile(path.join(bundle, 'source.tikz'))) };
+    numeric: input.numeric, actualLabel: input.actualLabel ?? 'Lokad.TikZ', toleranceProfile: input.toleranceProfile ?? input.caseId,
+    renderer: renderer.identity, ...result, artifacts, sourceHash: hash(await readFile(path.join(bundle, 'source.tikz'))) };
   await writeFile(path.join(bundle, 'report.json'), JSON.stringify(report, null, 2) + '\n');
   await writeFile(path.join(bundle, 'index.html'), viewer(report, await readFile(path.join(bundle, 'source.tikz'), 'utf8')));
   return report;
@@ -273,7 +278,7 @@ function viewer(report, source) {
   return `<!doctype html><html lang="en"><meta charset="utf-8"><title>${escape(report.caseId)} comparison</title>
   <style>body{font:16px system-ui;margin:24px;background:#eee;color:#222}button,input{margin:8px}pre{white-space:pre-wrap;background:white;padding:16px}#frame{position:relative;overflow:auto;background:white;border:1px solid #999;height:360px}#camera{position:relative;transform-origin:0 0;width:${report.camera.width * 4}px;height:${report.camera.height * 4}px}#camera img{position:absolute;left:0;top:0}#actual{opacity:.5}.regions{display:flex;gap:12px;flex-wrap:wrap}.regions img{background:white;max-width:100%}a{color:#124c8e}</style>
   <h1>${escape(report.caseId)}: ${escape(report.verdict)}</h1>
-  <p>Same physical origin and framing. Reference: MiKTeX/PGF. Candidate: Lokad.TikZ. Displayed at 4x.</p>
+  <p>Same physical origin and framing. Reference: MiKTeX/PGF. Actual: ${escape(report.actualLabel)}. Displayed at 4x.</p>
   <label>Zoom <input id="zoom" type="range" min=".5" max="8" step=".5" value="1"></label>
   <label>Actual opacity <input id="opacity" type="range" min="0" max="1" step=".05" value=".5"></label>
   <button id="blink">Blink</button><button id="reference">Reference</button><button id="candidate">Actual</button><button id="difference">Difference</button>

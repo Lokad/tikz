@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "profile": "pgf-3.1.11a-geometry",
   "sourceSha256": "34cea5960f692abbb24b9e1f4f24684fbe64166716602b26a850d6dbd739505b",
-  "wrapperSha256": "25e43c307cdf0cfa658715843c7db751828187368227344e6c02c1493e50eaf9",
+  "wrapperSha256": "667822c1763abd8e71df88f954e81bed5bbc78b8a012419392e991a844c38d11",
   "profileSha256": "f8b9bb01f9719a968ea6d839d6cfe026d5043dfa3c86c7cc2104f6ec3add7085",
   "caseDefinition": "{\n  \u0022id\u0022: \u0022line-units\u0022,\n  \u0022source\u0022: \u0022tests/Fixtures/line-units.tikz\u0022,\n  \u0022features\u0022: [\n    \u0022units\u0022,\n    \u0022coordinates\u0022,\n    \u0022scale\u0022,\n    \u0022stroke\u0022,\n    \u0022color\u0022,\n    \u0022opacity\u0022\n  ],\n  \u0022numericTolerancePixels\u0022: 0.02\n}",
-  "generatedUtc": "2026-10-04T20:19:16.8689466\u002B00:00",
+  "generatedUtc": "2026-10-04T20:39:54.8408104\u002B00:00",
   "tools": [
     {
       "name": "latex",
@@ -368,11 +368,11 @@
     "plainSvgSha256": "c546725a3f50989d163348ed2ad1d909b51568aaab1429206bb283ee1c62fac0"
   },
   "artifacts": {
-    "oracle.log": "b4ba54f0750cf1af8029a7f9a0382cf55801653a3312127bc159925c6d29323c",
+    "oracle.log": "6999d090c8a80f273f30cd476249c9c1a2ad51bc004daf7908f1b2155e8b4db6",
     "pdf-page-1x.png": "cfb3934e3d27fb7476806ff91f9ce53a45be1b5e2f792c9df4e88b31d1166eaa",
     "pdf-page-4x.png": "b663cd8f206a19461b3b52a5fc2405b70a443b698cdc5a9c66155adb7bf0326b",
-    "reference-metrics.json": "7a543f1bc2428123995f8010d9c87a5e7d0efbbc03b48f8653f74fd724a20595",
-    "reference.pdf": "21401879f38285def985c885163a35439a4abeef2fc2058920386310e38e652c",
+    "reference-metrics.json": "a580c10712d4eaa34d114ba7b0427f4b4bc8db20c2c39fa044fba33a18894b42",
+    "reference.pdf": "587e7c6ed337dddfce83d8a175af7feaebe07f78eebf801464cdd0ce1756c0cd",
     "reference.svg": "c546725a3f50989d163348ed2ad1d909b51568aaab1429206bb283ee1c62fac0"
   },
   "commands": [

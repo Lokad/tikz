@@ -1,0 +1,12 @@
+\tikzset{route/.style={draw=red,line width=1pt},route/.append style={draw=blue}}
+\begin{tikzpicture}[x=8mm,y=5mm,scale=1.5,xshift=3mm]
+  \coordinate (start) at (0,0);
+  \coordinate (end) at (1,1);
+  \draw[route,draw=green] (start) -- (end);
+  \begin{scope}[xshift=1cm,rotate=90,xscale=2]
+    \tikzset{route/.style={draw=magenta,line width=2pt}}
+    \coordinate (turn) at (1,0);
+    \draw[route,line join=round] (0,0) -| (1,1);
+  \end{scope}
+  \draw[route] (0,-.5) -- (1,-.5);
+\end{tikzpicture}

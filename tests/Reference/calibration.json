@@ -1,0 +1,2071 @@
+{
+  "schemaVersion": 1,
+  "id": "pgf-3.1.11a-geometry-v2-calibration",
+  "generatedUtc": "2026-10-04T21:24:50.6419970+00:00",
+  "converterInvoked": false,
+  "purpose": "Independent geometry precision and cross-renderer measurements; deliberate perturbations under exact policies correctly mismatch",
+  "command": "dotnet run --project tools/TikzReference -- calibrate-reference --out artifacts/calibration",
+  "renderer": {
+    "profile": "chromium-153-geometry-v2",
+    "playwright": "1.63.0",
+    "browser": "153.0.8010.12",
+    "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+    "os": "win32",
+    "osRelease": "10.0.19045",
+    "architecture": "x64",
+    "node": "v24.12.0",
+    "headless": true,
+    "deviceScaleFactor": 1,
+    "viewport": {
+      "width": 1200,
+      "height": 900
+    },
+    "launchArguments": [
+      "--disable-gpu",
+      "--force-color-profile=srgb"
+    ],
+    "profileSha256": "a9e81ab9898ccdf3a00fec3367d586be571816f211111591cabf67e20f4a6ea4"
+  },
+  "toolHashes": {
+    "tools/TikzVisual/browser-profile.json": "a9e81ab9898ccdf3a00fec3367d586be571816f211111591cabf67e20f4a6ea4",
+    "tools/TikzVisual/compare.mjs": "34e8a302e6694006cb65d564497d485689599c1c98b686277ad28458420811d4",
+    "tools/TikzReference/ReferenceCalibration.cs": "eedf40b790f7b4faf960b328373840e8645b9fa6cf9ed9788c262318f6355519",
+    "tests/Reference/cases.json": "8b8d5dda7f401c346028f84a2be79937d20927357d1bb20d4faf3bad8e91a13c"
+  },
+  "cases": [
+    {
+      "caseId": "line-units",
+      "sourceSha256": "34cea5960f692abbb24b9e1f4f24684fbe64166716602b26a850d6dbd739505b",
+      "referenceSvgSha256": "c546725a3f50989d163348ed2ad1d909b51568aaab1429206bb283ee1c62fac0",
+      "referenceMetricsSha256": "a580c10712d4eaa34d114ba7b0427f4b4bc8db20c2c39fa044fba33a18894b42",
+      "referencePdfSha256": "587e7c6ed337dddfce83d8a175af7feaebe07f78eebf801464cdd0ce1756c0cd",
+      "primaryPolicy": {
+        "maxChannelError": 0,
+        "maxMeanForegroundError": 0,
+        "maxEdgeDisplacementPixels": 0,
+        "maxComponentDifference": 0
+      },
+      "pdfPolicy": {
+        "maxChannelError": 128,
+        "maxMeanForegroundError": 24,
+        "maxEdgeDisplacementRasterPixels": 1,
+        "maxComponentDifference": 0
+      },
+      "variants": [
+        {
+          "mode": "flattened",
+          "oracleRepresentationSha256": "51618d5e5c553cf44d640f32168f9d415759aa018d0ce82b086494b8f7321434",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.5248000901665364E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 0,
+            "maxCoordinatePerturbationPixels": 0,
+            "frameExpansionPixels": 0
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 304,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 304,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 304,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 3636,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 3636,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 3636,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 81,
+              "maxChannelError": 90,
+              "meanForegroundError": 18.314935064935064,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 324,
+              "maxChannelError": 90,
+              "meanForegroundError": 5.018017344497608,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        },
+        {
+          "mode": "precision-plus",
+          "oracleRepresentationSha256": "cb3e4d7d74f628d29340fa7939e4e62ce923b36355a539c6b26c67ad1a6fb7e2",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.7134813030424993E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 4,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.004934210526315789,
+              "foregroundPixels": 304,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 4,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.008223684210526315,
+              "foregroundPixels": 304,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 2,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.001644736842105263,
+              "foregroundPixels": 304,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 20,
+              "maxChannelError": 2,
+              "meanForegroundError": 0.004125412541254125,
+              "foregroundPixels": 3636,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 20,
+              "maxChannelError": 2,
+              "meanForegroundError": 0.006875687568756876,
+              "foregroundPixels": 3636,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 20,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.0013751375137513752,
+              "foregroundPixels": 3636,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 81,
+              "maxChannelError": 90,
+              "meanForegroundError": 18.314935064935064,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 324,
+              "maxChannelError": 90,
+              "meanForegroundError": 5.018017344497608,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        },
+        {
+          "mode": "precision-minus",
+          "oracleRepresentationSha256": "930d9060dfed433fbcb60e99fd34032d2beac801e3a0f58e6e9e6849e7767a05",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 3.763081224406051E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": -6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 4,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.004934210526315789,
+              "foregroundPixels": 304,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 4,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.008223684210526315,
+              "foregroundPixels": 304,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 2,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.001644736842105263,
+              "foregroundPixels": 304,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 20,
+              "maxChannelError": 2,
+              "meanForegroundError": 0.004125412541254125,
+              "foregroundPixels": 3636,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 20,
+              "maxChannelError": 2,
+              "meanForegroundError": 0.006875687568756876,
+              "foregroundPixels": 3636,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 20,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.0013751375137513752,
+              "foregroundPixels": 3636,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 81,
+              "maxChannelError": 90,
+              "meanForegroundError": 18.314935064935064,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 324,
+              "maxChannelError": 90,
+              "meanForegroundError": 5.018017344497608,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "relative-coordinates",
+      "sourceSha256": "b3ebb0e58ddfcf56a4d433c09ddadcfd4055da11b895e6e0576815228394ab72",
+      "referenceSvgSha256": "b8ac98470cb050a275e85aaa629bb0fa3813f297dd755b539383c42f4c31250d",
+      "referenceMetricsSha256": "25ed6545b292f495515d9b07bf96057d93260cb1aadad49511d9da76402e0928",
+      "referencePdfSha256": "30f64ae68f4b13b8d595f8c68eb9956d0c403f7ac43afbf7d751ecde884128ca",
+      "primaryPolicy": {
+        "maxChannelError": 0,
+        "maxMeanForegroundError": 0,
+        "maxEdgeDisplacementPixels": 0,
+        "maxComponentDifference": 0
+      },
+      "pdfPolicy": {
+        "maxChannelError": 128,
+        "maxMeanForegroundError": 24,
+        "maxEdgeDisplacementRasterPixels": 1,
+        "maxComponentDifference": 0
+      },
+      "variants": [
+        {
+          "mode": "flattened",
+          "oracleRepresentationSha256": "ab2bd0c4eb47ab8f518690d5281a8664fbc45de92b1ba79c52210397353a48dc",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.5248000901665364E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 0,
+            "maxCoordinatePerturbationPixels": 0,
+            "frameExpansionPixels": 0
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 397,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 397,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 397,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 4512,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 4512,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 4512,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 370,
+              "maxChannelError": 104,
+              "meanForegroundError": 17.95673076923077,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1438,
+              "maxChannelError": 123,
+              "meanForegroundError": 4.103670111790762,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        },
+        {
+          "mode": "precision-plus",
+          "oracleRepresentationSha256": "ec0959af53793f4e429199023ae233dddc19f02b9e10c7545b6bd8c5b8e00d11",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.7134813030424993E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 397,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 397,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 397,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 35,
+              "maxChannelError": 5,
+              "meanForegroundError": 0.01374113475177305,
+              "foregroundPixels": 4512,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 35,
+              "maxChannelError": 5,
+              "meanForegroundError": 0.01374113475177305,
+              "foregroundPixels": 4512,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 35,
+              "maxChannelError": 5,
+              "meanForegroundError": 0.006870567375886525,
+              "foregroundPixels": 4512,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 370,
+              "maxChannelError": 104,
+              "meanForegroundError": 17.95673076923077,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1438,
+              "maxChannelError": 123,
+              "meanForegroundError": 4.103670111790762,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        },
+        {
+          "mode": "precision-minus",
+          "oracleRepresentationSha256": "37efee9151d1ce3a9d97c2d68a8ebfc8e74b915320820167751da8466cd30f19",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 3.763081224406051E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": -6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 2,
+              "maxChannelError": 7,
+              "meanForegroundError": 0.017632241813602016,
+              "foregroundPixels": 397,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 2,
+              "maxChannelError": 7,
+              "meanForegroundError": 0.017632241813602016,
+              "foregroundPixels": 397,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 2,
+              "maxChannelError": 7,
+              "meanForegroundError": 0.008816120906801008,
+              "foregroundPixels": 397,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 20,
+              "maxChannelError": 5,
+              "meanForegroundError": 0.007535460992907801,
+              "foregroundPixels": 4512,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 20,
+              "maxChannelError": 5,
+              "meanForegroundError": 0.007535460992907801,
+              "foregroundPixels": 4512,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 20,
+              "maxChannelError": 5,
+              "meanForegroundError": 0.0037677304964539005,
+              "foregroundPixels": 4512,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 370,
+              "maxChannelError": 104,
+              "meanForegroundError": 17.95673076923077,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1438,
+              "maxChannelError": 123,
+              "meanForegroundError": 4.103670111790762,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "ordered-transforms",
+      "sourceSha256": "ac3d11fc3dab3a6158e2b3fe4e94970eda263e0c54a5fca2fc4bc05dc4932408",
+      "referenceSvgSha256": "8284d1474c7b35732dae5d6eb7631c58fd15a1d1d458db4e3739a1f8d3318c20",
+      "referenceMetricsSha256": "393d7c326ea975753e72459dc6cb08ffc8fe9ffe48818a4feb485570f22dc354",
+      "referencePdfSha256": "1947b21ad6764a4ea5b5f23e1ceb1195e1873a637946091d05d59b41e1e9d237",
+      "primaryPolicy": {
+        "maxChannelError": 12,
+        "maxMeanForegroundError": 0.125,
+        "maxEdgeDisplacementPixels": 0.25,
+        "maxComponentDifference": 0
+      },
+      "pdfPolicy": {
+        "maxChannelError": 224,
+        "maxMeanForegroundError": 32,
+        "maxEdgeDisplacementRasterPixels": 1.5,
+        "maxComponentDifference": 0
+      },
+      "variants": [
+        {
+          "mode": "flattened",
+          "oracleRepresentationSha256": "1529552a6f887e49e407a04b3c5808856c45c327f44cf78cb89cbc5f6c81bd81",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 3.6192000152368564E-07,
+            "namedAnchorRoundTripErrorPixels": 0.006520706714660118,
+            "perturbationPt": 0,
+            "maxCoordinatePerturbationPixels": 0.006520706714660118,
+            "frameExpansionPixels": 0
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 16,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.09454855195911414,
+              "foregroundPixels": 587,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 16,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.09454855195911414,
+              "foregroundPixels": 587,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 16,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.04727427597955707,
+              "foregroundPixels": 587,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 87,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.03319956220357534,
+              "foregroundPixels": 8223,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 87,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.03319956220357534,
+              "foregroundPixels": 8223,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 87,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.01659978110178767,
+              "foregroundPixels": 8223,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 538,
+              "maxChannelError": 215,
+              "meanForegroundError": 27.7775,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "changedPixels": 6465,
+              "maxChannelError": 151,
+              "meanForegroundError": 22.464870768110668,
+              "maxEdgeDisplacementCssPixels": 0.3535533845424652,
+              "maxEdgeDisplacementRasterPixels": 1.4142135381698608,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            }
+          ]
+        },
+        {
+          "mode": "precision-plus",
+          "oracleRepresentationSha256": "3e2caeeef200c56df6492d1e8fc7dde6ccbd7f5d04e21e91599ce5febef06f28",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.856770772221353E-07,
+            "namedAnchorRoundTripErrorPixels": 0.006520706714660118,
+            "perturbationPt": 6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.006635365736511035,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 16,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.09454855195911414,
+              "foregroundPixels": 587,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 16,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.09454855195911414,
+              "foregroundPixels": 587,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 16,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.04727427597955707,
+              "foregroundPixels": 587,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 87,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.03319956220357534,
+              "foregroundPixels": 8223,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 87,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.03319956220357534,
+              "foregroundPixels": 8223,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 87,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.01659978110178767,
+              "foregroundPixels": 8223,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 538,
+              "maxChannelError": 215,
+              "meanForegroundError": 27.7775,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "changedPixels": 6465,
+              "maxChannelError": 151,
+              "meanForegroundError": 22.464870768110668,
+              "maxEdgeDisplacementCssPixels": 0.3535533845424652,
+              "maxEdgeDisplacementRasterPixels": 1.4142135381698608,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            }
+          ]
+        },
+        {
+          "mode": "precision-minus",
+          "oracleRepresentationSha256": "2725af93585d9bbfef047c05770bd8aa48c612a5def3396bf3e39cacdaf2f8a6",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.856770772221353E-07,
+            "namedAnchorRoundTripErrorPixels": 0.006520706714660118,
+            "perturbationPt": -6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.006635365736511035,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 17,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.09540034071550256,
+              "foregroundPixels": 587,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 17,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.09540034071550256,
+              "foregroundPixels": 587,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 17,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.04770017035775128,
+              "foregroundPixels": 587,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 92,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.03350358749847988,
+              "foregroundPixels": 8223,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 92,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.03350358749847988,
+              "foregroundPixels": 8223,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 92,
+              "maxChannelError": 10,
+              "meanForegroundError": 0.01675179374923994,
+              "foregroundPixels": 8223,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 538,
+              "maxChannelError": 215,
+              "meanForegroundError": 27.7775,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            },
+            {
+              "scale": 4,
+              "changedPixels": 6465,
+              "maxChannelError": 151,
+              "meanForegroundError": 22.464870768110668,
+              "maxEdgeDisplacementCssPixels": 0.3535533845424652,
+              "maxEdgeDisplacementRasterPixels": 1.4142135381698608,
+              "referenceComponents": 3,
+              "actualComponents": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "cubic-controls",
+      "sourceSha256": "7b152229e3e2996186b2cb4d71da54f918478b10694d5fbdaa55c9534ca99ab6",
+      "referenceSvgSha256": "9b6196de6b39991bf7e01c42f3029455debb70a42c412f4f027ff16b17e786fe",
+      "referenceMetricsSha256": "b9abd4c6f8ba64631f8371a5255cce98a97e15e6ea3863b9334fc8ad76c5304a",
+      "referencePdfSha256": "f7494e58420b816b2ca39b599012a6d8e60a19666dbdb7a79188b820015ea610",
+      "primaryPolicy": {
+        "maxChannelError": 10,
+        "maxMeanForegroundError": 0.05,
+        "maxEdgeDisplacementPixels": 0.25,
+        "maxComponentDifference": 0
+      },
+      "pdfPolicy": {
+        "maxChannelError": 144,
+        "maxMeanForegroundError": 24,
+        "maxEdgeDisplacementRasterPixels": 1,
+        "maxComponentDifference": 0
+      },
+      "variants": [
+        {
+          "mode": "flattened",
+          "oracleRepresentationSha256": "58a84569216abc8d5360ed560179c6d07a4a00b2b5657630cce953b842a9abc2",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.5248000901665364E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 0,
+            "maxCoordinatePerturbationPixels": 0,
+            "frameExpansionPixels": 0
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 474,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 474,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 474,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 27,
+              "maxChannelError": 8,
+              "meanForegroundError": 0.0061236391912908245,
+              "foregroundPixels": 5144,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 27,
+              "maxChannelError": 8,
+              "meanForegroundError": 0.0061236391912908245,
+              "foregroundPixels": 5144,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 27,
+              "maxChannelError": 8,
+              "meanForegroundError": 0.0030618195956454122,
+              "foregroundPixels": 5144,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 467,
+              "maxChannelError": 91,
+              "meanForegroundError": 10.043715846994536,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1880,
+              "maxChannelError": 130,
+              "meanForegroundError": 3.9545454545454546,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            }
+          ]
+        },
+        {
+          "mode": "precision-plus",
+          "oracleRepresentationSha256": "414ec4000910265858353b2d3a9f11c59f599de3c56399d65afb103e169dae7d",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.864118707814669E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 474,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 474,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 474,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 142,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.03294460641399417,
+              "foregroundPixels": 5145,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 142,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.03294460641399417,
+              "foregroundPixels": 5145,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 142,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.016472303206997083,
+              "foregroundPixels": 5145,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 467,
+              "maxChannelError": 91,
+              "meanForegroundError": 10.043715846994536,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1880,
+              "maxChannelError": 130,
+              "meanForegroundError": 3.9545454545454546,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            }
+          ]
+        },
+        {
+          "mode": "precision-minus",
+          "oracleRepresentationSha256": "810e1dfe28842283a4e8c4854936361b9245d1ca0597ee69d9f204c2afa5a39a",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.856770843275626E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": -6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 474,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 474,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 474,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 51,
+              "maxChannelError": 8,
+              "meanForegroundError": 0.011566874027993779,
+              "foregroundPixels": 5144,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 51,
+              "maxChannelError": 8,
+              "meanForegroundError": 0.011566874027993779,
+              "foregroundPixels": 5144,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 51,
+              "maxChannelError": 8,
+              "meanForegroundError": 0.005783437013996889,
+              "foregroundPixels": 5144,
+              "maxEdgeDisplacementPixels": 0.25,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 467,
+              "maxChannelError": 91,
+              "meanForegroundError": 10.043715846994536,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1880,
+              "maxChannelError": 130,
+              "meanForegroundError": 3.9545454545454546,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 2,
+              "actualComponents": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "rotated-rectangle",
+      "sourceSha256": "c16478ec006117f8fe42e2cab8a91330a73e8a39d38ecc9c8b9443bba2f4a56b",
+      "referenceSvgSha256": "c98901b6d6a7397d0ef32e66aaf2a66d3a257e4714c933a785d80dfc9ba954e4",
+      "referenceMetricsSha256": "f2c530059c47b10b848215ab00d8a68dadb416ee7d06f030e7cc0469e2be0a1b",
+      "referencePdfSha256": "4f037d484bebf19b470b32215ddec85543e4a3d32e0453c1490e3079cf971b89",
+      "primaryPolicy": {
+        "maxChannelError": 1,
+        "maxMeanForegroundError": 0.025,
+        "maxEdgeDisplacementPixels": 0,
+        "maxComponentDifference": 0
+      },
+      "pdfPolicy": {
+        "maxChannelError": 128,
+        "maxMeanForegroundError": 24,
+        "maxEdgeDisplacementRasterPixels": 1,
+        "maxComponentDifference": 0
+      },
+      "variants": [
+        {
+          "mode": "flattened",
+          "oracleRepresentationSha256": "ab341e0a43ecac1c40efa0dd9ca8342cdcc6c49174ad1079dda9c1f42066e020",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 3.785600029004854E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 0,
+            "maxCoordinatePerturbationPixels": 0,
+            "frameExpansionPixels": 0
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 5776,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 5776,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 5776,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 91960,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 91960,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 91960,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 378,
+              "maxChannelError": 115,
+              "meanForegroundError": 1.2042004048582995,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1512,
+              "maxChannelError": 87,
+              "meanForegroundError": 0.42619582681952406,
+              "maxEdgeDisplacementCssPixels": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        },
+        {
+          "mode": "precision-plus",
+          "oracleRepresentationSha256": "b2f474a5977626906c7c725aa887b88a4cb534585508ecb9e5bc37b9896a1eca",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 3.0238811632443685E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 151,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.019606994459833795,
+              "foregroundPixels": 5776,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 151,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.006535664819944598,
+              "foregroundPixels": 5776,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 151,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.013071329639889197,
+              "foregroundPixels": 5776,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 604,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.004926054806437582,
+              "foregroundPixels": 91960,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 604,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.0016420182688125272,
+              "foregroundPixels": 91960,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 604,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.0032840365376250544,
+              "foregroundPixels": 91960,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 378,
+              "maxChannelError": 115,
+              "meanForegroundError": 1.2042004048582995,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1512,
+              "maxChannelError": 87,
+              "meanForegroundError": 0.42619582681952406,
+              "maxEdgeDisplacementCssPixels": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        },
+        {
+          "mode": "precision-minus",
+          "oracleRepresentationSha256": "132faa6b08141fc386e1cc44674bbe89c35ccbeb427891fd561f6bca982c724a",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.54731889476534E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": -6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 5776,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 5776,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 5776,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 91960,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 91960,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 91960,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 378,
+              "maxChannelError": 115,
+              "meanForegroundError": 1.2042004048582995,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1512,
+              "maxChannelError": 87,
+              "meanForegroundError": 0.42619582681952406,
+              "maxEdgeDisplacementCssPixels": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "clip-scope",
+      "sourceSha256": "5a995ec9341affede4ca2418037000ed5eab879499233b12b662c110d7a96076",
+      "referenceSvgSha256": "a127f54d030e0e915a36614a3ff13111a3ce7165a65c9b5f63db8d36a84e99c9",
+      "referenceMetricsSha256": "01e88197a92c12c32e24ee7c460148bf79e3c9a37eef39a490b1fc526aaa9a80",
+      "referencePdfSha256": "c123acb970d187b3fa9c306ae4b23912b4e175bc7a55e9c998850a8d96878236",
+      "primaryPolicy": {
+        "maxChannelError": 0,
+        "maxMeanForegroundError": 0,
+        "maxEdgeDisplacementPixels": 0,
+        "maxComponentDifference": 0
+      },
+      "pdfPolicy": {
+        "maxChannelError": 160,
+        "maxMeanForegroundError": 24,
+        "maxEdgeDisplacementRasterPixels": 1,
+        "maxComponentDifference": 0
+      },
+      "variants": [
+        {
+          "mode": "flattened",
+          "oracleRepresentationSha256": "773f58743622a63fe8e8348f90e8f0798fb768234026ba84b80caae9d89025e8",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.6303999567953724E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 0,
+            "maxCoordinatePerturbationPixels": 0,
+            "frameExpansionPixels": 0
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1595,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1595,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1595,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 24701,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 24701,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 24701,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 337,
+              "maxChannelError": 64,
+              "meanForegroundError": 1.8878048780487804,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1483,
+              "maxChannelError": 147,
+              "meanForegroundError": 0.9593929699522151,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        },
+        {
+          "mode": "precision-plus",
+          "oracleRepresentationSha256": "b38c6f793a3558cb6e9d4f3f46e9e02039c5592440d3600c4f9327e6c50ede44",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.7134813030424993E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1595,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1595,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1595,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 128,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.01252782837482291,
+              "foregroundPixels": 24705,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 128,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.01252782837482291,
+              "foregroundPixels": 24705,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 128,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.009461647439789516,
+              "foregroundPixels": 24705,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 337,
+              "maxChannelError": 64,
+              "meanForegroundError": 1.8878048780487804,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1483,
+              "maxChannelError": 147,
+              "meanForegroundError": 0.9593929699522151,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        },
+        {
+          "mode": "precision-minus",
+          "oracleRepresentationSha256": "2e73f5b5e8591ff845f1f2a7644fc525e4b4acab4e74174cbfc7ae1787e6ab9c",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "maxRoundingErrorPixels": 4.607881294305116E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": -6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "pass",
+          "primary": [
+            {
+              "scale": 1,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1595,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1595,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 1,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1595,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "transparent",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 24701,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "white",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 24701,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "background": "black",
+              "changedPixels": 0,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 24701,
+              "maxEdgeDisplacementPixels": 0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 337,
+              "maxChannelError": 64,
+              "meanForegroundError": 1.8878048780487804,
+              "maxEdgeDisplacementCssPixels": 1,
+              "maxEdgeDisplacementRasterPixels": 1,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1483,
+              "maxChannelError": 147,
+              "meanForegroundError": 0.9593929699522151,
+              "maxEdgeDisplacementCssPixels": 0.25,
+              "maxEdgeDisplacementRasterPixels": 1.0,
+              "referenceComponents": 1,
+              "actualComponents": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

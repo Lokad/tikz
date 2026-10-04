@@ -1,0 +1,5 @@
+\begin{tikzpicture}[rotate=90,xscale=2]
+  \coordinate (start) at (0,0);
+  \coordinate (end) at (2,1);
+  \fill[orange,fill opacity=.5] (start) rectangle (end);
+\end{tikzpicture}

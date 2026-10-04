@@ -1,0 +1,6 @@
+\begin{tikzpicture}
+  \coordinate (start) at (0,0);
+  \coordinate (end) at (2,0);
+  \draw[blue,line width=1pt] (start) .. controls (0,1) and (2,1) .. (end);
+  \draw[red,line width=1pt] (0,-.5) .. controls +(.5,1) and +(-.5,1) .. ++(2,0);
+\end{tikzpicture}
