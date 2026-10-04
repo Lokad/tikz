@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 2,
+  "profile": "latin-modern-ec-10-12-v1",
+  "widthSp": 15937579,
+  "heightSp": 451461,
+  "depthSp": 127430,
+  "originBp": {
+    "x": 0,
+    "y": 6.863012
+  },
+  "glyphs": [
+    {
+      "font": "regular-10",
+      "slot": 65,
+      "xBp": 0,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 86,
+      "xBp": 6.365001,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 65,
+      "xBp": 12.730003,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 84,
+      "xBp": 19.371753,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 65,
+      "xBp": 25.736545,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 82,
+      "xBp": 33.208525,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 84,
+      "xBp": 43.862892,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 111,
+      "xBp": 50.227685,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 87,
+      "xBp": 58.52988,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 97,
+      "xBp": 67.939247,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 111,
+      "xBp": 76.241442,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 30,
+      "xBp": 81.222762,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 99,
+      "xBp": 89.524627,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 101,
+      "xBp": 93.952526,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 97,
+      "xBp": 101.7013,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 31,
+      "xBp": 106.68262,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 105,
+      "xBp": 114.984484,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 99,
+      "xBp": 117.751864,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 116,
+      "xBp": 122.179763,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 29,
+      "xBp": 129.375117,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 117,
+      "xBp": 134.909858,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 27,
+      "xBp": 140.444599,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 121,
+      "xBp": 146.255803,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 27,
+      "xBp": 154.834955,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 30,
+      "xBp": 163.967035,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 31,
+      "xBp": 175.589774,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 21,
+      "xBp": 187.212513,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 22,
+      "xBp": 195.514708,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 16,
+      "xBp": 208.798223,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 113,
+      "xBp": 213.500591,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 117,
+      "xBp": 218.758868,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 111,
+      "xBp": 224.293609,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 116,
+      "xBp": 229.274929,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 101,
+      "xBp": 233.149408,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 17,
+      "xBp": 237.577307,
+      "yBp": 0
+    }
+  ],
+  "nativeGlyphs": [
+    {
+      "font": "regular-10",
+      "slot": 65,
+      "xSp": 0,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 86,
+      "xSp": 418701,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 65,
+      "xSp": 837402,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 84,
+      "xSp": 1274308,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 65,
+      "xSp": 1692995,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 82,
+      "xSp": 2184515,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 84,
+      "xSp": 2885378,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 111,
+      "xSp": 3304065,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 87,
+      "xSp": 3850198,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 97,
+      "xSp": 4469162,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 111,
+      "xSp": 5015295,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 30,
+      "xSp": 5342975,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 99,
+      "xSp": 5889086,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 101,
+      "xSp": 6180361,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 97,
+      "xSp": 6690089,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 31,
+      "xSp": 7017769,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 105,
+      "xSp": 7563880,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 99,
+      "xSp": 7745923,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 116,
+      "xSp": 8037198,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 29,
+      "xSp": 8510521,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 117,
+      "xSp": 8874606,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 27,
+      "xSp": 9238691,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 121,
+      "xSp": 9620962,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 27,
+      "xSp": 10185313,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 30,
+      "xSp": 10786037,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 31,
+      "xSp": 11550601,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 21,
+      "xSp": 12315165,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 22,
+      "xSp": 12861298,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 16,
+      "xSp": 13735111,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 113,
+      "xSp": 14044441,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 117,
+      "xSp": 14390339,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 111,
+      "xSp": 14754424,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 116,
+      "xSp": 15082104,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 101,
+      "xSp": 15336974,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 17,
+      "xSp": 15628249,
+      "ySp": 0
+    }
+  ],
+  "fontDefinitions": {
+    "g0": "regular-10"
+  }
+}

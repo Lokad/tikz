@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 2,
+  "profile": "latin-modern-ec-10-12-v1",
+  "widthSp": 1678410,
+  "heightSp": 1278213,
+  "depthSp": 0,
+  "originBp": {
+    "x": 0,
+    "y": 19.431116
+  },
+  "glyphs": [
+    {
+      "font": "regular-12",
+      "slot": 103,
+      "xBp": 0,
+      "yBp": -14.283746999999998
+    },
+    {
+      "font": "regular-12",
+      "slot": 121,
+      "xBp": 5.853047,
+      "yBp": -14.283746999999998
+    },
+    {
+      "font": "regular-12",
+      "slot": 112,
+      "xBp": 12.031386,
+      "yBp": -14.283746999999998
+    },
+    {
+      "font": "regular-12",
+      "slot": 192,
+      "xBp": 0,
+      "yBp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 201,
+      "xBp": 8.775096,
+      "yBp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 197,
+      "xBp": 16.739739,
+      "yBp": 0
+    }
+  ],
+  "nativeGlyphs": [
+    {
+      "font": "regular-12",
+      "slot": 103,
+      "xSp": 0,
+      "ySp": -939610
+    },
+    {
+      "font": "regular-12",
+      "slot": 121,
+      "xSp": 385023,
+      "ySp": -939610
+    },
+    {
+      "font": "regular-12",
+      "slot": 112,
+      "xSp": 791445,
+      "ySp": -939610
+    },
+    {
+      "font": "regular-12",
+      "slot": 192,
+      "xSp": 0,
+      "ySp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 201,
+      "xSp": 577241,
+      "ySp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 197,
+      "xSp": 1101169,
+      "ySp": 0
+    }
+  ],
+  "fontDefinitions": {
+    "g0": "regular-12"
+  }
+}

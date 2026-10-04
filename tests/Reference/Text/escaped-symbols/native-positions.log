@@ -1,0 +1,57 @@
+This is DVItype, Version 3.6 (MiKTeX 25.4)
+Options selected:
+  Starting page = * 
+  Maximum number of pages = 1000000
+  Output level = 4 (the works)
+  Resolution = 300.00000000 pixels per inch
+numerator/denominator=25400000/473628672
+magnification=1000;       0.00006334 pixels per DVI unit
+Postamble starts at byte 247.
+maxv=655360, maxh=8883735, maxstackdepth=1, totalpages=1
+Font 41: ec-lmr10---loaded at size 655360 DVI units 
+ 
+42: beginning of page 1 
+87: push 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+88: xxx 'header=l3backend-dvips.pro' 
+116: pop 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+117: down3 491520 v:=0+491520=491520, vv:=31 
+121: xxx 'dvisvgm:raw <g id="oracle-origin" data-x="{?x}" data-y="{?y}"/>' 
+186: push 
+level 0:(h=0,v=491520,w=0,x=0,y=0,z=0,hh=0,vv=31) 
+187: fntdef1 41: ec-lmr10 
+211: fntnum41 current font is ec-lmr10 
+212: setchar97 h:=0+327680=327680, hh:=21 
+213: setchar37 h:=327680+546111=873791, hh:=56 
+214: setchar98 h:=873791+364085=1237876, hh:=79 
+215: w3 218453 h:=1237876+218453=1456329, hh:=92 
+219: setchar35 h:=1456329+546111=2002440, hh:=127 
+220: w0 218453 h:=2002440+218453=2220893, hh:=141 
+221: setchar36 h:=2220893+327680=2548573, hh:=162 
+222: w0 218453 h:=2548573+218453=2767026, hh:=175 
+223: setchar38 h:=2767026+509738=3276764, hh:=207 
+224: w0 218453 h:=3276764+218453=3495217, hh:=221 
+225: setchar95 h:=3495217+491520=3986737, hh:=252 
+226: w0 218453 h:=3986737+218453=4205190, hh:=266 
+227: setchar123 h:=4205190+327680=4532870, hh:=287 
+228: setchar120 h:=4532870+345898=4878768, hh:=309 
+229: setchar125 h:=4878768+327680=5206448, hh:=330 
+230: w0 218453 h:=5206448+218453=5424901, hh:=344 
+231: setchar92 h:=5424901+327680=5752581, hh:=365 
+232: w0 218453 h:=5752581+218453=5971034, hh:=378 
+233: setchar94 h:=5971034+364085=6335119, hh:=401 
+234: w0 218453 h:=6335119+218453=6553572, hh:=415 
+235: setchar126 h:=6553572+364085=6917657, hh:=438 
+236: w0 218453 h:=6917657+218453=7136110, hh:=452 
+[a%b # $ & _ {x} \ ^ ~ ]
+237: set1 230 h:=7136110+473301=7609411, hh:=482 
+239: w0 218453 h:=7609411+218453=7827864, hh:=496 
+[ ]
+240: set1 247 h:=7827864+509738=8337602, hh:=528 
+242: w0 218453 h:=8337602+218453=8556055, hh:=542 
+[ ]
+243: set1 255 h:=8556055+327680=8883735, hh:=563 
+245: pop 
+level 0:(h=0,v=491520,w=0,x=0,y=0,z=0,hh=0,vv=31) 
+246: eop 

@@ -36,8 +36,10 @@ jobs:
       - run: dotnet restore Lokad.TikZ.slnx --locked-mode
       - run: dotnet run --project tools/TikzReference -c Release -- compare --reference cached --out artifacts/comparisons
       - run: dotnet run --project tools/TikzFontData -c Release -- compare
+      - run: dotnet run --project tools/TikzFontData -c Release -- compare-text
       - run: npm test --prefix tools/TikzVisual
       - run: npm run test:fonts --prefix tools/TikzVisual
+      - run: npm run test:text --prefix tools/TikzVisual
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -47,4 +49,6 @@ jobs:
             artifacts/comparator-mutations/
             artifacts/font-comparisons/
             artifacts/font-comparator-mutations/
+            artifacts/text-comparisons/
+            artifacts/text-comparator-mutations/
           if-no-files-found: error

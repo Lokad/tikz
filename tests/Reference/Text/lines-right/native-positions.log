@@ -1,0 +1,81 @@
+This is DVItype, Version 3.6 (MiKTeX 25.4)
+Options selected:
+  Starting page = * 
+  Maximum number of pages = 1000000
+  Output level = 4 (the works)
+  Resolution = 300.00000000 pixels per inch
+numerator/denominator=25400000/473628672
+magnification=1000;       0.00006334 pixels per DVI unit
+Postamble starts at byte 291.
+maxv=2024325, maxh=2585015, maxstackdepth=3, totalpages=1
+Font 42: ec-lmr12---loaded at size 786432 DVI units 
+Font 41: ec-lmr10---loaded at size 655360 DVI units 
+ 
+42: beginning of page 1 
+87: push 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+88: xxx 'header=l3backend-dvips.pro' 
+116: pop 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+117: down3 2024325 v:=0+2024325=2024325, vv:=128 
+121: xxx 'dvisvgm:raw <g id="oracle-origin" data-x="{?x}" data-y="{?y}"/>' 
+186: push 
+level 0:(h=0,v=2024325,w=0,x=0,y=0,z=0,hh=0,vv=128) 
+187: down3 -1572864 v:=2024325-1572864=451461, vv:=29 
+191: push 
+level 1:(h=0,v=451461,w=0,x=0,y=0,z=0,hh=0,vv=29) 
+192: push 
+level 2:(h=0,v=451461,w=0,x=0,y=0,z=0,hh=0,vv=29) 
+193: fntdef1 41: ec-lmr10 
+217: fntnum41 current font is ec-lmr10 
+218: setchar65 h:=0+491520=491520, hh:=31 
+219: right3 -72819 h:=491520-72819=418701, hh:=26 
+223: setchar86 h:=418701+491520=910221, hh:=57 
+224: right3 218453 h:=910221+218453=1128674, hh:=71 
+228: setchar111 h:=1128674+327680=1456354, hh:=92 
+[AV o]
+229: setchar30 h:=1456354+546111=2002465, hh:=127 
+230: setchar99 h:=2002465+291275=2293740, hh:=145 
+231: setchar101 h:=2293740+291275=2585015, hh:=163 
+[ce]
+232: pop 
+level 2:(h=0,v=451461,w=0,x=0,y=0,z=0,hh=0,vv=29) 
+233: pop 
+level 1:(h=0,v=451461,w=0,x=0,y=0,z=0,hh=0,vv=29) 
+234: y3 786432 v:=451461+786432=1237893, vv:=78 
+238: push 
+level 1:(h=0,v=1237893,w=0,x=0,y=786432,z=0,hh=0,vv=78) 
+239: push 
+level 2:(h=0,v=1237893,w=0,x=0,y=786432,z=0,hh=0,vv=78) 
+240: right3 1088632 h:=0+1088632=1088632, hh:=69 
+244: setchar115 h:=1088632+258506=1347138, hh:=85 
+245: setchar109 h:=1347138+546111=1893249, hh:=120 
+246: setchar97 h:=1893249+327680=2220929, hh:=141 
+247: setchar108 h:=2220929+182043=2402972, hh:=153 
+248: setchar108 h:=2402972+182043=2585015, hh:=165 
+[ small]
+249: pop 
+level 2:(h=0,v=1237893,w=0,x=0,y=786432,z=0,hh=0,vv=78) 
+250: pop 
+level 1:(h=0,v=1237893,w=0,x=0,y=786432,z=0,hh=0,vv=78) 
+251: y0 786432 v:=1237893+786432=2024325, vv:=128 
+252: push 
+level 1:(h=0,v=2024325,w=0,x=0,y=786432,z=0,hh=0,vv=128) 
+253: push 
+level 2:(h=0,v=2024325,w=0,x=0,y=786432,z=0,hh=0,vv=128) 
+254: right3 809909 h:=0+809909=809909, hh:=51 
+[ ]
+258: fntdef1 42: ec-lmr12 
+282: fntnum42 current font is ec-lmr12 
+283: setchar87 h:=809909+791151=1601060, hh:=101 
+284: setchar105 h:=1601060+213909=1814969, hh:=115 
+285: setchar100 h:=1814969+427818=2242787, hh:=142 
+286: setchar101 h:=2242787+342228=2585015, hh:=164 
+[Wide]
+287: pop 
+level 2:(h=0,v=2024325,w=0,x=0,y=786432,z=0,hh=0,vv=128) 
+288: pop 
+level 1:(h=0,v=2024325,w=0,x=0,y=786432,z=0,hh=0,vv=128) 
+289: pop 
+level 0:(h=0,v=2024325,w=0,x=0,y=0,z=0,hh=0,vv=128) 
+290: eop 

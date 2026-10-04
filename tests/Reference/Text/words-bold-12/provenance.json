@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "profile": "latin-modern-ec-10-12-v1",
+  "caseDefinition": {
+    "id": "words-bold-12",
+    "source": "words",
+    "font": "bold-12",
+    "alignment": "left"
+  },
+  "sourceSha256": "569a7a92881b13c535cdb17046326bcd48ad0e63a00ccf9dfad02dfc23c81b89",
+  "wrapperSha256": "1a8c6301cdc22cec380e4bffa410530b817c3519671f7e8971f2ae65bf371543",
+  "fontManifestSha256": "0f1fd5e433f78ca8e21ebbc12045ee96259316235aa25e4e3758b96561000fe9",
+  "tools": [
+    {
+      "name": "latex",
+      "version": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+      "sha256": "37659e30ba4537584b6418de22ce310247128edbc1481fc97fd9b24260f11caf"
+    },
+    {
+      "name": "dvisvgm",
+      "version": "dvisvgm 3.4.3",
+      "sha256": "74a03e974afc08f5b24417bbe08af792be6634eacfa16c1ce6f870cad95f53fa"
+    },
+    {
+      "name": "dvitype",
+      "version": "MiKTeX-DVITYPE 2.9.6300 (MiKTeX 25.4)",
+      "sha256": "53da4ba9cfc7bcd84b820b5bd22a9177b9cae171f4224c001963661076d8cafb"
+    }
+  ],
+  "fontInputs": [
+    {
+      "name": "ec-lmr10.tfm",
+      "sha256": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5"
+    },
+    {
+      "name": "ec-lmbx10.tfm",
+      "sha256": "0895c940bd2e763b70dcab18ebf27fd3f93c2490f43b2a8c028fc7fc24b2e855"
+    },
+    {
+      "name": "ec-lmri10.tfm",
+      "sha256": "372f968b4eeb47bf6a6c941c8793bce118d1800f12e194a351c7493ecc158f2a"
+    },
+    {
+      "name": "ec-lmr12.tfm",
+      "sha256": "299021120f0a29ef61278a2363903bd8defbb8faaade458eb79067342aecb56f"
+    },
+    {
+      "name": "ec-lmbx12.tfm",
+      "sha256": "d19c45859d453c0802699d27aa2bff735574b9bc97d8791aa76e3c7de6c38a36"
+    },
+    {
+      "name": "ec-lmri12.tfm",
+      "sha256": "879072f2a2086f46e61934977f2e919bb6f196c08442b5b62242e78e576820ce"
+    },
+    {
+      "name": "lmr10.pfb",
+      "sha256": "84eb01245abb17c0530ca3909427256d73df8bed2d7243b9f2717ca08c010ac8"
+    },
+    {
+      "name": "lmbx10.pfb",
+      "sha256": "4acd67f9ece59a12e073aa863dbb1d5cea194f7f7b88ecce4659184d8275aa42"
+    },
+    {
+      "name": "lmri10.pfb",
+      "sha256": "1239c71330ac8f0584e22f4d6abd0f016421fc73c545b15512ccf80b263f5c66"
+    },
+    {
+      "name": "lmr12.pfb",
+      "sha256": "d5fd4fdecfdbc8f97e955964aa2574927182303df178fe0c2e568fe9056e326c"
+    },
+    {
+      "name": "lmbx12.pfb",
+      "sha256": "fb9b7cf1d13a8a837c2c6b238e7255f8d6f4cd6608bf3024ee68e43d04f01a08"
+    },
+    {
+      "name": "lmri12.pfb",
+      "sha256": "78dc9fcb4af454305a5564d568eace838c375f3bf3d82337b0e87fdeb00e2d2c"
+    },
+    {
+      "name": "lm-ec.enc",
+      "sha256": "7f9932c402d22a937b853406cfdf4166b80260e3ff21a03fe9a4c05105a2918c"
+    },
+    {
+      "name": "lm.map",
+      "sha256": "d40c55f3e00607c98ae0d99112dcb56e18e9b9ea8febac443cfd6533469ac90d"
+    },
+    {
+      "name": "GUST-FONT-LICENSE.txt",
+      "sha256": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050"
+    },
+    {
+      "name": "README-Latin-Modern.txt",
+      "sha256": "7cac4a4a78985ccb1ed429bb2eddf32eeb2e413c94493c7b268385bb7b525250"
+    },
+    {
+      "name": "MANIFEST-Latin-Modern.txt",
+      "sha256": "402c79f4ede8548a6fe6f82f42f0288cb0243ba2403dfdeeaadf55d189a46fae"
+    },
+    {
+      "name": "lppl.txt",
+      "sha256": "5f05fcf6ef25a6c31bccd2df7c0c46b23107bbeb2ce5cdba74efb5cc357f4dbb"
+    }
+  ],
+  "nativePositionOracle": "MiKTeX-DVITYPE 2.9.6300 (MiKTeX 25.4)",
+  "nativeOriginSp": {
+    "xSp": 0,
+    "ySp": 537690
+  },
+  "nativeTraceSha256": "b4c17afd15142b09b71ba26f8a2d2a58f60e578c3709e5a06d755c5044b95617",
+  "latexInputs": [
+    {
+      "name": "article.cls",
+      "sha256": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec"
+    },
+    {
+      "name": "ec-lmbx12.tfm",
+      "sha256": "d19c45859d453c0802699d27aa2bff735574b9bc97d8791aa76e3c7de6c38a36"
+    },
+    {
+      "name": "ec-lmr10.tfm",
+      "sha256": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5"
+    },
+    {
+      "name": "ec-lmr12.tfm",
+      "sha256": "299021120f0a29ef61278a2363903bd8defbb8faaade458eb79067342aecb56f"
+    },
+    {
+      "name": "ecrm1000.tfm",
+      "sha256": "9257fdd8d4296c33d769720be09d0cf2bcdca251b15667ae6baea760355d8dfe"
+    },
+    {
+      "name": "fontenc.sty",
+      "sha256": "c8e5c14e796c785380298bb8b1e905234e9a49cfe450f1afa1b8340fe003348b"
+    },
+    {
+      "name": "l3backend-dvips.def",
+      "sha256": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee"
+    },
+    {
+      "name": "latex.fmt",
+      "sha256": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac"
+    },
+    {
+      "name": "lmodern.sty",
+      "sha256": "d2877369dcb4bfe7b1b6bba1a3d96c46e93366459c9b46576f1b221009bbe359"
+    },
+    {
+      "name": "size10.clo",
+      "sha256": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+    },
+    {
+      "name": "t1lmr.fd",
+      "sha256": "6b61abc8a6796f1884f819afcfc4c33558564f7e5c1d47b720e50ee15dba829a"
+    }
+  ],
+  "probeVerification": "canonical SVG identical after removing empty origin marker and sorting only definitions; plain/probed TeX box integers identical",
+  "comparisonFrame": "fixed 450 by 84 bp, baseline-relative origin; original natural crop retained in oracle.svg",
+  "artifacts": {
+    "oracle.svg": "658ca2b8e45d23d0ad4045594c3d5945aa47d6e14435fc39876e7506fc5084c7",
+    "native-positions.log": "4e2d8a002d9d032693fadb28da478fbe03cbeb35410c1d26b1b056695724d5ee",
+    "reference.svg": "5cc5ad246a53996daa09f50274fda2eaa982f8a1f5abea0c2b628be1216d45b6",
+    "metrics.json": "90f21d59b65360ede8f0ce16fcfbd1ea9e31456dd32c2fb499479599a004e613"
+  }
+}

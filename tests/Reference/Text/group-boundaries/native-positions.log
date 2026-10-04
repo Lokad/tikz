@@ -1,0 +1,54 @@
+This is DVItype, Version 3.6 (MiKTeX 25.4)
+Options selected:
+  Starting page = * 
+  Maximum number of pages = 1000000
+  Output level = 4 (the works)
+  Resolution = 300.00000000 pixels per inch
+numerator/denominator=25400000/473628672
+magnification=1000;       0.00006334 pixels per DVI unit
+Postamble starts at byte 239.
+maxv=451461, maxh=6171199, maxstackdepth=1, totalpages=1
+Font 41: ec-lmr10---loaded at size 655360 DVI units 
+ 
+42: beginning of page 1 
+87: push 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+88: xxx 'header=l3backend-dvips.pro' 
+116: pop 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+117: down3 451461 v:=0+451461=451461, vv:=29 
+121: xxx 'dvisvgm:raw <g id="oracle-origin" data-x="{?x}" data-y="{?y}"/>' 
+186: push 
+level 0:(h=0,v=451461,w=0,x=0,y=0,z=0,hh=0,vv=29) 
+187: fntdef1 41: ec-lmr10 
+211: fntnum41 current font is ec-lmr10 
+212: setchar28 h:=0+364085=364085, hh:=23 
+213: w3 218453 h:=364085+218453=582538, hh:=37 
+217: setchar102 h:=582538+200245=782783, hh:=50 
+218: setchar105 h:=782783+182043=964826, hh:=62 
+219: w0 218453 h:=964826+218453=1183279, hh:=75 
+220: setchar102 h:=1183279+200245=1383524, hh:=88 
+221: setchar105 h:=1383524+182043=1565567, hh:=100 
+222: w0 218453 h:=1565567+218453=1784020, hh:=113 
+[ fi fi ]
+223: setchar27 h:=1784020+382271=2166291, hh:=137 
+224: w0 218453 h:=2166291+218453=2384744, hh:=151 
+[ ]
+225: setchar30 h:=2384744+546111=2930855, hh:=186 
+226: w0 218453 h:=2930855+218453=3149308, hh:=199 
+[ ]
+227: setchar31 h:=3149308+546111=3695419, hh:=234 
+228: w0 218453 h:=3695419+218453=3913872, hh:=248 
+229: setchar102 h:=3913872+200245=4114117, hh:=261 
+230: setchar102 h:=4114117+200245=4314362, hh:=274 
+231: setchar105 h:=4314362+182043=4496405, hh:=286 
+232: w0 218453 h:=4496405+218453=4714858, hh:=299 
+233: setchar111 h:=4714858+327680=5042538, hh:=320 
+[ ffi o]
+234: setchar30 h:=5042538+546111=5588649, hh:=355 
+235: setchar99 h:=5588649+291275=5879924, hh:=373 
+236: setchar101 h:=5879924+291275=6171199, hh:=391 
+[ce]
+237: pop 
+level 0:(h=0,v=451461,w=0,x=0,y=0,z=0,hh=0,vv=29) 
+238: eop 

@@ -38,6 +38,9 @@ isolated from the production library.
 The [bundled font-data prototype](tools/TikzFontData/README.md) has six
 Latin Modern faces with independent TeX metric checks and exact atlas
 comparisons. It prepares label support; the converter still rejects labels.
+The internal [label layout](docs/TEXT.md) also matches sixteen native TeX
+box/glyph-position cases exactly, with independently calibrated image checks.
+Node geometry, converter text emission, and PDF text conformance are pending.
 
 The code is MIT licensed. Bundled font data retains its separate
 [GUST Font License / LPPL notices](THIRD-PARTY-NOTICES.md).

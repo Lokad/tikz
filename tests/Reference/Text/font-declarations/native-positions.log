@@ -1,0 +1,72 @@
+This is DVItype, Version 3.6 (MiKTeX 25.4)
+Options selected:
+  Starting page = * 
+  Maximum number of pages = 1000000
+  Output level = 4 (the works)
+  Resolution = 300.00000000 pixels per inch
+numerator/denominator=25400000/473628672
+magnification=1000;       0.00006334 pixels per DVI unit
+Postamble starts at byte 342.
+maxv=669182, maxh=9330889, maxstackdepth=1, totalpages=1
+Font 44: ec-lmr12---loaded at size 786432 DVI units 
+Font 43: ec-lmri10---loaded at size 655360 DVI units 
+Font 42: ec-lmbx10---loaded at size 655360 DVI units 
+Font 41: ec-lmr10---loaded at size 655360 DVI units 
+ 
+42: beginning of page 1 
+87: push 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+88: xxx 'header=l3backend-dvips.pro' 
+116: pop 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+117: down3 541752 v:=0+541752=541752, vv:=34 
+121: xxx 'dvisvgm:raw <g id="oracle-origin" data-x="{?x}" data-y="{?y}"/>' 
+186: push 
+level 0:(h=0,v=541752,w=0,x=0,y=0,z=0,hh=0,vv=34) 
+187: fntdef1 41: ec-lmr10 
+211: fntnum41 current font is ec-lmr10 
+212: setchar65 h:=0+491520=491520, hh:=31 
+213: right3 -72819 h:=491520-72819=418701, hh:=26 
+217: setchar86 h:=418701+491520=910221, hh:=57 
+218: w3 218453 h:=910221+218453=1128674, hh:=71 
+[AV ]
+222: fntdef1 42: ec-lmbx10 
+247: fntnum42 current font is ec-lmbx10 
+248: setchar111 h:=1128674+376831=1505505, hh:=95 
+[o]
+249: setchar30 h:=1505505+628031=2133536, hh:=135 
+250: setchar99 h:=2133536+334953=2468489, hh:=156 
+251: setchar101 h:=2468489+345440=2813929, hh:=178 
+252: right3 251221 h:=2813929+251221=3065150, hh:=194 
+256: setchar65 h:=3065150+569770=3634920, hh:=230 
+257: right3 -83742 h:=3634920-83742=3551178, hh:=225 
+261: setchar86 h:=3551178+569770=4120948, hh:=261 
+262: w0 218453 h:=4120948+218453=4339401, hh:=275 
+[ce AV ]
+263: fntdef1 43: ec-lmri10 
+288: fntnum43 current font is ec-lmri10 
+289: setchar102 h:=4339401+200976=4540377, hh:=288 
+290: right3 113231 h:=4540377+113231=4653608, hh:=295 
+294: setchar120 h:=4653608+304021=4957629, hh:=314 
+295: right3 234473 h:=4957629+234473=5192102, hh:=329 
+299: setchar65 h:=5192102+487161=5679263, hh:=360 
+300: right3 -66992 h:=5679263-66992=5612271, hh:=356 
+304: setchar86 h:=5612271+487161=6099432, hh:=387 
+305: w0 218453 h:=6099432+218453=6317885, hh:=400 
+[f x AV ]
+306: fntdef1 44: ec-lmr12 
+330: fntnum44 current font is ec-lmr12 
+331: setchar87 h:=6317885+791151=7109036, hh:=450 
+332: setchar105 h:=7109036+213909=7322945, hh:=464 
+333: setchar100 h:=7322945+427818=7750763, hh:=491 
+334: setchar101 h:=7750763+342228=8092991, hh:=513 
+335: w0 218453 h:=8092991+218453=8311444, hh:=526 
+[Wide ]
+336: fntnum41 current font is ec-lmr10 
+337: setchar101 h:=8311444+291275=8602719, hh:=544 
+338: setchar110 h:=8602719+364085=8966804, hh:=567 
+339: setchar100 h:=8966804+364085=9330889, hh:=590 
+[end]
+340: pop 
+level 0:(h=0,v=541752,w=0,x=0,y=0,z=0,hh=0,vv=34) 
+341: eop 

@@ -1,0 +1,80 @@
+This is DVItype, Version 3.6 (MiKTeX 25.4)
+Options selected:
+  Starting page = * 
+  Maximum number of pages = 1000000
+  Output level = 4 (the works)
+  Resolution = 300.00000000 pixels per inch
+numerator/denominator=25400000/473628672
+magnification=1000;       0.00006334 pixels per DVI unit
+Postamble starts at byte 321.
+maxv=585558, maxh=5237867, maxstackdepth=1, totalpages=1
+Font 43: ec-lmri10---loaded at size 655360 DVI units 
+Font 42: ec-lmbx10---loaded at size 655360 DVI units 
+Font 41: ec-lmr10---loaded at size 655360 DVI units 
+ 
+42: beginning of page 1 
+87: push 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+88: xxx 'header=l3backend-dvips.pro' 
+116: pop 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+117: down3 458128 v:=0+458128=458128, vv:=29 
+121: xxx 'dvisvgm:raw <g id="oracle-origin" data-x="{?x}" data-y="{?y}"/>' 
+186: push 
+level 0:(h=0,v=458128,w=0,x=0,y=0,z=0,hh=0,vv=29) 
+187: fntdef1 41: ec-lmr10 
+211: fntnum41 current font is ec-lmr10 
+212: setchar102 h:=0+200245=200245, hh:=13 
+213: right3 51918 h:=200245+51918=252163, hh:=16 
+[f]
+217: fntdef1 42: ec-lmbx10 
+242: fntnum42 current font is ec-lmbx10 
+243: setchar102 h:=252163+230293=482456, hh:=31 
+244: right3 74311 h:=482456+74311=556767, hh:=36 
+[f]
+248: fntnum41 current font is ec-lmr10 
+249: setchar102 h:=556767+200245=757012, hh:=49 
+250: w3 218453 h:=757012+218453=975465, hh:=62 
+[f ]
+254: fntdef1 43: ec-lmri10 
+279: fntnum43 current font is ec-lmri10 
+280: setchar102 h:=975465+200976=1176441, hh:=75 
+281: x3 113231 h:=1176441+113231=1289672, hh:=82 
+[f ]
+285: fntnum41 current font is ec-lmr10 
+286: setchar120 h:=1289672+345898=1635570, hh:=104 
+287: w0 218453 h:=1635570+218453=1854023, hh:=117 
+[x ]
+288: fntnum43 current font is ec-lmri10 
+289: setchar102 h:=1854023+200976=2054999, hh:=130 
+[f]
+290: fntnum41 current font is ec-lmr10 
+291: setchar44 h:=2054999+182043=2237042, hh:=142 
+292: w0 218453 h:=2237042+218453=2455495, hh:=156 
+[, ]
+293: fntnum43 current font is ec-lmri10 
+294: setchar102 h:=2455495+200976=2656471, hh:=169 
+[f]
+295: fntnum41 current font is ec-lmr10 
+296: setchar46 h:=2656471+182043=2838514, hh:=181 
+297: right3 291271 h:=2838514+291271=3129785, hh:=198 
+[. ]
+301: fntnum43 current font is ec-lmri10 
+302: setchar102 h:=3129785+200976=3330761, hh:=211 
+303: x0 113231 h:=3330761+113231=3443992, hh:=218 
+[f ]
+304: fntnum41 current font is ec-lmr10 
+305: setchar120 h:=3443992+345898=3789890, hh:=240 
+[x]
+306: fntnum43 current font is ec-lmri10 
+307: setchar102 h:=3789890+200976=3990866, hh:=253 
+308: right3 331684 h:=3990866+331684=4322550, hh:=274 
+[f ]
+312: fntnum41 current font is ec-lmr10 
+313: setchar65 h:=4322550+491520=4814070, hh:=305 
+314: right3 -72819 h:=4814070-72819=4741251, hh:=300 
+318: setchar86 h:=4741251+491520=5232771, hh:=331 
+[AV]
+319: pop 
+level 0:(h=0,v=458128,w=0,x=0,y=0,z=0,hh=0,vv=29) 
+320: eop 

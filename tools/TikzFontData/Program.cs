@@ -20,8 +20,8 @@ internal static partial class FontGenerator
     {
         try
         {
-            if (args is not ["generate"] and not ["verify"] and not ["compare"])
-                throw new InvalidOperationException("Usage: TikzFontData <generate|verify|compare>. Generation explicitly updates font data and independent metric baselines; verification never does. Comparison uses cached references and the pinned browser.");
+            if (args.Length != 1 || args[0] is not ("generate" or "verify" or "compare" or "generate-text-reference" or "verify-text-reference" or "compare-text" or "calibrate-text-reference"))
+                throw new InvalidOperationException("Usage: TikzFontData <generate|verify|compare|generate-text-reference|verify-text-reference|compare-text|calibrate-text-reference>. Only explicit generation commands update baselines.");
             var root = FindRoot();
             var manifestPath = Path.Combine(root, "tools/TikzFontData/font-profile.json");
             var manifest = JsonSerializer.Deserialize<FontManifest>(File.ReadAllText(manifestPath), Json)!;
@@ -30,6 +30,8 @@ internal static partial class FontGenerator
             string[] expectedFaces = ["regular-10", "bold-10", "italic-10", "regular-12", "bold-12", "italic-12"];
             if (!manifest.Fonts.Select(f => f.Id).Order(StringComparer.Ordinal).SequenceEqual(expectedFaces.Order(StringComparer.Ordinal)))
                 throw new InvalidOperationException("Missing or duplicated font-profile face.");
+            if (args[0] is "generate-text-reference" or "verify-text-reference" or "compare-text" or "calibrate-text-reference")
+                return await TextReferences(root, manifest, args[0]);
             if (args[0] == "compare") return await CompareAtlases(root, manifest);
             var tools = new List<object>();
             foreach (var (name, version) in new[] { ("latex", manifest.LatexVersion), ("dvisvgm", manifest.DvisvgmVersion) })

@@ -1,0 +1,52 @@
+This is DVItype, Version 3.6 (MiKTeX 25.4)
+Options selected:
+  Starting page = * 
+  Maximum number of pages = 1000000
+  Output level = 4 (the works)
+  Resolution = 300.00000000 pixels per inch
+numerator/denominator=25400000/473628672
+magnification=1000;       0.00006334 pixels per DVI unit
+Postamble starts at byte 239.
+maxv=1278213, maxh=1678410, maxstackdepth=3, totalpages=1
+Font 42: ec-lmr12---loaded at size 786432 DVI units 
+ 
+42: beginning of page 1 
+87: push 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+88: xxx 'header=l3backend-dvips.pro' 
+116: pop 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+117: down3 1278213 v:=0+1278213=1278213, vv:=81 
+121: xxx 'dvisvgm:raw <g id="oracle-origin" data-x="{?x}" data-y="{?y}"/>' 
+186: push 
+level 0:(h=0,v=1278213,w=0,x=0,y=0,z=0,hh=0,vv=81) 
+187: down3 -939610 v:=1278213-939610=338603, vv:=21 
+191: push 
+level 1:(h=0,v=338603,w=0,x=0,y=0,z=0,hh=0,vv=21) 
+192: push 
+level 2:(h=0,v=338603,w=0,x=0,y=0,z=0,hh=0,vv=21) 
+193: fntdef1 42: ec-lmr12 
+217: fntnum42 current font is ec-lmr12 
+218: setchar103 h:=0+385023=385023, hh:=24 
+219: setchar121 h:=385023+406422=791445, hh:=50 
+220: setchar112 h:=791445+427818=1219263, hh:=77 
+[gyp]
+221: pop 
+level 2:(h=0,v=338603,w=0,x=0,y=0,z=0,hh=0,vv=21) 
+222: pop 
+level 1:(h=0,v=338603,w=0,x=0,y=0,z=0,hh=0,vv=21) 
+223: down3 939610 v:=338603+939610=1278213, vv:=81 
+227: push 
+level 1:(h=0,v=1278213,w=0,x=0,y=0,z=0,hh=0,vv=81) 
+228: push 
+level 2:(h=0,v=1278213,w=0,x=0,y=0,z=0,hh=0,vv=81) 
+229: set1 192 h:=0+577241=577241, hh:=37 
+231: set1 201 h:=577241+523928=1101169, hh:=70 
+233: set1 197 h:=1101169+577241=1678410, hh:=107 
+235: pop 
+level 2:(h=0,v=1278213,w=0,x=0,y=0,z=0,hh=0,vv=81) 
+236: pop 
+level 1:(h=0,v=1278213,w=0,x=0,y=0,z=0,hh=0,vv=81) 
+237: pop 
+level 0:(h=0,v=1278213,w=0,x=0,y=0,z=0,hh=0,vv=81) 
+238: eop 

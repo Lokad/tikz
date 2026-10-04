@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "scripts": { "compare": "node compare.mjs", "test": "node self-test.mjs", "test:fonts": "node font-self-test.mjs" },
+  "scripts": { "compare": "node compare.mjs", "test": "node self-test.mjs", "test:fonts": "node font-self-test.mjs", "test:text": "node text-self-test.mjs" },
   "devDependencies": { "playwright": "1.63.0" }
 }

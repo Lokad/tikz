@@ -72,6 +72,23 @@ The frontend's accepted Unicode repertoire must be enumerated separately
 before labels are advertised; availability in these resources is not a
 claim that every corresponding input command or character is supported.
 
+## Native whole-label references
+
+The internal [text frontend](../../docs/TEXT.md) now has a separate sixteen-case
+word/box experiment. `generate-text-reference` explicitly creates its baselines;
+`verify-text-reference` live-checks them without writing; `compare-text` consumes
+them with only the pinned browser. MiKTeX's pinned DVItype supplies exact native
+integer glyph positions, while dvisvgm supplies independently outlined images.
+See [the commands and inspection workflow](../../docs/TESTING.md#whole-label-layout-experiment).
+
+`calibrate-text-reference` uses the original oracle outlines and DVItype
+positions, never the candidate parser, layout, or glyph resources. Its raw
+exact-policy mismatches measure the SVG driver's fractional-advance difference.
+It saves aggregate evidence under `artifacts/text-calibration/`; a reviewed
+snapshot grounds the separate [text raster policy](../TikzVisual/TEXT-CALIBRATION.md).
+Node layout, converter CSS placement, and secondary PDF text fidelity remain
+pending. The atlas and label experiments establish different boundaries.
+
 Input and output hashes are in `font-profile.json` and the resource
 `provenance.json`. The upstream README and manifest carry different version
 labels; exact file hashes, not those labels, identify the inputs. Font data

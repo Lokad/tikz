@@ -168,3 +168,54 @@ Inspection crops have an opaque white background so small black glyphs stay
 visible in image tools using a dark transparency background. Full reference,
 actual, and raw difference PNGs retain their original alpha; numerical and
 raster verdicts use those original captures.
+
+## Whole-label layout experiment
+
+The internal label parser and layout engine have sixteen trusted reference
+cases under `tests/Reference/Text/`. Ordinary .NET tests compare every box
+dimension and every glyph's font, encoding slot, and position exactly against
+native TeX integer scaled points. They also cover unsupported/malformed input,
+glyph/work/source/nesting/dimension limits, cancellation, and concurrent layout.
+This is preparation for node layout; the public converter still rejects nodes
+and labels. See [the text profile](TEXT.md) for the bounded grammar.
+
+```text
+dotnet run --project tools/TikzFontData -c Release -- compare-text
+npm run test:text --prefix tools/TikzVisual
+```
+
+Cached comparison requires only the pinned browser, .NET, and checked-in
+references. It writes `artifacts/text-comparisons/<case>/` with exact numeric
+deltas, source-attributed glyph traces, PNGs, crops, and the same inspection
+viewer as geometry. The separate text raster policy comes from
+[oracle-only calibration](../tools/TikzVisual/TEXT-CALIBRATION.md), not from
+candidate failures or the geometry policy. All sixteen cases render at 1x/4x
+over transparent/white/black backgrounds. The 83 comparator checks repeat each
+unchanged label and require rejection of glyph omission, quarter-pixel baseline
+displacement, thickened outlines, and faint-content omission under every text
+case policy; focused checks remove a period, an ffi ligature, and the AV kern.
+These checks bypass the numeric gate to verify that the image policy itself
+rejects the intended defects.
+
+Explicit live commands are:
+
+```text
+dotnet run --project tools/TikzFontData -c Release -- generate-text-reference
+dotnet run --project tools/TikzFontData -c Release -- verify-text-reference
+dotnet run --project tools/TikzFontData -c Release -- calibrate-text-reference
+```
+
+Generation alone writes baselines. Verification runs the pinned trusted
+wrapper again without overwriting them. DVItype supplies native glyph positions;
+dvisvgm supplies original outlines and its independently measured baseline.
+Instrumentation preserves the TeX box and visible SVG. Definition order alone
+is canonicalized for equality, since dvisvgm may reorder unused definitions.
+The original natural-crop SVG is retained as `oracle.svg`.
+
+Calibration never calls the candidate parser/layout or loads its font outlines.
+It places the original oracle outlines at DVItype's integer positions and
+measures the difference from the original dvisvgm positions. Its exact-policy
+mismatches are expected measurement results, with exit code 1; a tooling error
+is 2. It writes aggregate evidence only under `artifacts/text-calibration/`.
+Converter CSS placement, natural node/ink bounds, and PDF text calibration
+remain separate required work before labeled diagrams are advertised.

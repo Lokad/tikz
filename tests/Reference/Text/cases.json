@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "profile": "latin-modern-ec-10-12-v1",
+  "dviTypeVersion": "MiKTeX-DVITYPE 2.9.6300 (MiKTeX 25.4)",
+  "cases": [
+    { "id": "words-regular-10", "source": "words", "font": "regular-10", "alignment": "left" },
+    { "id": "words-bold-10", "source": "words", "font": "bold-10", "alignment": "left" },
+    { "id": "words-italic-10", "source": "words", "font": "italic-10", "alignment": "left" },
+    { "id": "words-regular-12", "source": "words", "font": "regular-12", "alignment": "left" },
+    { "id": "words-bold-12", "source": "words", "font": "bold-12", "alignment": "left" },
+    { "id": "words-italic-12", "source": "words", "font": "italic-12", "alignment": "left" },
+    { "id": "group-boundaries", "source": "groups", "font": "regular-10", "alignment": "left" },
+    { "id": "sentence-spacing", "source": "spacing", "font": "regular-10", "alignment": "left" },
+    { "id": "accented-text", "source": "accents", "font": "regular-10", "alignment": "left" },
+    { "id": "escaped-symbols", "source": "symbols", "font": "regular-10", "alignment": "left" },
+    { "id": "font-declarations", "source": "font-groups", "font": "regular-10", "alignment": "left" },
+    { "id": "text-font-commands", "source": "text-commands", "font": "regular-10", "alignment": "left" },
+    { "id": "lines-left", "source": "multiline", "font": "regular-10", "alignment": "left" },
+    { "id": "lines-center", "source": "multiline", "font": "regular-10", "alignment": "center" },
+    { "id": "lines-right", "source": "multiline", "font": "regular-10", "alignment": "right" },
+    { "id": "large-line-skip", "source": "line-skip", "font": "regular-10", "alignment": "left" }
+  ]
+}

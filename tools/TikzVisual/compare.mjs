@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url';
 
 const directory = path.dirname(fileURLToPath(import.meta.url));
 export const profile = JSON.parse(await readFile(path.join(directory, 'browser-profile.json'), 'utf8'));
+const textProfileBytes = await readFile(path.join(directory, 'text-profile.json'));
+const textProfile = JSON.parse(textProfileBytes);
 const hash = value => createHash('sha256').update(value).digest('hex');
 
 export async function createRenderer() {
@@ -34,8 +36,13 @@ export async function compareBundle(bundle, renderer) {
   const scene = JSON.parse(await readFile(path.join(bundle, 'actual-scene.json'), 'utf8'));
   const pdfImages = input.pdf ? Object.fromEntries(await Promise.all(profile.scales.map(async scale => [scale,
     'data:image/png;base64,' + (await readFile(path.join(bundle, `pdf-page-${scale}x.png`))).toString('base64')]))) : null;
-  const selected = profile.cases?.[input.toleranceProfile ?? input.caseId] ?? {};
-  const policy = { ...profile, primary: selected.primary ?? profile.primary, pdf: selected.pdf ?? profile.pdf };
+  if (input.rasterProfile && input.rasterProfile !== 'text') throw new Error('Unknown raster profile.');
+  const rasterProfile = input.rasterProfile === 'text' ? textProfile : profile;
+  const profileKey = input.toleranceProfile ?? input.caseId;
+  if (input.rasterProfile === 'text' && (textProfile.schemaVersion !== 1 || !textProfile.cases[profileKey]))
+    throw new Error('Text case has no independently calibrated policy.');
+  const selected = rasterProfile.cases?.[profileKey] ?? {};
+  const policy = { ...profile, primary: selected.primary ?? rasterProfile.primary, pdf: selected.pdf ?? profile.pdf };
   const result = await renderer.page.evaluate(async ({ input, scene, referenceSvg, actualSvg, pdfImages, policy }) => {
     const makeCanvas = (width, height) => {
       if (!Number.isSafeInteger(width) || !Number.isSafeInteger(height) || width < 1 || height < 1 || width * height > policy.maxCanvasPixels)
@@ -275,6 +282,7 @@ export async function compareBundle(bundle, renderer) {
   await collect(bundle);
   const report = { schemaVersion: 1, caseId: input.caseId, verdict: verdict ? 'pass' : 'mismatch', referenceMode: input.referenceMode,
     numeric: input.numeric, actualLabel: input.actualLabel ?? 'Lokad.TikZ', toleranceProfile: input.toleranceProfile ?? input.caseId,
+    rasterPolicy: { id: rasterProfile.id, sha256: input.rasterProfile === 'text' ? hash(textProfileBytes) : renderer.identity.profileSha256 },
     renderer: renderer.identity, ...result, artifacts, sourceHash: hash(await readFile(path.join(bundle, 'source.tikz'))) };
   await writeFile(path.join(bundle, 'report.json'), JSON.stringify(report, null, 2) + '\n');
   await writeFile(path.join(bundle, 'index.html'), viewer(report, await readFile(path.join(bundle, 'source.tikz'), 'utf8')));

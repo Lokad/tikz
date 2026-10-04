@@ -1,0 +1,27 @@
+% Trusted hbox/alignment oracle for label layout. No candidate code is called.
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\pagestyle{empty}
+\newif\iflokadmeasure
+\newbox\lokadtext
+\newcount\lokadslot
+\begin{document}
+@@FONT@@
+\setbox\lokadtext=@@BOX@@
+\typeout{LOKAD-TEXT-BOX \number\wd\lokadtext;\number\ht\lokadtext;\number\dp\lokadtext}
+\iflokadmeasure
+  \lokadslot=0
+  \loop
+    \typeout{LOKAD-SFCODE \number\lokadslot;\number\sfcode\lokadslot}
+    \advance\lokadslot by1
+  \ifnum\lokadslot<256\repeat
+\fi
+\setbox\lokadtext=\hbox{%
+  \iflokadmeasure
+    \special{dvisvgm:raw <g id="oracle-origin" data-x="{?x}" data-y="{?y}"/>}%
+  \fi
+  \box\lokadtext
+}
+\shipout\box\lokadtext
+\end{document}

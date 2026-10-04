@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-text-bp-v1",
+  "primary": { "maxChannelError": 0, "maxMeanForegroundError": 0, "maxEdgeDisplacementPixels": 0, "maxComponentDifference": 0 },
+  "cases": {
+    "words-regular-10": { "primary": { "maxChannelError": 4, "maxMeanForegroundError": 0.016, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 } },
+    "words-bold-10": { "primary": { "maxChannelError": 8, "maxMeanForegroundError": 0.022, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 } },
+    "words-italic-10": { "primary": { "maxChannelError": 10, "maxMeanForegroundError": 0.098, "maxEdgeDisplacementPixels": 1, "maxComponentDifference": 0 } },
+    "words-regular-12": { "primary": { "maxChannelError": 11, "maxMeanForegroundError": 0.038, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 } },
+    "words-bold-12": { "primary": { "maxChannelError": 9, "maxMeanForegroundError": 0.028, "maxEdgeDisplacementPixels": 1, "maxComponentDifference": 0 } },
+    "words-italic-12": { "primary": { "maxChannelError": 9, "maxMeanForegroundError": 0.028, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 } },
+    "group-boundaries": { "primary": { "maxChannelError": 5, "maxMeanForegroundError": 0.015, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 } },
+    "sentence-spacing": { "primary": { "maxChannelError": 10, "maxMeanForegroundError": 0.019, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 } },
+    "accented-text": { "primary": { "maxChannelError": 8, "maxMeanForegroundError": 0.012, "maxEdgeDisplacementPixels": 0, "maxComponentDifference": 0 } },
+    "escaped-symbols": { "primary": { "maxChannelError": 3, "maxMeanForegroundError": 0.005, "maxEdgeDisplacementPixels": 0, "maxComponentDifference": 0 } },
+    "font-declarations": { "primary": { "maxChannelError": 8, "maxMeanForegroundError": 0.035, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 } },
+    "text-font-commands": { "primary": { "maxChannelError": 9, "maxMeanForegroundError": 0.039, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 } },
+    "lines-left": { "primary": { "maxChannelError": 4, "maxMeanForegroundError": 0.008, "maxEdgeDisplacementPixels": 0, "maxComponentDifference": 0 } },
+    "lines-center": { "primary": { "maxChannelError": 5, "maxMeanForegroundError": 0.004, "maxEdgeDisplacementPixels": 0, "maxComponentDifference": 0 } },
+    "lines-right": { "primary": { "maxChannelError": 2, "maxMeanForegroundError": 0.001, "maxEdgeDisplacementPixels": 0, "maxComponentDifference": 0 } },
+    "large-line-skip": { "primary": { "maxChannelError": 5, "maxMeanForegroundError": 0.010, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 } }
+  }
+}

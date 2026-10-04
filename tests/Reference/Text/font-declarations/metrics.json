@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 2,
+  "profile": "latin-modern-ec-10-12-v1",
+  "widthSp": 9330889,
+  "heightSp": 541752,
+  "depthSp": 127430,
+  "originBp": {
+    "x": 0,
+    "y": 8.235596
+  },
+  "glyphs": [
+    {
+      "font": "regular-10",
+      "slot": 65,
+      "xBp": 0,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 86,
+      "xBp": 6.365001,
+      "yBp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 111,
+      "xBp": 17.157857,
+      "yBp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 30,
+      "xBp": 22.886373,
+      "yBp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 99,
+      "xBp": 32.433567,
+      "yBp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 101,
+      "xBp": 37.525461,
+      "yBp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 65,
+      "xBp": 46.595772,
+      "yBp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 86,
+      "xBp": 53.984264,
+      "yBp": 0
+    },
+    {
+      "font": "italic-10",
+      "slot": 102,
+      "xBp": 65.966658,
+      "yBp": 0
+    },
+    {
+      "font": "italic-10",
+      "slot": 120,
+      "xBp": 70.743178,
+      "yBp": 0
+    },
+    {
+      "font": "italic-10",
+      "slot": 65,
+      "xBp": 78.92926,
+      "yBp": 0
+    },
+    {
+      "font": "italic-10",
+      "slot": 86,
+      "xBp": 85.316591,
+      "yBp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 87,
+      "xBp": 96.043195,
+      "yBp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 105,
+      "xBp": 108.0701,
+      "yBp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 100,
+      "xBp": 111.321909,
+      "yBp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 101,
+      "xBp": 117.825517,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 101,
+      "xBp": 126.348879,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 110,
+      "xBp": 130.776778,
+      "yBp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 100,
+      "xBp": 136.311519,
+      "yBp": 0
+    }
+  ],
+  "nativeGlyphs": [
+    {
+      "font": "regular-10",
+      "slot": 65,
+      "xSp": 0,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 86,
+      "xSp": 418701,
+      "ySp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 111,
+      "xSp": 1128674,
+      "ySp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 30,
+      "xSp": 1505505,
+      "ySp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 99,
+      "xSp": 2133536,
+      "ySp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 101,
+      "xSp": 2468489,
+      "ySp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 65,
+      "xSp": 3065150,
+      "ySp": 0
+    },
+    {
+      "font": "bold-10",
+      "slot": 86,
+      "xSp": 3551178,
+      "ySp": 0
+    },
+    {
+      "font": "italic-10",
+      "slot": 102,
+      "xSp": 4339401,
+      "ySp": 0
+    },
+    {
+      "font": "italic-10",
+      "slot": 120,
+      "xSp": 4653608,
+      "ySp": 0
+    },
+    {
+      "font": "italic-10",
+      "slot": 65,
+      "xSp": 5192102,
+      "ySp": 0
+    },
+    {
+      "font": "italic-10",
+      "slot": 86,
+      "xSp": 5612271,
+      "ySp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 87,
+      "xSp": 6317885,
+      "ySp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 105,
+      "xSp": 7109036,
+      "ySp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 100,
+      "xSp": 7322945,
+      "ySp": 0
+    },
+    {
+      "font": "regular-12",
+      "slot": 101,
+      "xSp": 7750763,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 101,
+      "xSp": 8311444,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 110,
+      "xSp": 8602719,
+      "ySp": 0
+    },
+    {
+      "font": "regular-10",
+      "slot": 100,
+      "xSp": 8966804,
+      "ySp": 0
+    }
+  ],
+  "fontDefinitions": {
+    "g0": "regular-12",
+    "g1": "italic-10",
+    "g2": "bold-10",
+    "g3": "regular-10"
+  }
+}
