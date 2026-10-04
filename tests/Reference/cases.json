@@ -7,6 +7,9 @@
     { "id": "ordered-transforms", "source": "tests/Fixtures/ordered-transforms.tikz", "features": ["coordinate-bases", "transform-order", "orthogonal-paths", "style-order", "scope-restoration"], "numericTolerancePixels": 0.02, "anchors": ["start", "end", "turn"], "anchorBindings": [{ "path": 0, "segment": 0, "anchor": "start" }, { "path": 0, "segment": 1, "anchor": "end" }] },
     { "id": "cubic-controls", "source": "tests/Fixtures/cubic-controls.tikz", "features": ["cubic-curves", "relative-controls", "control-point-picture-bounds"], "numericTolerancePixels": 0.02 },
     { "id": "rotated-rectangle", "source": "tests/Fixtures/rotated-rectangle.tikz", "features": ["rectangles", "rotation", "scaling", "fill", "fill-opacity"], "numericTolerancePixels": 0.02 },
-    { "id": "clip-scope", "source": "tests/Fixtures/clip-scope.tikz", "features": ["clipping", "clip-scope", "picture-bounds", "fill"], "numericTolerancePixels": 0.02 }
+    { "id": "clip-scope", "source": "tests/Fixtures/clip-scope.tikz", "features": ["clipping", "clip-scope", "picture-bounds", "fill"], "numericTolerancePixels": 0.02 },
+    { "id": "circle-ellipse", "source": "tests/Fixtures/circle-ellipse.tikz", "features": ["circles", "ellipses", "basis-radii", "physical-radii", "shape-continuation"], "numericTolerancePixels": 0.02 },
+    { "id": "ellipse-basis", "source": "tests/Fixtures/ellipse-basis.tikz", "features": ["ellipses", "oblique-basis", "affine-transform", "physical-radii", "shape-continuation"], "numericTolerancePixels": 0.02 },
+    { "id": "arc-sweeps", "source": "tests/Fixtures/arc-sweeps.tikz", "features": ["arcs", "sweep-direction", "arc-subdivision", "basis-radii", "physical-radii", "arc-continuation"], "numericTolerancePixels": 0.02 }
   ]
 }

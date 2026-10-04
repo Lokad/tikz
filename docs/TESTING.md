@@ -1,6 +1,6 @@
 # Grounding against TikZ
 
-The required corpus currently contains six independently authored fixtures:
+The required corpus currently contains nine independently authored fixtures:
 
 | Fixture | Grounded behavior |
 | --- | --- |
@@ -10,9 +10,16 @@ The required corpus currently contains six independently authored fixtures:
 | `cubic-controls` | Absolute/relative cubic controls, PGF picture bounds including control points |
 | `rotated-rectangle` | Rectangle order under rotation/scaling, fill and opacity |
 | `clip-scope` | Clip geometry, inherited clipping, PGF picture-size suppression and scope restoration |
+| `circle-ellipse` | Four cubic quadrants, unitless/physical radii, circle continuation and named-anchor precision |
+| `ellipse-basis` | Oblique basis vectors, affine ellipse axes, physical radii independent of basis lengths |
+| `arc-sweeps` | Clockwise/counterclockwise sweeps, PGF segment subdivision, physical/basis radii and relative continuation |
 
-These fixtures establish behavior for their concrete forms. Circles, arcs,
-dashes, text, and other combinations still need their own oracle evidence.
+These fixtures establish behavior for their concrete forms. Dashes, text,
+additional shape options, and other combinations still need their own oracle
+evidence. Named coordinates remain stored globally; path references reproduce
+PGF's bounded reciprocal/scaled-point round trip through the local frame.
+Mixed physical and dimensionless radii are rejected, and generated shape
+segments consume the same conversion budget as explicit path segments.
 
 ## Ordinary .NET tests
 
@@ -49,7 +56,7 @@ dotnet run --project tools/TikzReference -- compare --case line-units --referenc
 
 Both SVGs are rerendered in the same pinned Chromium process at 1x and 4x.
 The primary profile requires exact pixels by default, including alpha and
-fixed light/dark backgrounds. Three fixtures have explicit precision allowances
+fixed light/dark backgrounds. Six fixtures have explicit precision allowances
 documented with [oracle-only calibration evidence](../tools/TikzVisual/CALIBRATION.md).
 Coordinate registration uses the measured physical origin; images are never
 fitted or automatically aligned. Native dimensions are checked separately.
@@ -83,7 +90,7 @@ fingerprint, build configuration, and options. Fix the implicated compiler
 stage, rerun the focused case, and then run the corpus. Do not change an
 expected reference or loosen a threshold to hide a candidate defect.
 
-The 30-case self-test requires a passing `line-units` bundle. It repeats unchanged
+The 39-case self-test requires a passing `line-units` bundle. It repeats unchanged
 pairs, mutates geometry/units/stroke/color/opacity/clipping/canvas size, removes
 or adds drawing, and tests mostly blank canvases. Synthetic outlined glyph,
 minus, baseline, and arrowhead mutations test the comparator; they make no
@@ -133,6 +140,11 @@ against its painted endpoint after a transform round trip. No values are
 chosen by fitting images.
 
 The command produces the usual images and reports in each variant directory.
+It also writes `artifacts/calibration/calibration-evidence.json`, containing
+the aggregate raw metrics, numeric checks, source/reference/derived hashes,
+renderer identity, complete browser profile, and tool hashes. A reviewed
+snapshot is checked in as `tests/Reference/calibration.json`; the command
+itself writes only under `artifacts/`.
 It is a measurement experiment, not the required conformance gate: under exact
 profiles, the intentional precision perturbations correctly return mismatch
 and an aggregate exit code of `1`. A harness error still returns `2`. Review

@@ -1,0 +1,6 @@
+\begin{tikzpicture}[x={(8mm,2mm)},y={(3mm,5mm)},cm={1,.5,-.25,1,(2mm,1mm)}]
+  \coordinate (start) at (0,0);
+  \coordinate (end) at (2,1);
+  \draw[blue,line width=.8pt] (start) ellipse (.9 and .6) -- +(1,0);
+  \fill[red,fill opacity=.5] (end) ellipse[x radius=4mm,y radius=2mm];
+\end{tikzpicture}

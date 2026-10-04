@@ -178,17 +178,20 @@ export async function compareBundle(bundle, renderer) {
     const checks = [], pdfChecks = [], driverChecks = [], regional = [], pdfCameras = [];
     let largeReference, largeActual, largeDiff;
     for (const scale of policy.scales) {
+      const primaryThresholds = { ...policy.primary, maxEdgeDisplacementPixels:
+        policy.primary.maxEdgeDisplacementRasterPixels === undefined ? policy.primary.maxEdgeDisplacementPixels
+          : policy.primary.maxEdgeDisplacementRasterPixels / scale };
       const a = render(referenceImage, referenceBox, scale), b = render(actualImage, actualBox, scale);
       const repeatA = render(referenceImage, referenceBox, scale), repeatB = render(actualImage, actualBox, scale);
       const repeatedA = pixels(repeatA), repeatedB = pixels(repeatB);
       if (pixels(a).some((v, i) => v !== repeatedA[i]) || pixels(b).some((v, i) => v !== repeatedB[i])) throw new Error('Repeated captures are not deterministic.');
-      const result = compare(a, b, scale, policy.primary, null);
+      const result = compare(a, b, scale, primaryThresholds, null);
       const suffix = scale === 1 ? '' : `-${scale}x`;
       save(`reference${suffix}.png`, a); save(`actual${suffix}.png`, b);
       save(`diff${suffix}.png`, result.raw); save(`diff-amplified${suffix}.png`, result.amplified);
       checks.push(result.metrics);
       for (const background of ['white', 'black']) {
-        const composite = compare(render(referenceImage, referenceBox, scale, background), render(actualImage, actualBox, scale, background), scale, policy.primary, background);
+        const composite = compare(render(referenceImage, referenceBox, scale, background), render(actualImage, actualBox, scale, background), scale, primaryThresholds, background);
         checks.push({ ...composite.metrics, background });
       }
       if (scale === Math.max(...policy.scales)) {

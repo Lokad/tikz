@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "chromium-153-geometry-v2",
+  "id": "chromium-153-geometry-v3",
   "playwrightVersion": "1.63.0",
   "browserVersion": "153.0.8010.12",
   "launchArguments": ["--disable-gpu", "--force-color-profile=srgb"],
@@ -21,6 +21,15 @@
     },
     "clip-scope": {
       "pdf": { "maxChannelError": 160, "maxMeanForegroundError": 24, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 }
+    },
+    "circle-ellipse": {
+      "primary": { "maxChannelError": 12, "maxMeanForegroundError": 0.02, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 }
+    },
+    "ellipse-basis": {
+      "primary": { "maxChannelError": 16, "maxMeanForegroundError": 0.15, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 }
+    },
+    "arc-sweeps": {
+      "primary": { "maxChannelError": 12, "maxMeanForegroundError": 0.125, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 }
     }
   },
   "maxCanvasPixels": 20000000,

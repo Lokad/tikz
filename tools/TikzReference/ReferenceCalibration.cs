@@ -1,9 +1,51 @@
 using System.Globalization;
 using System.Text;
+using System.Text.Json;
 using System.Xml.Linq;
 
 internal static partial class ReferenceTool
 {
+    private static void SaveCalibrationEvidence(List<string> folders, string output)
+    {
+        var browserProfile = Read<JsonElement>(At("tools/TikzVisual/browser-profile.json"));
+        JsonElement renderer = default;
+        var cases = new List<object>();
+        foreach (var folder in folders)
+        {
+            var suite = Read<JsonElement>(Path.Combine(folder, "calibration-suite.json"));
+            var reference = Read<Provenance>(Path.Combine(folder, "provenance.json"));
+            var variants = new List<object>();
+            foreach (var variant in suite.GetProperty("variants").EnumerateArray())
+            {
+                var mode = variant.GetProperty("mode").GetString()!;
+                var directory = Path.Combine(folder, mode);
+                var report = Read<JsonElement>(Path.Combine(directory, "report.json"));
+                var provenance = Read<JsonElement>(Path.Combine(directory, "calibration-provenance.json"));
+                if (provenance.GetProperty("converterInvoked").GetBoolean()
+                    || !report.GetProperty("numeric").GetProperty("passed").GetBoolean()
+                    || !report.GetProperty("dimensions").GetProperty("passed").GetBoolean())
+                    throw new InvalidOperationException("Calibration representation exceeds its independently bounded numeric contract.");
+                var identity = report.GetProperty("renderer");
+                if (renderer.ValueKind != JsonValueKind.Undefined && renderer.GetRawText() != identity.GetRawText())
+                    throw new InvalidOperationException("Calibration renderer identity changed within this experiment.");
+                renderer = identity;
+                variants.Add(new { mode, oracleRepresentationSha256 = report.GetProperty("artifacts").GetProperty("actual.svg"), provenance,
+                    verdict = report.GetProperty("verdict"), numeric = report.GetProperty("numeric"), dimensions = report.GetProperty("dimensions"),
+                    primary = report.GetProperty("primary").GetProperty("checks"), oracleSvgVersusPdf = report.GetProperty("pdf").GetProperty("driverChecks") });
+            }
+            cases.Add(new { caseId = suite.GetProperty("caseId"), reference.SourceSha256,
+                referenceSvgSha256 = reference.Artifacts["reference.svg"], referenceMetricsSha256 = reference.Artifacts["reference-metrics.json"],
+                referencePdfSha256 = reference.Artifacts["reference.pdf"], variants });
+        }
+        string[] sources = ["tools/TikzVisual/browser-profile.json", "tools/TikzVisual/compare.mjs", "tools/TikzReference/Program.cs", "tools/TikzReference/ReferenceCalibration.cs", "tests/Reference/cases.json"];
+        var file = Path.Combine(output, "calibration-evidence.json");
+        Write(file, new { schemaVersion = 1, id = browserProfile.GetProperty("id").GetString() + "-oracle-calibration", generatedUtc = DateTimeOffset.UtcNow.ToString("O"),
+            converterInvoked = false, purpose = "Independent geometry precision and cross-renderer measurements; deliberate perturbations under exact policies correctly mismatch",
+            command = "dotnet run --project tools/TikzReference -- calibrate-reference --out artifacts/calibration", renderer, browserProfile,
+            toolHashes = sources.ToDictionary(s => s, s => HashFile(At(s))), cases });
+        Console.WriteLine("Calibration evidence: " + Relative(file));
+    }
+
     // This route never calls the converter. Re-express the oracle's own measured
     // soft paths in CSS pixels with flattened transforms and six decimal places.
     // Keep paint, clipping, and physical registration; precision variants make

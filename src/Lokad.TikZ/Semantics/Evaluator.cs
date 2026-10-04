@@ -50,6 +50,7 @@ internal sealed class Evaluator(Budget budget)
         if (coordinate.X is null || coordinate.Y is null)
         {
             if (!_coordinates.TryGetValue(coordinate.Name, out point)) throw new CompileError("TIKZ003", $"Unknown coordinate '{coordinate.Name}'.", coordinate.Source);
+            point = PgfCoordinates.RoundTrip(point, state.Transform, coordinate.Source);
         }
         else
         {
@@ -107,17 +108,15 @@ internal sealed class Evaluator(Budget budget)
                     break;
                 case EllipseOperation ellipse:
                     var center = path.Current;
-                    var rx = Radius(ellipse.X, state);
-                    var ry = Radius(ellipse.Y, state);
-                    DrawArc(path, center, rx, ry, 0, 360, state, true, ellipse.Source);
+                    var ellipseAxes = Axes(ellipse.X, ellipse.Y, state);
+                    ShapePaths.Ellipse(path, center, ellipseAxes.X, ellipseAxes.Y);
                     break;
                 case ArcOperation arc:
-                    var xRadius = Radius(arc.X, state);
-                    var yRadius = Radius(arc.Y, state);
+                    var arcAxes = Axes(arc.X, arc.Y, state);
                     var start = arc.Start.Evaluate(state.Variables, budget).Value;
                     var finish = arc.End.Evaluate(state.Variables, budget).Value;
-                    var vector = TransformVector(state, new(xRadius * Math.Cos(start * Math.PI / 180), yRadius * Math.Sin(start * Math.PI / 180)));
-                    DrawArc(path, path.Current - vector, xRadius, yRadius, start, finish, state, false, arc.Source);
+                    ShapePaths.Arc(path, arcAxes.X, arcAxes.Y, start, finish, budget, arc.Source);
+                    reference = path.Current;
                     break;
                 case CloseOperation: path.Close(); break;
                 case PathOptionsOperation options: KeyRegistry.Apply(options.Options, state, budget); break;
@@ -151,13 +150,16 @@ internal sealed class Evaluator(Budget budget)
             return point;
         }
     }
-    private double Radius(Expression expression, EvaluationState state)
+    private (Point X, Point Y) Axes(Expression xRadius, Expression yRadius, EvaluationState state)
     {
-        var number = expression.Evaluate(state.Variables, budget);
-        var radius = number.HasUnit ? number.Bp : number.Value * 72 / 2.54;
-        if (radius < 0) throw new CompileError("TIKZ001", "Negative radius.", expression.Source);
-        budget.Check(radius, expression.Source);
-        return radius;
+        var x = xRadius.Evaluate(state.Variables, budget);
+        var y = yRadius.Evaluate(state.Variables, budget);
+        if (x.HasUnit != y.HasUnit) throw new CompileError("TIKZ001", "Cannot mix physical and dimensionless radii.", yRadius.Source);
+        var xAxis = TransformVector(state, x.HasUnit ? new(x.Bp, 0) : state.XBasis * x.Value);
+        var yAxis = TransformVector(state, y.HasUnit ? new(0, y.Bp) : state.YBasis * y.Value);
+        budget.Check(xAxis.X, xRadius.Source); budget.Check(xAxis.Y, xRadius.Source);
+        budget.Check(yAxis.X, yRadius.Source); budget.Check(yAxis.Y, yRadius.Source);
+        return (xAxis, yAxis);
     }
     private static Point TransformVector(EvaluationState state, Point point) => state.Transform.Apply(point) - state.Transform.Apply(default);
     private static Point FrameCorner(Point start, Point end, EvaluationState state, bool horizontalFirst, Source source)
@@ -176,28 +178,5 @@ internal sealed class Evaluator(Budget budget)
         else if (t.C == 0 && t.D == 0) xLeg = delta;
         else throw new CompileError("TIKZ004", "Cannot resolve orthogonal corners under this singular transform.", source);
         return horizontalFirst ? start + xLeg : end - xLeg;
-    }
-    private void DrawArc(GraphicPath path, Point center, double rx, double ry, double start, double end, EvaluationState state, bool closed, Source source)
-    {
-        if (!double.IsFinite(start) || !double.IsFinite(end)) throw new CompileError("TIKZ004", "Non-finite angle.", source);
-        var sweep = end - start;
-        var countDouble = Math.Max(1, Math.Ceiling(Math.Abs(sweep) / 45));
-        if (countDouble > budget.Limits.MaxSegments) Budget.Fail(source, "arc segments");
-        var count = (int)countDouble;
-        if (closed) path.Move(At(start));
-        for (var i = 0; i < count; i++)
-        {
-            budget.Charge(source);
-            var a = (start + sweep * i / count) * Math.PI / 180;
-            var b = (start + sweep * (i + 1) / count) * Math.PI / 180;
-            var k = 4.0 / 3 * Math.Tan((b - a) / 4);
-            var p0 = new Point(rx * Math.Cos(a), ry * Math.Sin(a));
-            var p1 = p0 + new Point(-rx * Math.Sin(a), ry * Math.Cos(a)) * k;
-            var p3 = new Point(rx * Math.Cos(b), ry * Math.Sin(b));
-            var p2 = p3 - new Point(-rx * Math.Sin(b), ry * Math.Cos(b)) * k;
-            path.Cubic(center + TransformVector(state, p1), center + TransformVector(state, p2), center + TransformVector(state, p3));
-        }
-        if (closed) path.Close();
-        Point At(double degrees) => center + TransformVector(state, new(rx * Math.Cos(degrees * Math.PI / 180), ry * Math.Sin(degrees * Math.PI / 180)));
     }
 }

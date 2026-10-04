@@ -20,6 +20,10 @@ public sealed class ConversionTests
     [InlineData(@"\begin{tikzpicture}\draw[unknown] (0,0)--(1,0);\end{tikzpicture}", "TIKZ002")]
     [InlineData(@"\begin{tikzpicture}\draw (0,0)--(1/0,0);\end{tikzpicture}", "TIKZ004")]
     [InlineData(@"\begin{tikzpicture}\draw (0,0)--(1,0)\end{tikzpicture}", "TIKZ002")]
+    [InlineData(@"\begin{tikzpicture}\draw (0,0) ellipse[x radius=1cm,y radius=1];\end{tikzpicture}", "TIKZ001")]
+    [InlineData(@"\begin{tikzpicture}\draw (0,0) arc[start angle=0,end angle=90,x radius=1,y radius=1cm];\end{tikzpicture}", "TIKZ001")]
+    [InlineData(@"\begin{tikzpicture}\draw (0,0) arc[start angle=0,end angle=100000000,radius=1];\end{tikzpicture}", "TIKZ005")]
+    [InlineData(@"\begin{tikzpicture}[scale=0]\coordinate (p) at (1,0);\draw (p)--(0,0);\end{tikzpicture}", "TIKZ004")]
     public void UnsupportedOrInvalidInputHasNoSuccessArtifact(string source, string code)
     {
         var failure = Assert.IsType<TikzFailure>(TikzConverter.Convert(source, TikzOptions.Default, CancellationToken.None));
@@ -43,6 +47,18 @@ public sealed class ConversionTests
         using var source = new CancellationTokenSource(); source.Cancel();
         var error = Assert.Throws<OperationCanceledException>(() => TikzConverter.Convert("", TikzOptions.Default, source.Token));
         Assert.Equal(source.Token, error.CancellationToken);
+    }
+    [Fact]
+    public void GeneratedShapeSegmentsShareTheConversionBudget()
+    {
+        var options = TikzOptions.Default with
+        {
+            InputKind = TikzInputKind.PictureBody,
+            Limits = TikzLimits.Default with { MaxSegments = 10 }
+        };
+        var failure = Assert.IsType<TikzFailure>(TikzConverter.Convert(@"\draw (0,0) circle (1) (2,0) circle (1);", options, CancellationToken.None));
+        Assert.Equal("TIKZ005", Assert.Single(failure.Diagnostics).Code);
+        Assert.Equal(0, failure.Statistics.OutputBytes);
     }
     [Fact]
     public void LongFlatArithmeticIsBoundedBeforeEvaluation()

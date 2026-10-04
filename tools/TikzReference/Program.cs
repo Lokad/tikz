@@ -37,6 +37,7 @@ internal static partial class ReferenceTool
                     throw new InvalidOperationException("Invalid trusted fixture manifest.");
             var exitCode = 0;
             var reports = new List<object>();
+            var calibrationFolders = new List<string>();
             foreach (var c in selected)
             {
                 if (args[0] == "generate-reference")
@@ -50,9 +51,12 @@ internal static partial class ReferenceTool
                 var output = options.GetValueOrDefault("out", args[0] == "calibrate-reference" ? "artifacts/calibration" : "artifacts/comparisons");
                 if (selected.Length > 1 || !options.ContainsKey("case")) output = Path.Combine(output, c.Id);
                 var result = await Compare(c, ArtifactDirectory(output), args[0] == "calibrate-reference");
+                if (args[0] == "calibrate-reference") calibrationFolders.Add(ArtifactDirectory(output));
                 reports.Add(new { caseId = c.Id, exitCode = result, report = Relative(Path.Combine(output, "report.json")) });
                 exitCode = Math.Max(exitCode, result);
             }
+            if (args[0] == "calibrate-reference")
+                SaveCalibrationEvidence(calibrationFolders, ArtifactDirectory(options.GetValueOrDefault("out", "artifacts/calibration")));
             if (args[0] == "compare" && !options.ContainsKey("case"))
             {
                 var suiteDirectory = ArtifactDirectory(options.GetValueOrDefault("out", "artifacts/comparisons"));

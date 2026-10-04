@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 2,
+  "units": "Independent PGF bounds, anchors, soft-path coordinates and widths in TeX pt; paint from the pinned SVG driver; SVG translation in bp; PDF registration from shipped-out positions",
+  "pictureBoundsPt": {
+    "minX": -46.02438,
+    "minY": -31.08415,
+    "maxX": 95.84859,
+    "maxY": 14.72636
+  },
+  "boxPt": {
+    "width": 141.87297,
+    "height": 45.81052,
+    "depth": 0
+  },
+  "anchorsPt": {
+    "start": {
+      "x": 0,
+      "y": 0
+    },
+    "end": {
+      "x": 91.04877,
+      "y": 0
+    }
+  },
+  "svgOriginBp": {
+    "x": 107.620806,
+    "y": 67.473339
+  },
+  "pdfOriginPixels": {
+    "x": 239.49438806299298,
+    "y": 185.96444587354722
+  },
+  "stroke": {
+    "widthPt": 1,
+    "color": "#0000ff",
+    "opacity": 1
+  },
+  "paths": [
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": -22.76219,
+            "y": 14.22636
+          },
+          "control1": {
+            "x": 0,
+            "y": 7.8571
+          },
+          "control2": {
+            "x": -10.19083,
+            "y": 14.22636
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": -45.52438,
+            "y": 0
+          },
+          "control1": {
+            "x": -35.33356,
+            "y": 14.22636
+          },
+          "control2": {
+            "x": -45.52438,
+            "y": 7.8571
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": -22.76219,
+            "y": -14.22636
+          },
+          "control1": {
+            "x": -45.52438,
+            "y": -7.8571
+          },
+          "control2": {
+            "x": -35.33356,
+            "y": -14.22636
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": -11.3811,
+            "y": -14.22636
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 1,
+      "strokeColor": "#0000ff",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 45.52438,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 28.45274,
+            "y": -8.53581
+          },
+          "control1": {
+            "x": 45.52438,
+            "y": -4.71425
+          },
+          "control2": {
+            "x": 37.88127,
+            "y": -8.53581
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 28.45274,
+            "y": -15.64899
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 1,
+      "strokeColor": "#ff0000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 91.04877,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 81.94386,
+            "y": 9.85637
+          },
+          "control1": {
+            "x": 91.04877,
+            "y": 4.0656
+          },
+          "control2": {
+            "x": 87.57718,
+            "y": 7.82365
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 69.67693,
+            "y": 11.20833
+          },
+          "control1": {
+            "x": 78.23666,
+            "y": 11.19408
+          },
+          "control2": {
+            "x": 73.89261,
+            "y": 11.67287
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 1,
+      "strokeColor": "#008000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 91.04877,
+            "y": -21.33954
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 85.21667,
+            "y": -29.11282
+          },
+          "control1": {
+            "x": 95.4486,
+            "y": -24.06119
+          },
+          "control2": {
+            "x": 92.83743,
+            "y": -27.54149
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 63.45114,
+            "y": -27.02997
+          },
+          "control1": {
+            "x": 77.59592,
+            "y": -30.68416
+          },
+          "control2": {
+            "x": 67.85097,
+            "y": -29.75162
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 61.55841,
+            "y": -23.19664
+          },
+          "control1": {
+            "x": 61.57835,
+            "y": -25.8715
+          },
+          "control2": {
+            "x": 60.90807,
+            "y": -24.514
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.8,
+      "strokeColor": "#ff00ff",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    }
+  ],
+  "clips": []
+}

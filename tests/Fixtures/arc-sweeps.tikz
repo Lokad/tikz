@@ -1,0 +1,8 @@
+\begin{tikzpicture}[x=8mm,y=5mm]
+  \coordinate (start) at (0,0);
+  \coordinate (end) at (4,0);
+  \draw[blue,line width=1pt] (start) arc[start angle=0,end angle=270,radius=1] -- ++(.5,0);
+  \draw[red,line width=1pt] (2,0) arc[start angle=0,end angle=-90,x radius=6mm,y radius=3mm] -- ++(0,-.5);
+  \draw[green!50!black,line width=1pt] (end) arc (0:100:.8);
+  \draw[magenta,line width=.8pt] (4,-1.5) arc[start angle=30,end angle=-190,x radius=.7,y radius=.4];
+\end{tikzpicture}

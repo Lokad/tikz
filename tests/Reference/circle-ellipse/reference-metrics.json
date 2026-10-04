@@ -1,0 +1,389 @@
+{
+  "schemaVersion": 2,
+  "units": "Independent PGF bounds, anchors, soft-path coordinates and widths in TeX pt; paint from the pinned SVG driver; SVG translation in bp; PDF registration from shipped-out positions",
+  "pictureBoundsPt": {
+    "minX": -28.95273,
+    "minY": -28.9527,
+    "maxX": 108.44032,
+    "maxY": 26.97853
+  },
+  "boxPt": {
+    "width": 137.39305,
+    "height": 55.93123,
+    "depth": 0
+  },
+  "anchorsPt": {
+    "start": {
+      "x": 0,
+      "y": 0
+    },
+    "end": {
+      "x": 85.35822,
+      "y": 17.78294
+    }
+  },
+  "svgOriginBp": {
+    "x": 90.61293,
+    "y": 79.679732
+  },
+  "pdfOriginPixels": {
+    "x": 216.81722741542137,
+    "y": 202.23963030562484
+  },
+  "stroke": {
+    "widthPt": 1,
+    "color": "#0000ff",
+    "opacity": 1
+  },
+  "paths": [
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 28.45273,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 0,
+            "y": 17.78294
+          },
+          "control1": {
+            "x": 28.45273,
+            "y": 9.82137
+          },
+          "control2": {
+            "x": 15.7142,
+            "y": 17.78294
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": -28.45273,
+            "y": 0
+          },
+          "control1": {
+            "x": -15.7142,
+            "y": 17.78294
+          },
+          "control2": {
+            "x": -28.45273,
+            "y": 9.82137
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 0,
+            "y": -17.78294
+          },
+          "control1": {
+            "x": -28.45273,
+            "y": -9.82137
+          },
+          "control2": {
+            "x": -15.7142,
+            "y": -17.78294
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 28.45273,
+            "y": 0
+          },
+          "control1": {
+            "x": 15.7142,
+            "y": -17.78294
+          },
+          "control2": {
+            "x": 28.45273,
+            "y": -9.82137
+          }
+        },
+        {
+          "kind": "Close",
+          "end": {
+            "x": 28.45273,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 42.6791,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 1,
+      "strokeColor": "#0000ff",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 108.14032,
+            "y": 17.78706
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 85.37807,
+            "y": 26.67853
+          },
+          "control1": {
+            "x": 108.14032,
+            "y": 22.69774
+          },
+          "control2": {
+            "x": 97.94946,
+            "y": 26.67853
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 62.61581,
+            "y": 17.78706
+          },
+          "control1": {
+            "x": 72.80667,
+            "y": 26.67853
+          },
+          "control2": {
+            "x": 62.61581,
+            "y": 22.69774
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 85.37807,
+            "y": 8.8956
+          },
+          "control1": {
+            "x": 62.61581,
+            "y": 12.87639
+          },
+          "control2": {
+            "x": 72.80667,
+            "y": 8.8956
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 108.14032,
+            "y": 17.78706
+          },
+          "control1": {
+            "x": 97.94946,
+            "y": 8.8956
+          },
+          "control2": {
+            "x": 108.14032,
+            "y": 12.87639
+          }
+        },
+        {
+          "kind": "Close",
+          "end": {
+            "x": 108.14032,
+            "y": 17.78706
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": true,
+      "widthPt": 0.6,
+      "strokeColor": "#ff0000",
+      "fillColor": "#ffff00",
+      "strokeOpacity": 1,
+      "fillOpacity": 0.4,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 96.02797,
+            "y": -17.78294
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 85.35822,
+            "y": -7.11319
+          },
+          "control1": {
+            "x": 96.02797,
+            "y": -11.89014
+          },
+          "control2": {
+            "x": 91.25102,
+            "y": -7.11319
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 74.68846,
+            "y": -17.78294
+          },
+          "control1": {
+            "x": 79.46541,
+            "y": -7.11319
+          },
+          "control2": {
+            "x": 74.68846,
+            "y": -11.89014
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 85.35822,
+            "y": -28.4527
+          },
+          "control1": {
+            "x": 74.68846,
+            "y": -23.67575
+          },
+          "control2": {
+            "x": 79.46541,
+            "y": -28.4527
+          }
+        },
+        {
+          "kind": "Cubic",
+          "end": {
+            "x": 96.02797,
+            "y": -17.78294
+          },
+          "control1": {
+            "x": 91.25102,
+            "y": -28.4527
+          },
+          "control2": {
+            "x": 96.02797,
+            "y": -23.67575
+          }
+        },
+        {
+          "kind": "Close",
+          "end": {
+            "x": 96.02797,
+            "y": -17.78294
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 1,
+      "strokeColor": "#008000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    }
+  ],
+  "clips": []
+}
