@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>Lokad.TikZ</PackageId>
+    <Version>0.1.0-preview.1</Version>
+    <Authors>Lokad</Authors>
+    <Description>Standalone managed TikZ subset to self-contained SVG converter for .NET.</Description>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>tikz;pgf;svg;diagrams;compiler</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <DebugType>portable</DebugType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageOutputPath>../../artifacts/nuget</PackageOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../LICENSE.txt" Pack="true" PackagePath="/" />
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+    <InternalsVisibleTo Include="Lokad.TikZ.Tests" />
+  </ItemGroup>
+  <Target Name="EnforceReleasePack" BeforeTargets="GenerateNuspec" Condition="'$(Configuration)' != 'Release'">
+    <Error Text="Pack Lokad.TikZ explicitly with -c Release." />
+  </Target>
+</Project>

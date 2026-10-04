@@ -1,0 +1,8 @@
+# Upstream reference checkouts and local experiments.
+/external/
+**/bin/
+**/obj/
+/artifacts/
+/BenchmarkDotNet.Artifacts/
+.vs/
+*.user

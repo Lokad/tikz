@@ -1,0 +1,7 @@
+<Project>
+  <Target Name="EnforceProductionDependencies" BeforeTargets="CollectPackageReferences"
+          Condition="'$(MSBuildProjectName)' == 'Lokad.TikZ'">
+    <Error Condition="'@(PackageReference)' != ''" Text="Lokad.TikZ must have no runtime or build PackageReference." />
+    <Error Condition="'@(ProjectReference)' != ''" Text="Lokad.TikZ must remain standalone." />
+  </Target>
+</Project>
