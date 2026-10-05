@@ -124,9 +124,13 @@ traces and agent-viewable images at 1x/4x over transparent/white/black backgroun
 preserving original root framing and separate expanded inspection views.
 
 These numeric results cover the named fixtures. They do not establish image
-or PDF conformance. Focused and interaction corpora, independent precision
-calibration, regional image gates, and comparator defects are still required.
-No rectangle/path raster
-tolerance applies to these new shapes. A degenerate unequal-axis border that
+or PDF conformance. A separate [oracle-only reconstruction](../tools/TikzShapeCalibration/README.md)
+now measures native CSS serialization, driver framing and fixed scaled-point
+sensitivity without invoking the converter. Its five variants retain raw
+differences and twelve exact unchanged-pair repeats; no image policy is
+approved. Independent visible-ink framing, further focused and interaction
+corpora, regional edge/component gates, comparator defects and ordinary PDF
+evidence are still required. No rectangle/path raster tolerance applies to
+these new shapes. A degenerate unequal-axis border that
 cannot be computed at native scaled-point precision fails at its source
 coordinate; callers can still use a supported explicit anchor.

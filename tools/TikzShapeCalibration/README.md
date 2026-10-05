@@ -1,0 +1,77 @@
+# Independent circle and ellipse SVG calibration
+
+```text
+dotnet run --project tools/TikzShapeCalibration -c Release -- derive-svg
+node tools/TikzVisual/calibrate-shapes.mjs
+```
+
+The first command reconstructs the fixed, trusted 28-node shape fixture using
+only retained native PGF paths, measured node frames, DVI glyph positions,
+original TFM inputs, and the original SVG outlines and paint. It first executes
+the independent reference project's cached verifier. This executable has only
+framework assembly references; it neither references nor invokes Lokad.TikZ.
+It links the independently tested native glyph reader as source, without
+referencing the candidate comparison assembly. No TeX or browser is needed.
+
+Five derived SVGs isolate different representation choices:
+
+| Variant | Independent operation |
+| --- | --- |
+| `driver-css` | Retain all original paths, outlines and transforms; express the root dimensions and camera in CSS units. |
+| `native-css-12` | Reconstruct global geometry and label placement from native integer measurements, with twelve decimal places. |
+| `native-css-6` | Serialize the same reconstruction with six decimal places. |
+| `sp-plus`, `sp-minus` | Apply fixed global translations of ±4 TeX scaled points; pad the root frame by the translation magnitude. These are sensitivity experiments. |
+
+The reconstruction preserves native paint order, including each background
+followed by its label. Every glyph's font and slot must match its original
+outline definition. Four native variants each retain 1,238 serialization
+checks with explicit quantities, units, errors, bounds and verdicts. The
+original driver root frame remains the independent framing input. Derivation
+provenance includes retained artifacts, original inputs, source hashes, the
+actual executable assembly hash and its framework references.
+
+The second command generates a fresh derivation and verifies all its hashes.
+It uses the existing pinned development renderer without applying any
+candidate tolerance policy. Each representation is compared with the original
+oracle at 1x/4x, on transparent/white/black backgrounds. Natural views retain
+each original or derived root frame; expanded views use a shared camera from
+native picture bounds and the original driver origin, with four CSS pixels of
+declared padding. No image fitting or candidate geometry determines a camera
+or region.
+
+The bundle under `artifacts/node-shape-calibration/` contains:
+
+- `derivation.json`, native measurements/glyph evidence, original source,
+  SVGs, logs, profiles, font inputs and provenance;
+- `calibration.json`, 60 whole-picture and 5,880 local measurements covering
+  98 native background/glyph regions, with raw and premultiplied RGBA errors;
+- twelve separately decoded unchanged-oracle pairs, requiring exact RGBA
+  equality in both frames at every scale/background;
+- 610 hash-identified paired images, RGB/alpha differences, amplified differences,
+  overlays, contact sheets and enlarged local crops;
+- `calibration.html`, linking the representations and their largest regional
+  differences for direct agent or human inspection.
+
+The source/tool/artifact identities are checked before and after rendering.
+Exact equality uses original RGBA samples; a separate grayscale alpha difference
+preserves alpha-only discrepancies that an RGB difference would hide.
+The fixed output directory rejects symbolic links/junctions. Both commands
+return 0 for complete evidence generation, and 2 for infrastructure failure.
+`calibration.json` deliberately retains a pending verdict and makes no
+candidate conformance claim. These observed differences and perturbations
+are not approved acceptance limits.
+
+Local execution establishes a useful framing control: `driver-css` is exact
+in the expanded camera at both scales and all backgrounds, while its natural
+root rendering differs. That identifies a viewport/rendering contribution
+separately from changing compiler geometry. The six-decimal native
+reconstruction has nonzero primary differences, retained in full. Twelve
+decimals do not eliminate them. The ±4sp trials measure sensitivity and do not
+authorize an error budget of that magnitude.
+
+Shape-specific visible-ink containment and root framing, additional focused
+and interaction fixtures, edge/component gates, image-only defect controls
+with numeric checks bypassed, ordinary PDF references and separate calibration,
+and a reviewed admission policy remain required. Existing rectangle/path
+allowances do not apply. CI prepares the evidence and uploads the bundle;
+hosted execution remains unverified.

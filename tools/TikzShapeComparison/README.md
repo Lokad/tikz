@@ -58,6 +58,12 @@ no image thresholds and inherits no rectangle/path tolerance. Independent
 precision calibration, focused/interaction corpora, image-only defects,
 secondary PDF evidence, and a reviewed combined admission remain required.
 
+The separate [oracle-only calibration](../TikzShapeCalibration/README.md) now
+reconstructs native PGF/DVI geometry and labels, measures five independent SVG
+representations and retains framing/serialization/sensitivity observations.
+It neither references nor invokes this candidate assembly. Its measurements
+remain pending evidence, with no approved candidate image policy.
+
 Numeric comparison and inspection generation are prepared CI steps with
 uploaded bundles. Hosted execution remains unverified. Earlier ignored debug
 previews are historical observations, not the current comparison command.

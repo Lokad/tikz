@@ -20,6 +20,7 @@ jobs:
       - run: dotnet run --project tools/TikzShapeReference -c Release --no-restore -- check-cached
       - run: pwsh -NoProfile -File tools/TikzShapeReference/check-cached.ps1
       - run: dotnet run --project tools/TikzShapeComparison -c Release --no-restore -- compare-numeric
+      - run: dotnet run --project tools/TikzShapeCalibration -c Release --no-restore -- derive-svg
       - run: dotnet run --project tools/TikzReference -c Release --no-restore -- compare-node-layout
       - run: dotnet pack src/Lokad.TikZ -c Release --no-restore
       - uses: actions/upload-artifact@v4
@@ -30,6 +31,7 @@ jobs:
             artifacts/node-layout/
             artifacts/node-shape-cache-tests/
             artifacts/node-shape-comparisons/
+            artifacts/node-shape-calibration/
           if-no-files-found: error
 
   visual:
@@ -55,6 +57,7 @@ jobs:
       - run: dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-pdf
       - run: node tools/TikzVisual/compare-border-conformance.mjs
       - run: node tools/TikzVisual/inspect-shapes.mjs
+      - run: node tools/TikzVisual/calibrate-shapes.mjs
       - run: npm test --prefix tools/TikzVisual
       - run: npm run test:fonts --prefix tools/TikzVisual
       - run: npm run test:text --prefix tools/TikzVisual
@@ -90,4 +93,5 @@ jobs:
             artifacts/border-conformance/
             artifacts/border-policy-tests/
             artifacts/node-shape-comparisons/
+            artifacts/node-shape-calibration/
           if-no-files-found: error

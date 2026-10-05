@@ -66,6 +66,24 @@ CI steps. The inspector's successful artifact generation is not an image pass.
 Circle/ellipse image and PDF conformance remain pending; these cases inherit no
 existing node or path raster allowance.
 
+Run the separate [oracle-only shape calibration](../tools/TikzShapeCalibration/README.md)
+before considering any image allowance:
+
+```text
+dotnet run --project tools/TikzShapeCalibration -c Release -- derive-svg
+node tools/TikzVisual/calibrate-shapes.mjs
+```
+
+This project has no converter reference. It reconstructs native paths and
+glyphs, retains original outlines/paint, and compares five representations of
+the independent oracle. It records 4,952 serialization checks, 60 whole-picture
+and 5,880 regional observations, twelve exact unchanged-pair repeats, and
+hash-identified images under `artifacts/node-shape-calibration/`.
+The HTML gallery and JSON report support agent inspection. Successful evidence
+generation retains a pending image verdict; the observed errors define no
+candidate threshold. Natural and expanded cameras expose framing effects
+separately. PDF and image-only defect evidence remain required.
+
 ## Cached visual conformance
 
 Install the pinned development-only browser tooling once:
