@@ -5,6 +5,7 @@ internal sealed record ScopeStatement(List<Option> Options, List<Statement> Body
 internal sealed record SetStatement(List<Option> Options, Source Origin) : Statement(Origin);
 internal sealed record LibraryStatement(Source Names, Source Origin) : Statement(Origin);
 internal sealed record CoordinateStatement(string Name, Coordinate Point, Source Origin) : Statement(Origin);
+internal sealed record NodeStatement(string Name, Coordinate? At, List<Option> Options, Source Label, Source Origin) : Statement(Origin);
 internal sealed record PathStatement(string Command, List<Option> Options, List<PathOperation> Operations, Source Origin) : Statement(Origin);
 internal abstract record PathOperation(Source Source);
 internal sealed record MoveOperation(Coordinate Point, Source Origin) : PathOperation(Origin);

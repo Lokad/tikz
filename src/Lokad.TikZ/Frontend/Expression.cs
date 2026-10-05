@@ -17,6 +17,22 @@ internal sealed record Literal(Number Number, Source Origin) : Expression(Origin
 {
     public override Number Evaluate(IReadOnlyDictionary<string, Number> variables, Budget budget) { budget.Charge(Source); return Number; }
 }
+internal sealed record FontRelativeLiteral(double Factor, string Unit, Source Origin) : Expression(Origin)
+{
+    internal const string EmVariable = "\0font-em-sp";
+    internal const string ExVariable = "\0font-ex-sp";
+    public override Number Evaluate(IReadOnlyDictionary<string, Number> variables, Budget budget)
+    {
+        budget.Charge(Source);
+        if (!variables.TryGetValue(Unit == "em" ? EmVariable : ExVariable, out var metric))
+            return new(Factor * (Unit == "em" ? 10 : 4.30554), true);
+        var coefficient = Math.Round(Factor * 65536, MidpointRounding.AwayFromZero);
+        if (!double.IsFinite(coefficient) || Math.Abs(coefficient) > 1073741823) Budget.Fail(Source, "font-relative dimension");
+        var value = (long)coefficient * (long)metric.Value / 65536;
+        if (value is < -1073741823 or > 1073741823) Budget.Fail(Source, "font-relative dimension");
+        return new(value / 65536.0, true);
+    }
+}
 internal sealed record Variable(string Name, Source Origin) : Expression(Origin)
 {
     public override Number Evaluate(IReadOnlyDictionary<string, Number> variables, Budget budget)
@@ -139,10 +155,11 @@ internal sealed class ExpressionReader(Source source, Budget budget)
             var unitStart = _reader.Position;
             while (char.IsLetter(_reader.Peek)) _reader.Advance();
             var unit = source.Slice(unitStart, _reader.Position - unitStart).Value.Trim();
+            if (unit is "em" or "ex") return new FontRelativeLiteral(value, unit, text);
             var factor = unit switch
             {
                 "" => 1, "pt" => 1, "bp" => 72.27 / 72, "cm" => 72.27 / 2.54, "mm" => 72.27 / 25.4,
-                "in" => 72.27, "sp" => 1.0 / 65536, "px" => 72.27 / 96, "em" => 10, "ex" => 4.30554,
+                "in" => 72.27, "sp" => 1.0 / 65536, "px" => 72.27 / 96,
                 _ => throw new CompileError("TIKZ002", $"Unsupported unit '{unit}'.", text)
             };
             return new Literal(new(value * factor, unit.Length != 0), text);

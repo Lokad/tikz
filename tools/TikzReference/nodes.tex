@@ -32,6 +32,9 @@
       \lokadnodequantity{outery}{\pgfkeysvalueof{/pgf/outer ysep}}%
       \lokadnodequantity{minimumwidth}{\pgfkeysvalueof{/pgf/minimum width}}%
       \lokadnodequantity{minimumheight}{\pgfkeysvalueof{/pgf/minimum height}}%
+      % This unknown DVI special has no SVG paint or dimensions. DVItype
+      % reports its native baseline position before the existing label box.
+      \setbox\pgfnodeparttextbox=\hbox{\special{lokad-node-origin #3}\box\pgfnodeparttextbox}%
       \lokadoriginalnode{#1}{#2}{#3}{#4}%
     }%
     \let\lokadoriginalrectangle\pgfpathrectanglecorners

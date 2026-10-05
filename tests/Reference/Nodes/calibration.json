@@ -1,0 +1,5246 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-node-css-v1-oracle-calibration",
+  "generatedUtc": "2026-10-05T01:55:38.1923775\u002B00:00",
+  "converterInvoked": false,
+  "scope": "22 rectangle nodes; native glyph positions, CSS serialization, native frame; primary only",
+  "command": "dotnet run --project tools/TikzReference -c Release -- calibrate-node-svg",
+  "provenance": {
+    "schemaVersion": 1,
+    "scope": "oracle-only primary experiment; no candidate code or font data",
+    "converterInvoked": false,
+    "nativeFrame": "union of native stroked rectangle borders and native text layout boxes; original outline containment checked separately",
+    "hashes": {
+      "reference.svg": "1a42a1e1f6a58be7c87cdb827d135f483f28c0a664758eed09ae85f4283cc662",
+      "actual.svg": "8b69225780b72f0c6292daf68783ffd29adf29f09ce78a2c7517d7bb9769df8e",
+      "metrics.json": "b0e623dafc88f9275ba26e6683d048f8b07d31cef8fa703af2d125a0ab4c24f3",
+      "native-positions.log": "f0fd7b355447b556d82a64fdad4089c89aa19094d4871b7c67352ce3a1b0db69"
+    },
+    "tools": {
+      "tools/TikzReference/NodeSvg.cs": "2094b7b911f8fc31f2c2cbbfea7991544eb09ea80cb0237c310afc0df57adc3c",
+      "tools/TikzReference/NativeNodeGlyphs.cs": "368124a44279b926cf97e08ee1c2463c56b4de78998dcd9d8248d4b66f6733e6",
+      "tools/TikzReference/NodeReference.cs": "316f514155b13a19d7eb1eb2728526968e1f5c51abd3385ef13d2d59ef328edd",
+      "tools/TikzVisual/node-crop-check.mjs": "0d1494d01289d6dff8920ce9f3eb760870cc2fe3e1b1c9a83db14da2a2289454",
+      "tools/TikzVisual/compare.mjs": "fb5b82c68c6aa87dc16c9c74f10a7f1c2e8ac804ce64e2ad8f3c7c071dcd6854",
+      "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+    }
+  },
+  "oracle": {
+    "schemaVersion": 1,
+    "profile": "pgf-3.1.11a-rectangle-layout-v2",
+    "sourceHashes": {
+      "tests/Fixtures/Nodes/rectangles.tikz": "90b902275f1eaf3e4e501c7c9f0b6f716df2abd52ca3bf5b0084fb003488d302",
+      "tests/Reference/Nodes/cases.json": "30e693fe97d5c4f6fab558f0489bb5cf2b6b897057cf7ad5425f7d419840c144",
+      "tests/Reference/Nodes/oracle-profile.json": "e21ce11a7ec683ec306d3c6ccbef77dc7586642031143f5a9aff25237020f6dc",
+      "tools/TikzReference/nodes.tex": "e87f173a1710db9923707e2dbb5c6b23d9812965ca55962bfa879994373a0f44",
+      "tools/TikzFontData/font-profile.json": "0f1fd5e433f78ca8e21ebbc12045ee96259316235aa25e4e3758b96561000fe9"
+    },
+    "generatedUtc": "2026-10-05T01:06:32.6043974\u002B00:00",
+    "tools": [
+      {
+        "name": "latex",
+        "version": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+        "sha256": "37659e30ba4537584b6418de22ce310247128edbc1481fc97fd9b24260f11caf"
+      },
+      {
+        "name": "dvisvgm",
+        "version": "dvisvgm 3.4.3",
+        "sha256": "74a03e974afc08f5b24417bbe08af792be6634eacfa16c1ce6f870cad95f53fa"
+      },
+      {
+        "name": "dvitype",
+        "version": "MiKTeX-DVITYPE 2.9.6300 (MiKTeX 25.4)",
+        "sha256": "53da4ba9cfc7bcd84b820b5bd22a9177b9cae171f4224c001963661076d8cafb"
+      }
+    ],
+    "inputs": [
+      {
+        "path": "engine-data/ec-lmbx10.tfm",
+        "sha256": "0895c940bd2e763b70dcab18ebf27fd3f93c2490f43b2a8c028fc7fc24b2e855"
+      },
+      {
+        "path": "engine-data/ec-lmbx12.tfm",
+        "sha256": "d19c45859d453c0802699d27aa2bff735574b9bc97d8791aa76e3c7de6c38a36"
+      },
+      {
+        "path": "engine-data/ec-lmr10.tfm",
+        "sha256": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5"
+      },
+      {
+        "path": "engine-data/ec-lmr12.tfm",
+        "sha256": "299021120f0a29ef61278a2363903bd8defbb8faaade458eb79067342aecb56f"
+      },
+      {
+        "path": "engine-data/ec-lmri10.tfm",
+        "sha256": "372f968b4eeb47bf6a6c941c8793bce118d1800f12e194a351c7493ecc158f2a"
+      },
+      {
+        "path": "engine-data/ec-lmri12.tfm",
+        "sha256": "879072f2a2086f46e61934977f2e919bb6f196c08442b5b62242e78e576820ce"
+      },
+      {
+        "path": "engine-data/ecrm1000.tfm",
+        "sha256": "9257fdd8d4296c33d769720be09d0cf2bcdca251b15667ae6baea760355d8dfe"
+      },
+      {
+        "path": "engine-data/latex.fmt",
+        "sha256": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac"
+      },
+      {
+        "path": "font-data/GUST-FONT-LICENSE.txt",
+        "sha256": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050"
+      },
+      {
+        "path": "font-data/MANIFEST-Latin-Modern.txt",
+        "sha256": "402c79f4ede8548a6fe6f82f42f0288cb0243ba2403dfdeeaadf55d189a46fae"
+      },
+      {
+        "path": "font-data/README-Latin-Modern.txt",
+        "sha256": "7cac4a4a78985ccb1ed429bb2eddf32eeb2e413c94493c7b268385bb7b525250"
+      },
+      {
+        "path": "font-data/ec-lmbx10.tfm",
+        "sha256": "0895c940bd2e763b70dcab18ebf27fd3f93c2490f43b2a8c028fc7fc24b2e855"
+      },
+      {
+        "path": "font-data/ec-lmbx12.tfm",
+        "sha256": "d19c45859d453c0802699d27aa2bff735574b9bc97d8791aa76e3c7de6c38a36"
+      },
+      {
+        "path": "font-data/ec-lmr10.tfm",
+        "sha256": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5"
+      },
+      {
+        "path": "font-data/ec-lmr12.tfm",
+        "sha256": "299021120f0a29ef61278a2363903bd8defbb8faaade458eb79067342aecb56f"
+      },
+      {
+        "path": "font-data/ec-lmri10.tfm",
+        "sha256": "372f968b4eeb47bf6a6c941c8793bce118d1800f12e194a351c7493ecc158f2a"
+      },
+      {
+        "path": "font-data/ec-lmri12.tfm",
+        "sha256": "879072f2a2086f46e61934977f2e919bb6f196c08442b5b62242e78e576820ce"
+      },
+      {
+        "path": "font-data/lm-ec.enc",
+        "sha256": "7f9932c402d22a937b853406cfdf4166b80260e3ff21a03fe9a4c05105a2918c"
+      },
+      {
+        "path": "font-data/lm.map",
+        "sha256": "d40c55f3e00607c98ae0d99112dcb56e18e9b9ea8febac443cfd6533469ac90d"
+      },
+      {
+        "path": "font-data/lmbx10.pfb",
+        "sha256": "4acd67f9ece59a12e073aa863dbb1d5cea194f7f7b88ecce4659184d8275aa42"
+      },
+      {
+        "path": "font-data/lmbx12.pfb",
+        "sha256": "fb9b7cf1d13a8a837c2c6b238e7255f8d6f4cd6608bf3024ee68e43d04f01a08"
+      },
+      {
+        "path": "font-data/lmr10.pfb",
+        "sha256": "84eb01245abb17c0530ca3909427256d73df8bed2d7243b9f2717ca08c010ac8"
+      },
+      {
+        "path": "font-data/lmr12.pfb",
+        "sha256": "d5fd4fdecfdbc8f97e955964aa2574927182303df178fe0c2e568fe9056e326c"
+      },
+      {
+        "path": "font-data/lmri10.pfb",
+        "sha256": "1239c71330ac8f0584e22f4d6abd0f016421fc73c545b15512ccf80b263f5c66"
+      },
+      {
+        "path": "font-data/lmri12.pfb",
+        "sha256": "78dc9fcb4af454305a5564d568eace838c375f3bf3d82337b0e87fdeb00e2d2c"
+      },
+      {
+        "path": "font-data/lppl.txt",
+        "sha256": "5f05fcf6ef25a6c31bccd2df7c0c46b23107bbeb2ce5cdba74efb5cc357f4dbb"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcore.code.tex",
+        "sha256": "ec94fcfeeda3204c4e43d2008be50b6005da0e642deafaead137284d66e82926"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorearrows.code.tex",
+        "sha256": "ffabc47530ac7058f6dff74bf3325ab114049dcedc51b2d8556f578b03311799"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex",
+        "sha256": "545c4616f93c5f5d25bc04090a0b7ef869bab84b3952fadfd539d71187c83fe0"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex",
+        "sha256": "81862c3425e8aa2a82e605eb8fde07b1b7b47862b981922393d4f54ca9fa6250"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcoreimage.code.tex",
+        "sha256": "758e504e9c194cf9bbed098700b1d7969420e9a87552222d3000084a9d095571"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorelayers.code.tex",
+        "sha256": "743e89ac1e529af45751fa85fde4b3438284a63dfd53ff52c94c2f229b20beff"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex",
+        "sha256": "541e41626d66e0e8bc8b5249805c9efbb134dfe0dc85c63102eea3c2d21da6f0"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex",
+        "sha256": "64b0b4193616b937a2b4520c678f8863ae06ab38385bb58db437b39a8f27719b"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex",
+        "sha256": "359d413e7bb9d37f0fddc6ea5827415f6c73db584e781f6b2e2521059b595285"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex",
+        "sha256": "165569c2ffb6a80272d2853c3d3c4373c386391e8cbb81ed9683ae2a810dd28c"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex",
+        "sha256": "f91d37fcda30e70ae85fbd9030682bc64df4424fc1260704def57dc6c444a63a"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorepoints.code.tex",
+        "sha256": "7533dd80c95a5124726b0a617a5f458226d4a7490bcd209e3fd7e717e24dc127"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorequick.code.tex",
+        "sha256": "6143371709342ea83dcdb1744a229d18f4c1ee670e1e31b496046a708bfa3e66"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorerdf.code.tex",
+        "sha256": "0bc32a855862a83b7ece27d2ebf6bfeace759d6b64fb776394eee13d62401350"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcorescopes.code.tex",
+        "sha256": "cd9bb9fbaac3f5bca5bedd77ca07a8c4457467869e2303fdf2b446a30dca9f9f"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcoreshade.code.tex",
+        "sha256": "42ff3f6524037f73b44d16fe0abeae93a72407950b6a9b176f4d6a2a3f6e9fdb"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex",
+        "sha256": "bdea875774b4ad7a1e12debc67c46286245031f5c2e287c9e192f3ca4b6193b6"
+      },
+      {
+        "path": "tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex",
+        "sha256": "ea5e14f7fade556cee79636a6824710e97db928542fc1b23dfa618ff6448688e"
+      },
+      {
+        "path": "tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex",
+        "sha256": "992706da31e055cdbecf5b1bf1b9c267383e3b4d4385773448f868e1cabf17f2"
+      },
+      {
+        "path": "tex/generic/pgf/frontendlayer/tikz/tikz.code.tex",
+        "sha256": "5cf22e53ee27e044a06a4aebdd77924101a491915021428a61cd6ff3ff2c8e0e"
+      },
+      {
+        "path": "tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex",
+        "sha256": "b3db772dd8eb595d8a5c8ef8d232862f9cef97d4ac9dedee283ad7b6e83361dd"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfint.code.tex",
+        "sha256": "95f8053efeeb2267d543d8d1afb10195d6114765eea7b90755b4e0c359324d64"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmath.code.tex",
+        "sha256": "7fa0ff434e9cdeb14c40f326d53e6ea0273ef2046daf28987992e2488d186c85"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathcalc.code.tex",
+        "sha256": "58fcc94547646458470315a6d10953a9729e7962e3def5273633b06fb444a5aa"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfloat.code.tex",
+        "sha256": "ccd576f7cebab3a0c5d5cdef41fc44e638d7bb4a20e0a0465160eba1757795e5"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfunctions.base.code.tex",
+        "sha256": "f83601dd74e8c166162cb3daf926744c44ccf15a0122e17613658f82fa64c6a9"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfunctions.basic.code.tex",
+        "sha256": "c94abbd89ad0556546d9e5053af16b58ce7f38d19c379b27309e5fefd23908f8"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfunctions.code.tex",
+        "sha256": "9758185623cce6b2a8d4a504d10dfd0a01ef6d3480794fa4c466384f4c08540c"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex",
+        "sha256": "ea5ff35778088d94d8d2f1a20075ec57cc4ecd22844f9c288625a6db59ba7818"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex",
+        "sha256": "6e9383c1e63a6dbcfd2d95369905df566bdb6e7374c06e28c15a25eb782dc46b"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfunctions.misc.code.tex",
+        "sha256": "51038be668b2083ac5e8ae38a1da6f75091ee9471d71f33749d01a8bff1a9aa6"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfunctions.random.code.tex",
+        "sha256": "968308d364b4f31f2a787adf32c3df7d87959a519c4eb5c8b47bedde4311ab95"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfunctions.round.code.tex",
+        "sha256": "9b980e1373f9451da75cc6030a5b4c1671b88a1b14b45ed172cfb7cf2607fe1f"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex",
+        "sha256": "1c8834abe00807467a52d31ef96032d5084b2560eea45995018084d13a3cde3c"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathparser.code.tex",
+        "sha256": "317b4a8059ee9afd04b052dd2974c1c9a059d1b8e301f9578efa9ac0b9984990"
+      },
+      {
+        "path": "tex/generic/pgf/math/pgfmathutil.code.tex",
+        "sha256": "cda208d98bdc556a06f5915571c6ce4d98c18aa639c4782a56c6d32a6ba68055"
+      },
+      {
+        "path": "tex/generic/pgf/modules/pgfmodulematrix.code.tex",
+        "sha256": "ceafd7c1de02bde3d5a7570489ed6a150db51aabd658c1c78acf1ee5b5f89c6e"
+      },
+      {
+        "path": "tex/generic/pgf/modules/pgfmoduleplot.code.tex",
+        "sha256": "58a2c1ff27de97cb32b19ce95a4182d85369304980da9f1b21e4a1fddf4d666d"
+      },
+      {
+        "path": "tex/generic/pgf/modules/pgfmoduleshapes.code.tex",
+        "sha256": "01dd81e3f2c56a8db7864916ada1a5036964aff2e8176aafd4773244e236bb27"
+      },
+      {
+        "path": "tex/generic/pgf/pgf.revision.tex",
+        "sha256": "8c056cfd919cca2dc5e398c776865e1af6a8605ab9d715f452aa68327164b52d"
+      },
+      {
+        "path": "tex/generic/pgf/systemlayer/pgf.cfg",
+        "sha256": "eb308ac3d665db8dd3c03b18328c551609346c659c2ce0e5029223fbcc339cb3"
+      },
+      {
+        "path": "tex/generic/pgf/systemlayer/pgfsys-common-svg.def",
+        "sha256": "1a25e1bb28e23389db3010bed982a8403504cf8e6a4a0dbb105912e20433d13f"
+      },
+      {
+        "path": "tex/generic/pgf/systemlayer/pgfsys-dvisvgm.def",
+        "sha256": "5d5ce36eb9534e7c79bd99fdfd71891537d476abb332a0625f0d694f5dbf8bd2"
+      },
+      {
+        "path": "tex/generic/pgf/systemlayer/pgfsys.code.tex",
+        "sha256": "97d841d782de156f192fb9866c76ec65d28dabdf186cb4700094d0a5a13eadab"
+      },
+      {
+        "path": "tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex",
+        "sha256": "818b8e3cd0606bdb8ac7fbaccc5f80033672fa817537536f76bc67bc3942928c"
+      },
+      {
+        "path": "tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex",
+        "sha256": "6ea4caeea5bcb6cd60b80ef4607e8a79824ec0cdcebb47424c1bdbe0c2ea6671"
+      },
+      {
+        "path": "tex/generic/pgf/utilities/pgffor.code.tex",
+        "sha256": "5787859fab7c72cc3dfd7134e78bbb0e770a43e7da39f93732c24232249fdde8"
+      },
+      {
+        "path": "tex/generic/pgf/utilities/pgfkeys.code.tex",
+        "sha256": "212f64f8641fb944a006a3c0825e78d30b0a2c5e3b4c4d62ff59ef61214caeed"
+      },
+      {
+        "path": "tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex",
+        "sha256": "68cd7046c23f0c5d5775e5f481d14577f1d62bfe1dce1605387d46490edf7e5c"
+      },
+      {
+        "path": "tex/generic/pgf/utilities/pgfrcs.code.tex",
+        "sha256": "6d28f51c1b4cb933969339982286f86bb1c9af70ed34535482321de4cd491664"
+      },
+      {
+        "path": "tex/generic/pgf/utilities/pgfutil-common.tex",
+        "sha256": "ff576d97434040185004b8be9b40804b9e9f95ae225719583c4376d8718e9f06"
+      },
+      {
+        "path": "tex/generic/pgf/utilities/pgfutil-latex.def",
+        "sha256": "72036598130f2477df66608d26ab7008eb87a18b09fbe0c7eed9c63188720c77"
+      },
+      {
+        "path": "tex/latex/base/article.cls",
+        "sha256": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec"
+      },
+      {
+        "path": "tex/latex/base/fontenc.sty",
+        "sha256": "c8e5c14e796c785380298bb8b1e905234e9a49cfe450f1afa1b8340fe003348b"
+      },
+      {
+        "path": "tex/latex/base/size10.clo",
+        "sha256": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      },
+      {
+        "path": "tex/latex/graphics-cfg/color.cfg",
+        "sha256": "a3529ccdadc8248b4c5d7c34ceea53bdc1509b54f18a192ad51b924bd297d8df"
+      },
+      {
+        "path": "tex/latex/graphics-cfg/graphics.cfg",
+        "sha256": "feb91e48789a21e4acced98e952c77a2e2cf4a77e01bf147b59fa56a1b3f2008"
+      },
+      {
+        "path": "tex/latex/graphics-def/dvips.def",
+        "sha256": "f5eeb986870191dcd150b5c3a66df9d9bc62eec145087ad721b4326dc9b789ab"
+      },
+      {
+        "path": "tex/latex/graphics/graphics.sty",
+        "sha256": "979abfd05c3f5453ebdc2683f2e2e1a24600255c7246e3708b5670168c7259c4"
+      },
+      {
+        "path": "tex/latex/graphics/graphicx.sty",
+        "sha256": "90ffc59f1718ff399539023d15a5a2b14ce7d227b101c35ed64abcc7186c9338"
+      },
+      {
+        "path": "tex/latex/graphics/keyval.sty",
+        "sha256": "d3faa310a1e4485b8efb1ed3ae8b11f9552e70b630dc35290a7aabdcd064b09a"
+      },
+      {
+        "path": "tex/latex/graphics/mathcolor.ltx",
+        "sha256": "0804bb6e9e1eeeaeda861f29206d308194ea7cc846e38abaa344cdefa1d408cd"
+      },
+      {
+        "path": "tex/latex/graphics/trig.sty",
+        "sha256": "3c1add9bf649d1bee7db64bae800afb3dfac21b793afbbe2263553e0de66c450"
+      },
+      {
+        "path": "tex/latex/l3backend/l3backend-dvips.def",
+        "sha256": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee"
+      },
+      {
+        "path": "tex/latex/lm/lmodern.sty",
+        "sha256": "d2877369dcb4bfe7b1b6bba1a3d96c46e93366459c9b46576f1b221009bbe359"
+      },
+      {
+        "path": "tex/latex/lm/t1lmr.fd",
+        "sha256": "6b61abc8a6796f1884f819afcfc4c33558564f7e5c1d47b720e50ee15dba829a"
+      },
+      {
+        "path": "tex/latex/pgf/basiclayer/pgf.sty",
+        "sha256": "99e08946749446e0b9b7faa985f8202740a94476f9e99bab5286cca5ce4766e9"
+      },
+      {
+        "path": "tex/latex/pgf/basiclayer/pgfcore.sty",
+        "sha256": "3a52a05062a74a763ee604b4a3d20f0be4a4b99fe8182373e30ccea0abafc96e"
+      },
+      {
+        "path": "tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty",
+        "sha256": "7df38d1bb03d0bf642b3f53c38d86641765d950f82d481ebd63c67838bc78ee7"
+      },
+      {
+        "path": "tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty",
+        "sha256": "b5a95ba245bb51ce01e5ead16e818a0024f16cd208df3386b30ba0798a911344"
+      },
+      {
+        "path": "tex/latex/pgf/frontendlayer/tikz.sty",
+        "sha256": "6e39ff4fdf9f126aff28880a7dd59fccc0e6735409d92ca455cdd2a4f2b4db53"
+      },
+      {
+        "path": "tex/latex/pgf/math/pgfmath.sty",
+        "sha256": "4abed7d8c88642201dd1a932a435ae05a1f2659f1f7e95c72d6b5347c83d232a"
+      },
+      {
+        "path": "tex/latex/pgf/systemlayer/pgfsys.sty",
+        "sha256": "cc7121c5706c5c52807aea879ca0a9083a8dc81b04d96303d0d398804d9d3d52"
+      },
+      {
+        "path": "tex/latex/pgf/utilities/pgffor.sty",
+        "sha256": "5ae03317ea221a6f68d807775bd06a10625aa9fb1f590dbe2114688f735c447d"
+      },
+      {
+        "path": "tex/latex/pgf/utilities/pgfkeys.sty",
+        "sha256": "b90072b20d0590f23fd0ad273d059e3b7737319b3fb61e3bea6102fd77f24b3d"
+      },
+      {
+        "path": "tex/latex/pgf/utilities/pgfrcs.sty",
+        "sha256": "9653b8fae6bba95bec40ffbedd7d6c2b8f3be4a85b8b39580ab3ee6c3590041a"
+      },
+      {
+        "path": "tex/latex/xcolor/xcolor.sty",
+        "sha256": "478888f8e8f00345fd645b6cdd6fa7db1e9efdd6f585b25c89bb3665d9029295"
+      }
+    ],
+    "probeVerification": {
+      "svgByteIdentical": false,
+      "svgIdenticalAfterDefinitionOrderOnly": true,
+      "pictureBoxIdentical": true
+    },
+    "artifacts": {
+      "metrics.json": "b0e623dafc88f9275ba26e6683d048f8b07d31cef8fa703af2d125a0ab4c24f3",
+      "native-positions.log": "f0fd7b355447b556d82a64fdad4089c89aa19094d4871b7c67352ce3a1b0db69",
+      "oracle.log": "326433b264c8e6adf1f0c54acbc8c71b66d8f0fdcf2e349964276d527a05a985",
+      "reference.svg": "1a42a1e1f6a58be7c87cdb827d135f483f28c0a664758eed09ae85f4283cc662"
+    },
+    "commands": [
+      "latex: -disable-write18 -disable-installer -interaction=nonstopmode -halt-on-error -recorder case.tex",
+      "dvisvgm: --no-fonts --exact-bbox --bbox=min --output=reference.svg case.dvi",
+      "dvitype: -disable-installer -out-mode=4 case.dvi"
+    ]
+  },
+  "outlineContainment": {
+    "schemaVersion": 1,
+    "renderer": {
+      "profile": "chromium-153-geometry-v3",
+      "playwright": "1.63.0",
+      "browser": "153.0.8010.12",
+      "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+      "os": "win32",
+      "osRelease": "10.0.19045",
+      "architecture": "x64",
+      "node": "v24.12.0",
+      "headless": true,
+      "deviceScaleFactor": 1,
+      "viewport": {
+        "width": 1200,
+        "height": 900
+      },
+      "launchArguments": [
+        "--disable-gpu",
+        "--force-color-profile=srgb"
+      ],
+      "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+    },
+    "checks": [
+      {
+        "index": 0,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 4.693034000000017,
+        "passed": true
+      },
+      {
+        "index": 1,
+        "outline": "#g5-86",
+        "minimumMarginPixels": 4.400795837585942,
+        "passed": true
+      },
+      {
+        "index": 2,
+        "outline": "#g5-30",
+        "minimumMarginPixels": 4.693034000000017,
+        "passed": true
+      },
+      {
+        "index": 3,
+        "outline": "#g5-46",
+        "minimumMarginPixels": 4.693034000000017,
+        "passed": true
+      },
+      {
+        "index": 4,
+        "outline": "#g5-46",
+        "minimumMarginPixels": 8.567299000000016,
+        "passed": true
+      },
+      {
+        "index": 5,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 13.165178888195603,
+        "passed": true
+      },
+      {
+        "index": 6,
+        "outline": "#g5-103",
+        "minimumMarginPixels": 23.07468557272324,
+        "passed": true
+      },
+      {
+        "index": 7,
+        "outline": "#g5-112",
+        "minimumMarginPixels": 29.716445572723238,
+        "passed": true
+      },
+      {
+        "index": 8,
+        "outline": "#g5-113",
+        "minimumMarginPixels": 37.54479989697006,
+        "passed": true
+      },
+      {
+        "index": 9,
+        "outline": "#g4-65",
+        "minimumMarginPixels": 72.40207700000002,
+        "passed": true
+      },
+      {
+        "index": 10,
+        "outline": "#g4-86",
+        "minimumMarginPixels": 72.10983883758595,
+        "passed": true
+      },
+      {
+        "index": 11,
+        "outline": "#g4-30",
+        "minimumMarginPixels": 69.6789554019313,
+        "passed": true
+      },
+      {
+        "index": 12,
+        "outline": "#g4-46",
+        "minimumMarginPixels": 72.40207700000002,
+        "passed": true
+      },
+      {
+        "index": 13,
+        "outline": "#g3-65",
+        "minimumMarginPixels": 42.654699301982504,
+        "passed": true
+      },
+      {
+        "index": 14,
+        "outline": "#g3-86",
+        "minimumMarginPixels": 32.48165354104941,
+        "passed": true
+      },
+      {
+        "index": 15,
+        "outline": "#g3-30",
+        "minimumMarginPixels": 14.431197809754394,
+        "passed": true
+      },
+      {
+        "index": 16,
+        "outline": "#g3-46",
+        "minimumMarginPixels": 11.035917532892256,
+        "passed": true
+      },
+      {
+        "index": 17,
+        "outline": "#g3-65",
+        "minimumMarginPixels": 6.810527581137091,
+        "passed": true
+      },
+      {
+        "index": 18,
+        "outline": "#g3-86",
+        "minimumMarginPixels": 16.569126932823746,
+        "passed": true
+      },
+      {
+        "index": 19,
+        "outline": "#g3-30",
+        "minimumMarginPixels": 33.59940925689027,
+        "passed": true
+      },
+      {
+        "index": 20,
+        "outline": "#g3-46",
+        "minimumMarginPixels": 47.57899662456262,
+        "passed": true
+      },
+      {
+        "index": 21,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 137.52823500000002,
+        "passed": true
+      },
+      {
+        "index": 22,
+        "outline": "#g5-86",
+        "minimumMarginPixels": 137.23599683758596,
+        "passed": true
+      },
+      {
+        "index": 23,
+        "outline": "#g5-112",
+        "minimumMarginPixels": 28.508076345232155,
+        "passed": true
+      },
+      {
+        "index": 24,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 19.6225718881956,
+        "passed": true
+      },
+      {
+        "index": 25,
+        "outline": "#g5-86",
+        "minimumMarginPixels": 27.936554626089425,
+        "passed": true
+      },
+      {
+        "index": 26,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 152.4577728881956,
+        "passed": true
+      },
+      {
+        "index": 27,
+        "outline": "#g5-86",
+        "minimumMarginPixels": 155.61518011379974,
+        "passed": true
+      },
+      {
+        "index": 28,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 30.51688837590592,
+        "passed": true
+      },
+      {
+        "index": 29,
+        "outline": "#g5-103",
+        "minimumMarginPixels": 23.636024860201985,
+        "passed": true
+      },
+      {
+        "index": 30,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 20.545035888195603,
+        "passed": true
+      },
+      {
+        "index": 31,
+        "outline": "#g5-103",
+        "minimumMarginPixels": 30.454542572723238,
+        "passed": true
+      },
+      {
+        "index": 32,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 156.70109688819562,
+        "passed": true
+      },
+      {
+        "index": 33,
+        "outline": "#g3-65",
+        "minimumMarginPixels": 151.9994065811371,
+        "passed": true
+      },
+      {
+        "index": 34,
+        "outline": "#g3-103",
+        "minimumMarginPixels": 155.0545290979086,
+        "passed": true
+      },
+      {
+        "index": 35,
+        "outline": "#g5-112",
+        "minimumMarginPixels": 157.93946657272326,
+        "passed": true
+      },
+      {
+        "index": 36,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 41.03275237590594,
+        "passed": true
+      },
+      {
+        "index": 37,
+        "outline": "#g5-86",
+        "minimumMarginPixels": 32.37339811379974,
+        "passed": true
+      },
+      {
+        "index": 38,
+        "outline": "#g5-30",
+        "minimumMarginPixels": 16.999943955876347,
+        "passed": true
+      },
+      {
+        "index": 39,
+        "outline": "#g5-46",
+        "minimumMarginPixels": 14.060308617711542,
+        "passed": true
+      },
+      {
+        "index": 40,
+        "outline": "#g5-112",
+        "minimumMarginPixels": 13.379849345232174,
+        "passed": true
+      },
+      {
+        "index": 41,
+        "outline": "#g5-65",
+        "minimumMarginPixels": 23.865895888195602,
+        "passed": true
+      },
+      {
+        "index": 42,
+        "outline": "#g5-112",
+        "minimumMarginPixels": 23.812762572723237,
+        "passed": true
+      },
+      {
+        "index": 43,
+        "outline": "#g3-65",
+        "minimumMarginPixels": 31.38190930198249,
+        "passed": true
+      },
+      {
+        "index": 44,
+        "outline": "#g3-86",
+        "minimumMarginPixels": 21.208863541049425,
+        "passed": true
+      },
+      {
+        "index": 45,
+        "outline": "#g2-65",
+        "minimumMarginPixels": 7.234258834829419,
+        "passed": true
+      },
+      {
+        "index": 46,
+        "outline": "#g2-86",
+        "minimumMarginPixels": 16.88632991498706,
+        "passed": true
+      },
+      {
+        "index": 47,
+        "outline": "#g2-30",
+        "minimumMarginPixels": 33.59344923484665,
+        "passed": true
+      },
+      {
+        "index": 48,
+        "outline": "#g2-46",
+        "minimumMarginPixels": 46.98721197657346,
+        "passed": true
+      },
+      {
+        "index": 49,
+        "outline": "#g4-65",
+        "minimumMarginPixels": 72.80912606240173,
+        "passed": true
+      },
+      {
+        "index": 50,
+        "outline": "#g4-86",
+        "minimumMarginPixels": 73.24748235234875,
+        "passed": true
+      },
+      {
+        "index": 51,
+        "outline": "#g4-30",
+        "minimumMarginPixels": 72.95524482571739,
+        "passed": true
+      },
+      {
+        "index": 52,
+        "outline": "#g4-46",
+        "minimumMarginPixels": 80.91207095388097,
+        "passed": true
+      },
+      {
+        "index": 53,
+        "outline": "#g1-65",
+        "minimumMarginPixels": 44.32376095004804,
+        "passed": true
+      },
+      {
+        "index": 54,
+        "outline": "#g1-86",
+        "minimumMarginPixels": 32.53598413625326,
+        "passed": true
+      },
+      {
+        "index": 55,
+        "outline": "#g1-30",
+        "minimumMarginPixels": 11.805743583979336,
+        "passed": true
+      },
+      {
+        "index": 56,
+        "outline": "#g1-46",
+        "minimumMarginPixels": 7.5895524226510815,
+        "passed": true
+      },
+      {
+        "index": 57,
+        "outline": "#g0-65",
+        "minimumMarginPixels": 5.17798416352656,
+        "passed": true
+      },
+      {
+        "index": 58,
+        "outline": "#g0-86",
+        "minimumMarginPixels": 5.672129751253124,
+        "passed": true
+      },
+      {
+        "index": 59,
+        "outline": "#g0-30",
+        "minimumMarginPixels": 5.337386335183169,
+        "passed": true
+      },
+      {
+        "index": 60,
+        "outline": "#g0-46",
+        "minimumMarginPixels": 15.013099998509176,
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "scope": "Original oracle outline bounding boxes fit the independently measured native node frame; no candidate data."
+  },
+  "numeric": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "oracle.serialization.frame.width",
+        "expected": 325.8315172270652,
+        "actual": 325.831517,
+        "units": "CSS px",
+        "absoluteError": 2.2706518620907445e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.frame.height",
+        "expected": 486.8102039227896,
+        "actual": 486.810204,
+        "units": "CSS px",
+        "absoluteError": 7.721041583863553e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.frame.x",
+        "expected": -28.42214417289332,
+        "actual": -28.422144,
+        "units": "CSS px",
+        "absoluteError": 1.7289331921688245e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.frame.y",
+        "expected": -477.54183935891456,
+        "actual": -477.541839,
+        "units": "CSS px",
+        "absoluteError": 3.58914576281677e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.frame.viewBoxWidth",
+        "expected": 325.8315172270652,
+        "actual": 325.831517,
+        "units": "CSS px",
+        "absoluteError": 2.2706518620907445e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.frame.viewBoxHeight",
+        "expected": 486.8102039227896,
+        "actual": 486.810204,
+        "units": "CSS px",
+        "absoluteError": 7.721041583863553e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.sw.x",
+        "expected": -23.245430546907432,
+        "actual": -23.245431,
+        "units": "CSS px",
+        "absoluteError": 4.530925679091524e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.sw.y",
+        "expected": 9.002698215026983,
+        "actual": 9.002698,
+        "units": "CSS px",
+        "absoluteError": 2.1502698288600186e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.se.x",
+        "expected": 23.245430546907432,
+        "actual": 23.245431,
+        "units": "CSS px",
+        "absoluteError": 4.530925679091524e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.se.y",
+        "expected": 9.002698215026983,
+        "actual": 9.002698,
+        "units": "CSS px",
+        "absoluteError": 2.1502698288600186e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.ne.x",
+        "expected": 23.245430546907432,
+        "actual": 23.245431,
+        "units": "CSS px",
+        "absoluteError": 4.530925679091524e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.ne.y",
+        "expected": -9.002698215026983,
+        "actual": -9.002698,
+        "units": "CSS px",
+        "absoluteError": 2.1502698288600186e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.nw.x",
+        "expected": -23.245430546907432,
+        "actual": -23.245431,
+        "units": "CSS px",
+        "absoluteError": 4.530925679091524e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.nw.y",
+        "expected": -9.002698215026983,
+        "actual": -9.002698,
+        "units": "CSS px",
+        "absoluteError": 2.1502698288600186e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.0.x",
+        "expected": -18.8180634469697,
+        "actual": -18.818063,
+        "units": "CSS px",
+        "absoluteError": 4.4696970036284256e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.0.y",
+        "expected": 4.5753311150892495,
+        "actual": 4.575331,
+        "units": "CSS px",
+        "absoluteError": 1.1508924924186203e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.1.x",
+        "expected": -10.331394802044418,
+        "actual": -10.331395,
+        "units": "CSS px",
+        "absoluteError": 1.979555825926127e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.1.y",
+        "expected": 4.5753311150892495,
+        "actual": 4.575331,
+        "units": "CSS px",
+        "absoluteError": 1.1508924924186203e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.2.x",
+        "expected": 4.059078585512661,
+        "actual": 4.059079,
+        "units": "CSS px",
+        "absoluteError": 4.144873386735526e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.2.y",
+        "expected": 4.5753311150892495,
+        "actual": 4.575331,
+        "units": "CSS px",
+        "absoluteError": 1.1508924924186203e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.3.x",
+        "expected": 15.128226020911168,
+        "actual": 15.128226,
+        "units": "CSS px",
+        "absoluteError": 2.0911167908366224e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.regular.glyph.3.y",
+        "expected": 4.5753311150892495,
+        "actual": 4.575331,
+        "units": "CSS px",
+        "absoluteError": 1.1508924924186203e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.empty.sw.x",
+        "expected": 128.4078342284143,
+        "actual": 128.407834,
+        "units": "CSS px",
+        "absoluteError": 2.2841427949060744e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.empty.sw.y",
+        "expected": 4.427367099937734,
+        "actual": 4.427367,
+        "units": "CSS px",
+        "absoluteError": 9.993773364413983e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.empty.se.x",
+        "expected": 137.26256842828977,
+        "actual": 137.262568,
+        "units": "CSS px",
+        "absoluteError": 4.2828978052966704e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.empty.se.y",
+        "expected": 4.427367099937734,
+        "actual": 4.427367,
+        "units": "CSS px",
+        "absoluteError": 9.993773364413983e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.empty.ne.x",
+        "expected": 137.26256842828977,
+        "actual": 137.262568,
+        "units": "CSS px",
+        "absoluteError": 4.2828978052966704e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.empty.ne.y",
+        "expected": -4.427367099937734,
+        "actual": -4.427367,
+        "units": "CSS px",
+        "absoluteError": 9.993773364413983e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.empty.nw.x",
+        "expected": 128.4078342284143,
+        "actual": 128.407834,
+        "units": "CSS px",
+        "absoluteError": 2.2841427949060744e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.empty.nw.y",
+        "expected": -4.427367099937734,
+        "actual": -4.427367,
+        "units": "CSS px",
+        "absoluteError": 9.993773364413983e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.empty.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.sw.x",
+        "expected": 259.39812697825863,
+        "actual": 259.398127,
+        "units": "CSS px",
+        "absoluteError": 2.1741357159044128e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.sw.y",
+        "expected": 5.128432765151516,
+        "actual": 5.128433,
+        "units": "CSS px",
+        "absoluteError": 2.348484846592669e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.se.x",
+        "expected": 271.9426783351495,
+        "actual": 271.942678,
+        "units": "CSS px",
+        "absoluteError": 3.351494797243504e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.se.y",
+        "expected": 5.128432765151516,
+        "actual": 5.128433,
+        "units": "CSS px",
+        "absoluteError": 2.348484846592669e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.ne.x",
+        "expected": 271.9426783351495,
+        "actual": 271.942678,
+        "units": "CSS px",
+        "absoluteError": 3.351494797243504e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.ne.y",
+        "expected": -5.128432765151516,
+        "actual": -5.128433,
+        "units": "CSS px",
+        "absoluteError": 2.348484846592669e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.nw.x",
+        "expected": 259.39812697825863,
+        "actual": 259.398127,
+        "units": "CSS px",
+        "absoluteError": 2.1741357159044128e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.nw.y",
+        "expected": -5.128432765151516,
+        "actual": -5.128433,
+        "units": "CSS px",
+        "absoluteError": 2.348484846592669e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.glyph.0.x",
+        "expected": 263.82549407819636,
+        "actual": 263.825494,
+        "units": "CSS px",
+        "absoluteError": 7.819636493877624e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.period.glyph.0.y",
+        "expected": 0.7010656652137818,
+        "actual": 0.701066,
+        "units": "CSS px",
+        "absoluteError": 3.347862181923844e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.sw.x",
+        "expected": -20.109404187422168,
+        "actual": -20.109404,
+        "units": "CSS px",
+        "absoluteError": 1.8742216667533285e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.sw.y",
+        "expected": -56.1234603634807,
+        "actual": -56.12346,
+        "units": "CSS px",
+        "absoluteError": 3.6348070153735534e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.se.x",
+        "expected": 20.109404187422168,
+        "actual": 20.109404,
+        "units": "CSS px",
+        "absoluteError": 1.8742216667533285e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.se.y",
+        "expected": -56.1234603634807,
+        "actual": -56.12346,
+        "units": "CSS px",
+        "absoluteError": 3.6348070153735534e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.ne.x",
+        "expected": 20.109404187422168,
+        "actual": 20.109404,
+        "units": "CSS px",
+        "absoluteError": 1.8742216667533285e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.ne.y",
+        "expected": -76.71174096487132,
+        "actual": -76.711741,
+        "units": "CSS px",
+        "absoluteError": 3.512867863264546e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.nw.x",
+        "expected": -20.109404187422168,
+        "actual": -20.109404,
+        "units": "CSS px",
+        "absoluteError": 1.8742216667533285e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.nw.y",
+        "expected": -76.71174096487132,
+        "actual": -76.711741,
+        "units": "CSS px",
+        "absoluteError": 3.512867863264546e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.0.x",
+        "expected": -15.682037087484435,
+        "actual": -15.682037,
+        "units": "CSS px",
+        "absoluteError": 8.748443569572828e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.0.y",
+        "expected": -63.133711634755095,
+        "actual": -63.133712,
+        "units": "CSS px",
+        "absoluteError": 3.652449080959741e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.1.x",
+        "expected": -5.719396987858033,
+        "actual": -5.719397,
+        "units": "CSS px",
+        "absoluteError": 1.21419665433109e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.1.y",
+        "expected": -63.133711634755095,
+        "actual": -63.133712,
+        "units": "CSS px",
+        "absoluteError": 3.652449080959741e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.2.x",
+        "expected": 0.9223630785595683,
+        "actual": 0.922363,
+        "units": "CSS px",
+        "absoluteError": 7.855956829505573e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.2.y",
+        "expected": -63.133711634755095,
+        "actual": -63.133712,
+        "units": "CSS px",
+        "absoluteError": 3.652449080959741e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.3.x",
+        "expected": 8.671015592569532,
+        "actual": 8.671016,
+        "units": "CSS px",
+        "absoluteError": 4.074304680301566e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.descenders.glyph.3.y",
+        "expected": -63.133711634755095,
+        "actual": -63.133712,
+        "units": "CSS px",
+        "absoluteError": 3.652449080959741e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.sw.x",
+        "expected": 108.94337072566418,
+        "actual": 108.943371,
+        "units": "CSS px",
+        "absoluteError": 2.743358180623545e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.sw.y",
+        "expected": -56.1234603634807,
+        "actual": -56.12346,
+        "units": "CSS px",
+        "absoluteError": 3.6348070153735534e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.se.x",
+        "expected": 156.72703193103987,
+        "actual": 156.727032,
+        "units": "CSS px",
+        "absoluteError": 6.896013360346842e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.se.y",
+        "expected": -56.1234603634807,
+        "actual": -56.12346,
+        "units": "CSS px",
+        "absoluteError": 3.6348070153735534e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.ne.x",
+        "expected": 156.72703193103987,
+        "actual": 156.727032,
+        "units": "CSS px",
+        "absoluteError": 6.896013360346842e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.ne.y",
+        "expected": -76.71174096487132,
+        "actual": -76.711741,
+        "units": "CSS px",
+        "absoluteError": 3.512867863264546e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.nw.x",
+        "expected": 108.94337072566418,
+        "actual": 108.943371,
+        "units": "CSS px",
+        "absoluteError": 2.743358180623545e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.nw.y",
+        "expected": -76.71174096487132,
+        "actual": -76.711741,
+        "units": "CSS px",
+        "absoluteError": 3.512867863264546e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.0.x",
+        "expected": 113.37073782560192,
+        "actual": 113.370738,
+        "units": "CSS px",
+        "absoluteError": 1.7439808175367943e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.0.y",
+        "expected": -63.133711634755095,
+        "actual": -63.133712,
+        "units": "CSS px",
+        "absoluteError": 3.652449080959741e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.1.x",
+        "expected": 121.88716142590287,
+        "actual": 121.887161,
+        "units": "CSS px",
+        "absoluteError": 4.2590286852828285e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.1.y",
+        "expected": -63.133711634755095,
+        "actual": -63.133712,
+        "units": "CSS px",
+        "absoluteError": 3.652449080959741e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.2.x",
+        "expected": 136.5139921258821,
+        "actual": 136.513992,
+        "units": "CSS px",
+        "absoluteError": 1.2588211006914207e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.2.y",
+        "expected": -63.133711634755095,
+        "actual": -63.133712,
+        "units": "CSS px",
+        "absoluteError": 3.652449080959741e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.3.x",
+        "expected": 148.22607361067872,
+        "actual": 148.226074,
+        "units": "CSS px",
+        "absoluteError": 3.8932128632040985e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic.glyph.3.y",
+        "expected": -63.133711634755095,
+        "actual": -63.133712,
+        "units": "CSS px",
+        "absoluteError": 3.652449080959741e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.sw.x",
+        "expected": 239.13727250025946,
+        "actual": 239.137273,
+        "units": "CSS px",
+        "absoluteError": 4.997405369522312e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.sw.y",
+        "expected": -56.49983622613118,
+        "actual": -56.499836,
+        "units": "CSS px",
+        "absoluteError": 2.261311777829178e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.se.x",
+        "expected": 292.2035328131486,
+        "actual": 292.203533,
+        "units": "CSS px",
+        "absoluteError": 1.8685136637941469e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.se.y",
+        "expected": -56.49983622613118,
+        "actual": -56.499836,
+        "units": "CSS px",
+        "absoluteError": 2.261311777829178e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.ne.x",
+        "expected": 292.2035328131486,
+        "actual": 292.203533,
+        "units": "CSS px",
+        "absoluteError": 1.8685136637941469e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.ne.y",
+        "expected": -76.33536510222085,
+        "actual": -76.335365,
+        "units": "CSS px",
+        "absoluteError": 1.0222085222721944e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.nw.x",
+        "expected": 239.13727250025946,
+        "actual": 239.137273,
+        "units": "CSS px",
+        "absoluteError": 4.997405369522312e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.nw.y",
+        "expected": -76.33536510222085,
+        "actual": -76.335365,
+        "units": "CSS px",
+        "absoluteError": 1.0222085222721944e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.0.x",
+        "expected": 243.5646396001972,
+        "actual": 243.56464,
+        "units": "CSS px",
+        "absoluteError": 3.998027864327014e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.0.y",
+        "expected": -60.92720332606891,
+        "actual": -60.927203,
+        "units": "CSS px",
+        "absoluteError": 3.260689140915929e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.1.x",
+        "expected": 253.5304619396015,
+        "actual": 253.530462,
+        "units": "CSS px",
+        "absoluteError": 6.039849154149124e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.1.y",
+        "expected": -60.92720332606891,
+        "actual": -60.927203,
+        "units": "CSS px",
+        "absoluteError": 3.260689140915929e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.2.x",
+        "expected": 270.43322242112913,
+        "actual": 270.433222,
+        "units": "CSS px",
+        "absoluteError": 4.2112912979064276e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.2.y",
+        "expected": -60.92720332606891,
+        "actual": -60.927203,
+        "units": "CSS px",
+        "absoluteError": 3.260689140915929e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.3.x",
+        "expected": 283.4404552264944,
+        "actual": 283.440455,
+        "units": "CSS px",
+        "absoluteError": 2.2649442144029308e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-text.glyph.3.y",
+        "expected": -60.92720332606891,
+        "actual": -60.927203,
+        "units": "CSS px",
+        "absoluteError": 3.260689140915929e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.sw.x",
+        "expected": -27.30783325550021,
+        "actual": -27.307833,
+        "units": "CSS px",
+        "absoluteError": 2.555002112103466e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.sw.y",
+        "expected": -122.14273379125157,
+        "actual": -122.142734,
+        "units": "CSS px",
+        "absoluteError": 2.0874843187357328e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.se.x",
+        "expected": 27.30783325550021,
+        "actual": 27.307833,
+        "units": "CSS px",
+        "absoluteError": 2.555002112103466e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.se.y",
+        "expected": -122.14273379125157,
+        "actual": -122.142734,
+        "units": "CSS px",
+        "absoluteError": 2.0874843187357328e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.ne.x",
+        "expected": 27.30783325550021,
+        "actual": 27.307833,
+        "units": "CSS px",
+        "absoluteError": 2.555002112103466e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.ne.y",
+        "expected": -143.52766886545248,
+        "actual": -143.527669,
+        "units": "CSS px",
+        "absoluteError": 1.3454751979224966e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.nw.x",
+        "expected": -27.30783325550021,
+        "actual": -27.307833,
+        "units": "CSS px",
+        "absoluteError": 2.555002112103466e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.nw.y",
+        "expected": -143.52766886545248,
+        "actual": -143.527669,
+        "units": "CSS px",
+        "absoluteError": 1.3454751979224966e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.0.x",
+        "expected": -22.105763056506852,
+        "actual": -22.105763,
+        "units": "CSS px",
+        "absoluteError": 5.650685253044685e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.0.y",
+        "expected": -127.34480399024493,
+        "actual": -127.344804,
+        "units": "CSS px",
+        "absoluteError": 9.755069640959846e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.1.x",
+        "expected": -12.139940717102533,
+        "actual": -12.139941,
+        "units": "CSS px",
+        "absoluteError": 2.8289746722975906e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.1.y",
+        "expected": -127.34480399024493,
+        "actual": -127.344804,
+        "units": "CSS px",
+        "absoluteError": 9.755069640959846e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.2.x",
+        "expected": 4.762819764425073,
+        "actual": 4.76282,
+        "units": "CSS px",
+        "absoluteError": 2.3557492667691804e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.2.y",
+        "expected": -127.34480399024493,
+        "actual": -127.344804,
+        "units": "CSS px",
+        "absoluteError": 9.755069640959846e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.3.x",
+        "expected": 17.770052569790373,
+        "actual": 17.770053,
+        "units": "CSS px",
+        "absoluteError": 4.3020962792184037e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-node.glyph.3.y",
+        "expected": -127.34480399024493,
+        "actual": -127.344804,
+        "units": "CSS px",
+        "absoluteError": 9.755069640959846e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.sw.x",
+        "expected": 119.18318999066004,
+        "actual": 119.18319,
+        "units": "CSS px",
+        "absoluteError": 9.33995636387408e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.sw.y",
+        "expected": -123.83250311332505,
+        "actual": -123.832503,
+        "units": "CSS px",
+        "absoluteError": 1.133250435714217e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.se.x",
+        "expected": 146.487212666044,
+        "actual": 146.487213,
+        "units": "CSS px",
+        "absoluteError": 3.3395599530194886e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.se.y",
+        "expected": -123.83250311332505,
+        "actual": -123.832503,
+        "units": "CSS px",
+        "absoluteError": 1.133250435714217e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.ne.x",
+        "expected": 146.487212666044,
+        "actual": 146.487213,
+        "units": "CSS px",
+        "absoluteError": 3.3395599530194886e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.ne.y",
+        "expected": -141.837899543379,
+        "actual": -141.8379,
+        "units": "CSS px",
+        "absoluteError": 4.5662099523724464e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.nw.x",
+        "expected": 119.18318999066004,
+        "actual": 119.18319,
+        "units": "CSS px",
+        "absoluteError": 9.33995636387408e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.nw.y",
+        "expected": -141.837899543379,
+        "actual": -141.8379,
+        "units": "CSS px",
+        "absoluteError": 4.5662099523724464e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.linewidth",
+        "expected": 2.125371328870901,
+        "actual": 2.125371,
+        "units": "CSS px",
+        "absoluteError": 3.288709011783908e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.glyph.0.x",
+        "expected": 123.61055709059777,
+        "actual": 123.610557,
+        "units": "CSS px",
+        "absoluteError": 9.059776573394629e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.glyph.0.y",
+        "expected": -128.2598702132628,
+        "actual": -128.25987,
+        "units": "CSS px",
+        "absoluteError": 2.1326277988009679e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.glyph.1.x",
+        "expected": 132.09722573552304,
+        "actual": 132.097226,
+        "units": "CSS px",
+        "absoluteError": 2.6447696654940955e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.thick.glyph.1.y",
+        "expected": -128.2598702132628,
+        "actual": -128.25987,
+        "units": "CSS px",
+        "absoluteError": 2.1326277988009679e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.sw.x",
+        "expected": 239.10336239103364,
+        "actual": 239.103362,
+        "units": "CSS px",
+        "absoluteError": 3.9103363747017283e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.sw.y",
+        "expected": -120.88003320880034,
+        "actual": -120.880033,
+        "units": "CSS px",
+        "absoluteError": 2.0880034412584791e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.se.x",
+        "expected": 292.23744292237444,
+        "actual": 292.237443,
+        "units": "CSS px",
+        "absoluteError": 7.762554332657601e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.se.y",
+        "expected": -120.88003320880034,
+        "actual": -120.880033,
+        "units": "CSS px",
+        "absoluteError": 2.0880034412584791e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.ne.x",
+        "expected": 292.23744292237444,
+        "actual": 292.237443,
+        "units": "CSS px",
+        "absoluteError": 7.762554332657601e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.ne.y",
+        "expected": -144.79036944790371,
+        "actual": -144.790369,
+        "units": "CSS px",
+        "absoluteError": 4.4790371589442657e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.nw.x",
+        "expected": 239.10336239103364,
+        "actual": 239.103362,
+        "units": "CSS px",
+        "absoluteError": 3.9103363747017283e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.nw.y",
+        "expected": -144.79036944790371,
+        "actual": -144.790369,
+        "units": "CSS px",
+        "absoluteError": 4.4790371589442657e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.glyph.0.x",
+        "expected": 261.9805854996887,
+        "actual": 261.980585,
+        "units": "CSS px",
+        "absoluteError": 4.996886673325207e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.minimum.glyph.0.y",
+        "expected": -131.2670462653072,
+        "actual": -131.267046,
+        "units": "CSS px",
+        "absoluteError": 2.653071931035811e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.sw.x",
+        "expected": -11.881348264321296,
+        "actual": -11.881348,
+        "units": "CSS px",
+        "absoluteError": 2.6432129729414555e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.sw.y",
+        "expected": -189.3640628243047,
+        "actual": -189.364063,
+        "units": "CSS px",
+        "absoluteError": 1.756952769937925e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.se.x",
+        "expected": 11.881348264321296,
+        "actual": 11.881348,
+        "units": "CSS px",
+        "absoluteError": 2.6432129729414555e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.se.y",
+        "expected": -189.3640628243047,
+        "actual": -189.364063,
+        "units": "CSS px",
+        "absoluteError": 1.756952769937925e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.ne.x",
+        "expected": 11.881348264321296,
+        "actual": 11.881348,
+        "units": "CSS px",
+        "absoluteError": 2.6432129729414555e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.ne.y",
+        "expected": -209.14154116075136,
+        "actual": -209.141541,
+        "units": "CSS px",
+        "absoluteError": 1.6075136954896152e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.nw.x",
+        "expected": -11.881348264321296,
+        "actual": -11.881348,
+        "units": "CSS px",
+        "absoluteError": 2.6432129729414555e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.nw.y",
+        "expected": -209.14154116075136,
+        "actual": -209.141541,
+        "units": "CSS px",
+        "absoluteError": 1.6075136954896152e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.glyph.0.x",
+        "expected": -9.224644237754255,
+        "actual": -9.224644,
+        "units": "CSS px",
+        "absoluteError": 2.3775425539440675e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.glyph.0.y",
+        "expected": -194.6774708774388,
+        "actual": -194.677471,
+        "units": "CSS px",
+        "absoluteError": 1.2256120385245595e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.glyph.1.x",
+        "expected": -0.7379755928289747,
+        "actual": -0.737976,
+        "units": "CSS px",
+        "absoluteError": 4.0717102522958015e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.separation.glyph.1.y",
+        "expected": -194.6774708774388,
+        "actual": -194.677471,
+        "units": "CSS px",
+        "absoluteError": 1.2256120385245595e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.sw.x",
+        "expected": 119.18318999066004,
+        "actual": 119.18319,
+        "units": "CSS px",
+        "absoluteError": 9.33995636387408e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.sw.y",
+        "expected": -180.981739213626,
+        "actual": -180.981739,
+        "units": "CSS px",
+        "absoluteError": 2.1362600932661735e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.se.x",
+        "expected": 146.487212666044,
+        "actual": 146.487213,
+        "units": "CSS px",
+        "absoluteError": 3.3395599530194886e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.se.y",
+        "expected": -180.981739213626,
+        "actual": -180.981739,
+        "units": "CSS px",
+        "absoluteError": 2.1362600932661735e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.ne.x",
+        "expected": 146.487212666044,
+        "actual": 146.487213,
+        "units": "CSS px",
+        "absoluteError": 3.3395599530194886e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.ne.y",
+        "expected": -198.98713564367998,
+        "actual": -198.987136,
+        "units": "CSS px",
+        "absoluteError": 3.563200152711943e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.nw.x",
+        "expected": 119.18318999066004,
+        "actual": 119.18319,
+        "units": "CSS px",
+        "absoluteError": 9.33995636387408e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.nw.y",
+        "expected": -198.98713564367998,
+        "actual": -198.987136,
+        "units": "CSS px",
+        "absoluteError": 3.563200152711943e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.glyph.0.x",
+        "expected": 123.61055709059777,
+        "actual": 123.610557,
+        "units": "CSS px",
+        "absoluteError": 9.059776573394629e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.glyph.0.y",
+        "expected": -185.40910631356374,
+        "actual": -185.409106,
+        "units": "CSS px",
+        "absoluteError": 3.135637314244377e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.glyph.1.x",
+        "expected": 132.09722573552304,
+        "actual": 132.097226,
+        "units": "CSS px",
+        "absoluteError": 2.6447696654940955e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.north.glyph.1.y",
+        "expected": -185.40910631356374,
+        "actual": -185.409106,
+        "units": "CSS px",
+        "absoluteError": 3.135637314244377e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.sw.x",
+        "expected": 252.94083547374433,
+        "actual": 252.940835,
+        "units": "CSS px",
+        "absoluteError": 4.7374433620461787e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.sw.y",
+        "expected": -192.24255072125365,
+        "actual": -192.242551,
+        "units": "CSS px",
+        "absoluteError": 2.7874634156432876e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.se.x",
+        "expected": 278.3999698396638,
+        "actual": 278.39997,
+        "units": "CSS px",
+        "absoluteError": 1.6033618521760218e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.se.y",
+        "expected": -192.24255072125365,
+        "actual": -192.242551,
+        "units": "CSS px",
+        "absoluteError": 2.7874634156432876e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.ne.x",
+        "expected": 278.3999698396638,
+        "actual": 278.39997,
+        "units": "CSS px",
+        "absoluteError": 1.6033618521760218e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.ne.y",
+        "expected": -212.83083132264426,
+        "actual": -212.830831,
+        "units": "CSS px",
+        "absoluteError": 3.226442686354858e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.nw.x",
+        "expected": 252.94083547374433,
+        "actual": 252.940835,
+        "units": "CSS px",
+        "absoluteError": 4.7374433620461787e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.nw.y",
+        "expected": -212.83083132264426,
+        "actual": -212.830831,
+        "units": "CSS px",
+        "absoluteError": 3.226442686354858e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.glyph.0.x",
+        "expected": 257.368202573682,
+        "actual": 257.368203,
+        "units": "CSS px",
+        "absoluteError": 4.263179675945139e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.glyph.0.y",
+        "expected": -199.25280199252805,
+        "actual": -199.252802,
+        "units": "CSS px",
+        "absoluteError": 7.471953722415492e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.glyph.1.x",
+        "expected": 267.33084267330844,
+        "actual": 267.330843,
+        "units": "CSS px",
+        "absoluteError": 3.266915769017942e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.base.glyph.1.y",
+        "expected": -199.25280199252805,
+        "actual": -199.252802,
+        "units": "CSS px",
+        "absoluteError": 7.471953722415492e-9,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.sw.x",
+        "expected": -6.97382780069531,
+        "actual": -6.973828,
+        "units": "CSS px",
+        "absoluteError": 1.993046900850004e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.sw.y",
+        "expected": -261.13198146922997,
+        "actual": -261.131981,
+        "units": "CSS px",
+        "absoluteError": 4.6922997398723965e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.se.x",
+        "expected": 6.973868338781653,
+        "actual": 6.973868,
+        "units": "CSS px",
+        "absoluteError": 3.387816525091125e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.se.y",
+        "expected": -261.13198146922997,
+        "actual": -261.131981,
+        "units": "CSS px",
+        "absoluteError": 4.6922997398723965e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.ne.x",
+        "expected": 6.973868338781653,
+        "actual": 6.973868,
+        "units": "CSS px",
+        "absoluteError": 3.387816525091125e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.ne.y",
+        "expected": -270.2088238441781,
+        "actual": -270.208824,
+        "units": "CSS px",
+        "absoluteError": 1.5582190826535225e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.nw.x",
+        "expected": -6.97382780069531,
+        "actual": -6.973828,
+        "units": "CSS px",
+        "absoluteError": 1.993046900850004e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.nw.y",
+        "expected": -270.2088238441781,
+        "actual": -270.208824,
+        "units": "CSS px",
+        "absoluteError": 1.5582190826535225e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.glyph.0.x",
+        "expected": -8.30217981397883,
+        "actual": -8.30218,
+        "units": "CSS px",
+        "absoluteError": 1.8602117002330942e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.glyph.0.y",
+        "expected": -262.38651362728314,
+        "actual": -262.386514,
+        "units": "CSS px",
+        "absoluteError": 3.727168405021075e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.glyph.1.x",
+        "expected": 1.6604602856475719,
+        "actual": 1.66046,
+        "units": "CSS px",
+        "absoluteError": 2.856475718182594e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.negative.glyph.1.y",
+        "expected": -262.38651362728314,
+        "actual": -262.386514,
+        "units": "CSS px",
+        "absoluteError": 3.727168405021075e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.sw.x",
+        "expected": 118.65574894925281,
+        "actual": 118.655749,
+        "units": "CSS px",
+        "absoluteError": 5.07471895616618e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.sw.y",
+        "expected": -239.4360381966065,
+        "actual": -239.436038,
+        "units": "CSS px",
+        "absoluteError": 1.966064928637934e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.se.x",
+        "expected": 147.01465370745123,
+        "actual": 147.014654,
+        "units": "CSS px",
+        "absoluteError": 2.9254877631501586e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.se.y",
+        "expected": -239.4360381966065,
+        "actual": -239.436038,
+        "units": "CSS px",
+        "absoluteError": 1.966064928637934e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.ne.x",
+        "expected": 147.01465370745123,
+        "actual": 147.014654,
+        "units": "CSS px",
+        "absoluteError": 2.9254877631501586e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.ne.y",
+        "expected": -291.9047671168016,
+        "actual": -291.904767,
+        "units": "CSS px",
+        "absoluteError": 1.1680162970151287e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.nw.x",
+        "expected": 118.65574894925281,
+        "actual": 118.655749,
+        "units": "CSS px",
+        "absoluteError": 5.07471895616618e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.nw.y",
+        "expected": -291.9047671168016,
+        "actual": -291.904767,
+        "units": "CSS px",
+        "absoluteError": 1.1680162970151287e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.0.x",
+        "expected": 127.85388127853882,
+        "actual": 127.853881,
+        "units": "CSS px",
+        "absoluteError": 2.7853882045292266e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.0.y",
+        "expected": -278.3267377866854,
+        "actual": -278.326738,
+        "units": "CSS px",
+        "absoluteError": 2.133145926563884e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.1.x",
+        "expected": 123.08311604919055,
+        "actual": 123.083116,
+        "units": "CSS px",
+        "absoluteError": 4.9190546747013286e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.1.y",
+        "expected": -262.38651362728314,
+        "actual": -262.386514,
+        "units": "CSS px",
+        "absoluteError": 3.727168405021075e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.2.x",
+        "expected": 134.78323879851598,
+        "actual": 134.783239,
+        "units": "CSS px",
+        "absoluteError": 2.0148402768427331e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.2.y",
+        "expected": -262.38651362728314,
+        "actual": -262.386514,
+        "units": "CSS px",
+        "absoluteError": 3.727168405021075e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.3.x",
+        "expected": 129.14538417133667,
+        "actual": 129.145384,
+        "units": "CSS px",
+        "absoluteError": 1.713366657440929e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-center.glyph.3.y",
+        "expected": -246.4462894678809,
+        "actual": -246.446289,
+        "units": "CSS px",
+        "absoluteError": 4.6788088070570666e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.sw.x",
+        "expected": 242.4249721097966,
+        "actual": 242.424972,
+        "units": "CSS px",
+        "absoluteError": 1.0979661624332948e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.sw.y",
+        "expected": -247.4061502763076,
+        "actual": -247.40615,
+        "units": "CSS px",
+        "absoluteError": 2.7630761678665294e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.se.x",
+        "expected": 288.9158332036115,
+        "actual": 288.915833,
+        "units": "CSS px",
+        "absoluteError": 2.0361147790026735e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.se.y",
+        "expected": -247.4061502763076,
+        "actual": -247.40615,
+        "units": "CSS px",
+        "absoluteError": 2.7630761678665294e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.ne.x",
+        "expected": 288.9158332036115,
+        "actual": 288.915833,
+        "units": "CSS px",
+        "absoluteError": 2.0361147790026735e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.ne.y",
+        "expected": -283.93465503710047,
+        "actual": -283.934655,
+        "units": "CSS px",
+        "absoluteError": 3.7100448935234454e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.nw.x",
+        "expected": 242.4249721097966,
+        "actual": 242.424972,
+        "units": "CSS px",
+        "absoluteError": 1.0979661624332948e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.nw.y",
+        "expected": -283.93465503710047,
+        "actual": -283.934655,
+        "units": "CSS px",
+        "absoluteError": 3.7100448935234454e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.0.x",
+        "expected": 246.85233920973437,
+        "actual": 246.852339,
+        "units": "CSS px",
+        "absoluteError": 2.0973436676285928e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.0.y",
+        "expected": -270.35662570698423,
+        "actual": -270.356626,
+        "units": "CSS px",
+        "absoluteError": 2.930157734226668e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.1.x",
+        "expected": 255.33900785465963,
+        "actual": 255.339008,
+        "units": "CSS px",
+        "absoluteError": 1.4534037973135128e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.1.y",
+        "expected": -270.35662570698423,
+        "actual": -270.356626,
+        "units": "CSS px",
+        "absoluteError": 2.930157734226668e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.2.x",
+        "expected": 269.7294812422167,
+        "actual": 269.729481,
+        "units": "CSS px",
+        "absoluteError": 2.422166858195851e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.2.y",
+        "expected": -270.35662570698423,
+        "actual": -270.356626,
+        "units": "CSS px",
+        "absoluteError": 2.930157734226668e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.3.x",
+        "expected": 280.7986286776152,
+        "actual": 280.798629,
+        "units": "CSS px",
+        "absoluteError": 3.223847784283862e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.3.y",
+        "expected": -270.35662570698423,
+        "actual": -270.356626,
+        "units": "CSS px",
+        "absoluteError": 2.930157734226668e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.4.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.4.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.4.x",
+        "expected": 277.1088115205999,
+        "actual": 277.108812,
+        "units": "CSS px",
+        "absoluteError": 4.794001142727211e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-right.glyph.4.y",
+        "expected": -254.416401547582,
+        "actual": -254.416402,
+        "units": "CSS px",
+        "absoluteError": 4.524179928466765e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.sw.x",
+        "expected": -9.408687149750936,
+        "actual": -9.408687,
+        "units": "CSS px",
+        "absoluteError": 1.4975093520774863e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.sw.y",
+        "expected": -305.8536388607825,
+        "actual": -305.853639,
+        "units": "CSS px",
+        "absoluteError": 1.3921749086875934e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.se.x",
+        "expected": 9.408687149750936,
+        "actual": 9.408687,
+        "units": "CSS px",
+        "absoluteError": 1.4975093520774863e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.se.y",
+        "expected": -305.8536388607825,
+        "actual": -305.853639,
+        "units": "CSS px",
+        "absoluteError": 1.3921749086875934e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.ne.x",
+        "expected": 9.408687149750936,
+        "actual": 9.408687,
+        "units": "CSS px",
+        "absoluteError": 1.4975093520774863e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.ne.y",
+        "expected": -358.32236778097763,
+        "actual": -358.322368,
+        "units": "CSS px",
+        "absoluteError": 2.1902235403103987e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.nw.x",
+        "expected": -9.408687149750936,
+        "actual": -9.408687,
+        "units": "CSS px",
+        "absoluteError": 1.4975093520774863e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.nw.y",
+        "expected": -358.32236778097763,
+        "actual": -358.322368,
+        "units": "CSS px",
+        "absoluteError": 2.1902235403103987e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.glyph.0.x",
+        "expected": -4.981320049813201,
+        "actual": -4.98132,
+        "units": "CSS px",
+        "absoluteError": 4.981320067543038e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.glyph.0.y",
+        "expected": -344.7443384508614,
+        "actual": -344.744338,
+        "units": "CSS px",
+        "absoluteError": 4.508613642428827e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.glyph.1.x",
+        "expected": -4.981320049813201,
+        "actual": -4.98132,
+        "units": "CSS px",
+        "absoluteError": 4.981320067543038e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.lines-left.glyph.1.y",
+        "expected": -312.8638901320569,
+        "actual": -312.86389,
+        "units": "CSS px",
+        "absoluteError": 1.320568685514445e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.sp-halves.sw.x",
+        "expected": 132.835201328352,
+        "actual": 132.835201,
+        "units": "CSS px",
+        "absoluteError": 3.283520015884278e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.sp-halves.sw.y",
+        "expected": -332.0879830518369,
+        "actual": -332.087983,
+        "units": "CSS px",
+        "absoluteError": 5.183687790122349e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.sp-halves.se.x",
+        "expected": 132.835201328352,
+        "actual": 132.835201,
+        "units": "CSS px",
+        "absoluteError": 3.283520015884278e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.sp-halves.se.y",
+        "expected": -332.0879830518369,
+        "actual": -332.087983,
+        "units": "CSS px",
+        "absoluteError": 5.183687790122349e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.sp-halves.ne.x",
+        "expected": 132.835201328352,
+        "actual": 132.835201,
+        "units": "CSS px",
+        "absoluteError": 3.283520015884278e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.sp-halves.ne.y",
+        "expected": -332.08802358992324,
+        "actual": -332.088024,
+        "units": "CSS px",
+        "absoluteError": 4.1007677964444156e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.sp-halves.nw.x",
+        "expected": 132.835201328352,
+        "actual": 132.835201,
+        "units": "CSS px",
+        "absoluteError": 3.283520015884278e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.sp-halves.nw.y",
+        "expected": -332.08802358992324,
+        "actual": -332.088024,
+        "units": "CSS px",
+        "absoluteError": 4.1007677964444156e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.sp-halves.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.sw.x",
+        "expected": 249.6353599133458,
+        "actual": 249.63536,
+        "units": "CSS px",
+        "absoluteError": 8.665418249620416e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.sw.y",
+        "expected": -323.45436384391866,
+        "actual": -323.454364,
+        "units": "CSS px",
+        "absoluteError": 1.5608134162903298e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.se.x",
+        "expected": 281.7054454000623,
+        "actual": 281.705445,
+        "units": "CSS px",
+        "absoluteError": 4.00062276639801e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.se.y",
+        "expected": -323.45436384391866,
+        "actual": -323.454364,
+        "units": "CSS px",
+        "absoluteError": 1.5608134162903298e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.ne.x",
+        "expected": 281.7054454000623,
+        "actual": 281.705445,
+        "units": "CSS px",
+        "absoluteError": 4.00062276639801e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.ne.y",
+        "expected": -344.8392989181196,
+        "actual": -344.839299,
+        "units": "CSS px",
+        "absoluteError": 8.188038691514521e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.nw.x",
+        "expected": 249.6353599133458,
+        "actual": 249.63536,
+        "units": "CSS px",
+        "absoluteError": 8.665418249620416e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.nw.y",
+        "expected": -344.8392989181196,
+        "actual": -344.839299,
+        "units": "CSS px",
+        "absoluteError": 8.188038691514521e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.glyph.0.x",
+        "expected": 254.83743011233918,
+        "actual": 254.83743,
+        "units": "CSS px",
+        "absoluteError": 1.1233916552555456e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.glyph.0.y",
+        "expected": -328.65643404291205,
+        "actual": -328.656434,
+        "units": "CSS px",
+        "absoluteError": 4.2912063236144604e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.glyph.1.x",
+        "expected": 264.8032524517435,
+        "actual": 264.803252,
+        "units": "CSS px",
+        "absoluteError": 4.517435172601836e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.mid-large.glyph.1.y",
+        "expected": -328.65643404291205,
+        "actual": -328.656434,
+        "units": "CSS px",
+        "absoluteError": 4.2912063236144604e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.sw.x",
+        "expected": -26.823970656911584,
+        "actual": -26.823971,
+        "units": "CSS px",
+        "absoluteError": 3.4308841634356213e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.sw.y",
+        "expected": -388.7712338496264,
+        "actual": -388.771234,
+        "units": "CSS px",
+        "absoluteError": 1.5037358025438152e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.se.x",
+        "expected": 26.823970656911584,
+        "actual": 26.823971,
+        "units": "CSS px",
+        "absoluteError": 3.4308841634356213e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.se.y",
+        "expected": -388.7712338496264,
+        "actual": -388.771234,
+        "units": "CSS px",
+        "absoluteError": 1.5037358025438152e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.ne.x",
+        "expected": 26.823970656911584,
+        "actual": 26.823971,
+        "units": "CSS px",
+        "absoluteError": 3.4308841634356213e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.ne.y",
+        "expected": -408.2399741204857,
+        "actual": -408.239974,
+        "units": "CSS px",
+        "absoluteError": 1.204857085213007e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.nw.x",
+        "expected": -26.823970656911584,
+        "actual": -26.823971,
+        "units": "CSS px",
+        "absoluteError": 3.4308841634356213e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.nw.y",
+        "expected": -408.2399741204857,
+        "actual": -408.239974,
+        "units": "CSS px",
+        "absoluteError": 1.204857085213007e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.0.x",
+        "expected": -21.732508626504774,
+        "actual": -21.732509,
+        "units": "CSS px",
+        "absoluteError": 3.73495225858278e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.0.y",
+        "expected": -393.86269588003324,
+        "actual": -393.862696,
+        "units": "CSS px",
+        "absoluteError": 1.1996678495052038e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.1.x",
+        "expected": -11.881186111975925,
+        "actual": -11.881186,
+        "units": "CSS px",
+        "absoluteError": 1.1197592542089296e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.1.y",
+        "expected": -393.86269588003324,
+        "actual": -393.862696,
+        "units": "CSS px",
+        "absoluteError": 1.1996678495052038e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.2.x",
+        "expected": 4.759515910388128,
+        "actual": 4.759516,
+        "units": "CSS px",
+        "absoluteError": 8.96118717008676e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.2.y",
+        "expected": -393.86269588003324,
+        "actual": -393.862696,
+        "units": "CSS px",
+        "absoluteError": 1.1996678495052038e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.3.x",
+        "expected": 17.489103362391035,
+        "actual": 17.489103,
+        "units": "CSS px",
+        "absoluteError": 3.6239103451407573e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.bold-node.glyph.3.y",
+        "expected": -393.86269588003324,
+        "actual": -393.862696,
+        "units": "CSS px",
+        "absoluteError": 1.1996678495052038e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.sw.x",
+        "expected": 108.84504559723953,
+        "actual": 108.845046,
+        "units": "CSS px",
+        "absoluteError": 4.0276046320286696e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.sw.y",
+        "expected": -388.11313855593613,
+        "actual": -388.113139,
+        "units": "CSS px",
+        "absoluteError": 4.440638576852507e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.se.x",
+        "expected": 156.82535705946452,
+        "actual": 156.825357,
+        "units": "CSS px",
+        "absoluteError": 5.946452574789873e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.se.y",
+        "expected": -388.11313855593613,
+        "actual": -388.113139,
+        "units": "CSS px",
+        "absoluteError": 4.440638576852507e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.ne.x",
+        "expected": 156.82535705946452,
+        "actual": 156.825357,
+        "units": "CSS px",
+        "absoluteError": 5.946452574789873e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.ne.y",
+        "expected": -408.89806941417606,
+        "actual": -408.898069,
+        "units": "CSS px",
+        "absoluteError": 4.1417604279558873e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.nw.x",
+        "expected": 108.84504559723953,
+        "actual": 108.845046,
+        "units": "CSS px",
+        "absoluteError": 4.0276046320286696e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.nw.y",
+        "expected": -408.89806941417606,
+        "actual": -408.898069,
+        "units": "CSS px",
+        "absoluteError": 4.1417604279558873e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.0.x",
+        "expected": 113.37073782560192,
+        "actual": 113.370738,
+        "units": "CSS px",
+        "absoluteError": 1.7439808175367943e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.0.y",
+        "expected": -395.22171495563515,
+        "actual": -395.221715,
+        "units": "CSS px",
+        "absoluteError": 4.4364867335389135e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.1.x",
+        "expected": 121.88716142590287,
+        "actual": 121.887161,
+        "units": "CSS px",
+        "absoluteError": 4.2590286852828285e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.1.y",
+        "expected": -395.22171495563515,
+        "actual": -395.221715,
+        "units": "CSS px",
+        "absoluteError": 4.4364867335389135e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.2.x",
+        "expected": 136.5139921258821,
+        "actual": 136.513992,
+        "units": "CSS px",
+        "absoluteError": 1.2588211006914207e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.2.y",
+        "expected": -395.22171495563515,
+        "actual": -395.221715,
+        "units": "CSS px",
+        "absoluteError": 4.4364867335389135e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.3.x",
+        "expected": 148.22607361067872,
+        "actual": 148.226074,
+        "units": "CSS px",
+        "absoluteError": 3.8932128632040985e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.italic-node.glyph.3.y",
+        "expected": -395.22171495563515,
+        "actual": -395.221715,
+        "units": "CSS px",
+        "absoluteError": 4.4364867335389135e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.sw.x",
+        "expected": 234.1970986080843,
+        "actual": 234.197099,
+        "units": "CSS px",
+        "absoluteError": 3.919157052223454e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.sw.y",
+        "expected": -387.07943762323583,
+        "actual": -387.079438,
+        "units": "CSS px",
+        "absoluteError": 3.767641487684159e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.se.x",
+        "expected": 297.14370670532384,
+        "actual": 297.143707,
+        "units": "CSS px",
+        "absoluteError": 2.9467616968759103e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.se.y",
+        "expected": -387.07943762323583,
+        "actual": -387.079438,
+        "units": "CSS px",
+        "absoluteError": 3.767641487684159e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.ne.x",
+        "expected": 297.14370670532384,
+        "actual": 297.143707,
+        "units": "CSS px",
+        "absoluteError": 2.9467616968759103e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.ne.y",
+        "expected": -409.93177034687636,
+        "actual": -409.93177,
+        "units": "CSS px",
+        "absoluteError": 3.468763907221728e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.nw.x",
+        "expected": 234.1970986080843,
+        "actual": 234.197099,
+        "units": "CSS px",
+        "absoluteError": 3.919157052223454e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.nw.y",
+        "expected": -409.93177034687636,
+        "actual": -409.93177,
+        "units": "CSS px",
+        "absoluteError": 3.468763907221728e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.0.x",
+        "expected": 240.17403405847864,
+        "actual": 240.174034,
+        "units": "CSS px",
+        "absoluteError": 5.847863349117688e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.0.y",
+        "expected": -393.0563730736302,
+        "actual": -393.056373,
+        "units": "CSS px",
+        "absoluteError": 7.36301899451064e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.1.x",
+        "expected": 251.7227065172271,
+        "actual": 251.722707,
+        "units": "CSS px",
+        "absoluteError": 4.827729185308272e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.1.y",
+        "expected": -393.0563730736302,
+        "actual": -393.056373,
+        "units": "CSS px",
+        "absoluteError": 7.36301899451064e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.2.x",
+        "expected": 271.24149105567665,
+        "actual": 271.241491,
+        "units": "CSS px",
+        "absoluteError": 5.567665084527107e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.2.y",
+        "expected": -393.0563730736302,
+        "actual": -393.056373,
+        "units": "CSS px",
+        "absoluteError": 7.36301899451064e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.3.x",
+        "expected": 286.18545120511624,
+        "actual": 286.185451,
+        "units": "CSS px",
+        "absoluteError": 2.0511623688435066e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-bold-node.glyph.3.y",
+        "expected": -393.0563730736302,
+        "actual": -393.056373,
+        "units": "CSS px",
+        "absoluteError": 7.36301899451064e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.sw.x",
+        "expected": -28.15647782404525,
+        "actual": -28.156478,
+        "units": "CSS px",
+        "absoluteError": 1.759547494373237e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.sw.y",
+        "expected": -452.5702362883977,
+        "actual": -452.570236,
+        "units": "CSS px",
+        "absoluteError": 2.8839770038757706e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.se.x",
+        "expected": 28.15647782404525,
+        "actual": 28.156478,
+        "units": "CSS px",
+        "absoluteError": 1.759547494373237e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.se.y",
+        "expected": -452.5702362883977,
+        "actual": -452.570236,
+        "units": "CSS px",
+        "absoluteError": 2.8839770038757706e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.ne.x",
+        "expected": 28.15647782404525,
+        "actual": 28.156478,
+        "units": "CSS px",
+        "absoluteError": 1.759547494373237e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.ne.y",
+        "expected": -477.2761730100665,
+        "actual": -477.276173,
+        "units": "CSS px",
+        "absoluteError": 1.0066514732898213e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.nw.x",
+        "expected": -28.15647782404525,
+        "actual": -28.156478,
+        "units": "CSS px",
+        "absoluteError": 1.759547494373237e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.nw.y",
+        "expected": -477.2761730100665,
+        "actual": -477.276173,
+        "units": "CSS px",
+        "absoluteError": 1.0066514732898213e-8,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.linewidth",
+        "expected": 0.5313326976961396,
+        "actual": 0.531333,
+        "units": "CSS px",
+        "absoluteError": 3.023038604998973e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.0.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.0.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.0.x",
+        "expected": -22.84363730411997,
+        "actual": -22.843637,
+        "units": "CSS px",
+        "absoluteError": 3.0411996831958277e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.0.y",
+        "expected": -460.98253781392697,
+        "actual": -460.982538,
+        "units": "CSS px",
+        "absoluteError": 1.8607300944495364e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.1.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.1.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.1.x",
+        "expected": -12.85176924424035,
+        "actual": -12.851769,
+        "units": "CSS px",
+        "absoluteError": 2.442403488345235e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.1.y",
+        "expected": -460.98253781392697,
+        "actual": -460.982538,
+        "units": "CSS px",
+        "absoluteError": 1.8607300944495364e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.2.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.2.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.2.x",
+        "expected": 4.313171310709839,
+        "actual": 4.313171,
+        "units": "CSS px",
+        "absoluteError": 3.1070983919079254e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.2.y",
+        "expected": -460.98253781392697,
+        "actual": -460.982538,
+        "units": "CSS px",
+        "absoluteError": 1.8607300944495364e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.3.scaleX",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.3.scaleY",
+        "expected": 1.3333333333333333,
+        "actual": 1.333333,
+        "units": "CSS px",
+        "absoluteError": 3.333333331578814e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.3.x",
+        "expected": 18.061602486768372,
+        "actual": 18.061602,
+        "units": "CSS px",
+        "absoluteError": 4.867683713882798e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.serialization.large-italic-node.glyph.3.y",
+        "expected": -460.98253781392697,
+        "actual": -460.982538,
+        "units": "CSS px",
+        "absoluteError": 1.8607300944495364e-7,
+        "tolerance": 5.00001e-7,
+        "passed": true
+      },
+      {
+        "name": "oracle.outlineContainment",
+        "expected": true,
+        "actual": true,
+        "units": "native frame contains original oracle outlines",
+        "absoluteError": null,
+        "tolerance": 0,
+        "passed": true
+      }
+    ]
+  },
+  "dimensions": {
+    "reference": {
+      "viewBox": [
+        61.768369,
+        52.801999,
+        244.373639,
+        365.107646
+      ],
+      "width": 325.8315186666666,
+      "height": 486.81019466666663
+    },
+    "actual": {
+      "viewBox": [
+        -28.422144,
+        -477.541839,
+        325.831517,
+        486.810204
+      ],
+      "width": 325.831517,
+      "height": 486.810204
+    },
+    "maxErrorPixels": 0.00000933333336661235,
+    "passed": true
+  },
+  "primary": {
+    "passed": false,
+    "checks": [
+      {
+        "scale": 1,
+        "changedPixels": 117,
+        "exactMatch": false,
+        "maxChannelError": 3,
+        "meanForegroundError": 0.007294773699909221,
+        "foregroundPixels": 7711,
+        "maxEdgeDisplacementPixels": 0,
+        "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+        "referenceComponents": 83,
+        "actualComponents": 83,
+        "thresholds": {
+          "maxChannelError": 0,
+          "maxMeanForegroundError": 0,
+          "maxEdgeDisplacementPixels": 0,
+          "maxComponentDifference": 0
+        },
+        "passed": false
+      },
+      {
+        "scale": 1,
+        "changedPixels": 117,
+        "exactMatch": false,
+        "maxChannelError": 3,
+        "meanForegroundError": 0.02178705745039554,
+        "foregroundPixels": 7711,
+        "maxEdgeDisplacementPixels": 0,
+        "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+        "referenceComponents": 85,
+        "actualComponents": 85,
+        "thresholds": {
+          "maxChannelError": 0,
+          "maxMeanForegroundError": 0,
+          "maxEdgeDisplacementPixels": 0,
+          "maxComponentDifference": 0
+        },
+        "passed": false,
+        "background": "white"
+      },
+      {
+        "scale": 1,
+        "changedPixels": 0,
+        "exactMatch": true,
+        "maxChannelError": 0,
+        "meanForegroundError": 0,
+        "foregroundPixels": 0,
+        "maxEdgeDisplacementPixels": 0,
+        "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+        "referenceComponents": 0,
+        "actualComponents": 0,
+        "thresholds": {
+          "maxChannelError": 0,
+          "maxMeanForegroundError": 0,
+          "maxEdgeDisplacementPixels": 0,
+          "maxComponentDifference": 0
+        },
+        "passed": true,
+        "background": "black"
+      },
+      {
+        "scale": 4,
+        "changedPixels": 335,
+        "exactMatch": false,
+        "maxChannelError": 47,
+        "meanForegroundError": 0.0034151809170198605,
+        "foregroundPixels": 57098,
+        "maxEdgeDisplacementPixels": 0.25,
+        "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+        "referenceComponents": 80,
+        "actualComponents": 80,
+        "thresholds": {
+          "maxChannelError": 0,
+          "maxMeanForegroundError": 0,
+          "maxEdgeDisplacementPixels": 0,
+          "maxComponentDifference": 0
+        },
+        "passed": false
+      },
+      {
+        "scale": 4,
+        "changedPixels": 335,
+        "exactMatch": false,
+        "maxChannelError": 47,
+        "meanForegroundError": 0.010245542751059582,
+        "foregroundPixels": 57098,
+        "maxEdgeDisplacementPixels": 0.25,
+        "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+        "referenceComponents": 80,
+        "actualComponents": 80,
+        "thresholds": {
+          "maxChannelError": 0,
+          "maxMeanForegroundError": 0,
+          "maxEdgeDisplacementPixels": 0,
+          "maxComponentDifference": 0
+        },
+        "passed": false,
+        "background": "white"
+      },
+      {
+        "scale": 4,
+        "changedPixels": 0,
+        "exactMatch": true,
+        "maxChannelError": 0,
+        "meanForegroundError": 0,
+        "foregroundPixels": 0,
+        "maxEdgeDisplacementPixels": 0,
+        "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+        "referenceComponents": 0,
+        "actualComponents": 0,
+        "thresholds": {
+          "maxChannelError": 0,
+          "maxMeanForegroundError": 0,
+          "maxEdgeDisplacementPixels": 0,
+          "maxComponentDifference": 0
+        },
+        "passed": true,
+        "background": "black"
+      }
+    ]
+  },
+  "renderer": {
+    "profile": "chromium-153-geometry-v3",
+    "playwright": "1.63.0",
+    "browser": "153.0.8010.12",
+    "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+    "os": "win32",
+    "osRelease": "10.0.19045",
+    "architecture": "x64",
+    "node": "v24.12.0",
+    "headless": true,
+    "deviceScaleFactor": 1,
+    "viewport": {
+      "width": 1200,
+      "height": 900
+    },
+    "launchArguments": [
+      "--disable-gpu",
+      "--force-color-profile=srgb"
+    ],
+    "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+  },
+  "browserProfile": {
+    "schemaVersion": 1,
+    "id": "chromium-153-geometry-v3",
+    "playwrightVersion": "1.63.0",
+    "browserVersion": "153.0.8010.12",
+    "launchArguments": [
+      "--disable-gpu",
+      "--force-color-profile=srgb"
+    ],
+    "scales": [
+      1,
+      4
+    ],
+    "primary": {
+      "maxChannelError": 0,
+      "maxMeanForegroundError": 0,
+      "maxEdgeDisplacementPixels": 0,
+      "maxComponentDifference": 0
+    },
+    "pdf": {
+      "maxChannelError": 128,
+      "maxMeanForegroundError": 24,
+      "maxEdgeDisplacementRasterPixels": 1,
+      "maxComponentDifference": 0
+    },
+    "cases": {
+      "ordered-transforms": {
+        "primary": {
+          "maxChannelError": 12,
+          "maxMeanForegroundError": 0.125,
+          "maxEdgeDisplacementPixels": 0.25,
+          "maxComponentDifference": 0
+        },
+        "pdf": {
+          "maxChannelError": 224,
+          "maxMeanForegroundError": 32,
+          "maxEdgeDisplacementRasterPixels": 1.5,
+          "maxComponentDifference": 0
+        }
+      },
+      "cubic-controls": {
+        "primary": {
+          "maxChannelError": 10,
+          "maxMeanForegroundError": 0.05,
+          "maxEdgeDisplacementPixels": 0.25,
+          "maxComponentDifference": 0
+        },
+        "pdf": {
+          "maxChannelError": 144,
+          "maxMeanForegroundError": 24,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      },
+      "rotated-rectangle": {
+        "primary": {
+          "maxChannelError": 1,
+          "maxMeanForegroundError": 0.025,
+          "maxEdgeDisplacementPixels": 0,
+          "maxComponentDifference": 0
+        }
+      },
+      "clip-scope": {
+        "pdf": {
+          "maxChannelError": 160,
+          "maxMeanForegroundError": 24,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      },
+      "circle-ellipse": {
+        "primary": {
+          "maxChannelError": 12,
+          "maxMeanForegroundError": 0.02,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      },
+      "ellipse-basis": {
+        "primary": {
+          "maxChannelError": 16,
+          "maxMeanForegroundError": 0.15,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      },
+      "arc-sweeps": {
+        "primary": {
+          "maxChannelError": 12,
+          "maxMeanForegroundError": 0.125,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      }
+    },
+    "maxCanvasPixels": 20000000,
+    "maxCrops": 10
+  },
+  "artifacts": {
+    "actual-4x.png": "b7dfa7803e10e5da6e1f085dcd9cad37bd0872255e059b09b587d420377b1897",
+    "actual-scene.json": "4f922ae1dd1463f93f9c11feb8c27f3269ddaef2693c7a2753d3fae20c37b966",
+    "actual.png": "f4fe92c51bcb96768e22546650ae111facdcf39455a670c2eb9df07b687b14a0",
+    "actual.svg": "8b69225780b72f0c6292daf68783ffd29adf29f09ce78a2c7517d7bb9769df8e",
+    "calibration-provenance.json": "87144dad54929f9a9419d78b083a92c746ef1acf4396c89f13d7ebbaa7fd0306",
+    "comparison-input.json": "9f321ffaac40c5620774882e35c309765fd1e2d43f6535f68c6b227725ea9e19",
+    "comparison.png": "0f96faa303063621cd6925fe31ac9915b571a7005515589a87794d76494758f0",
+    "crops/0-actual.png": "df62e847ee9dff96662cc3af410cce280c187a74fcca1987f5b1eb7cb8ea704a",
+    "crops/0-difference.png": "2428e3c3ce60f6821d193c6be66437d92a44d198ccfc0747c40c4c4b73c07283",
+    "crops/0-reference.png": "502c11c1cfd3522666e7c2c41d6636e7d3734d27c787c4b474bb1b9c78f4246d",
+    "crops/1-actual.png": "2b76791feedbe1fa599970b434cc3de7586c6a8c2e0619919474c18bdeea81f0",
+    "crops/1-difference.png": "8bbe725cd63e522aa58b930c7e2783639fd32a62b8231f7ba5a0ccfd86539512",
+    "crops/1-reference.png": "a3e0aa8c4f8da02de506de084aaa1a4a23c5300ef78fc069156379c921c5751a",
+    "crops/2-actual.png": "522f140df1a384df10bbf31e11c03da2dd044ba880ef93fbdf6a34839fa024e5",
+    "crops/2-difference.png": "35197a28323a24c85c7e59e31ca71e4632586debfcdec4ec3a23b9c370bbd34f",
+    "crops/2-reference.png": "48776bcb78bc8a668b8e2036bacd5261c0f0e9d160122edb479ac4f9f97404e2",
+    "crops/3-actual.png": "422cfd90ae8f6888c8552794da8a2aab95375b0bfba0a1a15f47ceee0f2c06c3",
+    "crops/3-difference.png": "46b2ad17df69aad3a2411ac647437a64ade25676e6847346e8ccdaeebab6bf52",
+    "crops/3-reference.png": "49f166ae930ec8181daabd9a6879e9d63ebac231bf21c99e1442b889f41c5011",
+    "crops/4-actual.png": "6a93912a0500bf7f80af51486c22ae82b8a6d473fc93a02a2decb658b183cfdf",
+    "crops/4-difference.png": "b422855a4db42dd04472a1189db572ebb017e09bffdda86ff9324adbe1759faa",
+    "crops/4-reference.png": "761f11fd6f93d33f858c572af8511a2158cfccc13045b2ab32487fe4401c295e",
+    "crops/5-actual.png": "f9316778244c3dbe27c8e8bd9733dc93617029647f2eabfe2502c798e344e665",
+    "crops/5-difference.png": "87235697885203eebaac31fe7199583d2452abac8748d3635cf12f504241771b",
+    "crops/5-reference.png": "72145b54682355854b1a62251cd2e152e8dbf6a3d83797cf9fd0527a187ffa99",
+    "crops/6-actual.png": "00055c290dec49bf034fa495f0a0e416728a3b9d6cd444d7d0ff8dbff8e86291",
+    "crops/6-difference.png": "0540960886c5d72851f2b971bf14277597077f654d096dccdaad8e3628074ae7",
+    "crops/6-reference.png": "26829ed44c2fbc4e8bcb028401ec4dff38610224123377ea03a0add2f02ce9d0",
+    "crops/7-actual.png": "5a67fb100d5994d6764ddbf1a496c72983a9c3956f864c2c88de434eeae8edd2",
+    "crops/7-difference.png": "8f8918ef02b3bf7f20f5b9cf161883095649373c2df2ccda5ac616eb9bddce17",
+    "crops/7-reference.png": "3b0ef8f0493ef637ba0d8b61d6d7ff6a160e6917ea07e91140dc5eec10eacd8a",
+    "crops/8-actual.png": "2c66e61eefdd2b1eca5009c6b4a0f16882697b3aa2f16994565340534f667f0c",
+    "crops/8-difference.png": "29f51cf15c908efdb2a2d3a809c39a58bddd71f7a8335c62af172522e78c3413",
+    "crops/8-reference.png": "f45e2a34686bca48c6c556de56c81a1f95d52805164dc79433f7bd69095621c3",
+    "crops/9-actual.png": "94bfa023f4672eeee9362c9faf66d205bab472d65032bf9f0ef61ecc26680e69",
+    "crops/9-difference.png": "5d075c97665ebb259c9c4e19ccd4a18bc69b30817d23267d8bc7f583f8a1cfc2",
+    "crops/9-reference.png": "ed981eba3e66f3359929215dcefd4ba96dd33def99ab80e53a83a0e874cf3ff5",
+    "diff-4x.png": "67ed36984d6fac7b6cf85e2f925ca61316333735888161cf724c18d0a10175c8",
+    "diff-amplified-4x.png": "87f4e65583112b9d5be89e6b7c1a813ae6876c559a690f38e2a46bcfbdbb429e",
+    "diff-amplified.png": "e5cb091d5cdd8a0ef968d49720f82fa65d7161b5e98a044896ea785083b0ab58",
+    "diff.png": "d4f8088dc57354bc950f7ee460e53044dcaeb9bbf6fe466c9c3726e7b231af90",
+    "metrics.json": "b0e623dafc88f9275ba26e6683d048f8b07d31cef8fa703af2d125a0ab4c24f3",
+    "native-positions.log": "f0fd7b355447b556d82a64fdad4089c89aa19094d4871b7c67352ce3a1b0db69",
+    "oracle-crop-check.json": "0a1630b20dcead7b4406b917f218dcfbc025a6810082238e0d4b63079303a1d0",
+    "oracle.log": "326433b264c8e6adf1f0c54acbc8c71b66d8f0fdcf2e349964276d527a05a985",
+    "overlay.png": "3fa17680f4e2d752ae221514241180049bf88ba64ecdb4bce41845c1af99a118",
+    "provenance.json": "2db2d35e5641a80a53483fc7132e6ef7a8dfee61dedef891e0d412d482b4b641",
+    "reference-4x.png": "ba0667d2da5530b963c05b682534385ecdc4c9e53b3861cbc938aeecf385a3ff",
+    "reference.png": "5b82d9aea5a31b7fe3bb6159c9c1621e44cdf78501ca6f583b8f94644da32f73",
+    "reference.svg": "1a42a1e1f6a58be7c87cdb827d135f483f28c0a664758eed09ae85f4283cc662",
+    "source.tikz": "90b902275f1eaf3e4e501c7c9f0b6f716df2abd52ca3bf5b0084fb003488d302"
+  }
+}

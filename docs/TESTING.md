@@ -176,8 +176,9 @@ cases under `tests/Reference/Text/`. Ordinary .NET tests compare every box
 dimension and every glyph's font, encoding slot, and position exactly against
 native TeX integer scaled points. They also cover unsupported/malformed input,
 glyph/work/source/nesting/dimension limits, cancellation, and concurrent layout.
-This is preparation for node layout; the public converter still rejects nodes
-and labels. See [the text profile](TEXT.md) for the bounded grammar.
+The public rectangle-node prototype now consumes this layout. Its actual-node
+CSS comparison has a separate profile. See [the text profile](TEXT.md) for the
+bounded grammar.
 
 ```text
 dotnet run --project tools/TikzFontData -c Release -- compare-text
@@ -220,30 +221,55 @@ is 2. It writes aggregate evidence only under `artifacts/text-calibration/`.
 Converter CSS placement, natural node/ink bounds, and PDF text calibration
 remain separate required work before labeled diagrams are advertised.
 
-## Actual TikZ rectangle layout
+## Actual TikZ rectangle nodes
 
-The [internal node layout](NODES.md) has 22 independently measured actual TikZ
+The [rectangle-node prototype](NODES.md) has 22 independently measured actual TikZ
 nodes under `tests/Reference/Nodes/`. Its dedicated wrapper/profile leaves the
 geometry and bp text baselines unchanged. It records integer sp box dimensions,
 font metrics/defaults, separation, line width, sixteen global anchors, and
-painted rectangle corners. Ordinary tests require exact agreement. All six font
+painted rectangle corners, and native glyph fonts/slots/positions from DVItype.
+Ordinary tests require exact agreement. All six font
 faces, distinct label/node fonts, multiline boxes, empty labels, small minimum
 dimensions, negative separation, and center/north/base/mid placement have cases.
 
 ```text
 dotnet run --project tools/TikzReference -c Release -- compare-node-layout
+dotnet run --project tools/TikzReference -c Release -- compare-node-svg
+npm run test:nodes --prefix tools/TikzVisual
+dotnet run --project tools/TikzReference -c Release -- calibrate-node-svg
 dotnet run --project tools/TikzReference -c Release -- generate-node-reference
 dotnet run --project tools/TikzReference -c Release -- verify-node-reference
 ```
 
-Cached comparison writes `artifacts/node-layout/report.json` with 1,056 exact
+Cached layout comparison writes `artifacts/node-layout/report.json` with 1,322 exact
 checks, the managed scene, original reference SVG/log/metrics, artifact hashes,
 and candidate provenance. It is a numeric layout report; it does not emit or
 compare candidate node SVG. Exit categories match the main harness. Missing or
 modified inputs/artifacts fail. Generation alone writes baselines; verification
 recompiles only the trusted repository fixture without changing them.
 The ordinary Windows/Linux CI jobs run this cached command and upload its
-report bundle; hosted execution of the new step remains to be verified.
+report bundle; hosted execution remains to be verified.
+
+The public SVG command writes `artifacts/node-comparisons/` with 2,347 numeric
+checks, the actual public conversion, ordered/source-aware scene trace, paired
+PNGs, crops, and viewer. It passes native dimensions and primary SVG rendering
+at 1x/4x under the separate [node calibration](../tools/TikzVisual/NODE-CALIBRATION.md).
+The policy pins its independent evidence snapshot. Fifteen node comparator
+checks repeat correct output and reject missing glyphs/periods/ligatures,
+displaced baselines/advances, outline/border/unit/canvas defects, faint content,
+and incorrect paint order. Image mutations bypass numerical gates. A separate
+numeric mutation verifies the combined verdict.
+
+Node calibration never invokes the candidate compiler or bundled glyph data.
+It reconstructs original oracle outlines at native positions in CSS units,
+derives a frame from native stroked borders/text boxes, checks outline
+containment, and forces an exact raster policy. Its expected precision
+differences return 1. It writes numeric/image evidence and provenance to
+`artifacts/node-calibration/`; it does not update a baseline or policy. Review
+explicit snapshot changes when the representation or reference profile changes.
+The current candidate PNGs match the independent native-frame representation
+exactly; neither uses image fitting or copies candidate measurements into the
+oracle.
 
 Probe verification requires unchanged TeX box dimensions and identical SVG
 after sorting definitions by their unique IDs. Only definition order is
@@ -252,7 +278,7 @@ are preserved. The original SVG is retained, and provenance also records whether
 the unsorted outputs were byte-identical. Native font files are checked against
 the pinned font profile before live commands run.
 
-Public node parsing/emission, native glyph positions within nodes, transform
-policy, border intersections, outline ink bounds, production-coordinate raster
-calibration, and PDF node comparisons remain pending. These layout results
-do not authorize applying an existing raster tolerance to labeled diagrams.
+Node transform/state/clip interactions, rotated/sheared stroke ink bounds,
+border intersections, additional shapes/inline labels, and PDF node comparisons
+remain pending. The public report labels its primary-only scope. It does not
+authorize using this fixture's tolerance for other labeled diagrams.

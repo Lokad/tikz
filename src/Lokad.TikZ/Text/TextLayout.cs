@@ -30,6 +30,8 @@ internal sealed class TextLayout : ITextLayout
     // Node defaults use the surrounding node font, which can differ from the
     // font selected inside the label. Share the bounded six-face resource cache.
     internal static FontData Font(TextFont font) => Faces[font.Id].Value.Data;
+    internal static FontData Font(string id) => Faces.TryGetValue(id, out var face)
+        ? face.Value.Data : throw new ArgumentException("Unknown bundled font face.", nameof(id));
 
     public MeasuredText Layout(List<LabelItem> program, Source source, TextFont initialFont,
         TextAlignment alignment, Budget budget)

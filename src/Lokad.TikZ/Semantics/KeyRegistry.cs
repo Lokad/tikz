@@ -1,5 +1,6 @@
 using Lokad.TikZ.Frontend;
 using Lokad.TikZ.Geometry;
+using Lokad.TikZ.Text;
 
 namespace Lokad.TikZ.Semantics;
 
@@ -29,12 +30,37 @@ internal static class KeyRegistry
             }
             var value = Options.Clean(option.Value);
             var paint = state.Paint;
+            if (state.IsNodeContext)
+            {
+                if (key is "scale" or "xscale" or "yscale" or "rotate" or "shift" or "xshift" or "yshift" or "cm")
+                { state.NodeTransforms.Add(option with { Key = key }); continue; }
+                if (key is "x" or "y") throw Unsupported(option);
+                if (key == "line width") { state.NodeLineWidth = option.Value; continue; }
+            }
             switch (key)
             {
                 case "": continue;
                 case "draw": state.Paint = paint with { Stroke = value is not ("none" or "false"), StrokeColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.StrokeColor : Color.Parse(option.Value, budget) }; break;
                 case "fill": state.Paint = paint with { Fill = value is not ("none" or "false"), FillColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.FillColor : Color.Parse(option.Value, budget) }; break;
-                case "color": var color = Color.Parse(option.Value, budget); state.Paint = paint with { StrokeColor = color, FillColor = color }; break;
+                case "color": var color = Color.Parse(option.Value, budget); state.Paint = paint with { StrokeColor = color, FillColor = color }; state.Node = state.Node with { TextColor = color }; break;
+                case "rectangle": break;
+                case "shape": if (value != "rectangle") throw Unsupported(option); break;
+                case "font": state.Node = state.Node with { Font = option.Value }; break;
+                case "node font": state.Node = state.Node with { NodeFont = option.Value }; break;
+                case "text": state.Node = state.Node with { TextColor = Color.Parse(option.Value, budget) }; break;
+                case "text opacity": state.Node = state.Node with { TextOpacity = Alpha() }; break;
+                case "anchor": state.Node = state.Node with { Anchor = value, AnchorSource = option.Value }; break;
+                case "align": state.Node = state.Node with { Alignment = value switch { "left" => TextAlignment.Left, "center" => TextAlignment.Center, "right" => TextAlignment.Right, _ => throw Unsupported(option) } }; break;
+                case "inner sep": state.Node = state.Node with { InnerX = option.Value, InnerY = option.Value }; break;
+                case "inner xsep": state.Node = state.Node with { InnerX = option.Value }; break;
+                case "inner ysep": state.Node = state.Node with { InnerY = option.Value }; break;
+                case "outer sep": if (value == "auto") throw Unsupported(option); state.Node = state.Node with { OuterX = option.Value, OuterY = option.Value }; break;
+                case "outer xsep": state.Node = state.Node with { OuterX = option.Value }; break;
+                case "outer ysep": state.Node = state.Node with { OuterY = option.Value }; break;
+                case "minimum size": state.Node = state.Node with { MinimumWidth = option.Value, MinimumHeight = option.Value }; break;
+                case "minimum width": state.Node = state.Node with { MinimumWidth = option.Value }; break;
+                case "minimum height": state.Node = state.Node with { MinimumHeight = option.Value }; break;
+                case "transform shape": state.Node = state.Node with { TransformShape = value switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) } }; break;
                 case "line width": var width = state.Dimension(option.Value, budget); if (width < 0) Invalid(option); state.Paint = paint with { Width = width }; break;
                 case "ultra thin": Width(.1); break;
                 case "very thin": Width(.2); break;
@@ -74,11 +100,11 @@ internal static class KeyRegistry
                     state.Transform = state.Transform.Then(new(state.Scalar(parts[0], budget), state.Scalar(parts[1], budget), state.Scalar(parts[2], budget), state.Scalar(parts[3], budget), offset.X, offset.Y));
                     break;
                 default:
-                    if (Color.IsName(key) || key.Contains('!')) { var c = Color.Parse(new Source(key, 0, key.Length), budget); state.Paint = paint with { StrokeColor = c, FillColor = c }; }
+                    if (Color.IsName(key) || key.Contains('!')) { var c = Color.Parse(new Source(key, 0, key.Length), budget); state.Paint = paint with { StrokeColor = c, FillColor = c }; state.Node = state.Node with { TextColor = c }; }
                     else throw Unsupported(option);
                     break;
             }
-            void Width(double points) => state.Paint = paint with { Width = points * 72 / 72.27 };
+            void Width(double points) { state.NodeLineWidth = null; state.Paint = paint with { Width = points * 72 / 72.27 }; }
             void Dash(double a, double b) => state.Paint = paint with { Dash = [a * 72 / 72.27, b * 72 / 72.27] };
             double Alpha() { var result = state.Scalar(option.Value, budget); if (result is < 0 or > 1) Invalid(option); return result; }
         }

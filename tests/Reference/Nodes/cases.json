@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "profile": "pgf-3.1.11a-rectangle-layout-v1",
+  "profile": "pgf-3.1.11a-rectangle-layout-v2",
   "source": "tests/Fixtures/Nodes/rectangles.tikz",
   "cases": [
     { "id": "regular", "label": "AV ffi.", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 0, "ySp": 0, "anchor": "center", "lineWidthSp": 26214 },

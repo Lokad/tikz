@@ -55,7 +55,7 @@ internal static class SvgWriter
             writer.WriteAttributeString("width", Number(width) + "px");
             writer.WriteAttributeString("height", Number(height) + "px");
             writer.WriteAttributeString("viewBox", $"{Number(minX)} {Number(minY)} {Number(width)} {Number(height)}");
-            if (scene.Clips.Count > 0)
+            if (scene.Clips.Count > 0 || scene.Outlines.Count > 0)
             {
                 writer.WriteStartElement("defs");
                 for (var i = 0; i < scene.Clips.Count; i++)
@@ -69,19 +69,51 @@ internal static class SvgWriter
                     writer.WriteAttributeString("clip-rule", clip.FillRule);
                     writer.WriteEndElement(); writer.WriteEndElement();
                 }
+                for (var i = 0; i < scene.Outlines.Count; i++)
+                {
+                    var outline = scene.Outlines[i];
+                    writer.WriteStartElement("path");
+                    writer.WriteAttributeString("id", $"{prefix}-f{i}");
+                    writer.WriteAttributeString("d", outline.PathBp);
+                    writer.WriteEndElement();
+                }
                 writer.WriteEndElement();
             }
-            for (var i = 0; i < scene.Paths.Count; i++)
+            var pathIndex = 0;
+            var glyphIndex = 0;
+            foreach (var drawable in scene.Drawables)
             {
-                var path = scene.Paths[i];
-                budget.Charge(path.Source);
-                foreach (var clip in path.Clips)
+                budget.Charge(drawable.Source);
+                foreach (var clip in drawable.Clips)
                 {
                     if (clip < 0 || clip >= scene.Clips.Count) throw new InvalidOperationException("Invalid scene clip reference.");
                     writer.WriteStartElement("g"); writer.WriteAttributeString("clip-path", $"url(#{prefix}-c{clip})");
                 }
+                if (drawable is PaintedGlyphRun run)
+                {
+                    writer.WriteStartElement("g");
+                    writer.WriteAttributeString("id", $"{prefix}-n{run.NodeId}");
+                    writer.WriteAttributeString("fill", run.Color.Svg);
+                    writer.WriteAttributeString("fill-opacity", Number(run.Opacity));
+                    writer.WriteAttributeString("stroke", "none");
+                    writer.WriteStartElement("title"); writer.WriteString(run.Readable); writer.WriteEndElement();
+                    foreach (var glyph in run.Glyphs)
+                    {
+                        budget.Charge(glyph.Placement.Source);
+                        var t = glyph.Transform;
+                        writer.WriteStartElement("use");
+                        writer.WriteAttributeString("id", $"{prefix}-g{glyphIndex++}");
+                        writer.WriteAttributeString("href", $"#{prefix}-f{glyph.Outline}");
+                        writer.WriteAttributeString("transform", $"matrix({Number(t.A * 4 / 3)} {Number(-t.B * 4 / 3)} {Number(t.C * 4 / 3)} {Number(-t.D * 4 / 3)} {Number(t.E * 4 / 3)} {Number(-t.F * 4 / 3)})");
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                    foreach (var _ in drawable.Clips) writer.WriteEndElement();
+                    continue;
+                }
+                var path = (PaintedPath)drawable;
                 writer.WriteStartElement("path");
-                writer.WriteAttributeString("id", $"{prefix}-p{i}");
+                writer.WriteAttributeString("id", $"{prefix}-p{pathIndex++}");
                 writer.WriteAttributeString("d", PathData(path.Path, budget, path.Source));
                 var paint = path.Paint;
                 writer.WriteAttributeString("fill", paint.Fill ? paint.FillColor.Svg : "none");
@@ -111,6 +143,8 @@ internal static class SvgWriter
     private sealed class LimitedWriter(Budget budget, Source source) : TextWriter
     {
         private readonly StringBuilder _text = new();
+        private readonly Encoder _encoder = new UTF8Encoding(false, true).GetEncoder();
+        private long _bytes;
         public override Encoding Encoding => Encoding.UTF8;
         public override void Write(char value) => Write(value.ToString());
         public override void Write(char[] buffer, int index, int count) => Write(buffer.AsSpan(index, count));
@@ -118,9 +152,27 @@ internal static class SvgWriter
         public override void Write(ReadOnlySpan<char> buffer)
         {
             budget.Charge(source, buffer.Length);
-            if (buffer.Length > budget.Limits.MaxOutputBytes - _text.Length) Budget.Fail(source, "SVG bytes");
+            Span<byte> encoded = stackalloc byte[1024];
+            var remaining = buffer;
+            while (!remaining.IsEmpty)
+            {
+                _encoder.Convert(remaining, encoded, false, out var chars, out var bytes, out _);
+                Count(bytes);
+                remaining = remaining[chars..];
+            }
             _text.Append(buffer);
         }
-        public override string ToString() => _text.ToString();
+        private void Count(int bytes)
+        {
+            if (bytes > budget.Limits.MaxOutputBytes - _bytes) Budget.Fail(source, "SVG bytes");
+            _bytes += bytes;
+        }
+        public override string ToString()
+        {
+            Span<byte> final = stackalloc byte[4];
+            _encoder.Convert(ReadOnlySpan<char>.Empty, final, true, out _, out var bytes, out _);
+            Count(bytes);
+            return _text.ToString();
+        }
     }
 }

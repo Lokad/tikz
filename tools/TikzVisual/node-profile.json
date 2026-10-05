@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-node-css-v1",
+  "scope": "rectangles fixture only: 22 native rectangle nodes, outlined Latin Modern labels, CSS scene and native crop; primary only",
+  "calibrationFile": "../../tests/Reference/Nodes/calibration.json",
+  "calibrationSha256": "954f72e74e5f62b127ccdbe0d77826ca4bf85d6062d1a322e678174c402840bd",
+  "cases": {
+    "rectangles": {
+      "primary": { "maxChannelError": 47, "maxMeanForegroundError": 0.022, "maxEdgeDisplacementPixels": 0.25, "maxComponentDifference": 0 }
+    }
+  }
+}

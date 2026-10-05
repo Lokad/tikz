@@ -1,7 +1,7 @@
-# Internal text profile
+# Bounded text profile
 
-The `latin-modern-ec-10-12-v1` label frontend is internal preparatory work.
-The public converter does not yet accept nodes or labels. The profile uses
+The `latin-modern-ec-10-12-v1` label frontend supplies the public rectangle-node
+prototype. Its parser and measured layout remain internal. The profile uses
 only bundled regular, bold, and italic Latin Modern outlines at their 10pt
 and 12pt design sizes; it never discovers fonts or invokes TeX at runtime.
 
@@ -24,8 +24,9 @@ bold italic and all other families/sizes fail explicitly.
 Top-level `\\` starts a new explicit row; rows support left, center, or
 right alignment. Breaks inside groups, starred breaks, and optional break
 spacing fail. Native integer baselines follow the initial size's baseline
-skip, with the measured tall-line spacing rule. This grammar still needs
-end-to-end TikZ node fixtures before public integration.
+skip, with the measured tall-line spacing rule. Public nodes require an explicit
+`align=left`, `center`, or `right` when their label contains line breaks. The
+actual-node corpus checks mixed-size and empty-row interactions independently.
 
 Escapes `\%`, `\#`, `\$`, `\&`, `\_`, `\{`, and `\}` emit punctuation.
 The symbol commands are `\textbackslash`, `\textasciicircum`,
@@ -59,16 +60,18 @@ is charged consistently regardless of whether another call warmed that cache.
 
 TeX width/height/depth are layout dimensions, not an outline ink box. Node
 geometry must measure labels first and compute ink extents separately. The
-prototype image runner uses a declared fixed bp frame; it does not establish
-the future converter's natural crop, CSS outline placement, node anchors,
-text transformations, accessibility metadata, or secondary PDF fidelity.
+whole-label image runner uses a declared fixed bp frame. A separate actual-node
+corpus checks CSS outline placement, rectangle anchors, and natural cropping.
+Neither result establishes arbitrary text transformations or secondary PDF
+fidelity. The SVG contains XML-escaped readable labels and local outline uses.
 
 The sixteen native-reference cases and their exact integer tests ground the
 enumerated interactions they exercise. They do not establish general TeX
 typesetting or every combination of the declared primitives. New interactions
 require their own oracle cases; see [grounding instructions](TESTING.md).
 
-The [rectangle layout preparation](NODES.md) now consumes these measured labels
-and matches actual TikZ box, separation, anchor, and background-corner measurements
-for 22 nodes. Public conversion and native glyph-position/raster checks inside
-those nodes remain separate pending work.
+The [rectangle-node prototype](NODES.md) consumes these measured labels and
+matches actual TikZ box, separation, anchor, background-corner, and native glyph
+measurements for 22 nodes. Its CSS raster policy is calibrated separately from
+the whole-label bp policy; transform/state/clip interactions and PDF grounding
+remain separate work.

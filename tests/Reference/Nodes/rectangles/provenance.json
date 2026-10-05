@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "profile": "pgf-3.1.11a-rectangle-layout-v1",
+  "profile": "pgf-3.1.11a-rectangle-layout-v2",
   "sourceHashes": {
     "tests/Fixtures/Nodes/rectangles.tikz": "90b902275f1eaf3e4e501c7c9f0b6f716df2abd52ca3bf5b0084fb003488d302",
-    "tests/Reference/Nodes/cases.json": "9a4f70a761fc3c4cd2c745e3055e54e444d50b0d188a463a94a6d44d4aac52e4",
-    "tests/Reference/Nodes/oracle-profile.json": "09047e191655a85b3f54258dc7474fcca5abb1d4f624986dcef6ef008937eefb",
-    "tools/TikzReference/nodes.tex": "420c390c14ca6b739de81d9306b38d21cdb8518de9a9befdd12906f62404535e",
+    "tests/Reference/Nodes/cases.json": "30e693fe97d5c4f6fab558f0489bb5cf2b6b897057cf7ad5425f7d419840c144",
+    "tests/Reference/Nodes/oracle-profile.json": "e21ce11a7ec683ec306d3c6ccbef77dc7586642031143f5a9aff25237020f6dc",
+    "tools/TikzReference/nodes.tex": "e87f173a1710db9923707e2dbb5c6b23d9812965ca55962bfa879994373a0f44",
     "tools/TikzFontData/font-profile.json": "0f1fd5e433f78ca8e21ebbc12045ee96259316235aa25e4e3758b96561000fe9"
   },
-  "generatedUtc": "2026-10-05T00:27:38.3725029\u002B00:00",
+  "generatedUtc": "2026-10-05T01:06:32.6043974\u002B00:00",
   "tools": [
     {
       "name": "latex",
@@ -19,6 +19,11 @@
       "name": "dvisvgm",
       "version": "dvisvgm 3.4.3",
       "sha256": "74a03e974afc08f5b24417bbe08af792be6634eacfa16c1ce6f870cad95f53fa"
+    },
+    {
+      "name": "dvitype",
+      "version": "MiKTeX-DVITYPE 2.9.6300 (MiKTeX 25.4)",
+      "sha256": "53da4ba9cfc7bcd84b820b5bd22a9177b9cae171f4224c001963661076d8cafb"
     }
   ],
   "inputs": [
@@ -441,12 +446,14 @@
     "pictureBoxIdentical": true
   },
   "artifacts": {
-    "metrics.json": "d65a5f68ffb9c75605d74784ebb8af8ac5c629143723409cb227617ffe39d7d7",
-    "oracle.log": "e3e4a962c1501dd934207711b2d45d2ddffd2fab93a3b9509a551a9878c99c6f",
-    "reference.svg": "b86fe43d5099928bef40f33ef2ddf9cb955aecfdf5ba28f64783ad662c4f0a52"
+    "metrics.json": "b0e623dafc88f9275ba26e6683d048f8b07d31cef8fa703af2d125a0ab4c24f3",
+    "native-positions.log": "f0fd7b355447b556d82a64fdad4089c89aa19094d4871b7c67352ce3a1b0db69",
+    "oracle.log": "326433b264c8e6adf1f0c54acbc8c71b66d8f0fdcf2e349964276d527a05a985",
+    "reference.svg": "1a42a1e1f6a58be7c87cdb827d135f483f28c0a664758eed09ae85f4283cc662"
   },
   "commands": [
     "latex: -disable-write18 -disable-installer -interaction=nonstopmode -halt-on-error -recorder case.tex",
-    "dvisvgm: --no-fonts --exact-bbox --bbox=min --output=reference.svg case.dvi"
+    "dvisvgm: --no-fonts --exact-bbox --bbox=min --output=reference.svg case.dvi",
+    "dvitype: -disable-installer -out-mode=4 case.dvi"
   ]
 }

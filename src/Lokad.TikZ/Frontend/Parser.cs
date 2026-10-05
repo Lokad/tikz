@@ -53,6 +53,7 @@ internal sealed class Parser(Source source, Budget budget)
                     break;
                 case "\\tikzset": result.Add(new SetStatement(Options.Read(_reader.Group('{', '}'), budget), command)); break;
                 case "\\usetikzlibrary": result.Add(new LibraryStatement(_reader.Group('{', '}'), command)); break;
+                case "\\node": result.Add(ReadNode(command)); break;
                 case "\\coordinate":
                     var name = Options.Clean(_reader.Group('(', ')'));
                     if (!_reader.Word("at")) throw new CompileError("TIKZ001", "Expected 'at'.", _reader.Here);
@@ -70,6 +71,39 @@ internal sealed class Parser(Source source, Budget budget)
         return result;
     }
     private List<Option> ReadOptions() => _reader.Peek == '[' ? Options.Read(_reader.Group('[', ']'), budget) : [];
+    private NodeStatement ReadNode(Source command)
+    {
+        var options = new List<Option>();
+        var name = "";
+        Coordinate? at = null;
+        while (_reader.Peek != '{')
+        {
+            if (_reader.End || _reader.Peek == ';') throw new CompileError("TIKZ001", "Expected a grouped node label.", _reader.Here);
+            if (_reader.Peek == '[') options.AddRange(ReadOptions());
+            else if (_reader.Peek == '(')
+            {
+                var group = _reader.Group('(', ')');
+                if (name.Length > 0) throw new CompileError("TIKZ001", "Duplicate node name.", group);
+                name = Options.Clean(group);
+                if (name.Length == 0) throw new CompileError("TIKZ001", "Expected a node name.", group);
+                foreach (var ch in name)
+                {
+                    budget.Charge(group);
+                    if (!char.IsAsciiLetterOrDigit(ch) && ch is not ('_' or '-'))
+                        throw new CompileError("TIKZ002", "Node names require ASCII letters, digits, '_' or '-'.", group);
+                }
+            }
+            else if (_reader.Word("at"))
+            {
+                if (at is not null) throw new CompileError("TIKZ001", "Duplicate node position.", _reader.Here);
+                at = ReadCoordinate();
+            }
+            else throw new CompileError("TIKZ002", "Unsupported node syntax.", _reader.Here);
+        }
+        var label = _reader.Group('{', '}');
+        _reader.Require(";");
+        return new(name, at, options, label, new(command.Text, command.Offset, source.Offset + _reader.Position - command.Offset));
+    }
     private PathStatement ReadPath(Source command)
     {
         var options = ReadOptions();

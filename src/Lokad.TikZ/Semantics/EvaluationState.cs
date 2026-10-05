@@ -1,5 +1,6 @@
 using Lokad.TikZ.Frontend;
 using Lokad.TikZ.Geometry;
+using Lokad.TikZ.Nodes;
 
 namespace Lokad.TikZ.Semantics;
 
@@ -9,6 +10,10 @@ internal sealed class EvaluationState
     public Point XBasis { get; set; } = new(72 / 2.54, 0);
     public Point YBasis { get; set; } = new(0, 72 / 2.54);
     public Paint Paint { get; set; } = new();
+    public NodeSettings Node { get; set; } = new();
+    public bool IsNodeContext { get; set; }
+    public List<Option> NodeTransforms { get; } = [];
+    public Source? NodeLineWidth { get; set; }
     public List<int> Clips { get; set; } = [];
     public bool RelevantForPictureSize { get; set; } = true;
     public Dictionary<string, List<Option>> Styles { get; set; } = new(StringComparer.Ordinal);
@@ -18,7 +23,7 @@ internal sealed class EvaluationState
         budget.Charge(source, Styles.Count + Variables.Count + Clips.Count + 1);
         return new()
         {
-            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, RelevantForPictureSize = RelevantForPictureSize,
+            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Node = Node, RelevantForPictureSize = RelevantForPictureSize,
             Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal)
         };
     }

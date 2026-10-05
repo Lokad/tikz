@@ -49,6 +49,16 @@ public sealed class NodeLayoutTests
         Check("innerx", dimensions.InnerXSp); Check("innery", dimensions.InnerYSp);
         Check("outerx", dimensions.OuterXSp); Check("outery", dimensions.OuterYSp);
         Check("minimumwidth", dimensions.MinimumWidthSp); Check("minimumheight", dimensions.MinimumHeightSp);
+        var nativeGlyphs = expected.GetProperty("glyphs").EnumerateArray().ToArray();
+        Assert.Equal(nativeGlyphs.Length, text.Glyphs.Length);
+        for (var glyphIndex = 0; glyphIndex < nativeGlyphs.Length; glyphIndex++)
+        {
+            var glyph = text.Glyphs[glyphIndex]; var nativeGlyph = nativeGlyphs[glyphIndex];
+            Assert.Equal(nativeGlyph.GetProperty("font").GetString(), glyph.FontId);
+            Assert.Equal(nativeGlyph.GetProperty("slot").GetInt32(), glyph.Slot);
+            Assert.Equal(nativeGlyph.GetProperty("xSp").GetInt32(), glyph.XSp);
+            Assert.Equal(nativeGlyph.GetProperty("ySp").GetInt32(), glyph.YSp);
+        }
         var atAnchor = shape.Anchor(definition.GetProperty("anchor").GetString()!, nodeFont, budget, source);
         var dx = definition.GetProperty("xSp").GetInt32() - atAnchor.X;
         var dy = definition.GetProperty("ySp").GetInt32() - atAnchor.Y;

@@ -4,7 +4,7 @@ using Lokad.TikZ.Graphics;
 
 namespace Lokad.TikZ.Semantics;
 
-internal sealed class Evaluator(Budget budget)
+internal sealed partial class Evaluator(Budget budget)
 {
     private readonly GraphicsScene _scene = new();
     private readonly Dictionary<string, Point> _coordinates = new(StringComparer.Ordinal);
@@ -33,23 +33,26 @@ internal sealed class Evaluator(Budget budget)
                     foreach (var name in Options.Split(libraries.Names, ',', budget)) LoadLibrary(Options.Clean(name), name);
                     break;
                 case CoordinateStatement coordinate:
+                    budget.Node(coordinate.Source);
                     var point = Resolve(coordinate.Point, state, default, out _);
+                    _nodes.Remove(coordinate.Name);
                     _coordinates[coordinate.Name] = point;
                     _scene.Coordinates[coordinate.Name] = point;
                     break;
+                case NodeStatement node: Node(node, state); break;
                 case PathStatement path: Path(path, state); break;
                 default: throw new InvalidOperationException("Unknown semantic statement.");
             }
         }
     }
-    private Point Resolve(Coordinate coordinate, EvaluationState state, Point reference, out bool updateReference)
+    private Point Resolve(Coordinate coordinate, EvaluationState state, Point reference, out bool updateReference, bool nodeCenter = true)
     {
         budget.Charge(coordinate.Source);
         updateReference = coordinate.Relative != 1;
         Point point;
         if (coordinate.X is null || coordinate.Y is null)
         {
-            if (!_coordinates.TryGetValue(coordinate.Name, out point)) throw new CompileError("TIKZ003", $"Unknown coordinate '{coordinate.Name}'.", coordinate.Source);
+            if (!_coordinates.TryGetValue(coordinate.Name, out point)) point = NodeAnchor(coordinate.Name, coordinate.Source, nodeCenter);
             point = PgfCoordinates.RoundTrip(point, state.Transform, coordinate.Source);
         }
         else
@@ -141,11 +144,11 @@ internal sealed class Evaluator(Budget budget)
             var ink = state.Paint.Stroke ? bounds.Inflate(state.Paint.Width / 2 * (state.Paint.Cap == "square" ? Math.Sqrt(2) : 1)) : bounds;
             foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Path.Bounds);
             _scene.InkBounds = _scene.InkBounds.Union(ink);
-            _scene.Paths.Add(new(path, state.Paint, [.. state.Clips], statement.Source));
+            _scene.Add(new(path, state.Paint, [.. state.Clips], statement.Source));
         }
         Point Point(Coordinate coordinate)
         {
-            var point = Resolve(coordinate, state, reference, out var update);
+            var point = Resolve(coordinate, state, reference, out var update, nodeCenter: false);
             if (update) reference = point;
             return point;
         }

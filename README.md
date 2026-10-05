@@ -8,7 +8,9 @@ against PGF 3.1.11a with independent numeric measurements and SVG comparisons
 at 1x and 4x. Lines, relative coordinates, and scoped clipping have exact
 primary pixels; transformed coordinates, curves, ellipses/arcs, and rectangle cropping use
 small, independently calibrated allowances. This evidence covers the listed
-fixtures. Nodes, labels, arrows, and libraries remain to be implemented.
+fixtures. A [rectangle-node prototype](docs/NODES.md) now emits outlined labels
+and passes native layout and primary SVG checks for 22 actual TikZ nodes.
+Node interaction/PDF coverage, additional shapes, arrows, and libraries remain.
 Unsupported source constructs produce diagnostics.
 
 ```csharp
@@ -37,10 +39,12 @@ isolated from the production library.
 
 The [bundled font-data prototype](tools/TikzFontData/README.md) has six
 Latin Modern faces with independent TeX metric checks and exact atlas
-comparisons. It prepares label support; the converter still rejects labels.
+comparisons. Its resources now supply the rectangle-node prototype's labels.
 The internal [label layout](docs/TEXT.md) also matches sixteen native TeX
 box/glyph-position cases exactly, with independently calibrated image checks.
-Node geometry, converter text emission, and PDF text conformance are pending.
+The node corpus also has native glyph-position measurements and its own
+oracle-calibrated CSS raster policy. This scope covers the concrete fixtures;
+PDF text conformance and transformed/clipped node interactions remain pending.
 
 The code is MIT licensed. Bundled font data retains its separate
 [GUST Font License / LPPL notices](THIRD-PARTY-NOTICES.md).

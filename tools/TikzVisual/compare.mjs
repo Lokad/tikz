@@ -9,6 +9,8 @@ const directory = path.dirname(fileURLToPath(import.meta.url));
 export const profile = JSON.parse(await readFile(path.join(directory, 'browser-profile.json'), 'utf8'));
 const textProfileBytes = await readFile(path.join(directory, 'text-profile.json'));
 const textProfile = JSON.parse(textProfileBytes);
+const nodeProfileBytes = await readFile(path.join(directory, 'node-profile.json'));
+const nodeProfile = JSON.parse(nodeProfileBytes);
 const hash = value => createHash('sha256').update(value).digest('hex');
 
 export async function createRenderer() {
@@ -36,13 +38,28 @@ export async function compareBundle(bundle, renderer) {
   const scene = JSON.parse(await readFile(path.join(bundle, 'actual-scene.json'), 'utf8'));
   const pdfImages = input.pdf ? Object.fromEntries(await Promise.all(profile.scales.map(async scale => [scale,
     'data:image/png;base64,' + (await readFile(path.join(bundle, `pdf-page-${scale}x.png`))).toString('base64')]))) : null;
-  if (input.rasterProfile && input.rasterProfile !== 'text') throw new Error('Unknown raster profile.');
-  const rasterProfile = input.rasterProfile === 'text' ? textProfile : profile;
+  if (input.rasterProfile && !['text', 'node'].includes(input.rasterProfile)) throw new Error('Unknown raster profile.');
+  const rasterProfile = input.rasterProfile === 'text' ? textProfile : input.rasterProfile === 'node' ? nodeProfile : profile;
   const profileKey = input.toleranceProfile ?? input.caseId;
   if (input.rasterProfile === 'text' && (textProfile.schemaVersion !== 1 || !textProfile.cases[profileKey]))
     throw new Error('Text case has no independently calibrated policy.');
+  if (input.rasterProfile === 'node' && (nodeProfile.schemaVersion !== 1 || !nodeProfile.cases[profileKey]))
+    throw new Error('Node case has no independently calibrated policy.');
+  // Exact oracle experiments can establish a new snapshot before any reviewed
+  // allowance exists. Candidate conformance must consume the pinned evidence.
+  if (input.rasterProfile === 'node' && input.exactPrimary !== true) {
+    const evidence = await readFile(path.resolve(directory, nodeProfile.calibrationFile));
+    if (hash(evidence) !== nodeProfile.calibrationSha256) throw new Error('Node calibration evidence hash differs from the reviewed policy.');
+    const declared = JSON.parse(evidence);
+    if (declared.converterInvoked !== false || declared.numeric.passed !== true
+      || declared.outlineContainment.passed !== true) throw new Error('Invalid independent node calibration evidence.');
+    if (input.pdf && !nodeProfile.cases[profileKey].pdf) throw new Error('Node PDF policy has not been independently calibrated.');
+  }
   const selected = rasterProfile.cases?.[profileKey] ?? {};
   const policy = { ...profile, primary: selected.primary ?? rasterProfile.primary, pdf: selected.pdf ?? profile.pdf };
+  if (input.exactPrimary === true) policy.primary = {
+    maxChannelError: 0, maxMeanForegroundError: 0, maxEdgeDisplacementPixels: 0, maxComponentDifference: 0
+  };
   const result = await renderer.page.evaluate(async ({ input, scene, referenceSvg, actualSvg, pdfImages, policy }) => {
     const makeCanvas = (width, height) => {
       if (!Number.isSafeInteger(width) || !Number.isSafeInteger(height) || width < 1 || height < 1 || width * height > policy.maxCanvasPixels)
@@ -281,8 +298,10 @@ export async function compareBundle(bundle, renderer) {
   }
   await collect(bundle);
   const report = { schemaVersion: 1, caseId: input.caseId, verdict: verdict ? 'pass' : 'mismatch', referenceMode: input.referenceMode,
+    scope: input.scope,
     numeric: input.numeric, actualLabel: input.actualLabel ?? 'Lokad.TikZ', toleranceProfile: input.toleranceProfile ?? input.caseId,
-    rasterPolicy: { id: rasterProfile.id, sha256: input.rasterProfile === 'text' ? hash(textProfileBytes) : renderer.identity.profileSha256 },
+    rasterPolicy: { id: rasterProfile.id, sha256: input.rasterProfile === 'text' ? hash(textProfileBytes)
+      : input.rasterProfile === 'node' ? hash(nodeProfileBytes) : renderer.identity.profileSha256 },
     renderer: renderer.identity, ...result, artifacts, sourceHash: hash(await readFile(path.join(bundle, 'source.tikz'))) };
   await writeFile(path.join(bundle, 'report.json'), JSON.stringify(report, null, 2) + '\n');
   await writeFile(path.join(bundle, 'index.html'), viewer(report, await readFile(path.join(bundle, 'source.tikz'), 'utf8')));

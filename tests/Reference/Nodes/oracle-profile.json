@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "pgf-3.1.11a-rectangle-layout-v1",
+  "id": "pgf-3.1.11a-rectangle-layout-v2",
+  "dviTypeVersion": "MiKTeX-DVITYPE 2.9.6300 (MiKTeX 25.4)",
   "latexVersion": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
   "dvisvgmVersion": "dvisvgm 3.4.3",
   "pdfRasterizerVersion": "pdftoppm version 24.04.0",
