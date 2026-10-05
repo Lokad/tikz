@@ -254,7 +254,7 @@ internal static partial class ReferenceTool
         var query = NodeFontMetrics.Resolve(TextFont.Default, budget, new("", 0, 0));
         var glyphs = scene.Drawables.OfType<PaintedGlyphRun>().SelectMany(run => run.Glyphs.Select(g => (Run: run, Glyph: g))).ToArray();
         var pathTrace = scene.Paths.Select((p, index) => (object)new { semanticId = "path-" + index, svgElementId = "candidate-p" + index,
-            source = p.Source.Location, geometryBounds = p.Path.Bounds.Pixels, inkBounds = p.Path.Bounds.Inflate(p.Paint.Width / 2).Pixels,
+            source = p.Source.Location, geometryBounds = p.Path.Bounds.Pixels, inkBounds = p.InkBounds.Pixels,
             p.Paint, p.Clips, segmentsBp = p.Path.Segments });
         var glyphTrace = glyphs.Select((entry, index) => (object)new { semanticId = "glyph-" + index, svgElementId = "candidate-g" + index,
             source = entry.Glyph.Placement.Source.Location, geometryBounds = entry.Glyph.InkBounds.Pixels, inkBounds = entry.Glyph.InkBounds.Pixels });

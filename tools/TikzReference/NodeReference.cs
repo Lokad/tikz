@@ -161,27 +161,30 @@ internal static partial class ReferenceTool
     }
 
     private static NodeMetrics NativeNodes(string log, NodeManifest manifest)
+        => NativeNodes(log, manifest.Profile, manifest.Cases.Select(c => c.Id).ToArray());
+
+    private static NodeMetrics NativeNodes(string log, string profile, string[] ids)
     {
         var measuredIds = Regex.Matches(log, @"LOKAD-NODE ([a-z][a-z0-9-]*) width=")
             .Select(m => m.Groups[1].Value).ToArray();
-        if (!measuredIds.SequenceEqual(manifest.Cases.Select(c => c.Id)))
+        if (!measuredIds.SequenceEqual(ids))
             throw new InvalidOperationException("Native node coverage differs from the trusted manifest.");
         var nodes = new List<NativeNode>();
-        foreach (var c in manifest.Cases)
+        foreach (var id in ids)
         {
             var values = Regex.Matches(log, @"LOKAD-NODE ([a-z][a-z0-9-]*) ([a-z]+)=(-?\d+)")
-                .Where(m => m.Groups[1].Value == c.Id).ToDictionary(m => m.Groups[2].Value, m => int.Parse(m.Groups[3].Value));
+                .Where(m => m.Groups[1].Value == id).ToDictionary(m => m.Groups[2].Value, m => int.Parse(m.Groups[3].Value));
             var anchors = Regex.Matches(log, @"LOKAD-ANCHOR ([a-z][a-z0-9-]*);([^;\r\n]+);(-?\d+);(-?\d+)")
-                .Where(m => m.Groups[1].Value == c.Id).ToDictionary(m => m.Groups[2].Value,
+                .Where(m => m.Groups[1].Value == id).ToDictionary(m => m.Groups[2].Value,
                     m => new NodePoint(int.Parse(m.Groups[3].Value), int.Parse(m.Groups[4].Value)));
             var corners = Regex.Matches(log, @"LOKAD-RECT ([a-z][a-z0-9-]*) (sw|ne)=(-?\d+);(-?\d+)")
-                .Where(m => m.Groups[1].Value == c.Id).ToDictionary(m => m.Groups[2].Value,
+                .Where(m => m.Groups[1].Value == id).ToDictionary(m => m.Groups[2].Value,
                     m => new NodePoint(int.Parse(m.Groups[3].Value), int.Parse(m.Groups[4].Value)));
             if (!values.Keys.Order().SequenceEqual(NodeQuantities.Order()) || !anchors.Keys.Order().SequenceEqual(NodeAnchorNames.Order())
-                || corners.Count != 2) throw new InvalidOperationException("Incomplete native node measurements: " + c.Id);
-            nodes.Add(new(c.Id, values, anchors, corners["sw"], corners["ne"]));
+                || corners.Count != 2) throw new InvalidOperationException("Incomplete native node measurements: " + id);
+            nodes.Add(new(id, values, anchors, corners["sw"], corners["ne"]));
         }
-        return new(1, manifest.Profile, NodeUnits, nodes.ToArray());
+        return new(1, profile, NodeUnits, nodes.ToArray());
     }
 
     private static Dictionary<string, string> NodeHashes(NodeManifest manifest) => new(StringComparer.Ordinal)

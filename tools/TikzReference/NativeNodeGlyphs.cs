@@ -6,6 +6,9 @@ internal static partial class ReferenceTool
     // Consume native integer DVItype movements. No candidate font metrics,
     // text layout, or arithmetic for DVI character advances is used here.
     private static Dictionary<string, NativeNodeGlyph[]> NativeNodeGlyphs(string trace, NodeFontProfile profile, NodeManifest manifest)
+        => NativeNodeGlyphs(trace, profile, manifest.Cases.Select(c => c.Id));
+
+    private static Dictionary<string, NativeNodeGlyph[]> NativeNodeGlyphs(string trace, NodeFontProfile profile, IEnumerable<string> ids)
     {
         if (!trace.Contains("numerator/denominator=25400000/473628672", StringComparison.Ordinal)
             || !trace.Contains("magnification=1000;", StringComparison.Ordinal) || !trace.Contains("totalpages=1", StringComparison.Ordinal))
@@ -18,7 +21,7 @@ internal static partial class ReferenceTool
                 ?? throw new InvalidOperationException("Native node trace selected an unpinned font or size.");
             fonts.Add(Integer(match.Groups[1].Value), face.Id);
         }
-        var result = manifest.Cases.ToDictionary(c => c.Id, _ => new List<NativeNodeGlyph>(), StringComparer.Ordinal);
+        var result = ids.ToDictionary(id => id, _ => new List<NativeNodeGlyph>(), StringComparer.Ordinal);
         var marked = new HashSet<string>(StringComparer.Ordinal);
         string? node = null, fontId = null;
         int h = 0, v = 0, originX = 0, originY = 0;

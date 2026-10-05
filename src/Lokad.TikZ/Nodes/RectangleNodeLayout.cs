@@ -104,11 +104,21 @@ internal sealed record RectangleNodeLayout(MeasuredText Text, NodeDimensions Dim
     internal GraphicPath Background(Affine transform, Budget budget, Source source)
     {
         var path = new GraphicPath(budget, source);
-        // PGF rectangle corner vocabulary paints SW → SE → NE → NW.
-        path.Move(transform.Apply(BackgroundSouthWest.Bp));
-        path.Line(transform.Apply(new NodePoint(BackgroundNorthEast.X, BackgroundSouthWest.Y).Bp));
-        path.Line(transform.Apply(BackgroundNorthEast.Bp));
-        path.Line(transform.Apply(new NodePoint(BackgroundSouthWest.X, BackgroundNorthEast.Y).Bp));
+        // PGF's identity-linear-frame fast path paints SW → SE → NE → NW.
+        // Its general rectangle construction starts at NE and reverses that
+        // traversal. The start and direction remain observable with dashes.
+        var sw = transform.Apply(BackgroundSouthWest.Bp);
+        var se = transform.Apply(new NodePoint(BackgroundNorthEast.X, BackgroundSouthWest.Y).Bp);
+        var ne = transform.Apply(BackgroundNorthEast.Bp);
+        var nw = transform.Apply(new NodePoint(BackgroundSouthWest.X, BackgroundNorthEast.Y).Bp);
+        if (transform.A == 1 && transform.B == 0 && transform.C == 0 && transform.D == 1)
+        {
+            path.Move(sw); path.Line(se); path.Line(ne); path.Line(nw);
+        }
+        else
+        {
+            path.Move(ne); path.Line(nw); path.Line(sw); path.Line(se);
+        }
         path.Close();
         return path;
     }

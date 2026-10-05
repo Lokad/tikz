@@ -93,9 +93,12 @@ internal sealed partial class Evaluator
         }
         if (state.Paint.Fill || state.Paint.Stroke)
         {
-            var ink = state.Paint.Stroke ? background.Bounds.Inflate(state.Paint.Width / 2) : background.Bounds;
-            _scene.InkBounds = _scene.InkBounds.Union(Clipped(ink));
-            _scene.Add(new(background, state.Paint, [.. state.Clips], statement.Source));
+            var ink = state.Paint.Stroke
+                ? PolygonStrokeBounds.Calculate(background.Segments.Take(4).Select(segment => segment.End).ToArray(), state.Paint, budget, statement.Source)
+                : background.Bounds;
+            ink = Clipped(ink);
+            _scene.InkBounds = _scene.InkBounds.Union(ink);
+            _scene.Add(new(background, state.Paint, [.. state.Clips], statement.Source, ink));
         }
         var glyphs = new List<ResolvedGlyph>();
         var opacity = state.Node.TextOpacity ?? state.Paint.FillOpacity;

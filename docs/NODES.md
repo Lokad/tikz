@@ -61,6 +61,11 @@ overlapping node/path paint order, rotated/sheared stroke extents, implicit node
 border endpoints, circle/ellipse nodes, path/inline labels, and secondary PDF
 fidelity still require their own grounding. Some keys are implemented for the
 next interaction fixtures; acceptance by the parser is not a compatibility claim.
+The [interaction experiment](../tools/TikzReference/NODE-INTERACTIONS.md) now has
+sixteen native node references and numeric evidence for these interactions.
+It repairs transformed rectangle traversal and miter ink bounds, but preserves
+failing color, native-crop, and raster results. It adds no visual compatibility
+claim or general node tolerance.
 Bare node endpoints in drawing paths fail until border intersection exists;
 explicit anchors are accepted. Math, text wrapping, unsupported fonts/shapes,
 and `outer sep=auto` fail with diagnostics.

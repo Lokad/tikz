@@ -24,6 +24,8 @@ internal static partial class ReferenceTool
         {
             Root = FindRoot();
             Profile = Read<OracleProfile>(At("tests/Reference/oracle-profile.json"));
+            if (args.Length > 0 && args[0] is "generate-node-interactions" or "verify-node-interactions" or "compare-node-interactions" or "calibrate-node-interaction-pdf")
+                return await NodeInteractions(args);
             if (args.Length > 0 && args[0] is "generate-node-reference" or "verify-node-reference" or "compare-node-layout" or "compare-node-svg" or "calibrate-node-svg")
                 return await NodeReferences(args);
             var options = Arguments(args);
@@ -232,7 +234,7 @@ internal static partial class ReferenceTool
         schemaVersion = 1, units = "CSS pixels; y down; picture origin (0,0)", pictureBounds = success.PictureBounds, inkBounds = success.InkBounds,
         coordinates = scene.Coordinates.ToDictionary(p => p.Key, p => new XY(p.Value.X * 4 / 3, -p.Value.Y * 4 / 3)),
         paths = scene.Paths.Select((p, i) => new { semanticId = $"path-{i}", svgElementId = $"candidate-p{i}", source = p.Source.Location,
-            geometryBounds = p.Path.Bounds.Pixels, inkBounds = p.Path.Bounds.Inflate(p.Paint.Stroke ? p.Paint.Width / 2 : 0).Pixels,
+            geometryBounds = p.Path.Bounds.Pixels, inkBounds = p.InkBounds.Pixels,
             paint = new { stroke = p.Paint.Stroke, fill = p.Paint.Fill, strokeColor = p.Paint.StrokeColor.Svg, fillColor = p.Paint.FillColor.Svg,
                 strokeWidthPixels = p.Paint.Width * 4 / 3, p.Paint.StrokeOpacity, p.Paint.FillOpacity, p.Paint.Cap, p.Paint.Join, p.Paint.FillRule,
                 dashPixels = p.Paint.Dash.Select(d => d * 4 / 3), dashPhasePixels = p.Paint.DashPhase * 4 / 3 }, clips = p.Clips,
@@ -435,7 +437,13 @@ internal static partial class ReferenceTool
     private static string Sanitize(string text)
     {
         foreach (var value in new[] { Root, Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) }.Where(v => v.Length > 0).OrderByDescending(v => v.Length))
-            text = text.Replace(value, "<local>", StringComparison.OrdinalIgnoreCase).Replace(value.Replace('\\', '/'), "<local>", StringComparison.OrdinalIgnoreCase);
+            foreach (var spelling in new[] { value, value.Replace('\\', '/') }.Distinct())
+            {
+                // TeX wraps file paths even within the home-directory prefix.
+                // Redact that prefix across line breaks as well as on one line.
+                var pattern = string.Join(@"(?:\r?\n)?", spelling.Select(c => Regex.Escape(c.ToString())));
+                text = Regex.Replace(text, pattern, "<local>", RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            }
         return text;
     }
     private static string Text(string file) => File.ReadAllText(file).Replace("\r\n", "\n", StringComparison.Ordinal);

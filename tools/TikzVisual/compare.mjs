@@ -60,6 +60,9 @@ export async function compareBundle(bundle, renderer) {
   if (input.exactPrimary === true) policy.primary = {
     maxChannelError: 0, maxMeanForegroundError: 0, maxEdgeDisplacementPixels: 0, maxComponentDifference: 0
   };
+  if (input.exactPdf === true) policy.pdf = {
+    maxChannelError: 0, maxMeanForegroundError: 0, maxEdgeDisplacementRasterPixels: 0, maxComponentDifference: 0
+  };
   const result = await renderer.page.evaluate(async ({ input, scene, referenceSvg, actualSvg, pdfImages, policy }) => {
     const makeCanvas = (width, height) => {
       if (!Number.isSafeInteger(width) || !Number.isSafeInteger(height) || width < 1 || height < 1 || width * height > policy.maxCanvasPixels)

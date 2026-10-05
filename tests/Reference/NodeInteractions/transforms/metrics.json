@@ -1,0 +1,1926 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-node-interactions-v1",
+  "geometry": {
+    "schemaVersion": 2,
+    "units": "Independent PGF bounds, anchors, soft-path coordinates and widths in TeX pt; paint from the pinned SVG driver; SVG translation in bp; PDF registration from shipped-out positions",
+    "pictureBoundsPt": {
+      "minX": -18.19945,
+      "minY": -7.47734,
+      "maxX": 186.19926,
+      "maxY": 108.02722
+    },
+    "boxPt": {
+      "width": 204.39871,
+      "height": 115.50456,
+      "depth": 0
+    },
+    "anchorsPt": {
+      "start": {
+        "x": 30,
+        "y": 46.97734
+      },
+      "end": {
+        "x": 97.56857,
+        "y": 72.96808
+      }
+    },
+    "svgOriginBp": {
+      "x": 79.899823,
+      "y": 160.425626
+    },
+    "pdfOriginPixels": {
+      "x": 202.53308627801997,
+      "y": 309.9008258094646
+    },
+    "stroke": {
+      "widthPt": 1.4,
+      "color": "#000000",
+      "opacity": 1
+    },
+    "paths": [
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": -17.49945,
+              "y": -6.77734
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 17.49945,
+              "y": -6.77734
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 17.49945,
+              "y": 6.777350000000001
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": -17.49945,
+              "y": 6.777350000000001
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": -17.49945,
+              "y": -6.77734
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": false,
+        "widthPt": 1.4,
+        "strokeColor": "#000000",
+        "fillColor": "none",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 12.50055,
+              "y": 33.22266
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 47.499449999999996,
+              "y": 33.22266
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 47.499449999999996,
+              "y": 46.77735
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 12.50055,
+              "y": 46.77735
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 12.50055,
+              "y": 33.22266
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": false,
+        "widthPt": 0.4,
+        "strokeColor": "#000000",
+        "fillColor": "none",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 115.1431,
+              "y": 95.02661
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 69.67809,
+              "y": 68.77745
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 74.76108,
+              "y": 59.97342
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 120.22609,
+              "y": 86.22258
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 115.1431,
+              "y": 95.02661
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": false,
+        "widthPt": 0.4,
+        "strokeColor": "#000000",
+        "fillColor": "none",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 25.46727,
+              "y": 73.05846
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 4.27127,
+              "y": 67.37903
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 8.28273,
+              "y": 52.40804
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 29.47873,
+              "y": 58.08746
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 25.46727,
+              "y": 73.05846
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": false,
+        "widthPt": 0.4,
+        "strokeColor": "#000000",
+        "fillColor": "none",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 144.0007,
+              "y": 45.4219
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 185.99927,
+              "y": 45.4219
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 185.99927,
+              "y": 34.57813
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 144.0007,
+              "y": 34.57813
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 144.0007,
+              "y": 45.4219
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": false,
+        "widthPt": 0.4,
+        "strokeColor": "#000000",
+        "fillColor": "none",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": -6.33282,
+              "y": 82.63945
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 29.83249,
+              "y": 82.63945
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 29.83249,
+              "y": 97.36054999999999
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": -6.33282,
+              "y": 97.36054999999999
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": -6.33282,
+              "y": 82.63945
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": false,
+        "widthPt": 0.4,
+        "strokeColor": "#000000",
+        "fillColor": "none",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 110.21034,
+              "y": 107.02722
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 75.21144,
+              "y": 96.52747
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 69.78967,
+              "y": 82.97278
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 104.78857,
+              "y": 93.47253
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 110.21034,
+              "y": 107.02722
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": false,
+        "widthPt": 2,
+        "strokeColor": "#000000",
+        "fillColor": "none",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 30,
+              "y": 46.97734
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 97.56857,
+              "y": 72.96808
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": false,
+        "widthPt": 0.4,
+        "strokeColor": "#0000ff",
+        "fillColor": "none",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      }
+    ],
+    "clips": []
+  },
+  "nodes": {
+    "schemaVersion": 2,
+    "profile": "pgf-3.1.11a-node-interactions-v1",
+    "units": "integer TeX sp; y-up; global anchors/background; no fitted origin",
+    "nodes": [
+      {
+        "id": "plain",
+        "values": {
+          "width": 1856828,
+          "height": 451461,
+          "depth": 0,
+          "linewidth": 91750,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 45875,
+          "outery": 45875,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": -928414,
+            "y": -225730
+          },
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "north": {
+            "x": 0,
+            "y": 490035
+          },
+          "south": {
+            "x": 0,
+            "y": -490035
+          },
+          "west": {
+            "x": -1192719,
+            "y": 0
+          },
+          "east": {
+            "x": 1192719,
+            "y": 0
+          },
+          "north west": {
+            "x": -1192719,
+            "y": 490035
+          },
+          "north east": {
+            "x": 1192719,
+            "y": 490035
+          },
+          "south west": {
+            "x": -1192719,
+            "y": -490035
+          },
+          "south east": {
+            "x": 1192719,
+            "y": -490035
+          },
+          "base": {
+            "x": 0,
+            "y": -225730
+          },
+          "base west": {
+            "x": -1192719,
+            "y": -225730
+          },
+          "base east": {
+            "x": 1192719,
+            "y": -225730
+          },
+          "mid": {
+            "x": 0,
+            "y": -84648
+          },
+          "mid west": {
+            "x": -1192719,
+            "y": -84648
+          },
+          "mid east": {
+            "x": 1192719,
+            "y": -84648
+          }
+        },
+        "backgroundSouthWest": {
+          "x": -1146844,
+          "y": -444160
+        },
+        "backgroundNorthEast": {
+          "x": 1146844,
+          "y": 444160
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 86,
+            "xSp": 418701,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 30,
+            "xSp": 1128674,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 1674785,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "upright",
+        "values": {
+          "width": 1856828,
+          "height": 451461,
+          "depth": 0,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 1037666,
+            "y": 2395710
+          },
+          "center": {
+            "x": 1966080,
+            "y": 2621440
+          },
+          "north": {
+            "x": 1966080,
+            "y": 3078707
+          },
+          "south": {
+            "x": 1966080,
+            "y": 2164173
+          },
+          "west": {
+            "x": 806129,
+            "y": 2621440
+          },
+          "east": {
+            "x": 3126031,
+            "y": 2621440
+          },
+          "north west": {
+            "x": 806129,
+            "y": 3078707
+          },
+          "north east": {
+            "x": 3126031,
+            "y": 3078707
+          },
+          "south west": {
+            "x": 806129,
+            "y": 2164173
+          },
+          "south east": {
+            "x": 3126031,
+            "y": 2164173
+          },
+          "base": {
+            "x": 1966080,
+            "y": 2395710
+          },
+          "base west": {
+            "x": 806129,
+            "y": 2395710
+          },
+          "base east": {
+            "x": 3126031,
+            "y": 2395710
+          },
+          "mid": {
+            "x": 1966080,
+            "y": 2536792
+          },
+          "mid west": {
+            "x": 806129,
+            "y": 2536792
+          },
+          "mid east": {
+            "x": 3126031,
+            "y": 2536792
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 819236,
+          "y": 2177280
+        },
+        "backgroundNorthEast": {
+          "x": 3112924,
+          "y": 3065600
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 86,
+            "xSp": 418701,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 30,
+            "xSp": 1128674,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 1674785,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "inherited",
+        "values": {
+          "width": 1856828,
+          "height": 451461,
+          "depth": 0,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 5101380,
+            "y": 4236114
+          },
+          "center": {
+            "x": 6222780,
+            "y": 5079040
+          },
+          "north": {
+            "x": 6051305,
+            "y": 5376044
+          },
+          "south": {
+            "x": 6394254,
+            "y": 4782036
+          },
+          "west": {
+            "x": 4715956,
+            "y": 4209078
+          },
+          "east": {
+            "x": 7729605,
+            "y": 5949003
+          },
+          "north west": {
+            "x": 4544481,
+            "y": 4506082
+          },
+          "north east": {
+            "x": 7558130,
+            "y": 6246007
+          },
+          "south west": {
+            "x": 4887430,
+            "y": 3912074
+          },
+          "south east": {
+            "x": 7901079,
+            "y": 5651999
+          },
+          "base": {
+            "x": 6307428,
+            "y": 4932424
+          },
+          "base west": {
+            "x": 4800604,
+            "y": 4062462
+          },
+          "base east": {
+            "x": 7814253,
+            "y": 5802387
+          },
+          "mid": {
+            "x": 6254523,
+            "y": 5024059
+          },
+          "mid west": {
+            "x": 4747699,
+            "y": 4154097
+          },
+          "mid east": {
+            "x": 7761348,
+            "y": 5894022
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 4899542,
+          "y": 3930418
+        },
+        "backgroundNorthEast": {
+          "x": 7546018,
+          "y": 6227664
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 86,
+            "xSp": 418701,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 30,
+            "xSp": 1128674,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 1674785,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "local-rotation",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 664289,
+            "y": 3825221
+          },
+          "center": {
+            "x": 1105920,
+            "y": 4111285
+          },
+          "north": {
+            "x": 971080,
+            "y": 4614516
+          },
+          "south": {
+            "x": 1240759,
+            "y": 3608056
+          },
+          "west": {
+            "x": 398710,
+            "y": 3921789
+          },
+          "east": {
+            "x": 1813131,
+            "y": 4300782
+          },
+          "north west": {
+            "x": 263870,
+            "y": 4425020
+          },
+          "north east": {
+            "x": 1678291,
+            "y": 4804013
+          },
+          "south west": {
+            "x": 533549,
+            "y": 3418560
+          },
+          "south east": {
+            "x": 1947970,
+            "y": 3797553
+          },
+          "base": {
+            "x": 1147852,
+            "y": 3954791
+          },
+          "base west": {
+            "x": 440642,
+            "y": 3765295
+          },
+          "base east": {
+            "x": 1855063,
+            "y": 4144288
+          },
+          "mid": {
+            "x": 1111338,
+            "y": 4091065
+          },
+          "mid west": {
+            "x": 404128,
+            "y": 3901569
+          },
+          "mid east": {
+            "x": 1818549,
+            "y": 4280562
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 542817,
+          "y": 3434613
+        },
+        "backgroundNorthEast": {
+          "x": 1669023,
+          "y": 4787959
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "reflected",
+        "values": {
+          "width": 1856828,
+          "height": 451461,
+          "depth": 0,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 11927533,
+            "y": 2440856
+          },
+          "center": {
+            "x": 10813440,
+            "y": 2621440
+          },
+          "north": {
+            "x": 10813440,
+            "y": 2987255
+          },
+          "south": {
+            "x": 10813440,
+            "y": 2255626
+          },
+          "west": {
+            "x": 12205376,
+            "y": 2621440
+          },
+          "east": {
+            "x": 9421502,
+            "y": 2621440
+          },
+          "north west": {
+            "x": 12205376,
+            "y": 2987255
+          },
+          "north east": {
+            "x": 9421502,
+            "y": 2987255
+          },
+          "south west": {
+            "x": 12205376,
+            "y": 2255626
+          },
+          "south east": {
+            "x": 9421502,
+            "y": 2255626
+          },
+          "base": {
+            "x": 10813440,
+            "y": 2440856
+          },
+          "base west": {
+            "x": 12205376,
+            "y": 2440856
+          },
+          "base east": {
+            "x": 9421502,
+            "y": 2440856
+          },
+          "mid": {
+            "x": 10813440,
+            "y": 2553722
+          },
+          "mid west": {
+            "x": 12205376,
+            "y": 2553722
+          },
+          "mid east": {
+            "x": 9421502,
+            "y": 2553722
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 12189648,
+          "y": 2266112
+        },
+        "backgroundNorthEast": {
+          "x": 9437230,
+          "y": 2976770
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 86,
+            "xSp": 418701,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 30,
+            "xSp": 1128674,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 1674785,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "font-shift",
+        "values": {
+          "width": 1856828,
+          "height": 451461,
+          "depth": 0,
+          "linewidth": 26214,
+          "quad": 770037,
+          "xheight": 338603,
+          "innerx": 256651,
+          "innery": 256651,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": -158377,
+            "y": 5672510
+          },
+          "center": {
+            "x": 770037,
+            "y": 5898240
+          },
+          "north": {
+            "x": 770037,
+            "y": 6393728
+          },
+          "south": {
+            "x": 770037,
+            "y": 5402752
+          },
+          "west": {
+            "x": -428135,
+            "y": 5898240
+          },
+          "east": {
+            "x": 1968209,
+            "y": 5898240
+          },
+          "north west": {
+            "x": -428135,
+            "y": 6393728
+          },
+          "north east": {
+            "x": 1968209,
+            "y": 6393728
+          },
+          "south west": {
+            "x": -428135,
+            "y": 5402752
+          },
+          "south east": {
+            "x": 1968209,
+            "y": 5402752
+          },
+          "base": {
+            "x": 770037,
+            "y": 5672510
+          },
+          "base west": {
+            "x": -428135,
+            "y": 5672510
+          },
+          "base east": {
+            "x": 1968209,
+            "y": 5672510
+          },
+          "mid": {
+            "x": 770037,
+            "y": 5813592
+          },
+          "mid west": {
+            "x": -428135,
+            "y": 5813592
+          },
+          "mid east": {
+            "x": 1968209,
+            "y": 5813592
+          }
+        },
+        "backgroundSouthWest": {
+          "x": -415028,
+          "y": 5415859
+        },
+        "backgroundNorthEast": {
+          "x": 1955102,
+          "y": 6380621
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 86,
+            "xSp": 418701,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 30,
+            "xSp": 1128674,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 1674785,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "sheared",
+        "values": {
+          "width": 1856828,
+          "height": 451461,
+          "depth": 0,
+          "linewidth": 131072,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 65536,
+          "outery": 65536,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 4879536,
+            "y": 5721663
+          },
+          "center": {
+            "x": 5898240,
+            "y": 6225920
+          },
+          "north": {
+            "x": 6102115,
+            "y": 6735616
+          },
+          "south": {
+            "x": 5694366,
+            "y": 5716224
+          },
+          "west": {
+            "x": 4685860,
+            "y": 5862203
+          },
+          "east": {
+            "x": 7110620,
+            "y": 6589637
+          },
+          "north west": {
+            "x": 4889735,
+            "y": 6371899
+          },
+          "north east": {
+            "x": 7314495,
+            "y": 7099333
+          },
+          "south west": {
+            "x": 4481986,
+            "y": 5352507
+          },
+          "south east": {
+            "x": 6906746,
+            "y": 6079941
+          },
+          "base": {
+            "x": 5807950,
+            "y": 6000190
+          },
+          "base west": {
+            "x": 4595570,
+            "y": 5636473
+          },
+          "base east": {
+            "x": 7020330,
+            "y": 6363907
+          },
+          "mid": {
+            "x": 5864381,
+            "y": 6141272
+          },
+          "mid west": {
+            "x": 4652001,
+            "y": 5777555
+          },
+          "mid east": {
+            "x": 7076761,
+            "y": 6504989
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 4573736,
+          "y": 5437704
+        },
+        "backgroundNorthEast": {
+          "x": 7222745,
+          "y": 7014136
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 86,
+            "xSp": 418701,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 30,
+            "xSp": 1128674,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 1674785,
+            "ySp": 0
+          }
+        ]
+      }
+    ],
+    "fontDefinitions": {
+      "g0": "regular-10"
+    }
+  },
+  "frames": {
+    "plain": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": -928414,
+      "fSp": -225730
+    },
+    "upright": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 1037666,
+      "fSp": 2395710
+    },
+    "inherited": {
+      "a": 1.29904,
+      "b": 0.75,
+      "c": -0.375,
+      "d": 0.64952,
+      "eSp": 5101380,
+      "fSp": 4236114
+    },
+    "local-rotation": {
+      "a": 0.96593,
+      "b": 0.25882,
+      "c": -0.25882,
+      "d": 0.96593,
+      "eSp": 664289,
+      "fSp": 3825221
+    },
+    "reflected": {
+      "a": -1.2,
+      "b": 0,
+      "c": 0,
+      "d": 0.8,
+      "eSp": 11927533,
+      "fSp": 2440856
+    },
+    "font-shift": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": -158377,
+      "fSp": 5672510
+    },
+    "sheared": {
+      "a": 1,
+      "b": 0.3,
+      "c": 0.4,
+      "d": 1,
+      "eSp": 4879536,
+      "fSp": 5721663
+    }
+  },
+  "painting": [
+    {
+      "kind": "path",
+      "pathIndex": 0,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "plain",
+      "glyphIndex": 0,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "plain",
+      "glyphIndex": 1,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "plain",
+      "glyphIndex": 2,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "plain",
+      "glyphIndex": 3,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 1,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "upright",
+      "glyphIndex": 0,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "upright",
+      "glyphIndex": 1,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "upright",
+      "glyphIndex": 2,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "upright",
+      "glyphIndex": 3,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 2,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "inherited",
+      "glyphIndex": 0,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "inherited",
+      "glyphIndex": 1,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "inherited",
+      "glyphIndex": 2,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "inherited",
+      "glyphIndex": 3,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 3,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "local-rotation",
+      "glyphIndex": 0,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "local-rotation",
+      "glyphIndex": 1,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "local-rotation",
+      "glyphIndex": 2,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 4,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "reflected",
+      "glyphIndex": 0,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "reflected",
+      "glyphIndex": 1,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "reflected",
+      "glyphIndex": 2,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "reflected",
+      "glyphIndex": 3,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 5,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "font-shift",
+      "glyphIndex": 0,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "font-shift",
+      "glyphIndex": 1,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "font-shift",
+      "glyphIndex": 2,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "font-shift",
+      "glyphIndex": 3,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 6,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "sheared",
+      "glyphIndex": 0,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "sheared",
+      "glyphIndex": 1,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "sheared",
+      "glyphIndex": 2,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "sheared",
+      "glyphIndex": 3,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 7,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    }
+  ]
+}

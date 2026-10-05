@@ -282,3 +282,28 @@ Node transform/state/clip interactions, rotated/sheared stroke ink bounds,
 border intersections, additional shapes/inline labels, and PDF node comparisons
 remain pending. The public report labels its primary-only scope. It does not
 authorize using this fixture's tolerance for other labeled diagrams.
+
+## Node interaction experiments
+
+The separate [interaction harness](../tools/TikzReference/NODE-INTERACTIONS.md)
+now retains native references for sixteen nodes across state/paint and transform
+fixtures, including ordinary PDF pages and independently measured text frames.
+Live generation and nonoverwriting verification pass. Ordinary tests check the
+native layout, geometry, painting order, opacity, and clips. The transform case
+passes 953 numeric checks after repairing nonidentity rectangle traversal.
+Rotated/sheared node ink includes miter tips separately from PGF picture bounds.
+
+```text
+dotnet run --project tools/TikzReference -c Release -- compare-node-interactions
+dotnet run --project tools/TikzReference -c Release -- calibrate-node-interaction-pdf
+```
+
+These commands deliberately retain failing image/dimension/color results.
+There is no interaction raster allowance or approved PDF policy. Read
+`artifacts/node-interactions/<case>/report.json` and the corresponding
+`artifacts/node-interaction-pdf-calibration/<case>/calibration-evidence.json`.
+The latter uses only original oracle content, forces exact pixel gates, and
+makes no candidate-layout claim. Default CMYK text/path color differences and
+the original driver's sheared-miter crop need independent resolution before
+these cases become required passing visual CI gates. Existing rectangle and
+geometry policies are unchanged.

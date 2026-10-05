@@ -1,0 +1,26 @@
+\tikzset{every node/.style={draw=blue,fill=yellow!30,text=red,inner sep=2pt},
+         every rectangle node/.style={line width=1pt,text=green,font=\itshape}}
+\begin{tikzpicture}
+  \node[font=\bfseries,text=blue,line width=2pt] (shape-override) at (0pt,0pt) {AV ffi.};
+  \begin{scope}[color=magenta,opacity=.35,
+      every node/.style={draw,fill=cyan,font=\bfseries},
+      every rectangle node/.style={line width=.8pt}]
+    \node[fill opacity=.2] (fill-opacity) at (50pt,0pt) {AV ffi.};
+    \node[opacity=.5] (local-opacity) at (100pt,0pt) {Ag.};
+    \node[text opacity=.15,text=blue] (text-opacity) at (50pt,25pt) {ffi.};
+  \end{scope}
+  \node (scope-restored) at (100pt,25pt) {Ag.};
+  \tikzset{every node/.style={draw=black,fill=white,inner sep=2pt},
+           every rectangle node/.style={text=black,font=\normalfont}}
+  \node (below-path) at (0pt,50pt) {AV ffi.};
+  \fill[red,fill opacity=.8] (-4pt,42pt) rectangle (10pt,58pt);
+  \node (above-path) at (25pt,50pt) {Ag.};
+  \begin{scope}
+    \clip (85pt,40pt) rectangle (100pt,60pt);
+    \node[text=blue] (clipped) at (100pt,50pt) {AV ffi.};
+  \end{scope}
+  \node[text opacity=.01] (faint) at (0pt,80pt) {ffi.};
+  \coordinate (start) at (above-path.east);
+  \coordinate (end) at (clipped.west);
+  \draw[blue,line width=.6pt] (start) -- (end);
+\end{tikzpicture}

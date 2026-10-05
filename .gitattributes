@@ -15,6 +15,9 @@ tests/Reference/Text/*/native-positions.log text eol=lf -whitespace
 tests/Reference/Nodes/rectangles/reference.svg -text whitespace=cr-at-eol
 tests/Reference/Nodes/rectangles/oracle.log -text -whitespace
 tests/Reference/Nodes/rectangles/native-positions.log text eol=lf -whitespace
+tests/Reference/NodeInteractions/*/reference.svg -text whitespace=cr-at-eol
+tests/Reference/NodeInteractions/*/oracle.log -text -whitespace
+tests/Reference/NodeInteractions/*/native-positions.log text eol=lf -whitespace
 # Upstream license texts are retained byte for byte, including line endings.
 licenses/Fonts/GUST-FONT-LICENSE.txt -text -whitespace
 licenses/Fonts/LPPL-1.3c.txt -text -whitespace

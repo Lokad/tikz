@@ -144,7 +144,7 @@ internal sealed partial class Evaluator(Budget budget)
             var ink = state.Paint.Stroke ? bounds.Inflate(state.Paint.Width / 2 * (state.Paint.Cap == "square" ? Math.Sqrt(2) : 1)) : bounds;
             foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Path.Bounds);
             _scene.InkBounds = _scene.InkBounds.Union(ink);
-            _scene.Add(new(path, state.Paint, [.. state.Clips], statement.Source));
+            _scene.Add(new(path, state.Paint, [.. state.Clips], statement.Source, ink));
         }
         Point Point(Coordinate coordinate)
         {

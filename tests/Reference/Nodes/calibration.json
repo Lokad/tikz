@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "chromium-153-node-css-v1-oracle-calibration",
-  "generatedUtc": "2026-10-05T01:55:38.1923775\u002B00:00",
+  "generatedUtc": "2026-10-05T02:34:26.3584405\u002B00:00",
   "converterInvoked": false,
   "scope": "22 rectangle nodes; native glyph positions, CSS serialization, native frame; primary only",
   "command": "dotnet run --project tools/TikzReference -c Release -- calibrate-node-svg",
@@ -17,11 +17,11 @@
       "native-positions.log": "f0fd7b355447b556d82a64fdad4089c89aa19094d4871b7c67352ce3a1b0db69"
     },
     "tools": {
-      "tools/TikzReference/NodeSvg.cs": "2094b7b911f8fc31f2c2cbbfea7991544eb09ea80cb0237c310afc0df57adc3c",
-      "tools/TikzReference/NativeNodeGlyphs.cs": "368124a44279b926cf97e08ee1c2463c56b4de78998dcd9d8248d4b66f6733e6",
-      "tools/TikzReference/NodeReference.cs": "316f514155b13a19d7eb1eb2728526968e1f5c51abd3385ef13d2d59ef328edd",
+      "tools/TikzReference/NodeSvg.cs": "6d732806f4a5d38740a370ecffbf4677eec946fa25651589e2171faae8ab02b7",
+      "tools/TikzReference/NativeNodeGlyphs.cs": "114ed35681eb16dbdfd5eead973eb43a71a75ab63ffc09db08955929e1142010",
+      "tools/TikzReference/NodeReference.cs": "b0fb49db441669cdf662004b5ab5221b582fb1a2b6b4e9642a01dc74507975d3",
       "tools/TikzVisual/node-crop-check.mjs": "0d1494d01289d6dff8920ce9f3eb760870cc2fe3e1b1c9a83db14da2a2289454",
-      "tools/TikzVisual/compare.mjs": "fb5b82c68c6aa87dc16c9c74f10a7f1c2e8ac804ce64e2ad8f3c7c071dcd6854",
+      "tools/TikzVisual/compare.mjs": "af1bd8c93d0b28dd30997a881bb31aee406ac2a3ec7a3401678e47fea0d238fc",
       "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
     }
   },
@@ -5195,7 +5195,7 @@
     "actual-scene.json": "4f922ae1dd1463f93f9c11feb8c27f3269ddaef2693c7a2753d3fae20c37b966",
     "actual.png": "f4fe92c51bcb96768e22546650ae111facdcf39455a670c2eb9df07b687b14a0",
     "actual.svg": "8b69225780b72f0c6292daf68783ffd29adf29f09ce78a2c7517d7bb9769df8e",
-    "calibration-provenance.json": "87144dad54929f9a9419d78b083a92c746ef1acf4396c89f13d7ebbaa7fd0306",
+    "calibration-provenance.json": "96a1dd5f94a68e60934ff40918ebf6d01f7337cafc20b064ca707953f8d1e64d",
     "comparison-input.json": "9f321ffaac40c5620774882e35c309765fd1e2d43f6535f68c6b227725ea9e19",
     "comparison.png": "0f96faa303063621cd6925fe31ac9915b571a7005515589a87794d76494758f0",
     "crops/0-actual.png": "df62e847ee9dff96662cc3af410cce280c187a74fcca1987f5b1eb7cb8ea704a",
