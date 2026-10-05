@@ -59,6 +59,25 @@ try {
   const clip = '<defs><clipPath id="clip"><path d="M11 11H12V13H11Z"/></clipPath></defs><g clip-path="url(#clip)">' + period + '</g>';
   await check('unchanged-clip', frame(clip), frame(clip), true);
   await check('removed-clip', frame(clip), frame(period), false);
+  const pageMode = input => { input.renderMode = 'page-coordinates'; };
+  const pageA = await check('page-coordinates-fractional-origin', frame(period), frame(period), true, pageMode);
+  const pageB = await check('page-coordinates-repeat', frame(period), frame(period), true, pageMode);
+  assert.deepEqual(pageA.hashes, pageB.hashes);
+  await check('page-coordinates-missing-faint-period', frame(opaque + faint), frame(opaque), false, pageMode);
+  await check('page-coordinates-quarter-pixel-shift', frame(period), frame('<g transform="translate(.25 .25)">' + period + '</g>'), false, pageMode);
+  await check('page-coordinates-unchanged-clip', frame(clip), frame(clip), true, pageMode);
+  await check('page-coordinates-removed-clip', frame(clip), frame(period), false, pageMode);
+  await check('page-coordinates-misregistration', frame(period), frame(period), false,
+    input => { pageMode(input); input.pdfOriginPixels.x += .25; });
+  const cropped = '<svg xmlns="http://www.w3.org/2000/svg" width="12px" height="24px" viewBox="0 0 12 24">' + period + '</svg>';
+  await check('page-coordinates-natural-viewport-clip', frame(clip.replace('M11 11H12V13H11Z', 'M0 0H12V24H0Z')), cropped, true, pageMode);
+  await check('page-coordinates-inherited-paint', frame(period.replace('black', 'red').replace('/>', ' fill-opacity=".3"/>')),
+    frame(period.replace(' fill="black"', '')).replace('viewBox=', 'fill="red" fill-opacity=".3" viewBox='), true, pageMode);
+  const bp = '<svg xmlns="http://www.w3.org/2000/svg" width="24pt" height="18pt" viewBox="0 0 24 18"><path d="M8.25 8.25H9.75V9.75H8.25Z" fill="black"/></svg>';
+  await check('page-coordinates-bp-units', frame(period), bp, true, input => { pageMode(input); input.units = 'bp'; });
+  await check('page-coordinates-bp-wrapper-origin', frame(period), bp.replace('viewBox="0 0', 'viewBox="10 20')
+    .replace('<path', '<g transform="translate(10 20)"><path').replace('</svg>', '</g></svg>'), true,
+    input => { pageMode(input); input.units = 'bp'; input.svgOriginBp = { x: 10, y: 20 }; });
   const input = { svg: frame(period), units: 'cssPixels', pdfPages: await pages(frame(period), { x: .25, y: .5 }),
     pdfOriginPixels: { x: .25, y: .5 }, regions: [region] };
   for (const [name, edit] of [
@@ -66,7 +85,10 @@ try {
     ['duplicate-region', value => { value.regions.push(value.regions[0]); }],
     ['huge-page-position', value => { value.pdfOriginPixels.x = 1e30; }],
     ['missing-PDF-scale', value => { delete value.pdfPages[4]; }],
-    ['external-SVG-reference', value => { value.svg = frame('<use href="https://invalid.example/image.svg#p"/>'); }]
+    ['external-SVG-reference', value => { value.svg = frame('<use href="https://invalid.example/image.svg#p"/>'); }],
+    ['unknown-page-mode', value => { value.renderMode = 'unknown'; }],
+    ['declared-unit-viewport-mismatch', value => { value.renderMode = 'page-coordinates'; value.svg = value.svg.replace('width="32px"', 'width="33px"'); }],
+    ['unapproved-aspect-ratio', value => { value.renderMode = 'page-coordinates'; value.svg = value.svg.replace('viewBox=', 'preserveAspectRatio="xMinYMin slice" viewBox='); }]
   ]) {
     const copy = structuredClone(input); edit(copy); await assert.rejects(() => measurePdfRegions(renderer.page, copy));
     results.push({ name, passed: true, category: 'input rejection' });

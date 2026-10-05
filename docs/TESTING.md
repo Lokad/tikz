@@ -380,17 +380,29 @@ three whole-picture cameras. SVG is rendered once on the full measured native
 PDF page, then both sides use integer pixel crops. Ninety-three native path
 records plus bounds/box/explicit anchors agree between SVG and ordinary PDF.
 All six repeated native controls pass and all thirteen image defects are
-rejected. Candidate defects are also rejected, but two unchanged transform
-controls fail the same three local 4x foreground means; no PDF policy is
-approved. Paired source-linked crops, raw measurements, and hashes preserve
+rejected. The initial candidate trial also rejected defects, but two unchanged
+transform controls failed the same three local 4x foreground means; no PDF policy
+was approved. Paired source-linked crops, raw measurements, and hashes preserve
 these failures for independent viewport/presentation investigation.
 
 ```text
 npm run test:pdf-regions --prefix tools/TikzVisual
 ```
 
-These twenty-two required synthetic registration/region/native-log checks run
+These thirty-six required synthetic registration/region/native-log checks run
 in visual CI. The document above gives cached measurement/trial commands and
 their expected exit categories. The candidate PDF trial deliberately returns
-1 while its unchanged controls fail, and remains outside the passing candidate
-conformance gate.
+1 with the initial picture-image camera while its unchanged controls fail.
+Its explicitly selected page-coordinate route now passes both native and
+candidate controls and rejects all thirteen image defects, using a separately
+recomputed oracle-only snapshot. The three previously failing glyph/path crops
+match the independent native SVG exactly at both scales. Policy admission and
+combined-policy failure checks remain pending.
+
+The cached `node tools/TikzVisual/pdf-viewport-probe.mjs` command independently
+demonstrates the camera effect without a converter or ignored setup inputs.
+Four-scaled-point changes to padded oracle viewports alter 20 of 27 picture-image
+controls and 3 of 27 nested-SVG controls; all 27 direct page-coordinate controls
+retain identical pixels. Original viewport clipping and the fixed physical
+origin remain explicit. This probe is required in visual CI, with retained raw
+evidence and hashes. The original failed PDF trial stays checked in.

@@ -54,6 +54,7 @@ jobs:
       - run: npm run test:regions --prefix tools/TikzVisual
       - run: npm run test:interaction-primary --prefix tools/TikzVisual
       - run: npm run test:pdf-regions --prefix tools/TikzVisual
+      - run: node tools/TikzVisual/pdf-viewport-probe.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -72,4 +73,5 @@ jobs:
             artifacts/node-interaction-primary/
             artifacts/interaction-primary-mutations/
             artifacts/pdf-region-self-tests/
+            artifacts/pdf-viewport-probe/
           if-no-files-found: error

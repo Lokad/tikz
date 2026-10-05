@@ -10,23 +10,26 @@ import { measurePdfRegions } from './pdf-region-renderer.mjs';
 import { pdfRegionVerdict } from './pdf-region-verdict.mjs';
 import { pdfRegionViewer } from './pdf-region-viewer.mjs';
 
-assert.ok(process.argv.length === 2 || process.argv.length === 3 && process.argv[2] === '--candidate',
-  'Usage: node trial-interaction-pdf-regions.mjs [--candidate]');
-const candidate = process.argv[2] === '--candidate';
+const args = process.argv.slice(2);
+assert.ok(args.length <= 2 && new Set(args).size === args.length && args.every(a => ['--candidate', '--page-coordinates'].includes(a)),
+  'Usage: node trial-interaction-pdf-regions.mjs [--candidate] [--page-coordinates]');
+const candidate = args.includes('--candidate'), renderMode = args.includes('--page-coordinates') ? 'page-coordinates' : 'picture-image';
+const suffix = renderMode === 'page-coordinates' ? '-page' : '';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const output = path.join(root, 'artifacts/interaction-pdf-region-trial-' + (candidate ? 'candidate' : 'oracle'));
+const output = path.join(root, 'artifacts/interaction-pdf-region-trial-' + (candidate ? 'candidate' : 'oracle') + suffix);
 await mkdir(output, { recursive: true }); await rm(path.join(output, 'trial-evidence.json'), { force: true });
 const hash = b => createHash('sha256').update(b).digest('hex');
-const snapshotBytes = await readFile(path.join(root, 'artifacts/interaction-pdf-region-calibration/calibration-evidence.json'));
+const snapshotBytes = await readFile(path.join(root, 'artifacts/interaction-pdf-region-calibration' + suffix, 'calibration-evidence.json'));
 const snapshot = JSON.parse(snapshotBytes);
 assert.equal(snapshot.completed, true); assert.equal(snapshot.converterInvoked, false); assert.equal(snapshot.approvedPolicy, false);
+assert.equal(snapshot.renderMode ?? 'picture-image', renderMode);
 assert.deepEqual(snapshot.expectedCases, ['state-paint', 'transforms', 'colors']);
 for (const [file, sha256] of Object.entries(snapshot.toolHashes))
   assert.equal(hash(await readFile(path.join(root, file))), sha256, 'PDF calibration tool changed: ' + file);
 const renderer = await createRenderer(), results = [], loaded = new Map();
 async function base(id) {
   if (loaded.has(id)) return loaded.get(id);
-  const c = snapshot.cases.find(c => c.caseId === id), folder = path.join(root, 'artifacts/interaction-pdf-region-calibration', id, 'native-css');
+  const c = snapshot.cases.find(c => c.caseId === id), folder = path.join(root, 'artifacts/interaction-pdf-region-calibration' + suffix, id, 'native-css');
   const source = await readFile(path.join(folder, 'source.tikz'), 'utf8');
   assert.equal(hash(source), c.originalProvenance.sourceHashes['tests/Fixtures/Nodes/' + id + '.tikz']);
   const metricsBytes = await readFile(path.join(root, 'tests/Reference/NodeInteractionsRgb', id, 'metrics.json'));
@@ -83,36 +86,52 @@ async function mutation(svg, edit) {
 async function check(id, name, edit = null) {
   const b = await base(id), svg = edit ? await mutation(b.svg, edit) : b.svg;
   if (edit) assert.notEqual(svg, b.svg, 'PDF trial mutation must change the intended SVG.');
-  const input = { svg, units: 'cssPixels', pdfPages: b.pdfPages, pdfOriginPixels: b.c.pdfOriginPixels,
+  const input = { svg, units: 'cssPixels', pdfPages: b.pdfPages, pdfOriginPixels: b.c.pdfOriginPixels, renderMode,
     regions: b.c.regions, captureIds: ['whole-picture'] };
   const measured = await measurePdfRegions(renderer.page, input), verdict = pdfRegionVerdict(measured.results, b.c.regions);
   const failed = verdict.checks.filter(c => !c.passed);
   const captures = ['whole-picture', ...[...new Set(failed.filter(c => c.id !== 'whole-picture')
     .sort((a, b) => b.meanForegroundError - a.meanForegroundError || a.id.localeCompare(b.id)).map(c => c.id))].slice(0, 5)];
+  const compareNative = candidate && !edit && id === 'transforms' && renderMode === 'page-coordinates';
+  if (compareNative) for (const region of ['glyph-13', 'glyph-17', 'path-4']) if (!captures.includes(region)) captures.push(region);
   if (captures.length > 1) {
     const repeated = await measurePdfRegions(renderer.page, { ...input, captureIds: captures });
     assert.deepEqual(repeated.results, measured.results); measured.images = repeated.images;
   }
+  let nativeEquivalence, nativeSvg;
+  if (compareNative) {
+    nativeSvg = await readFile(path.join(b.folder, 'oracle.svg'), 'utf8');
+    assert.equal(hash(nativeSvg), b.c.variants[0].svgSha256);
+    const native = await measurePdfRegions(renderer.page, { ...input, svg: nativeSvg, captureIds: ['glyph-13', 'glyph-17', 'path-4'] });
+    nativeEquivalence = ['glyph-13', 'glyph-17', 'path-4'].flatMap(id => [1, 4].map(scale => {
+      const file = id + '-' + scale + 'x-svg.png', actualSha256 = hash(Buffer.from(measured.images[file], 'base64'));
+      const nativeSha256 = hash(Buffer.from(native.images[file], 'base64'));
+      measured.images[id + '-' + scale + 'x-native-svg.png'] = native.images[file];
+      return { id, scale, actualSha256, nativeSha256, exactMatch: actualSha256 === nativeSha256 };
+    }));
+  }
   const folder = path.join(output, id + '-' + name); assert.ok(folder.startsWith(output + path.sep));
   await rm(folder, { recursive: true, force: true }); await mkdir(folder, { recursive: true });
   await writeFile(path.join(folder, 'actual.svg'), svg); await writeFile(path.join(folder, 'source.tikz'), b.source);
+  if (nativeSvg) await writeFile(path.join(folder, 'native.svg'), nativeSvg);
+  const imageFiles = Object.keys(measured.images);
   for (const [file, data] of Object.entries(measured.images)) await writeFile(path.join(folder, file), Buffer.from(data, 'base64'));
   delete measured.images;
   measured.regionDefinitions = b.c.regions;
   await writeFile(path.join(folder, 'comparison-input.json'), JSON.stringify({ schemaVersion: 1, sourceRole: candidate ? 'candidate artifact' : 'native oracle',
-    numericBypassed: true, approvedPolicy: false, snapshotSha256: hash(snapshotBytes), pdfOriginPixels: b.c.pdfOriginPixels,
+    numericBypassed: true, approvedPolicy: false, snapshotSha256: hash(snapshotBytes), pdfOriginPixels: b.c.pdfOriginPixels, renderMode,
     regions: b.c.regions, originalSvgSha256: hash(b.svg), svgSha256: hash(svg) }, null, 2) + '\n');
-  await writeFile(path.join(folder, 'measurements.json'), JSON.stringify({ ...measured, verdict }, null, 2) + '\n');
+  await writeFile(path.join(folder, 'measurements.json'), JSON.stringify({ ...measured, verdict, nativeEquivalence }, null, 2) + '\n');
   await writeFile(path.join(folder, 'index.html'), pdfRegionViewer(id, name, { ...measured, verdict }, captures, b.source,
     { scope: 'Prospective PDF policy trial against ' + (candidate ? 'candidate' : 'native oracle') + ' SVG artifacts; numeric gates bypassed; no approved PDF allowance.',
       svgFile: 'actual.svg', svgLabel: candidate ? 'Candidate SVG' : 'Native oracle SVG' }));
   const artifactFiles = ['actual.svg', 'source.tikz', 'comparison-input.json', 'measurements.json', 'index.html',
-    ...captures.flatMap(id => [1, 4].flatMap(scale => ['pdf', 'svg', 'difference'].map(label => id + '-' + scale + 'x-' + label + '.png')))];
+    ...imageFiles, ...(nativeSvg ? ['native.svg'] : [])];
   const artifactHashes = Object.fromEntries(await Promise.all(artifactFiles.map(async file => [file, hash(await readFile(path.join(folder, file)))])));
   const expected = edit ? 'mismatch' : 'pass', actual = verdict.passed ? 'pass' : 'mismatch';
   const result = { caseId: id, name, expected, actual, passed: expected === actual, numericBypassed: true,
     originalSvgSha256: hash(b.svg), svgSha256: hash(svg), report: id + '-' + name + '/measurements.json',
-    failedChecks: failed, globalPassed: verdict.checks.filter(c => c.id === 'whole-picture').every(c => c.passed), artifactHashes };
+    failedChecks: failed, globalPassed: verdict.checks.filter(c => c.id === 'whole-picture').every(c => c.passed), artifactHashes, nativeEquivalence };
   results.push(result); console.log(id + '/' + name + ': ' + actual + ' (expected ' + expected + (result.passed ? ')' : '; ACCEPTED DEFECT/UNEXPECTED FAILURE)'));
 }
 try {
@@ -140,7 +159,7 @@ try {
   const files = ['tools/TikzVisual/trial-interaction-pdf-regions.mjs', 'tools/TikzVisual/pdf-region-renderer.mjs',
     'tools/TikzVisual/pdf-region-verdict.mjs', 'tools/TikzVisual/pdf-region-viewer.mjs'];
   await writeFile(path.join(output, 'trial-evidence.json'), JSON.stringify({ schemaVersion: 1, completed: true,
-    approvedPolicy: false, conformanceClaim: false, sourceRole: candidate ? 'candidate artifacts' : 'native oracle',
+    approvedPolicy: false, conformanceClaim: false, sourceRole: candidate ? 'candidate artifacts' : 'native oracle', renderMode,
     numericBypassed: true, independentSnapshotSha256: hash(snapshotBytes), renderer: renderer.identity,
     candidateProvenance: candidate ? Object.fromEntries([...loaded].map(([id, b]) => [id, b.candidateProvenance])) : undefined,
     toolHashes: Object.fromEntries(await Promise.all(files.map(async f => [f, hash(await readFile(path.join(root, f)))]))),

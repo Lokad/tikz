@@ -2,10 +2,11 @@
 
 This experiment compares the three trusted RGB/ink interaction fixtures with
 their ordinary TikZ PDF pages. It records independent cross-renderer limits and
-tests their sensitivity. **No node interaction PDF policy is approved.** The
-native controls pass, but two unchanged candidate transform controls fail three
-local foreground means. The separately admitted [primary SVG policy](INTERACTION-PRIMARY.md)
-continues to pass.
+tests their sensitivity. **No node interaction PDF policy is approved.** A
+separately grounded page-coordinate camera now passes all unchanged native and
+candidate controls and rejects all thirteen image defects. The initial camera's
+three local candidate failures remain recorded below. The separately admitted
+[primary SVG policy](INTERACTION-PRIMARY.md) continues to pass.
 
 ## Independent inputs and physical camera
 
@@ -63,7 +64,7 @@ white label has a gray fill, so its label and period omissions are observable
 and rejected. Transparent/light/dark primary comparisons and numeric checks
 remain necessary alongside a future PDF gate.
 
-## Controls, retained failures, and next work
+## Initial controls and retained failures
 
 The [retained trial](../../tests/Reference/NodeInteractionsRgb/pdf-mutation-trial.json)
 records six repeated native controls and thirteen image defects: ordinary/faint
@@ -83,17 +84,62 @@ fail the same three 4x checks:
 Their channel, edge, and component checks pass; global checks also pass. The two
 affected glyphs have byte-identical outlines and matrices in candidate and
 native CSS SVGs. Their root viewports and presentation grouping differ. The
-cause of the additional mean error is unproven. Investigate viewport precision,
-intrinsic SVG image rasterization, and presentation independently before
-changing a renderer or considering policy admission. Any additional calibration
-must use oracle-only variants and preserve this failure history; candidate
-errors cannot set a threshold.
+initial experiment could not establish the cause of the additional mean error.
+That uncertainty prompted the independent viewport controls below. Further
+calibration must preserve this failure history and use oracle-only variants;
+candidate errors cannot set a threshold.
 
 Each candidate image trial explicitly bypasses numeric gates to test the image
 policy. Its provenance links the fresh passing primary conversion, assembly,
 commit, working-tree fingerprint, and numeric count. A future required PDF route
 must recompute limits from pinned reviewed evidence and combine them with native
 numeric, dimension, primary, completeness, and mutation gates.
+
+## Grounded page-coordinate camera
+
+The [viewport probe](../../tests/Reference/NodeInteractionsRgb/pdf-viewport-probe.json)
+adds eight CSS pixels of padding to native oracle SVGs, then changes each
+viewport boundary independently by plus/minus four scaled points. All content,
+paint, clips, and measured page origins remain fixed. Padding keeps every
+boundary away from the ink, so these changes must preserve raster content.
+Three rendering methods produce the following independent results:
+
+| Method | Controls | Exact captures | Viewport-dependent captures |
+| --- | ---: | ---: | ---: |
+| Picture image drawn at its fractional page position | 27 | 7 | 20 |
+| Nested picture SVG inside a page SVG | 27 | 24 | 3 |
+| Content mapped directly to page coordinates; viewport retained as a clip | 27 | 27 | 0 |
+
+The third method applies only the declared bp/CSS conversion and independently
+measured page origin to original content. It avoids factoring the viewport
+minimum into a transform and cancelling it afterward. The original natural
+viewport remains an explicit page-space clip; original clips, paint, outlines,
+and ordering are retained. It accepts only physical dimensions agreeing with
+declared viewBox units within 1e-9 CSS pixel and the supported aspect-ratio forms.
+Natural dimensions still have their separate primary gate. No content is fitted
+to either the PDF or candidate.
+
+The [new oracle-only snapshot](../../tests/Reference/NodeInteractionsRgb/pdf-calibration-page.json)
+records another 1,416 measurements using the same four variants, regions, PDF
+pages, and origin. Limits are recomputed only from these independent values.
+The [new native/candidate trial](../../tests/Reference/NodeInteractionsRgb/pdf-mutation-trial-page.json)
+passes all six repeated controls on each side and rejects every image defect.
+For each previously failing region, candidate and native SVG PNG crops are now
+byte-identical at both scales. Their 4x foreground means against PDF agree:
+
+| Region | Native and candidate mean | Independent limit |
+| --- | ---: | ---: |
+| `glyph-13` | 33.31410256410256 | 33.416667 |
+| `glyph-17` | 51.513101983002834 | 51.513102 |
+| `path-4` | 35.74176923076923 | 35.741770 |
+
+This establishes a viewport-dependent camera effect and a measured repair; it
+does not establish the browser's internal cause or exact SVG/PDF pixels. The
+compiler and original references are unchanged. The thirty-six synthetic
+checks additionally verify bp/CSS units, wrapper origin, inherited paint,
+natural viewport clipping, fractional registration, repeatability, defects,
+and invalid unit/aspect/mode inputs. Next review a separately pinned PDF policy
+that validates this evidence and combines it with all existing candidate gates.
 
 ## Reproduction and agent inspection
 
@@ -102,22 +148,25 @@ experiment, then run the regional measurements and trials:
 
 ```text
 dotnet run --project tools/TikzReference -c Release -- calibrate-node-interaction-svg --profile rgb --framing ink
-node tools/TikzVisual/calibrate-interaction-pdf-regions.mjs
-node tools/TikzVisual/trial-interaction-pdf-regions.mjs
+node tools/TikzVisual/pdf-viewport-probe.mjs
+node tools/TikzVisual/calibrate-interaction-pdf-regions.mjs --page-coordinates
+node tools/TikzVisual/trial-interaction-pdf-regions.mjs --page-coordinates
 dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-primary
-node tools/TikzVisual/trial-interaction-pdf-regions.mjs --candidate
+node tools/TikzVisual/trial-interaction-pdf-regions.mjs --candidate --page-coordinates
 npm run test:pdf-regions --prefix tools/TikzVisual
 ```
 
 The first experiment intentionally returns 1 for raw precision mismatches after
 writing complete artifacts. Regional measurement and native trial return 0.
-The current candidate trial returns 1 for the retained unchanged controls.
+The page-coordinate candidate trial now returns 0. Omitting `--page-coordinates`
+selects the initial picture-image method; regenerate its measurement artifacts
+first to reproduce the retained control failures with current tool hashes.
 Missing inputs, incompatible renderer identity, or changed hashes fail. These
 cached commands need the pinned browser, Node, and .NET; they run no TeX or PDF
 rasterizer and update no baseline or approved policy.
 
-Open `artifacts/interaction-pdf-region-calibration/<case>/<variant>/index.html`
-or `artifacts/interaction-pdf-region-trial-candidate/<case>-<trial>/index.html`.
+Open `artifacts/interaction-pdf-region-calibration-page/<case>/<variant>/index.html`
+or `artifacts/interaction-pdf-region-trial-candidate-page/<case>-<trial>/index.html`.
 Each viewer supplies whole-picture PDF/SVG opacity, blink, zoom, and amplified
 difference controls, plus ranked paired local crops and raw metrics. Native PNG
 crops are retained without smoothing; named glyph regions link to the source
@@ -126,9 +175,19 @@ without an invented source attribution. Reports hash source, SVG, measurements,
 camera, viewer, and captures. Native page images and their provenance remain in
 the reference/calibration bundles.
 
-Twenty-two required synthetic checks cover fractional registration, repeat
+The unchanged transform trial additionally retains `native.svg` and six paired
+`<region>-<scale>x-native-svg.png` captures. Their hashes match the corresponding
+candidate SVG crops exactly. The viewport probe records raw invariance checks,
+whole-picture crops, baseline pages, SVGs, and artifact hashes under
+`artifacts/pdf-viewport-probe/`. Its three native CSS SVG inputs are checked in
+alongside each fixture and pinned to the initial independent reconstruction;
+they are derived evidence, while the original oracle SVGs remain unchanged.
+
+Thirty-six required synthetic checks cover fractional registration, repeat
 captures, faint-content dilution, missing/extra ink, translation, opacity,
 clipping, unobservable white ink, invalid inputs, incomplete measurements, and
-native-log agreement/rejection. CI runs these checks and uploads their artifacts.
-The prospective candidate PDF trial remains outside the passing conformance
-gate until the unchanged controls and independently reviewed admission pass.
+native-log agreement/rejection. CI also requires all 27 page-coordinate viewport
+controls to match exactly and uploads both tools' artifacts. This cached probe
+requires no TeX, .NET, or ignored setup artifacts. Hosted execution remains
+unverified. Candidate PDF conformance stays outside the required passing gate
+until separately pinned admission and combined-policy failure checks are ready.

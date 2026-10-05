@@ -5,6 +5,8 @@ export async function measurePdfRegions(page, input) {
 }
 
 export async function renderPdfRegions(input) {
+  const renderMode = input.renderMode ?? 'picture-image';
+  if (!['picture-image', 'page-svg', 'page-coordinates'].includes(renderMode)) throw new Error('Unknown PDF SVG rendering mode.');
   const canvas = (width, height) => {
     if (![width, height].every(Number.isSafeInteger) || width < 1 || height < 1 || width * height > 20000000)
       throw new Error('PDF region exceeds the canvas limit.');
@@ -93,8 +95,51 @@ export async function renderPdfRegions(input) {
     // channel sample. Both sides subsequently use native integer crops.
     const svgPage = canvas(pdf.width, pdf.height), pageContext = context(svgPage);
     pageContext.fillStyle = 'white'; pageContext.fillRect(0, 0, svgPage.width, svgPage.height);
-    pageContext.drawImage(svg, (input.pdfOriginPixels.x + box.x) * scale,
-      (input.pdfOriginPixels.y + box.y) * scale, box.width * scale, box.height * scale);
+    if (renderMode === 'picture-image') {
+      pageContext.drawImage(svg, (input.pdfOriginPixels.x + box.x) * scale,
+        (input.pdfOriginPixels.y + box.y) * scale, box.width * scale, box.height * scale);
+    } else if (renderMode === 'page-svg') {
+      // A page-sized SVG resolves the physical transform before rasterizing,
+      // rather than drawing a separately decoded fractional picture image.
+      // The nested viewport still clips exactly as the original image did.
+      const outer = doc.implementation.createDocument('http://www.w3.org/2000/svg', 'svg', null);
+      const pageRoot = outer.documentElement, nested = outer.importNode(root, true);
+      pageRoot.setAttribute('width', pdf.width + 'px'); pageRoot.setAttribute('height', pdf.height + 'px');
+      pageRoot.setAttribute('viewBox', '0 0 ' + pdf.width + ' ' + pdf.height);
+      nested.setAttribute('x', (input.pdfOriginPixels.x + box.x) * scale);
+      nested.setAttribute('y', (input.pdfOriginPixels.y + box.y) * scale);
+      nested.setAttribute('width', box.width * scale + 'px'); nested.setAttribute('height', box.height * scale + 'px');
+      nested.setAttribute('overflow', 'hidden'); pageRoot.append(nested);
+      const pageSvg = await load('data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(outer)))));
+      pageContext.drawImage(pageSvg, 0, 0);
+    } else {
+      // The declared native units map directly to page coordinates. Keep the
+      // natural viewport as an independent clip, rather than factoring its
+      // minimum into the content transform and cancelling it afterward.
+      if (Math.abs(box.width - view[2] * factor) > 1e-9 || Math.abs(box.height - view[3] * factor) > 1e-9
+        || ![null, 'xMidYMid meet', 'none'].includes(root.getAttribute('preserveAspectRatio')))
+        throw new Error('SVG viewport does not match its declared physical units.');
+      const ns = 'http://www.w3.org/2000/svg', outer = doc.implementation.createDocument(ns, 'svg', null), pageRoot = outer.documentElement;
+      pageRoot.setAttribute('width', pdf.width + 'px'); pageRoot.setAttribute('height', pdf.height + 'px');
+      pageRoot.setAttribute('viewBox', '0 0 ' + pdf.width + ' ' + pdf.height);
+      let clipId = 'pdf-native-viewport'; while (doc.getElementById(clipId)) clipId += '-';
+      const defs = outer.createElementNS(ns, 'defs'), clip = outer.createElementNS(ns, 'clipPath'), rectangle = outer.createElementNS(ns, 'path');
+      clip.setAttribute('id', clipId); clip.setAttribute('clipPathUnits', 'userSpaceOnUse');
+      const left = (input.pdfOriginPixels.x + box.x) * scale, top = (input.pdfOriginPixels.y + box.y) * scale;
+      rectangle.setAttribute('d', 'M' + left + ' ' + top + 'h' + box.width * scale + 'v' + box.height * scale + 'h' + -box.width * scale + 'Z');
+      clip.append(rectangle); defs.append(clip); pageRoot.append(defs);
+      const clipped = outer.createElementNS(ns, 'g'), mapping = outer.createElementNS(ns, 'g'), content = outer.createElementNS(ns, 'g');
+      clipped.setAttribute('clip-path', 'url(#' + clipId + ')');
+      mapping.setAttribute('transform', 'matrix(' + factor * scale + ' 0 0 ' + factor * scale + ' '
+        + (input.pdfOriginPixels.x - origin.x * 4 / 3) * scale + ' ' + (input.pdfOriginPixels.y - origin.y * 4 / 3) * scale + ')');
+      for (const a of root.attributes) if (!['width', 'height', 'viewBox', 'x', 'y', 'preserveAspectRatio'].includes(a.name)
+        && a.prefix !== 'xmlns' && a.name !== 'xmlns') content.setAttributeNS(a.namespaceURI, a.name, a.value);
+      for (const child of root.childNodes) content.append(outer.importNode(child, true));
+      mapping.append(content); clipped.append(mapping); pageRoot.append(clipped);
+      const pageSvg = await load('data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(outer)))));
+      pageContext.drawImage(pageSvg, 0, 0);
+    }
+    if (input.capturePage === true) images['page-' + scale + 'x-svg.png'] = svgPage.toDataURL('image/png').split(',')[1];
     for (const region of input.regions) {
       const r = region.rectanglePixels;
       if (!/^[a-z0-9-]{1,128}$/.test(region.id) || !r || ![r.x, r.y, r.width, r.height].every(Number.isFinite)

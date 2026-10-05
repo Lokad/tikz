@@ -12,8 +12,10 @@ import { verifyPdfNativeGeometry } from './pdf-native-geometry.mjs';
 import { pdfRegionViewer } from './pdf-region-viewer.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-assert.equal(process.argv.length, 2, 'Usage: node calibrate-interaction-pdf-regions.mjs');
-const output = path.join(root, 'artifacts/interaction-pdf-region-calibration');
+assert.ok(process.argv.length === 2 || process.argv.length === 3 && process.argv[2] === '--page-coordinates',
+  'Usage: node calibrate-interaction-pdf-regions.mjs [--page-coordinates]');
+const renderMode = process.argv[2] === '--page-coordinates' ? 'page-coordinates' : 'picture-image';
+const output = path.join(root, 'artifacts/interaction-pdf-region-calibration' + (renderMode === 'page-coordinates' ? '-page' : ''));
 await mkdir(output, { recursive: true }); await rm(path.join(output, 'calibration-evidence.json'), { force: true });
 const hash = b => createHash('sha256').update(b).digest('hex');
 const evidence = await loadInteractionPolicy();
@@ -60,7 +62,7 @@ try {
       const svg = await readFile(path.join(source, file));
       const expected = mode === 'original-ink-driver' ? c.variants[0].referenceSha256 : c.variants.find(v => v.mode === mode).derivedSha256;
       assert.equal(hash(svg), expected);
-      const input = { svg: svg.toString('utf8'), pdfPages,
+      const input = { svg: svg.toString('utf8'), pdfPages, renderMode,
         units: mode === 'original-ink-driver' ? 'bp' : 'cssPixels',
         svgOriginBp: mode === 'original-ink-driver' ? origin : undefined,
         pdfOriginPixels: metrics.geometry.pdfOriginPixels, regions, captureIds: ['whole-picture'] };
@@ -79,7 +81,7 @@ try {
       for (const scale of [1, 4]) await writeFile(path.join(folder, 'pdf-page-' + scale + 'x.png'),
         await readFile(path.join(baseline, 'pdf-page-' + scale + 'x.png')));
       const camera = { schemaVersion: 1, caseId: c.caseId, mode, converterInvoked: false,
-        units: input.units, svgOriginBp: input.svgOriginBp, pdfOriginPixels: input.pdfOriginPixels, regions,
+        units: input.units, svgOriginBp: input.svgOriginBp, pdfOriginPixels: input.pdfOriginPixels, regions, renderMode,
         registration: 'Full measured PDF page rendering; both sides integer-cropped; no fitting or fractional raster resampling' };
       await writeFile(path.join(folder, 'comparison-input.json'), JSON.stringify(camera, null, 2) + '\n');
       const imageHashes = Object.fromEntries(Object.entries(measured.images).map(([name, b]) => [name, hash(Buffer.from(b, 'base64'))]));
@@ -112,7 +114,7 @@ try {
     'tools/TikzVisual/pdf-region-viewer.mjs',
     'tools/TikzVisual/interaction-primary.mjs', 'tools/TikzVisual/compare.mjs', 'tools/TikzVisual/browser-profile.json'];
   await writeFile(path.join(output, 'calibration-evidence.json'), JSON.stringify({ schemaVersion: 1, completed: true,
-    converterInvoked: false, approvedPolicy: false, conformanceClaim: false,
+    converterInvoked: false, approvedPolicy: false, conformanceClaim: false, renderMode,
     scope: 'Ordinary cached PDF pages versus original ink-driver/native CSS/±4-sp oracle SVGs; fixed native glyph/path regions; white paper only',
     baseCalibrationSha256: evidence.declared.calibrationSha256, baseRegionalSha256: evidence.declared.regionalSha256,
     registration: 'Measured PDF page origin; SVG rendered once on the full native page; both sides use integer native-pixel crops; no fitting or fractional raster resampling',
