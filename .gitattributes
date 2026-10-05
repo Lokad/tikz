@@ -12,6 +12,8 @@ tests/Reference/*/reference.svg -text whitespace=cr-at-eol
 tests/Reference/*/oracle.log -text -whitespace
 # Native diagnostic traces retain spacing but use portable LF serialization.
 tests/Reference/Text/*/native-positions.log text eol=lf -whitespace
+tests/Reference/Nodes/rectangles/reference.svg -text whitespace=cr-at-eol
+tests/Reference/Nodes/rectangles/oracle.log -text -whitespace
 # Upstream license texts are retained byte for byte, including line endings.
 licenses/Fonts/GUST-FONT-LICENSE.txt -text -whitespace
 licenses/Fonts/LPPL-1.3c.txt -text -whitespace

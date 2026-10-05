@@ -11,5 +11,8 @@
     <None Include="../Fixtures/**/*.label" Link="Fixtures/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../Reference/**/*.json" Link="Reference/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../Reference/**/*.svg" Link="Reference/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/Nodes/rectangles/oracle.log" Link="Reference/Nodes/rectangles/oracle.log" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../tools/TikzReference/nodes.tex" Link="Reference/Nodes/wrapper.tex" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../tools/TikzFontData/font-profile.json" Link="Reference/Nodes/font-profile.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

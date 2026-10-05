@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+  \node[draw] (regular) at (0pt,0pt) {AV ffi.};
+  \node[draw] (empty) at (100pt,0pt) {};
+  \node[draw] (period) at (200pt,0pt) {.};
+  \node[draw] (descenders) at (0pt,50pt) {Agpq};
+  \node[draw,font=\itshape] (italic) at (100pt,50pt) {AV ffi.};
+  \node[draw,font=\large] (large-text) at (200pt,50pt) {AV ffi.};
+  \node[draw,node font=\large] (large-node) at (0pt,100pt) {AV ffi.};
+  \node[draw,line width=1.6pt] (thick) at (100pt,100pt) {AV};
+  \node[draw,inner xsep=.001pt,inner ysep=0pt,outer sep=0pt,
+        minimum width=40pt,minimum height=18pt] (minimum) at (200pt,100pt) {p};
+  \node[draw,inner xsep=2pt,inner ysep=4pt,outer xsep=3pt,outer ysep=.5pt]
+    (separation) at (0pt,150pt) {AV};
+  \node[draw,anchor=north] (north) at (100pt,150pt) {AV};
+  \node[draw,anchor=base] (base) at (200pt,150pt) {Ag};
+  \node[draw,inner sep=-1pt,outer sep=-.2pt] (negative) at (0pt,200pt) {Ag};
+  \node[draw,align=center] (lines-center) at (100pt,200pt) {A\\{\large Ag}\\p};
+  \node[draw,align=right] (lines-right) at (200pt,200pt) {AV ffi.\\p};
+  \node[draw,align=left] (lines-left) at (0pt,250pt) {A\\\\p};
+  \node[draw,inner sep=0pt,outer sep=0pt,minimum width=1sp,minimum height=3sp]
+    (sp-halves) at (100pt,250pt) {};
+  \node[draw,node font=\large,anchor=mid] (mid-large) at (200pt,250pt) {AV};
+  \node[draw,node font=\bfseries] (bold-node) at (0pt,300pt) {AV ffi.};
+  \node[draw,node font=\itshape] (italic-node) at (100pt,300pt) {AV ffi.};
+  \node[draw,node font={\large\bfseries}] (large-bold-node) at (200pt,300pt) {AV ffi.};
+  \node[draw,node font={\large\itshape}] (large-italic-node) at (0pt,350pt) {AV ffi.};
+\end{tikzpicture}

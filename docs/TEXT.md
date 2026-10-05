@@ -67,3 +67,8 @@ The sixteen native-reference cases and their exact integer tests ground the
 enumerated interactions they exercise. They do not establish general TeX
 typesetting or every combination of the declared primitives. New interactions
 require their own oracle cases; see [grounding instructions](TESTING.md).
+
+The [rectangle layout preparation](NODES.md) now consumes these measured labels
+and matches actual TikZ box, separation, anchor, and background-corner measurements
+for 22 nodes. Public conversion and native glyph-position/raster checks inside
+those nodes remain separate pending work.

@@ -1,0 +1,1145 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=latex 2025.9.25)  5 OCT 2026 02:27
+entering extended mode
+ %&-line parsing enabled.
+**./case.tex
+(case.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\article.
+cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.c
+lo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.
+sty
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.st
+y
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendl
+ayer\tikz.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgf.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfrcs.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-common.tex
+\pgfutil@everybye=\toks17
+\pgfutil@tempdima=\dimen149
+\pgfutil@tempdimb=\dimen150
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-latex.def
+\pgfutil@abb=\box53
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfrcs.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.rev
+ision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgfcore.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyv
+al.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig
+.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 106.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\
+dvips.def
+File: dvips.def 2022/09/22 v3.1e Graphics/color driver for dvips
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlay
+er\pgfsys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks21
+))
+\pgf@x=\dimen153
+\pgf@y=\dimen154
+\pgf@xa=\dimen155
+\pgf@ya=\dimen156
+\pgf@xb=\dimen157
+\pgf@yb=\dimen158
+\pgf@xc=\dimen159
+\pgf@yc=\dimen160
+\pgf@xd=\dimen161
+\pgf@yd=\dimen162
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count287
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-dvisvgm.def
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-dvisvgm.def
+File: pgfsys-dvisvgm.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-common-svg.def
+File: pgfsys-common-svg.def 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@sys@svg@objectcount=\count288
+\pgf@sys@svg@scopecount=\count289
+\pgf@sys@svg@type@count=\count290
+\pgf@sys@svg@canvascount=\count291
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count292
+\pgfsyssoftpath@bigbuffer@items=\count293
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor
+.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: dvips.def on input line 274.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\math
+color.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathutil.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathparser.code.tex
+\pgfmath@dimen=\dimen163
+\pgfmath@count=\count294
+\pgfmath@box=\box54
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.basic.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.trigonometric.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.random.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.comparison.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.base.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.round.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.misc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.integerarithmetics.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathcalc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count295
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fint.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen164
+\pgf@picmaxx=\dimen165
+\pgf@picminy=\dimen166
+\pgf@picmaxy=\dimen167
+\pgf@pathminx=\dimen168
+\pgf@pathmaxx=\dimen169
+\pgf@pathminy=\dimen170
+\pgf@pathmaxy=\dimen171
+\pgf@xx=\dimen172
+\pgf@xy=\dimen173
+\pgf@yx=\dimen174
+\pgf@yy=\dimen175
+\pgf@zx=\dimen176
+\pgf@zy=\dimen177
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen178
+\pgf@path@lasty=\dimen179
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen180
+\pgf@shorten@start@additional=\dimen181
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count296
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen182
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen183
+\pgf@pt@y=\dimen184
+\pgf@pt@temp=\dimen185
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen186
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen187
+\pgf@sys@shading@range@num=\count297
+\pgf@shadingcount=\count298
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box58
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box59
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen188
+\pgf@nodesepend=\dimen189
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgffor.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfkeys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfm
+ath.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen190
+\pgffor@skip=\dimen191
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz\tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/librari
+es\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count299
+\pgfplotmarksize=\dimen192
+)
+\tikz@lastx=\dimen193
+\tikz@lasty=\dimen194
+\tikz@lastxsaved=\dimen195
+\tikz@lastysaved=\dimen196
+\tikz@lastmovetox=\dimen197
+\tikz@lastmovetoy=\dimen198
+\tikzleveldistance=\dimen199
+\tikzsiblingdistance=\dimen256
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count300
+\tikznumberofchildren=\count301
+\tikznumberofcurrentchild=\count302
+\tikz@fig@count=\count303
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count304
+\pgfmatrixcurrentcolumn=\count305
+\pgf@matrix@numberofcolumns=\count306
+)
+\tikz@expandcount=\count307
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+LOKAD-PGF-VERSION 3.1.11a
+\lokadpicture=\box64
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 55
+.
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3b
+ackend-dvips.def
+File: l3backend-dvips.def 2025-06-09 L3 backend support: dvips
+\l__pdfannot_backend_content_box=\box65
+\l__pdfannot_backend_model_box=\box66
+\g__pdfannot_backend_int=\count308
+\g__pdfannot_backend_link_int=\count309
+\g__pdfannot_backend_link_sf_int=\count310
+)
+No file case.aux.
+\openout1 = `case.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+(case.tikz
+LOKAD-NODE regular width=1856828
+LOKAD-NODE regular height=451461
+LOKAD-NODE regular depth=0
+LOKAD-NODE regular linewidth=26214
+LOKAD-NODE regular quad=655360
+LOKAD-NODE regular xheight=282165
+LOKAD-NODE regular innerx=218430
+LOKAD-NODE regular innery=218430
+LOKAD-NODE regular outerx=13107
+LOKAD-NODE regular outery=13107
+LOKAD-NODE regular minimumwidth=65536
+LOKAD-NODE regular minimumheight=65536
+LOKAD-RECT regular sw=-1146844;-444160
+LOKAD-RECT regular ne=1146844;444160
+LOKAD-NODE empty width=0
+LOKAD-NODE empty height=0
+LOKAD-NODE empty depth=0
+LOKAD-NODE empty linewidth=26214
+LOKAD-NODE empty quad=655360
+LOKAD-NODE empty xheight=282165
+LOKAD-NODE empty innerx=218430
+LOKAD-NODE empty innery=218430
+LOKAD-NODE empty outerx=13107
+LOKAD-NODE empty outery=13107
+LOKAD-NODE empty minimumwidth=65536
+LOKAD-NODE empty minimumheight=65536
+LOKAD-RECT empty sw=6335170;-218430
+LOKAD-RECT empty ne=6772030;218430
+LOKAD-NODE period width=182043
+LOKAD-NODE period height=69176
+LOKAD-NODE period depth=0
+LOKAD-NODE period linewidth=26214
+LOKAD-NODE period quad=655360
+LOKAD-NODE period xheight=282165
+LOKAD-NODE period innerx=218430
+LOKAD-NODE period innery=218430
+LOKAD-NODE period outerx=13107
+LOKAD-NODE period outery=13107
+LOKAD-NODE period minimumwidth=65536
+LOKAD-NODE period minimumheight=65536
+LOKAD-RECT period sw=12797749;-253018
+LOKAD-RECT period ne=13416651;253018
+LOKAD-NODE descenders width=1547388
+LOKAD-NODE descenders height=451461
+LOKAD-NODE descenders depth=127430
+LOKAD-NODE descenders linewidth=26214
+LOKAD-NODE descenders quad=655360
+LOKAD-NODE descenders xheight=282165
+LOKAD-NODE descenders innerx=218430
+LOKAD-NODE descenders innery=218430
+LOKAD-NODE descenders outerx=13107
+LOKAD-NODE descenders outery=13107
+LOKAD-NODE descenders minimumwidth=65536
+LOKAD-NODE descenders minimumheight=65536
+LOKAD-RECT descenders sw=-992124;2768925
+LOKAD-RECT descenders ne=992124;3784675
+LOKAD-NODE italic width=1920610
+LOKAD-NODE italic height=451461
+LOKAD-NODE italic depth=127430
+LOKAD-NODE italic linewidth=26214
+LOKAD-NODE italic quad=655360
+LOKAD-NODE italic xheight=282165
+LOKAD-NODE italic innerx=218430
+LOKAD-NODE italic innery=218430
+LOKAD-NODE italic outerx=13107
+LOKAD-NODE italic outery=13107
+LOKAD-NODE italic minimumwidth=65536
+LOKAD-NODE italic minimumheight=65536
+LOKAD-RECT italic sw=5374865;2768925
+LOKAD-RECT italic ne=7732335;3784675
+LOKAD-NODE large-text width=2181235
+LOKAD-NODE large-text height=541752
+LOKAD-NODE large-text depth=0
+LOKAD-NODE large-text linewidth=26214
+LOKAD-NODE large-text quad=655360
+LOKAD-NODE large-text xheight=282165
+LOKAD-NODE large-text innerx=218430
+LOKAD-NODE large-text innery=218430
+LOKAD-NODE large-text outerx=13107
+LOKAD-NODE large-text outery=13107
+LOKAD-NODE large-text minimumwidth=65536
+LOKAD-NODE large-text minimumheight=65536
+LOKAD-RECT large-text sw=11798153;2787494
+LOKAD-RECT large-text ne=14416247;3766106
+LOKAD-NODE large-node width=2181235
+LOKAD-NODE large-node height=541752
+LOKAD-NODE large-node depth=0
+LOKAD-NODE large-node linewidth=26214
+LOKAD-NODE large-node quad=770037
+LOKAD-NODE large-node xheight=338603
+LOKAD-NODE large-node innerx=256651
+LOKAD-NODE large-node innery=256651
+LOKAD-NODE large-node outerx=13107
+LOKAD-NODE large-node outery=13107
+LOKAD-NODE large-node minimumwidth=65536
+LOKAD-NODE large-node minimumheight=65536
+LOKAD-RECT large-node sw=-1347268;6026073
+LOKAD-RECT large-node ne=1347268;7081127
+LOKAD-NODE thick width=910221
+LOKAD-NODE thick height=451461
+LOKAD-NODE thick depth=0
+LOKAD-NODE thick linewidth=104858
+LOKAD-NODE thick quad=655360
+LOKAD-NODE thick xheight=282165
+LOKAD-NODE thick innerx=218430
+LOKAD-NODE thick innery=218430
+LOKAD-NODE thick outerx=52429
+LOKAD-NODE thick outery=52429
+LOKAD-NODE thick minimumwidth=65536
+LOKAD-NODE thick minimumheight=65536
+LOKAD-RECT thick sw=5880060;6109440
+LOKAD-RECT thick ne=7227140;6997760
+LOKAD-NODE minimum width=364085
+LOKAD-NODE minimum height=282165
+LOKAD-NODE minimum depth=127430
+LOKAD-NODE minimum linewidth=26214
+LOKAD-NODE minimum quad=655360
+LOKAD-NODE minimum xheight=282165
+LOKAD-NODE minimum innerx=66
+LOKAD-NODE minimum innery=0
+LOKAD-NODE minimum outerx=0
+LOKAD-NODE minimum outery=0
+LOKAD-NODE minimum minimumwidth=2621440
+LOKAD-NODE minimum minimumheight=1179648
+LOKAD-RECT minimum sw=11796480;5963776
+LOKAD-RECT minimum ne=14417920;7143424
+LOKAD-NODE separation width=910221
+LOKAD-NODE separation height=451461
+LOKAD-NODE separation depth=0
+LOKAD-NODE separation linewidth=26214
+LOKAD-NODE separation quad=655360
+LOKAD-NODE separation xheight=282165
+LOKAD-NODE separation innerx=131072
+LOKAD-NODE separation innery=262144
+LOKAD-NODE separation outerx=196608
+LOKAD-NODE separation outery=32768
+LOKAD-NODE separation minimumwidth=65536
+LOKAD-NODE separation minimumheight=65536
+LOKAD-RECT separation sw=-586182;9342526
+LOKAD-RECT separation ne=586182;10318274
+LOKAD-NODE north width=910221
+LOKAD-NODE north height=451461
+LOKAD-NODE north depth=0
+LOKAD-NODE north linewidth=26214
+LOKAD-NODE north quad=655360
+LOKAD-NODE north xheight=282165
+LOKAD-NODE north innerx=218430
+LOKAD-NODE north innery=218430
+LOKAD-NODE north outerx=13107
+LOKAD-NODE north outery=13107
+LOKAD-NODE north minimumwidth=65536
+LOKAD-NODE north minimumheight=65536
+LOKAD-RECT north sw=5880060;8928973
+LOKAD-RECT north ne=7227140;9817293
+LOKAD-NODE base width=819200
+LOKAD-NODE base height=451461
+LOKAD-NODE base depth=127430
+LOKAD-NODE base linewidth=26214
+LOKAD-NODE base quad=655360
+LOKAD-NODE base xheight=282165
+LOKAD-NODE base innerx=218430
+LOKAD-NODE base innery=218430
+LOKAD-NODE base outerx=13107
+LOKAD-NODE base outery=13107
+LOKAD-NODE base minimumwidth=65536
+LOKAD-NODE base minimumheight=65536
+LOKAD-RECT base sw=12479170;9484540
+LOKAD-RECT base ne=13735230;10500290
+LOKAD-NODE negative width=819200
+LOKAD-NODE negative height=451461
+LOKAD-NODE negative depth=127430
+LOKAD-NODE negative linewidth=26214
+LOKAD-NODE negative quad=655360
+LOKAD-NODE negative xheight=282165
+LOKAD-NODE negative innerx=-65536
+LOKAD-NODE negative innery=-65536
+LOKAD-NODE negative outerx=-13107
+LOKAD-NODE negative outery=-13107
+LOKAD-NODE negative minimumwidth=65536
+LOKAD-NODE negative minimumheight=65536
+LOKAD-RECT negative sw=-344063;12883291
+LOKAD-RECT negative ne=344065;13331109
+LOKAD-NODE lines-center width=962264
+LOKAD-NODE lines-center height=2024325
+LOKAD-NODE lines-center depth=127430
+LOKAD-NODE lines-center linewidth=26214
+LOKAD-NODE lines-center quad=655360
+LOKAD-NODE lines-center xheight=282165
+LOKAD-NODE lines-center innerx=218430
+LOKAD-NODE lines-center innery=218430
+LOKAD-NODE lines-center outerx=13107
+LOKAD-NODE lines-center outery=13107
+LOKAD-NODE lines-center minimumwidth=65536
+LOKAD-NODE lines-center minimumheight=65536
+LOKAD-RECT lines-center sw=5854038;11812893
+LOKAD-RECT lines-center ne=7253162;14401507
+LOKAD-NODE lines-right width=1856828
+LOKAD-NODE lines-right height=1237893
+LOKAD-NODE lines-right depth=127430
+LOKAD-NODE lines-right linewidth=26214
+LOKAD-NODE lines-right quad=655360
+LOKAD-NODE lines-right xheight=282165
+LOKAD-NODE lines-right innerx=218430
+LOKAD-NODE lines-right innery=218430
+LOKAD-NODE lines-right outerx=13107
+LOKAD-NODE lines-right outery=13107
+LOKAD-NODE lines-right minimumwidth=65536
+LOKAD-NODE lines-right minimumheight=65536
+LOKAD-RECT lines-right sw=11960356;12206109
+LOKAD-RECT lines-right ne=14254044;14008291
+LOKAD-NODE lines-left width=491520
+LOKAD-NODE lines-left height=2024325
+LOKAD-NODE lines-left depth=127430
+LOKAD-NODE lines-left linewidth=26214
+LOKAD-NODE lines-left quad=655360
+LOKAD-NODE lines-left xheight=282165
+LOKAD-NODE lines-left innerx=218430
+LOKAD-NODE lines-left innery=218430
+LOKAD-NODE lines-left outerx=13107
+LOKAD-NODE lines-left outery=13107
+LOKAD-NODE lines-left minimumwidth=65536
+LOKAD-NODE lines-left minimumheight=65536
+LOKAD-RECT lines-left sw=-464190;15089693
+LOKAD-RECT lines-left ne=464190;17678307
+LOKAD-NODE sp-halves width=0
+LOKAD-NODE sp-halves height=0
+LOKAD-NODE sp-halves depth=0
+LOKAD-NODE sp-halves linewidth=26214
+LOKAD-NODE sp-halves quad=655360
+LOKAD-NODE sp-halves xheight=282165
+LOKAD-NODE sp-halves innerx=0
+LOKAD-NODE sp-halves innery=0
+LOKAD-NODE sp-halves outerx=0
+LOKAD-NODE sp-halves outery=0
+LOKAD-NODE sp-halves minimumwidth=1
+LOKAD-NODE sp-halves minimumheight=3
+LOKAD-RECT sp-halves sw=6553600;16383999
+LOKAD-RECT sp-halves ne=6553600;16384001
+LOKAD-NODE mid-large width=1068918
+LOKAD-NODE mid-large height=541752
+LOKAD-NODE mid-large depth=0
+LOKAD-NODE mid-large linewidth=26214
+LOKAD-NODE mid-large quad=770037
+LOKAD-NODE mid-large xheight=338603
+LOKAD-NODE mid-large innerx=256651
+LOKAD-NODE mid-large innery=256651
+LOKAD-NODE mid-large outerx=13107
+LOKAD-NODE mid-large outery=13107
+LOKAD-NODE mid-large minimumwidth=65536
+LOKAD-NODE mid-large minimumheight=65536
+LOKAD-RECT mid-large sw=12316090;15958048
+LOKAD-RECT mid-large ne=13898310;17013102
+LOKAD-NODE bold-node width=2144405
+LOKAD-NODE bold-node height=458128
+LOKAD-NODE bold-node depth=0
+LOKAD-NODE bold-node linewidth=26214
+LOKAD-NODE bold-node quad=753663
+LOKAD-NODE bold-node xheight=291275
+LOKAD-NODE bold-node innerx=251194
+LOKAD-NODE bold-node innery=251194
+LOKAD-NODE bold-node outerx=13107
+LOKAD-NODE bold-node outery=13107
+LOKAD-NODE bold-node minimumwidth=65536
+LOKAD-NODE bold-node minimumheight=65536
+LOKAD-RECT bold-node sw=-1323396;19180542
+LOKAD-RECT bold-node ne=1323396;20141058
+LOKAD-NODE italic-node width=1920610
+LOKAD-NODE italic-node height=451461
+LOKAD-NODE italic-node depth=127430
+LOKAD-NODE italic-node linewidth=26214
+LOKAD-NODE italic-node quad=669916
+LOKAD-NODE italic-node xheight=282165
+LOKAD-NODE italic-node innerx=223281
+LOKAD-NODE italic-node innery=223281
+LOKAD-NODE italic-node outerx=13107
+LOKAD-NODE italic-node outery=13107
+LOKAD-NODE italic-node minimumwidth=65536
+LOKAD-NODE italic-node minimumheight=65536
+LOKAD-RECT italic-node sw=5370014;19148074
+LOKAD-RECT italic-node ne=7737186;20173526
+LOKAD-NODE large-bold-node width=2515794
+LOKAD-NODE large-bold-node height=537690
+LOKAD-NODE large-bold-node depth=0
+LOKAD-NODE large-bold-node linewidth=26214
+LOKAD-NODE large-bold-node quad=884736
+LOKAD-NODE large-bold-node xheight=349524
+LOKAD-NODE large-bold-node innerx=294880
+LOKAD-NODE large-bold-node innery=294880
+LOKAD-NODE large-bold-node outerx=13107
+LOKAD-NODE large-bold-node outery=13107
+LOKAD-NODE large-bold-node minimumwidth=65536
+LOKAD-NODE large-bold-node minimumheight=65536
+LOKAD-RECT large-bold-node sw=11554423;19097075
+LOKAD-RECT large-bold-node ne=14659977;20224525
+LOKAD-NODE large-italic-node width=2254043
+LOKAD-NODE large-italic-node height=541752
+LOKAD-NODE large-italic-node depth=152916
+LOKAD-NODE large-italic-node linewidth=26214
+LOKAD-NODE large-italic-node quad=786432
+LOKAD-NODE large-italic-node xheight=338603
+LOKAD-NODE large-italic-node innerx=262116
+LOKAD-NODE large-italic-node innery=262116
+LOKAD-NODE large-italic-node outerx=13107
+LOKAD-NODE large-italic-node outery=13107
+LOKAD-NODE large-italic-node minimumwidth=65536
+LOKAD-NODE large-italic-node minimumheight=65536
+LOKAD-RECT large-italic-node sw=-1389137;22328150
+LOKAD-RECT large-italic-node ne=1389137;23547050
+(probes.tex
+LOKAD-ANCHOR regular;text;-928414;-225730
+LOKAD-ANCHOR regular;center;0;0
+LOKAD-ANCHOR regular;north;0;457267
+LOKAD-ANCHOR regular;south;0;-457267
+LOKAD-ANCHOR regular;west;-1159951;0
+LOKAD-ANCHOR regular;east;1159951;0
+LOKAD-ANCHOR regular;north west;-1159951;457267
+LOKAD-ANCHOR regular;north east;1159951;457267
+LOKAD-ANCHOR regular;south west;-1159951;-457267
+LOKAD-ANCHOR regular;south east;1159951;-457267
+LOKAD-ANCHOR regular;base;0;-225730
+LOKAD-ANCHOR regular;base west;-1159951;-225730
+LOKAD-ANCHOR regular;base east;1159951;-225730
+LOKAD-ANCHOR regular;mid;0;-84648
+LOKAD-ANCHOR regular;mid west;-1159951;-84648
+LOKAD-ANCHOR regular;mid east;1159951;-84648
+LOKAD-ANCHOR empty;text;6553600;0
+LOKAD-ANCHOR empty;center;6553600;0
+LOKAD-ANCHOR empty;north;6553600;231537
+LOKAD-ANCHOR empty;south;6553600;-231537
+LOKAD-ANCHOR empty;west;6322063;0
+LOKAD-ANCHOR empty;east;6785137;0
+LOKAD-ANCHOR empty;north west;6322063;231537
+LOKAD-ANCHOR empty;north east;6785137;231537
+LOKAD-ANCHOR empty;south west;6322063;-231537
+LOKAD-ANCHOR empty;south east;6785137;-231537
+LOKAD-ANCHOR empty;base;6553600;0
+LOKAD-ANCHOR empty;base west;6322063;0
+LOKAD-ANCHOR empty;base east;6785137;0
+LOKAD-ANCHOR empty;mid;6553600;141082
+LOKAD-ANCHOR empty;mid west;6322063;141082
+LOKAD-ANCHOR empty;mid east;6785137;141082
+LOKAD-ANCHOR period;text;13016179;-34588
+LOKAD-ANCHOR period;center;13107200;0
+LOKAD-ANCHOR period;north;13107200;266125
+LOKAD-ANCHOR period;south;13107200;-266125
+LOKAD-ANCHOR period;west;12784642;0
+LOKAD-ANCHOR period;east;13429758;0
+LOKAD-ANCHOR period;north west;12784642;266125
+LOKAD-ANCHOR period;north east;13429758;266125
+LOKAD-ANCHOR period;south west;12784642;-266125
+LOKAD-ANCHOR period;south east;13429758;-266125
+LOKAD-ANCHOR period;base;13107200;-34588
+LOKAD-ANCHOR period;base west;12784642;-34588
+LOKAD-ANCHOR period;base east;13429758;-34588
+LOKAD-ANCHOR period;mid;13107200;106494
+LOKAD-ANCHOR period;mid west;12784642;106494
+LOKAD-ANCHOR period;mid east;13429758;106494
+LOKAD-ANCHOR descenders;text;-773694;3114785
+LOKAD-ANCHOR descenders;center;0;3276800
+LOKAD-ANCHOR descenders;north;0;3797782
+LOKAD-ANCHOR descenders;south;0;2755818
+LOKAD-ANCHOR descenders;west;-1005231;3276800
+LOKAD-ANCHOR descenders;east;1005231;3276800
+LOKAD-ANCHOR descenders;north west;-1005231;3797782
+LOKAD-ANCHOR descenders;north east;1005231;3797782
+LOKAD-ANCHOR descenders;south west;-1005231;2755818
+LOKAD-ANCHOR descenders;south east;1005231;2755818
+LOKAD-ANCHOR descenders;base;0;3114785
+LOKAD-ANCHOR descenders;base west;-1005231;3114785
+LOKAD-ANCHOR descenders;base east;1005231;3114785
+LOKAD-ANCHOR descenders;mid;0;3255867
+LOKAD-ANCHOR descenders;mid west;-1005231;3255867
+LOKAD-ANCHOR descenders;mid east;1005231;3255867
+LOKAD-ANCHOR italic;text;5593295;3114785
+LOKAD-ANCHOR italic;center;6553600;3276800
+LOKAD-ANCHOR italic;north;6553600;3797782
+LOKAD-ANCHOR italic;south;6553600;2755818
+LOKAD-ANCHOR italic;west;5361758;3276800
+LOKAD-ANCHOR italic;east;7745442;3276800
+LOKAD-ANCHOR italic;north west;5361758;3797782
+LOKAD-ANCHOR italic;north east;7745442;3797782
+LOKAD-ANCHOR italic;south west;5361758;2755818
+LOKAD-ANCHOR italic;south east;7745442;2755818
+LOKAD-ANCHOR italic;base;6553600;3114785
+LOKAD-ANCHOR italic;base west;5361758;3114785
+LOKAD-ANCHOR italic;base east;7745442;3114785
+LOKAD-ANCHOR italic;mid;6553600;3255867
+LOKAD-ANCHOR italic;mid west;5361758;3255867
+LOKAD-ANCHOR italic;mid east;7745442;3255867
+LOKAD-ANCHOR large-text;text;12016583;3005924
+LOKAD-ANCHOR large-text;center;13107200;3276800
+LOKAD-ANCHOR large-text;north;13107200;3779213
+LOKAD-ANCHOR large-text;south;13107200;2774387
+LOKAD-ANCHOR large-text;west;11785046;3276800
+LOKAD-ANCHOR large-text;east;14429354;3276800
+LOKAD-ANCHOR large-text;north west;11785046;3779213
+LOKAD-ANCHOR large-text;north east;14429354;3779213
+LOKAD-ANCHOR large-text;south west;11785046;2774387
+LOKAD-ANCHOR large-text;south east;14429354;2774387
+LOKAD-ANCHOR large-text;base;13107200;3005924
+LOKAD-ANCHOR large-text;base west;11785046;3005924
+LOKAD-ANCHOR large-text;base east;14429354;3005924
+LOKAD-ANCHOR large-text;mid;13107200;3147006
+LOKAD-ANCHOR large-text;mid west;11785046;3147006
+LOKAD-ANCHOR large-text;mid east;14429354;3147006
+LOKAD-ANCHOR large-node;text;-1090617;6282724
+LOKAD-ANCHOR large-node;center;0;6553600
+LOKAD-ANCHOR large-node;north;0;7094234
+LOKAD-ANCHOR large-node;south;0;6012966
+LOKAD-ANCHOR large-node;west;-1360375;6553600
+LOKAD-ANCHOR large-node;east;1360375;6553600
+LOKAD-ANCHOR large-node;north west;-1360375;7094234
+LOKAD-ANCHOR large-node;north east;1360375;7094234
+LOKAD-ANCHOR large-node;south west;-1360375;6012966
+LOKAD-ANCHOR large-node;south east;1360375;6012966
+LOKAD-ANCHOR large-node;base;0;6282724
+LOKAD-ANCHOR large-node;base west;-1360375;6282724
+LOKAD-ANCHOR large-node;base east;1360375;6282724
+LOKAD-ANCHOR large-node;mid;0;6423806
+LOKAD-ANCHOR large-node;mid west;-1360375;6423806
+LOKAD-ANCHOR large-node;mid east;1360375;6423806
+LOKAD-ANCHOR thick;text;6098490;6327870
+LOKAD-ANCHOR thick;center;6553600;6553600
+LOKAD-ANCHOR thick;north;6553600;7050189
+LOKAD-ANCHOR thick;south;6553600;6057011
+LOKAD-ANCHOR thick;west;5827631;6553600
+LOKAD-ANCHOR thick;east;7279569;6553600
+LOKAD-ANCHOR thick;north west;5827631;7050189
+LOKAD-ANCHOR thick;north east;7279569;7050189
+LOKAD-ANCHOR thick;south west;5827631;6057011
+LOKAD-ANCHOR thick;south east;7279569;6057011
+LOKAD-ANCHOR thick;base;6553600;6327870
+LOKAD-ANCHOR thick;base west;5827631;6327870
+LOKAD-ANCHOR thick;base east;7279569;6327870
+LOKAD-ANCHOR thick;mid;6553600;6468952
+LOKAD-ANCHOR thick;mid west;5827631;6468952
+LOKAD-ANCHOR thick;mid east;7279569;6468952
+LOKAD-ANCHOR minimum;text;12925158;6476233
+LOKAD-ANCHOR minimum;center;13107200;6553600
+LOKAD-ANCHOR minimum;north;13107200;7143424
+LOKAD-ANCHOR minimum;south;13107200;5963776
+LOKAD-ANCHOR minimum;west;11796480;6553600
+LOKAD-ANCHOR minimum;east;14417920;6553600
+LOKAD-ANCHOR minimum;north west;11796480;7143424
+LOKAD-ANCHOR minimum;north east;14417920;7143424
+LOKAD-ANCHOR minimum;south west;11796480;5963776
+LOKAD-ANCHOR minimum;south east;14417920;5963776
+LOKAD-ANCHOR minimum;base;13107200;6476233
+LOKAD-ANCHOR minimum;base west;11796480;6476233
+LOKAD-ANCHOR minimum;base east;14417920;6476233
+LOKAD-ANCHOR minimum;mid;13107200;6617315
+LOKAD-ANCHOR minimum;mid west;11796480;6617315
+LOKAD-ANCHOR minimum;mid east;14417920;6617315
+LOKAD-ANCHOR separation;text;-455110;9604670
+LOKAD-ANCHOR separation;center;0;9830400
+LOKAD-ANCHOR separation;north;0;10351042
+LOKAD-ANCHOR separation;south;0;9309758
+LOKAD-ANCHOR separation;west;-782790;9830400
+LOKAD-ANCHOR separation;east;782790;9830400
+LOKAD-ANCHOR separation;north west;-782790;10351042
+LOKAD-ANCHOR separation;north east;782790;10351042
+LOKAD-ANCHOR separation;south west;-782790;9309758
+LOKAD-ANCHOR separation;south east;782790;9309758
+LOKAD-ANCHOR separation;base;0;9604670
+LOKAD-ANCHOR separation;base west;-782790;9604670
+LOKAD-ANCHOR separation;base east;782790;9604670
+LOKAD-ANCHOR separation;mid;0;9745752
+LOKAD-ANCHOR separation;mid west;-782790;9745752
+LOKAD-ANCHOR separation;mid east;782790;9745752
+LOKAD-ANCHOR north;text;6098490;9147403
+LOKAD-ANCHOR north;center;6553600;9373133
+LOKAD-ANCHOR north;north;6553600;9830400
+LOKAD-ANCHOR north;south;6553600;8915866
+LOKAD-ANCHOR north;west;5866953;9373133
+LOKAD-ANCHOR north;east;7240247;9373133
+LOKAD-ANCHOR north;north west;5866953;9830400
+LOKAD-ANCHOR north;north east;7240247;9830400
+LOKAD-ANCHOR north;south west;5866953;8915866
+LOKAD-ANCHOR north;south east;7240247;8915866
+LOKAD-ANCHOR north;base;6553600;9147403
+LOKAD-ANCHOR north;base west;5866953;9147403
+LOKAD-ANCHOR north;base east;7240247;9147403
+LOKAD-ANCHOR north;mid;6553600;9288485
+LOKAD-ANCHOR north;mid west;5866953;9288485
+LOKAD-ANCHOR north;mid east;7240247;9288485
+LOKAD-ANCHOR base;text;12697600;9830400
+LOKAD-ANCHOR base;center;13107200;9992415
+LOKAD-ANCHOR base;north;13107200;10513397
+LOKAD-ANCHOR base;south;13107200;9471433
+LOKAD-ANCHOR base;west;12466063;9992415
+LOKAD-ANCHOR base;east;13748337;9992415
+LOKAD-ANCHOR base;north west;12466063;10513397
+LOKAD-ANCHOR base;north east;13748337;10513397
+LOKAD-ANCHOR base;south west;12466063;9471433
+LOKAD-ANCHOR base;south east;13748337;9471433
+LOKAD-ANCHOR base;base;13107200;9830400
+LOKAD-ANCHOR base;base west;12466063;9830400
+LOKAD-ANCHOR base;base east;13748337;9830400
+LOKAD-ANCHOR base;mid;13107200;9971482
+LOKAD-ANCHOR base;mid west;12466063;9971482
+LOKAD-ANCHOR base;mid east;13748337;9971482
+LOKAD-ANCHOR negative;text;-409599;12945185
+LOKAD-ANCHOR negative;center;0;13107200
+LOKAD-ANCHOR negative;north;0;13318002
+LOKAD-ANCHOR negative;south;0;12896398
+LOKAD-ANCHOR negative;west;-330956;13107200
+LOKAD-ANCHOR negative;east;330958;13107200
+LOKAD-ANCHOR negative;north west;-330956;13318002
+LOKAD-ANCHOR negative;north east;330958;13318002
+LOKAD-ANCHOR negative;south west;-330956;12896398
+LOKAD-ANCHOR negative;south east;330958;12896398
+LOKAD-ANCHOR negative;base;0;12945185
+LOKAD-ANCHOR negative;base west;-330956;12945185
+LOKAD-ANCHOR negative;base east;330958;12945185
+LOKAD-ANCHOR negative;mid;0;13086267
+LOKAD-ANCHOR negative;mid west;-330956;13086267
+LOKAD-ANCHOR negative;mid east;330958;13086267
+LOKAD-ANCHOR lines-center;text;6072468;12158753
+LOKAD-ANCHOR lines-center;center;6553600;13107200
+LOKAD-ANCHOR lines-center;north;6553600;14414614
+LOKAD-ANCHOR lines-center;south;6553600;11799786
+LOKAD-ANCHOR lines-center;west;5840931;13107200
+LOKAD-ANCHOR lines-center;east;7266269;13107200
+LOKAD-ANCHOR lines-center;north west;5840931;14414614
+LOKAD-ANCHOR lines-center;north east;7266269;14414614
+LOKAD-ANCHOR lines-center;south west;5840931;11799786
+LOKAD-ANCHOR lines-center;south east;7266269;11799786
+LOKAD-ANCHOR lines-center;base;6553600;12158753
+LOKAD-ANCHOR lines-center;base west;5840931;12158753
+LOKAD-ANCHOR lines-center;base east;7266269;12158753
+LOKAD-ANCHOR lines-center;mid;6553600;12299835
+LOKAD-ANCHOR lines-center;mid west;5840931;12299835
+LOKAD-ANCHOR lines-center;mid east;7266269;12299835
+LOKAD-ANCHOR lines-right;text;12178786;12551969
+LOKAD-ANCHOR lines-right;center;13107200;13107200
+LOKAD-ANCHOR lines-right;north;13107200;14021398
+LOKAD-ANCHOR lines-right;south;13107200;12193002
+LOKAD-ANCHOR lines-right;west;11947249;13107200
+LOKAD-ANCHOR lines-right;east;14267151;13107200
+LOKAD-ANCHOR lines-right;north west;11947249;14021398
+LOKAD-ANCHOR lines-right;north east;14267151;14021398
+LOKAD-ANCHOR lines-right;south west;11947249;12193002
+LOKAD-ANCHOR lines-right;south east;14267151;12193002
+LOKAD-ANCHOR lines-right;base;13107200;12551969
+LOKAD-ANCHOR lines-right;base west;11947249;12551969
+LOKAD-ANCHOR lines-right;base east;14267151;12551969
+LOKAD-ANCHOR lines-right;mid;13107200;12693051
+LOKAD-ANCHOR lines-right;mid west;11947249;12693051
+LOKAD-ANCHOR lines-right;mid east;14267151;12693051
+LOKAD-ANCHOR lines-left;text;-245760;15435553
+LOKAD-ANCHOR lines-left;center;0;16384000
+LOKAD-ANCHOR lines-left;north;0;17691414
+LOKAD-ANCHOR lines-left;south;0;15076586
+LOKAD-ANCHOR lines-left;west;-477297;16384000
+LOKAD-ANCHOR lines-left;east;477297;16384000
+LOKAD-ANCHOR lines-left;north west;-477297;17691414
+LOKAD-ANCHOR lines-left;north east;477297;17691414
+LOKAD-ANCHOR lines-left;south west;-477297;15076586
+LOKAD-ANCHOR lines-left;south east;477297;15076586
+LOKAD-ANCHOR lines-left;base;0;15435553
+LOKAD-ANCHOR lines-left;base west;-477297;15435553
+LOKAD-ANCHOR lines-left;base east;477297;15435553
+LOKAD-ANCHOR lines-left;mid;0;15576635
+LOKAD-ANCHOR lines-left;mid west;-477297;15576635
+LOKAD-ANCHOR lines-left;mid east;477297;15576635
+LOKAD-ANCHOR sp-halves;text;6553600;16384000
+LOKAD-ANCHOR sp-halves;center;6553600;16384000
+LOKAD-ANCHOR sp-halves;north;6553600;16384001
+LOKAD-ANCHOR sp-halves;south;6553600;16383999
+LOKAD-ANCHOR sp-halves;west;6553600;16384000
+LOKAD-ANCHOR sp-halves;east;6553600;16384000
+LOKAD-ANCHOR sp-halves;north west;6553600;16384001
+LOKAD-ANCHOR sp-halves;north east;6553600;16384001
+LOKAD-ANCHOR sp-halves;south west;6553600;16383999
+LOKAD-ANCHOR sp-halves;south east;6553600;16383999
+LOKAD-ANCHOR sp-halves;base;6553600;16384000
+LOKAD-ANCHOR sp-halves;base west;6553600;16384000
+LOKAD-ANCHOR sp-halves;base east;6553600;16384000
+LOKAD-ANCHOR sp-halves;mid;6553600;16525082
+LOKAD-ANCHOR sp-halves;mid west;6553600;16525082
+LOKAD-ANCHOR sp-halves;mid east;6553600;16525082
+LOKAD-ANCHOR mid-large;text;12572741;16214699
+LOKAD-ANCHOR mid-large;center;13107200;16485575
+LOKAD-ANCHOR mid-large;north;13107200;17026209
+LOKAD-ANCHOR mid-large;south;13107200;15944941
+LOKAD-ANCHOR mid-large;west;12302983;16485575
+LOKAD-ANCHOR mid-large;east;13911417;16485575
+LOKAD-ANCHOR mid-large;north west;12302983;17026209
+LOKAD-ANCHOR mid-large;north east;13911417;17026209
+LOKAD-ANCHOR mid-large;south west;12302983;15944941
+LOKAD-ANCHOR mid-large;south east;13911417;15944941
+LOKAD-ANCHOR mid-large;base;13107200;16214699
+LOKAD-ANCHOR mid-large;base west;12302983;16214699
+LOKAD-ANCHOR mid-large;base east;13911417;16214699
+LOKAD-ANCHOR mid-large;mid;13107200;16355781
+LOKAD-ANCHOR mid-large;mid west;12302983;16355781
+LOKAD-ANCHOR mid-large;mid east;13911417;16355781
+LOKAD-ANCHOR bold-node;text;-1072202;19431736
+LOKAD-ANCHOR bold-node;center;0;19660800
+LOKAD-ANCHOR bold-node;north;0;20154165
+LOKAD-ANCHOR bold-node;south;0;19167435
+LOKAD-ANCHOR bold-node;west;-1336503;19660800
+LOKAD-ANCHOR bold-node;east;1336503;19660800
+LOKAD-ANCHOR bold-node;north west;-1336503;20154165
+LOKAD-ANCHOR bold-node;north east;1336503;20154165
+LOKAD-ANCHOR bold-node;south west;-1336503;19167435
+LOKAD-ANCHOR bold-node;south east;1336503;19167435
+LOKAD-ANCHOR bold-node;base;0;19431736
+LOKAD-ANCHOR bold-node;base west;-1336503;19431736
+LOKAD-ANCHOR bold-node;base east;1336503;19431736
+LOKAD-ANCHOR bold-node;mid;0;19572818
+LOKAD-ANCHOR bold-node;mid west;-1336503;19572818
+LOKAD-ANCHOR bold-node;mid east;1336503;19572818
+LOKAD-ANCHOR italic-node;text;5593295;19498785
+LOKAD-ANCHOR italic-node;center;6553600;19660800
+LOKAD-ANCHOR italic-node;north;6553600;20186633
+LOKAD-ANCHOR italic-node;south;6553600;19134967
+LOKAD-ANCHOR italic-node;west;5356907;19660800
+LOKAD-ANCHOR italic-node;east;7750293;19660800
+LOKAD-ANCHOR italic-node;north west;5356907;20186633
+LOKAD-ANCHOR italic-node;north east;7750293;20186633
+LOKAD-ANCHOR italic-node;south west;5356907;19134967
+LOKAD-ANCHOR italic-node;south east;7750293;19134967
+LOKAD-ANCHOR italic-node;base;6553600;19498785
+LOKAD-ANCHOR italic-node;base west;5356907;19498785
+LOKAD-ANCHOR italic-node;base east;7750293;19498785
+LOKAD-ANCHOR italic-node;mid;6553600;19639867
+LOKAD-ANCHOR italic-node;mid west;5356907;19639867
+LOKAD-ANCHOR italic-node;mid east;7750293;19639867
+LOKAD-ANCHOR large-bold-node;text;11849303;19391955
+LOKAD-ANCHOR large-bold-node;center;13107200;19660800
+LOKAD-ANCHOR large-bold-node;north;13107200;20237632
+LOKAD-ANCHOR large-bold-node;south;13107200;19083968
+LOKAD-ANCHOR large-bold-node;west;11541316;19660800
+LOKAD-ANCHOR large-bold-node;east;14673084;19660800
+LOKAD-ANCHOR large-bold-node;north west;11541316;20237632
+LOKAD-ANCHOR large-bold-node;north east;14673084;20237632
+LOKAD-ANCHOR large-bold-node;south west;11541316;19083968
+LOKAD-ANCHOR large-bold-node;south east;14673084;19083968
+LOKAD-ANCHOR large-bold-node;base;13107200;19391955
+LOKAD-ANCHOR large-bold-node;base west;11541316;19391955
+LOKAD-ANCHOR large-bold-node;base east;14673084;19391955
+LOKAD-ANCHOR large-bold-node;mid;13107200;19533037
+LOKAD-ANCHOR large-bold-node;mid west;11541316;19533037
+LOKAD-ANCHOR large-bold-node;mid east;14673084;19533037
+LOKAD-ANCHOR large-italic-node;text;-1127021;22743182
+LOKAD-ANCHOR large-italic-node;center;0;22937600
+LOKAD-ANCHOR large-italic-node;north;0;23560157
+LOKAD-ANCHOR large-italic-node;south;0;22315043
+LOKAD-ANCHOR large-italic-node;west;-1402244;22937600
+LOKAD-ANCHOR large-italic-node;east;1402244;22937600
+LOKAD-ANCHOR large-italic-node;north west;-1402244;23560157
+LOKAD-ANCHOR large-italic-node;north east;1402244;23560157
+LOKAD-ANCHOR large-italic-node;south west;-1402244;22315043
+LOKAD-ANCHOR large-italic-node;south east;1402244;22315043
+LOKAD-ANCHOR large-italic-node;base;0;22743182
+LOKAD-ANCHOR large-italic-node;base west;-1402244;22743182
+LOKAD-ANCHOR large-italic-node;base east;1402244;22743182
+LOKAD-ANCHOR large-italic-node;mid;0;22884264
+LOKAD-ANCHOR large-italic-node;mid west;-1402244;22884264
+LOKAD-ANCHOR large-italic-node;mid east;1402244;22884264
+))
+LOKAD-BOX 16075328;24017424;0
+
+
+[1
+
+] (case.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 12025 strings out of 468130
+ 256474 string characters out of 5425798
+ 642756 words of memory out of 5000000
+ 40475 multiletter control sequences out of 15000+600000
+ 648095 words of font info for 47 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 102i,7n,107p,421b,623s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on case.dvi (1 page, 11452 bytes).

@@ -24,6 +24,8 @@ internal static partial class ReferenceTool
         {
             Root = FindRoot();
             Profile = Read<OracleProfile>(At("tests/Reference/oracle-profile.json"));
+            if (args.Length > 0 && args[0] is "generate-node-reference" or "verify-node-reference" or "compare-node-layout")
+                return await NodeReferences(args);
             var options = Arguments(args);
             var manifest = Read<CaseManifest>(At("tests/Reference/cases.json"));
             if (manifest.SchemaVersion != 1 || Profile.SchemaVersion != 1 || manifest.Profile != Profile.Id)

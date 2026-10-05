@@ -27,6 +27,10 @@ internal sealed class TextLayout : ITextLayout
         return new(data, data.Pairs.ToFrozenDictionary(p => p.Left * 256 + p.Right));
     }), StringComparer.Ordinal);
 
+    // Node defaults use the surrounding node font, which can differ from the
+    // font selected inside the label. Share the bounded six-face resource cache.
+    internal static FontData Font(TextFont font) => Faces[font.Id].Value.Data;
+
     public MeasuredText Layout(List<LabelItem> program, Source source, TextFont initialFont,
         TextAlignment alignment, Budget budget)
         => new Builder(source, initialFont, alignment, budget).Build(program);

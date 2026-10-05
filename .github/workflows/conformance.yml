@@ -17,7 +17,14 @@ jobs:
           global-json-file: global.json
       - run: dotnet restore Lokad.TikZ.slnx --locked-mode
       - run: dotnet test Lokad.TikZ.slnx -c Release --no-restore
+      - run: dotnet run --project tools/TikzReference -c Release --no-restore -- compare-node-layout
       - run: dotnet pack src/Lokad.TikZ -c Release --no-restore
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tikz-node-layout-${{ matrix.os }}
+          path: artifacts/node-layout/
+          if-no-files-found: error
 
   visual:
     runs-on: windows-2025

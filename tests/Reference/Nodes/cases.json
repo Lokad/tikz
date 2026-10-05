@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-rectangle-layout-v1",
+  "source": "tests/Fixtures/Nodes/rectangles.tikz",
+  "cases": [
+    { "id": "regular", "label": "AV ffi.", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 0, "ySp": 0, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "empty", "label": "", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 6553600, "ySp": 0, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "period", "label": ".", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 13107200, "ySp": 0, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "descenders", "label": "Agpq", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 0, "ySp": 3276800, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "italic", "label": "AV ffi.", "font": "italic-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 6553600, "ySp": 3276800, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "large-text", "label": "AV ffi.", "font": "regular-12", "nodeFont": "regular-10", "alignment": "left", "xSp": 13107200, "ySp": 3276800, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "large-node", "label": "AV ffi.", "font": "regular-12", "nodeFont": "regular-12", "alignment": "left", "xSp": 0, "ySp": 6553600, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "thick", "label": "AV", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 6553600, "ySp": 6553600, "anchor": "center", "lineWidthSp": 104858 },
+    { "id": "minimum", "label": "p", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 13107200, "ySp": 6553600, "anchor": "center", "lineWidthSp": 26214,
+      "dimensions": { "innerXSp": 66, "innerYSp": 0, "outerXSp": 0, "outerYSp": 0, "minimumWidthSp": 2621440, "minimumHeightSp": 1179648 } },
+    { "id": "separation", "label": "AV", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 0, "ySp": 9830400, "anchor": "center", "lineWidthSp": 26214,
+      "dimensions": { "innerXSp": 131072, "innerYSp": 262144, "outerXSp": 196608, "outerYSp": 32768, "minimumWidthSp": 65536, "minimumHeightSp": 65536 } },
+    { "id": "north", "label": "AV", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 6553600, "ySp": 9830400, "anchor": "north", "lineWidthSp": 26214 },
+    { "id": "base", "label": "Ag", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 13107200, "ySp": 9830400, "anchor": "base", "lineWidthSp": 26214 },
+    { "id": "negative", "label": "Ag", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 0, "ySp": 13107200, "anchor": "center", "lineWidthSp": 26214,
+      "dimensions": { "innerXSp": -65536, "innerYSp": -65536, "outerXSp": -13107, "outerYSp": -13107, "minimumWidthSp": 65536, "minimumHeightSp": 65536 } },
+    { "id": "lines-center", "label": "A\\\\{\\large Ag}\\\\p", "font": "regular-10", "nodeFont": "regular-10", "alignment": "center", "xSp": 6553600, "ySp": 13107200, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "lines-right", "label": "AV ffi.\\\\p", "font": "regular-10", "nodeFont": "regular-10", "alignment": "right", "xSp": 13107200, "ySp": 13107200, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "lines-left", "label": "A\\\\\\\\p", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 0, "ySp": 16384000, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "sp-halves", "label": "", "font": "regular-10", "nodeFont": "regular-10", "alignment": "left", "xSp": 6553600, "ySp": 16384000, "anchor": "center", "lineWidthSp": 26214,
+      "dimensions": { "innerXSp": 0, "innerYSp": 0, "outerXSp": 0, "outerYSp": 0, "minimumWidthSp": 1, "minimumHeightSp": 3 } },
+    { "id": "mid-large", "label": "AV", "font": "regular-12", "nodeFont": "regular-12", "alignment": "left", "xSp": 13107200, "ySp": 16384000, "anchor": "mid", "lineWidthSp": 26214 },
+    { "id": "bold-node", "label": "AV ffi.", "font": "bold-10", "nodeFont": "bold-10", "alignment": "left", "xSp": 0, "ySp": 19660800, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "italic-node", "label": "AV ffi.", "font": "italic-10", "nodeFont": "italic-10", "alignment": "left", "xSp": 6553600, "ySp": 19660800, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "large-bold-node", "label": "AV ffi.", "font": "bold-12", "nodeFont": "bold-12", "alignment": "left", "xSp": 13107200, "ySp": 19660800, "anchor": "center", "lineWidthSp": 26214 },
+    { "id": "large-italic-node", "label": "AV ffi.", "font": "italic-12", "nodeFont": "italic-12", "alignment": "left", "xSp": 0, "ySp": 22937600, "anchor": "center", "lineWidthSp": 26214 }
+  ]
+}

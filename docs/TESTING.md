@@ -219,3 +219,40 @@ mismatches are expected measurement results, with exit code 1; a tooling error
 is 2. It writes aggregate evidence only under `artifacts/text-calibration/`.
 Converter CSS placement, natural node/ink bounds, and PDF text calibration
 remain separate required work before labeled diagrams are advertised.
+
+## Actual TikZ rectangle layout
+
+The [internal node layout](NODES.md) has 22 independently measured actual TikZ
+nodes under `tests/Reference/Nodes/`. Its dedicated wrapper/profile leaves the
+geometry and bp text baselines unchanged. It records integer sp box dimensions,
+font metrics/defaults, separation, line width, sixteen global anchors, and
+painted rectangle corners. Ordinary tests require exact agreement. All six font
+faces, distinct label/node fonts, multiline boxes, empty labels, small minimum
+dimensions, negative separation, and center/north/base/mid placement have cases.
+
+```text
+dotnet run --project tools/TikzReference -c Release -- compare-node-layout
+dotnet run --project tools/TikzReference -c Release -- generate-node-reference
+dotnet run --project tools/TikzReference -c Release -- verify-node-reference
+```
+
+Cached comparison writes `artifacts/node-layout/report.json` with 1,056 exact
+checks, the managed scene, original reference SVG/log/metrics, artifact hashes,
+and candidate provenance. It is a numeric layout report; it does not emit or
+compare candidate node SVG. Exit categories match the main harness. Missing or
+modified inputs/artifacts fail. Generation alone writes baselines; verification
+recompiles only the trusted repository fixture without changing them.
+The ordinary Windows/Linux CI jobs run this cached command and upload its
+report bundle; hosted execution of the new step remains to be verified.
+
+Probe verification requires unchanged TeX box dimensions and identical SVG
+after sorting definitions by their unique IDs. Only definition order is
+canonicalized; painting order, coordinates, transforms, outlines, and dimensions
+are preserved. The original SVG is retained, and provenance also records whether
+the unsorted outputs were byte-identical. Native font files are checked against
+the pinned font profile before live commands run.
+
+Public node parsing/emission, native glyph positions within nodes, transform
+policy, border intersections, outline ink bounds, production-coordinate raster
+calibration, and PDF node comparisons remain pending. These layout results
+do not authorize applying an existing raster tolerance to labeled diagrams.
