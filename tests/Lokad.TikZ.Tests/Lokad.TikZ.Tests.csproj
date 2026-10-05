@@ -15,5 +15,8 @@
     <None Include="../Reference/Nodes/rectangles/native-positions.log" Link="Reference/Nodes/rectangles/native-positions.log" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../tools/TikzReference/nodes.tex" Link="Reference/Nodes/wrapper.tex" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../tools/TikzFontData/font-profile.json" Link="Reference/Nodes/font-profile.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/NodeShapes/native/native-positions.log" Link="Reference/NodeShapes/native/native-positions.log" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/NodeShapes/fonts/*.tfm" Link="Reference/NodeShapes/fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Include="../../tools/TikzShapeComparison/NativeGlyphTrace.cs" Link="Harness/NativeGlyphTrace.cs" />
   </ItemGroup>
 </Project>

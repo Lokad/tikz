@@ -117,10 +117,16 @@ border arithmetic retains the multiplication and truncation order of each
 ellipse branch, including near-center directions. Background paths preserve
 PGF's final move back to the center and enter the ordinary graphics/SVG pipeline.
 
+The [public comparison command](../tools/TikzShapeComparison/README.md) now adds
+direct assertions for all 70 native glyphs and their emitted affine placement,
+with independent DVI/TFM-to-original-SVG consistency checks. It exports source
+traces and agent-viewable images at 1x/4x over transparent/white/black backgrounds,
+preserving original root framing and separate expanded inspection views.
+
 These numeric results cover the named fixtures. They do not establish image
-or PDF conformance. Direct native glyph-position assertions, focused and
-interaction corpora, independent camera/precision calibration, regional image
-gates, and comparator defects are still required. No rectangle/path raster
+or PDF conformance. Focused and interaction corpora, independent precision
+calibration, regional image gates, and comparator defects are still required.
+No rectangle/path raster
 tolerance applies to these new shapes. A degenerate unequal-axis border that
 cannot be computed at native scaled-point precision fails at its source
 coordinate; callers can still use a supported explicit anchor.

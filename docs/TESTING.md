@@ -48,7 +48,21 @@ in isolated copies. Both are ordinary CI steps without TeX or a browser. Live
 [shape tests](../tests/Lokad.TikZ.Tests/CurvedNodeTests.cs) require exact native
 layout, anchors, full background paths, picture bounds, and all 448 public
 border endpoints. They also check finite normalization, library order/isolation,
-diagnostics, shared limits, and cancellation. The current suite passes 171 tests.
+diagnostics, shared limits, and cancellation. The current suite passes 190 tests,
+including direct native glyph/affine placement and eighteen input-consistency
+controls. A separate [candidate harness](../tools/TikzShapeComparison/README.md)
+exports 4,461 source-aware numeric checks and paired inspection artifacts:
+
+```text
+dotnet run --project tools/TikzShapeComparison -c Release -- compare-numeric
+node tools/TikzVisual/inspect-shapes.mjs
+```
+
+The inspector requires fresh numeric success and hashes every artifact. It saves
+1x/4x transparent/white/black PNGs for natural and expanded native cameras,
+98 independently derived regions, source-linked paired crops, and
+`artifacts/node-shape-comparisons/inspection.html`. Both commands are prepared
+CI steps. The inspector's successful artifact generation is not an image pass.
 Circle/ellipse image and PDF conformance remain pending; these cases inherit no
 existing node or path raster allowance.
 

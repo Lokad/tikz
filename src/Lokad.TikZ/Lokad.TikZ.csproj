@@ -23,6 +23,7 @@
     <InternalsVisibleTo Include="Lokad.TikZ.Tests" />
     <InternalsVisibleTo Include="TikzReference" />
     <InternalsVisibleTo Include="TikzFontData" />
+    <InternalsVisibleTo Include="TikzShapeComparison" />
     <EmbeddedResource Include="Resources/Fonts/LokadTikzText-*.json" />
   </ItemGroup>
   <Target Name="EnforceReleasePack" BeforeTargets="GenerateNuspec" Condition="'$(Configuration)' != 'Release'">

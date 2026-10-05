@@ -71,7 +71,9 @@ while the opposite multiplication order reaches 600sp. This is an exploratory
 diagnostic; the unchanged 448-query corpus supplies the regression evidence.
 
 Primary/PDF conformance and raster tolerance remain pending. These cases still
-need direct glyph assertions, focused/interaction measurements, independent
-precision and PDF calibration, defect controls, and a reproducible candidate
-comparison command with agent-viewable bundles. Inspection previews establish
+need focused/interaction measurements, independent precision and PDF
+calibration, and defect controls. The separate
+[candidate harness](../TikzShapeComparison/README.md) now supplies direct glyph
+assertions, source-aware numeric reports, and reproducible agent-viewable
+bundles without changing this oracle or its native evidence. Inspection establishes
 no image policy, and no existing rectangle/path policy is inherited.

@@ -19,6 +19,11 @@ outlines into baseline-relative SVG path data with six decimal places.
 The same font-derived data appears in the independent metric and atlas
 fixtures under `tests/Reference/Fonts/`.
 
+`tests/Reference/NodeShapes/fonts/` also retains two unmodified Latin Modern
+TFM files as development reference inputs, under the same GUST/LPPL license.
+Their hashes appear in the font profile. They are not included in the NuGet
+package; the production converter uses its renamed embedded data only.
+
 The complete unmodified upstream work is available from
 [CTAN's Latin Modern archive](https://ctan.org/tex-archive/fonts/lm), including
 its [download archive](https://mirrors.ctan.org/fonts/lm.zip), or the

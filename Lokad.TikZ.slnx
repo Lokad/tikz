@@ -9,5 +9,6 @@
     <Project Path="tools/TikzFontData/TikzFontData.csproj" />
     <Project Path="tools/TikzReference/TikzReference.csproj" />
     <Project Path="tools/TikzShapeReference/TikzShapeReference.csproj" />
+    <Project Path="tools/TikzShapeComparison/TikzShapeComparison.csproj" />
   </Folder>
 </Solution>
