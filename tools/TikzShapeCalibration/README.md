@@ -82,3 +82,9 @@ with numeric checks bypassed, ordinary PDF references and separate calibration,
 and a reviewed admission policy remain required. Existing rectangle/path
 allowances do not apply. CI prepares the evidence and uploads the bundle;
 hosted execution remains unverified.
+
+The separate [semantic-frame raster experiment](SEMANTIC-FRAME.md) derives the
+declared zero-padding root from independent native picture/ink bounds, retaining
+every native six-decimal drawing instruction. Original-primary and root-only
+pairs record global and fixed-region channel, edge and component observations.
+This remains oracle-only evidence generation with a pending admission verdict.

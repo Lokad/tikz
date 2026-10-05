@@ -10,6 +10,8 @@ The first command runs 44 analytic, parser, transform, stroke and containment
 controls. The second generates a fresh independent oracle reconstruction under
 `artifacts/node-shape-frames/`, computes expected extents, and saves a paired
 inspection gallery. It does not reference or invoke the candidate converter.
+An optional `--out artifacts/...` isolates this inspection in another guarded
+artifact directory.
 The third establishes fresh independent evidence first, then runs the public
 converter's required 4,461-check numeric comparison in a separate directory,
 and compares its ink and frame quantities with those fixed expectations.
@@ -86,3 +88,8 @@ All reports retain overall image/PDF conformance as pending. Focused and
 interaction references, per-region image gates, image-only defect controls
 with numeric checks bypassed, PDF calibration and reviewed admission remain
 required. Existing rectangle/path raster allowances do not apply.
+
+The [semantic-frame experiment](SEMANTIC-FRAME.md) consumes a fresh isolated
+inspection before deriving the declared six-decimal root. It retains original
+and root-only pairs, global/regional raster observations and unchanged controls,
+without invoking the candidate or setting image thresholds.

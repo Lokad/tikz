@@ -5,11 +5,11 @@ import { createRenderer } from './compare.mjs';
 import { root,sha256,readFreshOracle,writeArtifact } from './shape-oracle-bundle.mjs';
 import { multiply,parseTransform,parsePath,transformPoint,transformSegments,pathBounds,pathData,closedCurveStrokeBounds,unionBounds,containment } from './shape-frame-math.mjs';
 
-const output=path.join(root,'artifacts/node-shape-frames');
+const output=process.argv.length===4&&process.argv[2]==='--out'?path.resolve(root,process.argv[3]):path.join(root,'artifacts/node-shape-frames');
 const tools=['tools/TikzVisual/inspect-shape-frames.mjs','tools/TikzVisual/shape-frame-math.mjs','tools/TikzVisual/shape-oracle-bundle.mjs','tools/TikzVisual/compare.mjs','tools/TikzVisual/browser-profile.json'];
 const spToCss=96/(72.27*65536);
 async function main(){
-  assert.equal(process.argv.length,2,'Usage: node tools/TikzVisual/inspect-shape-frames.mjs');
+  assert.ok(process.argv.length===2||(process.argv.length===4&&process.argv[2]==='--out'),'Usage: node tools/TikzVisual/inspect-shape-frames.mjs [--out artifacts/...]');
   const toolHashes=Object.fromEntries(await Promise.all(tools.map(async file=>[file,sha256(await readFile(path.join(root,file)))])));
   const oracle=await readFreshOracle(output),{derivation}=oracle;
   const reference=await readFile(path.join(output,'reference.svg'),'utf8'),nativeSvg=await readFile(path.join(output,'native-css-12.svg'),'utf8');

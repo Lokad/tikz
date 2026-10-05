@@ -102,6 +102,22 @@ captures and twelve bitmap-copy controls are exact; SVG clip and post-raster
 boundary effects are reported separately. These commands are prepared visual
 CI steps, with pending image/PDF admission and unverified hosted execution.
 
+The separate [semantic-frame experiment](../tools/TikzShapeCalibration/SEMANTIC-FRAME.md)
+closes the oracle-only natural-root calibration gap:
+
+```text
+node tools/TikzVisual/shape-raster-self-test.mjs
+node tools/TikzVisual/calibrate-shape-semantic-frame.mjs
+```
+
+Twenty-six raster metric controls pass. The calibration derives its six-decimal
+root from fresh native picture/tight-ink evidence, retaining the native drawing
+instructions. It records original-primary and root-only pairs, fixed regional
+channel/foreground/edge/component observations and exact repeat controls under
+`artifacts/node-shape-semantic-frame/`. Its JSON entry point links paired crops
+and rerun commands for direct agent inspection. Evidence generation remains
+distinct from candidate image/PDF admission; no new tolerance is approved.
+
 ## Cached visual conformance
 
 Install the pinned development-only browser tooling once:

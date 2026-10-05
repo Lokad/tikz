@@ -132,6 +132,11 @@ approved. The [independent ink/frame workflow](../tools/TikzShapeCalibration/FRA
 also establishes native stroke and tight transformed-glyph extents; all 98
 contributions and the natural root now pass 406 additional public numeric
 checks. Original viewport overruns and clip-rendering effects remain visible.
+The [semantic-frame raster experiment](../tools/TikzShapeCalibration/SEMANTIC-FRAME.md)
+also reconstructs the declared natural root independently and records global
+and per-region channel, foreground, edge and component observations. Its
+root-only controls separate framing from changing drawing instructions;
+successful evidence generation retains pending image/PDF admission.
 Further focused and interaction corpora, regional edge/component gates,
 comparator defects and ordinary PDF
 evidence are still required. No rectangle/path raster tolerance applies to
