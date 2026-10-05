@@ -1,0 +1,4723 @@
+{
+  "schemaVersion": 1,
+  "completed": true,
+  "approvedPolicy": false,
+  "conformanceClaim": false,
+  "scope": "Unapproved interaction image-only trial; global-only false passes and pending regional transform precision failures retained",
+  "global": {
+    "schemaVersion": 1,
+    "completed": true,
+    "approvedPolicy": false,
+    "conformanceClaim": false,
+    "independentSnapshotSha256": "181ec58a94e78b9dd37c00c81fcbff9524e547dc6131b2ac5a865f9bd7e2a71d",
+    "regionalChecksEnabled": false,
+    "renderer": {
+      "profile": "chromium-153-geometry-v3",
+      "playwright": "1.63.0",
+      "browser": "153.0.8010.12",
+      "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+      "os": "win32",
+      "osRelease": "10.0.19045",
+      "architecture": "x64",
+      "node": "v24.12.0",
+      "headless": true,
+      "deviceScaleFactor": 1,
+      "viewport": {
+        "width": 1200,
+        "height": 900
+      },
+      "launchArguments": [
+        "--disable-gpu",
+        "--force-color-profile=srgb"
+      ],
+      "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+    },
+    "toolHashes": {
+      "tools/TikzVisual/interaction-mutation-trial.mjs": "587bbc82695a6a8165c42c28f4bf48fee6d3ea0b3644a312922fb79df05aea7e",
+      "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+      "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+    },
+    "independentRegionalSha256": null,
+    "passed": false,
+    "results": [
+      {
+        "caseId": "state-paint",
+        "name": "unchanged-a",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "dimensionsPassed": true,
+        "report": "state-paint-unchanged-a/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "unchanged-b",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "dimensionsPassed": true,
+        "report": "state-paint-unchanged-b/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "unchanged-a",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "dimensionsPassed": true,
+        "report": "transforms-unchanged-a/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "unchanged-b",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "dimensionsPassed": true,
+        "report": "transforms-unchanged-b/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "unchanged-a",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "dimensionsPassed": true,
+        "report": "colors-unchanged-a/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "unchanged-b",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "dimensionsPassed": true,
+        "report": "colors-unchanged-b/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "missing-period",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "2a7af47efb4b3b35d22f1b3f8d7e01c9fbf8809e9c32b63f34a3a14199a392fc",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "state-paint-missing-period/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "missing-faint-label",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "1f36d3de99f02c68cfb9da80ae239bca87f4dcbdefd9ac2d0c839474b9aeb93c",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "state-paint-missing-faint-label/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "missing-faint-period",
+        "expected": "mismatch",
+        "actual": "pass",
+        "passed": false,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "0140f8760eb8c01260f003e4b4e38cce4d9dcbf5c8ef18dac8acc833b63b2256",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "dimensionsPassed": true,
+        "report": "state-paint-missing-faint-period/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "removed-label-clip",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "bc3c5579db232cf94700ee8c64163fefefa19e7729ee2207518226d5e1f8d95a",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "state-paint-removed-label-clip/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "wrong-text-opacity",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "555fc6cf7f2c138f931e0a3ca9b07737c8cf6d13d11d99e87ba8675a5106cdfc",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "state-paint-wrong-text-opacity/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "paint-order",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "5019717019f3d1f8c14ca8e06c8d1b63f81c42ca63904d8ec5b64e2ff21b4975",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "state-paint-paint-order/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "synthetic-faint-stroke-present",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "339756e0950e07bf45bbc548cea19f08884e726eae45b3147823a8f1a807fa3b",
+        "referenceSha256": "62dc4ebd859ee030d20150322399bf0345a7135295cf6326b81eef6f3969d834",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "dimensionsPassed": true,
+        "report": "state-paint-synthetic-faint-stroke-present/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "synthetic-faint-stroke-removed",
+        "expected": "mismatch",
+        "actual": "pass",
+        "passed": false,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "referenceSha256": "62dc4ebd859ee030d20150322399bf0345a7135295cf6326b81eef6f3969d834",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "dimensionsPassed": true,
+        "report": "state-paint-synthetic-faint-stroke-removed/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "translated-glyph",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "57bc5f695f9b110602d32c902a21fc5b93ac59eea2f79624ff94c5c4559eaca2",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "transforms-translated-glyph/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "thickened-sheared-border",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "51286d1cd0141b50566abf493ce99196ba5b7e8b0de8ee1a19974ee6dd14f048",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "transforms-thickened-sheared-border/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "cropped-miter-tip",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "0b92ac06a645f0d2d7e095c265ca35478ee2b0a978bc15b8e3a420f5c4b99e71",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "transforms-cropped-miter-tip/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "missing-low-contrast-label",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "668fe5b75afe193bfe0936142110c8fdea965d364b6387300a1b2ad74dafd676",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "colors-missing-low-contrast-label/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "missing-low-contrast-period",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "4560c8bc41decedbb67b6afcdab7e3bd75be71b455af1945a8b3633e37422a98",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "colors-missing-low-contrast-period/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "CMYK-magenta-text",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "d990c13d80bcfe934128a7b5a87c38a62bafd2f1336d973ec4a0e86acf672b47",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "dimensionsPassed": true,
+        "report": "colors-CMYK-magenta-text/report.json"
+      }
+    ]
+  },
+  "regional": {
+    "schemaVersion": 1,
+    "completed": true,
+    "approvedPolicy": false,
+    "conformanceClaim": false,
+    "independentSnapshotSha256": "181ec58a94e78b9dd37c00c81fcbff9524e547dc6131b2ac5a865f9bd7e2a71d",
+    "regionalChecksEnabled": true,
+    "renderer": {
+      "profile": "chromium-153-geometry-v3",
+      "playwright": "1.63.0",
+      "browser": "153.0.8010.12",
+      "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+      "os": "win32",
+      "osRelease": "10.0.19045",
+      "architecture": "x64",
+      "node": "v24.12.0",
+      "headless": true,
+      "deviceScaleFactor": 1,
+      "viewport": {
+        "width": 1200,
+        "height": 900
+      },
+      "launchArguments": [
+        "--disable-gpu",
+        "--force-color-profile=srgb"
+      ],
+      "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+    },
+    "toolHashes": {
+      "tools/TikzVisual/interaction-mutation-trial.mjs": "587bbc82695a6a8165c42c28f4bf48fee6d3ea0b3644a312922fb79df05aea7e",
+      "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+      "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+    },
+    "independentRegionalSha256": "aefbfc4d9c25b77b275fb9512c74e278511c759c063e44dac08481642d5b2eea",
+    "passed": false,
+    "results": [
+      {
+        "caseId": "state-paint",
+        "name": "unchanged-a",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "regionalFailures": [],
+        "dimensionsPassed": true,
+        "report": "state-paint-unchanged-a/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "unchanged-b",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "regionalFailures": [],
+        "dimensionsPassed": true,
+        "report": "state-paint-unchanged-b/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "unchanged-a",
+        "expected": "pass",
+        "actual": "mismatch",
+        "passed": false,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": true,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.008,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.004,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.024,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.012,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-8",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.013848396501457727,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013606,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.014473684210526316,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013158,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.02,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.016053,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.015463917525773196,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000645,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.04639175257731959,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.001933,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.03125,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.09375,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 11,
+            "meanForegroundError": 0.011044511044511044,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.008106,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 11,
+            "meanForegroundError": 0.027972027972027972,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.024318,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 10,
+            "meanForegroundError": 0.025437555621477308,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.022627,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 10,
+            "meanForegroundError": 0.03760011865915159,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.029155,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "transforms-unchanged-a/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "unchanged-b",
+        "expected": "pass",
+        "actual": "mismatch",
+        "passed": false,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": true,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.008,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.004,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.024,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.012,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-8",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.013848396501457727,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013606,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.014473684210526316,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013158,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.02,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.016053,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.015463917525773196,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000645,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.04639175257731959,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.001933,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.03125,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.09375,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 11,
+            "meanForegroundError": 0.011044511044511044,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.008106,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 11,
+            "meanForegroundError": 0.027972027972027972,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.024318,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 10,
+            "meanForegroundError": 0.025437555621477308,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.022627,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 10,
+            "meanForegroundError": 0.03760011865915159,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.029155,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "transforms-unchanged-b/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "unchanged-a",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "regionalFailures": [],
+        "dimensionsPassed": true,
+        "report": "colors-unchanged-a/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "unchanged-b",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "regionalFailures": [],
+        "dimensionsPassed": true,
+        "report": "colors-unchanged-b/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "missing-period",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "2a7af47efb4b3b35d22f1b3f8d7e01c9fbf8809e9c32b63f34a3a14199a392fc",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-2",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 14,
+            "meanForegroundError": 0.025,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-2",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 14,
+            "meanForegroundError": 0.025,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-2",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 14,
+            "meanForegroundError": 0.025,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 7.29,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 7.29,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 255,
+            "meanForegroundError": 7.29,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-0",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 0.19809782608695653,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 10,
+              "maxMeanForegroundError": 0.014131,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-0",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 0.19809782608695653,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 10,
+              "maxMeanForegroundError": 0.014131,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-0",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 255,
+            "meanForegroundError": 0.19809782608695653,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 10,
+              "maxMeanForegroundError": 0.014131,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-2",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 91,
+            "meanForegroundError": 0.023451198129748684,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 3,
+              "maxMeanForegroundError": 0.003507,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-2",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 91,
+            "meanForegroundError": 0.023451198129748684,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 3,
+              "maxMeanForegroundError": 0.003507,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-2",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 91,
+            "meanForegroundError": 0.023451198129748684,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 3,
+              "maxMeanForegroundError": 0.003507,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 11.53111111111111,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.006667,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 11.53111111111111,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.006667,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 255,
+            "meanForegroundError": 11.53111111111111,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.006667,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-0",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 0.19065804935370154,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.006262,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-0",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 0.19065804935370154,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.006262,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-0",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 255,
+            "meanForegroundError": 0.19065804935370154,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.006262,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "state-paint-missing-period/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "missing-faint-label",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "1f36d3de99f02c68cfb9da80ae239bca87f4dcbdefd9ac2d0c839474b9aeb93c",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-27",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.20604395604395603,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-27",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 2,
+            "meanForegroundError": 1.0416666666666667,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-27",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.20604395604395603,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.06,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 2,
+            "meanForegroundError": 1.5,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.06,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.11079545454545454,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.25161290322580643,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.11890243902439024,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-27",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.4020650813516896,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-27",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 3,
+            "meanForegroundError": 1.8149717514124293,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-27",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.4020650813516896,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.2392857142857143,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.003572,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 3,
+            "meanForegroundError": 1.7946428571428572,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.026786,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.2392857142857143,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.003572,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.2011904761904762,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.008631,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.774637127578304,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.033232,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.22633928571428572,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.00971,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "state-paint-missing-faint-label/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "missing-faint-period",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "0140f8760eb8c01260f003e4b4e38cce4d9dcbf5c8ef18dac8acc833b63b2256",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": true,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-28",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.06,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 2,
+            "meanForegroundError": 1.5,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.06,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.004261363636363636,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.00967741935483871,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 2,
+            "meanForegroundError": 0.004573170731707317,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.2392857142857143,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.003572,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 3,
+            "meanForegroundError": 1.7946428571428572,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.026786,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-28",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.2392857142857143,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.003572,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.009970238095238095,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.008631,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.038388082505729566,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.033232,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.011216517857142857,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.00971,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "state-paint-missing-faint-period/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "removed-label-clip",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "bc3c5579db232cf94700ee8c64163fefefa19e7729ee2207518226d5e1f8d95a",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-24",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.017361111111111112,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-24",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.06382978723404255,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-24",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.01584507042253521,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 236,
+            "meanForegroundError": 4.076013513513513,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 3,
+              "maxMeanForegroundError": 0.014306,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 236,
+            "meanForegroundError": 21.026162790697676,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 3,
+              "maxMeanForegroundError": 0.029006,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 5.421481416240972,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.009449,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 46.65651844365841,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.036263,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "state-paint-removed-label-clip/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "wrong-text-opacity",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "555fc6cf7f2c138f931e0a3ca9b07737c8cf6d13d11d99e87ba8675a5106cdfc",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-11",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 92,
+            "meanForegroundError": 15.481944444444444,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.001389,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-11",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 141,
+            "meanForegroundError": 15.455555555555556,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.001389,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-11",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 92,
+            "meanForegroundError": 9.369444444444444,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.001389,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-12",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 92,
+            "meanForegroundError": 9.17,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-12",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 141,
+            "meanForegroundError": 9.15,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-12",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 92,
+            "meanForegroundError": 5.55,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 92,
+            "meanForegroundError": 5.525369003690037,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000462,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 141,
+            "meanForegroundError": 5.515682656826568,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000462,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 92,
+            "meanForegroundError": 3.3436346863468636,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000462,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-11",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 92,
+            "meanForegroundError": 17.18953804347826,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000195,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-11",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 141,
+            "meanForegroundError": 17.172166149068325,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000195,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-11",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 92,
+            "meanForegroundError": 10.400524068322982,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 9.8E-05,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-12",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 92,
+            "meanForegroundError": 9.847222222222221,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-12",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 141,
+            "meanForegroundError": 9.841503267973856,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-12",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 92,
+            "meanForegroundError": 5.959150326797386,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 92,
+            "meanForegroundError": 5.563286672156217,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 5.9E-05,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 141,
+            "meanForegroundError": 5.55781672744383,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 5.9E-05,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 92,
+            "meanForegroundError": 3.366103987766145,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 3E-05,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "state-paint-wrong-text-opacity/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "paint-order",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "5019717019f3d1f8c14ca8e06c8d1b63f81c42ca63904d8ec5b64e2ff21b4975",
+        "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-17",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 153,
+            "meanForegroundError": 2.051282051282051,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.009616,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-17",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 153,
+            "meanForegroundError": 2.831858407079646,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.013275,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-17",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 153,
+            "meanForegroundError": 2.0915032679738563,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.009804,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 196,
+            "meanForegroundError": 7.328402366863905,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.013314,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 196,
+            "meanForegroundError": 8.541379310344828,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.015518,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 196,
+            "meanForegroundError": 7.328402366863905,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.013314,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 196,
+            "meanForegroundError": 1.6776103336921422,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.007266,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 196,
+            "meanForegroundError": 2.255426917510854,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.009769,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 196,
+            "meanForegroundError": 1.7955069124423964,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.007777,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 196,
+            "meanForegroundError": 3.287974683544304,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.004747,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 196,
+            "meanForegroundError": 3.4028384279475983,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.004913,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 196,
+            "meanForegroundError": 3.3230277185501067,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.004798,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-17",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 204,
+            "meanForegroundError": 2.1578399629972247,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.01457,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-17",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 204,
+            "meanForegroundError": 3.4404498525073746,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.023231,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-17",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 204,
+            "meanForegroundError": 2.3175608544461004,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.015649,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 204,
+            "meanForegroundError": 9.417065217391304,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000979,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 204,
+            "meanForegroundError": 11.251558441558442,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.001169,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 204,
+            "meanForegroundError": 9.437581699346405,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000981,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 204,
+            "meanForegroundError": 1.9387612314037412,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.005856,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 204,
+            "meanForegroundError": 3.1785196812364163,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.00966,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 204,
+            "meanForegroundError": 2.0929003021148036,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.005864,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 204,
+            "meanForegroundError": 3.7477932801822322,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.005766,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 204,
+            "meanForegroundError": 3.9384350688210654,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.006135,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 204,
+            "meanForegroundError": 3.789879067088972,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.005003,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "state-paint-paint-order/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "synthetic-faint-stroke-present",
+        "expected": "pass",
+        "actual": "pass",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "339756e0950e07bf45bbc548cea19f08884e726eae45b3147823a8f1a807fa3b",
+        "referenceSha256": "62dc4ebd859ee030d20150322399bf0345a7135295cf6326b81eef6f3969d834",
+        "globalPassed": true,
+        "primaryPassed": true,
+        "regionalFailures": [],
+        "dimensionsPassed": true,
+        "report": "state-paint-synthetic-faint-stroke-present/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "synthetic-faint-stroke-removed",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "actualSha256": "5699396d276f3dd2f322114694f3612f49167ec33ae0bc268e8cc344acb10d1d",
+        "referenceSha256": "62dc4ebd859ee030d20150322399bf0345a7135295cf6326b81eef6f3969d834",
+        "globalPassed": true,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "synthetic-faint-stroke",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.25,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "synthetic-faint-stroke",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.75,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "synthetic-faint-stroke",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 3,
+            "meanForegroundError": 0.75,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "synthetic-faint-stroke",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 3,
+            "meanForegroundError": 2.25,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "state-paint-synthetic-faint-stroke-removed/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "translated-glyph",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "57bc5f695f9b110602d32c902a21fc5b93ac59eea2f79624ff94c5c4559eaca2",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-8",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 95,
+            "meanForegroundError": 3.95,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-8",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 95,
+            "meanForegroundError": 11.856,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 86,
+            "meanForegroundError": 0.9655963302752294,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.004588,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 86,
+            "meanForegroundError": 2.9013761467889907,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.013762,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.008,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.004,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.024,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.012,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 95,
+            "meanForegroundError": 0.5297109207708779,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.002146,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 95,
+            "meanForegroundError": 1.5899357601713062,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.006438,
+              "maxEdgeDisplacementPixels": 1,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 95,
+            "meanForegroundError": 0.035640495867768594,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.002067,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 95,
+            "meanForegroundError": 0.10692148760330579,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.006199,
+              "maxEdgeDisplacementPixels": 1,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 95,
+            "meanForegroundError": 1.104586129753915,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 95,
+            "meanForegroundError": 3.315436241610738,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-8",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 10.815812720848056,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013606,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-8",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 32.438604240282686,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.039359,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 2.756416837782341,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013158,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 8.24640657084189,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.016053,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.015463917525773196,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000645,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.04639175257731959,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.001933,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.03125,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.09375,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 1.3530234855136085,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.008106,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 4.054296532045654,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.024318,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 126,
+            "meanForegroundError": 0.011231565582576424,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.006056,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 126,
+            "meanForegroundError": 0.03259595663639027,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.018168,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 3.5449050086355784,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.022627,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 10.598013816925734,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.029155,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "transforms-translated-glyph/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "thickened-sheared-border",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "51286d1cd0141b50566abf493ce99196ba5b7e8b0de8ee1a19974ee6dd14f048",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 134,
+            "meanForegroundError": 0.3838582677165354,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.004,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 134,
+            "meanForegroundError": 1.1515748031496063,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.012,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-23",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 17.558823529411764,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-23",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 52.6764705882353,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-24",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 16.413265306122447,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-24",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 49.23979591836735,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-25",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 16.494594594594595,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.012774,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-25",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 49.483783783783785,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.038322,
+              "maxEdgeDisplacementPixels": 1,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-26",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 14.134615384615385,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.125,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-26",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 42.40384615384615,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.375,
+              "maxEdgeDisplacementPixels": 1,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 11.939843068875327,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.002146,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 35.81952920662598,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.006438,
+              "maxEdgeDisplacementPixels": 1,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 17.221929163526752,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.002067,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 51.66578749058026,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.006199,
+              "maxEdgeDisplacementPixels": 1,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-8",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.013848396501457727,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013606,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.014473684210526316,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013158,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.02,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.016053,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.015463917525773196,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000645,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.04639175257731959,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.001933,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.03125,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.09375,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-23",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 22.536522911051215,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.004669,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-23",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 67.60956873315364,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.014007,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-24",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 21.546904315196997,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.016347,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-24",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 64.64071294559099,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.049039,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-25",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 20.36115613182064,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.017615,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-25",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 61.083468395461914,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.052843,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-26",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 25.742537313432837,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.330883,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-26",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 77.2276119402985,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 8,
+              "maxMeanForegroundError": 0.992648,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 17.41947989016314,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.008106,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 52.254684219027624,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.024318,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 22.6331302096489,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.006056,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 67.89868022227836,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.018168,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 10,
+            "meanForegroundError": 0.025437555621477308,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.022627,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 10,
+            "meanForegroundError": 0.03760011865915159,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.029155,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "transforms-thickened-sheared-border/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "cropped-miter-tip",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "7ac376c5abf4dcbc087f8e389a9287956afa38f43e196dfafe661bf30cc7cd57",
+        "actualSha256": "0b92ac06a645f0d2d7e095c265ca35478ee2b0a978bc15b8e3a420f5c4b99e71",
+        "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.008,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.004,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-10",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 1,
+            "meanForegroundError": 0.024,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.012,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 62,
+            "meanForegroundError": 0.0446797520661157,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.002067,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 62,
+            "meanForegroundError": 0.1340392561983471,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.006199,
+              "maxEdgeDisplacementPixels": 1,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-8",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.013848396501457727,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013606,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.014473684210526316,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.013158,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-9",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.02,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 6,
+              "maxMeanForegroundError": 0.016053,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.015463917525773196,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.000645,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-15",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 6,
+            "meanForegroundError": 0.04639175257731959,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.001933,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.03125,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 4,
+            "meanForegroundError": 0.09375,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-0",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 48,
+            "meanForegroundError": 0.4150411596277738,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.003669,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-0",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 48,
+            "meanForegroundError": 1.2451234788833214,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.011006,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 11,
+            "meanForegroundError": 0.013292263292263292,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.008106,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 11,
+            "meanForegroundError": 0.03471528471528471,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.024318,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 255,
+            "meanForegroundError": 0.049663053032522705,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.006056,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 255,
+            "meanForegroundError": 0.14789041898622912,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 11,
+              "maxMeanForegroundError": 0.018168,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 10,
+            "meanForegroundError": 0.025437555621477308,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.022627,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 10,
+            "meanForegroundError": 0.03760011865915159,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 7,
+              "maxMeanForegroundError": 0.029155,
+              "maxEdgeDisplacementPixels": 0.25,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "transforms-cropped-miter-tip/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "missing-low-contrast-label",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "668fe5b75afe193bfe0936142110c8fdea965d364b6387300a1b2ad74dafd676",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-3",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 25,
+            "meanForegroundError": 2.2548076923076925,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 25,
+            "meanForegroundError": 2.2548076923076925,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 25,
+            "meanForegroundError": 2.2548076923076925,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-4",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 21,
+            "meanForegroundError": 2.736111111111111,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-4",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 21,
+            "meanForegroundError": 2.736111111111111,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-4",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 21,
+            "meanForegroundError": 2.736111111111111,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 21,
+            "meanForegroundError": 1.3125,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 21,
+            "meanForegroundError": 1.3125,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 21,
+            "meanForegroundError": 1.3125,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 25,
+            "meanForegroundError": 0.9699413489736071,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 25,
+            "meanForegroundError": 0.9756637168141593,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 25,
+            "meanForegroundError": 0.9699413489736071,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 25,
+            "meanForegroundError": 2.6351063829787233,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 25,
+            "meanForegroundError": 2.6351063829787233,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-3",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 25,
+            "meanForegroundError": 2.6351063829787233,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-4",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 25,
+            "meanForegroundError": 3.2737299465240643,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.002507,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-4",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 25,
+            "meanForegroundError": 3.2737299465240643,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.002778,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-4",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 25,
+            "meanForegroundError": 3.2737299465240643,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.002507,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 25,
+            "meanForegroundError": 2,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.006667,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 25,
+            "meanForegroundError": 2,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.007212,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 25,
+            "meanForegroundError": 2,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.006667,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 25,
+            "meanForegroundError": 1.0475290697674418,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.000364,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 25,
+            "meanForegroundError": 1.1649245689655172,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.000421,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 25,
+            "meanForegroundError": 1.0475290697674418,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.000364,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "colors-missing-low-contrast-label/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "missing-low-contrast-period",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "4560c8bc41decedbb67b6afcdab7e3bd75be71b455af1945a8b3633e37422a98",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-5",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 21,
+            "meanForegroundError": 1.3125,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 21,
+            "meanForegroundError": 1.3125,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 21,
+            "meanForegroundError": 1.3125,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 21,
+            "meanForegroundError": 0.03848973607038123,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 21,
+            "meanForegroundError": 0.03883136094674556,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 21,
+            "meanForegroundError": 0.03848973607038123,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 25,
+            "meanForegroundError": 2,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.006667,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 25,
+            "meanForegroundError": 2,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.007212,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-5",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 25,
+            "meanForegroundError": 2,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.006667,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 25,
+            "meanForegroundError": 0.0436046511627907,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.000364,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 25,
+            "meanForegroundError": 0.050414519381581896,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.000421,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 25,
+            "meanForegroundError": 0.0436046511627907,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 2,
+              "maxMeanForegroundError": 0.000364,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "colors-missing-low-contrast-period/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "CMYK-magenta-text",
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "passed": true,
+        "numericBypassed": true,
+        "originalCandidateSha256": "9a304266c7483f804f68847e4ffe9908abe56398ec59c1570b8a255b75db2522",
+        "actualSha256": "d990c13d80bcfe934128a7b5a87c38a62bafd2f1336d973ec4a0e86acf672b47",
+        "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+        "globalPassed": false,
+        "primaryPassed": false,
+        "regionalFailures": [
+          {
+            "id": "glyph-18",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 111,
+            "meanForegroundError": 3.8381410256410255,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 111,
+            "meanForegroundError": 3.8381410256410255,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 111,
+            "meanForegroundError": 3.8381410256410255,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-19",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 95,
+            "meanForegroundError": 5.487373737373737,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-19",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 95,
+            "meanForegroundError": 5.487373737373737,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-19",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 95,
+            "meanForegroundError": 5.487373737373737,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 0,
+              "maxMeanForegroundError": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-20",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 82,
+            "meanForegroundError": 1.925,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.05,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-20",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 82,
+            "meanForegroundError": 1.925,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.05,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-20",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 82,
+            "meanForegroundError": 1.925,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.05,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "transparent",
+            "maxChannelError": 111,
+            "meanForegroundError": 1.5879945429740792,
+            "thresholds": {
+              "scale": 1,
+              "background": "transparent",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.001365,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "white",
+            "maxChannelError": 111,
+            "meanForegroundError": 1.5879945429740792,
+            "thresholds": {
+              "scale": 1,
+              "background": "white",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.001365,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 1,
+            "background": "black",
+            "maxChannelError": 111,
+            "meanForegroundError": 1.5879945429740792,
+            "thresholds": {
+              "scale": 1,
+              "background": "black",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.001365,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 115,
+            "meanForegroundError": 4.776359338061465,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.00071,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 115,
+            "meanForegroundError": 4.776359338061465,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.00071,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-18",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 115,
+            "meanForegroundError": 4.776359338061465,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 1,
+              "maxMeanForegroundError": 0.00071,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-19",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 115,
+            "meanForegroundError": 5.980614973262032,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 3,
+              "maxMeanForegroundError": 0.005849,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-19",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 115,
+            "meanForegroundError": 5.980614973262032,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 3,
+              "maxMeanForegroundError": 0.005849,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-19",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 115,
+            "meanForegroundError": 5.980614973262032,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 3,
+              "maxMeanForegroundError": 0.005849,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-20",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 115,
+            "meanForegroundError": 3.5322222222222224,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.008889,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-20",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 115,
+            "meanForegroundError": 3.5322222222222224,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.008889,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "glyph-20",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 115,
+            "meanForegroundError": 3.5322222222222224,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.008889,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "transparent",
+            "maxChannelError": 115,
+            "meanForegroundError": 1.8872229152672488,
+            "thresholds": {
+              "scale": 4,
+              "background": "transparent",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.002927,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "white",
+            "maxChannelError": 115,
+            "meanForegroundError": 1.8872229152672488,
+            "thresholds": {
+              "scale": 4,
+              "background": "white",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.002927,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "scale": 4,
+            "background": "black",
+            "maxChannelError": 115,
+            "meanForegroundError": 1.8872229152672488,
+            "thresholds": {
+              "scale": 4,
+              "background": "black",
+              "maxChannelError": 4,
+              "maxMeanForegroundError": 0.002927,
+              "maxEdgeDisplacementPixels": 0,
+              "maxComponentDifference": 0
+            }
+          }
+        ],
+        "dimensionsPassed": true,
+        "report": "colors-CMYK-magenta-text/report.json"
+      }
+    ]
+  }
+}

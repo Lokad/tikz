@@ -43,7 +43,8 @@ export async function inspectOracleGlyphFrame(svg, renderer) {
         const roundingAllowancePixels = .0000005 * (Math.max(Math.abs(box.x), Math.abs(box.x + box.width))
           + Math.max(Math.abs(box.y), Math.abs(box.y + box.height)) + 4);
         const minimumMarginPixels = visible ? Math.min(minX - x, x + width - maxX, minY - y, y + height - maxY) : null;
-        return { index, outline: use.getAttribute('href'), clips, visible, minimumMarginPixels, roundingAllowancePixels,
+        return { index, outline: use.getAttribute('href'), clips, visible,
+          boundsPixels: visible ? { minX, minY, maxX, maxY } : null, minimumMarginPixels, roundingAllowancePixels,
           passed: !visible || minimumMarginPixels >= -roundingAllowancePixels };
       });
       return { passed: checks.length > 0 && checks.every(c => c.passed), checks,

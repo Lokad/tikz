@@ -333,3 +333,15 @@ nine variants; raw image differences stay visible and no policy is approved.
 Run `npm --prefix tools/TikzVisual run test:interaction-crops` for its ten
 containment checks. See the
 [experiment and results](../tools/TikzReference/INTERACTION-SVG-CALIBRATION.md).
+
+The [regional experiment](../tools/TikzVisual/INTERACTION-REGIONS.md) adds 174
+fixed regions derived only from native glyph/path evidence. Its checked-in
+snapshot retains 3,132 independent measurements and prospective limits. The
+global-only mutation trial accepts a missing faint period and short faint
+stroke; local gates reject both. Unchanged transform controls still fail local
+precision checks, so interaction conformance remains pending and no policy is
+approved. Source-attributed regional crops and the viewer preserve those
+failures. Run `npm run test:regions --prefix tools/TikzVisual` for twenty-one required
+synthetic checks, including dilution, faint-content loss, display-only failures,
+repeatability, and invalid manifests. Full-corpus commands and retained trial
+evidence are described in the experiment document.

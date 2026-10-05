@@ -63,6 +63,29 @@ export async function compareBundle(bundle, renderer) {
   if (input.exactPdf === true) policy.pdf = {
     maxChannelError: 0, maxMeanForegroundError: 0, maxEdgeDisplacementRasterPixels: 0, maxComponentDifference: 0
   };
+  const inspectionRegions = input.regionalChecks ?? [];
+  if (!Array.isArray(inspectionRegions) || inspectionRegions.length > 2048
+    || inspectionRegions.some(r => !r || typeof r !== 'object')
+    || new Set(inspectionRegions.map(r => r.id)).size !== inspectionRegions.length)
+    throw new Error('Invalid independent inspection region manifest.');
+  for (const region of inspectionRegions) {
+    const box = region.rectanglePixels;
+    if (typeof region.id !== 'string' || !/^[a-z0-9-]{1,128}$/.test(region.id) || !box || ![box.x, box.y, box.width, box.height].every(Number.isFinite)
+      || box.width <= 0 || box.height <= 0 || !Array.isArray(region.limits) || region.limits.length !== policy.scales.length * 3)
+      throw new Error('Invalid independent inspection region.');
+    const identities = new Set();
+    for (const limit of region.limits) {
+      if (!limit || typeof limit !== 'object') throw new Error('Invalid independent regional limit.');
+      const key = limit.scale + '/' + limit.background;
+      if (!policy.scales.includes(limit.scale) || !['transparent', 'white', 'black'].includes(limit.background) || identities.has(key)
+        || ![limit.maxChannelError, limit.maxMeanForegroundError, limit.maxEdgeDisplacementPixels, limit.maxComponentDifference].every(Number.isFinite)
+        || limit.maxChannelError < 0 || limit.maxChannelError > 255 || limit.maxMeanForegroundError < 0
+        || limit.maxMeanForegroundError > 255 || limit.maxEdgeDisplacementPixels < 0
+        || !Number.isSafeInteger(limit.maxComponentDifference) || limit.maxComponentDifference < 0)
+        throw new Error('Invalid independent regional limit.');
+      identities.add(key);
+    }
+  }
   const result = await renderer.page.evaluate(async ({ input, scene, referenceSvg, actualSvg, pdfImages, policy }) => {
     const makeCanvas = (width, height) => {
       if (!Number.isSafeInteger(width) || !Number.isSafeInteger(height) || width < 1 || height < 1 || width * height > policy.maxCanvasPixels)
@@ -204,7 +227,20 @@ export async function compareBundle(bundle, renderer) {
         && maximum !== null && maximum <= thresholds.maxEdgeDisplacementPixels && Math.abs(aComponents - bComponents) <= thresholds.maxComponentDifference;
       return { metrics, raw, amplified, regions: regions(differences, w, h) };
     };
-    const checks = [], pdfChecks = [], driverChecks = [], regional = [], pdfCameras = [];
+    const checks = [], pdfChecks = [], driverChecks = [], regional = [], pdfCameras = [], regionChecks = [], regionCrops = [];
+    const regionPixels = new WeakMap();
+    const cropPixels = (canvas, left, top, width, height) => {
+      if (!regionPixels.has(canvas)) regionPixels.set(canvas, pixels(canvas));
+      const source = regionPixels.get(canvas), target = makeCanvas(width, height), c = context(target);
+      const data = c.createImageData(width, height);
+      for (let row = 0; row < height; row++) {
+        const start = ((top + row) * canvas.width + left) * 4;
+        data.data.set(source.subarray(start, start + width * 4), row * width * 4);
+      }
+      // Native integer-pixel crop; no image fitting, interpolation, or resizing.
+      c.putImageData(data, 0, 0);
+      return target;
+    };
     let largeReference, largeActual, largeDiff;
     for (const scale of policy.scales) {
       const primaryThresholds = { ...policy.primary, maxEdgeDisplacementPixels:
@@ -219,13 +255,49 @@ export async function compareBundle(bundle, renderer) {
       save(`reference${suffix}.png`, a); save(`actual${suffix}.png`, b);
       save(`diff${suffix}.png`, result.raw); save(`diff-amplified${suffix}.png`, result.amplified);
       checks.push(result.metrics);
+      const surfaces = [{ background: 'transparent', a, b }];
       for (const background of ['white', 'black']) {
-        const composite = compare(render(referenceImage, referenceBox, scale, background), render(actualImage, actualBox, scale, background), scale, primaryThresholds, background);
+        const surfaceA = render(referenceImage, referenceBox, scale, background), surfaceB = render(actualImage, actualBox, scale, background);
+        const composite = compare(surfaceA, surfaceB, scale, primaryThresholds, background);
         checks.push({ ...composite.metrics, background });
+        surfaces.push({ background, a: surfaceA, b: surfaceB });
+      }
+      for (const definition of input.regionalChecks ?? []) {
+        const box = definition.rectanglePixels;
+        const left = Math.max(0, Math.floor((box.x - minX) * scale)), top = Math.max(0, Math.floor((box.y - minY) * scale));
+        const right = Math.min(a.width, Math.ceil((box.x + box.width - minX) * scale));
+        const bottom = Math.min(a.height, Math.ceil((box.y + box.height - minY) * scale));
+        if (right <= left || bottom <= top) throw new Error('Required independent region lies outside the comparison camera.');
+        for (const surface of surfaces) {
+          const limit = definition.limits.find(l => l.scale === scale && l.background === surface.background);
+          const cropA = cropPixels(surface.a, left, top, right - left, bottom - top);
+          const cropB = cropPixels(surface.b, left, top, right - left, bottom - top);
+          const compared = compare(cropA, cropB, scale, limit, surface.background === 'transparent' ? null : surface.background);
+          regionChecks.push({ id: definition.id, basis: definition.basis, actualElementId: definition.actualElementId,
+            background: surface.background, rectanglePixels: box,
+            pixelCrop: { left, top, width: right - left, height: bottom - top }, ...compared.metrics });
+          const prior = regionCrops.findIndex(c => c.id === definition.id);
+          if (!compared.metrics.passed && (prior < 0 ? regionCrops.length < policy.maxCrops : scale > regionCrops[prior].scale)) {
+            // Keep the largest failing scale; a display-only failure still gets
+            // inspectable crops when its supersampled comparison passes.
+            const index = prior < 0 ? regionCrops.length : prior, prefix = 'region-crops/' + index;
+            const opaque = canvas => {
+              const out = makeCanvas(canvas.width, canvas.height), c = context(out);
+              c.fillStyle = 'white'; c.fillRect(0, 0, out.width, out.height); c.drawImage(canvas, 0, 0); return out;
+            };
+            save(prefix + '-reference.png', opaque(cropA)); save(prefix + '-actual.png', opaque(cropB));
+            save(prefix + '-difference.png', compared.amplified);
+            const source = (scene.paths ?? []).find(p => p.svgElementId === definition.actualElementId);
+            regionCrops[index] = { id: definition.id, rectanglePixels: box, background: surface.background, scale,
+              source: source?.source, semanticId: source?.semanticId, attribution: 'declared independent region and candidate trace identity',
+              cropBackground: surface.background === 'transparent' ? 'white' : surface.background,
+              reference: prefix + '-reference.png', actual: prefix + '-actual.png', difference: prefix + '-difference.png' };
+          }
+        }
       }
       if (scale === Math.max(...policy.scales)) {
         largeReference = a; largeActual = b; largeDiff = result.amplified;
-        for (const region of result.regions.slice(0, policy.maxCrops)) {
+        for (const region of result.regions.slice(0, policy.maxCrops - regionCrops.length)) {
           const rectangle = { x: region.x / scale + minX, y: region.y / scale + minY, width: region.width / scale, height: region.height / scale };
           const attribution = (scene.paths ?? []).filter(p => {
             const box = p.inkBounds;
@@ -280,10 +352,13 @@ export async function compareBundle(bundle, renderer) {
     over.fillStyle = 'white'; over.fillRect(0, 0, overlay.width, overlay.height); over.globalAlpha = .5;
     over.drawImage(largeReference, 0, 0); over.drawImage(largeActual, 0, 0); save('overlay.png', overlay);
     const sizeErrors = [Math.abs(referenceInfo.width - actualInfo.width), Math.abs(referenceInfo.height - actualInfo.height)];
-    return { files, primary: { passed: checks.every(c => c.passed), checks },
+    return { files, primary: { passed: checks.every(c => c.passed) && regionChecks.every(c => c.passed), checks,
+        ...(regionChecks.length ? { regionalChecks: regionChecks } : {}) },
       pdf: { required: Boolean(input.pdf), passed: pdfChecks.length > 0 && pdfChecks.every(c => c.passed) && driverChecks.every(c => c.passed), checks: pdfChecks, driverChecks, cameras: pdfCameras },
       dimensions: { reference: referenceInfo, actual: actualInfo, maxErrorPixels: Math.max(...sizeErrors), passed: sizeErrors.every(e => e <= input.numericTolerancePixels) },
       camera: { minX, minY, width, height, referenceBox, actualBox }, regions: regional,
+      ...(regionChecks.length ? { regionalRegions: regionCrops, regionalCropLimit: policy.maxCrops,
+        regionalCropsTruncated: new Set(regionChecks.filter(c => !c.passed).map(c => c.id)).size > regionCrops.length } : {}),
       pixelConvention: '8-bit sRGB samples; RGB premultiplied by alpha for errors; alpha channel included; mean error over all visible samples; edge/component masks threshold 16/255' };
   }, { input, scene, referenceSvg, actualSvg, pdfImages, policy });
   for (const [name, base64] of Object.entries(result.files)) {
@@ -314,6 +389,13 @@ export async function compareBundle(bundle, renderer) {
 function viewer(report, source) {
   const escape = text => String(text).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
   const embedded = JSON.stringify(report).replaceAll('<', '\\u003c');
+  const independent = (report.regionalRegions ?? []).map(r => '<p>Independent region ' + escape(r.id)
+    + ' (' + r.scale + 'x, ' + escape(r.background) + '): '
+    + (r.source ? '<a href="#line-' + r.source.line + '">' + escape(r.semanticId) + ' at ' + r.source.line + ':' + r.source.column + '</a>' : 'No source attribution')
+    + ' (' + escape(r.attribution) + ')</p><div class="regions"><img alt="Reference" src="' + escape(r.reference)
+    + '"><img alt="Actual" src="' + escape(r.actual) + '"><img alt="Amplified difference" src="' + escape(r.difference) + '"></div>').join('');
+  const regionalSection = report.primary.regionalChecks ? '<h2>Independent inspection regions</h2><p>Fixed oracle regions; raw native pixel crops. '
+    + (report.regionalCropsTruncated ? 'Crop limit reached; all failures remain in the report.' : '') + '</p>' + independent : '';
   return `<!doctype html><html lang="en"><meta charset="utf-8"><title>${escape(report.caseId)} comparison</title>
   <style>body{font:16px system-ui;margin:24px;background:#eee;color:#222}button,input{margin:8px}pre{white-space:pre-wrap;background:white;padding:16px}#frame{position:relative;overflow:auto;background:white;border:1px solid #999;height:360px}#camera{position:relative;transform-origin:0 0;width:${report.camera.width * 4}px;height:${report.camera.height * 4}px}#camera img{position:absolute;left:0;top:0}#actual{opacity:.5}.regions{display:flex;gap:12px;flex-wrap:wrap}.regions img{background:white;max-width:100%}a{color:#124c8e}</style>
   <h1>${escape(report.caseId)}: ${escape(report.verdict)}</h1>
@@ -325,6 +407,7 @@ function viewer(report, source) {
   <p><a href="report.json">Machine-readable report</a> · <a href="actual-scene.json">Scene trace</a> · <a href="provenance.json">Provenance</a> · <a href="comparison.png">Comparison PNG</a></p>
   <pre id="metrics"></pre><h2>Source</h2><pre>${source.split('\n').map((line, i) => `<span id="line-${i + 1}"><a href="#line-${i + 1}">${i + 1}</a> ${escape(line)}</span>`).join('\n')}</pre><h2>Worst regions</h2>
   ${report.regions.map((r, i) => `<p>Region ${i}: ${r.attribution.map(a => `<a href="#line-${a.source.line}">${escape(a.semanticId)} at ${a.source.line}:${a.source.column}</a> (${escape(a.attribution)})`).join(', ') || 'No source attribution'}</p><div class="regions"><img src="crops/${i}-reference.png"><img src="crops/${i}-actual.png"><img src="crops/${i}-difference.png"></div>`).join('')}
+  ${regionalSection}
   <script>const report=${embedded};const actual=document.getElementById('actual');const expected=document.getElementById('expected');let timer;
   function stop(){clearInterval(timer);timer=undefined;actual.src='actual-4x.png';expected.style.display='block';}
   document.getElementById('zoom').oninput=e=>document.getElementById('camera').style.transform='scale('+e.target.value+')';

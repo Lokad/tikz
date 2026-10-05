@@ -78,3 +78,9 @@ interaction corpus, including missing faint content, clipping, paint order,
 transformed borders, and crop loss. Check local evidence as well as aggregate
 errors; a large canvas or other correctly rendered objects must not hide a
 missing faint glyph. Review the PDF results separately.
+
+The [regional follow-up](../TikzVisual/INTERACTION-REGIONS.md) now records two
+whole-image false passes, 3,132 independent local measurements, and image-only
+trials with the resulting prospective regional gates. The faint losses are
+rejected locally; unchanged transformed content exposes additional precision
+failures. Neither experiment admits an interaction policy.
