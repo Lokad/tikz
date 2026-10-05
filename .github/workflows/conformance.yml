@@ -58,6 +58,8 @@ jobs:
       - run: node tools/TikzVisual/compare-border-conformance.mjs
       - run: node tools/TikzVisual/inspect-shapes.mjs
       - run: node tools/TikzVisual/calibrate-shapes.mjs
+      - run: node tools/TikzVisual/shape-frame-self-test.mjs
+      - run: node tools/TikzVisual/compare-shape-frames.mjs
       - run: npm test --prefix tools/TikzVisual
       - run: npm run test:fonts --prefix tools/TikzVisual
       - run: npm run test:text --prefix tools/TikzVisual
@@ -94,4 +96,6 @@ jobs:
             artifacts/border-policy-tests/
             artifacts/node-shape-comparisons/
             artifacts/node-shape-calibration/
+            artifacts/node-shape-frames/
+            artifacts/node-shape-frame-comparisons/
           if-no-files-found: error

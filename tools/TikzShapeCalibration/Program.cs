@@ -21,13 +21,15 @@ internal static class Program
     {
         try
         {
-            if (args.Length != 1 || args[0] != "derive-svg") throw new InvalidOperationException("Usage: dotnet run --project tools/TikzShapeCalibration -c Release -- derive-svg");
+            if ((args.Length != 1 && (args.Length != 3 || args[1] != "--out")) || args[0] != "derive-svg")
+                throw new InvalidOperationException("Usage: dotnet run --project tools/TikzShapeCalibration -c Release -- derive-svg [--out artifacts/...]");
             root = FindRoot();
-            var output = At("artifacts/node-shape-calibration");
+            var output = (args.Length == 1 ? At("artifacts/node-shape-calibration") : Path.GetFullPath(args[2], root)).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+            Require(output.StartsWith(At("artifacts") + Path.DirectorySeparatorChar, OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal), "Calibration output must be a directory inside artifacts/.");
             for (var current = new DirectoryInfo(output); current is not null && current.FullName != root; current = current.Parent)
                 if (current.Exists && (current.Attributes & FileAttributes.ReparsePoint) != 0) throw new InvalidOperationException("Calibration output must not cross a symlink or junction.");
             Directory.CreateDirectory(output);
-            File.Delete(Path.Combine(output, "derivation.json"));
+            File.Delete(Out("derivation.json"));
             var configuration = Directory.GetParent(AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar))!.Name;
             var verifierAssembly = At($"tools/TikzShapeReference/bin/{configuration}/net10.0/TikzShapeReference.dll");
             var verifierHash = Hash(verifierAssembly);
@@ -133,7 +135,7 @@ internal static class Program
             variants.Insert(0, new { mode = "driver-css", decimals = (int?)null, deltaSp = 0, svg = "driver-css.svg", serialization = new { passed = true, checks = Array.Empty<Serialization>() } });
             var toolFiles = new[] { "tools/TikzShapeCalibration/Program.cs", "tools/TikzShapeCalibration/TikzShapeCalibration.csproj", "tools/TikzShapeCalibration/packages.lock.json", "tools/TikzShapeComparison/NativeGlyphTrace.cs", "tools/TikzShapeReference/Program.cs", "tools/TikzShapeReference/TikzShapeReference.csproj", "Directory.Build.props", "global.json" };
             var derivation = new { schemaVersion = 1, comparisonKind = "oracle-only-shape-reconstruction", completed = true, converterInvoked = false, conformanceClaim = false, approvedImagePolicy = false,
-                generatedUtc = DateTimeOffset.UtcNow.ToString("O"), nativeProfile = native.GetProperty("profile"), cachedCheck, configuration, runtime = Environment.Version.ToString(), originBp = new { x = originX, y = originY }, originalViewBoxBp = view,
+                generatedUtc = DateTimeOffset.UtcNow.ToString("O"), nativeProfile = native.GetProperty("profile"), cachedCheck, configuration, runtime = Environment.Version.ToString(), outputDirectory = Path.GetRelativePath(root, output).Replace('\\', '/'), originBp = new { x = originX, y = originY }, originalViewBoxBp = view,
                 scope = "Fixed trusted 28-node fixture. Native integer PGF paths, measured node frames and DVI glyph positions; original outlined glyph definitions and paint. Original driver root frame retained. No candidate data or tolerance admission.",
                 counts = new { nodes = 28, pathTokens = 420, glyphs = 70 }, variants,
                 evidence = new { artifacts = artifacts.ToDictionary(f => f, f => Hash(Path.Combine(output, f))), toolHashes = toolFiles.ToDictionary(f => f, f => Hash(At(f))),
@@ -142,9 +144,21 @@ internal static class Program
             Write("derivation.json", derivation);
             Console.WriteLine("Independent shape reconstruction: 28 nodes, 420 path tokens, 70 glyphs, five SVG variants; image policy remains pending.");
             return 0;
-            void Copy(string input, string file) { var target = Path.Combine(output, file); Directory.CreateDirectory(Path.GetDirectoryName(target)!); File.Copy(At(input), target, true); artifacts.Add(file); }
-            void Save(string file, string content) { File.WriteAllText(Path.Combine(output, file), content); artifacts.Add(file); }
+            void Copy(string input, string file) { var target = Out(file); Directory.CreateDirectory(Path.GetDirectoryName(target)!); File.Copy(At(input), target, true); artifacts.Add(file); }
+            void Save(string file, string content) { File.WriteAllText(Out(file), content); artifacts.Add(file); }
             void Write(string file, object value) => Save(file, JsonSerializer.Serialize(value, Json) + "\n");
+            string Out(string file)
+            {
+                var target = Path.GetFullPath(file, output);
+                Require(target.StartsWith(output + Path.DirectorySeparatorChar, OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal), "Invalid calibration artifact path.");
+                for (string? current = target; current is not null && !string.Equals(current, root, OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal); current = Path.GetDirectoryName(current))
+                {
+                    try { Require((File.GetAttributes(current) & FileAttributes.ReparsePoint) == 0, "Calibration artifacts must not cross a symlink or junction."); }
+                    catch (FileNotFoundException) { }
+                    catch (DirectoryNotFoundException) { }
+                }
+                return target;
+            }
         }
         catch (Exception e) { Console.Error.WriteLine(e.Message); return 2; }
     }

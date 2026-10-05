@@ -13,6 +13,11 @@ framework assembly references; it neither references nor invokes Lokad.TikZ.
 It links the independently tested native glyph reader as source, without
 referencing the candidate comparison assembly. No TeX or browser is needed.
 
+An optional `--out artifacts/...` directory isolates independent experiments.
+Paths outside `artifacts/`, symlink/junction parents and symlink/junction artifact
+targets are rejected before writing through them. PLAN remains outside the
+allowed output scope.
+
 Five derived SVGs isolate different representation choices:
 
 | Variant | Independent operation |
@@ -69,8 +74,10 @@ reconstruction has nonzero primary differences, retained in full. Twelve
 decimals do not eliminate them. The ±4sp trials measure sensitivity and do not
 authorize an error budget of that magnitude.
 
-Shape-specific visible-ink containment and root framing, additional focused
-and interaction fixtures, edge/component gates, image-only defect controls
+The separate [ink and frame checks](FRAMING.md) now measure all 98 native
+contributions, validate their analytic bounds with the browser, retain viewport
+and clip-control experiments, and pass 406 public ink/root comparisons.
+Further focused and interaction fixtures, edge/component gates, image-only defect controls
 with numeric checks bypassed, ordinary PDF references and separate calibration,
 and a reviewed admission policy remain required. Existing rectangle/path
 allowances do not apply. CI prepares the evidence and uploads the bundle;

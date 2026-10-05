@@ -128,8 +128,12 @@ or PDF conformance. A separate [oracle-only reconstruction](../tools/TikzShapeCa
 now measures native CSS serialization, driver framing and fixed scaled-point
 sensitivity without invoking the converter. Its five variants retain raw
 differences and twelve exact unchanged-pair repeats; no image policy is
-approved. Independent visible-ink framing, further focused and interaction
-corpora, regional edge/component gates, comparator defects and ordinary PDF
+approved. The [independent ink/frame workflow](../tools/TikzShapeCalibration/FRAMING.md)
+also establishes native stroke and tight transformed-glyph extents; all 98
+contributions and the natural root now pass 406 additional public numeric
+checks. Original viewport overruns and clip-rendering effects remain visible.
+Further focused and interaction corpora, regional edge/component gates,
+comparator defects and ordinary PDF
 evidence are still required. No rectangle/path raster tolerance applies to
 these new shapes. A degenerate unequal-axis border that
 cannot be computed at native scaled-point precision fails at its source

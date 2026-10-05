@@ -64,6 +64,12 @@ representations and retains framing/serialization/sensitivity observations.
 It neither references nor invokes this candidate assembly. Its measurements
 remain pending evidence, with no approved candidate image policy.
 
+The additional [public ink/frame comparison](../TikzShapeCalibration/FRAMING.md)
+first computes expected quantities from independent native paths and original
+outline curves, then requires this numeric command to pass in an isolated
+candidate directory. It checks every emitted operation's ink bounds, public
+picture/ink bounds and root dimensions against those fixed expectations.
+
 Numeric comparison and inspection generation are prepared CI steps with
 uploaded bundles. Hosted execution remains unverified. Earlier ignored debug
 previews are historical observations, not the current comparison command.

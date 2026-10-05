@@ -84,6 +84,24 @@ generation retains a pending image verdict; the observed errors define no
 candidate threshold. Natural and expanded cameras expose framing effects
 separately. PDF and image-only defect evidence remain required.
 
+The [independent ink/frame workflow](../tools/TikzShapeCalibration/FRAMING.md)
+adds tight transformed-curve bounds, stroke extents, native/original viewport
+containment and controlled clipping experiments:
+
+```text
+node tools/TikzVisual/shape-frame-self-test.mjs
+node tools/TikzVisual/compare-shape-frames.mjs
+```
+
+The first command passes 44 mathematical and malformed-input controls. The
+second first generates an independent `artifacts/node-shape-frames/frames.html`
+gallery, with 214 analytic/browser checks, then requires fresh public numeric
+success and passes 406 ink/root comparisons in
+`artifacts/node-shape-frame-comparisons/report.json`. Twelve unchanged SVG
+captures and twelve bitmap-copy controls are exact; SVG clip and post-raster
+boundary effects are reported separately. These commands are prepared visual
+CI steps, with pending image/PDF admission and unverified hosted execution.
+
 ## Cached visual conformance
 
 Install the pinned development-only browser tooling once:
