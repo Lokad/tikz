@@ -30,6 +30,7 @@ dotnet run --project tools/TikzReference -c Release -- calibrate-node-interactio
 dotnet run --project tools/TikzReference -c Release -- compare-node-interactions --profile rgb
 dotnet run --project tools/TikzReference -c Release -- calibrate-node-interaction-framing --profile rgb --case transforms
 dotnet run --project tools/TikzReference -c Release -- compare-node-interactions --profile rgb --framing ink
+dotnet run --project tools/TikzReference -c Release -- calibrate-node-interaction-svg --profile rgb --framing ink
 ```
 
 Every command accepts `--case state-paint` or `--case transforms`. Comparison,
@@ -60,8 +61,17 @@ or resampling the PDF. Both primary and PDF gates force exact pixels so raw
 cross-renderer errors remain measurement results. Output lives under
 `artifacts/node-interaction-pdf-calibration/<case>/`, including hashed
 `calibration-evidence.json`. No policy or baseline is written by this experiment.
-An empty numeric-check list in this representation experiment makes no
+An empty numeric-check list in the PDF/framing representation experiments makes no
 candidate layout claim; the independent measurements remain in `metrics.json`.
+
+The additional [CSS experiment](INTERACTION-SVG-CALIBRATION.md) reconstructs
+all paths, clips, glyph frames/positions, paint, and order using only native
+PGF/DVI measurements and original outlines. Its original-driver and independent
+ink-frame routes each have three variants per case, 4,260 passing
+serialization/containment checks, versioned snapshots, and raw primary/PDF results.
+The ten new containment tests reject overflow, missing clips/glyphs, and
+unhandled transforms. These are independent measurement results, with no
+approved interaction raster or PDF allowance.
 
 Current findings:
 

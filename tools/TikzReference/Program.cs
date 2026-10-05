@@ -24,7 +24,7 @@ internal static partial class ReferenceTool
         {
             Root = FindRoot();
             Profile = Read<OracleProfile>(At("tests/Reference/oracle-profile.json"));
-            if (args.Length > 0 && args[0] is "generate-node-interactions" or "verify-node-interactions" or "compare-node-interactions" or "calibrate-node-interaction-pdf" or "calibrate-node-interaction-framing")
+            if (args.Length > 0 && args[0] is "generate-node-interactions" or "verify-node-interactions" or "compare-node-interactions" or "calibrate-node-interaction-pdf" or "calibrate-node-interaction-framing" or "calibrate-node-interaction-svg")
                 return await NodeInteractions(args);
             if (args.Length > 0 && args[0] is "generate-node-reference" or "verify-node-reference" or "compare-node-layout" or "compare-node-svg" or "calibrate-node-svg")
                 return await NodeReferences(args);

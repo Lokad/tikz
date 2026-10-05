@@ -323,3 +323,13 @@ rgb --framing ink` explicitly compares with that derived reference and retains
 `original-driver.svg` plus frame provenance. Native dimensions then agree within
 0.0001 CSS pixel. The default driver-framed comparison remains available; no
 candidate coordinate fitting or reference-content change is performed.
+
+The independent `calibrate-node-interaction-svg --profile rgb [--framing ink]`
+route now reconstructs the three native cases in CSS units and measures fixed
+±4-sp perturbations. It validates all serialized numbers and original glyph
+containment, including rectangular clips, and reports both SVGs against ordinary
+PDF. The driver/ink snapshots each retain 4,260 passing numeric checks across
+nine variants; raw image differences stay visible and no policy is approved.
+Run `npm --prefix tools/TikzVisual run test:interaction-crops` for its ten
+containment checks. See the
+[experiment and results](../tools/TikzReference/INTERACTION-SVG-CALIBRATION.md).

@@ -27,15 +27,15 @@ internal static partial class ReferenceTool
         var options = new Dictionary<string, string>(StringComparer.Ordinal);
         for (var i = 1; i < args.Length; i += 2)
             if (i + 1 == args.Length || args[i] is not ("--case" or "--out" or "--profile" or "--framing") || !options.TryAdd(args[i][2..], args[i + 1]))
-                throw new InvalidOperationException("Usage: TikzReference <generate-node-interactions|verify-node-interactions|compare-node-interactions|calibrate-node-interaction-pdf|calibrate-node-interaction-framing> [--profile native|rgb] [--case id] [--out artifacts/...] [comparison only: --framing driver|ink].");
+                throw new InvalidOperationException("Usage: TikzReference <generate-node-interactions|verify-node-interactions|compare-node-interactions|calibrate-node-interaction-pdf|calibrate-node-interaction-framing|calibrate-node-interaction-svg> [--profile native|rgb] [--case id] [--out artifacts/...] [comparison/SVG calibration: --framing driver|ink].");
         if (args[0] == "generate-node-interactions" && options.ContainsKey("out"))
             throw new InvalidOperationException("Generation writes only the explicit trusted baseline locations.");
         InteractionRoot = options.GetValueOrDefault("profile", "native") switch {
             "native" => "tests/Reference/NodeInteractions", "rgb" => "tests/Reference/NodeInteractionsRgb",
             _ => throw new InvalidOperationException("Unknown trusted interaction color profile.") };
         var rgb = InteractionRoot.EndsWith("Rgb", StringComparison.Ordinal);
-        if (options.ContainsKey("framing") && args[0] != "compare-node-interactions")
-            throw new InvalidOperationException("Explicit framing is a candidate-comparison option only.");
+        if (options.ContainsKey("framing") && args[0] is not ("compare-node-interactions" or "calibrate-node-interaction-svg"))
+            throw new InvalidOperationException("Explicit framing is a candidate-comparison or oracle SVG-calibration option only.");
         InteractionInkFraming = options.GetValueOrDefault("framing", "driver") switch {
             "driver" => false, "ink" => true, _ => throw new InvalidOperationException("Unknown interaction framing contract.") };
         Profile = Read<OracleProfile>(At(InteractionProfilePath));
@@ -54,7 +54,15 @@ internal static partial class ReferenceTool
             "compare-node-interactions" => "artifacts/node-interactions",
             "calibrate-node-interaction-pdf" => "artifacts/node-interaction-pdf-calibration",
             "calibrate-node-interaction-framing" => "artifacts/node-interaction-framing-calibration",
+            "calibrate-node-interaction-svg" => "artifacts/node-interaction-svg-calibration",
             _ => "artifacts/node-interaction-reference-work" }) + (rgb ? "-rgb" : "") + (InteractionInkFraming ? "-ink" : "")));
+        // A failed regeneration must not leave a previous completed snapshot
+        // or suite masquerading as the result of this invocation.
+        if (args[0] == "calibrate-node-interaction-svg")
+        {
+            File.Delete(Path.Combine(output, "calibration-evidence.json"));
+            File.Delete(Path.Combine(output, "suite.json"));
+        }
         var results = new List<object>();
         var exit = 0;
         foreach (var c in selected)
@@ -63,10 +71,12 @@ internal static partial class ReferenceTool
                 "compare-node-interactions" => await CompareInteraction(c, Path.Combine(output, c.Id)),
                 "calibrate-node-interaction-pdf" => await CalibrateInteractionPdf(c, Path.Combine(output, c.Id)),
                 "calibrate-node-interaction-framing" => await CalibrateInteractionFraming(c, Path.Combine(output, c.Id)),
+                "calibrate-node-interaction-svg" => await CalibrateInteractionSvg(c, Path.Combine(output, c.Id)),
                 _ => await GenerateInteraction(c, Path.Combine(output, c.Id), args[0] == "generate-node-interactions") };
             results.Add(new { caseId = c.Id, exitCode = result });
             exit = Math.Max(exit, result);
         }
+        if (args[0] == "calibrate-node-interaction-svg") SaveInteractionSvgEvidence(selected, output);
         Write(Path.Combine(output, "suite.json"), new { schemaVersion = 1, command = args[0], profile = manifest.Profile,
             expectedCases = selected.Select(c => c.Id), executedCases = results, passed = exit == 0 });
         return exit;
