@@ -396,8 +396,8 @@ their expected exit categories. The candidate PDF trial deliberately returns
 Its explicitly selected page-coordinate route now passes both native and
 candidate controls and rejects all thirteen image defects, using a separately
 recomputed oracle-only snapshot. The three previously failing glyph/path crops
-match the independent native SVG exactly at both scales. Policy admission and
-combined-policy failure checks remain pending.
+match the independent native SVG exactly at both scales. The separately pinned
+combined policy below now admits these fixtures.
 
 The cached `node tools/TikzVisual/pdf-viewport-probe.mjs` command independently
 demonstrates the camera effect without a converter or ignored setup inputs.
@@ -406,3 +406,22 @@ controls and 3 of 27 nested-SVG controls; all 27 direct page-coordinate controls
 retain identical pixels. Original viewport clipping and the fixed physical
 origin remain explicit. This probe is required in visual CI, with retained raw
 evidence and hashes. The original failed PDF trial stays checked in.
+
+The [combined node PDF policy](../tools/TikzVisual/INTERACTION-PDF.md) now requires
+all 5,273 numeric checks, natural dimensions, 1,044 primary regional checks,
+and 354 PDF region/scale checks on each SVG side. It recomputes limits from
+the pinned independent page-coordinate evidence and validates every region,
+variant, native record, page origin, input/tool hash, and viewport control.
+Original exact/primary reports remain in each fresh public-conversion bundle.
+
+```text
+dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-pdf
+npm run test:interaction-pdf --prefix tools/TikzVisual
+```
+
+All three cases and forty-one policy checks pass. Image-only checks assert the
+PDF verdict independently and reject all thirteen defects; policy checks cover
+missing/tampered/rehashed evidence, incomplete coverage, changed cameras/pages,
+wrong dimensions, and correct pixels with failed numeric evidence. Both commands
+are required visual CI steps. Wider node/arrow families and hosted execution
+remain pending. The primary-only route still rejects caller PDF input.

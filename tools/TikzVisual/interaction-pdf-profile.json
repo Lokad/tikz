@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-node-interactions-rgb-ink-pdf-page-v1",
+  "approvedPdfPolicy": true,
+  "scope": "Three RGB/stroke-ink rectangle-node fixtures; outlined Latin Modern; white-paper ordinary PDF with fixed page-coordinate registration; all numeric, natural-dimension, primary, whole-picture and regional gates required",
+  "renderMode": "page-coordinates",
+  "primaryPolicyFile": "interaction-profile.json",
+  "primaryPolicySha256": "35e2fb16d43e2e77ed12fcf89b4daef494506e8a81b6e4ca33bc7dd3c5c7a7be",
+  "calibrationFile": "../../tests/Reference/NodeInteractionsRgb/pdf-calibration-page.json",
+  "calibrationSha256": "cb7a5e942981afd777e9d6fd68de014ca53121bee4de214622dc1292d2ee4cd7",
+  "viewportProbeFile": "../../tests/Reference/NodeInteractionsRgb/pdf-viewport-probe.json",
+  "viewportProbeSha256": "e5957b5afb0844eff6ca6550693f72cdcd123852052af02136c9c051eff49520",
+  "originalCalibrationFile": "../../tests/Reference/NodeInteractionsRgb/pdf-calibration.json",
+  "originalCalibrationSha256": "af7fe470ff33913d8c1a5b72070b0ca408de28af529c3f3f60d42927ab74c88a",
+  "scales": [
+    1,
+    4
+  ],
+  "backgrounds": [
+    "white"
+  ],
+  "cases": {
+    "state-paint": {
+      "numericChecks": 1210,
+      "regions": 39
+    },
+    "transforms": {
+      "numericChecks": 953,
+      "regions": 36
+    },
+    "colors": {
+      "numericChecks": 3110,
+      "regions": 102
+    }
+  }
+}

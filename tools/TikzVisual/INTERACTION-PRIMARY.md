@@ -4,10 +4,11 @@ The `chromium-153-node-interactions-rgb-ink-v1` policy covers the three trusted
 `state-paint`, `transforms`, and `colors` fixtures, totaling 41 rectangle nodes.
 It uses the declared RGB profile, outlined Latin Modern labels, and independent
 stroke-ink framing. It establishes a calibrated primary SVG match for these
-fixtures. Ordinary PDF conformance and wider node/transform families remain
-pending. The separate [PDF regional experiment](INTERACTION-PDF-REGIONS.md)
-retains independent measurements, mutation results, and unresolved candidate
-control failures; it supplies no approved allowance to this primary route.
+fixtures. The separate [combined PDF policy](INTERACTION-PDF.md) now passes
+these fixtures using independently grounded page-coordinate rendering. Wider
+node/transform families remain pending. The [PDF regional experiment](INTERACTION-PDF-REGIONS.md)
+retains the original failures and camera repair. This primary route continues
+to reject PDF input; the combined runner owns the separate PDF checks.
 
 ```text
 dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-primary

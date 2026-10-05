@@ -66,6 +66,14 @@ sixteen native node references and numeric evidence for these interactions.
 It repairs transformed rectangle traversal and miter ink bounds, but preserves
 failing color, native-crop, and raster results. It adds no visual compatibility
 claim or general node tolerance.
+The separately reviewed RGB/ink corpus now adds 41 rectangle nodes across
+state/paint, affine transforms, and the color palette. Its
+[primary](../tools/TikzVisual/INTERACTION-PRIMARY.md) and
+[combined PDF](../tools/TikzVisual/INTERACTION-PDF.md) policies pass all native
+numeric, dimension, global/local primary, and ordinary PDF gates for those
+fixtures. Original default-color and driver-crop failures remain reproducible.
+This scoped evidence covers the named interactions; broader shape/label forms
+and the separate 22-node fixture's own PDF admission remain pending.
 Bare node endpoints in drawing paths fail until border intersection exists;
 explicit anchors are accepted. Math, text wrapping, unsupported fonts/shapes,
 and `outer sep=auto` fail with diagnostics.

@@ -46,6 +46,7 @@ jobs:
       - run: dotnet run --project tools/TikzFontData -c Release -- compare-text
       - run: dotnet run --project tools/TikzReference -c Release -- compare-node-svg
       - run: dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-primary
+      - run: dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-pdf
       - run: npm test --prefix tools/TikzVisual
       - run: npm run test:fonts --prefix tools/TikzVisual
       - run: npm run test:text --prefix tools/TikzVisual
@@ -55,6 +56,7 @@ jobs:
       - run: npm run test:interaction-primary --prefix tools/TikzVisual
       - run: npm run test:pdf-regions --prefix tools/TikzVisual
       - run: node tools/TikzVisual/pdf-viewport-probe.mjs
+      - run: npm run test:interaction-pdf --prefix tools/TikzVisual
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -74,4 +76,6 @@ jobs:
             artifacts/interaction-primary-mutations/
             artifacts/pdf-region-self-tests/
             artifacts/pdf-viewport-probe/
+            artifacts/node-interaction-pdf/
+            artifacts/interaction-pdf-mutations/
           if-no-files-found: error

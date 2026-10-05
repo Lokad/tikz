@@ -142,4 +142,15 @@ stroke-frame helper currently admits only the trusted rectangle polygons and
 ordinary butt-capped lines; its clip-bound intersection is for these fixtures,
 not a general SVG ink-bounds implementation. Ordinary .NET tests cover
 the measured geometry/layout/order/opacity/clip quantities and the miter repair;
-they do not conceal the pending full comparator failures.
+they do not conceal the retained exact comparator failures.
+
+The separate [combined RGB/ink PDF policy](../TikzVisual/INTERACTION-PDF.md)
+now admits all three trusted RGB fixtures. `compare-node-interaction-pdf` makes
+a fresh public conversion, preserves exact/primary reports, and requires all
+5,273 native numeric checks, natural dimensions, 1,044 primary regional checks,
+and 354 region/scale checks per SVG side against ordinary PDF. Its separately
+pinned limits come from the independent page-coordinate calibration and
+viewport controls. Forty-one policy/failure checks pass; both commands join
+required cached visual CI. Original default-color/driver-crop failures and
+exact experiments remain unchanged. Wider node/label/arrow families and hosted
+execution still need their own evidence.

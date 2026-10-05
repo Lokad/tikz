@@ -10,7 +10,7 @@ primary pixels; transformed coordinates, curves, ellipses/arcs, and rectangle cr
 small, independently calibrated allowances. This evidence covers the listed
 fixtures. A [rectangle-node prototype](docs/NODES.md) now emits outlined labels
 and passes native layout and primary SVG checks for 22 actual TikZ nodes.
-Node interaction/PDF coverage, additional shapes, arrows, and libraries remain.
+Broader node/shape coverage, arrows, and libraries remain.
 Unsupported source constructs produce diagnostics.
 The declared [RGB color profile](docs/COLORS.md) has independent path/glyph
 checks for all nineteen supported names and selected mixtures.
@@ -48,8 +48,10 @@ The node corpus also has native glyph-position measurements and its own
 oracle-calibrated CSS raster policy. This scope covers the concrete fixtures;
 The [primary interaction policy](tools/TikzVisual/INTERACTION-PRIMARY.md) now
 requires native numeric and global/local image gates for 41 RGB nodes, including
-transformed and clipped labels. PDF text conformance and wider interaction
-coverage remain pending.
+transformed and clipped labels. A separately calibrated
+[combined PDF gate](tools/TikzVisual/INTERACTION-PDF.md) now passes those three
+fixtures against ordinary TikZ PDF, with all numeric/primary checks required.
+Wider labeled-diagram coverage remains pending.
 
 The code is MIT licensed. Bundled font data retains its separate
 [GUST Font License / LPPL notices](THIRD-PARTY-NOTICES.md).

@@ -2,8 +2,8 @@
 
 This experiment compares the three trusted RGB/ink interaction fixtures with
 their ordinary TikZ PDF pages. It records independent cross-renderer limits and
-tests their sensitivity. **No node interaction PDF policy is approved.** A
-separately grounded page-coordinate camera now passes all unchanged native and
+tests their sensitivity. The separately reviewed [combined PDF policy](INTERACTION-PDF.md)
+now admits these fixtures. A grounded page-coordinate camera passes all unchanged native and
 candidate controls and rejects all thirteen image defects. The initial camera's
 three local candidate failures remain recorded below. The separately admitted
 [primary SVG policy](INTERACTION-PRIMARY.md) continues to pass.
@@ -138,8 +138,8 @@ does not establish the browser's internal cause or exact SVG/PDF pixels. The
 compiler and original references are unchanged. The thirty-six synthetic
 checks additionally verify bp/CSS units, wrapper origin, inherited paint,
 natural viewport clipping, fractional registration, repeatability, defects,
-and invalid unit/aspect/mode inputs. Next review a separately pinned PDF policy
-that validates this evidence and combines it with all existing candidate gates.
+and invalid unit/aspect/mode inputs. The separately pinned combined policy now
+validates this evidence and requires every existing candidate gate alongside PDF.
 
 ## Reproduction and agent inspection
 
@@ -189,5 +189,6 @@ clipping, unobservable white ink, invalid inputs, incomplete measurements, and
 native-log agreement/rejection. CI also requires all 27 page-coordinate viewport
 controls to match exactly and uploads both tools' artifacts. This cached probe
 requires no TeX, .NET, or ignored setup artifacts. Hosted execution remains
-unverified. Candidate PDF conformance stays outside the required passing gate
-until separately pinned admission and combined-policy failure checks are ready.
+unverified. The separate combined conformance runner and forty-one policy failure
+checks now join the required passing CI gate. These measurement commands retain
+their research scope and update no approved policy.
