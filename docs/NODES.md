@@ -74,9 +74,13 @@ numeric, dimension, global/local primary, and ordinary PDF gates for those
 fixtures. Original default-color and driver-crop failures remain reproducible.
 This scoped evidence covers the named interactions; broader shape/label forms
 and the separate 22-node fixture's own PDF admission remain pending.
-Bare node endpoints in drawing paths fail until border intersection exists;
-explicit anchors are accepted. Math, text wrapping, unsupported fonts/shapes,
-and `outer sep=auto` fail with diagnostics.
+Bare rectangle-node endpoints now resolve borders for straight, orthogonal,
+and explicit-control cubic segments. A chain starts a separate outgoing subpath
+at each implicit node; explicit anchors retain their specified positions.
+The [border experiment](../tools/TikzReference/NODE-BORDERS.md) has independent
+native arithmetic/path evidence, including transformed queries. Its image
+admission remains pending, with original SVG/PDF mismatches retained. Math,
+text wrapping, unsupported fonts/shapes, and `outer sep=auto` fail with diagnostics.
 
 See [testing instructions](TESTING.md) for cached public comparisons, image
 mutations, and explicit live verification. The original SVG, log, native trace,

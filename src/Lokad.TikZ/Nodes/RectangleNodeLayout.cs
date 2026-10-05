@@ -122,4 +122,20 @@ internal sealed record RectangleNodeLayout(MeasuredText Text, NodeDimensions Dim
         path.Close();
         return path;
     }
+
+    internal NodePoint Border(NodePoint direction, Budget budget, Source source)
+    {
+        // The rectangle's border routine derives its center from SW + half
+        // the full size; the separately declared center halves SW/NE first.
+        var half = new NodePoint((int)(((long)NorthEast.X - SouthWest.X) / 2),
+            (int)(((long)NorthEast.Y - SouthWest.Y) / 2));
+        var hit = RectangleBorder.Intersect(direction, half, budget, source);
+        return new(Dimension((long)SouthWest.X + half.X + hit.X), Dimension((long)SouthWest.Y + half.Y + hit.Y));
+        int Dimension(long value)
+        {
+            if (value is < -1073741823 or > 1073741823)
+                throw new CompileError("TIKZ004", "The node border exceeds PGF scaled-point precision.", source);
+            return (int)value;
+        }
+    }
 }

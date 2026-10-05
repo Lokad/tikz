@@ -24,6 +24,8 @@ internal static partial class ReferenceTool
         {
             Root = FindRoot();
             Profile = Read<OracleProfile>(At("tests/Reference/oracle-profile.json"));
+            if (args.Length > 0 && args[0] is "generate-rectangle-borders" or "verify-rectangle-borders")
+                return await RectangleBorders(args);
             if (args.Length > 0 && args[0] == "compare-node-interaction-primary")
                 return await NodeInteractionPrimary(args);
             if (args.Length > 0 && args[0] == "compare-node-interaction-pdf")
@@ -34,8 +36,11 @@ internal static partial class ReferenceTool
                 return await NodeInteractions(args);
             if (args.Length > 0 && args[0] is "generate-node-reference" or "verify-node-reference" or "compare-node-layout" or "compare-node-svg" or "calibrate-node-svg")
                 return await NodeReferences(args);
+            var borderPaths = args.Length > 0 && args[0] is "generate-border-paths" or "compare-border-paths" or "calibrate-border-paths";
+            if (borderPaths) args = [args[0] switch { "generate-border-paths" => "generate-reference", "compare-border-paths" => "compare", _ => "calibrate-reference" }, .. args.Skip(1)];
             var options = Arguments(args);
-            var manifest = Read<CaseManifest>(At("tests/Reference/cases.json"));
+            var manifestPath = borderPaths ? "tests/Reference/NodeBorders/path-cases.json" : "tests/Reference/cases.json";
+            var manifest = Read<CaseManifest>(At(manifestPath));
             if (manifest.SchemaVersion != 1 || Profile.SchemaVersion != 1 || manifest.Profile != Profile.Id)
                 throw new InvalidOperationException("Incompatible reference manifest/profile.");
             var selected = manifest.Cases.Where(c => !options.TryGetValue("case", out var id) || c.Id == id).ToArray();
@@ -66,7 +71,7 @@ internal static partial class ReferenceTool
                 exitCode = Math.Max(exitCode, result);
             }
             if (args[0] == "calibrate-reference")
-                SaveCalibrationEvidence(calibrationFolders, ArtifactDirectory(options.GetValueOrDefault("out", "artifacts/calibration")));
+                SaveCalibrationEvidence(calibrationFolders, ArtifactDirectory(options.GetValueOrDefault("out", "artifacts/calibration")), manifestPath);
             if (args[0] == "compare" && !options.ContainsKey("case"))
             {
                 var suiteDirectory = ArtifactDirectory(options.GetValueOrDefault("out", "artifacts/comparisons"));

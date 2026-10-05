@@ -120,7 +120,6 @@ public sealed class NodeConversionTests
     [InlineData(@"\node[font=\textbf{x}]{x};", "TIKZ002")]
     [InlineData(@"\node{a\\b};", "TIKZ002")]
     [InlineData(@"\node[anchor=unknown]{x};", "TIKZ002")]
-    [InlineData(@"\node (n){x};\draw(n)--(1,0);", "TIKZ002")]
     [InlineData(@"\node (n){x};\draw(n.unknown)--(1,0);", "TIKZ002")]
     [InlineData(@"\node (a.b){x};", "TIKZ002")]
     [InlineData(@"\node at(0,0) at(1,0){x};", "TIKZ001")]

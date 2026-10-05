@@ -1,0 +1,2287 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-geometry-v3-oracle-calibration",
+  "generatedUtc": "2026-10-05T17:51:16.4094956\u002B00:00",
+  "converterInvoked": false,
+  "purpose": "Independent geometry precision and cross-renderer measurements; deliberate perturbations under exact policies correctly mismatch",
+  "command": "dotnet run --project tools/TikzReference -- calibrate-reference --out artifacts/calibration",
+  "renderer": {
+    "profile": "chromium-153-geometry-v3",
+    "playwright": "1.63.0",
+    "browser": "153.0.8010.12",
+    "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+    "os": "win32",
+    "osRelease": "10.0.19045",
+    "architecture": "x64",
+    "node": "v24.12.0",
+    "headless": true,
+    "deviceScaleFactor": 1,
+    "viewport": {
+      "width": 1200,
+      "height": 900
+    },
+    "launchArguments": [
+      "--disable-gpu",
+      "--force-color-profile=srgb"
+    ],
+    "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+  },
+  "browserProfile": {
+    "schemaVersion": 1,
+    "id": "chromium-153-geometry-v3",
+    "playwrightVersion": "1.63.0",
+    "browserVersion": "153.0.8010.12",
+    "launchArguments": [
+      "--disable-gpu",
+      "--force-color-profile=srgb"
+    ],
+    "scales": [
+      1,
+      4
+    ],
+    "primary": {
+      "maxChannelError": 0,
+      "maxMeanForegroundError": 0,
+      "maxEdgeDisplacementPixels": 0,
+      "maxComponentDifference": 0
+    },
+    "pdf": {
+      "maxChannelError": 128,
+      "maxMeanForegroundError": 24,
+      "maxEdgeDisplacementRasterPixels": 1,
+      "maxComponentDifference": 0
+    },
+    "cases": {
+      "ordered-transforms": {
+        "primary": {
+          "maxChannelError": 12,
+          "maxMeanForegroundError": 0.125,
+          "maxEdgeDisplacementPixels": 0.25,
+          "maxComponentDifference": 0
+        },
+        "pdf": {
+          "maxChannelError": 224,
+          "maxMeanForegroundError": 32,
+          "maxEdgeDisplacementRasterPixels": 1.5,
+          "maxComponentDifference": 0
+        }
+      },
+      "cubic-controls": {
+        "primary": {
+          "maxChannelError": 10,
+          "maxMeanForegroundError": 0.05,
+          "maxEdgeDisplacementPixels": 0.25,
+          "maxComponentDifference": 0
+        },
+        "pdf": {
+          "maxChannelError": 144,
+          "maxMeanForegroundError": 24,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      },
+      "rotated-rectangle": {
+        "primary": {
+          "maxChannelError": 1,
+          "maxMeanForegroundError": 0.025,
+          "maxEdgeDisplacementPixels": 0,
+          "maxComponentDifference": 0
+        }
+      },
+      "clip-scope": {
+        "pdf": {
+          "maxChannelError": 160,
+          "maxMeanForegroundError": 24,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      },
+      "circle-ellipse": {
+        "primary": {
+          "maxChannelError": 12,
+          "maxMeanForegroundError": 0.02,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      },
+      "ellipse-basis": {
+        "primary": {
+          "maxChannelError": 16,
+          "maxMeanForegroundError": 0.15,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      },
+      "arc-sweeps": {
+        "primary": {
+          "maxChannelError": 12,
+          "maxMeanForegroundError": 0.125,
+          "maxEdgeDisplacementRasterPixels": 1,
+          "maxComponentDifference": 0
+        }
+      }
+    },
+    "maxCanvasPixels": 20000000,
+    "maxCrops": 10
+  },
+  "toolHashes": {
+    "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
+    "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+    "tools/TikzReference/Program.cs": "4a92fd84c84329c66f616f979b1cbbb96daa310cf277630136cb2346268d4991",
+    "tools/TikzReference/ReferenceCalibration.cs": "4b9737bc73544a9e7dc3cfc9016cb4507dc32d656cfe4205be935c36088a9b5e",
+    "tests/Reference/NodeBorders/path-cases.json": "b7f4d86cd97b24145be26aaf4e5beee27a6f1b6aacca4da1a99b262f3675fd61"
+  },
+  "cases": [
+    {
+      "caseId": "node-border-lines",
+      "sourceSha256": "f562be1de2a3aa16042ee541d9fbad05df85e734dae841368bfaab172069ad4f",
+      "referenceSvgSha256": "3fa2c3089c4d663a7ed3a81b2d5376189d8f4ff91929c7dd5f6b082e4ca4a2f4",
+      "referenceMetricsSha256": "6205d0cdc83b26f4300ec93e05eeac2c69ddb512e9633c424115466055bff401",
+      "referencePdfSha256": "a43cc5e11f56aabc100b90cb1c1efea95f97a87dc8ff1e1e83df6e83bd00a28d",
+      "variants": [
+        {
+          "mode": "flattened",
+          "oracleRepresentationSha256": "3ba2fe94fcd210b457dcbe7488b5f1be1f4ce8756e0269b5c1c2bbec0af0f7b6",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "candidateNumericTolerancePixels": 4E-05,
+            "calibrationNumericTolerancePixels": 0.00016315234375,
+            "maxRoundingErrorPixels": 4.371200006403342E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 0,
+            "maxCoordinatePerturbationPixels": 0,
+            "frameExpansionPixels": 0
+          },
+          "verdict": "mismatch",
+          "numeric": {
+            "passed": true,
+            "checks": [
+              {
+                "name": "equivalent-representation.rounding",
+                "expected": 0,
+                "actual": 4.371200006403342e-7,
+                "units": "CSS pixels",
+                "absoluteError": 4.371200006403342e-7,
+                "tolerance": 0.000001,
+                "passed": true
+              },
+              {
+                "name": "oracle-coordinate-precision",
+                "expected": 0,
+                "actual": 0,
+                "units": "CSS pixels",
+                "absoluteError": 0,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              },
+              {
+                "name": "oracle-frame-precision",
+                "expected": 0,
+                "actual": 0,
+                "units": "CSS pixels",
+                "absoluteError": 0,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              }
+            ]
+          },
+          "dimensions": {
+            "reference": {
+              "viewBox": [
+                61.768369,
+                52.801986,
+                90.062267,
+                51.20797
+              ],
+              "width": 120.08302266666666,
+              "height": 68.27729333333333
+            },
+            "actual": {
+              "viewBox": [
+                -26.832707,
+                -40.116236,
+                120.083023,
+                68.277293
+              ],
+              "width": 120.083023,
+              "height": 68.277293
+            },
+            "maxErrorPixels": 3.3333333249174757e-7,
+            "passed": true
+          },
+          "primary": [
+            {
+              "scale": 1,
+              "changedPixels": 238,
+              "exactMatch": false,
+              "maxChannelError": 3,
+              "meanForegroundError": 0.12295081967213115,
+              "foregroundPixels": 1037,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 1,
+              "changedPixels": 237,
+              "exactMatch": false,
+              "maxChannelError": 3,
+              "meanForegroundError": 0.37246865959498554,
+              "foregroundPixels": 1037,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 2,
+              "exactMatch": false,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.00007589556769884639,
+              "foregroundPixels": 6588,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 2,
+              "exactMatch": false,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.00022768670309653916,
+              "foregroundPixels": 6588,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 1062,
+              "exactMatch": false,
+              "maxChannelError": 255,
+              "meanForegroundError": 45.18714689265537,
+              "foregroundPixels": 1062,
+              "maxEdgeDisplacementPixels": 1,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 4,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 1
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 4250,
+              "exactMatch": false,
+              "maxChannelError": 159,
+              "meanForegroundError": 16.515710096355257,
+              "foregroundPixels": 7161,
+              "maxEdgeDisplacementPixels": 0.3535533845424652,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 0.25
+              },
+              "passed": false
+            }
+          ]
+        },
+        {
+          "mode": "precision-plus",
+          "oracleRepresentationSha256": "814a39988bdeec78f6e92132981754e8fb58fa8efe66d0bad1e883597e08be68",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "candidateNumericTolerancePixels": 4E-05,
+            "calibrationNumericTolerancePixels": 0.00016315234375,
+            "maxRoundingErrorPixels": 4.856770772221353E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "numeric": {
+            "passed": true,
+            "checks": [
+              {
+                "name": "equivalent-representation.rounding",
+                "expected": 0,
+                "actual": 4.856770772221353e-7,
+                "units": "CSS pixels",
+                "absoluteError": 4.856770772221353e-7,
+                "tolerance": 0.000001,
+                "passed": true
+              },
+              {
+                "name": "oracle-coordinate-precision",
+                "expected": 0,
+                "actual": 0.00011465902185091709,
+                "units": "CSS pixels",
+                "absoluteError": 0.00011465902185091709,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              },
+              {
+                "name": "oracle-frame-precision",
+                "expected": 0,
+                "actual": 0.00016215234375,
+                "units": "CSS pixels",
+                "absoluteError": 0.00016215234375,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              }
+            ]
+          },
+          "dimensions": {
+            "reference": {
+              "viewBox": [
+                61.768369,
+                52.801986,
+                90.062267,
+                51.20797
+              ],
+              "width": 120.08302266666666,
+              "height": 68.27729333333333
+            },
+            "actual": {
+              "viewBox": [
+                -26.832788,
+                -40.116317,
+                120.083185,
+                68.277455
+              ],
+              "width": 120.083185,
+              "height": 68.277455
+            },
+            "maxErrorPixels": 0.00016233333333559585,
+            "passed": true
+          },
+          "primary": [
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1037,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1037,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "white"
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 185,
+              "exactMatch": false,
+              "maxChannelError": 16,
+              "meanForegroundError": 0.015667678300455234,
+              "foregroundPixels": 6590,
+              "maxEdgeDisplacementPixels": 0.25,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 186,
+              "exactMatch": false,
+              "maxChannelError": 16,
+              "meanForegroundError": 0.04711684370257967,
+              "foregroundPixels": 6590,
+              "maxEdgeDisplacementPixels": 0.25,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 1062,
+              "exactMatch": false,
+              "maxChannelError": 255,
+              "meanForegroundError": 45.18714689265537,
+              "foregroundPixels": 1062,
+              "maxEdgeDisplacementPixels": 1,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 4,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 1
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 4250,
+              "exactMatch": false,
+              "maxChannelError": 159,
+              "meanForegroundError": 16.515710096355257,
+              "foregroundPixels": 7161,
+              "maxEdgeDisplacementPixels": 0.3535533845424652,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 0.25
+              },
+              "passed": false
+            }
+          ]
+        },
+        {
+          "mode": "precision-minus",
+          "oracleRepresentationSha256": "e042f5c6920411d467d0f4e9e498abc408eb79b61f6271ad037f01264b6a7d54",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "candidateNumericTolerancePixels": 4E-05,
+            "calibrationNumericTolerancePixels": 0.00016315234375,
+            "maxRoundingErrorPixels": 4.867081280224284E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": -6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "numeric": {
+            "passed": true,
+            "checks": [
+              {
+                "name": "equivalent-representation.rounding",
+                "expected": 0,
+                "actual": 4.867081280224284e-7,
+                "units": "CSS pixels",
+                "absoluteError": 4.867081280224284e-7,
+                "tolerance": 0.000001,
+                "passed": true
+              },
+              {
+                "name": "oracle-coordinate-precision",
+                "expected": 0,
+                "actual": 0.00011465902185091709,
+                "units": "CSS pixels",
+                "absoluteError": 0.00011465902185091709,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              },
+              {
+                "name": "oracle-frame-precision",
+                "expected": 0,
+                "actual": 0.00016215234375,
+                "units": "CSS pixels",
+                "absoluteError": 0.00016215234375,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              }
+            ]
+          },
+          "dimensions": {
+            "reference": {
+              "viewBox": [
+                61.768369,
+                52.801986,
+                90.062267,
+                51.20797
+              ],
+              "width": 120.08302266666666,
+              "height": 68.27729333333333
+            },
+            "actual": {
+              "viewBox": [
+                -26.832788,
+                -40.116317,
+                120.083185,
+                68.277455
+              ],
+              "width": 120.083185,
+              "height": 68.277455
+            },
+            "maxErrorPixels": 0.00016233333333559585,
+            "passed": true
+          },
+          "primary": [
+            {
+              "scale": 1,
+              "changedPixels": 238,
+              "exactMatch": false,
+              "maxChannelError": 3,
+              "meanForegroundError": 0.12295081967213115,
+              "foregroundPixels": 1037,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 1,
+              "changedPixels": 237,
+              "exactMatch": false,
+              "maxChannelError": 3,
+              "meanForegroundError": 0.37246865959498554,
+              "foregroundPixels": 1037,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 60,
+              "exactMatch": false,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.002276867030965392,
+              "foregroundPixels": 6588,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 60,
+              "exactMatch": false,
+              "maxChannelError": 1,
+              "meanForegroundError": 0.006830601092896175,
+              "foregroundPixels": 6588,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 1062,
+              "exactMatch": false,
+              "maxChannelError": 255,
+              "meanForegroundError": 45.18714689265537,
+              "foregroundPixels": 1062,
+              "maxEdgeDisplacementPixels": 1,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 4,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 1
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 4250,
+              "exactMatch": false,
+              "maxChannelError": 159,
+              "meanForegroundError": 16.515710096355257,
+              "foregroundPixels": 7161,
+              "maxEdgeDisplacementPixels": 0.3535533845424652,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 0.25
+              },
+              "passed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "node-border-paths",
+      "sourceSha256": "cbcf8d464aa3e739e27635c9484aeedf91102d26c6224dd59741109bcb25810c",
+      "referenceSvgSha256": "d825154a41fb0d575233a1aac2de6e3c40143ffb72c4d786e968d98a9716a2ff",
+      "referenceMetricsSha256": "724797f74b2dbc7ec7ad32ef21e1ed72a857edd691557ca29c74bdc9839a5ce0",
+      "referencePdfSha256": "50de920007823842f75eb47874d6db543be01902a5837e6895f8f82b40561261",
+      "variants": [
+        {
+          "mode": "flattened",
+          "oracleRepresentationSha256": "0fcd514b3187f06cf2b3581740cf41708bdc62e3ae08957b92c86ff44947ea1d",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "candidateNumericTolerancePixels": 4E-05,
+            "calibrationNumericTolerancePixels": 0.00016315234375,
+            "maxRoundingErrorPixels": 4.0000000023354687E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 0,
+            "maxCoordinatePerturbationPixels": 0,
+            "frameExpansionPixels": 0
+          },
+          "verdict": "mismatch",
+          "numeric": {
+            "passed": true,
+            "checks": [
+              {
+                "name": "equivalent-representation.rounding",
+                "expected": 0,
+                "actual": 4.0000000023354687e-7,
+                "units": "CSS pixels",
+                "absoluteError": 4.0000000023354687e-7,
+                "tolerance": 0.000001,
+                "passed": true
+              },
+              {
+                "name": "oracle-coordinate-precision",
+                "expected": 0,
+                "actual": 0,
+                "units": "CSS pixels",
+                "absoluteError": 0,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              },
+              {
+                "name": "oracle-frame-precision",
+                "expected": 0,
+                "actual": 0,
+                "units": "CSS pixels",
+                "absoluteError": 0,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              }
+            ]
+          },
+          "dimensions": {
+            "reference": {
+              "viewBox": [
+                61.768369,
+                52.801986,
+                85.080946,
+                70.136986
+              ],
+              "width": 113.44126133333333,
+              "height": 93.51598133333331
+            },
+            "actual": {
+              "viewBox": [
+                -26.832707,
+                -60.041516,
+                113.441261,
+                93.515981
+              ],
+              "width": 113.441261,
+              "height": 93.515981
+            },
+            "maxErrorPixels": 3.3333333249174757e-7,
+            "passed": true
+          },
+          "primary": [
+            {
+              "scale": 1,
+              "changedPixels": 157,
+              "exactMatch": false,
+              "maxChannelError": 4,
+              "meanForegroundError": 0.06085753803596127,
+              "foregroundPixels": 1446,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 1,
+              "changedPixels": 166,
+              "exactMatch": false,
+              "maxChannelError": 4,
+              "meanForegroundError": 0.18309128630705393,
+              "foregroundPixels": 1446,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 41,
+              "exactMatch": false,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.003563371616078753,
+              "foregroundPixels": 9752,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 41,
+              "exactMatch": false,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.01069011484823626,
+              "foregroundPixels": 9752,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 1457,
+              "exactMatch": false,
+              "maxChannelError": 223,
+              "meanForegroundError": 44.16513292433538,
+              "foregroundPixels": 1467,
+              "maxEdgeDisplacementPixels": 1.4142135381698608,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 2,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 1
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 5799,
+              "exactMatch": false,
+              "maxChannelError": 255,
+              "meanForegroundError": 17.0217684021544,
+              "foregroundPixels": 10026,
+              "maxEdgeDisplacementPixels": 0.5,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 2,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 0.25
+              },
+              "passed": false
+            }
+          ]
+        },
+        {
+          "mode": "precision-plus",
+          "oracleRepresentationSha256": "e0d8d8f42e0239cd27515155fb44a72d62f10b603c220fe262c6fc80de82b5fe",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "candidateNumericTolerancePixels": 4E-05,
+            "calibrationNumericTolerancePixels": 0.00016315234375,
+            "maxRoundingErrorPixels": 4.856770772221353E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "numeric": {
+            "passed": true,
+            "checks": [
+              {
+                "name": "equivalent-representation.rounding",
+                "expected": 0,
+                "actual": 4.856770772221353e-7,
+                "units": "CSS pixels",
+                "absoluteError": 4.856770772221353e-7,
+                "tolerance": 0.000001,
+                "passed": true
+              },
+              {
+                "name": "oracle-coordinate-precision",
+                "expected": 0,
+                "actual": 0.00011465902185091709,
+                "units": "CSS pixels",
+                "absoluteError": 0.00011465902185091709,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              },
+              {
+                "name": "oracle-frame-precision",
+                "expected": 0,
+                "actual": 0.00016215234375,
+                "units": "CSS pixels",
+                "absoluteError": 0.00016215234375,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              }
+            ]
+          },
+          "dimensions": {
+            "reference": {
+              "viewBox": [
+                61.768369,
+                52.801986,
+                85.080946,
+                70.136986
+              ],
+              "width": 113.44126133333333,
+              "height": 93.51598133333331
+            },
+            "actual": {
+              "viewBox": [
+                -26.832788,
+                -60.041597,
+                113.441423,
+                93.516143
+              ],
+              "width": 113.441423,
+              "height": 93.516143
+            },
+            "maxErrorPixels": 0.0001616666666848232,
+            "passed": true
+          },
+          "primary": [
+            {
+              "scale": 1,
+              "changedPixels": 9,
+              "exactMatch": false,
+              "maxChannelError": 2,
+              "meanForegroundError": 0.002074688796680498,
+              "foregroundPixels": 1446,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 1,
+              "changedPixels": 7,
+              "exactMatch": false,
+              "maxChannelError": 2,
+              "meanForegroundError": 0.00466804979253112,
+              "foregroundPixels": 1446,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 399,
+              "exactMatch": false,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.014972823300174342,
+              "foregroundPixels": 9751,
+              "maxEdgeDisplacementPixels": 0.25,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 394,
+              "exactMatch": false,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.04053430417393088,
+              "foregroundPixels": 9751,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 1457,
+              "exactMatch": false,
+              "maxChannelError": 223,
+              "meanForegroundError": 44.16513292433538,
+              "foregroundPixels": 1467,
+              "maxEdgeDisplacementPixels": 1.4142135381698608,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 2,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 1
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 5799,
+              "exactMatch": false,
+              "maxChannelError": 255,
+              "meanForegroundError": 17.0217684021544,
+              "foregroundPixels": 10026,
+              "maxEdgeDisplacementPixels": 0.5,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 2,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 0.25
+              },
+              "passed": false
+            }
+          ]
+        },
+        {
+          "mode": "precision-minus",
+          "oracleRepresentationSha256": "757bdfd80415d05a31c74a7cfd4390f1715f670f0e9f45c53d8654620557d394",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "candidateNumericTolerancePixels": 4E-05,
+            "calibrationNumericTolerancePixels": 0.00016315234375,
+            "maxRoundingErrorPixels": 4.856770772221353E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": -6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "numeric": {
+            "passed": true,
+            "checks": [
+              {
+                "name": "equivalent-representation.rounding",
+                "expected": 0,
+                "actual": 4.856770772221353e-7,
+                "units": "CSS pixels",
+                "absoluteError": 4.856770772221353e-7,
+                "tolerance": 0.000001,
+                "passed": true
+              },
+              {
+                "name": "oracle-coordinate-precision",
+                "expected": 0,
+                "actual": 0.00011465902185091709,
+                "units": "CSS pixels",
+                "absoluteError": 0.00011465902185091709,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              },
+              {
+                "name": "oracle-frame-precision",
+                "expected": 0,
+                "actual": 0.00016215234375,
+                "units": "CSS pixels",
+                "absoluteError": 0.00016215234375,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              }
+            ]
+          },
+          "dimensions": {
+            "reference": {
+              "viewBox": [
+                61.768369,
+                52.801986,
+                85.080946,
+                70.136986
+              ],
+              "width": 113.44126133333333,
+              "height": 93.51598133333331
+            },
+            "actual": {
+              "viewBox": [
+                -26.832788,
+                -60.041597,
+                113.441423,
+                93.516143
+              ],
+              "width": 113.441423,
+              "height": 93.516143
+            },
+            "maxErrorPixels": 0.0001616666666848232,
+            "passed": true
+          },
+          "primary": [
+            {
+              "scale": 1,
+              "changedPixels": 157,
+              "exactMatch": false,
+              "maxChannelError": 4,
+              "meanForegroundError": 0.06103042876901798,
+              "foregroundPixels": 1446,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 1,
+              "changedPixels": 168,
+              "exactMatch": false,
+              "maxChannelError": 4,
+              "meanForegroundError": 0.18464730290456433,
+              "foregroundPixels": 1446,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 361,
+              "exactMatch": false,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.015814025015378305,
+              "foregroundPixels": 9754,
+              "maxEdgeDisplacementPixels": 0.25,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 361,
+              "exactMatch": false,
+              "maxChannelError": 9,
+              "meanForegroundError": 0.04751896657781423,
+              "foregroundPixels": 9754,
+              "maxEdgeDisplacementPixels": 0.25,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 1457,
+              "exactMatch": false,
+              "maxChannelError": 223,
+              "meanForegroundError": 44.16513292433538,
+              "foregroundPixels": 1467,
+              "maxEdgeDisplacementPixels": 1.4142135381698608,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 2,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 1
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 5799,
+              "exactMatch": false,
+              "maxChannelError": 255,
+              "meanForegroundError": 17.0217684021544,
+              "foregroundPixels": 10026,
+              "maxEdgeDisplacementPixels": 0.5,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 2,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 0.25
+              },
+              "passed": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "caseId": "node-border-transforms",
+      "sourceSha256": "704ca7be5c69bf5585897101849d1446422f94af38ef2b6d7ef82f6799169b89",
+      "referenceSvgSha256": "94fc45b8ea1261fb6de98a6c4d716157032adf553eb6ca3e8e1ffe87408fba07",
+      "referenceMetricsSha256": "22e658609ed8114c63a7c6d95292dd50381b6c60387fc9b4fbc7aa4736323328",
+      "referencePdfSha256": "db008c8d95937e90212020b342aa462cd81fa154cba0a6cbc530c943c09a52af",
+      "variants": [
+        {
+          "mode": "flattened",
+          "oracleRepresentationSha256": "a9fa9b1b245ac3f8e1d120175e78c51d113505963d5afe8be37181209317bc61",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "candidateNumericTolerancePixels": 4E-05,
+            "calibrationNumericTolerancePixels": 0.00016315234375,
+            "maxRoundingErrorPixels": 4.969599984860906E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 0,
+            "maxCoordinatePerturbationPixels": 0,
+            "frameExpansionPixels": 0
+          },
+          "verdict": "mismatch",
+          "numeric": {
+            "passed": true,
+            "checks": [
+              {
+                "name": "equivalent-representation.rounding",
+                "expected": 0,
+                "actual": 4.969599984860906e-7,
+                "units": "CSS pixels",
+                "absoluteError": 4.969599984860906e-7,
+                "tolerance": 0.000001,
+                "passed": true
+              },
+              {
+                "name": "oracle-coordinate-precision",
+                "expected": 0,
+                "actual": 0,
+                "units": "CSS pixels",
+                "absoluteError": 0,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              },
+              {
+                "name": "oracle-frame-precision",
+                "expected": 0,
+                "actual": 0,
+                "units": "CSS pixels",
+                "absoluteError": 0,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              }
+            ]
+          },
+          "dimensions": {
+            "reference": {
+              "viewBox": [
+                61.768369,
+                52.801986,
+                98.94135,
+                61.00523
+              ],
+              "width": 131.9218,
+              "height": 81.34030666666666
+            },
+            "actual": {
+              "viewBox": [
+                -8.595776,
+                -73.325036,
+                131.9218,
+                81.340307
+              ],
+              "width": 131.9218,
+              "height": 81.340307
+            },
+            "maxErrorPixels": 3.3333333249174757e-7,
+            "passed": true
+          },
+          "primary": [
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1012,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 4,
+              "actualComponents": 4,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 1012,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 4,
+              "actualComponents": 4,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "white"
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 6819,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 6819,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "white"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 1052,
+              "exactMatch": false,
+              "maxChannelError": 254,
+              "meanForegroundError": 44.43785310734463,
+              "foregroundPixels": 1062,
+              "maxEdgeDisplacementPixels": 1.4142135381698608,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 2,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 1
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 4564,
+              "exactMatch": false,
+              "maxChannelError": 133,
+              "meanForegroundError": 13.1372734649716,
+              "foregroundPixels": 7394,
+              "maxEdgeDisplacementPixels": 0.5,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 0.25
+              },
+              "passed": false
+            }
+          ]
+        },
+        {
+          "mode": "precision-plus",
+          "oracleRepresentationSha256": "95eae21858142e4b2dbc511da456f32003df96e89c7b33b1307fac01223b2eda",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "candidateNumericTolerancePixels": 4E-05,
+            "calibrationNumericTolerancePixels": 0.00016315234375,
+            "maxRoundingErrorPixels": 4.91828124005167E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": 6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "numeric": {
+            "passed": true,
+            "checks": [
+              {
+                "name": "equivalent-representation.rounding",
+                "expected": 0,
+                "actual": 4.91828124005167e-7,
+                "units": "CSS pixels",
+                "absoluteError": 4.91828124005167e-7,
+                "tolerance": 0.000001,
+                "passed": true
+              },
+              {
+                "name": "oracle-coordinate-precision",
+                "expected": 0,
+                "actual": 0.00011465902185091709,
+                "units": "CSS pixels",
+                "absoluteError": 0.00011465902185091709,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              },
+              {
+                "name": "oracle-frame-precision",
+                "expected": 0,
+                "actual": 0.00016215234375,
+                "units": "CSS pixels",
+                "absoluteError": 0.00016215234375,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              }
+            ]
+          },
+          "dimensions": {
+            "reference": {
+              "viewBox": [
+                61.768369,
+                52.801986,
+                98.94135,
+                61.00523
+              ],
+              "width": 131.9218,
+              "height": 81.34030666666666
+            },
+            "actual": {
+              "viewBox": [
+                -8.595857,
+                -73.325117,
+                131.921962,
+                81.340469
+              ],
+              "width": 131.921962,
+              "height": 81.340469
+            },
+            "maxErrorPixels": 0.00016233333333559585,
+            "passed": true
+          },
+          "primary": [
+            {
+              "scale": 1,
+              "changedPixels": 164,
+              "exactMatch": false,
+              "maxChannelError": 5,
+              "meanForegroundError": 0.05237154150197629,
+              "foregroundPixels": 1012,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 4,
+              "actualComponents": 4,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 1,
+              "changedPixels": 166,
+              "exactMatch": false,
+              "maxChannelError": 4,
+              "meanForegroundError": 0.1682312252964427,
+              "foregroundPixels": 1012,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 4,
+              "actualComponents": 4,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1925,
+              "exactMatch": false,
+              "maxChannelError": 16,
+              "meanForegroundError": 0.2788729297962773,
+              "foregroundPixels": 6823,
+              "maxEdgeDisplacementPixels": 0.25,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1928,
+              "exactMatch": false,
+              "maxChannelError": 16,
+              "meanForegroundError": 0.8339806536714055,
+              "foregroundPixels": 6823,
+              "maxEdgeDisplacementPixels": 0.3535533845424652,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 1052,
+              "exactMatch": false,
+              "maxChannelError": 254,
+              "meanForegroundError": 44.43785310734463,
+              "foregroundPixels": 1062,
+              "maxEdgeDisplacementPixels": 1.4142135381698608,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 2,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 1
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 4564,
+              "exactMatch": false,
+              "maxChannelError": 133,
+              "meanForegroundError": 13.1372734649716,
+              "foregroundPixels": 7394,
+              "maxEdgeDisplacementPixels": 0.5,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 0.25
+              },
+              "passed": false
+            }
+          ]
+        },
+        {
+          "mode": "precision-minus",
+          "oracleRepresentationSha256": "fc890f0ee98636005990cf811b9beeb1d0ff420c667d1e8458846f8153420d48",
+          "provenance": {
+            "schemaVersion": 1,
+            "source": "Independent PGF soft-path and SVG measurements",
+            "converterInvoked": false,
+            "operation": "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            "candidateNumericTolerancePixels": 4E-05,
+            "calibrationNumericTolerancePixels": 0.00016315234375,
+            "maxRoundingErrorPixels": 4.91828124005167E-07,
+            "namedAnchorRoundTripErrorPixels": 0,
+            "perturbationPt": -6.103515625E-05,
+            "maxCoordinatePerturbationPixels": 0.00011465902185091709,
+            "frameExpansionPixels": 0.00016215234375
+          },
+          "verdict": "mismatch",
+          "numeric": {
+            "passed": true,
+            "checks": [
+              {
+                "name": "equivalent-representation.rounding",
+                "expected": 0,
+                "actual": 4.91828124005167e-7,
+                "units": "CSS pixels",
+                "absoluteError": 4.91828124005167e-7,
+                "tolerance": 0.000001,
+                "passed": true
+              },
+              {
+                "name": "oracle-coordinate-precision",
+                "expected": 0,
+                "actual": 0.00011465902185091709,
+                "units": "CSS pixels",
+                "absoluteError": 0.00011465902185091709,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              },
+              {
+                "name": "oracle-frame-precision",
+                "expected": 0,
+                "actual": 0.00016215234375,
+                "units": "CSS pixels",
+                "absoluteError": 0.00016215234375,
+                "tolerance": 0.00016315234375,
+                "passed": true
+              }
+            ]
+          },
+          "dimensions": {
+            "reference": {
+              "viewBox": [
+                61.768369,
+                52.801986,
+                98.94135,
+                61.00523
+              ],
+              "width": 131.9218,
+              "height": 81.34030666666666
+            },
+            "actual": {
+              "viewBox": [
+                -8.595857,
+                -73.325117,
+                131.921962,
+                81.340469
+              ],
+              "width": 131.921962,
+              "height": 81.340469
+            },
+            "maxErrorPixels": 0.00016233333333559585,
+            "passed": true
+          },
+          "primary": [
+            {
+              "scale": 1,
+              "changedPixels": 169,
+              "exactMatch": false,
+              "maxChannelError": 5,
+              "meanForegroundError": 0.053853754940711464,
+              "foregroundPixels": 1012,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 4,
+              "actualComponents": 4,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 1,
+              "changedPixels": 171,
+              "exactMatch": false,
+              "maxChannelError": 4,
+              "meanForegroundError": 0.17267786561264822,
+              "foregroundPixels": 1012,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 4,
+              "actualComponents": 4,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 1,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1919,
+              "exactMatch": false,
+              "maxChannelError": 14,
+              "meanForegroundError": 0.2777777777777778,
+              "foregroundPixels": 6822,
+              "maxEdgeDisplacementPixels": 0.25,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 1916,
+              "exactMatch": false,
+              "maxChannelError": 14,
+              "meanForegroundError": 0.830255057167986,
+              "foregroundPixels": 6822,
+              "maxEdgeDisplacementPixels": 0.3535533845424652,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": false,
+              "background": "white"
+            },
+            {
+              "scale": 4,
+              "changedPixels": 0,
+              "exactMatch": true,
+              "maxChannelError": 0,
+              "meanForegroundError": 0,
+              "foregroundPixels": 0,
+              "maxEdgeDisplacementPixels": 0,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 0,
+              "actualComponents": 0,
+              "thresholds": {
+                "maxChannelError": 0,
+                "maxMeanForegroundError": 0,
+                "maxEdgeDisplacementPixels": 0,
+                "maxComponentDifference": 0
+              },
+              "passed": true,
+              "background": "black"
+            }
+          ],
+          "oracleSvgVersusPdf": [
+            {
+              "scale": 1,
+              "changedPixels": 1052,
+              "exactMatch": false,
+              "maxChannelError": 254,
+              "meanForegroundError": 44.43785310734463,
+              "foregroundPixels": 1062,
+              "maxEdgeDisplacementPixels": 1.4142135381698608,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 2,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 1
+              },
+              "passed": false
+            },
+            {
+              "scale": 4,
+              "changedPixels": 4564,
+              "exactMatch": false,
+              "maxChannelError": 133,
+              "meanForegroundError": 13.1372734649716,
+              "foregroundPixels": 7394,
+              "maxEdgeDisplacementPixels": 0.5,
+              "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+              "referenceComponents": 1,
+              "actualComponents": 1,
+              "thresholds": {
+                "maxChannelError": 128,
+                "maxMeanForegroundError": 24,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "maxComponentDifference": 0,
+                "maxEdgeDisplacementPixels": 0.25
+              },
+              "passed": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

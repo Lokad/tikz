@@ -21,10 +21,13 @@ public sealed class ReferenceTests
 
     [Theory]
     [MemberData(nameof(RequiredCases))]
+    [MemberData(nameof(BorderCases))]
     public void TrustedFixturesMatchIndependentPgfMeasurementsWithoutTexOrBrowser(string caseId)
     {
         using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "cases.json")));
-        var definition = Assert.Single(manifest.RootElement.GetProperty("cases").EnumerateArray(), c => c.GetProperty("id").GetString() == caseId);
+        using var borderManifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "NodeBorders", "path-cases.json")));
+        var definition = Assert.Single(manifest.RootElement.GetProperty("cases").EnumerateArray()
+            .Concat(borderManifest.RootElement.GetProperty("cases").EnumerateArray()), c => c.GetProperty("id").GetString() == caseId);
         var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", Path.GetFileName(definition.GetProperty("source").GetString()!))).Replace("\r\n", "\n", StringComparison.Ordinal);
         var directory = Path.Combine(AppContext.BaseDirectory, "Reference", caseId);
         using var provenance = JsonDocument.Parse(File.ReadAllText(Path.Combine(directory, "provenance.json")));
@@ -111,6 +114,17 @@ public sealed class ReferenceTests
                 Near(expectedPoint.GetProperty("x").GetDouble() * ptToPixels, actualPoint.X * 4 / 3);
                 Near(expectedPoint.GetProperty("y").GetDouble() * ptToPixels, actualPoint.Y * 4 / 3);
             }
+        }
+    }
+
+    public static TheoryData<string> BorderCases
+    {
+        get
+        {
+            using var manifest = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "NodeBorders", "path-cases.json")));
+            var data = new TheoryData<string>();
+            foreach (var c in manifest.RootElement.GetProperty("cases").EnumerateArray()) data.Add(c.GetProperty("id").GetString()!);
+            return data;
         }
     }
 }

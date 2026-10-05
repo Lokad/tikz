@@ -201,6 +201,7 @@ internal sealed class Parser(Source source, Budget budget)
         var origin = _reader.Here;
         var relative = _reader.Take("++") ? 2 : _reader.Take("+") ? 1 : 0;
         var group = _reader.Group('(', ')');
+        origin = new Source(origin.Text, origin.Offset, source.Offset + _reader.Position - origin.Offset);
         var cartesian = Options.Split(group, ',', budget);
         if (cartesian.Count == 2) return new(Expression.Parse(cartesian[0], budget), Expression.Parse(cartesian[1], budget), "", false, relative, origin);
         if (cartesian.Count != 1) throw new CompileError("TIKZ001", "Expected a two-dimensional coordinate.", group);

@@ -20,19 +20,34 @@ internal sealed partial class Evaluator
         return metrics;
     }
 
-    private Point NodeAnchor(string reference, Source source, bool allowCenter)
+    private Point NodeAnchor(string reference, Source source)
     {
         var separator = reference.IndexOf('.');
         var name = separator < 0 ? reference : reference[..separator];
         var anchor = separator < 0 ? "center" : reference[(separator + 1)..];
         if (_nodes.TryGetValue(name, out var node))
         {
-            if (separator < 0 && !allowCenter)
-                throw new CompileError("TIKZ002", "Implicit node border endpoints are not implemented yet; use an explicit anchor.", source);
             return PgfTransform.Apply(node.Transform, node.Layout.Anchor(anchor, Metrics(TextFont.Default, source), budget, source).Bp, budget, source);
         }
         if (separator >= 0 && anchor == "center" && _coordinates.TryGetValue(name, out var coordinate)) return coordinate;
         throw new CompileError("TIKZ003", $"Unknown coordinate '{reference}'.", source);
+    }
+
+    private ResolvedNode? ImplicitNode(Coordinate coordinate)
+        => coordinate.X is null && !coordinate.Name.Contains('.') && _nodes.TryGetValue(coordinate.Name, out var node) ? node : null;
+
+    private Point NodeBorder(ResolvedNode node, Point toward, Affine queryFrame, Source source)
+    {
+        budget.Charge(source, 24);
+        var local = PgfCoordinates.ToLocal(PgfTransform.Apply(queryFrame, toward, budget, source), node.Transform, source);
+        var direction = new NodePoint(ToSp(local.X - node.Layout.Center.Bp.X, source), ToSp(local.Y - node.Layout.Center.Bp.Y, source));
+        var x = Math.Abs((long)direction.X) < 65536 ? 10L * direction.X : 655360;
+        var y = Math.Abs((long)direction.Y) < 65536 ? 10L * direction.Y : 655360;
+        // pgfpointshapeborder returns the center when its squared scaled
+        // direction is less than .04pt (roughly a .02pt radius).
+        var hit = x * x / 65536 + y * y / 65536 < 2621 ? node.Layout.Center : node.Layout.Border(direction, budget, source);
+        var global = PgfTransform.Apply(node.Transform, hit.Bp, budget, source);
+        return PgfCoordinates.ToLocal(global, queryFrame, source);
     }
 
     private void Node(NodeStatement statement, EvaluationState parent)

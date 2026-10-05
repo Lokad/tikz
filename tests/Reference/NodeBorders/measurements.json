@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-rectangle-border-sp-v1",
+  "points": {
+    "east": {
+      "xSp": 327680,
+      "ySp": 0
+    },
+    "west": {
+      "xSp": -327680,
+      "ySp": 0
+    },
+    "north": {
+      "xSp": 0,
+      "ySp": 262144
+    },
+    "south": {
+      "xSp": 0,
+      "ySp": -262144
+    },
+    "shallow-ne": {
+      "xSp": 327680,
+      "ySp": 152880
+    },
+    "shallow-nw": {
+      "xSp": -327680,
+      "ySp": 152880
+    },
+    "shallow-sw": {
+      "xSp": -327680,
+      "ySp": -152880
+    },
+    "shallow-se": {
+      "xSp": 327680,
+      "ySp": -152880
+    },
+    "steep": {
+      "xSp": 122304,
+      "ySp": 262144
+    },
+    "corner": {
+      "xSp": 327680,
+      "ySp": 262140
+    },
+    "equal-direction": {
+      "xSp": 262080,
+      "ySp": 262144
+    },
+    "tall-slope": {
+      "xSp": 262144,
+      "ySp": 349440
+    },
+    "wide-slope": {
+      "xSp": 349440,
+      "ySp": 262144
+    },
+    "fractional": {
+      "xSp": 377773,
+      "ySp": 167541
+    },
+    "odd-eighth": {
+      "xSp": 327681,
+      "ySp": 163845
+    },
+    "zero-direction": {
+      "xSp": 327680,
+      "ySp": 0
+    },
+    "tiny-east": {
+      "xSp": 0,
+      "ySp": 262144
+    },
+    "threshold-east": {
+      "xSp": 327680,
+      "ySp": 0
+    },
+    "eighth-round-east": {
+      "xSp": 0,
+      "ySp": 262144
+    },
+    "eighth-round-north": {
+      "xSp": 327680,
+      "ySp": 0
+    },
+    "tiny-north": {
+      "xSp": 327680,
+      "ySp": 0
+    },
+    "threshold-north": {
+      "xSp": 0,
+      "ySp": 262144
+    },
+    "tiny-diagonal": {
+      "xSp": 327680,
+      "ySp": 0
+    },
+    "zero-width": {
+      "xSp": 0,
+      "ySp": 0
+    },
+    "zero-height": {
+      "xSp": 0,
+      "ySp": 0
+    },
+    "zero-size": {
+      "xSp": 0,
+      "ySp": 0
+    },
+    "negative-width": {
+      "xSp": -32768,
+      "ySp": -14532
+    },
+    "negative-height": {
+      "xSp": -73872,
+      "ySp": -32768
+    },
+    "long-direction": {
+      "xSp": 327680,
+      "ySp": -150000
+    }
+  }
+}

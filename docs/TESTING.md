@@ -425,3 +425,9 @@ missing/tampered/rehashed evidence, incomplete coverage, changed cameras/pages,
 wrong dimensions, and correct pixels with failed numeric evidence. Both commands
 are required visual CI steps. Wider node/arrow families and hosted execution
 remain pending. The primary-only route still rejects caller PDF input.
+
+Rectangle border arithmetic and path endpoints now have a separate
+[native experiment](../tools/TikzReference/NODE-BORDERS.md). Ordinary tests
+consume 29 exact primitive intersections and three original TikZ path fixtures
+without TeX or a browser. `compare-border-paths` retains provisional image
+failures; it does not inherit an admitted node or geometry policy.

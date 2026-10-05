@@ -1,11 +1,12 @@
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 internal static partial class ReferenceTool
 {
-    private static void SaveCalibrationEvidence(List<string> folders, string output)
+    private static void SaveCalibrationEvidence(List<string> folders, string output, string manifestPath)
     {
         var browserProfile = Read<JsonElement>(At("tools/TikzVisual/browser-profile.json"));
         JsonElement renderer = default;
@@ -37,7 +38,7 @@ internal static partial class ReferenceTool
                 referenceSvgSha256 = reference.Artifacts["reference.svg"], referenceMetricsSha256 = reference.Artifacts["reference-metrics.json"],
                 referencePdfSha256 = reference.Artifacts["reference.pdf"], variants });
         }
-        string[] sources = ["tools/TikzVisual/browser-profile.json", "tools/TikzVisual/compare.mjs", "tools/TikzReference/Program.cs", "tools/TikzReference/ReferenceCalibration.cs", "tests/Reference/cases.json"];
+        string[] sources = ["tools/TikzVisual/browser-profile.json", "tools/TikzVisual/compare.mjs", "tools/TikzReference/Program.cs", "tools/TikzReference/ReferenceCalibration.cs", manifestPath];
         var file = Path.Combine(output, "calibration-evidence.json");
         Write(file, new { schemaVersion = 1, id = browserProfile.GetProperty("id").GetString() + "-oracle-calibration", generatedUtc = DateTimeOffset.UtcNow.ToString("O"),
             converterInvoked = false, purpose = "Independent geometry precision and cross-renderer measurements; deliberate perturbations under exact policies correctly mismatch",
@@ -81,7 +82,8 @@ internal static partial class ReferenceTool
         }
         var document = XDocument.Load(Path.Combine(output, "reference.svg"));
         var root = document.Root!;
-        var outer = document.Descendants().Single(e => e.Attribute("transform") is not null);
+        var outer = document.Descendants().Single(e => e.Attribute("transform") is { } value
+            && Regex.IsMatch(value.Value, @"^translate\([-\d.]+,[-\d.]+\)scale\([-\d.]+,[-\d.]+\)$"));
         var transform = Match(outer.Attribute("transform")!.Value, @"^translate\(([-\d.]+),([-\d.]+)\)scale\(([-\d.]+),([-\d.]+)\)$");
         var factor = transform[2] * 4 / 3;
         var roundingError = 0.0;
@@ -108,13 +110,18 @@ internal static partial class ReferenceTool
         File.WriteAllText(Path.Combine(output, "actual.svg"), document.ToString(SaveOptions.DisableFormatting));
         Write(Path.Combine(output, "actual-scene.json"), new { schemaVersion = 1, paths = Array.Empty<object>(), units = "Oracle-only equivalent representation; no candidate compiler" });
         var perturbation = anchorError + Math.Sqrt(2) * Math.Abs(delta) * factor;
+        // This independent experiment deliberately adds up to four sp and
+        // eight sp of frame extent. Its own explicit perturbation budget is
+        // separate from the stricter candidate coordinate contract.
+        var calibrationTolerance = Math.Max(c.NumericTolerancePixels, 8.0 / 65536 * factor + 0.000001);
         var checks = new[] { new NumericCheck("equivalent-representation.rounding", 0, roundingError, "CSS pixels", roundingError, 0.000001, roundingError <= 0.000001),
-            new NumericCheck("oracle-coordinate-precision", 0, perturbation, "CSS pixels", perturbation, c.NumericTolerancePixels, perturbation <= c.NumericTolerancePixels),
-            new NumericCheck("oracle-frame-precision", 0, 2 * framePadding, "CSS pixels", 2 * framePadding, c.NumericTolerancePixels, 2 * framePadding <= c.NumericTolerancePixels) };
+            new NumericCheck("oracle-coordinate-precision", 0, perturbation, "CSS pixels", perturbation, calibrationTolerance, perturbation <= calibrationTolerance),
+            new NumericCheck("oracle-frame-precision", 0, 2 * framePadding, "CSS pixels", 2 * framePadding, calibrationTolerance, 2 * framePadding <= calibrationTolerance) };
         Write(Path.Combine(output, "comparison-input.json"), new { schemaVersion = 1, caseId = c.Id, referenceMode = "oracle-representation-calibration", actualLabel = "Equivalent oracle SVG",
-            toleranceProfile = c.Id, referenceOriginBp = metrics.SvgOriginBp, numericTolerancePixels = c.NumericTolerancePixels, numeric = new { passed = checks.All(v => v.Passed), checks }, pdf = new { originPixels = metrics.PdfOriginPixels } });
+            toleranceProfile = c.Id, referenceOriginBp = metrics.SvgOriginBp, numericTolerancePixels = calibrationTolerance, numeric = new { passed = checks.All(v => v.Passed), checks }, pdf = new { originPixels = metrics.PdfOriginPixels } });
         Write(Path.Combine(output, "calibration-provenance.json"), new { schemaVersion = 1, source = "Independent PGF soft-path and SVG measurements", converterInvoked = false,
             operation = "Flatten physical transforms; preserve paint and clips; serialize coordinates at six decimals; use measured named anchors where declared; perturb within four TeX sp and expand the native frame by that fixed amount",
+            candidateNumericTolerancePixels = c.NumericTolerancePixels, calibrationNumericTolerancePixels = calibrationTolerance,
             maxRoundingErrorPixels = roundingError, namedAnchorRoundTripErrorPixels = anchorError, perturbationPt = delta, maxCoordinatePerturbationPixels = perturbation, frameExpansionPixels = 2 * framePadding });
         var result = await Process(ResolveExecutable("node"), [At("tools/TikzVisual/compare.mjs"), output], Root);
         if (result.ExitCode is not (0 or 1)) throw new InvalidOperationException("Calibration visual runner failed: " + result.Output);

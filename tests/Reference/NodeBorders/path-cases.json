@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-geometry",
+  "cases": [
+    { "id": "node-border-lines", "source": "tests/Fixtures/node-border-lines.tikz", "features": ["rectangle-borders", "line-endpoints", "subpath-restarts", "explicit-anchors", "relative-coordinates", "near-center"], "numericTolerancePixels": 0.00004 },
+    { "id": "node-border-paths", "source": "tests/Fixtures/node-border-paths.tikz", "features": ["rectangle-borders", "orthogonal-paths", "cubic-controls", "cycle", "shape-continuation"], "numericTolerancePixels": 0.00004 },
+    { "id": "node-border-transforms", "source": "tests/Fixtures/node-border-transforms.tikz", "features": ["rectangle-borders", "node-transforms", "transform-shape", "query-transforms", "shear", "orthogonal-paths"], "numericTolerancePixels": 0.00004 }
+  ]
+}

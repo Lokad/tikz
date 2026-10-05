@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage{tikz}
+\makeatletter
+\typeout{LOKAD-PGF-VERSION \pgfversion}
+\def\rectangleprobe#1#2#3#4#5{%
+  \begingroup
+    \pgfpointborderrectangle{\pgfqpoint{#2sp}{#3sp}}{\pgfqpoint{#4sp}{#5sp}}%
+    \typeout{LOKAD-RECTANGLE-BORDER #1|\number\pgf@x|\number\pgf@y|END}%
+  \endgroup
+}
+\begin{document}
+% TRUSTED-PROBES
+\end{document}

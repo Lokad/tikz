@@ -45,14 +45,14 @@ internal sealed partial class Evaluator(Budget budget)
             }
         }
     }
-    private Point Resolve(Coordinate coordinate, EvaluationState state, Point reference, out bool updateReference, bool nodeCenter = true)
+    private Point Resolve(Coordinate coordinate, EvaluationState state, Point reference, out bool updateReference)
     {
         budget.Charge(coordinate.Source);
         updateReference = coordinate.Relative != 1;
         Point point;
         if (coordinate.X is null || coordinate.Y is null)
         {
-            if (!_coordinates.TryGetValue(coordinate.Name, out point)) point = NodeAnchor(coordinate.Name, coordinate.Source, nodeCenter);
+            if (!_coordinates.TryGetValue(coordinate.Name, out point)) point = NodeAnchor(coordinate.Name, coordinate.Source);
             point = PgfCoordinates.RoundTrip(point, state.Transform, coordinate.Source);
         }
         else
@@ -74,6 +74,34 @@ internal sealed partial class Evaluator(Budget budget)
         budget.Check(point.X, coordinate.Source); budget.Check(point.Y, coordinate.Source);
         return point;
     }
+
+    private Point PathCoordinate(Coordinate coordinate, EvaluationState state, Point reference, out bool updateReference)
+    {
+        budget.Charge(coordinate.Source);
+        updateReference = coordinate.Relative != 1;
+        Point point;
+        if (coordinate.X is null || coordinate.Y is null)
+        {
+            if (!_coordinates.TryGetValue(coordinate.Name, out point)) point = NodeAnchor(coordinate.Name, coordinate.Source);
+            point = PgfCoordinates.ToLocal(point, state.Transform, coordinate.Source);
+        }
+        else
+        {
+            var x = coordinate.X.Evaluate(state.Variables, budget);
+            var y = coordinate.Y.Evaluate(state.Variables, budget);
+            if (coordinate.Polar)
+            {
+                var angle = x.Value * Math.PI / 180;
+                point = y.HasUnit ? new(Math.Cos(angle) * y.Bp, Math.Sin(angle) * y.Bp)
+                    : state.XBasis * (Math.Cos(angle) * y.Value) + state.YBasis * (Math.Sin(angle) * y.Value);
+            }
+            else point = (x.HasUnit ? new Point(x.Bp, 0) : PgfTransform.Scale(state.XBasis, x.Value, budget, coordinate.Source))
+                + (y.HasUnit ? new Point(0, y.Bp) : PgfTransform.Scale(state.YBasis, y.Value, budget, coordinate.Source));
+        }
+        if (coordinate.Relative != 0) point += reference;
+        budget.Check(point.X, coordinate.Source); budget.Check(point.Y, coordinate.Source);
+        return point;
+    }
     private void Path(PathStatement statement, EvaluationState parent)
     {
         var state = parent.Clone(budget, statement.Source);
@@ -86,43 +114,79 @@ internal sealed partial class Evaluator(Budget budget)
         KeyRegistry.Apply(statement.Options, state, budget);
         var path = new GraphicPath(budget, statement.Source);
         var reference = default(Point);
+        var position = default(Point);
+        ResolvedNode? pending = null;
+        Source pendingSource = statement.Source;
         foreach (var operation in statement.Operations)
         {
             budget.Charge(operation.Source);
             switch (operation)
             {
-                case MoveOperation move: path.Move(Point(move.Point)); break;
+                case MoveOperation move:
+                    position = Point(move.Point);
+                    pending = ImplicitNode(move.Point); pendingSource = move.Point.Source;
+                    if (pending is null) path.Move(Global(position));
+                    break;
                 case LineOperation line:
                     var end = Point(line.Point);
-                    if (line.Kind is "vh" or "hv") path.Line(FrameCorner(path.Current, end, state, line.Kind == "hv", line.Source));
-                    path.Line(end);
+                    var targetNode = ImplicitNode(line.Point);
+                    if (line.Kind is "vh" or "hv")
+                    {
+                        var orthogonalCorner = Corner(position, end, line.Kind == "hv");
+                        var startPoint = FlushToward(orthogonalCorner);
+                        // Correcting the initial border also changes the leg
+                        // perpendicular to the incoming target's border.
+                        orthogonalCorner = Corner(startPoint, end, line.Kind == "hv");
+                        var border = targetNode is null ? end : NodeBorder(targetNode, orthogonalCorner, state.Transform, line.Point.Source);
+                        orthogonalCorner = Corner(startPoint, border, line.Kind == "hv");
+                        path.Line(Global(orthogonalCorner)); path.Line(Global(border));
+                    }
+                    else
+                    {
+                        var border = targetNode is null ? end : NodeBorder(targetNode, position, state.Transform, line.Point.Source);
+                        FlushToward(border);
+                        path.Line(Global(border));
+                    }
+                    position = end;
+                    pending = targetNode; pendingSource = line.Point.Source;
                     break;
                 case CurveOperation curve:
-                    var before = reference;
-                    var a = Resolve(curve.A, state, before, out _);
+                    var before = position;
+                    var a = PathCoordinate(curve.A, state, before, out _);
                     var target = Point(curve.End);
-                    var b = Resolve(curve.B, state, curve.B.Relative == 0 ? before : target, out _);
-                    path.Cubic(a, b, target);
+                    var b = PathCoordinate(curve.B, state, curve.B.Relative == 0 ? before : target, out _);
+                    FlushToward(a);
+                    var curveNode = ImplicitNode(curve.End);
+                    path.Cubic(Global(a), Global(b), Global(curveNode is null ? target : NodeBorder(curveNode, b, state.Transform, curve.End.Source)));
+                    position = target;
+                    pending = curveNode; pendingSource = curve.End.Source;
                     break;
                 case RectangleOperation rectangle:
-                    var origin = path.Current;
+                    Flush();
+                    var origin = position;
                     var corner = Point(rectangle.End);
-                    path.Move(origin); path.Line(FrameCorner(origin, corner, state, false, rectangle.Source));
-                    path.Line(corner); path.Line(FrameCorner(origin, corner, state, true, rectangle.Source)); path.Close(); path.Move(corner);
+                    path.Move(Global(origin)); path.Line(Global(Corner(origin, corner, false)));
+                    path.Line(Global(corner)); path.Line(Global(Corner(origin, corner, true))); path.Close(); path.Move(Global(corner));
+                    position = corner;
                     break;
                 case EllipseOperation ellipse:
+                    Flush();
                     var center = path.Current;
                     var ellipseAxes = Axes(ellipse.X, ellipse.Y, state);
                     ShapePaths.Ellipse(path, center, ellipseAxes.X, ellipseAxes.Y);
                     break;
                 case ArcOperation arc:
+                    Flush();
                     var arcAxes = Axes(arc.X, arc.Y, state);
                     var start = arc.Start.Evaluate(state.Variables, budget).Value;
                     var finish = arc.End.Evaluate(state.Variables, budget).Value;
                     ShapePaths.Arc(path, arcAxes.X, arcAxes.Y, start, finish, budget, arc.Source);
-                    reference = path.Current;
+                    reference = PgfCoordinates.ToLocal(path.Current, state.Transform, arc.Source);
+                    position = reference;
                     break;
-                case CloseOperation: path.Close(); break;
+                case CloseOperation close:
+                    Flush(); path.Close(); position = PgfCoordinates.ToLocal(path.Current, state.Transform, close.Source); reference = position;
+                    break;
                 case PathOptionsOperation options: KeyRegistry.Apply(options.Options, state, budget); break;
                 default: throw new InvalidOperationException("Unknown path operation.");
             }
@@ -149,10 +213,28 @@ internal sealed partial class Evaluator(Budget budget)
         }
         Point Point(Coordinate coordinate)
         {
-            var point = Resolve(coordinate, state, reference, out var update, nodeCenter: false);
+            var point = PathCoordinate(coordinate, state, reference, out var update);
             if (update) reference = point;
             return point;
         }
+        void Flush()
+        {
+            if (pending is not null) { path.Move(Global(position)); pending = null; }
+        }
+        Point FlushToward(Point toward)
+        {
+            var startPoint = position;
+            if (pending is not null)
+            {
+                startPoint = NodeBorder(pending, toward, state.Transform, pendingSource);
+                path.Move(Global(startPoint));
+                pending = null;
+            }
+            return startPoint;
+        }
+        Point Global(Point local) => PgfTransform.Apply(state.Transform, local, budget, statement.Source);
+        static Point Corner(Point start, Point end, bool horizontalFirst)
+            => horizontalFirst ? new(end.X, start.Y) : new(start.X, end.Y);
     }
     private (Point X, Point Y) Axes(Expression xRadius, Expression yRadius, EvaluationState state)
     {
@@ -165,22 +247,5 @@ internal sealed partial class Evaluator(Budget budget)
         budget.Check(yAxis.X, yRadius.Source); budget.Check(yAxis.Y, yRadius.Source);
         return (xAxis, yAxis);
         Point Vector(Point value, Source source) => PgfTransform.Apply(state.Transform with { E = 0, F = 0 }, value, budget, source);
-    }
-    private static Point FrameCorner(Point start, Point end, EvaluationState state, bool horizontalFirst, Source source)
-    {
-        var t = state.Transform;
-        var delta = end - start;
-        var determinant = t.A * t.D - t.B * t.C;
-        Point xLeg;
-        if (delta.X == 0 && delta.Y == 0) xLeg = default;
-        else if (determinant != 0)
-        {
-            var x = (t.D * delta.X - t.C * delta.Y) / determinant;
-            xLeg = new(t.A * x, t.B * x);
-        }
-        else if (t.A == 0 && t.B == 0) xLeg = default;
-        else if (t.C == 0 && t.D == 0) xLeg = delta;
-        else throw new CompileError("TIKZ004", "Cannot resolve orthogonal corners under this singular transform.", source);
-        return horizontalFirst ? start + xLeg : end - xLeg;
     }
 }

@@ -12,6 +12,17 @@ internal static class PgfCoordinates
 
     public static Point RoundTrip(Point global, Affine frame, Source source)
     {
+        var local = Local(global, frame, source);
+        var restored = Apply(Fixed(frame.A), Fixed(frame.B), Fixed(frame.C), Fixed(frame.D), local)
+            + new Point(Fixed(frame.E * PtPerBp), Fixed(frame.F * PtPerBp));
+        return restored * (1 / PtPerBp);
+    }
+
+    internal static Point ToLocal(Point global, Affine frame, Source source)
+        => Local(global, frame, source) * (1 / PtPerBp);
+
+    private static Point Local(Point global, Affine frame, Source source)
+    {
         var a = Fixed(frame.A); var b = Fixed(frame.B);
         var c = Fixed(frame.C); var d = Fixed(frame.D);
         double ia, ib, ic, id;
@@ -28,9 +39,7 @@ internal static class PgfCoordinates
         }
         var point = new Point(Fixed(global.X * PtPerBp), Fixed(global.Y * PtPerBp));
         var shift = new Point(Fixed(frame.E * PtPerBp), Fixed(frame.F * PtPerBp));
-        var local = Apply(ia, ib, ic, id, point) + Apply(ia, ib, ic, id, shift * -1);
-        var restored = Apply(a, b, c, d, local) + shift;
-        return restored * (1 / PtPerBp);
+        return Apply(ia, ib, ic, id, point) + Apply(ia, ib, ic, id, shift * -1);
     }
 
     private static Point Apply(double a, double b, double c, double d, Point point)

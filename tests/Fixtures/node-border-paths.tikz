@@ -1,0 +1,15 @@
+\begin{tikzpicture}[every node/.style={draw,inner sep=0pt,minimum width=10pt,minimum height=8pt,outer sep=.3pt}]
+  \coordinate (start) at (-20pt,-30pt);
+  \coordinate (end) at (65pt,45pt);
+  \node (a) at (0pt,0pt) {};
+  \node[minimum width=13pt,minimum height=11pt,outer sep=1pt] (b) at (40pt,25pt) {};
+  \draw (a) -| (b);
+  \draw (a) |- (b);
+  \draw (-20pt,-25pt) -| (a) |- (60pt,15pt);
+  \draw (a) .. controls (10pt,30pt) and (25pt,40pt) .. (b) -- (60pt,0pt);
+  \draw (b) .. controls +(10pt,10pt) and +(-10pt,10pt) .. (a);
+  \draw (a) -- (25pt,0pt) -- (b) -- cycle;
+  \draw (a) -- (25pt,0pt) -- (15pt,-25pt) -- cycle;
+  \draw (a) circle[radius=2pt] -- (10pt,-20pt);
+  \draw (b) rectangle (60pt,40pt) -- (65pt,45pt);
+\end{tikzpicture}
