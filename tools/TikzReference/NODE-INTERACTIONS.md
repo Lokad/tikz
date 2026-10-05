@@ -3,7 +3,8 @@
 Two trusted, authored fixtures under `tests/Fixtures/Nodes/` exercise nine
 state/paint nodes and seven transformed nodes. They extend the actual-node
 oracle without changing the established rectangle fixture or its tolerance.
-These are diagnostic cases; their full visual gates do not yet pass.
+These default-color cases retain diagnostic failures; their full visual gates
+do not yet pass. The separate reviewed RGB/ink route is described below.
 The separate `--profile rgb` manifest adds a 25-node palette fixture and retains
 the same state/transform sources. Default-color references remain unchanged.
 
@@ -48,10 +49,24 @@ The candidate comparison uses the public API, preserves its source-aware scene,
 and emits the ordinary agent inspection bundle under
 `artifacts/node-interactions/<case>/`. It compares native boxes/defaults and local
 glyph positions exactly, global geometry at the manifest's provisional 0.02 CSS
-pixel bound, frame coefficients at 0.00002, and paint/order/clip identities.
+pixel bound, exact frame coefficients, 1e-9-CSS-pixel native frame/anchor/glyph
+origins, and paint/order/clip identities.
 Primary image comparisons force exact pixels at 1x/4x over transparent, white,
-and black backgrounds. There is no reviewed interaction raster allowance, and
-the rectangle fixture's allowance cannot be applied here.
+and black backgrounds. These exact commands apply no raster allowance; the
+rectangle fixture's allowance cannot be applied here.
+
+The reviewed [primary interaction route](../TikzVisual/INTERACTION-PRIMARY.md)
+now covers all three RGB fixtures with independent ink framing and required
+global/regional gates. It always selects RGB/ink, accepts only `--case` and
+`--out`, and preserves the raw exact comparison before applying its own pinned
+policy. Its cached command needs no TeX or Poppler:
+
+```text
+dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-primary
+```
+
+All 5,273 native numeric and 1,044 regional checks pass. The ordinary PDF route
+remains an independently measured experiment without an approved allowance.
 
 The PDF experiment never invokes candidate parsing, layout, glyph resources,
 or SVG emission. It copies the original oracle geometry and rebases only the
@@ -71,7 +86,8 @@ ink-frame routes each have three variants per case, 4,260 passing
 serialization/containment checks, versioned snapshots, and raw primary/PDF results.
 The ten new containment tests reject overflow, missing clips/glyphs, and
 unhandled transforms. These are independent measurement results, with no
-approved interaction raster or PDF allowance.
+policy changes. The separately reviewed primary route consumes their pinned
+evidence; PDF allowances remain unapproved.
 
 Current findings:
 
@@ -98,8 +114,10 @@ Current findings:
   this derived reference, retains `original-driver.svg`, and records its hashes,
   geometry contributions, and source in `reference-frame.json`. The candidate's
   native dimensions agree within 0.0001 CSS pixel. Remaining primary precision
-  differences are at most 32/255 in this transform experiment; no allowance is
-  approved. Driver framing remains the default, and its original failure stays
+  differences are now at most 2/255 after the finite-transform repair. The
+  independent experiment measured up to 32/255 across fixed perturbations;
+  the reviewed primary route uses that independent evidence plus every local
+  region. Driver framing remains the exact command's default, and its original failure stays
   reproducible. The independent framing command also records both SVGs against
   PDF on the native page lattice; exact gates intentionally mismatch.
 - State/opacity/paint-order/clip measurements agree except for seven glyph
@@ -116,9 +134,10 @@ Current findings:
 
 Exit codes follow the main harness: 0 pass, 1 measured mismatch, 2 harness error,
 3 candidate conversion error. A PDF calibration exit of 1 is a completed
-measurement run, not a conformance pass. Visual admission still requires
+measurement run, not a conformance pass. The scoped primary route now passes
 oracle-only production-coordinate calibration, localized defect mutations,
-review of the framing contract, and reviewed PDF evidence. The independent
+and the reviewed framing contract. Full node fidelity still requires separately
+reviewed PDF evidence. The independent
 stroke-frame helper currently admits only the trusted rectangle polygons and
 ordinary butt-capped lines; its clip-bound intersection is for these fixtures,
 not a general SVG ink-bounds implementation. Ordinary .NET tests cover

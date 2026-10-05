@@ -46,7 +46,10 @@ The internal [label layout](docs/TEXT.md) also matches sixteen native TeX
 box/glyph-position cases exactly, with independently calibrated image checks.
 The node corpus also has native glyph-position measurements and its own
 oracle-calibrated CSS raster policy. This scope covers the concrete fixtures;
-PDF text conformance and transformed/clipped node interactions remain pending.
+The [primary interaction policy](tools/TikzVisual/INTERACTION-PRIMARY.md) now
+requires native numeric and global/local image gates for 41 RGB nodes, including
+transformed and clipped labels. PDF text conformance and wider interaction
+coverage remain pending.
 
 The code is MIT licensed. Bundled font data retains its separate
 [GUST Font License / LPPL notices](THIRD-PARTY-NOTICES.md).

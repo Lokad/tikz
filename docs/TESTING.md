@@ -278,9 +278,9 @@ are preserved. The original SVG is retained, and provenance also records whether
 the unsorted outputs were byte-identical. Native font files are checked against
 the pinned font profile before live commands run.
 
-Node transform/state/clip interactions, rotated/sheared stroke ink bounds,
-border intersections, additional shapes/inline labels, and PDF node comparisons
-remain pending. The public report labels its primary-only scope. It does not
+Border intersections, additional shapes/inline labels, broader interactions,
+and PDF node comparisons remain pending. The public report labels its
+primary-only scope. It does not
 authorize using this fixture's tolerance for other labeled diagrams.
 
 ## Node interaction experiments
@@ -299,7 +299,7 @@ dotnet run --project tools/TikzReference -c Release -- calibrate-node-interactio
 ```
 
 These commands deliberately retain failing image/dimension/color results.
-There is no interaction raster allowance or approved PDF policy. Read
+These exact experiments apply no interaction raster allowance or PDF policy. Read
 `artifacts/node-interactions/<case>/report.json` and the corresponding
 `artifacts/node-interaction-pdf-calibration/<case>/calibration-evidence.json`.
 The latter uses only original oracle content, forces exact pixel gates, and
@@ -355,4 +355,21 @@ frame coefficients now match exactly; anchor/frame/glyph origin checks use
 1e-9 CSS pixel rather than the former general geometry allowance. All twenty
 post-repair regional interaction comparisons pass unchanged controls or reject
 their intended defects. Original failure evidence stays available. Interaction
-policy admission and PDF calibration remain pending.
+PDF calibration remains pending. The separately reviewed
+[primary interaction policy](../tools/TikzVisual/INTERACTION-PRIMARY.md) now
+requires all 5,273 numeric checks, 1,044 region/scale/background checks, global
+metrics, and natural dimensions. Its pinned limits come only from the unchanged
+independent snapshots. The loader validates evidence/tool hashes and recomputes
+all limits; caller-supplied regions cannot weaken this route.
+
+```text
+dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-primary
+npm run test:interaction-primary --prefix tools/TikzVisual
+```
+
+The three cached primary cases pass. Thirty-one policy checks cover repeated
+positive controls, all thirteen image defects with numeric gates bypassed,
+tampered/missing evidence, widened limits, a numerical failure with correct
+pixels, a natural-height defect, fitted registration, empty numeric evidence,
+and unapproved PDF input. Raw exact reports remain in each primary bundle.
+Both commands are required visual CI steps; hosted execution remains unverified.

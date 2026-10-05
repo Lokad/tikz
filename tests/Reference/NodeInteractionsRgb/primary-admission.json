@@ -1,0 +1,843 @@
+{
+  "schemaVersion": 1,
+  "completed": true,
+  "approvedPrimaryPolicy": true,
+  "passed": true,
+  "scope": "Three RGB/stroke-ink interaction fixtures; calibrated primary SVG match only; independent PDF gate pending",
+  "implementationCommit": "ed956a30132da1f2a5b9af55240f62ff52bbc3dd",
+  "policy": {
+    "id": "chromium-153-node-interactions-rgb-ink-v1",
+    "sha256": "35e2fb16d43e2e77ed12fcf89b4daef494506e8a81b6e4ca33bc7dd3c5c7a7be",
+    "approvedPrimaryPolicy": true,
+    "calibrationSha256": "181ec58a94e78b9dd37c00c81fcbff9524e547dc6131b2ac5a865f9bd7e2a71d",
+    "regionalSha256": "aefbfc4d9c25b77b275fb9512c74e278511c759c063e44dac08481642d5b2eea",
+    "scope": "state-paint, transforms, colors fixtures only; RGB, outlined Latin Modern, independent stroke-ink framing; primary SVG only"
+  },
+  "renderer": {
+    "profile": "chromium-153-geometry-v3",
+    "playwright": "1.63.0",
+    "browser": "153.0.8010.12",
+    "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+    "os": "win32",
+    "osRelease": "10.0.19045",
+    "architecture": "x64",
+    "node": "v24.12.0",
+    "headless": true,
+    "deviceScaleFactor": 1,
+    "viewport": {
+      "width": 1200,
+      "height": 900
+    },
+    "launchArguments": [
+      "--disable-gpu",
+      "--force-color-profile=srgb"
+    ],
+    "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+  },
+  "toolHashes": {
+    "tools/TikzVisual/interaction-profile.json": "35e2fb16d43e2e77ed12fcf89b4daef494506e8a81b6e4ca33bc7dd3c5c7a7be",
+    "tools/TikzVisual/interaction-primary.mjs": "16a9e009ef93d47b75508b0a7a580627221e8f417332878247f1e00466bd116d",
+    "tools/TikzVisual/compare-interaction-primary.mjs": "e7d9cb26e4d83eec13328600bd8f4f060b51e6572cbfb54f65b7572ecb89f108",
+    "tools/TikzVisual/interaction-primary-self-test.mjs": "42a6e19f0c2baf587d7be227ba160d5b8b03097d1de4aa5ffc1216262cf90d31",
+    "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+    "tools/TikzReference/NodeInteractionPrimary.cs": "ee1e3c09cafc72a5981781e1cad993e365e3b7c0dbdbd855ee737f27d0d17aff",
+    "tools/TikzReference/Program.cs": "ba4fc9509927e19151bd009f69c158710ee5789b82fa1c27f5761523f5ad9ee2"
+  },
+  "cases": [
+    {
+      "caseId": "state-paint",
+      "passed": true,
+      "sourceSha256": "e8b930594554fc18f0a5c93e79c70f5b153ea026affb5004cf686d1bb4849e21",
+      "referenceSha256": "0f8f21eb357148b1bcc3b2f9f0f49639e9b9c7af19c70c982a2e3b2e74fe54f6",
+      "originalDriverSha256": "657376139a46cfb8b1d9efd8c7dd319a7a76d7524301f68574b2417db87fe15f",
+      "candidateSha256": "0c0aa43f6240ccf2ea6c588ed41448bdf8ca37b4e7502e418b57b9f77d58af35",
+      "numericChecks": 1210,
+      "numericPassed": true,
+      "regionalChecks": 228,
+      "regionalPassed": true,
+      "primary": [
+        {
+          "scale": 1,
+          "changedPixels": 0,
+          "exactMatch": true,
+          "maxChannelError": 0,
+          "meanForegroundError": 0,
+          "foregroundPixels": 5989,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 7,
+          "actualComponents": 7,
+          "thresholds": {
+            "maxChannelError": 10,
+            "maxMeanForegroundError": 0.005928,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 1
+          },
+          "passed": true
+        },
+        {
+          "scale": 1,
+          "changedPixels": 0,
+          "exactMatch": true,
+          "maxChannelError": 0,
+          "meanForegroundError": 0,
+          "foregroundPixels": 5158,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 16,
+          "actualComponents": 16,
+          "thresholds": {
+            "maxChannelError": 10,
+            "maxMeanForegroundError": 0.005928,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 1
+          },
+          "passed": true,
+          "background": "white"
+        },
+        {
+          "scale": 1,
+          "changedPixels": 0,
+          "exactMatch": true,
+          "maxChannelError": 0,
+          "meanForegroundError": 0,
+          "foregroundPixels": 5814,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 7,
+          "actualComponents": 7,
+          "thresholds": {
+            "maxChannelError": 10,
+            "maxMeanForegroundError": 0.005928,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 1
+          },
+          "passed": true,
+          "background": "black"
+        },
+        {
+          "scale": 4,
+          "changedPixels": 8,
+          "exactMatch": false,
+          "maxChannelError": 4,
+          "meanForegroundError": 5.332345446176989E-05,
+          "foregroundPixels": 89079,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 8,
+          "actualComponents": 8,
+          "thresholds": {
+            "maxChannelError": 10,
+            "maxMeanForegroundError": 0.005928,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 0.25
+          },
+          "passed": true
+        },
+        {
+          "scale": 4,
+          "changedPixels": 8,
+          "exactMatch": false,
+          "maxChannelError": 4,
+          "meanForegroundError": 6.267671351170662E-05,
+          "foregroundPixels": 71797,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 16,
+          "actualComponents": 16,
+          "thresholds": {
+            "maxChannelError": 10,
+            "maxMeanForegroundError": 0.005928,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 0.25
+          },
+          "passed": true,
+          "background": "white"
+        },
+        {
+          "scale": 4,
+          "changedPixels": 8,
+          "exactMatch": false,
+          "maxChannelError": 4,
+          "meanForegroundError": 5.527690821705787E-05,
+          "foregroundPixels": 85931,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 10,
+          "actualComponents": 10,
+          "thresholds": {
+            "maxChannelError": 10,
+            "maxMeanForegroundError": 0.005928,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 0.25
+          },
+          "passed": true,
+          "background": "black"
+        }
+      ],
+      "dimensions": {
+        "reference": {
+          "viewBox": [
+            61.768369,
+            52.80199,
+            129.22073190608,
+            93.49419219351999
+          ],
+          "width": 172.29430920810665,
+          "height": 124.65892292469331
+        },
+        "actual": {
+          "viewBox": [
+            -22.785344,
+            -113.765863,
+            172.294316,
+            124.658923
+          ],
+          "width": 172.294316,
+          "height": 124.658923
+        },
+        "maxErrorPixels": 6.791893355284628E-06,
+        "passed": true
+      },
+      "reportSha256": "901209816d20bebd06c23f4ff0ba86e489a63d0057dc89281476c365d538a560",
+      "candidateProvenance": {
+        "schemaVersion": 1,
+        "commit": "ed956a30132da1f2a5b9af55240f62ff52bbc3dd",
+        "workingTreeSha256": "9aef613de8b4d3107326af9748d1e726e47df4d61627c90b9d16d3b0a811759c",
+        "configuration": "Release",
+        "assemblySha256": "e685166dee11f9c7b3be11b7b9f4cdef63c1f0e34eaf02c3eda22a56d9fecb6e"
+      }
+    },
+    {
+      "caseId": "transforms",
+      "passed": true,
+      "sourceSha256": "8df912523174b1bad9fecb523fc5fe3a83f9881a4686000a323d637c9e756aad",
+      "referenceSha256": "d7069747b40374c45ef6de1d0268e065567c3eb6e6f855eefc16e51820aeadc1",
+      "originalDriverSha256": "7bc7f3305c13ad07e759d5f691e592009c15fd634312e48c6683ec1f0be181df",
+      "candidateSha256": "af124fdd366ef420eedfe302d5f38c2631f1f2850f3ccf0449dea3b4c7a71211",
+      "numericChecks": 953,
+      "numericPassed": true,
+      "regionalChecks": 210,
+      "regionalPassed": true,
+      "primary": [
+        {
+          "scale": 1,
+          "changedPixels": 1,
+          "exactMatch": false,
+          "maxChannelError": 1,
+          "meanForegroundError": 7.763975155279503E-05,
+          "foregroundPixels": 3220,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 39,
+          "actualComponents": 39,
+          "thresholds": {
+            "maxChannelError": 32,
+            "maxMeanForegroundError": 0.0266,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 1
+          },
+          "passed": true
+        },
+        {
+          "scale": 1,
+          "changedPixels": 1,
+          "exactMatch": false,
+          "maxChannelError": 1,
+          "meanForegroundError": 0.0002329192546583851,
+          "foregroundPixels": 3220,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 40,
+          "actualComponents": 40,
+          "thresholds": {
+            "maxChannelError": 32,
+            "maxMeanForegroundError": 0.0266,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 1
+          },
+          "passed": true,
+          "background": "white"
+        },
+        {
+          "scale": 1,
+          "changedPixels": 0,
+          "exactMatch": true,
+          "maxChannelError": 0,
+          "meanForegroundError": 0,
+          "foregroundPixels": 182,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 1,
+          "actualComponents": 1,
+          "thresholds": {
+            "maxChannelError": 32,
+            "maxMeanForegroundError": 0.0266,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 1
+          },
+          "passed": true,
+          "background": "black"
+        },
+        {
+          "scale": 4,
+          "changedPixels": 8,
+          "exactMatch": false,
+          "maxChannelError": 2,
+          "meanForegroundError": 7.732755954222085E-05,
+          "foregroundPixels": 29097,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 32,
+          "actualComponents": 32,
+          "thresholds": {
+            "maxChannelError": 32,
+            "maxMeanForegroundError": 0.0266,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 0.25
+          },
+          "passed": true
+        },
+        {
+          "scale": 4,
+          "changedPixels": 8,
+          "exactMatch": false,
+          "maxChannelError": 2,
+          "meanForegroundError": 0.00023198267862666253,
+          "foregroundPixels": 29097,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 32,
+          "actualComponents": 32,
+          "thresholds": {
+            "maxChannelError": 32,
+            "maxMeanForegroundError": 0.0266,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 0.25
+          },
+          "passed": true,
+          "background": "white"
+        },
+        {
+          "scale": 4,
+          "changedPixels": 0,
+          "exactMatch": true,
+          "maxChannelError": 0,
+          "meanForegroundError": 0,
+          "foregroundPixels": 1278,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 1,
+          "actualComponents": 1,
+          "thresholds": {
+            "maxChannelError": 32,
+            "maxMeanForegroundError": 0.0266,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 0.25
+          },
+          "passed": true,
+          "background": "black"
+        }
+      ],
+      "dimensions": {
+        "reference": {
+          "viewBox": [
+            61.7683661452,
+            52.25049500615572,
+            203.63508638208003,
+            115.62453599384429
+          ],
+          "width": 271.51344850944,
+          "height": 154.16604799179237
+        },
+        "actual": {
+          "viewBox": [
+            -24.175273,
+            -144.233512,
+            271.513441,
+            154.166053
+          ],
+          "width": 271.513441,
+          "height": 154.166053
+        },
+        "maxErrorPixels": 7.5094400244779536E-06,
+        "passed": true
+      },
+      "reportSha256": "279e37f12d2f7f66696df3a700e69fffb6cfbdcdf0f416155caffb0728a7dc95",
+      "candidateProvenance": {
+        "schemaVersion": 1,
+        "commit": "ed956a30132da1f2a5b9af55240f62ff52bbc3dd",
+        "workingTreeSha256": "9aef613de8b4d3107326af9748d1e726e47df4d61627c90b9d16d3b0a811759c",
+        "configuration": "Release",
+        "assemblySha256": "e685166dee11f9c7b3be11b7b9f4cdef63c1f0e34eaf02c3eda22a56d9fecb6e"
+      }
+    },
+    {
+      "caseId": "colors",
+      "passed": true,
+      "sourceSha256": "938abfed284e5e9716a7c06f9a7a789035dc960ac6c8c26f737c4c3675ad2619",
+      "referenceSha256": "7d4fb737e9581c7f953490dc1382e42fe10c8b7553dda7bd99c2d349957d3eec",
+      "originalDriverSha256": "c49975f823b86a5285d19722ef0600960891cfb61d2d6294836c0cceec095128",
+      "candidateSha256": "f985eacc2c742edf00e7f8ce1f5930698601efdeab42e3676917ab6069aa0f21",
+      "numericChecks": 3110,
+      "numericPassed": true,
+      "regionalChecks": 606,
+      "regionalPassed": true,
+      "primary": [
+        {
+          "scale": 1,
+          "changedPixels": 0,
+          "exactMatch": true,
+          "maxChannelError": 0,
+          "meanForegroundError": 0,
+          "foregroundPixels": 17779,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 24,
+          "actualComponents": 24,
+          "thresholds": {
+            "maxChannelError": 43,
+            "maxMeanForegroundError": 0.006834,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 1
+          },
+          "passed": true
+        },
+        {
+          "scale": 1,
+          "changedPixels": 0,
+          "exactMatch": true,
+          "maxChannelError": 0,
+          "meanForegroundError": 0,
+          "foregroundPixels": 17773,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 26,
+          "actualComponents": 26,
+          "thresholds": {
+            "maxChannelError": 43,
+            "maxMeanForegroundError": 0.006834,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 1
+          },
+          "passed": true,
+          "background": "white"
+        },
+        {
+          "scale": 1,
+          "changedPixels": 0,
+          "exactMatch": true,
+          "maxChannelError": 0,
+          "meanForegroundError": 0,
+          "foregroundPixels": 17719,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 24,
+          "actualComponents": 24,
+          "thresholds": {
+            "maxChannelError": 43,
+            "maxMeanForegroundError": 0.006834,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 1
+          },
+          "passed": true,
+          "background": "black"
+        },
+        {
+          "scale": 4,
+          "changedPixels": 6,
+          "exactMatch": false,
+          "maxChannelError": 1,
+          "meanForegroundError": 1.0688660691381441E-05,
+          "foregroundPixels": 257282,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 24,
+          "actualComponents": 24,
+          "thresholds": {
+            "maxChannelError": 43,
+            "maxMeanForegroundError": 0.006834,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 0.25
+          },
+          "passed": true
+        },
+        {
+          "scale": 4,
+          "changedPixels": 6,
+          "exactMatch": false,
+          "maxChannelError": 1,
+          "meanForegroundError": 9.770548440425057E-06,
+          "foregroundPixels": 255871,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 30,
+          "actualComponents": 30,
+          "thresholds": {
+            "maxChannelError": 43,
+            "maxMeanForegroundError": 0.006834,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 0.25
+          },
+          "passed": true,
+          "background": "white"
+        },
+        {
+          "scale": 4,
+          "changedPixels": 6,
+          "exactMatch": false,
+          "maxChannelError": 1,
+          "meanForegroundError": 9.770548440425057E-06,
+          "foregroundPixels": 255871,
+          "maxEdgeDisplacementPixels": 0,
+          "edgeMetric": "symmetric 8-neighbour chamfer distance / render scale",
+          "referenceComponents": 24,
+          "actualComponents": 24,
+          "thresholds": {
+            "maxChannelError": 43,
+            "maxMeanForegroundError": 0.006834,
+            "maxEdgeDisplacementRasterPixels": 1,
+            "maxComponentDifference": 0,
+            "maxEdgeDisplacementPixels": 0.25
+          },
+          "passed": true,
+          "background": "black"
+        }
+      ],
+      "dimensions": {
+        "reference": {
+          "viewBox": [
+            61.7683630316,
+            52.801991,
+            161.73718393680002,
+            115.46611844384002
+          ],
+          "width": 215.6495785824,
+          "height": 153.9548245917867
+        },
+        "actual": {
+          "viewBox": [
+            -14.840142,
+            -143.395008,
+            215.649566,
+            153.954815
+          ],
+          "width": 215.649566,
+          "height": 153.954815
+        },
+        "maxErrorPixels": 1.2582400017890905E-05,
+        "passed": true
+      },
+      "reportSha256": "05715a0b8cb7d445480c38e5897b90086e6aa208c76992abec903f4d202c2402",
+      "candidateProvenance": {
+        "schemaVersion": 1,
+        "commit": "ed956a30132da1f2a5b9af55240f62ff52bbc3dd",
+        "workingTreeSha256": "9aef613de8b4d3107326af9748d1e726e47df4d61627c90b9d16d3b0a811759c",
+        "configuration": "Release",
+        "assemblySha256": "e685166dee11f9c7b3be11b7b9f4cdef63c1f0e34eaf02c3eda22a56d9fecb6e"
+      }
+    }
+  ],
+  "selfTest": {
+    "schemaVersion": 1,
+    "completed": true,
+    "passed": true,
+    "scope": "Approved primary policy wiring/mutations; image defects bypass numeric gates; no PDF conformance claim",
+    "policySha256": "35e2fb16d43e2e77ed12fcf89b4daef494506e8a81b6e4ca33bc7dd3c5c7a7be",
+    "renderer": {
+      "profile": "chromium-153-geometry-v3",
+      "playwright": "1.63.0",
+      "browser": "153.0.8010.12",
+      "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+      "os": "win32",
+      "osRelease": "10.0.19045",
+      "architecture": "x64",
+      "node": "v24.12.0",
+      "headless": true,
+      "deviceScaleFactor": 1,
+      "viewport": {
+        "width": 1200,
+        "height": 900
+      },
+      "launchArguments": [
+        "--disable-gpu",
+        "--force-color-profile=srgb"
+      ],
+      "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+    },
+    "results": [
+      {
+        "name": "changed-primary-evidence",
+        "passed": true,
+        "category": "policy rejection"
+      },
+      {
+        "name": "changed-regional-evidence",
+        "passed": true,
+        "category": "policy rejection"
+      },
+      {
+        "name": "missing-regional-evidence",
+        "passed": true,
+        "category": "policy rejection"
+      },
+      {
+        "name": "changed-comparator",
+        "passed": true,
+        "category": "policy rejection"
+      },
+      {
+        "name": "widened-global-policy",
+        "passed": true,
+        "category": "policy rejection"
+      },
+      {
+        "name": "missing-policy-case",
+        "passed": true,
+        "category": "policy rejection"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "unchanged-a",
+        "passed": true,
+        "expected": "pass",
+        "actual": "pass",
+        "numericBypassed": true,
+        "actualSha256": "0c0aa43f6240ccf2ea6c588ed41448bdf8ca37b4e7502e418b57b9f77d58af35",
+        "report": "state-paint-unchanged-a/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "unchanged-b",
+        "passed": true,
+        "expected": "pass",
+        "actual": "pass",
+        "numericBypassed": true,
+        "actualSha256": "0c0aa43f6240ccf2ea6c588ed41448bdf8ca37b4e7502e418b57b9f77d58af35",
+        "report": "state-paint-unchanged-b/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "unchanged-a",
+        "passed": true,
+        "expected": "pass",
+        "actual": "pass",
+        "numericBypassed": true,
+        "actualSha256": "af124fdd366ef420eedfe302d5f38c2631f1f2850f3ccf0449dea3b4c7a71211",
+        "report": "transforms-unchanged-a/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "unchanged-b",
+        "passed": true,
+        "expected": "pass",
+        "actual": "pass",
+        "numericBypassed": true,
+        "actualSha256": "af124fdd366ef420eedfe302d5f38c2631f1f2850f3ccf0449dea3b4c7a71211",
+        "report": "transforms-unchanged-b/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "unchanged-a",
+        "passed": true,
+        "expected": "pass",
+        "actual": "pass",
+        "numericBypassed": true,
+        "actualSha256": "f985eacc2c742edf00e7f8ce1f5930698601efdeab42e3676917ab6069aa0f21",
+        "report": "colors-unchanged-a/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "unchanged-b",
+        "passed": true,
+        "expected": "pass",
+        "actual": "pass",
+        "numericBypassed": true,
+        "actualSha256": "f985eacc2c742edf00e7f8ce1f5930698601efdeab42e3676917ab6069aa0f21",
+        "report": "colors-unchanged-b/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "missing-period",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "54e85310bcb669fbb88fa16cef9b5e583cb37544615cad85079f0704407d0f2c",
+        "report": "state-paint-missing-period/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "missing-faint-label",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "e7db6c853b84b71dc21cc90c2f7cebe6e5ac38ea8f4771a6395d6a6cde55795c",
+        "report": "state-paint-missing-faint-label/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "missing-faint-period",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "c99d8075d21b0a76d9cf73783fe1b8a3d1f65c85f1afab584a00e512bae9794d",
+        "report": "state-paint-missing-faint-period/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "removed-label-clip",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "a86cd9449441da4fff1854d1dbfd234622f070ebb4e3211ce4fd009170a84b84",
+        "report": "state-paint-removed-label-clip/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "wrong-text-opacity",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "500e8e5c5af0f1277d6525987e2bbd021d837ee627a382dac13522ac515a78b0",
+        "report": "state-paint-wrong-text-opacity/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "paint-order",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "3d377665dc2be58cac40ab48a057ea6c440e16505d6b2049bfc0ccb9d9f4755b",
+        "report": "state-paint-paint-order/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "faint-stroke-present",
+        "passed": true,
+        "expected": "pass",
+        "actual": "pass",
+        "numericBypassed": true,
+        "actualSha256": "92fdaf02d479eecf642d42982a0f86c359192790c2f54e9ccdb0919c331e6056",
+        "report": "state-paint-faint-stroke-present/report.json"
+      },
+      {
+        "caseId": "state-paint",
+        "name": "faint-stroke-removed",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "0c0aa43f6240ccf2ea6c588ed41448bdf8ca37b4e7502e418b57b9f77d58af35",
+        "report": "state-paint-faint-stroke-removed/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "translated-glyph",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "15fd0cbe323dd359278659b95e81388c17cc9f19667bd976642b243156f62998",
+        "report": "transforms-translated-glyph/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "thickened-sheared-border",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "3c710bfc868c554cda16c6edc9dea4f31f55b77d7a911c1c1306bb7ca6fe64a9",
+        "report": "transforms-thickened-sheared-border/report.json"
+      },
+      {
+        "caseId": "transforms",
+        "name": "cropped-miter-tip",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "a47980a1224ee5647c85952d8d6042dbf65df2751fbd00e0f8c8888bd82b3d7c",
+        "report": "transforms-cropped-miter-tip/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "missing-low-contrast-label",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "c6ad855f0706edd2017deb8f1ce036fd90898845f4d18ceff66a21312a3e9a6d",
+        "report": "colors-missing-low-contrast-label/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "missing-low-contrast-period",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "e5342b64e0476a96b2fb5c56e5d44bd2b33acc0da145d398525bf426b06933cf",
+        "report": "colors-missing-low-contrast-period/report.json"
+      },
+      {
+        "caseId": "colors",
+        "name": "CMYK-magenta-text",
+        "passed": true,
+        "expected": "mismatch",
+        "actual": "mismatch",
+        "numericBypassed": true,
+        "actualSha256": "6b6a8de166ab20047ed8f7435f9f4dcbf9c0e534b0b78a88c233cfd7ac66aa04",
+        "report": "colors-CMYK-magenta-text/report.json"
+      },
+      {
+        "name": "numeric-failure",
+        "passed": true,
+        "category": "combined verdict"
+      },
+      {
+        "name": "natural-height",
+        "passed": true,
+        "category": "natural dimension gate"
+      },
+      {
+        "name": "PDF-unapproved",
+        "passed": true,
+        "category": "bundle rejection"
+      },
+      {
+        "name": "empty-numeric",
+        "passed": true,
+        "category": "bundle rejection"
+      },
+      {
+        "name": "fitted-registration",
+        "passed": true,
+        "category": "bundle rejection"
+      }
+    ]
+  }
+}

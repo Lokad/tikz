@@ -88,7 +88,9 @@ This describes the historical trial retained below. The subsequent
 [native transform repair](../TikzReference/TRANSFORM-PRECISION.md) now passes
 every unchanged control and rejects all thirteen defects with the same fixed
 references and regional limits. The separate post-repair snapshot retains its
-implementation and artifact identities; no policy has been admitted.
+implementation and artifact identities. The subsequent
+[primary policy](INTERACTION-PRIMARY.md) admits these fixed global/regional
+limits for the three RGB/ink fixtures only.
 
 The checked-in [trial evidence](../../tests/Reference/NodeInteractionsRgb/mutation-trial.json)
 retains both completed outcomes and artifact/tool identities. It is an explicit
@@ -125,4 +127,6 @@ An interaction policy can be admitted only after independently calibrated
 global and regional gates pass unchanged candidates, relevant image defects
 are rejected, numeric gates remain strict, and representative paired images
 have been inspected. Ordinary PDF verification still needs its own independent
-cross-renderer evidence. No interaction or PDF allowance is approved here.
+cross-renderer evidence. The subsequent [primary policy](INTERACTION-PRIMARY.md)
+now meets those primary requirements and installs every pinned region. PDF
+allowances remain unapproved.

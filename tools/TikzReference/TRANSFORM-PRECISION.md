@@ -70,6 +70,7 @@ retains the outcomes, image/tool identities, and implementation source hashes.
 
 The global-only trial still accepts faint-period and short faint-stroke loss;
 regional gates remain necessary. Geometry/PDF and rectangle-node policies
-remain unchanged. Interaction primary policy admission and independent PDF
-calibration remain release gates; these passing prospective trials do not
-approve a new conformance policy.
+remain unchanged. The subsequent [primary interaction policy](../TikzVisual/INTERACTION-PRIMARY.md)
+now consumes the pinned independent limits with required regional gates.
+Independent PDF calibration remains a release gate; numeric transform evidence
+does not provide a PDF allowance.

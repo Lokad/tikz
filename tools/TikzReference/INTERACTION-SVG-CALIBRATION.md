@@ -83,4 +83,7 @@ The [regional follow-up](../TikzVisual/INTERACTION-REGIONS.md) now records two
 whole-image false passes, 3,132 independent local measurements, and image-only
 trials with the resulting prospective regional gates. The faint losses are
 rejected locally; unchanged transformed content exposes additional precision
-failures. Neither experiment admits an interaction policy.
+failures. Neither experiment itself admits an interaction policy. The subsequent
+[finite-transform repair](TRANSFORM-PRECISION.md) resolves those unchanged-control
+failures; the reviewed [primary policy](../TikzVisual/INTERACTION-PRIMARY.md) now
+consumes the unchanged global/regional evidence. PDF calibration remains separate.

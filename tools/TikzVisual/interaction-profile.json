@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-node-interactions-rgb-ink-v1",
+  "approvedPrimaryPolicy": true,
+  "scope": "state-paint, transforms, colors fixtures only; RGB, outlined Latin Modern, independent stroke-ink framing; primary SVG only",
+  "calibrationFile": "../../tests/Reference/NodeInteractionsRgb/calibration-ink.json",
+  "calibrationSha256": "181ec58a94e78b9dd37c00c81fcbff9524e547dc6131b2ac5a865f9bd7e2a71d",
+  "regionalFile": "../../tests/Reference/NodeInteractionsRgb/calibration-regions.json",
+  "regionalSha256": "aefbfc4d9c25b77b275fb9512c74e278511c759c063e44dac08481642d5b2eea",
+  "cases": {
+    "state-paint": { "numericChecks": 1210, "regions": 38, "maxDimensionErrorPixels": 0.0002, "primary": { "maxChannelError": 10, "maxMeanForegroundError": 0.005928, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 } },
+    "transforms": { "numericChecks": 953, "regions": 35, "maxDimensionErrorPixels": 0.0002, "primary": { "maxChannelError": 32, "maxMeanForegroundError": 0.026600, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 } },
+    "colors": { "numericChecks": 3110, "regions": 101, "maxDimensionErrorPixels": 0.0002, "primary": { "maxChannelError": 43, "maxMeanForegroundError": 0.006834, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 } }
+  }
+}
