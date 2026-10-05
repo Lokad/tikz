@@ -8,5 +8,6 @@
   <Folder Name="/tools/">
     <Project Path="tools/TikzFontData/TikzFontData.csproj" />
     <Project Path="tools/TikzReference/TikzReference.csproj" />
+    <Project Path="tools/TikzShapeReference/TikzShapeReference.csproj" />
   </Folder>
 </Solution>

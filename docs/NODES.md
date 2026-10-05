@@ -88,3 +88,9 @@ text wrapping, unsupported fonts/shapes, and `outer sep=auto` fail with diagnost
 See [testing instructions](TESTING.md) for cached public comparisons, image
 mutations, and explicit live verification. The original SVG, log, native trace,
 measurements, tool/font/input hashes, and probe-invariance evidence are retained.
+
+The separate [circle/ellipse shape oracle](../tools/TikzShapeReference/README.md)
+now provides independent native sizing, anchor, border, background-path, and
+transform measurements for 28 nodes. It prepares those future implementations;
+circle/ellipse nodes remain unsupported and have no candidate or image
+conformance claim.

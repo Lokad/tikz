@@ -32,6 +32,21 @@ browser. They cover independent bounds, anchors, path segments and paint,
 error behavior, limits, cancellation, culture independence, and
 repeated/concurrent conversion.
 
+The [circle/ellipse node oracle](../tools/TikzShapeReference/README.md) supplies
+independent native reference preparation for those future implementations:
+
+```text
+dotnet run --project tools/TikzShapeReference -c Release -- check-cached
+pwsh -NoProfile -File tools/TikzShapeReference/check-cached.ps1
+```
+
+The first command checks retained measurements, source/artifact provenance,
+probe invariance, and complete 28-node coverage. The second requires that Release
+build and tests unchanged, missing, tampered, and consistently rehashed evidence
+in isolated copies. Both are ordinary CI steps without TeX or a browser. Live
+`generate` and `verify` commands are documented separately. This native corpus
+does not establish candidate circle/ellipse support or image conformance.
+
 ## Cached visual conformance
 
 Install the pinned development-only browser tooling once:

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "pgf-3.1.11a-circle-ellipse-nodes-sp-v1",
+  "latexVersion": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+  "dvisvgmVersion": "dvisvgm 3.4.3",
+  "dviTypeVersion": "MiKTeX-DVITYPE 2.9.6300 (MiKTeX 25.4)",
+  "kpseVersion": "MiKTeX 25.4",
+  "pgfVersion": "3.1.11a",
+  "fontProfile": "latin-modern-ec-10-12-v1; node font and label font distinct; query font regular-10",
+  "scope": "native geometry and retained outlined SVG only; no candidate, PDF or approved image policy",
+  "processTimeoutSeconds": 60,
+  "maxCapturedCharacters": 1000000
+}

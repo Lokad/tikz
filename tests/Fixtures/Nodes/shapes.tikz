@@ -1,0 +1,36 @@
+% Independently authored circle/ellipse sizing and border-query fixtures.
+% The reference wrapper selects Latin Modern EC at 10pt.
+\begin{tikzpicture}
+  \node[draw,circle] (c-regular) at (-70pt,0pt) {AV To ffi};
+  \node[draw,circle] (c-empty) at (-70pt,-40pt) {};
+  \node[draw,circle] (c-period) at (-70pt,-80pt) {.};
+  \node[draw,circle] (c-descenders) at (-70pt,-120pt) {gyp};
+  \node[draw,circle,align=center] (c-lines) at (-70pt,-160pt) {AV\\gyp};
+  \node[draw,circle,minimum size=28pt] (c-minimum) at (-70pt,-200pt) {.};
+  \node[draw,circle,minimum width=36pt,minimum height=8pt] (c-width) at (-70pt,-240pt) {.};
+  \node[draw,circle,minimum width=8pt,minimum height=36pt] (c-height) at (-70pt,-280pt) {.};
+  \node[draw,circle,inner xsep=1.25pt,inner ysep=4.5pt,outer xsep=.125pt,outer ysep=2.75pt] (c-separation) at (-70pt,-320pt) {gyp};
+  \node[draw,circle,inner xsep=-2pt,inner ysep=-1pt,outer xsep=-.25pt,outer ysep=-.5pt] (c-negative) at (-70pt,-360pt) {Wide};
+  \node[draw,circle,inner xsep=101sp,inner ysep=203sp,outer xsep=1sp,outer ysep=3sp,minimum width=65537sp,minimum height=131073sp] (c-odd) at (-70pt,-400pt) {.};
+  \node[draw,circle,node font=\large\bfseries,font=\mdseries\itshape] (c-font) at (-70pt,-440pt) {AV gyp};
+  \node[draw,circle,rotate=30,anchor=base] (c-rotate) at (-70pt,-480pt) {gyp};
+  \begin{scope}[cm={1,.25,.4,1,(0pt,0pt)}]
+    \node[draw,circle,transform shape,anchor=north] (c-shear) at (-70pt,-520pt) {AV};
+  \end{scope}
+  \node[draw,ellipse] (e-regular) at (70pt,0pt) {AV To ffi};
+  \node[draw,ellipse] (e-empty) at (70pt,-40pt) {};
+  \node[draw,ellipse] (e-period) at (70pt,-80pt) {.};
+  \node[draw,ellipse] (e-descenders) at (70pt,-120pt) {gyp};
+  \node[draw,ellipse,align=center] (e-lines) at (70pt,-160pt) {AV\\gyp};
+  \node[draw,ellipse,minimum size=28pt] (e-minimum) at (70pt,-200pt) {.};
+  \node[draw,ellipse,minimum width=36pt,minimum height=8pt] (e-width) at (70pt,-240pt) {.};
+  \node[draw,ellipse,minimum width=8pt,minimum height=36pt] (e-height) at (70pt,-280pt) {.};
+  \node[draw,ellipse,inner xsep=1.25pt,inner ysep=4.5pt,outer xsep=.125pt,outer ysep=2.75pt] (e-separation) at (70pt,-320pt) {gyp};
+  \node[draw,ellipse,inner xsep=-2pt,inner ysep=-1pt,outer xsep=-.25pt,outer ysep=-.5pt] (e-negative) at (70pt,-360pt) {Wide};
+  \node[draw,ellipse,inner xsep=101sp,inner ysep=203sp,outer xsep=1sp,outer ysep=3sp,minimum width=65537sp,minimum height=131073sp] (e-odd) at (70pt,-400pt) {.};
+  \node[draw,ellipse,node font=\large\bfseries,font=\mdseries\itshape] (e-font) at (70pt,-440pt) {AV gyp};
+  \node[draw,ellipse,rotate=30,anchor=base] (e-rotate) at (70pt,-480pt) {gyp};
+  \begin{scope}[cm={1,.25,.4,1,(0pt,0pt)}]
+    \node[draw,ellipse,transform shape,anchor=north] (e-shear) at (70pt,-520pt) {AV};
+  \end{scope}
+\end{tikzpicture}
