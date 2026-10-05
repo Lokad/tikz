@@ -443,5 +443,9 @@ The separate [border regional experiments](../tools/TikzVisual/BORDER-REGIONS.md
 retain 2,520 independent primary and 1,144 native-page PDF measurements, with
 27 passing controls/defects in each trial. A missing short line passes global
 primary gates but fails its local gate; PDF rejects it independently. These
-are unapproved research limits. Guarded policy admission and required CI routing
-remain pending.
+remain unapproved research limits. The separately pinned
+[combined border route](../tools/TikzVisual/BORDER-CONFORMANCE.md) now consumes
+those unchanged snapshots, recomputes all allowances, validates complete native
+and regional evidence, and requires both SVG-versus-PDF checks. Fresh conversion
+and its comparator/policy checks are required visual CI steps; hosted execution
+remains unverified.

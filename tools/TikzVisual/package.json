@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "scripts": { "compare": "node compare.mjs", "test": "node self-test.mjs", "test:fonts": "node font-self-test.mjs", "test:text": "node text-self-test.mjs", "test:nodes": "node node-self-test.mjs", "test:interaction-crops": "node interaction-crop-self-test.mjs", "test:regions": "node regional-self-test.mjs", "test:interaction-primary": "node interaction-primary-self-test.mjs", "test:pdf-regions": "node pdf-region-self-test.mjs", "test:interaction-pdf": "node interaction-pdf-self-test.mjs" },
+  "scripts": { "compare": "node compare.mjs", "test": "node self-test.mjs", "test:fonts": "node font-self-test.mjs", "test:text": "node text-self-test.mjs", "test:nodes": "node node-self-test.mjs", "test:interaction-crops": "node interaction-crop-self-test.mjs", "test:regions": "node regional-self-test.mjs", "test:interaction-primary": "node interaction-primary-self-test.mjs", "test:pdf-regions": "node pdf-region-self-test.mjs", "test:interaction-pdf": "node interaction-pdf-self-test.mjs", "test:borders": "node border-self-test.mjs" },
   "devDependencies": { "playwright": "1.63.0" }
 }

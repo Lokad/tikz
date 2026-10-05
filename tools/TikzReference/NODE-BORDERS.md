@@ -113,5 +113,8 @@ by this experiment. The separate
 [regional experiments](../TikzVisual/BORDER-REGIONS.md) now retain 2,520 primary
 and 1,144 PDF oracle-only measurements. Primary and independent PDF trials each
 pass 27 controls/defects, including rejection in the affected miter/short-line
-regions. These prospective limits are unapproved; a guarded combined route and
-its policy-validation checks remain required before admission.
+regions. Those experiment records stay unapproved. The separately pinned
+[combined policy](../TikzVisual/BORDER-CONFORMANCE.md) now validates their
+provenance/coverage, recomputes limits, and admits all three cases through fresh
+native/ink/frame, primary, and ordinary PDF gates. Its original driver comparison
+remains available; no other shape or labeled-border family inherits this policy.

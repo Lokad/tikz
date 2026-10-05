@@ -3,7 +3,8 @@
 These experiments cover the three unlabelled rectangle-border fixtures in
 `tests/Reference/NodeBorders/path-cases.json`. They establish prospective primary
 and ordinary PDF limits independently, then test those limits against unchanged
-public conversions and deliberate image defects. **No policy is admitted.**
+public conversions and deliberate image defects. **Research records stay
+unapproved.** The separately pinned combined route is documented below.
 Original driver comparisons and their exact failures remain available.
 
 The [native frame](../TikzReference/NODE-BORDERS.md) derives the expanded viewport
@@ -73,9 +74,8 @@ and enlarged `*-inspection.png` contact sheets for image-viewing tools.
 Nearest-neighbour enlargements are presentation; raw captures determine the
 verdict. Representative unchanged primary and mutated PDF images were inspected.
 
-Next implement a guarded, separately pinned combined conformance route. Validate
-complete fixture/provenance/region coverage, recompute all allowances from the
-independent snapshots, require numeric/natural-size/primary/PDF gates on both
-SVG sides, and reject missing/tampered evidence or weaker caller limits. Test
-that route before advertising this family. Existing geometry and node
-interaction policies remain separate.
+The separately reviewed [combined conformance route](BORDER-CONFORMANCE.md) now
+pins these unchanged measurements and trials, validates complete provenance and
+coverage, recomputes all allowances, and requires numeric/natural-size/primary/
+PDF gates on both SVG sides. The research commands above remain unapproved
+experiments. Existing geometry and node interaction policies remain separate.

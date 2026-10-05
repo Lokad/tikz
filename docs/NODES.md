@@ -78,8 +78,11 @@ Bare rectangle-node endpoints now resolve borders for straight, orthogonal,
 and explicit-control cubic segments. A chain starts a separate outgoing subpath
 at each implicit node; explicit anchors retain their specified positions.
 The [border experiment](../tools/TikzReference/NODE-BORDERS.md) has independent
-native arithmetic/path evidence, including transformed queries. Its image
-admission remains pending, with original SVG/PDF mismatches retained. Math,
+native arithmetic/path evidence, including transformed queries. Its separate
+[combined image policy](../tools/TikzVisual/BORDER-CONFORMANCE.md) now admits the
+three unlabelled fixtures with native, stroke-frame, primary, and PDF gates;
+original driver mismatches remain retained. Labeled border interactions still
+need their own fixtures. Math,
 text wrapping, unsupported fonts/shapes, and `outer sep=auto` fail with diagnostics.
 
 See [testing instructions](TESTING.md) for cached public comparisons, image

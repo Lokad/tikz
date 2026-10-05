@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "completed": true,
+  "approvedConformance": true,
+  "policyId": "chromium-153-rectangle-borders-ink-pdf-v1",
+  "policySha256": "d427bccd8f1a27f441f66637b3d878034f7496ec0b0e5e869e725286ac877278",
+  "scope": "Three unlabelled rectangle-border path fixtures only; independent stroke-ink frame; calibrated primary SVG and white-paper ordinary PDF; native numeric, ink/frame, whole-picture and all regional gates required",
+  "expectedCases": [
+    "node-border-lines",
+    "node-border-paths",
+    "node-border-transforms"
+  ],
+  "fidelity": "Calibrated primary match and ordinary PDF cross-check under independent stroke-ink framing; original driver comparisons retained",
+  "numericChecks": 991,
+  "primaryRegionalChecks": 840,
+  "pdfChecksPerSvgSide": 286,
+  "ordinaryTests": {
+    "passed": 164,
+    "failed": 0,
+    "skipped": 0,
+    "command": "dotnet test Lokad.TikZ.slnx --no-restore"
+  },
+  "comparatorPolicyChecks": 80,
+  "combinedSuiteSha256": "44577fd57cc8a92a3af34435b7fba7563ee07f3916450c6b66cd1520b9ebf2a1",
+  "selfTestSuiteSha256": "0fc9a2e6633d47e94540e1903aaf911470d40294cef866ba655e265fa8f71a52",
+  "evidence": {
+    "frame": {
+      "file": "tests/Reference/NodeBorders/framing.json",
+      "sha256": "bc81235eff7f094214cf8ce55da806201e347a6a169bd5492cb0c59886b0c18f"
+    },
+    "primary": {
+      "file": "tests/Reference/NodeBorders/primary-regions.json",
+      "sha256": "9f5516187c55743e5ee9edc52f99805da061249b37e7c5d571fe46fa8b76c593"
+    },
+    "pdf": {
+      "file": "tests/Reference/NodeBorders/pdf-regions.json",
+      "sha256": "d44a654d1af8475e848e1701fb4878904f8128cec659f8983e886275e1014c3c"
+    },
+    "primaryTrial": {
+      "file": "tests/Reference/NodeBorders/primary-region-trial.json",
+      "sha256": "b26628dd483d89b585d06518ca88607de0e104a5710197e1881b17728a54be05"
+    },
+    "pdfTrial": {
+      "file": "tests/Reference/NodeBorders/pdf-region-trial.json",
+      "sha256": "c732ff5e738c7c95814f33b33f3dc31d24820b3991b6a9f21b23da024b39eeb0"
+    }
+  },
+  "guardToolHashes": {
+    "tools/TikzVisual/border-policy.mjs": "f773658b7bc1a3189a24f5f3424be123ef686fb8b3a20567e0b747b021574290",
+    "tools/TikzVisual/border-numeric.mjs": "cfe9aa29b3e8bc46a39ab13cbe4ef513cf668b3ec5eaf191d64c7a82b1bf51cb",
+    "tools/TikzVisual/border-conformance.mjs": "fa5fff8b2659985c4ad2d5a0a8ee96f48aca94345cd4c98774d75ff32385b01b",
+    "tools/TikzVisual/compare-border-conformance.mjs": "73b2626cd0ddd754158c19d62b546759cb6078f9de802e0b9bb26d8c318f4fd7",
+    "tools/TikzVisual/border-self-test.mjs": "2a2455765e8bd78dd9d6c2b0838f742851d7be35d0ccdda45aa745cb5f43a1cf",
+    "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+    "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
+    "tools/TikzVisual/pdf-region-renderer.mjs": "4fcd4cf232ba9a6927def4ff64dc908021f7f3271e39f9236da2200e43e39b5b",
+    "tools/TikzVisual/pdf-region-verdict.mjs": "c58d7082e7a62be8e66f4033914ebaf157cacac7adf588b4329d5235038bc6f6",
+    "tools/TikzVisual/pdf-native-geometry.mjs": "5882f621580b80e579b8c73b4578d50abb3c332d408d5b3016b2cac52dd41089"
+  },
+  "commands": [
+    "node tools/TikzVisual/compare-border-conformance.mjs",
+    "npm run test:borders --prefix tools/TikzVisual"
+  ],
+  "requiredVisualCi": true,
+  "hostedExecutionVerified": false,
+  "cases": [
+    {
+      "caseId": "node-border-lines",
+      "verdict": "pass",
+      "report": "node-border-lines/report.json",
+      "originalReport": "original/node-border-lines/report.json",
+      "numericChecks": 344,
+      "primaryRegions": 240,
+      "oraclePdfRegions": 82,
+      "candidatePdfRegions": 82,
+      "reportSha256": "26cf925102806b38ca0afb4a8ad6b3e757e161c1b37ba2162896e1af81a09d24",
+      "renderer": {
+        "profile": "chromium-153-geometry-v3",
+        "playwright": "1.63.0",
+        "browser": "153.0.8010.12",
+        "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+        "os": "win32",
+        "osRelease": "10.0.19045",
+        "architecture": "x64",
+        "node": "v24.12.0",
+        "headless": true,
+        "deviceScaleFactor": 1,
+        "viewport": {
+          "width": 1200,
+          "height": 900
+        },
+        "launchArguments": [
+          "--disable-gpu",
+          "--force-color-profile=srgb"
+        ],
+        "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+      },
+      "candidateProvenance": {
+        "schemaVersion": 1,
+        "commit": "c874df877b8d0fdf56ae7eda7130bd821b78fc3c",
+        "workingTreeSha256": "883426c06ee55449da61b8e8dc99ce4531323acfcb935b37d10004de18015ca3",
+        "configuration": "Release",
+        "assemblySha256": "26da54d86150781908beac42fbf46aa23459b68bb54251e0f8b5f70aad8e81c7",
+        "options": {
+          "inputKind": 0,
+          "limits": {
+            "maxSourceCharacters": 1048576,
+            "maxNesting": 128,
+            "maxExpressionDepth": 64,
+            "maxExpansionDepth": 64,
+            "maxExpandedTokens": 1000000,
+            "maxLoopIterations": 100000,
+            "maxNodes": 10000,
+            "maxSegments": 100000,
+            "maxGlyphs": 100000,
+            "maxWork": 10000000,
+            "maxOutputBytes": 16777216,
+            "maxDiagnostics": 100,
+            "maxCoordinatePixels": 10000000
+          },
+          "paddingPixels": 0,
+          "idPrefix": "candidate",
+          "libraries": []
+        }
+      }
+    },
+    {
+      "caseId": "node-border-paths",
+      "verdict": "pass",
+      "report": "node-border-paths/report.json",
+      "originalReport": "original/node-border-paths/report.json",
+      "numericChecks": 350,
+      "primaryRegions": 306,
+      "oraclePdfRegions": 104,
+      "candidatePdfRegions": 104,
+      "reportSha256": "dcd75c5a4cabe61baa81504363f2cf68083134875c52249ff6b7cfb6d5c8e803",
+      "renderer": {
+        "profile": "chromium-153-geometry-v3",
+        "playwright": "1.63.0",
+        "browser": "153.0.8010.12",
+        "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+        "os": "win32",
+        "osRelease": "10.0.19045",
+        "architecture": "x64",
+        "node": "v24.12.0",
+        "headless": true,
+        "deviceScaleFactor": 1,
+        "viewport": {
+          "width": 1200,
+          "height": 900
+        },
+        "launchArguments": [
+          "--disable-gpu",
+          "--force-color-profile=srgb"
+        ],
+        "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+      },
+      "candidateProvenance": {
+        "schemaVersion": 1,
+        "commit": "c874df877b8d0fdf56ae7eda7130bd821b78fc3c",
+        "workingTreeSha256": "883426c06ee55449da61b8e8dc99ce4531323acfcb935b37d10004de18015ca3",
+        "configuration": "Release",
+        "assemblySha256": "26da54d86150781908beac42fbf46aa23459b68bb54251e0f8b5f70aad8e81c7",
+        "options": {
+          "inputKind": 0,
+          "limits": {
+            "maxSourceCharacters": 1048576,
+            "maxNesting": 128,
+            "maxExpressionDepth": 64,
+            "maxExpansionDepth": 64,
+            "maxExpandedTokens": 1000000,
+            "maxLoopIterations": 100000,
+            "maxNodes": 10000,
+            "maxSegments": 100000,
+            "maxGlyphs": 100000,
+            "maxWork": 10000000,
+            "maxOutputBytes": 16777216,
+            "maxDiagnostics": 100,
+            "maxCoordinatePixels": 10000000
+          },
+          "paddingPixels": 0,
+          "idPrefix": "candidate",
+          "libraries": []
+        }
+      }
+    },
+    {
+      "caseId": "node-border-transforms",
+      "verdict": "pass",
+      "report": "node-border-transforms/report.json",
+      "originalReport": "original/node-border-transforms/report.json",
+      "numericChecks": 297,
+      "primaryRegions": 294,
+      "oraclePdfRegions": 100,
+      "candidatePdfRegions": 100,
+      "reportSha256": "b175f10c19413f43ef7a7afbf73f8ef5f937659d855cc57c37e42c8c3820cd75",
+      "renderer": {
+        "profile": "chromium-153-geometry-v3",
+        "playwright": "1.63.0",
+        "browser": "153.0.8010.12",
+        "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+        "os": "win32",
+        "osRelease": "10.0.19045",
+        "architecture": "x64",
+        "node": "v24.12.0",
+        "headless": true,
+        "deviceScaleFactor": 1,
+        "viewport": {
+          "width": 1200,
+          "height": 900
+        },
+        "launchArguments": [
+          "--disable-gpu",
+          "--force-color-profile=srgb"
+        ],
+        "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+      },
+      "candidateProvenance": {
+        "schemaVersion": 1,
+        "commit": "c874df877b8d0fdf56ae7eda7130bd821b78fc3c",
+        "workingTreeSha256": "883426c06ee55449da61b8e8dc99ce4531323acfcb935b37d10004de18015ca3",
+        "configuration": "Release",
+        "assemblySha256": "26da54d86150781908beac42fbf46aa23459b68bb54251e0f8b5f70aad8e81c7",
+        "options": {
+          "inputKind": 0,
+          "limits": {
+            "maxSourceCharacters": 1048576,
+            "maxNesting": 128,
+            "maxExpressionDepth": 64,
+            "maxExpansionDepth": 64,
+            "maxExpandedTokens": 1000000,
+            "maxLoopIterations": 100000,
+            "maxNodes": 10000,
+            "maxSegments": 100000,
+            "maxGlyphs": 100000,
+            "maxWork": 10000000,
+            "maxOutputBytes": 16777216,
+            "maxDiagnostics": 100,
+            "maxCoordinatePixels": 10000000
+          },
+          "paddingPixels": 0,
+          "idPrefix": "candidate",
+          "libraries": []
+        }
+      }
+    }
+  ]
+}
