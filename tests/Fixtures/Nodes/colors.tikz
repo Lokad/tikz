@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+  \node[draw=black,text=black,fill=gray!20] (black) at (0pt,0pt) {Ag.};
+  \node[draw=white,text=white,fill=gray!20] (white) at (35pt,0pt) {Ag.};
+  \node[draw=red,text=red,fill=gray!20] (red) at (70pt,0pt) {Ag.};
+  \node[draw=green,text=green,fill=gray!20] (green) at (105pt,0pt) {Ag.};
+  \node[draw=blue,text=blue,fill=gray!20] (blue) at (140pt,0pt) {Ag.};
+  \node[draw=cyan,text=cyan,fill=gray!20] (cyan) at (0pt,25pt) {Ag.};
+  \node[draw=magenta,text=magenta,fill=gray!20] (magenta) at (35pt,25pt) {Ag.};
+  \node[draw=yellow,text=yellow,fill=gray!20] (yellow) at (70pt,25pt) {Ag.};
+  \node[draw=gray,text=gray,fill=gray!20] (gray) at (105pt,25pt) {Ag.};
+  \node[draw=darkgray,text=darkgray,fill=gray!20] (darkgray) at (140pt,25pt) {Ag.};
+  \node[draw=lightgray,text=lightgray,fill=gray!20] (lightgray) at (0pt,50pt) {Ag.};
+  \node[draw=orange,text=orange,fill=gray!20] (orange) at (35pt,50pt) {Ag.};
+  \node[draw=violet,text=violet,fill=gray!20] (violet) at (70pt,50pt) {Ag.};
+  \node[draw=purple,text=purple,fill=gray!20] (purple) at (105pt,50pt) {Ag.};
+  \node[draw=brown,text=brown,fill=gray!20] (brown) at (140pt,50pt) {Ag.};
+  \node[draw=pink,text=pink,fill=gray!20] (pink) at (0pt,75pt) {Ag.};
+  \node[draw=lime,text=lime,fill=gray!20] (lime) at (35pt,75pt) {Ag.};
+  \node[draw=olive,text=olive,fill=gray!20] (olive) at (70pt,75pt) {Ag.};
+  \node[draw=teal,text=teal,fill=gray!20] (teal) at (105pt,75pt) {Ag.};
+  \node[draw=magenta!50,text=magenta!50,fill=gray!20] (magenta-white) at (140pt,75pt) {Ag.};
+  \node[draw=cyan!25!red,text=cyan!25!red,fill=gray!20] (cyan-red) at (0pt,100pt) {Ag.};
+  \node[draw=yellow!30!blue,text=yellow!30!blue,fill=gray!20] (yellow-blue) at (35pt,100pt) {Ag.};
+  \node[draw=red!50!blue!50!black,text=red!50!blue!50!black,fill=gray!20] (chained) at (70pt,100pt) {Ag.};
+  \node[draw=magenta!33.333!cyan,text=magenta!33.333!cyan,fill=gray!20] (fractional) at (105pt,100pt) {Ag.};
+  \begin{scope}[color=magenta!25!blue,opacity=.4]
+    \node[draw,fill=gray!20] (scope-color) at (140pt,100pt) {Ag.};
+  \end{scope}
+  \coordinate (start) at (magenta.east);
+  \coordinate (end) at (chained.west);
+  \draw[cyan!25!red,line width=.6pt] (start) -- (end);
+\end{tikzpicture}

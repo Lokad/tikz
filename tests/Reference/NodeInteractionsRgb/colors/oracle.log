@@ -1,0 +1,2982 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=latex 2025.9.25)  5 OCT 2026 04:48
+entering extended mode
+ %&-line parsing enabled.
+**./case.tex
+(case.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\article.
+cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.c
+lo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.
+sty
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.st
+y
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor
+.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: dvips.def on input line 274.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\
+dvips.def
+File: dvips.def 2022/09/22 v3.1e Graphics/color driver for dvips
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\math
+color.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+LOKAD-COLOR-PROFILE xcolor-rgb-v1
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendl
+ayer\tikz.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgf.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfrcs.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-common.tex
+\pgfutil@everybye=\toks17
+\pgfutil@tempdima=\dimen149
+\pgfutil@tempdimb=\dimen150
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-latex.def
+\pgfutil@abb=\box53
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfrcs.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.rev
+ision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgfcore.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyv
+al.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig
+.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 106.
+)
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlay
+er\pgfsys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks21
+))
+\pgf@x=\dimen153
+\pgf@y=\dimen154
+\pgf@xa=\dimen155
+\pgf@ya=\dimen156
+\pgf@xb=\dimen157
+\pgf@yb=\dimen158
+\pgf@xc=\dimen159
+\pgf@yc=\dimen160
+\pgf@xd=\dimen161
+\pgf@yd=\dimen162
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count287
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-dvisvgm.def
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-dvisvgm.def
+File: pgfsys-dvisvgm.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-common-svg.def
+File: pgfsys-common-svg.def 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@sys@svg@objectcount=\count288
+\pgf@sys@svg@scopecount=\count289
+\pgf@sys@svg@type@count=\count290
+\pgf@sys@svg@canvascount=\count291
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count292
+\pgfsyssoftpath@bigbuffer@items=\count293
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathutil.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathparser.code.tex
+\pgfmath@dimen=\dimen163
+\pgfmath@count=\count294
+\pgfmath@box=\box54
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.basic.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.trigonometric.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.random.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.comparison.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.base.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.round.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.misc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.integerarithmetics.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathcalc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count295
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fint.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen164
+\pgf@picmaxx=\dimen165
+\pgf@picminy=\dimen166
+\pgf@picmaxy=\dimen167
+\pgf@pathminx=\dimen168
+\pgf@pathmaxx=\dimen169
+\pgf@pathminy=\dimen170
+\pgf@pathmaxy=\dimen171
+\pgf@xx=\dimen172
+\pgf@xy=\dimen173
+\pgf@yx=\dimen174
+\pgf@yy=\dimen175
+\pgf@zx=\dimen176
+\pgf@zy=\dimen177
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen178
+\pgf@path@lasty=\dimen179
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen180
+\pgf@shorten@start@additional=\dimen181
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count296
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen182
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen183
+\pgf@pt@y=\dimen184
+\pgf@pt@temp=\dimen185
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen186
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen187
+\pgf@sys@shading@range@num=\count297
+\pgf@shadingcount=\count298
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box58
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box59
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen188
+\pgf@nodesepend=\dimen189
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgffor.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfkeys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfm
+ath.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen190
+\pgffor@skip=\dimen191
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz\tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/librari
+es\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count299
+\pgfplotmarksize=\dimen192
+)
+\tikz@lastx=\dimen193
+\tikz@lasty=\dimen194
+\tikz@lastxsaved=\dimen195
+\tikz@lastysaved=\dimen196
+\tikz@lastmovetox=\dimen197
+\tikz@lastmovetoy=\dimen198
+\tikzleveldistance=\dimen199
+\tikzsiblingdistance=\dimen256
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count300
+\tikznumberofchildren=\count301
+\tikznumberofcurrentchild=\count302
+\tikz@fig@count=\count303
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count304
+\pgfmatrixcurrentcolumn=\count305
+\pgf@matrix@numberofcolumns=\count306
+)
+\tikz@expandcount=\count307
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+LOKAD-PGF-VERSION 3.1.11a
+\lokadpicture=\box64
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 86
+.
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3b
+ackend-dvips.def
+File: l3backend-dvips.def 2025-06-09 L3 backend support: dvips
+\l__pdfannot_backend_content_box=\box65
+\l__pdfannot_backend_model_box=\box66
+\g__pdfannot_backend_int=\count308
+\g__pdfannot_backend_link_int=\count309
+\g__pdfannot_backend_link_sf_int=\count310
+)
+No file case.aux.
+\openout1 = `case.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+(case.tikz
+LOKAD-NODE black width=1001243
+LOKAD-NODE black height=451461
+LOKAD-NODE black depth=127430
+LOKAD-NODE black linewidth=26214
+LOKAD-NODE black quad=655360
+LOKAD-NODE black xheight=282165
+LOKAD-NODE black innerx=218430
+LOKAD-NODE black innery=218430
+LOKAD-NODE black outerx=13107
+LOKAD-NODE black outery=13107
+LOKAD-NODE black minimumwidth=65536
+LOKAD-NODE black minimumheight=65536
+LOKAD-RECT black sw=-719051;-507875
+LOKAD-RECT black ne=719051;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{-7.74956pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME black;1.0;0.0;0.0;1.0;-500621;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE white width=1001243
+LOKAD-NODE white height=451461
+LOKAD-NODE white depth=127430
+LOKAD-NODE white linewidth=26214
+LOKAD-NODE white quad=655360
+LOKAD-NODE white xheight=282165
+LOKAD-NODE white innerx=218430
+LOKAD-NODE white innery=218430
+LOKAD-NODE white outerx=13107
+LOKAD-NODE white outery=13107
+LOKAD-NODE white minimumwidth=65536
+LOKAD-NODE white minimumheight=65536
+LOKAD-RECT white sw=1574709;-507875
+LOKAD-RECT white ne=3012811;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{-7.74956pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME white;1.0;0.0;0.0;1.0;1793139;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE red width=1001243
+LOKAD-NODE red height=451461
+LOKAD-NODE red depth=127430
+LOKAD-NODE red linewidth=26214
+LOKAD-NODE red quad=655360
+LOKAD-NODE red xheight=282165
+LOKAD-NODE red innerx=218430
+LOKAD-NODE red innery=218430
+LOKAD-NODE red outerx=13107
+LOKAD-NODE red outery=13107
+LOKAD-NODE red minimumwidth=65536
+LOKAD-NODE red minimumheight=65536
+LOKAD-RECT red sw=3868469;-507875
+LOKAD-RECT red ne=5306571;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{-7.74956pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME red;1.0;0.0;0.0;1.0;4086899;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE green width=1001243
+LOKAD-NODE green height=451461
+LOKAD-NODE green depth=127430
+LOKAD-NODE green linewidth=26214
+LOKAD-NODE green quad=655360
+LOKAD-NODE green xheight=282165
+LOKAD-NODE green innerx=218430
+LOKAD-NODE green innery=218430
+LOKAD-NODE green outerx=13107
+LOKAD-NODE green outery=13107
+LOKAD-NODE green minimumwidth=65536
+LOKAD-NODE green minimumheight=65536
+LOKAD-RECT green sw=6162229;-507875
+LOKAD-RECT green ne=7600331;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{-7.74956pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME green;1.0;0.0;0.0;1.0;6380659;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE blue width=1001243
+LOKAD-NODE blue height=451461
+LOKAD-NODE blue depth=127430
+LOKAD-NODE blue linewidth=26214
+LOKAD-NODE blue quad=655360
+LOKAD-NODE blue xheight=282165
+LOKAD-NODE blue innerx=218430
+LOKAD-NODE blue innery=218430
+LOKAD-NODE blue outerx=13107
+LOKAD-NODE blue outery=13107
+LOKAD-NODE blue minimumwidth=65536
+LOKAD-NODE blue minimumheight=65536
+LOKAD-RECT blue sw=8455989;-507875
+LOKAD-RECT blue ne=9894091;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{-7.74956pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME blue;1.0;0.0;0.0;1.0;8674419;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE cyan width=1001243
+LOKAD-NODE cyan height=451461
+LOKAD-NODE cyan depth=127430
+LOKAD-NODE cyan linewidth=26214
+LOKAD-NODE cyan quad=655360
+LOKAD-NODE cyan xheight=282165
+LOKAD-NODE cyan innerx=218430
+LOKAD-NODE cyan innery=218430
+LOKAD-NODE cyan outerx=13107
+LOKAD-NODE cyan outery=13107
+LOKAD-NODE cyan minimumwidth=65536
+LOKAD-NODE cyan minimumheight=65536
+LOKAD-RECT cyan sw=-719051;1130525
+LOKAD-RECT cyan ne=719051;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{17.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME cyan;1.0;0.0;0.0;1.0;-500621;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE magenta width=1001243
+LOKAD-NODE magenta height=451461
+LOKAD-NODE magenta depth=127430
+LOKAD-NODE magenta linewidth=26214
+LOKAD-NODE magenta quad=655360
+LOKAD-NODE magenta xheight=282165
+LOKAD-NODE magenta innerx=218430
+LOKAD-NODE magenta innery=218430
+LOKAD-NODE magenta outerx=13107
+LOKAD-NODE magenta outery=13107
+LOKAD-NODE magenta minimumwidth=65536
+LOKAD-NODE magenta minimumheight=65536
+LOKAD-RECT magenta sw=1574709;1130525
+LOKAD-RECT magenta ne=3012811;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{17.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME magenta;1.0;0.0;0.0;1.0;1793139;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE yellow width=1001243
+LOKAD-NODE yellow height=451461
+LOKAD-NODE yellow depth=127430
+LOKAD-NODE yellow linewidth=26214
+LOKAD-NODE yellow quad=655360
+LOKAD-NODE yellow xheight=282165
+LOKAD-NODE yellow innerx=218430
+LOKAD-NODE yellow innery=218430
+LOKAD-NODE yellow outerx=13107
+LOKAD-NODE yellow outery=13107
+LOKAD-NODE yellow minimumwidth=65536
+LOKAD-NODE yellow minimumheight=65536
+LOKAD-RECT yellow sw=3868469;1130525
+LOKAD-RECT yellow ne=5306571;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{17.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME yellow;1.0;0.0;0.0;1.0;4086899;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE gray width=1001243
+LOKAD-NODE gray height=451461
+LOKAD-NODE gray depth=127430
+LOKAD-NODE gray linewidth=26214
+LOKAD-NODE gray quad=655360
+LOKAD-NODE gray xheight=282165
+LOKAD-NODE gray innerx=218430
+LOKAD-NODE gray innery=218430
+LOKAD-NODE gray outerx=13107
+LOKAD-NODE gray outery=13107
+LOKAD-NODE gray minimumwidth=65536
+LOKAD-NODE gray minimumheight=65536
+LOKAD-RECT gray sw=6162229;1130525
+LOKAD-RECT gray ne=7600331;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{17.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME gray;1.0;0.0;0.0;1.0;6380659;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE darkgray width=1001243
+LOKAD-NODE darkgray height=451461
+LOKAD-NODE darkgray depth=127430
+LOKAD-NODE darkgray linewidth=26214
+LOKAD-NODE darkgray quad=655360
+LOKAD-NODE darkgray xheight=282165
+LOKAD-NODE darkgray innerx=218430
+LOKAD-NODE darkgray innery=218430
+LOKAD-NODE darkgray outerx=13107
+LOKAD-NODE darkgray outery=13107
+LOKAD-NODE darkgray minimumwidth=65536
+LOKAD-NODE darkgray minimumheight=65536
+LOKAD-RECT darkgray sw=8455989;1130525
+LOKAD-RECT darkgray ne=9894091;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{17.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME darkgray;1.0;0.0;0.0;1.0;8674419;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE lightgray width=1001243
+LOKAD-NODE lightgray height=451461
+LOKAD-NODE lightgray depth=127430
+LOKAD-NODE lightgray linewidth=26214
+LOKAD-NODE lightgray quad=655360
+LOKAD-NODE lightgray xheight=282165
+LOKAD-NODE lightgray innerx=218430
+LOKAD-NODE lightgray innery=218430
+LOKAD-NODE lightgray outerx=13107
+LOKAD-NODE lightgray outery=13107
+LOKAD-NODE lightgray minimumwidth=65536
+LOKAD-NODE lightgray minimumheight=65536
+LOKAD-RECT lightgray sw=-719051;2768925
+LOKAD-RECT lightgray ne=719051;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{42.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME lightgray;1.0;0.0;0.0;1.0;-500621;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE orange width=1001243
+LOKAD-NODE orange height=451461
+LOKAD-NODE orange depth=127430
+LOKAD-NODE orange linewidth=26214
+LOKAD-NODE orange quad=655360
+LOKAD-NODE orange xheight=282165
+LOKAD-NODE orange innerx=218430
+LOKAD-NODE orange innery=218430
+LOKAD-NODE orange outerx=13107
+LOKAD-NODE orange outery=13107
+LOKAD-NODE orange minimumwidth=65536
+LOKAD-NODE orange minimumheight=65536
+LOKAD-RECT orange sw=1574709;2768925
+LOKAD-RECT orange ne=3012811;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{42.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME orange;1.0;0.0;0.0;1.0;1793139;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE violet width=1001243
+LOKAD-NODE violet height=451461
+LOKAD-NODE violet depth=127430
+LOKAD-NODE violet linewidth=26214
+LOKAD-NODE violet quad=655360
+LOKAD-NODE violet xheight=282165
+LOKAD-NODE violet innerx=218430
+LOKAD-NODE violet innery=218430
+LOKAD-NODE violet outerx=13107
+LOKAD-NODE violet outery=13107
+LOKAD-NODE violet minimumwidth=65536
+LOKAD-NODE violet minimumheight=65536
+LOKAD-RECT violet sw=3868469;2768925
+LOKAD-RECT violet ne=5306571;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{42.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME violet;1.0;0.0;0.0;1.0;4086899;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE purple width=1001243
+LOKAD-NODE purple height=451461
+LOKAD-NODE purple depth=127430
+LOKAD-NODE purple linewidth=26214
+LOKAD-NODE purple quad=655360
+LOKAD-NODE purple xheight=282165
+LOKAD-NODE purple innerx=218430
+LOKAD-NODE purple innery=218430
+LOKAD-NODE purple outerx=13107
+LOKAD-NODE purple outery=13107
+LOKAD-NODE purple minimumwidth=65536
+LOKAD-NODE purple minimumheight=65536
+LOKAD-RECT purple sw=6162229;2768925
+LOKAD-RECT purple ne=7600331;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{42.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME purple;1.0;0.0;0.0;1.0;6380659;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE brown width=1001243
+LOKAD-NODE brown height=451461
+LOKAD-NODE brown depth=127430
+LOKAD-NODE brown linewidth=26214
+LOKAD-NODE brown quad=655360
+LOKAD-NODE brown xheight=282165
+LOKAD-NODE brown innerx=218430
+LOKAD-NODE brown innery=218430
+LOKAD-NODE brown outerx=13107
+LOKAD-NODE brown outery=13107
+LOKAD-NODE brown minimumwidth=65536
+LOKAD-NODE brown minimumheight=65536
+LOKAD-RECT brown sw=8455989;2768925
+LOKAD-RECT brown ne=9894091;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{42.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME brown;1.0;0.0;0.0;1.0;8674419;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE pink width=1001243
+LOKAD-NODE pink height=451461
+LOKAD-NODE pink depth=127430
+LOKAD-NODE pink linewidth=26214
+LOKAD-NODE pink quad=655360
+LOKAD-NODE pink xheight=282165
+LOKAD-NODE pink innerx=218430
+LOKAD-NODE pink innery=218430
+LOKAD-NODE pink outerx=13107
+LOKAD-NODE pink outery=13107
+LOKAD-NODE pink minimumwidth=65536
+LOKAD-NODE pink minimumheight=65536
+LOKAD-RECT pink sw=-719051;4407325
+LOKAD-RECT pink ne=719051;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{67.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME pink;1.0;0.0;0.0;1.0;-500621;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE lime width=1001243
+LOKAD-NODE lime height=451461
+LOKAD-NODE lime depth=127430
+LOKAD-NODE lime linewidth=26214
+LOKAD-NODE lime quad=655360
+LOKAD-NODE lime xheight=282165
+LOKAD-NODE lime innerx=218430
+LOKAD-NODE lime innery=218430
+LOKAD-NODE lime outerx=13107
+LOKAD-NODE lime outery=13107
+LOKAD-NODE lime minimumwidth=65536
+LOKAD-NODE lime minimumheight=65536
+LOKAD-RECT lime sw=1574709;4407325
+LOKAD-RECT lime ne=3012811;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{67.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME lime;1.0;0.0;0.0;1.0;1793139;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE olive width=1001243
+LOKAD-NODE olive height=451461
+LOKAD-NODE olive depth=127430
+LOKAD-NODE olive linewidth=26214
+LOKAD-NODE olive quad=655360
+LOKAD-NODE olive xheight=282165
+LOKAD-NODE olive innerx=218430
+LOKAD-NODE olive innery=218430
+LOKAD-NODE olive outerx=13107
+LOKAD-NODE olive outery=13107
+LOKAD-NODE olive minimumwidth=65536
+LOKAD-NODE olive minimumheight=65536
+LOKAD-RECT olive sw=3868469;4407325
+LOKAD-RECT olive ne=5306571;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{67.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME olive;1.0;0.0;0.0;1.0;4086899;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE teal width=1001243
+LOKAD-NODE teal height=451461
+LOKAD-NODE teal depth=127430
+LOKAD-NODE teal linewidth=26214
+LOKAD-NODE teal quad=655360
+LOKAD-NODE teal xheight=282165
+LOKAD-NODE teal innerx=218430
+LOKAD-NODE teal innery=218430
+LOKAD-NODE teal outerx=13107
+LOKAD-NODE teal outery=13107
+LOKAD-NODE teal minimumwidth=65536
+LOKAD-NODE teal minimumheight=65536
+LOKAD-RECT teal sw=6162229;4407325
+LOKAD-RECT teal ne=7600331;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{67.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME teal;1.0;0.0;0.0;1.0;6380659;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE magenta-white width=1001243
+LOKAD-NODE magenta-white height=451461
+LOKAD-NODE magenta-white depth=127430
+LOKAD-NODE magenta-white linewidth=26214
+LOKAD-NODE magenta-white quad=655360
+LOKAD-NODE magenta-white xheight=282165
+LOKAD-NODE magenta-white innerx=218430
+LOKAD-NODE magenta-white innery=218430
+LOKAD-NODE magenta-white outerx=13107
+LOKAD-NODE magenta-white outery=13107
+LOKAD-NODE magenta-white minimumwidth=65536
+LOKAD-NODE magenta-white minimumheight=65536
+LOKAD-RECT magenta-white sw=8455989;4407325
+LOKAD-RECT magenta-white ne=9894091;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{67.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME magenta-white;1.0;0.0;0.0;1.0;8674419;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE cyan-red width=1001243
+LOKAD-NODE cyan-red height=451461
+LOKAD-NODE cyan-red depth=127430
+LOKAD-NODE cyan-red linewidth=26214
+LOKAD-NODE cyan-red quad=655360
+LOKAD-NODE cyan-red xheight=282165
+LOKAD-NODE cyan-red innerx=218430
+LOKAD-NODE cyan-red innery=218430
+LOKAD-NODE cyan-red outerx=13107
+LOKAD-NODE cyan-red outery=13107
+LOKAD-NODE cyan-red minimumwidth=65536
+LOKAD-NODE cyan-red minimumheight=65536
+LOKAD-RECT cyan-red sw=-719051;6045725
+LOKAD-RECT cyan-red ne=719051;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{92.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME cyan-red;1.0;0.0;0.0;1.0;-500621;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE yellow-blue width=1001243
+LOKAD-NODE yellow-blue height=451461
+LOKAD-NODE yellow-blue depth=127430
+LOKAD-NODE yellow-blue linewidth=26214
+LOKAD-NODE yellow-blue quad=655360
+LOKAD-NODE yellow-blue xheight=282165
+LOKAD-NODE yellow-blue innerx=218430
+LOKAD-NODE yellow-blue innery=218430
+LOKAD-NODE yellow-blue outerx=13107
+LOKAD-NODE yellow-blue outery=13107
+LOKAD-NODE yellow-blue minimumwidth=65536
+LOKAD-NODE yellow-blue minimumheight=65536
+LOKAD-RECT yellow-blue sw=1574709;6045725
+LOKAD-RECT yellow-blue ne=3012811;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{92.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME yellow-blue;1.0;0.0;0.0;1.0;1793139;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE chained width=1001243
+LOKAD-NODE chained height=451461
+LOKAD-NODE chained depth=127430
+LOKAD-NODE chained linewidth=26214
+LOKAD-NODE chained quad=655360
+LOKAD-NODE chained xheight=282165
+LOKAD-NODE chained innerx=218430
+LOKAD-NODE chained innery=218430
+LOKAD-NODE chained outerx=13107
+LOKAD-NODE chained outery=13107
+LOKAD-NODE chained minimumwidth=65536
+LOKAD-NODE chained minimumheight=65536
+LOKAD-RECT chained sw=3868469;6045725
+LOKAD-RECT chained ne=5306571;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{92.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME chained;1.0;0.0;0.0;1.0;4086899;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE fractional width=1001243
+LOKAD-NODE fractional height=451461
+LOKAD-NODE fractional depth=127430
+LOKAD-NODE fractional linewidth=26214
+LOKAD-NODE fractional quad=655360
+LOKAD-NODE fractional xheight=282165
+LOKAD-NODE fractional innerx=218430
+LOKAD-NODE fractional innery=218430
+LOKAD-NODE fractional outerx=13107
+LOKAD-NODE fractional outery=13107
+LOKAD-NODE fractional minimumwidth=65536
+LOKAD-NODE fractional minimumheight=65536
+LOKAD-RECT fractional sw=6162229;6045725
+LOKAD-RECT fractional ne=7600331;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{92.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME fractional;1.0;0.0;0.0;1.0;6380659;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE scope-color width=1001243
+LOKAD-NODE scope-color height=451461
+LOKAD-NODE scope-color depth=127430
+LOKAD-NODE scope-color linewidth=26214
+LOKAD-NODE scope-color quad=655360
+LOKAD-NODE scope-color xheight=282165
+LOKAD-NODE scope-color innerx=218430
+LOKAD-NODE scope-color innery=218430
+LOKAD-NODE scope-color outerx=13107
+LOKAD-NODE scope-color outery=13107
+LOKAD-NODE scope-color minimumwidth=65536
+LOKAD-NODE scope-color minimumheight=65536
+LOKAD-RECT scope-color sw=8455989;6045725
+LOKAD-RECT scope-color ne=9894091;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{92.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME scope-color;1.0;0.0;0.0;1.0;8674419;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=draw,; width=0.6pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {46.17184pt}{25.0pt}\pgfsyss
+oftpath@linetotoken {58.82816pt}{100.0pt}
+LOKAD-PATH-END
+LOKAD-BOUNDS minx=-11.17184pt; miny=-7.94955pt; maxx=151.17184pt; maxy=107.9495
+5pt
+(probes.tex
+LOKAD-ANCHOR black;text;-500621;-162015
+LOKAD-ANCHOR black;center;0;0
+LOKAD-ANCHOR black;north;0;520982
+LOKAD-ANCHOR black;south;0;-520982
+LOKAD-ANCHOR black;west;-732158;0
+LOKAD-ANCHOR black;east;732158;0
+LOKAD-ANCHOR black;north west;-732158;520982
+LOKAD-ANCHOR black;north east;732158;520982
+LOKAD-ANCHOR black;south west;-732158;-520982
+LOKAD-ANCHOR black;south east;732158;-520982
+LOKAD-ANCHOR black;base;0;-162015
+LOKAD-ANCHOR black;base west;-732158;-162015
+LOKAD-ANCHOR black;base east;732158;-162015
+LOKAD-ANCHOR black;mid;0;-20933
+LOKAD-ANCHOR black;mid west;-732158;-20933
+LOKAD-ANCHOR black;mid east;732158;-20933
+LOKAD-ANCHOR white;text;1793139;-162015
+LOKAD-ANCHOR white;center;2293760;0
+LOKAD-ANCHOR white;north;2293760;520982
+LOKAD-ANCHOR white;south;2293760;-520982
+LOKAD-ANCHOR white;west;1561602;0
+LOKAD-ANCHOR white;east;3025918;0
+LOKAD-ANCHOR white;north west;1561602;520982
+LOKAD-ANCHOR white;north east;3025918;520982
+LOKAD-ANCHOR white;south west;1561602;-520982
+LOKAD-ANCHOR white;south east;3025918;-520982
+LOKAD-ANCHOR white;base;2293760;-162015
+LOKAD-ANCHOR white;base west;1561602;-162015
+LOKAD-ANCHOR white;base east;3025918;-162015
+LOKAD-ANCHOR white;mid;2293760;-20933
+LOKAD-ANCHOR white;mid west;1561602;-20933
+LOKAD-ANCHOR white;mid east;3025918;-20933
+LOKAD-ANCHOR red;text;4086899;-162015
+LOKAD-ANCHOR red;center;4587520;0
+LOKAD-ANCHOR red;north;4587520;520982
+LOKAD-ANCHOR red;south;4587520;-520982
+LOKAD-ANCHOR red;west;3855362;0
+LOKAD-ANCHOR red;east;5319678;0
+LOKAD-ANCHOR red;north west;3855362;520982
+LOKAD-ANCHOR red;north east;5319678;520982
+LOKAD-ANCHOR red;south west;3855362;-520982
+LOKAD-ANCHOR red;south east;5319678;-520982
+LOKAD-ANCHOR red;base;4587520;-162015
+LOKAD-ANCHOR red;base west;3855362;-162015
+LOKAD-ANCHOR red;base east;5319678;-162015
+LOKAD-ANCHOR red;mid;4587520;-20933
+LOKAD-ANCHOR red;mid west;3855362;-20933
+LOKAD-ANCHOR red;mid east;5319678;-20933
+LOKAD-ANCHOR green;text;6380659;-162015
+LOKAD-ANCHOR green;center;6881280;0
+LOKAD-ANCHOR green;north;6881280;520982
+LOKAD-ANCHOR green;south;6881280;-520982
+LOKAD-ANCHOR green;west;6149122;0
+LOKAD-ANCHOR green;east;7613438;0
+LOKAD-ANCHOR green;north west;6149122;520982
+LOKAD-ANCHOR green;north east;7613438;520982
+LOKAD-ANCHOR green;south west;6149122;-520982
+LOKAD-ANCHOR green;south east;7613438;-520982
+LOKAD-ANCHOR green;base;6881280;-162015
+LOKAD-ANCHOR green;base west;6149122;-162015
+LOKAD-ANCHOR green;base east;7613438;-162015
+LOKAD-ANCHOR green;mid;6881280;-20933
+LOKAD-ANCHOR green;mid west;6149122;-20933
+LOKAD-ANCHOR green;mid east;7613438;-20933
+LOKAD-ANCHOR blue;text;8674419;-162015
+LOKAD-ANCHOR blue;center;9175040;0
+LOKAD-ANCHOR blue;north;9175040;520982
+LOKAD-ANCHOR blue;south;9175040;-520982
+LOKAD-ANCHOR blue;west;8442882;0
+LOKAD-ANCHOR blue;east;9907198;0
+LOKAD-ANCHOR blue;north west;8442882;520982
+LOKAD-ANCHOR blue;north east;9907198;520982
+LOKAD-ANCHOR blue;south west;8442882;-520982
+LOKAD-ANCHOR blue;south east;9907198;-520982
+LOKAD-ANCHOR blue;base;9175040;-162015
+LOKAD-ANCHOR blue;base west;8442882;-162015
+LOKAD-ANCHOR blue;base east;9907198;-162015
+LOKAD-ANCHOR blue;mid;9175040;-20933
+LOKAD-ANCHOR blue;mid west;8442882;-20933
+LOKAD-ANCHOR blue;mid east;9907198;-20933
+LOKAD-ANCHOR cyan;text;-500621;1476385
+LOKAD-ANCHOR cyan;center;0;1638400
+LOKAD-ANCHOR cyan;north;0;2159382
+LOKAD-ANCHOR cyan;south;0;1117418
+LOKAD-ANCHOR cyan;west;-732158;1638400
+LOKAD-ANCHOR cyan;east;732158;1638400
+LOKAD-ANCHOR cyan;north west;-732158;2159382
+LOKAD-ANCHOR cyan;north east;732158;2159382
+LOKAD-ANCHOR cyan;south west;-732158;1117418
+LOKAD-ANCHOR cyan;south east;732158;1117418
+LOKAD-ANCHOR cyan;base;0;1476385
+LOKAD-ANCHOR cyan;base west;-732158;1476385
+LOKAD-ANCHOR cyan;base east;732158;1476385
+LOKAD-ANCHOR cyan;mid;0;1617467
+LOKAD-ANCHOR cyan;mid west;-732158;1617467
+LOKAD-ANCHOR cyan;mid east;732158;1617467
+LOKAD-ANCHOR magenta;text;1793139;1476385
+LOKAD-ANCHOR magenta;center;2293760;1638400
+LOKAD-ANCHOR magenta;north;2293760;2159382
+LOKAD-ANCHOR magenta;south;2293760;1117418
+LOKAD-ANCHOR magenta;west;1561602;1638400
+LOKAD-ANCHOR magenta;east;3025918;1638400
+LOKAD-ANCHOR magenta;north west;1561602;2159382
+LOKAD-ANCHOR magenta;north east;3025918;2159382
+LOKAD-ANCHOR magenta;south west;1561602;1117418
+LOKAD-ANCHOR magenta;south east;3025918;1117418
+LOKAD-ANCHOR magenta;base;2293760;1476385
+LOKAD-ANCHOR magenta;base west;1561602;1476385
+LOKAD-ANCHOR magenta;base east;3025918;1476385
+LOKAD-ANCHOR magenta;mid;2293760;1617467
+LOKAD-ANCHOR magenta;mid west;1561602;1617467
+LOKAD-ANCHOR magenta;mid east;3025918;1617467
+LOKAD-ANCHOR yellow;text;4086899;1476385
+LOKAD-ANCHOR yellow;center;4587520;1638400
+LOKAD-ANCHOR yellow;north;4587520;2159382
+LOKAD-ANCHOR yellow;south;4587520;1117418
+LOKAD-ANCHOR yellow;west;3855362;1638400
+LOKAD-ANCHOR yellow;east;5319678;1638400
+LOKAD-ANCHOR yellow;north west;3855362;2159382
+LOKAD-ANCHOR yellow;north east;5319678;2159382
+LOKAD-ANCHOR yellow;south west;3855362;1117418
+LOKAD-ANCHOR yellow;south east;5319678;1117418
+LOKAD-ANCHOR yellow;base;4587520;1476385
+LOKAD-ANCHOR yellow;base west;3855362;1476385
+LOKAD-ANCHOR yellow;base east;5319678;1476385
+LOKAD-ANCHOR yellow;mid;4587520;1617467
+LOKAD-ANCHOR yellow;mid west;3855362;1617467
+LOKAD-ANCHOR yellow;mid east;5319678;1617467
+LOKAD-ANCHOR gray;text;6380659;1476385
+LOKAD-ANCHOR gray;center;6881280;1638400
+LOKAD-ANCHOR gray;north;6881280;2159382
+LOKAD-ANCHOR gray;south;6881280;1117418
+LOKAD-ANCHOR gray;west;6149122;1638400
+LOKAD-ANCHOR gray;east;7613438;1638400
+LOKAD-ANCHOR gray;north west;6149122;2159382
+LOKAD-ANCHOR gray;north east;7613438;2159382
+LOKAD-ANCHOR gray;south west;6149122;1117418
+LOKAD-ANCHOR gray;south east;7613438;1117418
+LOKAD-ANCHOR gray;base;6881280;1476385
+LOKAD-ANCHOR gray;base west;6149122;1476385
+LOKAD-ANCHOR gray;base east;7613438;1476385
+LOKAD-ANCHOR gray;mid;6881280;1617467
+LOKAD-ANCHOR gray;mid west;6149122;1617467
+LOKAD-ANCHOR gray;mid east;7613438;1617467
+LOKAD-ANCHOR darkgray;text;8674419;1476385
+LOKAD-ANCHOR darkgray;center;9175040;1638400
+LOKAD-ANCHOR darkgray;north;9175040;2159382
+LOKAD-ANCHOR darkgray;south;9175040;1117418
+LOKAD-ANCHOR darkgray;west;8442882;1638400
+LOKAD-ANCHOR darkgray;east;9907198;1638400
+LOKAD-ANCHOR darkgray;north west;8442882;2159382
+LOKAD-ANCHOR darkgray;north east;9907198;2159382
+LOKAD-ANCHOR darkgray;south west;8442882;1117418
+LOKAD-ANCHOR darkgray;south east;9907198;1117418
+LOKAD-ANCHOR darkgray;base;9175040;1476385
+LOKAD-ANCHOR darkgray;base west;8442882;1476385
+LOKAD-ANCHOR darkgray;base east;9907198;1476385
+LOKAD-ANCHOR darkgray;mid;9175040;1617467
+LOKAD-ANCHOR darkgray;mid west;8442882;1617467
+LOKAD-ANCHOR darkgray;mid east;9907198;1617467
+LOKAD-ANCHOR lightgray;text;-500621;3114785
+LOKAD-ANCHOR lightgray;center;0;3276800
+LOKAD-ANCHOR lightgray;north;0;3797782
+LOKAD-ANCHOR lightgray;south;0;2755818
+LOKAD-ANCHOR lightgray;west;-732158;3276800
+LOKAD-ANCHOR lightgray;east;732158;3276800
+LOKAD-ANCHOR lightgray;north west;-732158;3797782
+LOKAD-ANCHOR lightgray;north east;732158;3797782
+LOKAD-ANCHOR lightgray;south west;-732158;2755818
+LOKAD-ANCHOR lightgray;south east;732158;2755818
+LOKAD-ANCHOR lightgray;base;0;3114785
+LOKAD-ANCHOR lightgray;base west;-732158;3114785
+LOKAD-ANCHOR lightgray;base east;732158;3114785
+LOKAD-ANCHOR lightgray;mid;0;3255867
+LOKAD-ANCHOR lightgray;mid west;-732158;3255867
+LOKAD-ANCHOR lightgray;mid east;732158;3255867
+LOKAD-ANCHOR orange;text;1793139;3114785
+LOKAD-ANCHOR orange;center;2293760;3276800
+LOKAD-ANCHOR orange;north;2293760;3797782
+LOKAD-ANCHOR orange;south;2293760;2755818
+LOKAD-ANCHOR orange;west;1561602;3276800
+LOKAD-ANCHOR orange;east;3025918;3276800
+LOKAD-ANCHOR orange;north west;1561602;3797782
+LOKAD-ANCHOR orange;north east;3025918;3797782
+LOKAD-ANCHOR orange;south west;1561602;2755818
+LOKAD-ANCHOR orange;south east;3025918;2755818
+LOKAD-ANCHOR orange;base;2293760;3114785
+LOKAD-ANCHOR orange;base west;1561602;3114785
+LOKAD-ANCHOR orange;base east;3025918;3114785
+LOKAD-ANCHOR orange;mid;2293760;3255867
+LOKAD-ANCHOR orange;mid west;1561602;3255867
+LOKAD-ANCHOR orange;mid east;3025918;3255867
+LOKAD-ANCHOR violet;text;4086899;3114785
+LOKAD-ANCHOR violet;center;4587520;3276800
+LOKAD-ANCHOR violet;north;4587520;3797782
+LOKAD-ANCHOR violet;south;4587520;2755818
+LOKAD-ANCHOR violet;west;3855362;3276800
+LOKAD-ANCHOR violet;east;5319678;3276800
+LOKAD-ANCHOR violet;north west;3855362;3797782
+LOKAD-ANCHOR violet;north east;5319678;3797782
+LOKAD-ANCHOR violet;south west;3855362;2755818
+LOKAD-ANCHOR violet;south east;5319678;2755818
+LOKAD-ANCHOR violet;base;4587520;3114785
+LOKAD-ANCHOR violet;base west;3855362;3114785
+LOKAD-ANCHOR violet;base east;5319678;3114785
+LOKAD-ANCHOR violet;mid;4587520;3255867
+LOKAD-ANCHOR violet;mid west;3855362;3255867
+LOKAD-ANCHOR violet;mid east;5319678;3255867
+LOKAD-ANCHOR purple;text;6380659;3114785
+LOKAD-ANCHOR purple;center;6881280;3276800
+LOKAD-ANCHOR purple;north;6881280;3797782
+LOKAD-ANCHOR purple;south;6881280;2755818
+LOKAD-ANCHOR purple;west;6149122;3276800
+LOKAD-ANCHOR purple;east;7613438;3276800
+LOKAD-ANCHOR purple;north west;6149122;3797782
+LOKAD-ANCHOR purple;north east;7613438;3797782
+LOKAD-ANCHOR purple;south west;6149122;2755818
+LOKAD-ANCHOR purple;south east;7613438;2755818
+LOKAD-ANCHOR purple;base;6881280;3114785
+LOKAD-ANCHOR purple;base west;6149122;3114785
+LOKAD-ANCHOR purple;base east;7613438;3114785
+LOKAD-ANCHOR purple;mid;6881280;3255867
+LOKAD-ANCHOR purple;mid west;6149122;3255867
+LOKAD-ANCHOR purple;mid east;7613438;3255867
+LOKAD-ANCHOR brown;text;8674419;3114785
+LOKAD-ANCHOR brown;center;9175040;3276800
+LOKAD-ANCHOR brown;north;9175040;3797782
+LOKAD-ANCHOR brown;south;9175040;2755818
+LOKAD-ANCHOR brown;west;8442882;3276800
+LOKAD-ANCHOR brown;east;9907198;3276800
+LOKAD-ANCHOR brown;north west;8442882;3797782
+LOKAD-ANCHOR brown;north east;9907198;3797782
+LOKAD-ANCHOR brown;south west;8442882;2755818
+LOKAD-ANCHOR brown;south east;9907198;2755818
+LOKAD-ANCHOR brown;base;9175040;3114785
+LOKAD-ANCHOR brown;base west;8442882;3114785
+LOKAD-ANCHOR brown;base east;9907198;3114785
+LOKAD-ANCHOR brown;mid;9175040;3255867
+LOKAD-ANCHOR brown;mid west;8442882;3255867
+LOKAD-ANCHOR brown;mid east;9907198;3255867
+LOKAD-ANCHOR pink;text;-500621;4753185
+LOKAD-ANCHOR pink;center;0;4915200
+LOKAD-ANCHOR pink;north;0;5436182
+LOKAD-ANCHOR pink;south;0;4394218
+LOKAD-ANCHOR pink;west;-732158;4915200
+LOKAD-ANCHOR pink;east;732158;4915200
+LOKAD-ANCHOR pink;north west;-732158;5436182
+LOKAD-ANCHOR pink;north east;732158;5436182
+LOKAD-ANCHOR pink;south west;-732158;4394218
+LOKAD-ANCHOR pink;south east;732158;4394218
+LOKAD-ANCHOR pink;base;0;4753185
+LOKAD-ANCHOR pink;base west;-732158;4753185
+LOKAD-ANCHOR pink;base east;732158;4753185
+LOKAD-ANCHOR pink;mid;0;4894267
+LOKAD-ANCHOR pink;mid west;-732158;4894267
+LOKAD-ANCHOR pink;mid east;732158;4894267
+LOKAD-ANCHOR lime;text;1793139;4753185
+LOKAD-ANCHOR lime;center;2293760;4915200
+LOKAD-ANCHOR lime;north;2293760;5436182
+LOKAD-ANCHOR lime;south;2293760;4394218
+LOKAD-ANCHOR lime;west;1561602;4915200
+LOKAD-ANCHOR lime;east;3025918;4915200
+LOKAD-ANCHOR lime;north west;1561602;5436182
+LOKAD-ANCHOR lime;north east;3025918;5436182
+LOKAD-ANCHOR lime;south west;1561602;4394218
+LOKAD-ANCHOR lime;south east;3025918;4394218
+LOKAD-ANCHOR lime;base;2293760;4753185
+LOKAD-ANCHOR lime;base west;1561602;4753185
+LOKAD-ANCHOR lime;base east;3025918;4753185
+LOKAD-ANCHOR lime;mid;2293760;4894267
+LOKAD-ANCHOR lime;mid west;1561602;4894267
+LOKAD-ANCHOR lime;mid east;3025918;4894267
+LOKAD-ANCHOR olive;text;4086899;4753185
+LOKAD-ANCHOR olive;center;4587520;4915200
+LOKAD-ANCHOR olive;north;4587520;5436182
+LOKAD-ANCHOR olive;south;4587520;4394218
+LOKAD-ANCHOR olive;west;3855362;4915200
+LOKAD-ANCHOR olive;east;5319678;4915200
+LOKAD-ANCHOR olive;north west;3855362;5436182
+LOKAD-ANCHOR olive;north east;5319678;5436182
+LOKAD-ANCHOR olive;south west;3855362;4394218
+LOKAD-ANCHOR olive;south east;5319678;4394218
+LOKAD-ANCHOR olive;base;4587520;4753185
+LOKAD-ANCHOR olive;base west;3855362;4753185
+LOKAD-ANCHOR olive;base east;5319678;4753185
+LOKAD-ANCHOR olive;mid;4587520;4894267
+LOKAD-ANCHOR olive;mid west;3855362;4894267
+LOKAD-ANCHOR olive;mid east;5319678;4894267
+LOKAD-ANCHOR teal;text;6380659;4753185
+LOKAD-ANCHOR teal;center;6881280;4915200
+LOKAD-ANCHOR teal;north;6881280;5436182
+LOKAD-ANCHOR teal;south;6881280;4394218
+LOKAD-ANCHOR teal;west;6149122;4915200
+LOKAD-ANCHOR teal;east;7613438;4915200
+LOKAD-ANCHOR teal;north west;6149122;5436182
+LOKAD-ANCHOR teal;north east;7613438;5436182
+LOKAD-ANCHOR teal;south west;6149122;4394218
+LOKAD-ANCHOR teal;south east;7613438;4394218
+LOKAD-ANCHOR teal;base;6881280;4753185
+LOKAD-ANCHOR teal;base west;6149122;4753185
+LOKAD-ANCHOR teal;base east;7613438;4753185
+LOKAD-ANCHOR teal;mid;6881280;4894267
+LOKAD-ANCHOR teal;mid west;6149122;4894267
+LOKAD-ANCHOR teal;mid east;7613438;4894267
+LOKAD-ANCHOR magenta-white;text;8674419;4753185
+LOKAD-ANCHOR magenta-white;center;9175040;4915200
+LOKAD-ANCHOR magenta-white;north;9175040;5436182
+LOKAD-ANCHOR magenta-white;south;9175040;4394218
+LOKAD-ANCHOR magenta-white;west;8442882;4915200
+LOKAD-ANCHOR magenta-white;east;9907198;4915200
+LOKAD-ANCHOR magenta-white;north west;8442882;5436182
+LOKAD-ANCHOR magenta-white;north east;9907198;5436182
+LOKAD-ANCHOR magenta-white;south west;8442882;4394218
+LOKAD-ANCHOR magenta-white;south east;9907198;4394218
+LOKAD-ANCHOR magenta-white;base;9175040;4753185
+LOKAD-ANCHOR magenta-white;base west;8442882;4753185
+LOKAD-ANCHOR magenta-white;base east;9907198;4753185
+LOKAD-ANCHOR magenta-white;mid;9175040;4894267
+LOKAD-ANCHOR magenta-white;mid west;8442882;4894267
+LOKAD-ANCHOR magenta-white;mid east;9907198;4894267
+LOKAD-ANCHOR cyan-red;text;-500621;6391585
+LOKAD-ANCHOR cyan-red;center;0;6553600
+LOKAD-ANCHOR cyan-red;north;0;7074582
+LOKAD-ANCHOR cyan-red;south;0;6032618
+LOKAD-ANCHOR cyan-red;west;-732158;6553600
+LOKAD-ANCHOR cyan-red;east;732158;6553600
+LOKAD-ANCHOR cyan-red;north west;-732158;7074582
+LOKAD-ANCHOR cyan-red;north east;732158;7074582
+LOKAD-ANCHOR cyan-red;south west;-732158;6032618
+LOKAD-ANCHOR cyan-red;south east;732158;6032618
+LOKAD-ANCHOR cyan-red;base;0;6391585
+LOKAD-ANCHOR cyan-red;base west;-732158;6391585
+LOKAD-ANCHOR cyan-red;base east;732158;6391585
+LOKAD-ANCHOR cyan-red;mid;0;6532667
+LOKAD-ANCHOR cyan-red;mid west;-732158;6532667
+LOKAD-ANCHOR cyan-red;mid east;732158;6532667
+LOKAD-ANCHOR yellow-blue;text;1793139;6391585
+LOKAD-ANCHOR yellow-blue;center;2293760;6553600
+LOKAD-ANCHOR yellow-blue;north;2293760;7074582
+LOKAD-ANCHOR yellow-blue;south;2293760;6032618
+LOKAD-ANCHOR yellow-blue;west;1561602;6553600
+LOKAD-ANCHOR yellow-blue;east;3025918;6553600
+LOKAD-ANCHOR yellow-blue;north west;1561602;7074582
+LOKAD-ANCHOR yellow-blue;north east;3025918;7074582
+LOKAD-ANCHOR yellow-blue;south west;1561602;6032618
+LOKAD-ANCHOR yellow-blue;south east;3025918;6032618
+LOKAD-ANCHOR yellow-blue;base;2293760;6391585
+LOKAD-ANCHOR yellow-blue;base west;1561602;6391585
+LOKAD-ANCHOR yellow-blue;base east;3025918;6391585
+LOKAD-ANCHOR yellow-blue;mid;2293760;6532667
+LOKAD-ANCHOR yellow-blue;mid west;1561602;6532667
+LOKAD-ANCHOR yellow-blue;mid east;3025918;6532667
+LOKAD-ANCHOR chained;text;4086899;6391585
+LOKAD-ANCHOR chained;center;4587520;6553600
+LOKAD-ANCHOR chained;north;4587520;7074582
+LOKAD-ANCHOR chained;south;4587520;6032618
+LOKAD-ANCHOR chained;west;3855362;6553600
+LOKAD-ANCHOR chained;east;5319678;6553600
+LOKAD-ANCHOR chained;north west;3855362;7074582
+LOKAD-ANCHOR chained;north east;5319678;7074582
+LOKAD-ANCHOR chained;south west;3855362;6032618
+LOKAD-ANCHOR chained;south east;5319678;6032618
+LOKAD-ANCHOR chained;base;4587520;6391585
+LOKAD-ANCHOR chained;base west;3855362;6391585
+LOKAD-ANCHOR chained;base east;5319678;6391585
+LOKAD-ANCHOR chained;mid;4587520;6532667
+LOKAD-ANCHOR chained;mid west;3855362;6532667
+LOKAD-ANCHOR chained;mid east;5319678;6532667
+LOKAD-ANCHOR fractional;text;6380659;6391585
+LOKAD-ANCHOR fractional;center;6881280;6553600
+LOKAD-ANCHOR fractional;north;6881280;7074582
+LOKAD-ANCHOR fractional;south;6881280;6032618
+LOKAD-ANCHOR fractional;west;6149122;6553600
+LOKAD-ANCHOR fractional;east;7613438;6553600
+LOKAD-ANCHOR fractional;north west;6149122;7074582
+LOKAD-ANCHOR fractional;north east;7613438;7074582
+LOKAD-ANCHOR fractional;south west;6149122;6032618
+LOKAD-ANCHOR fractional;south east;7613438;6032618
+LOKAD-ANCHOR fractional;base;6881280;6391585
+LOKAD-ANCHOR fractional;base west;6149122;6391585
+LOKAD-ANCHOR fractional;base east;7613438;6391585
+LOKAD-ANCHOR fractional;mid;6881280;6532667
+LOKAD-ANCHOR fractional;mid west;6149122;6532667
+LOKAD-ANCHOR fractional;mid east;7613438;6532667
+LOKAD-ANCHOR scope-color;text;8674419;6391585
+LOKAD-ANCHOR scope-color;center;9175040;6553600
+LOKAD-ANCHOR scope-color;north;9175040;7074582
+LOKAD-ANCHOR scope-color;south;9175040;6032618
+LOKAD-ANCHOR scope-color;west;8442882;6553600
+LOKAD-ANCHOR scope-color;east;9907198;6553600
+LOKAD-ANCHOR scope-color;north west;8442882;7074582
+LOKAD-ANCHOR scope-color;north east;9907198;7074582
+LOKAD-ANCHOR scope-color;south west;8442882;6032618
+LOKAD-ANCHOR scope-color;south east;9907198;6032618
+LOKAD-ANCHOR scope-color;base;9175040;6391585
+LOKAD-ANCHOR scope-color;base west;8442882;6391585
+LOKAD-ANCHOR scope-color;base east;9907198;6391585
+LOKAD-ANCHOR scope-color;mid;9175040;6532667
+LOKAD-ANCHOR scope-color;mid west;8442882;6532667
+LOKAD-ANCHOR scope-color;mid east;9907198;6532667
+LOKAD-ANCHOR-start x=46.17184pt; y=25.0pt
+LOKAD-ANCHOR-end x=58.82816pt; y=100.0pt
+))
+LOKAD-BOX width=162.34369pt; height=115.89911pt; depth=0.0pt
+
+
+[1
+
+] (case.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 12106 strings out of 468130
+ 257571 string characters out of 5425798
+ 655657 words of memory out of 5000000
+ 40560 multiletter control sequences out of 15000+600000
+ 630578 words of font info for 42 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 102i,5n,107p,421b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on case.dvi (1 page, 20284 bytes).
+
+--- Ordinary PDF oracle ---
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.25)  5 OCT 2026 04:48
+entering extended mode
+ %&-line parsing enabled.
+**./case.tex
+(case.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\article.
+cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.c
+lo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.
+sty
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.st
+y
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor
+.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\
+pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\math
+color.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+LOKAD-COLOR-PROFILE xcolor-rgb-v1
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendl
+ayer\tikz.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgf.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfrcs.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-common.tex
+\pgfutil@everybye=\toks17
+\pgfutil@tempdima=\dimen149
+\pgfutil@tempdimb=\dimen150
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-latex.def
+\pgfutil@abb=\box53
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfrcs.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.rev
+ision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgfcore.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyv
+al.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig
+.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+)
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlay
+er\pgfsys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks21
+))
+\pgf@x=\dimen153
+\pgf@y=\dimen154
+\pgf@xa=\dimen155
+\pgf@ya=\dimen156
+\pgf@xb=\dimen157
+\pgf@yb=\dimen158
+\pgf@xc=\dimen159
+\pgf@yc=\dimen160
+\pgf@xd=\dimen161
+\pgf@yd=\dimen162
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count287
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count288
+\pgfsyssoftpath@bigbuffer@items=\count289
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathutil.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathparser.code.tex
+\pgfmath@dimen=\dimen163
+\pgfmath@count=\count290
+\pgfmath@box=\box54
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.basic.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.trigonometric.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.random.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.comparison.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.base.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.round.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.misc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.integerarithmetics.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathcalc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count291
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fint.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen164
+\pgf@picmaxx=\dimen165
+\pgf@picminy=\dimen166
+\pgf@picmaxy=\dimen167
+\pgf@pathminx=\dimen168
+\pgf@pathmaxx=\dimen169
+\pgf@pathminy=\dimen170
+\pgf@pathmaxy=\dimen171
+\pgf@xx=\dimen172
+\pgf@xy=\dimen173
+\pgf@yx=\dimen174
+\pgf@yy=\dimen175
+\pgf@zx=\dimen176
+\pgf@zy=\dimen177
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen178
+\pgf@path@lasty=\dimen179
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen180
+\pgf@shorten@start@additional=\dimen181
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count292
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen182
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen183
+\pgf@pt@y=\dimen184
+\pgf@pt@temp=\dimen185
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen186
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen187
+\pgf@sys@shading@range@num=\count293
+\pgf@shadingcount=\count294
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box58
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box59
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen188
+\pgf@nodesepend=\dimen189
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgffor.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfkeys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfm
+ath.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen190
+\pgffor@skip=\dimen191
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz\tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/librari
+es\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count295
+\pgfplotmarksize=\dimen192
+)
+\tikz@lastx=\dimen193
+\tikz@lasty=\dimen194
+\tikz@lastxsaved=\dimen195
+\tikz@lastysaved=\dimen196
+\tikz@lastmovetox=\dimen197
+\tikz@lastmovetoy=\dimen198
+\tikzleveldistance=\dimen199
+\tikzsiblingdistance=\dimen256
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count296
+\tikznumberofchildren=\count297
+\tikznumberofcurrentchild=\count298
+\tikz@fig@count=\count299
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count300
+\pgfmatrixcurrentcolumn=\count301
+\pgf@matrix@numberofcolumns=\count302
+)
+\tikz@expandcount=\count303
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+LOKAD-PGF-VERSION 3.1.11a
+\lokadpicture=\box64
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 85
+.
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3b
+ackend-pdftex.def
+File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count304
+)
+No file case.aux.
+\openout1 = `case.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\s
+upp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count305
+\scratchdimen=\dimen257
+\scratchbox=\box65
+\nofMPsegments=\count306
+\nofMParguments=\count307
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count308
+\MPscratchDim=\dimen258
+\MPnumerator=\count309
+\makeMPintoPDFobject=\count310
+\everyMPtoPDFconversion=\toks31
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\
+epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epst
+opdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+)) (case.tikz
+LOKAD-NODE black width=1001243
+LOKAD-NODE black height=451461
+LOKAD-NODE black depth=127430
+LOKAD-NODE black linewidth=26214
+LOKAD-NODE black quad=655360
+LOKAD-NODE black xheight=282165
+LOKAD-NODE black innerx=218430
+LOKAD-NODE black innery=218430
+LOKAD-NODE black outerx=13107
+LOKAD-NODE black outery=13107
+LOKAD-NODE black minimumwidth=65536
+LOKAD-NODE black minimumheight=65536
+LOKAD-RECT black sw=-719051;-507875
+LOKAD-RECT black ne=719051;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{-7.74956pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME black;1.0;0.0;0.0;1.0;-500621;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE white width=1001243
+LOKAD-NODE white height=451461
+LOKAD-NODE white depth=127430
+LOKAD-NODE white linewidth=26214
+LOKAD-NODE white quad=655360
+LOKAD-NODE white xheight=282165
+LOKAD-NODE white innerx=218430
+LOKAD-NODE white innery=218430
+LOKAD-NODE white outerx=13107
+LOKAD-NODE white outery=13107
+LOKAD-NODE white minimumwidth=65536
+LOKAD-NODE white minimumheight=65536
+LOKAD-RECT white sw=1574709;-507875
+LOKAD-RECT white ne=3012811;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{-7.74956pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME white;1.0;0.0;0.0;1.0;1793139;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE red width=1001243
+LOKAD-NODE red height=451461
+LOKAD-NODE red depth=127430
+LOKAD-NODE red linewidth=26214
+LOKAD-NODE red quad=655360
+LOKAD-NODE red xheight=282165
+LOKAD-NODE red innerx=218430
+LOKAD-NODE red innery=218430
+LOKAD-NODE red outerx=13107
+LOKAD-NODE red outery=13107
+LOKAD-NODE red minimumwidth=65536
+LOKAD-NODE red minimumheight=65536
+LOKAD-RECT red sw=3868469;-507875
+LOKAD-RECT red ne=5306571;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{-7.74956pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME red;1.0;0.0;0.0;1.0;4086899;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE green width=1001243
+LOKAD-NODE green height=451461
+LOKAD-NODE green depth=127430
+LOKAD-NODE green linewidth=26214
+LOKAD-NODE green quad=655360
+LOKAD-NODE green xheight=282165
+LOKAD-NODE green innerx=218430
+LOKAD-NODE green innery=218430
+LOKAD-NODE green outerx=13107
+LOKAD-NODE green outery=13107
+LOKAD-NODE green minimumwidth=65536
+LOKAD-NODE green minimumheight=65536
+LOKAD-RECT green sw=6162229;-507875
+LOKAD-RECT green ne=7600331;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{-7.74956pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME green;1.0;0.0;0.0;1.0;6380659;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE blue width=1001243
+LOKAD-NODE blue height=451461
+LOKAD-NODE blue depth=127430
+LOKAD-NODE blue linewidth=26214
+LOKAD-NODE blue quad=655360
+LOKAD-NODE blue xheight=282165
+LOKAD-NODE blue innerx=218430
+LOKAD-NODE blue innery=218430
+LOKAD-NODE blue outerx=13107
+LOKAD-NODE blue outery=13107
+LOKAD-NODE blue minimumwidth=65536
+LOKAD-NODE blue minimumheight=65536
+LOKAD-RECT blue sw=8455989;-507875
+LOKAD-RECT blue ne=9894091;507875
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{-7.74956pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME blue;1.0;0.0;0.0;1.0;8674419;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE cyan width=1001243
+LOKAD-NODE cyan height=451461
+LOKAD-NODE cyan depth=127430
+LOKAD-NODE cyan linewidth=26214
+LOKAD-NODE cyan quad=655360
+LOKAD-NODE cyan xheight=282165
+LOKAD-NODE cyan innerx=218430
+LOKAD-NODE cyan innery=218430
+LOKAD-NODE cyan outerx=13107
+LOKAD-NODE cyan outery=13107
+LOKAD-NODE cyan minimumwidth=65536
+LOKAD-NODE cyan minimumheight=65536
+LOKAD-RECT cyan sw=-719051;1130525
+LOKAD-RECT cyan ne=719051;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{17.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME cyan;1.0;0.0;0.0;1.0;-500621;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE magenta width=1001243
+LOKAD-NODE magenta height=451461
+LOKAD-NODE magenta depth=127430
+LOKAD-NODE magenta linewidth=26214
+LOKAD-NODE magenta quad=655360
+LOKAD-NODE magenta xheight=282165
+LOKAD-NODE magenta innerx=218430
+LOKAD-NODE magenta innery=218430
+LOKAD-NODE magenta outerx=13107
+LOKAD-NODE magenta outery=13107
+LOKAD-NODE magenta minimumwidth=65536
+LOKAD-NODE magenta minimumheight=65536
+LOKAD-RECT magenta sw=1574709;1130525
+LOKAD-RECT magenta ne=3012811;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{17.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME magenta;1.0;0.0;0.0;1.0;1793139;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE yellow width=1001243
+LOKAD-NODE yellow height=451461
+LOKAD-NODE yellow depth=127430
+LOKAD-NODE yellow linewidth=26214
+LOKAD-NODE yellow quad=655360
+LOKAD-NODE yellow xheight=282165
+LOKAD-NODE yellow innerx=218430
+LOKAD-NODE yellow innery=218430
+LOKAD-NODE yellow outerx=13107
+LOKAD-NODE yellow outery=13107
+LOKAD-NODE yellow minimumwidth=65536
+LOKAD-NODE yellow minimumheight=65536
+LOKAD-RECT yellow sw=3868469;1130525
+LOKAD-RECT yellow ne=5306571;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{17.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME yellow;1.0;0.0;0.0;1.0;4086899;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE gray width=1001243
+LOKAD-NODE gray height=451461
+LOKAD-NODE gray depth=127430
+LOKAD-NODE gray linewidth=26214
+LOKAD-NODE gray quad=655360
+LOKAD-NODE gray xheight=282165
+LOKAD-NODE gray innerx=218430
+LOKAD-NODE gray innery=218430
+LOKAD-NODE gray outerx=13107
+LOKAD-NODE gray outery=13107
+LOKAD-NODE gray minimumwidth=65536
+LOKAD-NODE gray minimumheight=65536
+LOKAD-RECT gray sw=6162229;1130525
+LOKAD-RECT gray ne=7600331;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{17.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME gray;1.0;0.0;0.0;1.0;6380659;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE darkgray width=1001243
+LOKAD-NODE darkgray height=451461
+LOKAD-NODE darkgray depth=127430
+LOKAD-NODE darkgray linewidth=26214
+LOKAD-NODE darkgray quad=655360
+LOKAD-NODE darkgray xheight=282165
+LOKAD-NODE darkgray innerx=218430
+LOKAD-NODE darkgray innery=218430
+LOKAD-NODE darkgray outerx=13107
+LOKAD-NODE darkgray outery=13107
+LOKAD-NODE darkgray minimumwidth=65536
+LOKAD-NODE darkgray minimumheight=65536
+LOKAD-RECT darkgray sw=8455989;1130525
+LOKAD-RECT darkgray ne=9894091;2146275
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{17.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME darkgray;1.0;0.0;0.0;1.0;8674419;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE lightgray width=1001243
+LOKAD-NODE lightgray height=451461
+LOKAD-NODE lightgray depth=127430
+LOKAD-NODE lightgray linewidth=26214
+LOKAD-NODE lightgray quad=655360
+LOKAD-NODE lightgray xheight=282165
+LOKAD-NODE lightgray innerx=218430
+LOKAD-NODE lightgray innery=218430
+LOKAD-NODE lightgray outerx=13107
+LOKAD-NODE lightgray outery=13107
+LOKAD-NODE lightgray minimumwidth=65536
+LOKAD-NODE lightgray minimumheight=65536
+LOKAD-RECT lightgray sw=-719051;2768925
+LOKAD-RECT lightgray ne=719051;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{42.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME lightgray;1.0;0.0;0.0;1.0;-500621;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE orange width=1001243
+LOKAD-NODE orange height=451461
+LOKAD-NODE orange depth=127430
+LOKAD-NODE orange linewidth=26214
+LOKAD-NODE orange quad=655360
+LOKAD-NODE orange xheight=282165
+LOKAD-NODE orange innerx=218430
+LOKAD-NODE orange innery=218430
+LOKAD-NODE orange outerx=13107
+LOKAD-NODE orange outery=13107
+LOKAD-NODE orange minimumwidth=65536
+LOKAD-NODE orange minimumheight=65536
+LOKAD-RECT orange sw=1574709;2768925
+LOKAD-RECT orange ne=3012811;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{42.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME orange;1.0;0.0;0.0;1.0;1793139;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE violet width=1001243
+LOKAD-NODE violet height=451461
+LOKAD-NODE violet depth=127430
+LOKAD-NODE violet linewidth=26214
+LOKAD-NODE violet quad=655360
+LOKAD-NODE violet xheight=282165
+LOKAD-NODE violet innerx=218430
+LOKAD-NODE violet innery=218430
+LOKAD-NODE violet outerx=13107
+LOKAD-NODE violet outery=13107
+LOKAD-NODE violet minimumwidth=65536
+LOKAD-NODE violet minimumheight=65536
+LOKAD-RECT violet sw=3868469;2768925
+LOKAD-RECT violet ne=5306571;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{42.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME violet;1.0;0.0;0.0;1.0;4086899;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE purple width=1001243
+LOKAD-NODE purple height=451461
+LOKAD-NODE purple depth=127430
+LOKAD-NODE purple linewidth=26214
+LOKAD-NODE purple quad=655360
+LOKAD-NODE purple xheight=282165
+LOKAD-NODE purple innerx=218430
+LOKAD-NODE purple innery=218430
+LOKAD-NODE purple outerx=13107
+LOKAD-NODE purple outery=13107
+LOKAD-NODE purple minimumwidth=65536
+LOKAD-NODE purple minimumheight=65536
+LOKAD-RECT purple sw=6162229;2768925
+LOKAD-RECT purple ne=7600331;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{42.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME purple;1.0;0.0;0.0;1.0;6380659;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE brown width=1001243
+LOKAD-NODE brown height=451461
+LOKAD-NODE brown depth=127430
+LOKAD-NODE brown linewidth=26214
+LOKAD-NODE brown quad=655360
+LOKAD-NODE brown xheight=282165
+LOKAD-NODE brown innerx=218430
+LOKAD-NODE brown innery=218430
+LOKAD-NODE brown outerx=13107
+LOKAD-NODE brown outery=13107
+LOKAD-NODE brown minimumwidth=65536
+LOKAD-NODE brown minimumheight=65536
+LOKAD-RECT brown sw=8455989;2768925
+LOKAD-RECT brown ne=9894091;3784675
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{42.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME brown;1.0;0.0;0.0;1.0;8674419;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE pink width=1001243
+LOKAD-NODE pink height=451461
+LOKAD-NODE pink depth=127430
+LOKAD-NODE pink linewidth=26214
+LOKAD-NODE pink quad=655360
+LOKAD-NODE pink xheight=282165
+LOKAD-NODE pink innerx=218430
+LOKAD-NODE pink innery=218430
+LOKAD-NODE pink outerx=13107
+LOKAD-NODE pink outery=13107
+LOKAD-NODE pink minimumwidth=65536
+LOKAD-NODE pink minimumheight=65536
+LOKAD-RECT pink sw=-719051;4407325
+LOKAD-RECT pink ne=719051;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{67.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME pink;1.0;0.0;0.0;1.0;-500621;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE lime width=1001243
+LOKAD-NODE lime height=451461
+LOKAD-NODE lime depth=127430
+LOKAD-NODE lime linewidth=26214
+LOKAD-NODE lime quad=655360
+LOKAD-NODE lime xheight=282165
+LOKAD-NODE lime innerx=218430
+LOKAD-NODE lime innery=218430
+LOKAD-NODE lime outerx=13107
+LOKAD-NODE lime outery=13107
+LOKAD-NODE lime minimumwidth=65536
+LOKAD-NODE lime minimumheight=65536
+LOKAD-RECT lime sw=1574709;4407325
+LOKAD-RECT lime ne=3012811;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{67.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME lime;1.0;0.0;0.0;1.0;1793139;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE olive width=1001243
+LOKAD-NODE olive height=451461
+LOKAD-NODE olive depth=127430
+LOKAD-NODE olive linewidth=26214
+LOKAD-NODE olive quad=655360
+LOKAD-NODE olive xheight=282165
+LOKAD-NODE olive innerx=218430
+LOKAD-NODE olive innery=218430
+LOKAD-NODE olive outerx=13107
+LOKAD-NODE olive outery=13107
+LOKAD-NODE olive minimumwidth=65536
+LOKAD-NODE olive minimumheight=65536
+LOKAD-RECT olive sw=3868469;4407325
+LOKAD-RECT olive ne=5306571;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{67.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME olive;1.0;0.0;0.0;1.0;4086899;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE teal width=1001243
+LOKAD-NODE teal height=451461
+LOKAD-NODE teal depth=127430
+LOKAD-NODE teal linewidth=26214
+LOKAD-NODE teal quad=655360
+LOKAD-NODE teal xheight=282165
+LOKAD-NODE teal innerx=218430
+LOKAD-NODE teal innery=218430
+LOKAD-NODE teal outerx=13107
+LOKAD-NODE teal outery=13107
+LOKAD-NODE teal minimumwidth=65536
+LOKAD-NODE teal minimumheight=65536
+LOKAD-RECT teal sw=6162229;4407325
+LOKAD-RECT teal ne=7600331;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{67.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME teal;1.0;0.0;0.0;1.0;6380659;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE magenta-white width=1001243
+LOKAD-NODE magenta-white height=451461
+LOKAD-NODE magenta-white depth=127430
+LOKAD-NODE magenta-white linewidth=26214
+LOKAD-NODE magenta-white quad=655360
+LOKAD-NODE magenta-white xheight=282165
+LOKAD-NODE magenta-white innerx=218430
+LOKAD-NODE magenta-white innery=218430
+LOKAD-NODE magenta-white outerx=13107
+LOKAD-NODE magenta-white outery=13107
+LOKAD-NODE magenta-white minimumwidth=65536
+LOKAD-NODE magenta-white minimumheight=65536
+LOKAD-RECT magenta-white sw=8455989;4407325
+LOKAD-RECT magenta-white ne=9894091;5423075
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{67.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME magenta-white;1.0;0.0;0.0;1.0;8674419;4753185
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE cyan-red width=1001243
+LOKAD-NODE cyan-red height=451461
+LOKAD-NODE cyan-red depth=127430
+LOKAD-NODE cyan-red linewidth=26214
+LOKAD-NODE cyan-red quad=655360
+LOKAD-NODE cyan-red xheight=282165
+LOKAD-NODE cyan-red innerx=218430
+LOKAD-NODE cyan-red innery=218430
+LOKAD-NODE cyan-red outerx=13107
+LOKAD-NODE cyan-red outery=13107
+LOKAD-NODE cyan-red minimumwidth=65536
+LOKAD-NODE cyan-red minimumheight=65536
+LOKAD-RECT cyan-red sw=-719051;6045725
+LOKAD-RECT cyan-red ne=719051;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-10.97185pt}{92.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME cyan-red;1.0;0.0;0.0;1.0;-500621;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE yellow-blue width=1001243
+LOKAD-NODE yellow-blue height=451461
+LOKAD-NODE yellow-blue depth=127430
+LOKAD-NODE yellow-blue linewidth=26214
+LOKAD-NODE yellow-blue quad=655360
+LOKAD-NODE yellow-blue xheight=282165
+LOKAD-NODE yellow-blue innerx=218430
+LOKAD-NODE yellow-blue innery=218430
+LOKAD-NODE yellow-blue outerx=13107
+LOKAD-NODE yellow-blue outery=13107
+LOKAD-NODE yellow-blue minimumwidth=65536
+LOKAD-NODE yellow-blue minimumheight=65536
+LOKAD-RECT yellow-blue sw=1574709;6045725
+LOKAD-RECT yellow-blue ne=3012811;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {24.02815pt}{92.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME yellow-blue;1.0;0.0;0.0;1.0;1793139;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE chained width=1001243
+LOKAD-NODE chained height=451461
+LOKAD-NODE chained depth=127430
+LOKAD-NODE chained linewidth=26214
+LOKAD-NODE chained quad=655360
+LOKAD-NODE chained xheight=282165
+LOKAD-NODE chained innerx=218430
+LOKAD-NODE chained innery=218430
+LOKAD-NODE chained outerx=13107
+LOKAD-NODE chained outery=13107
+LOKAD-NODE chained minimumwidth=65536
+LOKAD-NODE chained minimumheight=65536
+LOKAD-RECT chained sw=3868469;6045725
+LOKAD-RECT chained ne=5306571;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {59.02815pt}{92.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME chained;1.0;0.0;0.0;1.0;4086899;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE fractional width=1001243
+LOKAD-NODE fractional height=451461
+LOKAD-NODE fractional depth=127430
+LOKAD-NODE fractional linewidth=26214
+LOKAD-NODE fractional quad=655360
+LOKAD-NODE fractional xheight=282165
+LOKAD-NODE fractional innerx=218430
+LOKAD-NODE fractional innery=218430
+LOKAD-NODE fractional outerx=13107
+LOKAD-NODE fractional outery=13107
+LOKAD-NODE fractional minimumwidth=65536
+LOKAD-NODE fractional minimumheight=65536
+LOKAD-RECT fractional sw=6162229;6045725
+LOKAD-RECT fractional ne=7600331;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {94.02815pt}{92.25044pt}
+\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME fractional;1.0;0.0;0.0;1.0;6380659;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE scope-color width=1001243
+LOKAD-NODE scope-color height=451461
+LOKAD-NODE scope-color depth=127430
+LOKAD-NODE scope-color linewidth=26214
+LOKAD-NODE scope-color quad=655360
+LOKAD-NODE scope-color xheight=282165
+LOKAD-NODE scope-color innerx=218430
+LOKAD-NODE scope-color innery=218430
+LOKAD-NODE scope-color outerx=13107
+LOKAD-NODE scope-color outery=13107
+LOKAD-NODE scope-color minimumwidth=65536
+LOKAD-NODE scope-color minimumheight=65536
+LOKAD-RECT scope-color sw=8455989;6045725
+LOKAD-RECT scope-color ne=9894091;7061475
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {129.02815pt}{92.25044pt
+}\pgfsyssoftpath@rectsizetoken {21.9437pt}{15.49911pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME scope-color;1.0;0.0;0.0;1.0;8674419;6391585
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=draw,; width=0.6pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {46.17184pt}{25.0pt}\pgfsyss
+oftpath@linetotoken {58.82816pt}{100.0pt}
+LOKAD-PATH-END
+LOKAD-BOUNDS minx=-11.17184pt; miny=-7.94955pt; maxx=151.17184pt; maxy=107.9495
+5pt
+(probes.tex
+LOKAD-ANCHOR black;text;-500621;-162015
+LOKAD-ANCHOR black;center;0;0
+LOKAD-ANCHOR black;north;0;520982
+LOKAD-ANCHOR black;south;0;-520982
+LOKAD-ANCHOR black;west;-732158;0
+LOKAD-ANCHOR black;east;732158;0
+LOKAD-ANCHOR black;north west;-732158;520982
+LOKAD-ANCHOR black;north east;732158;520982
+LOKAD-ANCHOR black;south west;-732158;-520982
+LOKAD-ANCHOR black;south east;732158;-520982
+LOKAD-ANCHOR black;base;0;-162015
+LOKAD-ANCHOR black;base west;-732158;-162015
+LOKAD-ANCHOR black;base east;732158;-162015
+LOKAD-ANCHOR black;mid;0;-20933
+LOKAD-ANCHOR black;mid west;-732158;-20933
+LOKAD-ANCHOR black;mid east;732158;-20933
+LOKAD-ANCHOR white;text;1793139;-162015
+LOKAD-ANCHOR white;center;2293760;0
+LOKAD-ANCHOR white;north;2293760;520982
+LOKAD-ANCHOR white;south;2293760;-520982
+LOKAD-ANCHOR white;west;1561602;0
+LOKAD-ANCHOR white;east;3025918;0
+LOKAD-ANCHOR white;north west;1561602;520982
+LOKAD-ANCHOR white;north east;3025918;520982
+LOKAD-ANCHOR white;south west;1561602;-520982
+LOKAD-ANCHOR white;south east;3025918;-520982
+LOKAD-ANCHOR white;base;2293760;-162015
+LOKAD-ANCHOR white;base west;1561602;-162015
+LOKAD-ANCHOR white;base east;3025918;-162015
+LOKAD-ANCHOR white;mid;2293760;-20933
+LOKAD-ANCHOR white;mid west;1561602;-20933
+LOKAD-ANCHOR white;mid east;3025918;-20933
+LOKAD-ANCHOR red;text;4086899;-162015
+LOKAD-ANCHOR red;center;4587520;0
+LOKAD-ANCHOR red;north;4587520;520982
+LOKAD-ANCHOR red;south;4587520;-520982
+LOKAD-ANCHOR red;west;3855362;0
+LOKAD-ANCHOR red;east;5319678;0
+LOKAD-ANCHOR red;north west;3855362;520982
+LOKAD-ANCHOR red;north east;5319678;520982
+LOKAD-ANCHOR red;south west;3855362;-520982
+LOKAD-ANCHOR red;south east;5319678;-520982
+LOKAD-ANCHOR red;base;4587520;-162015
+LOKAD-ANCHOR red;base west;3855362;-162015
+LOKAD-ANCHOR red;base east;5319678;-162015
+LOKAD-ANCHOR red;mid;4587520;-20933
+LOKAD-ANCHOR red;mid west;3855362;-20933
+LOKAD-ANCHOR red;mid east;5319678;-20933
+LOKAD-ANCHOR green;text;6380659;-162015
+LOKAD-ANCHOR green;center;6881280;0
+LOKAD-ANCHOR green;north;6881280;520982
+LOKAD-ANCHOR green;south;6881280;-520982
+LOKAD-ANCHOR green;west;6149122;0
+LOKAD-ANCHOR green;east;7613438;0
+LOKAD-ANCHOR green;north west;6149122;520982
+LOKAD-ANCHOR green;north east;7613438;520982
+LOKAD-ANCHOR green;south west;6149122;-520982
+LOKAD-ANCHOR green;south east;7613438;-520982
+LOKAD-ANCHOR green;base;6881280;-162015
+LOKAD-ANCHOR green;base west;6149122;-162015
+LOKAD-ANCHOR green;base east;7613438;-162015
+LOKAD-ANCHOR green;mid;6881280;-20933
+LOKAD-ANCHOR green;mid west;6149122;-20933
+LOKAD-ANCHOR green;mid east;7613438;-20933
+LOKAD-ANCHOR blue;text;8674419;-162015
+LOKAD-ANCHOR blue;center;9175040;0
+LOKAD-ANCHOR blue;north;9175040;520982
+LOKAD-ANCHOR blue;south;9175040;-520982
+LOKAD-ANCHOR blue;west;8442882;0
+LOKAD-ANCHOR blue;east;9907198;0
+LOKAD-ANCHOR blue;north west;8442882;520982
+LOKAD-ANCHOR blue;north east;9907198;520982
+LOKAD-ANCHOR blue;south west;8442882;-520982
+LOKAD-ANCHOR blue;south east;9907198;-520982
+LOKAD-ANCHOR blue;base;9175040;-162015
+LOKAD-ANCHOR blue;base west;8442882;-162015
+LOKAD-ANCHOR blue;base east;9907198;-162015
+LOKAD-ANCHOR blue;mid;9175040;-20933
+LOKAD-ANCHOR blue;mid west;8442882;-20933
+LOKAD-ANCHOR blue;mid east;9907198;-20933
+LOKAD-ANCHOR cyan;text;-500621;1476385
+LOKAD-ANCHOR cyan;center;0;1638400
+LOKAD-ANCHOR cyan;north;0;2159382
+LOKAD-ANCHOR cyan;south;0;1117418
+LOKAD-ANCHOR cyan;west;-732158;1638400
+LOKAD-ANCHOR cyan;east;732158;1638400
+LOKAD-ANCHOR cyan;north west;-732158;2159382
+LOKAD-ANCHOR cyan;north east;732158;2159382
+LOKAD-ANCHOR cyan;south west;-732158;1117418
+LOKAD-ANCHOR cyan;south east;732158;1117418
+LOKAD-ANCHOR cyan;base;0;1476385
+LOKAD-ANCHOR cyan;base west;-732158;1476385
+LOKAD-ANCHOR cyan;base east;732158;1476385
+LOKAD-ANCHOR cyan;mid;0;1617467
+LOKAD-ANCHOR cyan;mid west;-732158;1617467
+LOKAD-ANCHOR cyan;mid east;732158;1617467
+LOKAD-ANCHOR magenta;text;1793139;1476385
+LOKAD-ANCHOR magenta;center;2293760;1638400
+LOKAD-ANCHOR magenta;north;2293760;2159382
+LOKAD-ANCHOR magenta;south;2293760;1117418
+LOKAD-ANCHOR magenta;west;1561602;1638400
+LOKAD-ANCHOR magenta;east;3025918;1638400
+LOKAD-ANCHOR magenta;north west;1561602;2159382
+LOKAD-ANCHOR magenta;north east;3025918;2159382
+LOKAD-ANCHOR magenta;south west;1561602;1117418
+LOKAD-ANCHOR magenta;south east;3025918;1117418
+LOKAD-ANCHOR magenta;base;2293760;1476385
+LOKAD-ANCHOR magenta;base west;1561602;1476385
+LOKAD-ANCHOR magenta;base east;3025918;1476385
+LOKAD-ANCHOR magenta;mid;2293760;1617467
+LOKAD-ANCHOR magenta;mid west;1561602;1617467
+LOKAD-ANCHOR magenta;mid east;3025918;1617467
+LOKAD-ANCHOR yellow;text;4086899;1476385
+LOKAD-ANCHOR yellow;center;4587520;1638400
+LOKAD-ANCHOR yellow;north;4587520;2159382
+LOKAD-ANCHOR yellow;south;4587520;1117418
+LOKAD-ANCHOR yellow;west;3855362;1638400
+LOKAD-ANCHOR yellow;east;5319678;1638400
+LOKAD-ANCHOR yellow;north west;3855362;2159382
+LOKAD-ANCHOR yellow;north east;5319678;2159382
+LOKAD-ANCHOR yellow;south west;3855362;1117418
+LOKAD-ANCHOR yellow;south east;5319678;1117418
+LOKAD-ANCHOR yellow;base;4587520;1476385
+LOKAD-ANCHOR yellow;base west;3855362;1476385
+LOKAD-ANCHOR yellow;base east;5319678;1476385
+LOKAD-ANCHOR yellow;mid;4587520;1617467
+LOKAD-ANCHOR yellow;mid west;3855362;1617467
+LOKAD-ANCHOR yellow;mid east;5319678;1617467
+LOKAD-ANCHOR gray;text;6380659;1476385
+LOKAD-ANCHOR gray;center;6881280;1638400
+LOKAD-ANCHOR gray;north;6881280;2159382
+LOKAD-ANCHOR gray;south;6881280;1117418
+LOKAD-ANCHOR gray;west;6149122;1638400
+LOKAD-ANCHOR gray;east;7613438;1638400
+LOKAD-ANCHOR gray;north west;6149122;2159382
+LOKAD-ANCHOR gray;north east;7613438;2159382
+LOKAD-ANCHOR gray;south west;6149122;1117418
+LOKAD-ANCHOR gray;south east;7613438;1117418
+LOKAD-ANCHOR gray;base;6881280;1476385
+LOKAD-ANCHOR gray;base west;6149122;1476385
+LOKAD-ANCHOR gray;base east;7613438;1476385
+LOKAD-ANCHOR gray;mid;6881280;1617467
+LOKAD-ANCHOR gray;mid west;6149122;1617467
+LOKAD-ANCHOR gray;mid east;7613438;1617467
+LOKAD-ANCHOR darkgray;text;8674419;1476385
+LOKAD-ANCHOR darkgray;center;9175040;1638400
+LOKAD-ANCHOR darkgray;north;9175040;2159382
+LOKAD-ANCHOR darkgray;south;9175040;1117418
+LOKAD-ANCHOR darkgray;west;8442882;1638400
+LOKAD-ANCHOR darkgray;east;9907198;1638400
+LOKAD-ANCHOR darkgray;north west;8442882;2159382
+LOKAD-ANCHOR darkgray;north east;9907198;2159382
+LOKAD-ANCHOR darkgray;south west;8442882;1117418
+LOKAD-ANCHOR darkgray;south east;9907198;1117418
+LOKAD-ANCHOR darkgray;base;9175040;1476385
+LOKAD-ANCHOR darkgray;base west;8442882;1476385
+LOKAD-ANCHOR darkgray;base east;9907198;1476385
+LOKAD-ANCHOR darkgray;mid;9175040;1617467
+LOKAD-ANCHOR darkgray;mid west;8442882;1617467
+LOKAD-ANCHOR darkgray;mid east;9907198;1617467
+LOKAD-ANCHOR lightgray;text;-500621;3114785
+LOKAD-ANCHOR lightgray;center;0;3276800
+LOKAD-ANCHOR lightgray;north;0;3797782
+LOKAD-ANCHOR lightgray;south;0;2755818
+LOKAD-ANCHOR lightgray;west;-732158;3276800
+LOKAD-ANCHOR lightgray;east;732158;3276800
+LOKAD-ANCHOR lightgray;north west;-732158;3797782
+LOKAD-ANCHOR lightgray;north east;732158;3797782
+LOKAD-ANCHOR lightgray;south west;-732158;2755818
+LOKAD-ANCHOR lightgray;south east;732158;2755818
+LOKAD-ANCHOR lightgray;base;0;3114785
+LOKAD-ANCHOR lightgray;base west;-732158;3114785
+LOKAD-ANCHOR lightgray;base east;732158;3114785
+LOKAD-ANCHOR lightgray;mid;0;3255867
+LOKAD-ANCHOR lightgray;mid west;-732158;3255867
+LOKAD-ANCHOR lightgray;mid east;732158;3255867
+LOKAD-ANCHOR orange;text;1793139;3114785
+LOKAD-ANCHOR orange;center;2293760;3276800
+LOKAD-ANCHOR orange;north;2293760;3797782
+LOKAD-ANCHOR orange;south;2293760;2755818
+LOKAD-ANCHOR orange;west;1561602;3276800
+LOKAD-ANCHOR orange;east;3025918;3276800
+LOKAD-ANCHOR orange;north west;1561602;3797782
+LOKAD-ANCHOR orange;north east;3025918;3797782
+LOKAD-ANCHOR orange;south west;1561602;2755818
+LOKAD-ANCHOR orange;south east;3025918;2755818
+LOKAD-ANCHOR orange;base;2293760;3114785
+LOKAD-ANCHOR orange;base west;1561602;3114785
+LOKAD-ANCHOR orange;base east;3025918;3114785
+LOKAD-ANCHOR orange;mid;2293760;3255867
+LOKAD-ANCHOR orange;mid west;1561602;3255867
+LOKAD-ANCHOR orange;mid east;3025918;3255867
+LOKAD-ANCHOR violet;text;4086899;3114785
+LOKAD-ANCHOR violet;center;4587520;3276800
+LOKAD-ANCHOR violet;north;4587520;3797782
+LOKAD-ANCHOR violet;south;4587520;2755818
+LOKAD-ANCHOR violet;west;3855362;3276800
+LOKAD-ANCHOR violet;east;5319678;3276800
+LOKAD-ANCHOR violet;north west;3855362;3797782
+LOKAD-ANCHOR violet;north east;5319678;3797782
+LOKAD-ANCHOR violet;south west;3855362;2755818
+LOKAD-ANCHOR violet;south east;5319678;2755818
+LOKAD-ANCHOR violet;base;4587520;3114785
+LOKAD-ANCHOR violet;base west;3855362;3114785
+LOKAD-ANCHOR violet;base east;5319678;3114785
+LOKAD-ANCHOR violet;mid;4587520;3255867
+LOKAD-ANCHOR violet;mid west;3855362;3255867
+LOKAD-ANCHOR violet;mid east;5319678;3255867
+LOKAD-ANCHOR purple;text;6380659;3114785
+LOKAD-ANCHOR purple;center;6881280;3276800
+LOKAD-ANCHOR purple;north;6881280;3797782
+LOKAD-ANCHOR purple;south;6881280;2755818
+LOKAD-ANCHOR purple;west;6149122;3276800
+LOKAD-ANCHOR purple;east;7613438;3276800
+LOKAD-ANCHOR purple;north west;6149122;3797782
+LOKAD-ANCHOR purple;north east;7613438;3797782
+LOKAD-ANCHOR purple;south west;6149122;2755818
+LOKAD-ANCHOR purple;south east;7613438;2755818
+LOKAD-ANCHOR purple;base;6881280;3114785
+LOKAD-ANCHOR purple;base west;6149122;3114785
+LOKAD-ANCHOR purple;base east;7613438;3114785
+LOKAD-ANCHOR purple;mid;6881280;3255867
+LOKAD-ANCHOR purple;mid west;6149122;3255867
+LOKAD-ANCHOR purple;mid east;7613438;3255867
+LOKAD-ANCHOR brown;text;8674419;3114785
+LOKAD-ANCHOR brown;center;9175040;3276800
+LOKAD-ANCHOR brown;north;9175040;3797782
+LOKAD-ANCHOR brown;south;9175040;2755818
+LOKAD-ANCHOR brown;west;8442882;3276800
+LOKAD-ANCHOR brown;east;9907198;3276800
+LOKAD-ANCHOR brown;north west;8442882;3797782
+LOKAD-ANCHOR brown;north east;9907198;3797782
+LOKAD-ANCHOR brown;south west;8442882;2755818
+LOKAD-ANCHOR brown;south east;9907198;2755818
+LOKAD-ANCHOR brown;base;9175040;3114785
+LOKAD-ANCHOR brown;base west;8442882;3114785
+LOKAD-ANCHOR brown;base east;9907198;3114785
+LOKAD-ANCHOR brown;mid;9175040;3255867
+LOKAD-ANCHOR brown;mid west;8442882;3255867
+LOKAD-ANCHOR brown;mid east;9907198;3255867
+LOKAD-ANCHOR pink;text;-500621;4753185
+LOKAD-ANCHOR pink;center;0;4915200
+LOKAD-ANCHOR pink;north;0;5436182
+LOKAD-ANCHOR pink;south;0;4394218
+LOKAD-ANCHOR pink;west;-732158;4915200
+LOKAD-ANCHOR pink;east;732158;4915200
+LOKAD-ANCHOR pink;north west;-732158;5436182
+LOKAD-ANCHOR pink;north east;732158;5436182
+LOKAD-ANCHOR pink;south west;-732158;4394218
+LOKAD-ANCHOR pink;south east;732158;4394218
+LOKAD-ANCHOR pink;base;0;4753185
+LOKAD-ANCHOR pink;base west;-732158;4753185
+LOKAD-ANCHOR pink;base east;732158;4753185
+LOKAD-ANCHOR pink;mid;0;4894267
+LOKAD-ANCHOR pink;mid west;-732158;4894267
+LOKAD-ANCHOR pink;mid east;732158;4894267
+LOKAD-ANCHOR lime;text;1793139;4753185
+LOKAD-ANCHOR lime;center;2293760;4915200
+LOKAD-ANCHOR lime;north;2293760;5436182
+LOKAD-ANCHOR lime;south;2293760;4394218
+LOKAD-ANCHOR lime;west;1561602;4915200
+LOKAD-ANCHOR lime;east;3025918;4915200
+LOKAD-ANCHOR lime;north west;1561602;5436182
+LOKAD-ANCHOR lime;north east;3025918;5436182
+LOKAD-ANCHOR lime;south west;1561602;4394218
+LOKAD-ANCHOR lime;south east;3025918;4394218
+LOKAD-ANCHOR lime;base;2293760;4753185
+LOKAD-ANCHOR lime;base west;1561602;4753185
+LOKAD-ANCHOR lime;base east;3025918;4753185
+LOKAD-ANCHOR lime;mid;2293760;4894267
+LOKAD-ANCHOR lime;mid west;1561602;4894267
+LOKAD-ANCHOR lime;mid east;3025918;4894267
+LOKAD-ANCHOR olive;text;4086899;4753185
+LOKAD-ANCHOR olive;center;4587520;4915200
+LOKAD-ANCHOR olive;north;4587520;5436182
+LOKAD-ANCHOR olive;south;4587520;4394218
+LOKAD-ANCHOR olive;west;3855362;4915200
+LOKAD-ANCHOR olive;east;5319678;4915200
+LOKAD-ANCHOR olive;north west;3855362;5436182
+LOKAD-ANCHOR olive;north east;5319678;5436182
+LOKAD-ANCHOR olive;south west;3855362;4394218
+LOKAD-ANCHOR olive;south east;5319678;4394218
+LOKAD-ANCHOR olive;base;4587520;4753185
+LOKAD-ANCHOR olive;base west;3855362;4753185
+LOKAD-ANCHOR olive;base east;5319678;4753185
+LOKAD-ANCHOR olive;mid;4587520;4894267
+LOKAD-ANCHOR olive;mid west;3855362;4894267
+LOKAD-ANCHOR olive;mid east;5319678;4894267
+LOKAD-ANCHOR teal;text;6380659;4753185
+LOKAD-ANCHOR teal;center;6881280;4915200
+LOKAD-ANCHOR teal;north;6881280;5436182
+LOKAD-ANCHOR teal;south;6881280;4394218
+LOKAD-ANCHOR teal;west;6149122;4915200
+LOKAD-ANCHOR teal;east;7613438;4915200
+LOKAD-ANCHOR teal;north west;6149122;5436182
+LOKAD-ANCHOR teal;north east;7613438;5436182
+LOKAD-ANCHOR teal;south west;6149122;4394218
+LOKAD-ANCHOR teal;south east;7613438;4394218
+LOKAD-ANCHOR teal;base;6881280;4753185
+LOKAD-ANCHOR teal;base west;6149122;4753185
+LOKAD-ANCHOR teal;base east;7613438;4753185
+LOKAD-ANCHOR teal;mid;6881280;4894267
+LOKAD-ANCHOR teal;mid west;6149122;4894267
+LOKAD-ANCHOR teal;mid east;7613438;4894267
+LOKAD-ANCHOR magenta-white;text;8674419;4753185
+LOKAD-ANCHOR magenta-white;center;9175040;4915200
+LOKAD-ANCHOR magenta-white;north;9175040;5436182
+LOKAD-ANCHOR magenta-white;south;9175040;4394218
+LOKAD-ANCHOR magenta-white;west;8442882;4915200
+LOKAD-ANCHOR magenta-white;east;9907198;4915200
+LOKAD-ANCHOR magenta-white;north west;8442882;5436182
+LOKAD-ANCHOR magenta-white;north east;9907198;5436182
+LOKAD-ANCHOR magenta-white;south west;8442882;4394218
+LOKAD-ANCHOR magenta-white;south east;9907198;4394218
+LOKAD-ANCHOR magenta-white;base;9175040;4753185
+LOKAD-ANCHOR magenta-white;base west;8442882;4753185
+LOKAD-ANCHOR magenta-white;base east;9907198;4753185
+LOKAD-ANCHOR magenta-white;mid;9175040;4894267
+LOKAD-ANCHOR magenta-white;mid west;8442882;4894267
+LOKAD-ANCHOR magenta-white;mid east;9907198;4894267
+LOKAD-ANCHOR cyan-red;text;-500621;6391585
+LOKAD-ANCHOR cyan-red;center;0;6553600
+LOKAD-ANCHOR cyan-red;north;0;7074582
+LOKAD-ANCHOR cyan-red;south;0;6032618
+LOKAD-ANCHOR cyan-red;west;-732158;6553600
+LOKAD-ANCHOR cyan-red;east;732158;6553600
+LOKAD-ANCHOR cyan-red;north west;-732158;7074582
+LOKAD-ANCHOR cyan-red;north east;732158;7074582
+LOKAD-ANCHOR cyan-red;south west;-732158;6032618
+LOKAD-ANCHOR cyan-red;south east;732158;6032618
+LOKAD-ANCHOR cyan-red;base;0;6391585
+LOKAD-ANCHOR cyan-red;base west;-732158;6391585
+LOKAD-ANCHOR cyan-red;base east;732158;6391585
+LOKAD-ANCHOR cyan-red;mid;0;6532667
+LOKAD-ANCHOR cyan-red;mid west;-732158;6532667
+LOKAD-ANCHOR cyan-red;mid east;732158;6532667
+LOKAD-ANCHOR yellow-blue;text;1793139;6391585
+LOKAD-ANCHOR yellow-blue;center;2293760;6553600
+LOKAD-ANCHOR yellow-blue;north;2293760;7074582
+LOKAD-ANCHOR yellow-blue;south;2293760;6032618
+LOKAD-ANCHOR yellow-blue;west;1561602;6553600
+LOKAD-ANCHOR yellow-blue;east;3025918;6553600
+LOKAD-ANCHOR yellow-blue;north west;1561602;7074582
+LOKAD-ANCHOR yellow-blue;north east;3025918;7074582
+LOKAD-ANCHOR yellow-blue;south west;1561602;6032618
+LOKAD-ANCHOR yellow-blue;south east;3025918;6032618
+LOKAD-ANCHOR yellow-blue;base;2293760;6391585
+LOKAD-ANCHOR yellow-blue;base west;1561602;6391585
+LOKAD-ANCHOR yellow-blue;base east;3025918;6391585
+LOKAD-ANCHOR yellow-blue;mid;2293760;6532667
+LOKAD-ANCHOR yellow-blue;mid west;1561602;6532667
+LOKAD-ANCHOR yellow-blue;mid east;3025918;6532667
+LOKAD-ANCHOR chained;text;4086899;6391585
+LOKAD-ANCHOR chained;center;4587520;6553600
+LOKAD-ANCHOR chained;north;4587520;7074582
+LOKAD-ANCHOR chained;south;4587520;6032618
+LOKAD-ANCHOR chained;west;3855362;6553600
+LOKAD-ANCHOR chained;east;5319678;6553600
+LOKAD-ANCHOR chained;north west;3855362;7074582
+LOKAD-ANCHOR chained;north east;5319678;7074582
+LOKAD-ANCHOR chained;south west;3855362;6032618
+LOKAD-ANCHOR chained;south east;5319678;6032618
+LOKAD-ANCHOR chained;base;4587520;6391585
+LOKAD-ANCHOR chained;base west;3855362;6391585
+LOKAD-ANCHOR chained;base east;5319678;6391585
+LOKAD-ANCHOR chained;mid;4587520;6532667
+LOKAD-ANCHOR chained;mid west;3855362;6532667
+LOKAD-ANCHOR chained;mid east;5319678;6532667
+LOKAD-ANCHOR fractional;text;6380659;6391585
+LOKAD-ANCHOR fractional;center;6881280;6553600
+LOKAD-ANCHOR fractional;north;6881280;7074582
+LOKAD-ANCHOR fractional;south;6881280;6032618
+LOKAD-ANCHOR fractional;west;6149122;6553600
+LOKAD-ANCHOR fractional;east;7613438;6553600
+LOKAD-ANCHOR fractional;north west;6149122;7074582
+LOKAD-ANCHOR fractional;north east;7613438;7074582
+LOKAD-ANCHOR fractional;south west;6149122;6032618
+LOKAD-ANCHOR fractional;south east;7613438;6032618
+LOKAD-ANCHOR fractional;base;6881280;6391585
+LOKAD-ANCHOR fractional;base west;6149122;6391585
+LOKAD-ANCHOR fractional;base east;7613438;6391585
+LOKAD-ANCHOR fractional;mid;6881280;6532667
+LOKAD-ANCHOR fractional;mid west;6149122;6532667
+LOKAD-ANCHOR fractional;mid east;7613438;6532667
+LOKAD-ANCHOR scope-color;text;8674419;6391585
+LOKAD-ANCHOR scope-color;center;9175040;6553600
+LOKAD-ANCHOR scope-color;north;9175040;7074582
+LOKAD-ANCHOR scope-color;south;9175040;6032618
+LOKAD-ANCHOR scope-color;west;8442882;6553600
+LOKAD-ANCHOR scope-color;east;9907198;6553600
+LOKAD-ANCHOR scope-color;north west;8442882;7074582
+LOKAD-ANCHOR scope-color;north east;9907198;7074582
+LOKAD-ANCHOR scope-color;south west;8442882;6032618
+LOKAD-ANCHOR scope-color;south east;9907198;6032618
+LOKAD-ANCHOR scope-color;base;9175040;6391585
+LOKAD-ANCHOR scope-color;base west;8442882;6391585
+LOKAD-ANCHOR scope-color;base east;9907198;6391585
+LOKAD-ANCHOR scope-color;mid;9175040;6532667
+LOKAD-ANCHOR scope-color;mid west;8442882;6532667
+LOKAD-ANCHOR scope-color;mid east;9907198;6532667
+LOKAD-ANCHOR-start x=46.17184pt; y=25.0pt
+LOKAD-ANCHOR-end x=58.82816pt; y=100.0pt
+))
+LOKAD-BOX width=162.34369pt; height=115.89911pt; depth=0.0pt
+
+
+[1
+
+
+LOKAD-PAGE-ORIGIN xsp=8799518; ysp=36293895; pageheight=794.96999pt
+Non-PDF special ignored!
+<special> lokad-node-origin black
+{<local>/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{<local>/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.en
+c}
+Non-PDF special ignored!
+<special> lokad-node-origin white
+Non-PDF special ignored!
+<special> lokad-node-origin red
+Non-PDF special ignored!
+<special> lokad-node-origin green
+Non-PDF special ignored!
+<special> lokad-node-origin blue
+Non-PDF special ignored!
+<special> lokad-node-origin cyan
+Non-PDF special ignored!
+<special> lokad-node-origin magenta
+Non-PDF special ignored!
+<special> lokad-node-origin yellow
+Non-PDF special ignored!
+<special> lokad-node-origin gray
+Non-PDF special ignored!
+<special> lokad-node-origin darkgray
+Non-PDF special ignored!
+<special> lokad-node-origin lightgray
+Non-PDF special ignored!
+<special> lokad-node-origin orange
+Non-PDF special ignored!
+<special> lokad-node-origin violet
+Non-PDF special ignored!
+<special> lokad-node-origin purple
+Non-PDF special ignored!
+<special> lokad-node-origin brown
+Non-PDF special ignored!
+<special> lokad-node-origin pink
+Non-PDF special ignored!
+<special> lokad-node-origin lime
+Non-PDF special ignored!
+<special> lokad-node-origin olive
+Non-PDF special ignored!
+<special> lokad-node-origin teal
+Non-PDF special ignored!
+<special> lokad-node-origin magenta-white
+Non-PDF special ignored!
+<special> lokad-node-origin cyan-red
+Non-PDF special ignored!
+<special> lokad-node-origin yellow-blue
+Non-PDF special ignored!
+<special> lokad-node-origin chained
+Non-PDF special ignored!
+<special> lokad-node-origin fractional
+Non-PDF special ignored!
+<special> lokad-node-origin scope-color
+] (case.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 12308 strings out of 468129
+ 259298 string characters out of 5425772
+ 634977 words of memory out of 5000000
+ 40747 multiletter control sequences out of 15000+600000
+ 630578 words of font info for 42 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 102i,7n,107p,404b,740s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<<local>/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmr10.pfb>
+Output written on case.pdf (1 page, 26182 bytes).
+PDF statistics:
+ 15 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+

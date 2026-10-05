@@ -8,6 +8,12 @@ and derived SVG hashes are recorded in
 All channel and foreground-error values below use the 0–255 channel scale.
 Numeric geometry has a separate 0.02 CSS pixel bound in the case manifest.
 
+The complete oracle-only experiment was rerun on 2026-10-05 after the node
+tooling changes. All nine cases and three variants retain identical derived
+SVG hashes, numeric checks, dimensions, primary metrics, and SVG-versus-PDF
+metrics. The snapshot refresh changes only its timestamp and tool hashes;
+the geometry and PDF policies are unchanged.
+
 ## Independent primary measurements
 
 `calibrate-reference` never calls the converter. It takes the oracle's PGF

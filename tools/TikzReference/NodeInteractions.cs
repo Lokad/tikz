@@ -13,9 +13,12 @@ using Lokad.TikZ.Text;
 
 internal static partial class ReferenceTool
 {
-    private const string InteractionManifestPath = "tests/Reference/NodeInteractions/cases.json";
-    private const string InteractionProfilePath = "tests/Reference/NodeInteractions/oracle-profile.json";
+    private static string InteractionRoot = "tests/Reference/NodeInteractions";
+    private static string InteractionManifestPath => InteractionRoot + "/cases.json";
+    private static string InteractionProfilePath => InteractionRoot + "/oracle-profile.json";
     private const string InteractionWrapperPath = "tools/TikzReference/node-interactions.tex";
+    private const string RgbColorSetupPath = "tools/TikzReference/rgb-color-profile.tex";
+    private static bool InteractionInkFraming;
     private static readonly string[] InteractionArtifacts = ["metrics.json", "reference.svg", "reference.pdf", "oracle.log",
         "native-positions.log", "pdf-page-1x.png", "pdf-page-4x.png"];
 
@@ -23,24 +26,35 @@ internal static partial class ReferenceTool
     {
         var options = new Dictionary<string, string>(StringComparer.Ordinal);
         for (var i = 1; i < args.Length; i += 2)
-            if (i + 1 == args.Length || args[i] is not ("--case" or "--out") || !options.TryAdd(args[i][2..], args[i + 1]))
-                throw new InvalidOperationException("Usage: TikzReference <generate-node-interactions|verify-node-interactions|compare-node-interactions|calibrate-node-interaction-pdf> [--case id] [--out artifacts/...].");
+            if (i + 1 == args.Length || args[i] is not ("--case" or "--out" or "--profile" or "--framing") || !options.TryAdd(args[i][2..], args[i + 1]))
+                throw new InvalidOperationException("Usage: TikzReference <generate-node-interactions|verify-node-interactions|compare-node-interactions|calibrate-node-interaction-pdf|calibrate-node-interaction-framing> [--profile native|rgb] [--case id] [--out artifacts/...] [comparison only: --framing driver|ink].");
         if (args[0] == "generate-node-interactions" && options.ContainsKey("out"))
             throw new InvalidOperationException("Generation writes only the explicit trusted baseline locations.");
+        InteractionRoot = options.GetValueOrDefault("profile", "native") switch {
+            "native" => "tests/Reference/NodeInteractions", "rgb" => "tests/Reference/NodeInteractionsRgb",
+            _ => throw new InvalidOperationException("Unknown trusted interaction color profile.") };
+        var rgb = InteractionRoot.EndsWith("Rgb", StringComparison.Ordinal);
+        if (options.ContainsKey("framing") && args[0] != "compare-node-interactions")
+            throw new InvalidOperationException("Explicit framing is a candidate-comparison option only.");
+        InteractionInkFraming = options.GetValueOrDefault("framing", "driver") switch {
+            "driver" => false, "ink" => true, _ => throw new InvalidOperationException("Unknown interaction framing contract.") };
         Profile = Read<OracleProfile>(At(InteractionProfilePath));
         var manifest = Read<InteractionManifest>(At(InteractionManifestPath));
         if (manifest.SchemaVersion != 1 || Profile.SchemaVersion != 1 || manifest.Profile != Profile.Id
-            || manifest.Cases.Length != 2 || !manifest.Cases.Select(c => c.Id).Order().SequenceEqual(new[] { "state-paint", "transforms" })
+            || !manifest.Cases.Select(c => c.Id).Order().SequenceEqual(rgb ? new[] { "colors", "state-paint", "transforms" } : ["state-paint", "transforms"])
             || manifest.Cases.Any(c => c.Source != $"tests/Fixtures/Nodes/{c.Id}.tikz" || c.Nodes.Length == 0
                 || c.Nodes.Distinct().Count() != c.Nodes.Length || c.Nodes.Any(id => !Regex.IsMatch(id, "^[a-z][a-z0-9-]*$"))
                 || !double.IsFinite(c.NumericTolerancePixels) || c.NumericTolerancePixels is < 0 or > .02))
             throw new InvalidOperationException("Incompatible trusted node interaction manifest/profile.");
+        if (rgb && Read<JsonElement>(At(InteractionProfilePath)).GetProperty("colorProfile").GetString() != "xcolor-rgb-v1")
+            throw new InvalidOperationException("Incompatible RGB color profile.");
         var selected = manifest.Cases.Where(c => !options.TryGetValue("case", out var id) || c.Id == id).ToArray();
         if (selected.Length == 0) throw new InvalidOperationException("No matching trusted node interaction fixture.");
-        var output = ArtifactDirectory(options.GetValueOrDefault("out", args[0] switch {
+        var output = ArtifactDirectory(options.GetValueOrDefault("out", (args[0] switch {
             "compare-node-interactions" => "artifacts/node-interactions",
             "calibrate-node-interaction-pdf" => "artifacts/node-interaction-pdf-calibration",
-            _ => "artifacts/node-interaction-reference-work" }));
+            "calibrate-node-interaction-framing" => "artifacts/node-interaction-framing-calibration",
+            _ => "artifacts/node-interaction-reference-work" }) + (rgb ? "-rgb" : "") + (InteractionInkFraming ? "-ink" : "")));
         var results = new List<object>();
         var exit = 0;
         foreach (var c in selected)
@@ -48,6 +62,7 @@ internal static partial class ReferenceTool
             var result = args[0] switch {
                 "compare-node-interactions" => await CompareInteraction(c, Path.Combine(output, c.Id)),
                 "calibrate-node-interaction-pdf" => await CalibrateInteractionPdf(c, Path.Combine(output, c.Id)),
+                "calibrate-node-interaction-framing" => await CalibrateInteractionFraming(c, Path.Combine(output, c.Id)),
                 _ => await GenerateInteraction(c, Path.Combine(output, c.Id), args[0] == "generate-node-interactions") };
             results.Add(new { caseId = c.Id, exitCode = result });
             exit = Math.Max(exit, result);
@@ -83,6 +98,8 @@ internal static partial class ReferenceTool
         }
         var source = Text(At(c.Source));
         var wrapper = Text(At(InteractionWrapperPath));
+        if (InteractionRoot.EndsWith("Rgb", StringComparison.Ordinal))
+            wrapper = wrapper.Replace("\\usepackage{tikz}", Text(At(RgbColorSetupPath)) + "\\usepackage{tikz}", StringComparison.Ordinal);
         var probes = new StringBuilder();
         foreach (var id in c.Nodes)
             foreach (var anchor in NodeAnchorNames)
@@ -114,6 +131,9 @@ internal static partial class ReferenceTool
         if (!log.Contains("LOKAD-PGF-VERSION " + Profile.PgfVersion + "\n", StringComparison.Ordinal)
             || !pdfLog.Contains("LOKAD-PGF-VERSION " + Profile.PgfVersion + "\n", StringComparison.Ordinal))
             throw new InvalidOperationException("Interaction oracle PGF version mismatch.");
+        if (InteractionRoot.EndsWith("Rgb", StringComparison.Ordinal) && (!log.Contains("LOKAD-COLOR-PROFILE xcolor-rgb-v1\n", StringComparison.Ordinal)
+            || !pdfLog.Contains("LOKAD-COLOR-PROFILE xcolor-rgb-v1\n", StringComparison.Ordinal)))
+            throw new InvalidOperationException("Interaction oracle did not select the declared RGB model.");
         var trace = await Process(dviType.Executable, ["-disable-installer", "-out-mode=4", "case.dvi"], probed);
         if (trace.ExitCode != 0) throw new InvalidOperationException("Native interaction glyph trace failed: " + Sanitize(trace.Output));
         var native = NativeNodes(log, Profile.Id, c.Nodes);
@@ -149,7 +169,7 @@ internal static partial class ReferenceTool
              "dvisvgm: --no-fonts --exact-bbox --bbox=min --output=reference.svg case.dvi",
              "dvitype: -disable-installer -out-mode=4 case.dvi", "pdftoppm: -r 96/384 -png -singlefile"]);
         Write(Path.Combine(generated, "provenance.json"), provenance);
-        var baseline = At("tests/Reference/NodeInteractions/" + c.Id);
+        var baseline = At(InteractionRoot + "/" + c.Id);
         if (writeBaseline)
         {
             Directory.CreateDirectory(baseline);
@@ -210,16 +230,19 @@ internal static partial class ReferenceTool
         return [.. paints];
     }
 
-    private static Dictionary<string, string> InteractionHashes(InteractionCase c) => new(StringComparer.Ordinal)
+    private static Dictionary<string, string> InteractionHashes(InteractionCase c)
     {
-        [c.Source] = HashText(Text(At(c.Source))), [InteractionManifestPath] = HashText(Text(At(InteractionManifestPath))),
-        [InteractionProfilePath] = HashText(Text(At(InteractionProfilePath))), [InteractionWrapperPath] = HashText(Text(At(InteractionWrapperPath))),
-        ["tools/TikzFontData/font-profile.json"] = HashText(Text(At("tools/TikzFontData/font-profile.json")))
-    };
+        var hashes = new Dictionary<string, string>(StringComparer.Ordinal) {
+            [c.Source] = HashText(Text(At(c.Source))), [InteractionManifestPath] = HashText(Text(At(InteractionManifestPath))),
+            [InteractionProfilePath] = HashText(Text(At(InteractionProfilePath))), [InteractionWrapperPath] = HashText(Text(At(InteractionWrapperPath))),
+            ["tools/TikzFontData/font-profile.json"] = HashText(Text(At("tools/TikzFontData/font-profile.json"))) };
+        if (InteractionRoot.EndsWith("Rgb", StringComparison.Ordinal)) hashes[RgbColorSetupPath] = HashText(Text(At(RgbColorSetupPath)));
+        return hashes;
+    }
 
     private static InteractionMetrics CachedInteraction(InteractionCase c)
     {
-        var baseline = At("tests/Reference/NodeInteractions/" + c.Id);
+        var baseline = At(InteractionRoot + "/" + c.Id);
         var provenance = Read<NodeProvenance>(Path.Combine(baseline, "provenance.json"));
         if (provenance.SchemaVersion != 1 || provenance.Profile != Profile.Id || !provenance.ProbeVerification.PictureBoxIdentical
             || !provenance.ProbeVerification.SvgIdenticalAfterDefinitionOrderOnly
@@ -246,7 +269,19 @@ internal static partial class ReferenceTool
         {
             var metrics = CachedInteraction(c);
             foreach (var file in InteractionArtifacts.Append("provenance.json"))
-                File.Copy(At("tests/Reference/NodeInteractions/" + c.Id + "/" + file), Path.Combine(output, file));
+                File.Copy(At(InteractionRoot + "/" + c.Id + "/" + file), Path.Combine(output, file));
+            if (InteractionInkFraming)
+            {
+                File.Copy(Path.Combine(output, "reference.svg"), Path.Combine(output, "original-driver.svg"));
+                var document = XDocument.Load(Path.Combine(output, "reference.svg"));
+                var frame = OracleStrokeFrame(document, metrics);
+                ApplyOracleFrame(document, frame, false);
+                File.WriteAllText(Path.Combine(output, "reference.svg"), document.ToString(SaveOptions.DisableFormatting));
+                Write(Path.Combine(output, "reference-frame.json"), new { schemaVersion = 1, converterInvoked = false,
+                    source = "Original driver frame plus independent PGF polygon-stroke line intersections; no fitting", frame,
+                    originalSha256 = HashFile(Path.Combine(output, "original-driver.svg")), derivedSha256 = HashFile(Path.Combine(output, "reference.svg")),
+                    metricsSha256 = HashFile(Path.Combine(output, "metrics.json")), toolSha256 = HashText(Text(At("tools/TikzReference/OracleStrokeFrame.cs"))) });
+            }
             var source = Text(At(c.Source)); File.WriteAllText(Path.Combine(output, "source.tikz"), source);
             GraphicsScene? scene = null;
             var result = TikzConverter.ConvertWithTrace(source, TikzOptions.Default with { IdPrefix = "candidate" }, CancellationToken.None, s => scene = s);
@@ -264,9 +299,10 @@ internal static partial class ReferenceTool
             Write(Path.Combine(output, "candidate-provenance.json"), new { schemaVersion = 1, commit = git.Output.Trim(),
                 workingTreeSha256 = await WorkingTreeFingerprint(), configuration = BuildConfiguration, assemblySha256 = HashFile(typeof(TikzConverter).Assembly.Location) });
             Write(Path.Combine(output, "comparison-input.json"), new { schemaVersion = 1, caseId = "node-" + c.Id,
-                referenceMode = "cached", referenceOriginBp = metrics.Geometry.SvgOriginBp,
+                referenceMode = InteractionInkFraming ? "derived-ink-reference; original-driver.svg retained" : "cached",
+                referenceOriginBp = metrics.Geometry.SvgOriginBp,
                 exactPrimary = true, actualLabel = "Lokad.TikZ",
-                scope = "Node interactions: numeric and exact primary experiment; no reviewed raster allowance or PDF conformance policy yet",
+                scope = "Node interactions: " + Profile.Id + "; numeric and exact primary experiment; no reviewed raster allowance or PDF conformance policy yet",
                 numericTolerancePixels = c.NumericTolerancePixels, numeric = new { passed = checks.All(check => check.Passed), checks } });
             var rendered = await Process(ResolveExecutable("node"), [At("tools/TikzVisual/compare.mjs"), output], Root);
             if (rendered.ExitCode is not (0 or 1) || !File.Exists(Path.Combine(output, "report.json")))
@@ -287,7 +323,7 @@ internal static partial class ReferenceTool
         ResetDirectory(output);
         var metrics = CachedInteraction(c);
         foreach (var file in InteractionArtifacts.Append("provenance.json"))
-            File.Copy(At("tests/Reference/NodeInteractions/" + c.Id + "/" + file), Path.Combine(output, file));
+            File.Copy(At(InteractionRoot + "/" + c.Id + "/" + file), Path.Combine(output, file));
         File.Copy(At(c.Source), Path.Combine(output, "source.tikz"));
         // Rebase only the oracle's documented wrapper translation. All paths,
         // outlines, native text transforms, paint, and clips remain original.

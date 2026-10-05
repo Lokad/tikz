@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "chromium-153-geometry-v3-oracle-calibration",
-  "generatedUtc": "2026-10-04T21:47:03.4855668\u002B00:00",
+  "generatedUtc": "2026-10-05T03:00:45.0775170\u002B00:00",
   "converterInvoked": false,
   "purpose": "Independent geometry precision and cross-renderer measurements; deliberate perturbations under exact policies correctly mismatch",
   "command": "dotnet run --project tools/TikzReference -- calibrate-reference --out artifacts/calibration",
@@ -126,8 +126,8 @@
   },
   "toolHashes": {
     "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
-    "tools/TikzVisual/compare.mjs": "2a5721aae4dc718e378ed3ef70003c4f91daa7a8d1a551b81a6fd112af85769f",
-    "tools/TikzReference/Program.cs": "66bff7e4caf4c892dc878b42d2748f011d0e46d82f038f5c44845126db2b59c9",
+    "tools/TikzVisual/compare.mjs": "af1bd8c93d0b28dd30997a881bb31aee406ac2a3ec7a3401678e47fea0d238fc",
+    "tools/TikzReference/Program.cs": "9f943b73739b82ccd3c22b6d0826f2116e0e6b9904358a0e10156be3621d26e7",
     "tools/TikzReference/ReferenceCalibration.cs": "d4c998c2e07ea4c36d02121fb0ca5d1358bdfe88e37bae58c138a1bdf3efce90",
     "tests/Reference/cases.json": "ff9d8d838a5a11e1644cfc63b5d51e67f60b0d657890160e138b4180bf306e37"
   },

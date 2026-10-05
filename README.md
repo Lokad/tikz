@@ -12,6 +12,8 @@ fixtures. A [rectangle-node prototype](docs/NODES.md) now emits outlined labels
 and passes native layout and primary SVG checks for 22 actual TikZ nodes.
 Node interaction/PDF coverage, additional shapes, arrows, and libraries remain.
 Unsupported source constructs produce diagnostics.
+The declared [RGB color profile](docs/COLORS.md) has independent path/glyph
+checks for all nineteen supported names and selected mixtures.
 
 ```csharp
 using Lokad.TikZ;

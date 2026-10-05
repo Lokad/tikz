@@ -65,7 +65,7 @@ public sealed class ReferenceTests
             if (path.Paint.Stroke)
             {
                 Near(reference.GetProperty("widthPt").GetDouble() * ptToPixels, path.Paint.Width * 4 / 3);
-                Assert.Equal(reference.GetProperty("strokeColor").GetString(), path.Paint.StrokeColor.Svg);
+                Assert.Equal(reference.GetProperty("strokeColor").GetString(), path.Paint.StrokeColor.PgfSvg);
                 Assert.Equal(reference.GetProperty("strokeOpacity").GetDouble(), path.Paint.StrokeOpacity);
                 Assert.Equal(reference.GetProperty("cap").GetString(), path.Paint.Cap);
                 Assert.Equal(reference.GetProperty("join").GetString(), path.Paint.Join);
@@ -75,7 +75,7 @@ public sealed class ReferenceTests
             }
             if (path.Paint.Fill)
             {
-                Assert.Equal(reference.GetProperty("fillColor").GetString(), path.Paint.FillColor.Svg);
+                Assert.Equal(reference.GetProperty("fillColor").GetString(), path.Paint.FillColor.PgfSvg);
                 Assert.Equal(reference.GetProperty("fillOpacity").GetDouble(), path.Paint.FillOpacity);
                 Assert.Equal(reference.GetProperty("fillRule").GetString(), path.Paint.FillRule);
             }

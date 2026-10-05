@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-node-interactions-rgb-v1",
+  "cases": [
+    { "id": "state-paint", "source": "tests/Fixtures/Nodes/state-paint.tikz", "nodes": ["shape-override", "fill-opacity", "local-opacity", "text-opacity", "scope-restored", "below-path", "above-path", "clipped", "faint"], "numericTolerancePixels": 0.02 },
+    { "id": "transforms", "source": "tests/Fixtures/Nodes/transforms.tikz", "nodes": ["plain", "upright", "inherited", "local-rotation", "reflected", "font-shift", "sheared"], "numericTolerancePixels": 0.02 },
+    { "id": "colors", "source": "tests/Fixtures/Nodes/colors.tikz", "nodes": ["black", "white", "red", "green", "blue", "cyan", "magenta", "yellow", "gray", "darkgray", "lightgray", "orange", "violet", "purple", "brown", "pink", "lime", "olive", "teal", "magenta-white", "cyan-red", "yellow-blue", "chained", "fractional", "scope-color"], "numericTolerancePixels": 0.02 }
+  ]
+}

@@ -24,7 +24,7 @@ internal static partial class ReferenceTool
         {
             Root = FindRoot();
             Profile = Read<OracleProfile>(At("tests/Reference/oracle-profile.json"));
-            if (args.Length > 0 && args[0] is "generate-node-interactions" or "verify-node-interactions" or "compare-node-interactions" or "calibrate-node-interaction-pdf")
+            if (args.Length > 0 && args[0] is "generate-node-interactions" or "verify-node-interactions" or "compare-node-interactions" or "calibrate-node-interaction-pdf" or "calibrate-node-interaction-framing")
                 return await NodeInteractions(args);
             if (args.Length > 0 && args[0] is "generate-node-reference" or "verify-node-reference" or "compare-node-layout" or "compare-node-svg" or "calibrate-node-svg")
                 return await NodeReferences(args);
@@ -235,7 +235,7 @@ internal static partial class ReferenceTool
         coordinates = scene.Coordinates.ToDictionary(p => p.Key, p => new XY(p.Value.X * 4 / 3, -p.Value.Y * 4 / 3)),
         paths = scene.Paths.Select((p, i) => new { semanticId = $"path-{i}", svgElementId = $"candidate-p{i}", source = p.Source.Location,
             geometryBounds = p.Path.Bounds.Pixels, inkBounds = p.InkBounds.Pixels,
-            paint = new { stroke = p.Paint.Stroke, fill = p.Paint.Fill, strokeColor = p.Paint.StrokeColor.Svg, fillColor = p.Paint.FillColor.Svg,
+            paint = new { stroke = p.Paint.Stroke, fill = p.Paint.Fill, strokeColor = p.Paint.StrokeColor.PgfSvg, fillColor = p.Paint.FillColor.PgfSvg,
                 strokeWidthPixels = p.Paint.Width * 4 / 3, p.Paint.StrokeOpacity, p.Paint.FillOpacity, p.Paint.Cap, p.Paint.Join, p.Paint.FillRule,
                 dashPixels = p.Paint.Dash.Select(d => d * 4 / 3), dashPhasePixels = p.Paint.DashPhase * 4 / 3 }, clips = p.Clips,
             segments = p.Path.Segments.Select(s => new { kind = s.Kind.ToString(), end = new XY(s.End.X * 4 / 3, -s.End.Y * 4 / 3),
@@ -297,7 +297,7 @@ internal static partial class ReferenceTool
             {
                 Number(name + ".stroke.width", expected.WidthPt * PtToPixels, actual.Paint.Width * 4 / 3);
                 Number(name + ".stroke.opacity", expected.StrokeOpacity, actual.Paint.StrokeOpacity, "unit interval", 0.000001);
-                Equal(name + ".stroke.color", expected.StrokeColor, actual.Paint.StrokeColor.Svg, "sRGB hex");
+                Equal(name + ".stroke.color", expected.StrokeColor, actual.Paint.StrokeColor.PgfSvg, "sRGB hex");
                 Equal(name + ".stroke.cap", expected.Cap, actual.Paint.Cap);
                 Equal(name + ".stroke.join", expected.Join, actual.Paint.Join);
                 Number(name + ".dash.count", expected.DashPt.Length, actual.Paint.Dash.Length, "count", 0);
@@ -307,7 +307,7 @@ internal static partial class ReferenceTool
             if (expected.Fill)
             {
                 Number(name + ".fill.opacity", expected.FillOpacity, actual.Paint.FillOpacity, "unit interval", 0.000001);
-                Equal(name + ".fill.color", expected.FillColor, actual.Paint.FillColor.Svg, "sRGB hex");
+                Equal(name + ".fill.color", expected.FillColor, actual.Paint.FillColor.PgfSvg, "sRGB hex");
                 Equal(name + ".fill.rule", expected.FillRule, actual.Paint.FillRule);
             }
         }

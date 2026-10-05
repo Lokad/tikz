@@ -116,8 +116,8 @@ internal static class SvgWriter
                 writer.WriteAttributeString("id", $"{prefix}-p{pathIndex++}");
                 writer.WriteAttributeString("d", PathData(path.Path, budget, path.Source));
                 var paint = path.Paint;
-                writer.WriteAttributeString("fill", paint.Fill ? paint.FillColor.Svg : "none");
-                writer.WriteAttributeString("stroke", paint.Stroke ? paint.StrokeColor.Svg : "none");
+                writer.WriteAttributeString("fill", paint.Fill ? paint.FillColor.PgfSvg : "none");
+                writer.WriteAttributeString("stroke", paint.Stroke ? paint.StrokeColor.PgfSvg : "none");
                 if (paint.Fill) { writer.WriteAttributeString("fill-rule", paint.FillRule); writer.WriteAttributeString("fill-opacity", Number(paint.FillOpacity)); }
                 if (paint.Stroke)
                 {

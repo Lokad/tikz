@@ -6,7 +6,12 @@ namespace Lokad.TikZ.Semantics;
 internal readonly record struct Color(double R, double G, double B)
 {
     public string Svg => $"#{Byte(R):x2}{Byte(G):x2}{Byte(B):x2}";
+    // PGF's SVG path backend reads each component into a 65536-sp dimension,
+    // then divides the integer by 256. Text color specials use conventional
+    // 8-bit RGB rounding instead. Preserve that measured distinction.
+    public string PgfSvg => $"#{PgfByte(R):x2}{PgfByte(G):x2}{PgfByte(B):x2}";
     private static int Byte(double value) => (int)Math.Round(Math.Clamp(value, 0, 1) * 255, MidpointRounding.AwayFromZero);
+    private static int PgfByte(double value) => Math.Min(255, (int)Math.Round(Math.Clamp(value, 0, 1) * 65536, MidpointRounding.AwayFromZero) / 256);
     public static Color Parse(Source source, Budget budget)
     {
         budget.Charge(source, source.Length);
@@ -14,7 +19,7 @@ internal readonly record struct Color(double R, double G, double B)
         var color = Named(parts[0], source);
         for (var i = 1; i < parts.Length; i += 2)
         {
-            if (!double.TryParse(parts[i], NumberStyles.Float, CultureInfo.InvariantCulture, out var percent) || percent is < 0 or > 100)
+            if (!double.TryParse(parts[i], NumberStyles.Float, CultureInfo.InvariantCulture, out var percent) || !double.IsFinite(percent) || percent is < 0 or > 100)
                 throw new CompileError("TIKZ001", "Expected a color percentage from 0 to 100.", source);
             var other = i + 1 < parts.Length ? Named(parts[i + 1], source) : new Color(1, 1, 1);
             var t = percent / 100;

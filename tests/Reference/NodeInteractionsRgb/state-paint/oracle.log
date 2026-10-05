@@ -1,0 +1,1764 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=latex 2025.9.25)  5 OCT 2026 04:47
+entering extended mode
+ %&-line parsing enabled.
+**./case.tex
+(case.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\article.
+cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.c
+lo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.
+sty
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.st
+y
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor
+.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: dvips.def on input line 274.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\
+dvips.def
+File: dvips.def 2022/09/22 v3.1e Graphics/color driver for dvips
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\math
+color.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+LOKAD-COLOR-PROFILE xcolor-rgb-v1
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendl
+ayer\tikz.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgf.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfrcs.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-common.tex
+\pgfutil@everybye=\toks17
+\pgfutil@tempdima=\dimen149
+\pgfutil@tempdimb=\dimen150
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-latex.def
+\pgfutil@abb=\box53
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfrcs.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.rev
+ision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgfcore.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyv
+al.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig
+.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 106.
+)
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlay
+er\pgfsys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks21
+))
+\pgf@x=\dimen153
+\pgf@y=\dimen154
+\pgf@xa=\dimen155
+\pgf@ya=\dimen156
+\pgf@xb=\dimen157
+\pgf@yb=\dimen158
+\pgf@xc=\dimen159
+\pgf@yc=\dimen160
+\pgf@xd=\dimen161
+\pgf@yd=\dimen162
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count287
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-dvisvgm.def
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-dvisvgm.def
+File: pgfsys-dvisvgm.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-common-svg.def
+File: pgfsys-common-svg.def 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@sys@svg@objectcount=\count288
+\pgf@sys@svg@scopecount=\count289
+\pgf@sys@svg@type@count=\count290
+\pgf@sys@svg@canvascount=\count291
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count292
+\pgfsyssoftpath@bigbuffer@items=\count293
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathutil.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathparser.code.tex
+\pgfmath@dimen=\dimen163
+\pgfmath@count=\count294
+\pgfmath@box=\box54
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.basic.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.trigonometric.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.random.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.comparison.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.base.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.round.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.misc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.integerarithmetics.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathcalc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count295
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fint.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen164
+\pgf@picmaxx=\dimen165
+\pgf@picminy=\dimen166
+\pgf@picmaxy=\dimen167
+\pgf@pathminx=\dimen168
+\pgf@pathmaxx=\dimen169
+\pgf@pathminy=\dimen170
+\pgf@pathmaxy=\dimen171
+\pgf@xx=\dimen172
+\pgf@xy=\dimen173
+\pgf@yx=\dimen174
+\pgf@yy=\dimen175
+\pgf@zx=\dimen176
+\pgf@zy=\dimen177
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen178
+\pgf@path@lasty=\dimen179
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen180
+\pgf@shorten@start@additional=\dimen181
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count296
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen182
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen183
+\pgf@pt@y=\dimen184
+\pgf@pt@temp=\dimen185
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen186
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen187
+\pgf@sys@shading@range@num=\count297
+\pgf@shadingcount=\count298
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box58
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box59
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen188
+\pgf@nodesepend=\dimen189
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgffor.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfkeys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfm
+ath.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen190
+\pgffor@skip=\dimen191
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz\tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/librari
+es\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count299
+\pgfplotmarksize=\dimen192
+)
+\tikz@lastx=\dimen193
+\tikz@lasty=\dimen194
+\tikz@lastxsaved=\dimen195
+\tikz@lastysaved=\dimen196
+\tikz@lastmovetox=\dimen197
+\tikz@lastmovetoy=\dimen198
+\tikzleveldistance=\dimen199
+\tikzsiblingdistance=\dimen256
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count300
+\tikznumberofchildren=\count301
+\tikznumberofcurrentchild=\count302
+\tikz@fig@count=\count303
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count304
+\pgfmatrixcurrentcolumn=\count305
+\pgf@matrix@numberofcolumns=\count306
+)
+\tikz@expandcount=\count307
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+LOKAD-PGF-VERSION 3.1.11a
+\lokadpicture=\box64
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 86
+.
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3b
+ackend-dvips.def
+File: l3backend-dvips.def 2025-06-09 L3 backend support: dvips
+\l__pdfannot_backend_content_box=\box65
+\l__pdfannot_backend_model_box=\box66
+\g__pdfannot_backend_int=\count308
+\g__pdfannot_backend_link_int=\count309
+\g__pdfannot_backend_link_sf_int=\count310
+)
+No file case.aux.
+\openout1 = `case.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+(case.tikz
+LOKAD-NODE shape-override width=1920610
+LOKAD-NODE shape-override height=451461
+LOKAD-NODE shape-override depth=127430
+LOKAD-NODE shape-override linewidth=65536
+LOKAD-NODE shape-override quad=655360
+LOKAD-NODE shape-override xheight=282165
+LOKAD-NODE shape-override innerx=131072
+LOKAD-NODE shape-override innery=131072
+LOKAD-NODE shape-override outerx=32768
+LOKAD-NODE shape-override outery=32768
+LOKAD-NODE shape-override minimumwidth=65536
+LOKAD-NODE shape-override minimumheight=65536
+LOKAD-RECT shape-override sw=-1091377;-420517
+LOKAD-RECT shape-override ne=1091377;420517
+LOKAD-PATH-BEGIN actions=fill,draw,; width=1.0pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-16.65309pt}{-6.41658pt
+}\pgfsyssoftpath@rectsizetoken {33.30618pt}{12.83316pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME shape-override;1.0;0.0;0.0;1.0;-960305;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE fill-opacity width=2144405
+LOKAD-NODE fill-opacity height=458128
+LOKAD-NODE fill-opacity depth=0
+LOKAD-NODE fill-opacity linewidth=52429
+LOKAD-NODE fill-opacity quad=655360
+LOKAD-NODE fill-opacity xheight=282165
+LOKAD-NODE fill-opacity innerx=218430
+LOKAD-NODE fill-opacity innery=218430
+LOKAD-NODE fill-opacity outerx=26214
+LOKAD-NODE fill-opacity outery=26214
+LOKAD-NODE fill-opacity minimumwidth=65536
+LOKAD-NODE fill-opacity minimumheight=65536
+LOKAD-RECT fill-opacity sw=1986168;-447494
+LOKAD-RECT fill-opacity ne=4567432;447494
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.8pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {30.30652pt}{-6.82822pt}
+\pgfsyssoftpath@rectsizetoken {39.38696pt}{13.65643pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME fill-opacity;1.0;0.0;0.0;1.0;2204598;-229064
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE local-opacity width=1155956
+LOKAD-NODE local-opacity height=458128
+LOKAD-NODE local-opacity depth=127430
+LOKAD-NODE local-opacity linewidth=52429
+LOKAD-NODE local-opacity quad=655360
+LOKAD-NODE local-opacity xheight=282165
+LOKAD-NODE local-opacity innerx=218430
+LOKAD-NODE local-opacity innery=218430
+LOKAD-NODE local-opacity outerx=26214
+LOKAD-NODE local-opacity outery=26214
+LOKAD-NODE local-opacity minimumwidth=65536
+LOKAD-NODE local-opacity minimumheight=65536
+LOKAD-RECT local-opacity sw=5757192;-511209
+LOKAD-RECT local-opacity ne=7350008;511209
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.8pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {87.84778pt}{-7.80043pt}
+\pgfsyssoftpath@rectsizetoken {24.30444pt}{15.60086pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME local-opacity;1.0;0.0;0.0;1.0;5975622;-165349
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE text-opacity width=837386
+LOKAD-NODE text-opacity height=458128
+LOKAD-NODE text-opacity depth=0
+LOKAD-NODE text-opacity linewidth=52429
+LOKAD-NODE text-opacity quad=655360
+LOKAD-NODE text-opacity xheight=282165
+LOKAD-NODE text-opacity innerx=218430
+LOKAD-NODE text-opacity innery=218430
+LOKAD-NODE text-opacity outerx=26214
+LOKAD-NODE text-opacity outery=26214
+LOKAD-NODE text-opacity minimumwidth=65536
+LOKAD-NODE text-opacity minimumheight=65536
+LOKAD-RECT text-opacity sw=2639677;1190906
+LOKAD-RECT text-opacity ne=3913923;2085894
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.8pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {40.27827pt}{18.17178pt}
+\pgfsyssoftpath@rectsizetoken {19.44345pt}{13.65643pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME text-opacity;1.0;0.0;0.0;1.0;2858107;1409336
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE scope-restored width=956106
+LOKAD-NODE scope-restored height=451461
+LOKAD-NODE scope-restored depth=127430
+LOKAD-NODE scope-restored linewidth=65536
+LOKAD-NODE scope-restored quad=655360
+LOKAD-NODE scope-restored xheight=282165
+LOKAD-NODE scope-restored innerx=131072
+LOKAD-NODE scope-restored innery=131072
+LOKAD-NODE scope-restored outerx=32768
+LOKAD-NODE scope-restored outery=32768
+LOKAD-NODE scope-restored minimumwidth=65536
+LOKAD-NODE scope-restored minimumheight=65536
+LOKAD-RECT scope-restored sw=5944475;1217883
+LOKAD-RECT scope-restored ne=7162725;2058917
+LOKAD-PATH-BEGIN actions=fill,draw,; width=1.0pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {90.70549pt}{18.58342pt}
+\pgfsyssoftpath@rectsizetoken {18.58902pt}{12.83316pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME scope-restored;1.0;0.0;0.0;1.0;6075547;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE below-path width=1856828
+LOKAD-NODE below-path height=451461
+LOKAD-NODE below-path depth=0
+LOKAD-NODE below-path linewidth=26214
+LOKAD-NODE below-path quad=655360
+LOKAD-NODE below-path xheight=282165
+LOKAD-NODE below-path innerx=131072
+LOKAD-NODE below-path innery=131072
+LOKAD-NODE below-path outerx=13107
+LOKAD-NODE below-path outery=13107
+LOKAD-NODE below-path minimumwidth=65536
+LOKAD-NODE below-path minimumheight=65536
+LOKAD-RECT below-path sw=-1059486;2919998
+LOKAD-RECT below-path ne=1059486;3633602
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-16.16647pt}{44.55563pt
+}\pgfsyssoftpath@rectsizetoken {32.33295pt}{10.88873pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME below-path;1.0;0.0;0.0;1.0;-928414;3051070
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=fill,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {-4.0pt}{42.0pt}\pgfsyssoftp
+ath@movetotoken {-4.0pt}{42.0pt}\pgfsyssoftpath@linetotoken {-4.0pt}{58.0pt}\pg
+fsyssoftpath@linetotoken {10.0pt}{58.0pt}\pgfsyssoftpath@linetotoken {10.0pt}{4
+2.0pt}\pgfsyssoftpath@closepathtoken {-4.0pt}{42.0pt}\pgfsyssoftpath@movetotoke
+n {10.0pt}{58.0pt}
+LOKAD-PATH-END
+LOKAD-NODE above-path width=1001243
+LOKAD-NODE above-path height=451461
+LOKAD-NODE above-path depth=127430
+LOKAD-NODE above-path linewidth=26214
+LOKAD-NODE above-path quad=655360
+LOKAD-NODE above-path xheight=282165
+LOKAD-NODE above-path innerx=131072
+LOKAD-NODE above-path innery=131072
+LOKAD-NODE above-path outerx=13107
+LOKAD-NODE above-path outery=13107
+LOKAD-NODE above-path minimumwidth=65536
+LOKAD-NODE above-path minimumheight=65536
+LOKAD-RECT above-path sw=1006707;2856283
+LOKAD-RECT above-path ne=2270093;3697317
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {15.36113pt}{43.58342pt}
+\pgfsyssoftpath@rectsizetoken {19.27774pt}{12.83316pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME above-path;1.0;0.0;0.0;1.0;1137779;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=clip; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {85.0pt}{40.0pt}\pgfsyssoftp
+ath@movetotoken {85.0pt}{40.0pt}\pgfsyssoftpath@linetotoken {85.0pt}{60.0pt}\pg
+fsyssoftpath@linetotoken {100.0pt}{60.0pt}\pgfsyssoftpath@linetotoken {100.0pt}
+{40.0pt}\pgfsyssoftpath@closepathtoken {85.0pt}{40.0pt}\pgfsyssoftpath@movetoto
+ken {100.0pt}{60.0pt}
+LOKAD-PATH-END
+LOKAD-NODE clipped width=1856828
+LOKAD-NODE clipped height=451461
+LOKAD-NODE clipped depth=0
+LOKAD-NODE clipped linewidth=26214
+LOKAD-NODE clipped quad=655360
+LOKAD-NODE clipped xheight=282165
+LOKAD-NODE clipped innerx=131072
+LOKAD-NODE clipped innery=131072
+LOKAD-NODE clipped outerx=13107
+LOKAD-NODE clipped outery=13107
+LOKAD-NODE clipped minimumwidth=65536
+LOKAD-NODE clipped minimumheight=65536
+LOKAD-RECT clipped sw=5494114;2919998
+LOKAD-RECT clipped ne=7613086;3633602
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {83.83353pt}{44.55563pt}
+\pgfsyssoftpath@rectsizetoken {32.33295pt}{10.88873pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME clipped;1.0;0.0;0.0;1.0;5625186;3051070
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE faint width=728154
+LOKAD-NODE faint height=451461
+LOKAD-NODE faint depth=0
+LOKAD-NODE faint linewidth=26214
+LOKAD-NODE faint quad=655360
+LOKAD-NODE faint xheight=282165
+LOKAD-NODE faint innerx=131072
+LOKAD-NODE faint innery=131072
+LOKAD-NODE faint outerx=13107
+LOKAD-NODE faint outery=13107
+LOKAD-NODE faint minimumwidth=65536
+LOKAD-NODE faint minimumheight=65536
+LOKAD-RECT faint sw=-495149;4886078
+LOKAD-RECT faint ne=495149;5599682
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-7.55537pt}{74.55563pt}
+\pgfsyssoftpath@rectsizetoken {15.11075pt}{10.88873pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME faint;1.0;0.0;0.0;1.0;-364077;5017150
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=draw,; width=0.6pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {34.83887pt}{50.0pt}\pgfsyss
+oftpath@linetotoken {83.63353pt}{50.0pt}
+LOKAD-PATH-END
+LOKAD-BOUNDS minx=-17.15309pt; miny=-8.20042pt; maxx=112.55222pt; maxy=85.64436
+pt
+(probes.tex
+LOKAD-ANCHOR shape-override;text;-960305;-162015
+LOKAD-ANCHOR shape-override;center;0;0
+LOKAD-ANCHOR shape-override;north;0;453285
+LOKAD-ANCHOR shape-override;south;0;-453285
+LOKAD-ANCHOR shape-override;west;-1124145;0
+LOKAD-ANCHOR shape-override;east;1124145;0
+LOKAD-ANCHOR shape-override;north west;-1124145;453285
+LOKAD-ANCHOR shape-override;north east;1124145;453285
+LOKAD-ANCHOR shape-override;south west;-1124145;-453285
+LOKAD-ANCHOR shape-override;south east;1124145;-453285
+LOKAD-ANCHOR shape-override;base;0;-162015
+LOKAD-ANCHOR shape-override;base west;-1124145;-162015
+LOKAD-ANCHOR shape-override;base east;1124145;-162015
+LOKAD-ANCHOR shape-override;mid;0;-20933
+LOKAD-ANCHOR shape-override;mid west;-1124145;-20933
+LOKAD-ANCHOR shape-override;mid east;1124145;-20933
+LOKAD-ANCHOR fill-opacity;text;2204598;-229064
+LOKAD-ANCHOR fill-opacity;center;3276800;0
+LOKAD-ANCHOR fill-opacity;north;3276800;473708
+LOKAD-ANCHOR fill-opacity;south;3276800;-473708
+LOKAD-ANCHOR fill-opacity;west;1959954;0
+LOKAD-ANCHOR fill-opacity;east;4593646;0
+LOKAD-ANCHOR fill-opacity;north west;1959954;473708
+LOKAD-ANCHOR fill-opacity;north east;4593646;473708
+LOKAD-ANCHOR fill-opacity;south west;1959954;-473708
+LOKAD-ANCHOR fill-opacity;south east;4593646;-473708
+LOKAD-ANCHOR fill-opacity;base;3276800;-229064
+LOKAD-ANCHOR fill-opacity;base west;1959954;-229064
+LOKAD-ANCHOR fill-opacity;base east;4593646;-229064
+LOKAD-ANCHOR fill-opacity;mid;3276800;-87982
+LOKAD-ANCHOR fill-opacity;mid west;1959954;-87982
+LOKAD-ANCHOR fill-opacity;mid east;4593646;-87982
+LOKAD-ANCHOR local-opacity;text;5975622;-165349
+LOKAD-ANCHOR local-opacity;center;6553600;0
+LOKAD-ANCHOR local-opacity;north;6553600;537423
+LOKAD-ANCHOR local-opacity;south;6553600;-537423
+LOKAD-ANCHOR local-opacity;west;5730978;0
+LOKAD-ANCHOR local-opacity;east;7376222;0
+LOKAD-ANCHOR local-opacity;north west;5730978;537423
+LOKAD-ANCHOR local-opacity;north east;7376222;537423
+LOKAD-ANCHOR local-opacity;south west;5730978;-537423
+LOKAD-ANCHOR local-opacity;south east;7376222;-537423
+LOKAD-ANCHOR local-opacity;base;6553600;-165349
+LOKAD-ANCHOR local-opacity;base west;5730978;-165349
+LOKAD-ANCHOR local-opacity;base east;7376222;-165349
+LOKAD-ANCHOR local-opacity;mid;6553600;-24267
+LOKAD-ANCHOR local-opacity;mid west;5730978;-24267
+LOKAD-ANCHOR local-opacity;mid east;7376222;-24267
+LOKAD-ANCHOR text-opacity;text;2858107;1409336
+LOKAD-ANCHOR text-opacity;center;3276800;1638400
+LOKAD-ANCHOR text-opacity;north;3276800;2112108
+LOKAD-ANCHOR text-opacity;south;3276800;1164692
+LOKAD-ANCHOR text-opacity;west;2613463;1638400
+LOKAD-ANCHOR text-opacity;east;3940137;1638400
+LOKAD-ANCHOR text-opacity;north west;2613463;2112108
+LOKAD-ANCHOR text-opacity;north east;3940137;2112108
+LOKAD-ANCHOR text-opacity;south west;2613463;1164692
+LOKAD-ANCHOR text-opacity;south east;3940137;1164692
+LOKAD-ANCHOR text-opacity;base;3276800;1409336
+LOKAD-ANCHOR text-opacity;base west;2613463;1409336
+LOKAD-ANCHOR text-opacity;base east;3940137;1409336
+LOKAD-ANCHOR text-opacity;mid;3276800;1550418
+LOKAD-ANCHOR text-opacity;mid west;2613463;1550418
+LOKAD-ANCHOR text-opacity;mid east;3940137;1550418
+LOKAD-ANCHOR scope-restored;text;6075547;1476385
+LOKAD-ANCHOR scope-restored;center;6553600;1638400
+LOKAD-ANCHOR scope-restored;north;6553600;2091685
+LOKAD-ANCHOR scope-restored;south;6553600;1185115
+LOKAD-ANCHOR scope-restored;west;5911707;1638400
+LOKAD-ANCHOR scope-restored;east;7195493;1638400
+LOKAD-ANCHOR scope-restored;north west;5911707;2091685
+LOKAD-ANCHOR scope-restored;north east;7195493;2091685
+LOKAD-ANCHOR scope-restored;south west;5911707;1185115
+LOKAD-ANCHOR scope-restored;south east;7195493;1185115
+LOKAD-ANCHOR scope-restored;base;6553600;1476385
+LOKAD-ANCHOR scope-restored;base west;5911707;1476385
+LOKAD-ANCHOR scope-restored;base east;7195493;1476385
+LOKAD-ANCHOR scope-restored;mid;6553600;1617467
+LOKAD-ANCHOR scope-restored;mid west;5911707;1617467
+LOKAD-ANCHOR scope-restored;mid east;7195493;1617467
+LOKAD-ANCHOR below-path;text;-928414;3051070
+LOKAD-ANCHOR below-path;center;0;3276800
+LOKAD-ANCHOR below-path;north;0;3646709
+LOKAD-ANCHOR below-path;south;0;2906891
+LOKAD-ANCHOR below-path;west;-1072593;3276800
+LOKAD-ANCHOR below-path;east;1072593;3276800
+LOKAD-ANCHOR below-path;north west;-1072593;3646709
+LOKAD-ANCHOR below-path;north east;1072593;3646709
+LOKAD-ANCHOR below-path;south west;-1072593;2906891
+LOKAD-ANCHOR below-path;south east;1072593;2906891
+LOKAD-ANCHOR below-path;base;0;3051070
+LOKAD-ANCHOR below-path;base west;-1072593;3051070
+LOKAD-ANCHOR below-path;base east;1072593;3051070
+LOKAD-ANCHOR below-path;mid;0;3192152
+LOKAD-ANCHOR below-path;mid west;-1072593;3192152
+LOKAD-ANCHOR below-path;mid east;1072593;3192152
+LOKAD-ANCHOR above-path;text;1137779;3114785
+LOKAD-ANCHOR above-path;center;1638400;3276800
+LOKAD-ANCHOR above-path;north;1638400;3710424
+LOKAD-ANCHOR above-path;south;1638400;2843176
+LOKAD-ANCHOR above-path;west;993600;3276800
+LOKAD-ANCHOR above-path;east;2283200;3276800
+LOKAD-ANCHOR above-path;north west;993600;3710424
+LOKAD-ANCHOR above-path;north east;2283200;3710424
+LOKAD-ANCHOR above-path;south west;993600;2843176
+LOKAD-ANCHOR above-path;south east;2283200;2843176
+LOKAD-ANCHOR above-path;base;1638400;3114785
+LOKAD-ANCHOR above-path;base west;993600;3114785
+LOKAD-ANCHOR above-path;base east;2283200;3114785
+LOKAD-ANCHOR above-path;mid;1638400;3255867
+LOKAD-ANCHOR above-path;mid west;993600;3255867
+LOKAD-ANCHOR above-path;mid east;2283200;3255867
+LOKAD-ANCHOR clipped;text;5625186;3051070
+LOKAD-ANCHOR clipped;center;6553600;3276800
+LOKAD-ANCHOR clipped;north;6553600;3646709
+LOKAD-ANCHOR clipped;south;6553600;2906891
+LOKAD-ANCHOR clipped;west;5481007;3276800
+LOKAD-ANCHOR clipped;east;7626193;3276800
+LOKAD-ANCHOR clipped;north west;5481007;3646709
+LOKAD-ANCHOR clipped;north east;7626193;3646709
+LOKAD-ANCHOR clipped;south west;5481007;2906891
+LOKAD-ANCHOR clipped;south east;7626193;2906891
+LOKAD-ANCHOR clipped;base;6553600;3051070
+LOKAD-ANCHOR clipped;base west;5481007;3051070
+LOKAD-ANCHOR clipped;base east;7626193;3051070
+LOKAD-ANCHOR clipped;mid;6553600;3192152
+LOKAD-ANCHOR clipped;mid west;5481007;3192152
+LOKAD-ANCHOR clipped;mid east;7626193;3192152
+LOKAD-ANCHOR faint;text;-364077;5017150
+LOKAD-ANCHOR faint;center;0;5242880
+LOKAD-ANCHOR faint;north;0;5612789
+LOKAD-ANCHOR faint;south;0;4872971
+LOKAD-ANCHOR faint;west;-508256;5242880
+LOKAD-ANCHOR faint;east;508256;5242880
+LOKAD-ANCHOR faint;north west;-508256;5612789
+LOKAD-ANCHOR faint;north east;508256;5612789
+LOKAD-ANCHOR faint;south west;-508256;4872971
+LOKAD-ANCHOR faint;south east;508256;4872971
+LOKAD-ANCHOR faint;base;0;5017150
+LOKAD-ANCHOR faint;base west;-508256;5017150
+LOKAD-ANCHOR faint;base east;508256;5017150
+LOKAD-ANCHOR faint;mid;0;5158232
+LOKAD-ANCHOR faint;mid west;-508256;5158232
+LOKAD-ANCHOR faint;mid east;508256;5158232
+LOKAD-ANCHOR-start x=34.83887pt; y=50.0pt
+LOKAD-ANCHOR-end x=83.63353pt; y=50.0pt
+))
+LOKAD-BOX width=129.7053pt; height=93.84479pt; depth=0.0pt
+
+
+[1
+
+] (case.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 11975 strings out of 468130
+ 255687 string characters out of 5425798
+ 630653 words of memory out of 5000000
+ 40427 multiletter control sequences out of 15000+600000
+ 637836 words of font info for 44 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 102i,5n,107p,421b,807s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on case.dvi (1 page, 10068 bytes).
+
+--- Ordinary PDF oracle ---
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.25)  5 OCT 2026 04:47
+entering extended mode
+ %&-line parsing enabled.
+**./case.tex
+(case.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\article.
+cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.c
+lo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.
+sty
+Package: fontenc 2024/12/21 v2.1c Standard LaTeX package
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.st
+y
+Package: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor
+.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\
+pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\math
+color.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+LOKAD-COLOR-PROFILE xcolor-rgb-v1
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendl
+ayer\tikz.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgf.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfrcs.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-common.tex
+\pgfutil@everybye=\toks17
+\pgfutil@tempdima=\dimen149
+\pgfutil@tempdimb=\dimen150
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-latex.def
+\pgfutil@abb=\box53
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfrcs.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.rev
+ision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgfcore.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyv
+al.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig
+.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+)
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlay
+er\pgfsys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks21
+))
+\pgf@x=\dimen153
+\pgf@y=\dimen154
+\pgf@xa=\dimen155
+\pgf@ya=\dimen156
+\pgf@xb=\dimen157
+\pgf@yb=\dimen158
+\pgf@xc=\dimen159
+\pgf@yc=\dimen160
+\pgf@xd=\dimen161
+\pgf@yd=\dimen162
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count287
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count288
+\pgfsyssoftpath@bigbuffer@items=\count289
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathutil.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathparser.code.tex
+\pgfmath@dimen=\dimen163
+\pgfmath@count=\count290
+\pgfmath@box=\box54
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.basic.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.trigonometric.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.random.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.comparison.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.base.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.round.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.misc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.integerarithmetics.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathcalc.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count291
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fint.code.tex)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen164
+\pgf@picmaxx=\dimen165
+\pgf@picminy=\dimen166
+\pgf@picmaxy=\dimen167
+\pgf@pathminx=\dimen168
+\pgf@pathmaxx=\dimen169
+\pgf@pathminy=\dimen170
+\pgf@pathmaxy=\dimen171
+\pgf@xx=\dimen172
+\pgf@xy=\dimen173
+\pgf@yx=\dimen174
+\pgf@yy=\dimen175
+\pgf@zx=\dimen176
+\pgf@zy=\dimen177
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen178
+\pgf@path@lasty=\dimen179
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen180
+\pgf@shorten@start@additional=\dimen181
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count292
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen182
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen183
+\pgf@pt@y=\dimen184
+\pgf@pt@temp=\dimen185
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen186
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen187
+\pgf@sys@shading@range@num=\count293
+\pgf@shadingcount=\count294
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box58
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box59
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen188
+\pgf@nodesepend=\dimen189
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgffor.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfkeys.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfm
+ath.sty
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen190
+\pgffor@skip=\dimen191
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz\tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/librari
+es\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count295
+\pgfplotmarksize=\dimen192
+)
+\tikz@lastx=\dimen193
+\tikz@lasty=\dimen194
+\tikz@lastxsaved=\dimen195
+\tikz@lastysaved=\dimen196
+\tikz@lastmovetox=\dimen197
+\tikz@lastmovetoy=\dimen198
+\tikzleveldistance=\dimen199
+\tikzsiblingdistance=\dimen256
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count296
+\tikznumberofchildren=\count297
+\tikznumberofcurrentchild=\count298
+\tikz@fig@count=\count299
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count300
+\pgfmatrixcurrentcolumn=\count301
+\pgf@matrix@numberofcolumns=\count302
+)
+\tikz@expandcount=\count303
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+LOKAD-PGF-VERSION 3.1.11a
+\lokadpicture=\box64
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 85
+.
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd
+File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3b
+ackend-pdftex.def
+File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count304
+)
+No file case.aux.
+\openout1 = `case.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\s
+upp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count305
+\scratchdimen=\dimen257
+\scratchbox=\box65
+\nofMPsegments=\count306
+\nofMParguments=\count307
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count308
+\MPscratchDim=\dimen258
+\MPnumerator=\count309
+\makeMPintoPDFobject=\count310
+\everyMPtoPDFconversion=\toks31
+)
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\
+epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(<local>\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epst
+opdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+)) (case.tikz
+LOKAD-NODE shape-override width=1920610
+LOKAD-NODE shape-override height=451461
+LOKAD-NODE shape-override depth=127430
+LOKAD-NODE shape-override linewidth=65536
+LOKAD-NODE shape-override quad=655360
+LOKAD-NODE shape-override xheight=282165
+LOKAD-NODE shape-override innerx=131072
+LOKAD-NODE shape-override innery=131072
+LOKAD-NODE shape-override outerx=32768
+LOKAD-NODE shape-override outery=32768
+LOKAD-NODE shape-override minimumwidth=65536
+LOKAD-NODE shape-override minimumheight=65536
+LOKAD-RECT shape-override sw=-1091377;-420517
+LOKAD-RECT shape-override ne=1091377;420517
+LOKAD-PATH-BEGIN actions=fill,draw,; width=1.0pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-16.65309pt}{-6.41658pt
+}\pgfsyssoftpath@rectsizetoken {33.30618pt}{12.83316pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME shape-override;1.0;0.0;0.0;1.0;-960305;-162015
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE fill-opacity width=2144405
+LOKAD-NODE fill-opacity height=458128
+LOKAD-NODE fill-opacity depth=0
+LOKAD-NODE fill-opacity linewidth=52429
+LOKAD-NODE fill-opacity quad=655360
+LOKAD-NODE fill-opacity xheight=282165
+LOKAD-NODE fill-opacity innerx=218430
+LOKAD-NODE fill-opacity innery=218430
+LOKAD-NODE fill-opacity outerx=26214
+LOKAD-NODE fill-opacity outery=26214
+LOKAD-NODE fill-opacity minimumwidth=65536
+LOKAD-NODE fill-opacity minimumheight=65536
+LOKAD-RECT fill-opacity sw=1986168;-447494
+LOKAD-RECT fill-opacity ne=4567432;447494
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.8pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {30.30652pt}{-6.82822pt}
+\pgfsyssoftpath@rectsizetoken {39.38696pt}{13.65643pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME fill-opacity;1.0;0.0;0.0;1.0;2204598;-229064
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE local-opacity width=1155956
+LOKAD-NODE local-opacity height=458128
+LOKAD-NODE local-opacity depth=127430
+LOKAD-NODE local-opacity linewidth=52429
+LOKAD-NODE local-opacity quad=655360
+LOKAD-NODE local-opacity xheight=282165
+LOKAD-NODE local-opacity innerx=218430
+LOKAD-NODE local-opacity innery=218430
+LOKAD-NODE local-opacity outerx=26214
+LOKAD-NODE local-opacity outery=26214
+LOKAD-NODE local-opacity minimumwidth=65536
+LOKAD-NODE local-opacity minimumheight=65536
+LOKAD-RECT local-opacity sw=5757192;-511209
+LOKAD-RECT local-opacity ne=7350008;511209
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.8pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {87.84778pt}{-7.80043pt}
+\pgfsyssoftpath@rectsizetoken {24.30444pt}{15.60086pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME local-opacity;1.0;0.0;0.0;1.0;5975622;-165349
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE text-opacity width=837386
+LOKAD-NODE text-opacity height=458128
+LOKAD-NODE text-opacity depth=0
+LOKAD-NODE text-opacity linewidth=52429
+LOKAD-NODE text-opacity quad=655360
+LOKAD-NODE text-opacity xheight=282165
+LOKAD-NODE text-opacity innerx=218430
+LOKAD-NODE text-opacity innery=218430
+LOKAD-NODE text-opacity outerx=26214
+LOKAD-NODE text-opacity outery=26214
+LOKAD-NODE text-opacity minimumwidth=65536
+LOKAD-NODE text-opacity minimumheight=65536
+LOKAD-RECT text-opacity sw=2639677;1190906
+LOKAD-RECT text-opacity ne=3913923;2085894
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.8pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {40.27827pt}{18.17178pt}
+\pgfsyssoftpath@rectsizetoken {19.44345pt}{13.65643pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME text-opacity;1.0;0.0;0.0;1.0;2858107;1409336
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE scope-restored width=956106
+LOKAD-NODE scope-restored height=451461
+LOKAD-NODE scope-restored depth=127430
+LOKAD-NODE scope-restored linewidth=65536
+LOKAD-NODE scope-restored quad=655360
+LOKAD-NODE scope-restored xheight=282165
+LOKAD-NODE scope-restored innerx=131072
+LOKAD-NODE scope-restored innery=131072
+LOKAD-NODE scope-restored outerx=32768
+LOKAD-NODE scope-restored outery=32768
+LOKAD-NODE scope-restored minimumwidth=65536
+LOKAD-NODE scope-restored minimumheight=65536
+LOKAD-RECT scope-restored sw=5944475;1217883
+LOKAD-RECT scope-restored ne=7162725;2058917
+LOKAD-PATH-BEGIN actions=fill,draw,; width=1.0pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {90.70549pt}{18.58342pt}
+\pgfsyssoftpath@rectsizetoken {18.58902pt}{12.83316pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME scope-restored;1.0;0.0;0.0;1.0;6075547;1476385
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE below-path width=1856828
+LOKAD-NODE below-path height=451461
+LOKAD-NODE below-path depth=0
+LOKAD-NODE below-path linewidth=26214
+LOKAD-NODE below-path quad=655360
+LOKAD-NODE below-path xheight=282165
+LOKAD-NODE below-path innerx=131072
+LOKAD-NODE below-path innery=131072
+LOKAD-NODE below-path outerx=13107
+LOKAD-NODE below-path outery=13107
+LOKAD-NODE below-path minimumwidth=65536
+LOKAD-NODE below-path minimumheight=65536
+LOKAD-RECT below-path sw=-1059486;2919998
+LOKAD-RECT below-path ne=1059486;3633602
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-16.16647pt}{44.55563pt
+}\pgfsyssoftpath@rectsizetoken {32.33295pt}{10.88873pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME below-path;1.0;0.0;0.0;1.0;-928414;3051070
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=fill,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {-4.0pt}{42.0pt}\pgfsyssoftp
+ath@movetotoken {-4.0pt}{42.0pt}\pgfsyssoftpath@linetotoken {-4.0pt}{58.0pt}\pg
+fsyssoftpath@linetotoken {10.0pt}{58.0pt}\pgfsyssoftpath@linetotoken {10.0pt}{4
+2.0pt}\pgfsyssoftpath@closepathtoken {-4.0pt}{42.0pt}\pgfsyssoftpath@movetotoke
+n {10.0pt}{58.0pt}
+LOKAD-PATH-END
+LOKAD-NODE above-path width=1001243
+LOKAD-NODE above-path height=451461
+LOKAD-NODE above-path depth=127430
+LOKAD-NODE above-path linewidth=26214
+LOKAD-NODE above-path quad=655360
+LOKAD-NODE above-path xheight=282165
+LOKAD-NODE above-path innerx=131072
+LOKAD-NODE above-path innery=131072
+LOKAD-NODE above-path outerx=13107
+LOKAD-NODE above-path outery=13107
+LOKAD-NODE above-path minimumwidth=65536
+LOKAD-NODE above-path minimumheight=65536
+LOKAD-RECT above-path sw=1006707;2856283
+LOKAD-RECT above-path ne=2270093;3697317
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {15.36113pt}{43.58342pt}
+\pgfsyssoftpath@rectsizetoken {19.27774pt}{12.83316pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME above-path;1.0;0.0;0.0;1.0;1137779;3114785
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=clip; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {85.0pt}{40.0pt}\pgfsyssoftp
+ath@movetotoken {85.0pt}{40.0pt}\pgfsyssoftpath@linetotoken {85.0pt}{60.0pt}\pg
+fsyssoftpath@linetotoken {100.0pt}{60.0pt}\pgfsyssoftpath@linetotoken {100.0pt}
+{40.0pt}\pgfsyssoftpath@closepathtoken {85.0pt}{40.0pt}\pgfsyssoftpath@movetoto
+ken {100.0pt}{60.0pt}
+LOKAD-PATH-END
+LOKAD-NODE clipped width=1856828
+LOKAD-NODE clipped height=451461
+LOKAD-NODE clipped depth=0
+LOKAD-NODE clipped linewidth=26214
+LOKAD-NODE clipped quad=655360
+LOKAD-NODE clipped xheight=282165
+LOKAD-NODE clipped innerx=131072
+LOKAD-NODE clipped innery=131072
+LOKAD-NODE clipped outerx=13107
+LOKAD-NODE clipped outery=13107
+LOKAD-NODE clipped minimumwidth=65536
+LOKAD-NODE clipped minimumheight=65536
+LOKAD-RECT clipped sw=5494114;2919998
+LOKAD-RECT clipped ne=7613086;3633602
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {83.83353pt}{44.55563pt}
+\pgfsyssoftpath@rectsizetoken {32.33295pt}{10.88873pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME clipped;1.0;0.0;0.0;1.0;5625186;3051070
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-NODE faint width=728154
+LOKAD-NODE faint height=451461
+LOKAD-NODE faint depth=0
+LOKAD-NODE faint linewidth=26214
+LOKAD-NODE faint quad=655360
+LOKAD-NODE faint xheight=282165
+LOKAD-NODE faint innerx=131072
+LOKAD-NODE faint innery=131072
+LOKAD-NODE faint outerx=13107
+LOKAD-NODE faint outery=13107
+LOKAD-NODE faint minimumwidth=65536
+LOKAD-NODE faint minimumheight=65536
+LOKAD-RECT faint sw=-495149;4886078
+LOKAD-RECT faint ne=495149;5599682
+LOKAD-PATH-BEGIN actions=fill,draw,; width=0.4pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@rectcornertoken {-7.55537pt}{74.55563pt}
+\pgfsyssoftpath@rectsizetoken {15.11075pt}{10.88873pt}
+LOKAD-PATH-END
+LOKAD-NODE-FRAME faint;1.0;0.0;0.0;1.0;-364077;5017150
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=; width=0.4pt
+LOKAD-SOFTPATH macro:->
+LOKAD-PATH-END
+LOKAD-PATH-BEGIN actions=draw,; width=0.6pt
+LOKAD-SOFTPATH macro:->\pgfsyssoftpath@movetotoken {34.83887pt}{50.0pt}\pgfsyss
+oftpath@linetotoken {83.63353pt}{50.0pt}
+LOKAD-PATH-END
+LOKAD-BOUNDS minx=-17.15309pt; miny=-8.20042pt; maxx=112.55222pt; maxy=85.64436
+pt
+(probes.tex
+LOKAD-ANCHOR shape-override;text;-960305;-162015
+LOKAD-ANCHOR shape-override;center;0;0
+LOKAD-ANCHOR shape-override;north;0;453285
+LOKAD-ANCHOR shape-override;south;0;-453285
+LOKAD-ANCHOR shape-override;west;-1124145;0
+LOKAD-ANCHOR shape-override;east;1124145;0
+LOKAD-ANCHOR shape-override;north west;-1124145;453285
+LOKAD-ANCHOR shape-override;north east;1124145;453285
+LOKAD-ANCHOR shape-override;south west;-1124145;-453285
+LOKAD-ANCHOR shape-override;south east;1124145;-453285
+LOKAD-ANCHOR shape-override;base;0;-162015
+LOKAD-ANCHOR shape-override;base west;-1124145;-162015
+LOKAD-ANCHOR shape-override;base east;1124145;-162015
+LOKAD-ANCHOR shape-override;mid;0;-20933
+LOKAD-ANCHOR shape-override;mid west;-1124145;-20933
+LOKAD-ANCHOR shape-override;mid east;1124145;-20933
+LOKAD-ANCHOR fill-opacity;text;2204598;-229064
+LOKAD-ANCHOR fill-opacity;center;3276800;0
+LOKAD-ANCHOR fill-opacity;north;3276800;473708
+LOKAD-ANCHOR fill-opacity;south;3276800;-473708
+LOKAD-ANCHOR fill-opacity;west;1959954;0
+LOKAD-ANCHOR fill-opacity;east;4593646;0
+LOKAD-ANCHOR fill-opacity;north west;1959954;473708
+LOKAD-ANCHOR fill-opacity;north east;4593646;473708
+LOKAD-ANCHOR fill-opacity;south west;1959954;-473708
+LOKAD-ANCHOR fill-opacity;south east;4593646;-473708
+LOKAD-ANCHOR fill-opacity;base;3276800;-229064
+LOKAD-ANCHOR fill-opacity;base west;1959954;-229064
+LOKAD-ANCHOR fill-opacity;base east;4593646;-229064
+LOKAD-ANCHOR fill-opacity;mid;3276800;-87982
+LOKAD-ANCHOR fill-opacity;mid west;1959954;-87982
+LOKAD-ANCHOR fill-opacity;mid east;4593646;-87982
+LOKAD-ANCHOR local-opacity;text;5975622;-165349
+LOKAD-ANCHOR local-opacity;center;6553600;0
+LOKAD-ANCHOR local-opacity;north;6553600;537423
+LOKAD-ANCHOR local-opacity;south;6553600;-537423
+LOKAD-ANCHOR local-opacity;west;5730978;0
+LOKAD-ANCHOR local-opacity;east;7376222;0
+LOKAD-ANCHOR local-opacity;north west;5730978;537423
+LOKAD-ANCHOR local-opacity;north east;7376222;537423
+LOKAD-ANCHOR local-opacity;south west;5730978;-537423
+LOKAD-ANCHOR local-opacity;south east;7376222;-537423
+LOKAD-ANCHOR local-opacity;base;6553600;-165349
+LOKAD-ANCHOR local-opacity;base west;5730978;-165349
+LOKAD-ANCHOR local-opacity;base east;7376222;-165349
+LOKAD-ANCHOR local-opacity;mid;6553600;-24267
+LOKAD-ANCHOR local-opacity;mid west;5730978;-24267
+LOKAD-ANCHOR local-opacity;mid east;7376222;-24267
+LOKAD-ANCHOR text-opacity;text;2858107;1409336
+LOKAD-ANCHOR text-opacity;center;3276800;1638400
+LOKAD-ANCHOR text-opacity;north;3276800;2112108
+LOKAD-ANCHOR text-opacity;south;3276800;1164692
+LOKAD-ANCHOR text-opacity;west;2613463;1638400
+LOKAD-ANCHOR text-opacity;east;3940137;1638400
+LOKAD-ANCHOR text-opacity;north west;2613463;2112108
+LOKAD-ANCHOR text-opacity;north east;3940137;2112108
+LOKAD-ANCHOR text-opacity;south west;2613463;1164692
+LOKAD-ANCHOR text-opacity;south east;3940137;1164692
+LOKAD-ANCHOR text-opacity;base;3276800;1409336
+LOKAD-ANCHOR text-opacity;base west;2613463;1409336
+LOKAD-ANCHOR text-opacity;base east;3940137;1409336
+LOKAD-ANCHOR text-opacity;mid;3276800;1550418
+LOKAD-ANCHOR text-opacity;mid west;2613463;1550418
+LOKAD-ANCHOR text-opacity;mid east;3940137;1550418
+LOKAD-ANCHOR scope-restored;text;6075547;1476385
+LOKAD-ANCHOR scope-restored;center;6553600;1638400
+LOKAD-ANCHOR scope-restored;north;6553600;2091685
+LOKAD-ANCHOR scope-restored;south;6553600;1185115
+LOKAD-ANCHOR scope-restored;west;5911707;1638400
+LOKAD-ANCHOR scope-restored;east;7195493;1638400
+LOKAD-ANCHOR scope-restored;north west;5911707;2091685
+LOKAD-ANCHOR scope-restored;north east;7195493;2091685
+LOKAD-ANCHOR scope-restored;south west;5911707;1185115
+LOKAD-ANCHOR scope-restored;south east;7195493;1185115
+LOKAD-ANCHOR scope-restored;base;6553600;1476385
+LOKAD-ANCHOR scope-restored;base west;5911707;1476385
+LOKAD-ANCHOR scope-restored;base east;7195493;1476385
+LOKAD-ANCHOR scope-restored;mid;6553600;1617467
+LOKAD-ANCHOR scope-restored;mid west;5911707;1617467
+LOKAD-ANCHOR scope-restored;mid east;7195493;1617467
+LOKAD-ANCHOR below-path;text;-928414;3051070
+LOKAD-ANCHOR below-path;center;0;3276800
+LOKAD-ANCHOR below-path;north;0;3646709
+LOKAD-ANCHOR below-path;south;0;2906891
+LOKAD-ANCHOR below-path;west;-1072593;3276800
+LOKAD-ANCHOR below-path;east;1072593;3276800
+LOKAD-ANCHOR below-path;north west;-1072593;3646709
+LOKAD-ANCHOR below-path;north east;1072593;3646709
+LOKAD-ANCHOR below-path;south west;-1072593;2906891
+LOKAD-ANCHOR below-path;south east;1072593;2906891
+LOKAD-ANCHOR below-path;base;0;3051070
+LOKAD-ANCHOR below-path;base west;-1072593;3051070
+LOKAD-ANCHOR below-path;base east;1072593;3051070
+LOKAD-ANCHOR below-path;mid;0;3192152
+LOKAD-ANCHOR below-path;mid west;-1072593;3192152
+LOKAD-ANCHOR below-path;mid east;1072593;3192152
+LOKAD-ANCHOR above-path;text;1137779;3114785
+LOKAD-ANCHOR above-path;center;1638400;3276800
+LOKAD-ANCHOR above-path;north;1638400;3710424
+LOKAD-ANCHOR above-path;south;1638400;2843176
+LOKAD-ANCHOR above-path;west;993600;3276800
+LOKAD-ANCHOR above-path;east;2283200;3276800
+LOKAD-ANCHOR above-path;north west;993600;3710424
+LOKAD-ANCHOR above-path;north east;2283200;3710424
+LOKAD-ANCHOR above-path;south west;993600;2843176
+LOKAD-ANCHOR above-path;south east;2283200;2843176
+LOKAD-ANCHOR above-path;base;1638400;3114785
+LOKAD-ANCHOR above-path;base west;993600;3114785
+LOKAD-ANCHOR above-path;base east;2283200;3114785
+LOKAD-ANCHOR above-path;mid;1638400;3255867
+LOKAD-ANCHOR above-path;mid west;993600;3255867
+LOKAD-ANCHOR above-path;mid east;2283200;3255867
+LOKAD-ANCHOR clipped;text;5625186;3051070
+LOKAD-ANCHOR clipped;center;6553600;3276800
+LOKAD-ANCHOR clipped;north;6553600;3646709
+LOKAD-ANCHOR clipped;south;6553600;2906891
+LOKAD-ANCHOR clipped;west;5481007;3276800
+LOKAD-ANCHOR clipped;east;7626193;3276800
+LOKAD-ANCHOR clipped;north west;5481007;3646709
+LOKAD-ANCHOR clipped;north east;7626193;3646709
+LOKAD-ANCHOR clipped;south west;5481007;2906891
+LOKAD-ANCHOR clipped;south east;7626193;2906891
+LOKAD-ANCHOR clipped;base;6553600;3051070
+LOKAD-ANCHOR clipped;base west;5481007;3051070
+LOKAD-ANCHOR clipped;base east;7626193;3051070
+LOKAD-ANCHOR clipped;mid;6553600;3192152
+LOKAD-ANCHOR clipped;mid west;5481007;3192152
+LOKAD-ANCHOR clipped;mid east;7626193;3192152
+LOKAD-ANCHOR faint;text;-364077;5017150
+LOKAD-ANCHOR faint;center;0;5242880
+LOKAD-ANCHOR faint;north;0;5612789
+LOKAD-ANCHOR faint;south;0;4872971
+LOKAD-ANCHOR faint;west;-508256;5242880
+LOKAD-ANCHOR faint;east;508256;5242880
+LOKAD-ANCHOR faint;north west;-508256;5612789
+LOKAD-ANCHOR faint;north east;508256;5612789
+LOKAD-ANCHOR faint;south west;-508256;4872971
+LOKAD-ANCHOR faint;south east;508256;4872971
+LOKAD-ANCHOR faint;base;0;5017150
+LOKAD-ANCHOR faint;base west;-508256;5017150
+LOKAD-ANCHOR faint;base east;508256;5017150
+LOKAD-ANCHOR faint;mid;0;5158232
+LOKAD-ANCHOR faint;mid west;-508256;5158232
+LOKAD-ANCHOR faint;mid east;508256;5158232
+LOKAD-ANCHOR-start x=34.83887pt; y=50.0pt
+LOKAD-ANCHOR-end x=83.63353pt; y=50.0pt
+))
+LOKAD-BOX width=129.7053pt; height=93.84479pt; depth=0.0pt
+
+
+[1
+
+
+LOKAD-PAGE-ORIGIN xsp=8799518; ysp=37739247; pageheight=794.96999pt
+Non-PDF special ignored!
+<special> lokad-node-origin shape-override
+{<local>/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{<local>/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.en
+c}
+Non-PDF special ignored!
+<special> lokad-node-origin fill-opacity
+Non-PDF special ignored!
+<special> lokad-node-origin local-opacity
+Non-PDF special ignored!
+<special> lokad-node-origin text-opacity
+Non-PDF special ignored!
+<special> lokad-node-origin scope-restored
+Non-PDF special ignored!
+<special> lokad-node-origin below-path
+Non-PDF special ignored!
+<special> lokad-node-origin above-path
+Non-PDF special ignored!
+<special> lokad-node-origin clipped
+Non-PDF special ignored!
+<special> lokad-node-origin faint
+] (case.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 12185 strings out of 468129
+ 257556 string characters out of 5425772
+ 624977 words of memory out of 5000000
+ 40622 multiletter control sequences out of 15000+600000
+ 637836 words of font info for 44 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 102i,7n,107p,404b,802s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<<local>/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm
+/lmbx10.pfb><<local>/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/lm/lmr10.pfb><<local>/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/lm/lmri10.pfb>
+Output written on case.pdf (1 page, 64031 bytes).
+PDF statistics:
+ 25 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+

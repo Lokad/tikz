@@ -307,3 +307,19 @@ makes no candidate-layout claim. Default CMYK text/path color differences and
 the original driver's sheared-miter crop need independent resolution before
 these cases become required passing visual CI gates. Existing rectangle and
 geometry policies are unchanged.
+
+The separate `--profile rgb` interaction corpus preserves those original
+references and adds the complete supported-name palette. All 5,273 numeric
+checks pass for its 41 nodes; four ordinary checks cover native emitted colors
+and unchanged layout/frames, plus three reject nonfinite mixtures. Full primary
+and PDF gates remain exact measurement experiments without approved allowances.
+The [RGB contract](COLORS.md) explains the native path/text byte conversions.
+
+`calibrate-node-interaction-framing --profile rgb --case transforms` derives a
+stroke-aware viewport using only native polygon edges, original paint/clips,
+and offset-line intersections. It keeps the original driver's clipped crop and
+records the difference against SVG and PDF. `compare-node-interactions --profile
+rgb --framing ink` explicitly compares with that derived reference and retains
+`original-driver.svg` plus frame provenance. Native dimensions then agree within
+0.0001 CSS pixel. The default driver-framed comparison remains available; no
+candidate coordinate fitting or reference-content change is performed.

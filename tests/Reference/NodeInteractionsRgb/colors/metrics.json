@@ -1,0 +1,6264 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-node-interactions-rgb-v1",
+  "geometry": {
+    "schemaVersion": 2,
+    "units": "Independent PGF bounds, anchors, soft-path coordinates and widths in TeX pt; paint from the pinned SVG driver; SVG translation in bp; PDF registration from shipped-out positions",
+    "pictureBoundsPt": {
+      "minX": -11.17184,
+      "minY": -7.94955,
+      "maxX": 151.17184,
+      "maxY": 107.94955
+    },
+    "boxPt": {
+      "width": 162.34369,
+      "height": 115.89911,
+      "depth": 0
+    },
+    "anchorsPt": {
+      "start": {
+        "x": 46.17184,
+        "y": 25
+      },
+      "end": {
+        "x": 58.82816,
+        "y": 100
+      }
+    },
+    "svgOriginBp": {
+      "x": 72.898475,
+      "y": 160.348249
+    },
+    "pdfOriginPixels": {
+      "x": 193.19794638594854,
+      "y": 309.79766135455594
+    },
+    "stroke": {
+      "widthPt": 0.4,
+      "color": "#000000",
+      "opacity": 1
+    },
+    "paths": [
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": -10.97185,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": -10.97185,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": -10.97185,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#000000",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 24.02815,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 24.02815,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 24.02815,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#ffffff",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 59.02815,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 59.02815,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 59.02815,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#ff0000",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 94.02815,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 94.02815,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 94.02815,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#00ff00",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 129.02815,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 129.02815,
+              "y": 7.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 129.02815,
+              "y": -7.74956
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#0000ff",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": -10.97185,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": -10.97185,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": -10.97185,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#00ffff",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 24.02815,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 24.02815,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 24.02815,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#ff00ff",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 59.02815,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 59.02815,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 59.02815,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#ffff00",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 94.02815,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 94.02815,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 94.02815,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#808080",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 129.02815,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 129.02815,
+              "y": 32.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 129.02815,
+              "y": 17.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#404040",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": -10.97185,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": -10.97185,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": -10.97185,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#c0c0c0",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 24.02815,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 24.02815,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 24.02815,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#ff8000",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 59.02815,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 59.02815,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 59.02815,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#800080",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 94.02815,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 94.02815,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 94.02815,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#c00040",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 129.02815,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 129.02815,
+              "y": 57.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 129.02815,
+              "y": 42.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#c08040",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": -10.97185,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": -10.97185,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": -10.97185,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#ffc0c0",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 24.02815,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 24.02815,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 24.02815,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#c0ff00",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 59.02815,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 59.02815,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 59.02815,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#808000",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 94.02815,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 94.02815,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 94.02815,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#008080",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 129.02815,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 129.02815,
+              "y": 82.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 129.02815,
+              "y": 67.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#ff80ff",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": -10.97185,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 10.97185,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": -10.97185,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": -10.97185,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#c04040",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 24.02815,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 45.97185,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 24.02815,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 24.02815,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#4c4cb3",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 59.02815,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 80.97184999999999,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 59.02815,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 59.02815,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#400040",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 94.02815,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 115.97184999999999,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 94.02815,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 94.02815,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#55aaff",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 129.02815,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 150.97185000000002,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 129.02815,
+              "y": 107.74955
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Close",
+            "end": {
+              "x": 129.02815,
+              "y": 92.25044
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": true,
+        "widthPt": 0.4,
+        "strokeColor": "#4000ff",
+        "fillColor": "#e6e6e6",
+        "strokeOpacity": 0.4,
+        "fillOpacity": 0.4,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      },
+      {
+        "segments": [
+          {
+            "kind": "Move",
+            "end": {
+              "x": 46.17184,
+              "y": 25
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          },
+          {
+            "kind": "Line",
+            "end": {
+              "x": 58.82816,
+              "y": 100
+            },
+            "control1": {
+              "x": 0,
+              "y": 0
+            },
+            "control2": {
+              "x": 0,
+              "y": 0
+            }
+          }
+        ],
+        "stroke": true,
+        "fill": false,
+        "widthPt": 0.6,
+        "strokeColor": "#c04040",
+        "fillColor": "none",
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "cap": "butt",
+        "join": "miter",
+        "fillRule": "nonzero",
+        "dashPt": [],
+        "dashPhasePt": 0
+      }
+    ],
+    "clips": []
+  },
+  "nodes": {
+    "schemaVersion": 2,
+    "profile": "pgf-3.1.11a-node-interactions-rgb-v1",
+    "units": "integer TeX sp; y-up; global anchors/background; no fitted origin",
+    "nodes": [
+      {
+        "id": "black",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": -500621,
+            "y": -162015
+          },
+          "center": {
+            "x": 0,
+            "y": 0
+          },
+          "north": {
+            "x": 0,
+            "y": 520982
+          },
+          "south": {
+            "x": 0,
+            "y": -520982
+          },
+          "west": {
+            "x": -732158,
+            "y": 0
+          },
+          "east": {
+            "x": 732158,
+            "y": 0
+          },
+          "north west": {
+            "x": -732158,
+            "y": 520982
+          },
+          "north east": {
+            "x": 732158,
+            "y": 520982
+          },
+          "south west": {
+            "x": -732158,
+            "y": -520982
+          },
+          "south east": {
+            "x": 732158,
+            "y": -520982
+          },
+          "base": {
+            "x": 0,
+            "y": -162015
+          },
+          "base west": {
+            "x": -732158,
+            "y": -162015
+          },
+          "base east": {
+            "x": 732158,
+            "y": -162015
+          },
+          "mid": {
+            "x": 0,
+            "y": -20933
+          },
+          "mid west": {
+            "x": -732158,
+            "y": -20933
+          },
+          "mid east": {
+            "x": 732158,
+            "y": -20933
+          }
+        },
+        "backgroundSouthWest": {
+          "x": -719051,
+          "y": -507875
+        },
+        "backgroundNorthEast": {
+          "x": 719051,
+          "y": 507875
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "white",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 1793139,
+            "y": -162015
+          },
+          "center": {
+            "x": 2293760,
+            "y": 0
+          },
+          "north": {
+            "x": 2293760,
+            "y": 520982
+          },
+          "south": {
+            "x": 2293760,
+            "y": -520982
+          },
+          "west": {
+            "x": 1561602,
+            "y": 0
+          },
+          "east": {
+            "x": 3025918,
+            "y": 0
+          },
+          "north west": {
+            "x": 1561602,
+            "y": 520982
+          },
+          "north east": {
+            "x": 3025918,
+            "y": 520982
+          },
+          "south west": {
+            "x": 1561602,
+            "y": -520982
+          },
+          "south east": {
+            "x": 3025918,
+            "y": -520982
+          },
+          "base": {
+            "x": 2293760,
+            "y": -162015
+          },
+          "base west": {
+            "x": 1561602,
+            "y": -162015
+          },
+          "base east": {
+            "x": 3025918,
+            "y": -162015
+          },
+          "mid": {
+            "x": 2293760,
+            "y": -20933
+          },
+          "mid west": {
+            "x": 1561602,
+            "y": -20933
+          },
+          "mid east": {
+            "x": 3025918,
+            "y": -20933
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 1574709,
+          "y": -507875
+        },
+        "backgroundNorthEast": {
+          "x": 3012811,
+          "y": 507875
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "red",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 4086899,
+            "y": -162015
+          },
+          "center": {
+            "x": 4587520,
+            "y": 0
+          },
+          "north": {
+            "x": 4587520,
+            "y": 520982
+          },
+          "south": {
+            "x": 4587520,
+            "y": -520982
+          },
+          "west": {
+            "x": 3855362,
+            "y": 0
+          },
+          "east": {
+            "x": 5319678,
+            "y": 0
+          },
+          "north west": {
+            "x": 3855362,
+            "y": 520982
+          },
+          "north east": {
+            "x": 5319678,
+            "y": 520982
+          },
+          "south west": {
+            "x": 3855362,
+            "y": -520982
+          },
+          "south east": {
+            "x": 5319678,
+            "y": -520982
+          },
+          "base": {
+            "x": 4587520,
+            "y": -162015
+          },
+          "base west": {
+            "x": 3855362,
+            "y": -162015
+          },
+          "base east": {
+            "x": 5319678,
+            "y": -162015
+          },
+          "mid": {
+            "x": 4587520,
+            "y": -20933
+          },
+          "mid west": {
+            "x": 3855362,
+            "y": -20933
+          },
+          "mid east": {
+            "x": 5319678,
+            "y": -20933
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 3868469,
+          "y": -507875
+        },
+        "backgroundNorthEast": {
+          "x": 5306571,
+          "y": 507875
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "green",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 6380659,
+            "y": -162015
+          },
+          "center": {
+            "x": 6881280,
+            "y": 0
+          },
+          "north": {
+            "x": 6881280,
+            "y": 520982
+          },
+          "south": {
+            "x": 6881280,
+            "y": -520982
+          },
+          "west": {
+            "x": 6149122,
+            "y": 0
+          },
+          "east": {
+            "x": 7613438,
+            "y": 0
+          },
+          "north west": {
+            "x": 6149122,
+            "y": 520982
+          },
+          "north east": {
+            "x": 7613438,
+            "y": 520982
+          },
+          "south west": {
+            "x": 6149122,
+            "y": -520982
+          },
+          "south east": {
+            "x": 7613438,
+            "y": -520982
+          },
+          "base": {
+            "x": 6881280,
+            "y": -162015
+          },
+          "base west": {
+            "x": 6149122,
+            "y": -162015
+          },
+          "base east": {
+            "x": 7613438,
+            "y": -162015
+          },
+          "mid": {
+            "x": 6881280,
+            "y": -20933
+          },
+          "mid west": {
+            "x": 6149122,
+            "y": -20933
+          },
+          "mid east": {
+            "x": 7613438,
+            "y": -20933
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 6162229,
+          "y": -507875
+        },
+        "backgroundNorthEast": {
+          "x": 7600331,
+          "y": 507875
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "blue",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 8674419,
+            "y": -162015
+          },
+          "center": {
+            "x": 9175040,
+            "y": 0
+          },
+          "north": {
+            "x": 9175040,
+            "y": 520982
+          },
+          "south": {
+            "x": 9175040,
+            "y": -520982
+          },
+          "west": {
+            "x": 8442882,
+            "y": 0
+          },
+          "east": {
+            "x": 9907198,
+            "y": 0
+          },
+          "north west": {
+            "x": 8442882,
+            "y": 520982
+          },
+          "north east": {
+            "x": 9907198,
+            "y": 520982
+          },
+          "south west": {
+            "x": 8442882,
+            "y": -520982
+          },
+          "south east": {
+            "x": 9907198,
+            "y": -520982
+          },
+          "base": {
+            "x": 9175040,
+            "y": -162015
+          },
+          "base west": {
+            "x": 8442882,
+            "y": -162015
+          },
+          "base east": {
+            "x": 9907198,
+            "y": -162015
+          },
+          "mid": {
+            "x": 9175040,
+            "y": -20933
+          },
+          "mid west": {
+            "x": 8442882,
+            "y": -20933
+          },
+          "mid east": {
+            "x": 9907198,
+            "y": -20933
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 8455989,
+          "y": -507875
+        },
+        "backgroundNorthEast": {
+          "x": 9894091,
+          "y": 507875
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "cyan",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": -500621,
+            "y": 1476385
+          },
+          "center": {
+            "x": 0,
+            "y": 1638400
+          },
+          "north": {
+            "x": 0,
+            "y": 2159382
+          },
+          "south": {
+            "x": 0,
+            "y": 1117418
+          },
+          "west": {
+            "x": -732158,
+            "y": 1638400
+          },
+          "east": {
+            "x": 732158,
+            "y": 1638400
+          },
+          "north west": {
+            "x": -732158,
+            "y": 2159382
+          },
+          "north east": {
+            "x": 732158,
+            "y": 2159382
+          },
+          "south west": {
+            "x": -732158,
+            "y": 1117418
+          },
+          "south east": {
+            "x": 732158,
+            "y": 1117418
+          },
+          "base": {
+            "x": 0,
+            "y": 1476385
+          },
+          "base west": {
+            "x": -732158,
+            "y": 1476385
+          },
+          "base east": {
+            "x": 732158,
+            "y": 1476385
+          },
+          "mid": {
+            "x": 0,
+            "y": 1617467
+          },
+          "mid west": {
+            "x": -732158,
+            "y": 1617467
+          },
+          "mid east": {
+            "x": 732158,
+            "y": 1617467
+          }
+        },
+        "backgroundSouthWest": {
+          "x": -719051,
+          "y": 1130525
+        },
+        "backgroundNorthEast": {
+          "x": 719051,
+          "y": 2146275
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "magenta",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 1793139,
+            "y": 1476385
+          },
+          "center": {
+            "x": 2293760,
+            "y": 1638400
+          },
+          "north": {
+            "x": 2293760,
+            "y": 2159382
+          },
+          "south": {
+            "x": 2293760,
+            "y": 1117418
+          },
+          "west": {
+            "x": 1561602,
+            "y": 1638400
+          },
+          "east": {
+            "x": 3025918,
+            "y": 1638400
+          },
+          "north west": {
+            "x": 1561602,
+            "y": 2159382
+          },
+          "north east": {
+            "x": 3025918,
+            "y": 2159382
+          },
+          "south west": {
+            "x": 1561602,
+            "y": 1117418
+          },
+          "south east": {
+            "x": 3025918,
+            "y": 1117418
+          },
+          "base": {
+            "x": 2293760,
+            "y": 1476385
+          },
+          "base west": {
+            "x": 1561602,
+            "y": 1476385
+          },
+          "base east": {
+            "x": 3025918,
+            "y": 1476385
+          },
+          "mid": {
+            "x": 2293760,
+            "y": 1617467
+          },
+          "mid west": {
+            "x": 1561602,
+            "y": 1617467
+          },
+          "mid east": {
+            "x": 3025918,
+            "y": 1617467
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 1574709,
+          "y": 1130525
+        },
+        "backgroundNorthEast": {
+          "x": 3012811,
+          "y": 2146275
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "yellow",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 4086899,
+            "y": 1476385
+          },
+          "center": {
+            "x": 4587520,
+            "y": 1638400
+          },
+          "north": {
+            "x": 4587520,
+            "y": 2159382
+          },
+          "south": {
+            "x": 4587520,
+            "y": 1117418
+          },
+          "west": {
+            "x": 3855362,
+            "y": 1638400
+          },
+          "east": {
+            "x": 5319678,
+            "y": 1638400
+          },
+          "north west": {
+            "x": 3855362,
+            "y": 2159382
+          },
+          "north east": {
+            "x": 5319678,
+            "y": 2159382
+          },
+          "south west": {
+            "x": 3855362,
+            "y": 1117418
+          },
+          "south east": {
+            "x": 5319678,
+            "y": 1117418
+          },
+          "base": {
+            "x": 4587520,
+            "y": 1476385
+          },
+          "base west": {
+            "x": 3855362,
+            "y": 1476385
+          },
+          "base east": {
+            "x": 5319678,
+            "y": 1476385
+          },
+          "mid": {
+            "x": 4587520,
+            "y": 1617467
+          },
+          "mid west": {
+            "x": 3855362,
+            "y": 1617467
+          },
+          "mid east": {
+            "x": 5319678,
+            "y": 1617467
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 3868469,
+          "y": 1130525
+        },
+        "backgroundNorthEast": {
+          "x": 5306571,
+          "y": 2146275
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "gray",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 6380659,
+            "y": 1476385
+          },
+          "center": {
+            "x": 6881280,
+            "y": 1638400
+          },
+          "north": {
+            "x": 6881280,
+            "y": 2159382
+          },
+          "south": {
+            "x": 6881280,
+            "y": 1117418
+          },
+          "west": {
+            "x": 6149122,
+            "y": 1638400
+          },
+          "east": {
+            "x": 7613438,
+            "y": 1638400
+          },
+          "north west": {
+            "x": 6149122,
+            "y": 2159382
+          },
+          "north east": {
+            "x": 7613438,
+            "y": 2159382
+          },
+          "south west": {
+            "x": 6149122,
+            "y": 1117418
+          },
+          "south east": {
+            "x": 7613438,
+            "y": 1117418
+          },
+          "base": {
+            "x": 6881280,
+            "y": 1476385
+          },
+          "base west": {
+            "x": 6149122,
+            "y": 1476385
+          },
+          "base east": {
+            "x": 7613438,
+            "y": 1476385
+          },
+          "mid": {
+            "x": 6881280,
+            "y": 1617467
+          },
+          "mid west": {
+            "x": 6149122,
+            "y": 1617467
+          },
+          "mid east": {
+            "x": 7613438,
+            "y": 1617467
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 6162229,
+          "y": 1130525
+        },
+        "backgroundNorthEast": {
+          "x": 7600331,
+          "y": 2146275
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "darkgray",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 8674419,
+            "y": 1476385
+          },
+          "center": {
+            "x": 9175040,
+            "y": 1638400
+          },
+          "north": {
+            "x": 9175040,
+            "y": 2159382
+          },
+          "south": {
+            "x": 9175040,
+            "y": 1117418
+          },
+          "west": {
+            "x": 8442882,
+            "y": 1638400
+          },
+          "east": {
+            "x": 9907198,
+            "y": 1638400
+          },
+          "north west": {
+            "x": 8442882,
+            "y": 2159382
+          },
+          "north east": {
+            "x": 9907198,
+            "y": 2159382
+          },
+          "south west": {
+            "x": 8442882,
+            "y": 1117418
+          },
+          "south east": {
+            "x": 9907198,
+            "y": 1117418
+          },
+          "base": {
+            "x": 9175040,
+            "y": 1476385
+          },
+          "base west": {
+            "x": 8442882,
+            "y": 1476385
+          },
+          "base east": {
+            "x": 9907198,
+            "y": 1476385
+          },
+          "mid": {
+            "x": 9175040,
+            "y": 1617467
+          },
+          "mid west": {
+            "x": 8442882,
+            "y": 1617467
+          },
+          "mid east": {
+            "x": 9907198,
+            "y": 1617467
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 8455989,
+          "y": 1130525
+        },
+        "backgroundNorthEast": {
+          "x": 9894091,
+          "y": 2146275
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "lightgray",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": -500621,
+            "y": 3114785
+          },
+          "center": {
+            "x": 0,
+            "y": 3276800
+          },
+          "north": {
+            "x": 0,
+            "y": 3797782
+          },
+          "south": {
+            "x": 0,
+            "y": 2755818
+          },
+          "west": {
+            "x": -732158,
+            "y": 3276800
+          },
+          "east": {
+            "x": 732158,
+            "y": 3276800
+          },
+          "north west": {
+            "x": -732158,
+            "y": 3797782
+          },
+          "north east": {
+            "x": 732158,
+            "y": 3797782
+          },
+          "south west": {
+            "x": -732158,
+            "y": 2755818
+          },
+          "south east": {
+            "x": 732158,
+            "y": 2755818
+          },
+          "base": {
+            "x": 0,
+            "y": 3114785
+          },
+          "base west": {
+            "x": -732158,
+            "y": 3114785
+          },
+          "base east": {
+            "x": 732158,
+            "y": 3114785
+          },
+          "mid": {
+            "x": 0,
+            "y": 3255867
+          },
+          "mid west": {
+            "x": -732158,
+            "y": 3255867
+          },
+          "mid east": {
+            "x": 732158,
+            "y": 3255867
+          }
+        },
+        "backgroundSouthWest": {
+          "x": -719051,
+          "y": 2768925
+        },
+        "backgroundNorthEast": {
+          "x": 719051,
+          "y": 3784675
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "orange",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 1793139,
+            "y": 3114785
+          },
+          "center": {
+            "x": 2293760,
+            "y": 3276800
+          },
+          "north": {
+            "x": 2293760,
+            "y": 3797782
+          },
+          "south": {
+            "x": 2293760,
+            "y": 2755818
+          },
+          "west": {
+            "x": 1561602,
+            "y": 3276800
+          },
+          "east": {
+            "x": 3025918,
+            "y": 3276800
+          },
+          "north west": {
+            "x": 1561602,
+            "y": 3797782
+          },
+          "north east": {
+            "x": 3025918,
+            "y": 3797782
+          },
+          "south west": {
+            "x": 1561602,
+            "y": 2755818
+          },
+          "south east": {
+            "x": 3025918,
+            "y": 2755818
+          },
+          "base": {
+            "x": 2293760,
+            "y": 3114785
+          },
+          "base west": {
+            "x": 1561602,
+            "y": 3114785
+          },
+          "base east": {
+            "x": 3025918,
+            "y": 3114785
+          },
+          "mid": {
+            "x": 2293760,
+            "y": 3255867
+          },
+          "mid west": {
+            "x": 1561602,
+            "y": 3255867
+          },
+          "mid east": {
+            "x": 3025918,
+            "y": 3255867
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 1574709,
+          "y": 2768925
+        },
+        "backgroundNorthEast": {
+          "x": 3012811,
+          "y": 3784675
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "violet",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 4086899,
+            "y": 3114785
+          },
+          "center": {
+            "x": 4587520,
+            "y": 3276800
+          },
+          "north": {
+            "x": 4587520,
+            "y": 3797782
+          },
+          "south": {
+            "x": 4587520,
+            "y": 2755818
+          },
+          "west": {
+            "x": 3855362,
+            "y": 3276800
+          },
+          "east": {
+            "x": 5319678,
+            "y": 3276800
+          },
+          "north west": {
+            "x": 3855362,
+            "y": 3797782
+          },
+          "north east": {
+            "x": 5319678,
+            "y": 3797782
+          },
+          "south west": {
+            "x": 3855362,
+            "y": 2755818
+          },
+          "south east": {
+            "x": 5319678,
+            "y": 2755818
+          },
+          "base": {
+            "x": 4587520,
+            "y": 3114785
+          },
+          "base west": {
+            "x": 3855362,
+            "y": 3114785
+          },
+          "base east": {
+            "x": 5319678,
+            "y": 3114785
+          },
+          "mid": {
+            "x": 4587520,
+            "y": 3255867
+          },
+          "mid west": {
+            "x": 3855362,
+            "y": 3255867
+          },
+          "mid east": {
+            "x": 5319678,
+            "y": 3255867
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 3868469,
+          "y": 2768925
+        },
+        "backgroundNorthEast": {
+          "x": 5306571,
+          "y": 3784675
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "purple",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 6380659,
+            "y": 3114785
+          },
+          "center": {
+            "x": 6881280,
+            "y": 3276800
+          },
+          "north": {
+            "x": 6881280,
+            "y": 3797782
+          },
+          "south": {
+            "x": 6881280,
+            "y": 2755818
+          },
+          "west": {
+            "x": 6149122,
+            "y": 3276800
+          },
+          "east": {
+            "x": 7613438,
+            "y": 3276800
+          },
+          "north west": {
+            "x": 6149122,
+            "y": 3797782
+          },
+          "north east": {
+            "x": 7613438,
+            "y": 3797782
+          },
+          "south west": {
+            "x": 6149122,
+            "y": 2755818
+          },
+          "south east": {
+            "x": 7613438,
+            "y": 2755818
+          },
+          "base": {
+            "x": 6881280,
+            "y": 3114785
+          },
+          "base west": {
+            "x": 6149122,
+            "y": 3114785
+          },
+          "base east": {
+            "x": 7613438,
+            "y": 3114785
+          },
+          "mid": {
+            "x": 6881280,
+            "y": 3255867
+          },
+          "mid west": {
+            "x": 6149122,
+            "y": 3255867
+          },
+          "mid east": {
+            "x": 7613438,
+            "y": 3255867
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 6162229,
+          "y": 2768925
+        },
+        "backgroundNorthEast": {
+          "x": 7600331,
+          "y": 3784675
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "brown",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 8674419,
+            "y": 3114785
+          },
+          "center": {
+            "x": 9175040,
+            "y": 3276800
+          },
+          "north": {
+            "x": 9175040,
+            "y": 3797782
+          },
+          "south": {
+            "x": 9175040,
+            "y": 2755818
+          },
+          "west": {
+            "x": 8442882,
+            "y": 3276800
+          },
+          "east": {
+            "x": 9907198,
+            "y": 3276800
+          },
+          "north west": {
+            "x": 8442882,
+            "y": 3797782
+          },
+          "north east": {
+            "x": 9907198,
+            "y": 3797782
+          },
+          "south west": {
+            "x": 8442882,
+            "y": 2755818
+          },
+          "south east": {
+            "x": 9907198,
+            "y": 2755818
+          },
+          "base": {
+            "x": 9175040,
+            "y": 3114785
+          },
+          "base west": {
+            "x": 8442882,
+            "y": 3114785
+          },
+          "base east": {
+            "x": 9907198,
+            "y": 3114785
+          },
+          "mid": {
+            "x": 9175040,
+            "y": 3255867
+          },
+          "mid west": {
+            "x": 8442882,
+            "y": 3255867
+          },
+          "mid east": {
+            "x": 9907198,
+            "y": 3255867
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 8455989,
+          "y": 2768925
+        },
+        "backgroundNorthEast": {
+          "x": 9894091,
+          "y": 3784675
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "pink",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": -500621,
+            "y": 4753185
+          },
+          "center": {
+            "x": 0,
+            "y": 4915200
+          },
+          "north": {
+            "x": 0,
+            "y": 5436182
+          },
+          "south": {
+            "x": 0,
+            "y": 4394218
+          },
+          "west": {
+            "x": -732158,
+            "y": 4915200
+          },
+          "east": {
+            "x": 732158,
+            "y": 4915200
+          },
+          "north west": {
+            "x": -732158,
+            "y": 5436182
+          },
+          "north east": {
+            "x": 732158,
+            "y": 5436182
+          },
+          "south west": {
+            "x": -732158,
+            "y": 4394218
+          },
+          "south east": {
+            "x": 732158,
+            "y": 4394218
+          },
+          "base": {
+            "x": 0,
+            "y": 4753185
+          },
+          "base west": {
+            "x": -732158,
+            "y": 4753185
+          },
+          "base east": {
+            "x": 732158,
+            "y": 4753185
+          },
+          "mid": {
+            "x": 0,
+            "y": 4894267
+          },
+          "mid west": {
+            "x": -732158,
+            "y": 4894267
+          },
+          "mid east": {
+            "x": 732158,
+            "y": 4894267
+          }
+        },
+        "backgroundSouthWest": {
+          "x": -719051,
+          "y": 4407325
+        },
+        "backgroundNorthEast": {
+          "x": 719051,
+          "y": 5423075
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "lime",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 1793139,
+            "y": 4753185
+          },
+          "center": {
+            "x": 2293760,
+            "y": 4915200
+          },
+          "north": {
+            "x": 2293760,
+            "y": 5436182
+          },
+          "south": {
+            "x": 2293760,
+            "y": 4394218
+          },
+          "west": {
+            "x": 1561602,
+            "y": 4915200
+          },
+          "east": {
+            "x": 3025918,
+            "y": 4915200
+          },
+          "north west": {
+            "x": 1561602,
+            "y": 5436182
+          },
+          "north east": {
+            "x": 3025918,
+            "y": 5436182
+          },
+          "south west": {
+            "x": 1561602,
+            "y": 4394218
+          },
+          "south east": {
+            "x": 3025918,
+            "y": 4394218
+          },
+          "base": {
+            "x": 2293760,
+            "y": 4753185
+          },
+          "base west": {
+            "x": 1561602,
+            "y": 4753185
+          },
+          "base east": {
+            "x": 3025918,
+            "y": 4753185
+          },
+          "mid": {
+            "x": 2293760,
+            "y": 4894267
+          },
+          "mid west": {
+            "x": 1561602,
+            "y": 4894267
+          },
+          "mid east": {
+            "x": 3025918,
+            "y": 4894267
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 1574709,
+          "y": 4407325
+        },
+        "backgroundNorthEast": {
+          "x": 3012811,
+          "y": 5423075
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "olive",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 4086899,
+            "y": 4753185
+          },
+          "center": {
+            "x": 4587520,
+            "y": 4915200
+          },
+          "north": {
+            "x": 4587520,
+            "y": 5436182
+          },
+          "south": {
+            "x": 4587520,
+            "y": 4394218
+          },
+          "west": {
+            "x": 3855362,
+            "y": 4915200
+          },
+          "east": {
+            "x": 5319678,
+            "y": 4915200
+          },
+          "north west": {
+            "x": 3855362,
+            "y": 5436182
+          },
+          "north east": {
+            "x": 5319678,
+            "y": 5436182
+          },
+          "south west": {
+            "x": 3855362,
+            "y": 4394218
+          },
+          "south east": {
+            "x": 5319678,
+            "y": 4394218
+          },
+          "base": {
+            "x": 4587520,
+            "y": 4753185
+          },
+          "base west": {
+            "x": 3855362,
+            "y": 4753185
+          },
+          "base east": {
+            "x": 5319678,
+            "y": 4753185
+          },
+          "mid": {
+            "x": 4587520,
+            "y": 4894267
+          },
+          "mid west": {
+            "x": 3855362,
+            "y": 4894267
+          },
+          "mid east": {
+            "x": 5319678,
+            "y": 4894267
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 3868469,
+          "y": 4407325
+        },
+        "backgroundNorthEast": {
+          "x": 5306571,
+          "y": 5423075
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "teal",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 6380659,
+            "y": 4753185
+          },
+          "center": {
+            "x": 6881280,
+            "y": 4915200
+          },
+          "north": {
+            "x": 6881280,
+            "y": 5436182
+          },
+          "south": {
+            "x": 6881280,
+            "y": 4394218
+          },
+          "west": {
+            "x": 6149122,
+            "y": 4915200
+          },
+          "east": {
+            "x": 7613438,
+            "y": 4915200
+          },
+          "north west": {
+            "x": 6149122,
+            "y": 5436182
+          },
+          "north east": {
+            "x": 7613438,
+            "y": 5436182
+          },
+          "south west": {
+            "x": 6149122,
+            "y": 4394218
+          },
+          "south east": {
+            "x": 7613438,
+            "y": 4394218
+          },
+          "base": {
+            "x": 6881280,
+            "y": 4753185
+          },
+          "base west": {
+            "x": 6149122,
+            "y": 4753185
+          },
+          "base east": {
+            "x": 7613438,
+            "y": 4753185
+          },
+          "mid": {
+            "x": 6881280,
+            "y": 4894267
+          },
+          "mid west": {
+            "x": 6149122,
+            "y": 4894267
+          },
+          "mid east": {
+            "x": 7613438,
+            "y": 4894267
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 6162229,
+          "y": 4407325
+        },
+        "backgroundNorthEast": {
+          "x": 7600331,
+          "y": 5423075
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "magenta-white",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 8674419,
+            "y": 4753185
+          },
+          "center": {
+            "x": 9175040,
+            "y": 4915200
+          },
+          "north": {
+            "x": 9175040,
+            "y": 5436182
+          },
+          "south": {
+            "x": 9175040,
+            "y": 4394218
+          },
+          "west": {
+            "x": 8442882,
+            "y": 4915200
+          },
+          "east": {
+            "x": 9907198,
+            "y": 4915200
+          },
+          "north west": {
+            "x": 8442882,
+            "y": 5436182
+          },
+          "north east": {
+            "x": 9907198,
+            "y": 5436182
+          },
+          "south west": {
+            "x": 8442882,
+            "y": 4394218
+          },
+          "south east": {
+            "x": 9907198,
+            "y": 4394218
+          },
+          "base": {
+            "x": 9175040,
+            "y": 4753185
+          },
+          "base west": {
+            "x": 8442882,
+            "y": 4753185
+          },
+          "base east": {
+            "x": 9907198,
+            "y": 4753185
+          },
+          "mid": {
+            "x": 9175040,
+            "y": 4894267
+          },
+          "mid west": {
+            "x": 8442882,
+            "y": 4894267
+          },
+          "mid east": {
+            "x": 9907198,
+            "y": 4894267
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 8455989,
+          "y": 4407325
+        },
+        "backgroundNorthEast": {
+          "x": 9894091,
+          "y": 5423075
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "cyan-red",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": -500621,
+            "y": 6391585
+          },
+          "center": {
+            "x": 0,
+            "y": 6553600
+          },
+          "north": {
+            "x": 0,
+            "y": 7074582
+          },
+          "south": {
+            "x": 0,
+            "y": 6032618
+          },
+          "west": {
+            "x": -732158,
+            "y": 6553600
+          },
+          "east": {
+            "x": 732158,
+            "y": 6553600
+          },
+          "north west": {
+            "x": -732158,
+            "y": 7074582
+          },
+          "north east": {
+            "x": 732158,
+            "y": 7074582
+          },
+          "south west": {
+            "x": -732158,
+            "y": 6032618
+          },
+          "south east": {
+            "x": 732158,
+            "y": 6032618
+          },
+          "base": {
+            "x": 0,
+            "y": 6391585
+          },
+          "base west": {
+            "x": -732158,
+            "y": 6391585
+          },
+          "base east": {
+            "x": 732158,
+            "y": 6391585
+          },
+          "mid": {
+            "x": 0,
+            "y": 6532667
+          },
+          "mid west": {
+            "x": -732158,
+            "y": 6532667
+          },
+          "mid east": {
+            "x": 732158,
+            "y": 6532667
+          }
+        },
+        "backgroundSouthWest": {
+          "x": -719051,
+          "y": 6045725
+        },
+        "backgroundNorthEast": {
+          "x": 719051,
+          "y": 7061475
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "yellow-blue",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 1793139,
+            "y": 6391585
+          },
+          "center": {
+            "x": 2293760,
+            "y": 6553600
+          },
+          "north": {
+            "x": 2293760,
+            "y": 7074582
+          },
+          "south": {
+            "x": 2293760,
+            "y": 6032618
+          },
+          "west": {
+            "x": 1561602,
+            "y": 6553600
+          },
+          "east": {
+            "x": 3025918,
+            "y": 6553600
+          },
+          "north west": {
+            "x": 1561602,
+            "y": 7074582
+          },
+          "north east": {
+            "x": 3025918,
+            "y": 7074582
+          },
+          "south west": {
+            "x": 1561602,
+            "y": 6032618
+          },
+          "south east": {
+            "x": 3025918,
+            "y": 6032618
+          },
+          "base": {
+            "x": 2293760,
+            "y": 6391585
+          },
+          "base west": {
+            "x": 1561602,
+            "y": 6391585
+          },
+          "base east": {
+            "x": 3025918,
+            "y": 6391585
+          },
+          "mid": {
+            "x": 2293760,
+            "y": 6532667
+          },
+          "mid west": {
+            "x": 1561602,
+            "y": 6532667
+          },
+          "mid east": {
+            "x": 3025918,
+            "y": 6532667
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 1574709,
+          "y": 6045725
+        },
+        "backgroundNorthEast": {
+          "x": 3012811,
+          "y": 7061475
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "chained",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 4086899,
+            "y": 6391585
+          },
+          "center": {
+            "x": 4587520,
+            "y": 6553600
+          },
+          "north": {
+            "x": 4587520,
+            "y": 7074582
+          },
+          "south": {
+            "x": 4587520,
+            "y": 6032618
+          },
+          "west": {
+            "x": 3855362,
+            "y": 6553600
+          },
+          "east": {
+            "x": 5319678,
+            "y": 6553600
+          },
+          "north west": {
+            "x": 3855362,
+            "y": 7074582
+          },
+          "north east": {
+            "x": 5319678,
+            "y": 7074582
+          },
+          "south west": {
+            "x": 3855362,
+            "y": 6032618
+          },
+          "south east": {
+            "x": 5319678,
+            "y": 6032618
+          },
+          "base": {
+            "x": 4587520,
+            "y": 6391585
+          },
+          "base west": {
+            "x": 3855362,
+            "y": 6391585
+          },
+          "base east": {
+            "x": 5319678,
+            "y": 6391585
+          },
+          "mid": {
+            "x": 4587520,
+            "y": 6532667
+          },
+          "mid west": {
+            "x": 3855362,
+            "y": 6532667
+          },
+          "mid east": {
+            "x": 5319678,
+            "y": 6532667
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 3868469,
+          "y": 6045725
+        },
+        "backgroundNorthEast": {
+          "x": 5306571,
+          "y": 7061475
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "fractional",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 6380659,
+            "y": 6391585
+          },
+          "center": {
+            "x": 6881280,
+            "y": 6553600
+          },
+          "north": {
+            "x": 6881280,
+            "y": 7074582
+          },
+          "south": {
+            "x": 6881280,
+            "y": 6032618
+          },
+          "west": {
+            "x": 6149122,
+            "y": 6553600
+          },
+          "east": {
+            "x": 7613438,
+            "y": 6553600
+          },
+          "north west": {
+            "x": 6149122,
+            "y": 7074582
+          },
+          "north east": {
+            "x": 7613438,
+            "y": 7074582
+          },
+          "south west": {
+            "x": 6149122,
+            "y": 6032618
+          },
+          "south east": {
+            "x": 7613438,
+            "y": 6032618
+          },
+          "base": {
+            "x": 6881280,
+            "y": 6391585
+          },
+          "base west": {
+            "x": 6149122,
+            "y": 6391585
+          },
+          "base east": {
+            "x": 7613438,
+            "y": 6391585
+          },
+          "mid": {
+            "x": 6881280,
+            "y": 6532667
+          },
+          "mid west": {
+            "x": 6149122,
+            "y": 6532667
+          },
+          "mid east": {
+            "x": 7613438,
+            "y": 6532667
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 6162229,
+          "y": 6045725
+        },
+        "backgroundNorthEast": {
+          "x": 7600331,
+          "y": 7061475
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      },
+      {
+        "id": "scope-color",
+        "values": {
+          "width": 1001243,
+          "height": 451461,
+          "depth": 127430,
+          "linewidth": 26214,
+          "quad": 655360,
+          "xheight": 282165,
+          "innerx": 218430,
+          "innery": 218430,
+          "outerx": 13107,
+          "outery": 13107,
+          "minimumwidth": 65536,
+          "minimumheight": 65536
+        },
+        "anchors": {
+          "text": {
+            "x": 8674419,
+            "y": 6391585
+          },
+          "center": {
+            "x": 9175040,
+            "y": 6553600
+          },
+          "north": {
+            "x": 9175040,
+            "y": 7074582
+          },
+          "south": {
+            "x": 9175040,
+            "y": 6032618
+          },
+          "west": {
+            "x": 8442882,
+            "y": 6553600
+          },
+          "east": {
+            "x": 9907198,
+            "y": 6553600
+          },
+          "north west": {
+            "x": 8442882,
+            "y": 7074582
+          },
+          "north east": {
+            "x": 9907198,
+            "y": 7074582
+          },
+          "south west": {
+            "x": 8442882,
+            "y": 6032618
+          },
+          "south east": {
+            "x": 9907198,
+            "y": 6032618
+          },
+          "base": {
+            "x": 9175040,
+            "y": 6391585
+          },
+          "base west": {
+            "x": 8442882,
+            "y": 6391585
+          },
+          "base east": {
+            "x": 9907198,
+            "y": 6391585
+          },
+          "mid": {
+            "x": 9175040,
+            "y": 6532667
+          },
+          "mid west": {
+            "x": 8442882,
+            "y": 6532667
+          },
+          "mid east": {
+            "x": 9907198,
+            "y": 6532667
+          }
+        },
+        "backgroundSouthWest": {
+          "x": 8455989,
+          "y": 6045725
+        },
+        "backgroundNorthEast": {
+          "x": 9894091,
+          "y": 7061475
+        },
+        "glyphs": [
+          {
+            "font": "regular-10",
+            "slot": 65,
+            "xSp": 0,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 103,
+            "xSp": 491520,
+            "ySp": 0
+          },
+          {
+            "font": "regular-10",
+            "slot": 46,
+            "xSp": 819200,
+            "ySp": 0
+          }
+        ]
+      }
+    ],
+    "fontDefinitions": {
+      "g0": "regular-10"
+    }
+  },
+  "frames": {
+    "black": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": -500621,
+      "fSp": -162015
+    },
+    "white": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 1793139,
+      "fSp": -162015
+    },
+    "red": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 4086899,
+      "fSp": -162015
+    },
+    "green": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 6380659,
+      "fSp": -162015
+    },
+    "blue": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 8674419,
+      "fSp": -162015
+    },
+    "cyan": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": -500621,
+      "fSp": 1476385
+    },
+    "magenta": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 1793139,
+      "fSp": 1476385
+    },
+    "yellow": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 4086899,
+      "fSp": 1476385
+    },
+    "gray": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 6380659,
+      "fSp": 1476385
+    },
+    "darkgray": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 8674419,
+      "fSp": 1476385
+    },
+    "lightgray": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": -500621,
+      "fSp": 3114785
+    },
+    "orange": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 1793139,
+      "fSp": 3114785
+    },
+    "violet": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 4086899,
+      "fSp": 3114785
+    },
+    "purple": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 6380659,
+      "fSp": 3114785
+    },
+    "brown": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 8674419,
+      "fSp": 3114785
+    },
+    "pink": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": -500621,
+      "fSp": 4753185
+    },
+    "lime": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 1793139,
+      "fSp": 4753185
+    },
+    "olive": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 4086899,
+      "fSp": 4753185
+    },
+    "teal": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 6380659,
+      "fSp": 4753185
+    },
+    "magenta-white": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 8674419,
+      "fSp": 4753185
+    },
+    "cyan-red": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": -500621,
+      "fSp": 6391585
+    },
+    "yellow-blue": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 1793139,
+      "fSp": 6391585
+    },
+    "chained": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 4086899,
+      "fSp": 6391585
+    },
+    "fractional": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 6380659,
+      "fSp": 6391585
+    },
+    "scope-color": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 8674419,
+      "fSp": 6391585
+    }
+  },
+  "painting": [
+    {
+      "kind": "path",
+      "pathIndex": 0,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "black",
+      "glyphIndex": 0,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "black",
+      "glyphIndex": 1,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "black",
+      "glyphIndex": 2,
+      "color": "#000000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 1,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "white",
+      "glyphIndex": 0,
+      "color": "#ffffff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "white",
+      "glyphIndex": 1,
+      "color": "#ffffff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "white",
+      "glyphIndex": 2,
+      "color": "#ffffff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 2,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "red",
+      "glyphIndex": 0,
+      "color": "#ff0000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "red",
+      "glyphIndex": 1,
+      "color": "#ff0000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "red",
+      "glyphIndex": 2,
+      "color": "#ff0000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 3,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "green",
+      "glyphIndex": 0,
+      "color": "#00ff00",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "green",
+      "glyphIndex": 1,
+      "color": "#00ff00",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "green",
+      "glyphIndex": 2,
+      "color": "#00ff00",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 4,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "blue",
+      "glyphIndex": 0,
+      "color": "#0000ff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "blue",
+      "glyphIndex": 1,
+      "color": "#0000ff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "blue",
+      "glyphIndex": 2,
+      "color": "#0000ff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 5,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "cyan",
+      "glyphIndex": 0,
+      "color": "#00ffff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "cyan",
+      "glyphIndex": 1,
+      "color": "#00ffff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "cyan",
+      "glyphIndex": 2,
+      "color": "#00ffff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 6,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "magenta",
+      "glyphIndex": 0,
+      "color": "#ff00ff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "magenta",
+      "glyphIndex": 1,
+      "color": "#ff00ff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "magenta",
+      "glyphIndex": 2,
+      "color": "#ff00ff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 7,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "yellow",
+      "glyphIndex": 0,
+      "color": "#ffff00",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "yellow",
+      "glyphIndex": 1,
+      "color": "#ffff00",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "yellow",
+      "glyphIndex": 2,
+      "color": "#ffff00",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 8,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "gray",
+      "glyphIndex": 0,
+      "color": "#808080",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "gray",
+      "glyphIndex": 1,
+      "color": "#808080",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "gray",
+      "glyphIndex": 2,
+      "color": "#808080",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 9,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "darkgray",
+      "glyphIndex": 0,
+      "color": "#404040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "darkgray",
+      "glyphIndex": 1,
+      "color": "#404040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "darkgray",
+      "glyphIndex": 2,
+      "color": "#404040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 10,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "lightgray",
+      "glyphIndex": 0,
+      "color": "#bfbfbf",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "lightgray",
+      "glyphIndex": 1,
+      "color": "#bfbfbf",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "lightgray",
+      "glyphIndex": 2,
+      "color": "#bfbfbf",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 11,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "orange",
+      "glyphIndex": 0,
+      "color": "#ff8000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "orange",
+      "glyphIndex": 1,
+      "color": "#ff8000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "orange",
+      "glyphIndex": 2,
+      "color": "#ff8000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 12,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "violet",
+      "glyphIndex": 0,
+      "color": "#800080",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "violet",
+      "glyphIndex": 1,
+      "color": "#800080",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "violet",
+      "glyphIndex": 2,
+      "color": "#800080",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 13,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "purple",
+      "glyphIndex": 0,
+      "color": "#bf0040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "purple",
+      "glyphIndex": 1,
+      "color": "#bf0040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "purple",
+      "glyphIndex": 2,
+      "color": "#bf0040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 14,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "brown",
+      "glyphIndex": 0,
+      "color": "#bf8040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "brown",
+      "glyphIndex": 1,
+      "color": "#bf8040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "brown",
+      "glyphIndex": 2,
+      "color": "#bf8040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 15,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "pink",
+      "glyphIndex": 0,
+      "color": "#ffbfbf",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "pink",
+      "glyphIndex": 1,
+      "color": "#ffbfbf",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "pink",
+      "glyphIndex": 2,
+      "color": "#ffbfbf",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 16,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "lime",
+      "glyphIndex": 0,
+      "color": "#bfff00",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "lime",
+      "glyphIndex": 1,
+      "color": "#bfff00",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "lime",
+      "glyphIndex": 2,
+      "color": "#bfff00",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 17,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "olive",
+      "glyphIndex": 0,
+      "color": "#808000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "olive",
+      "glyphIndex": 1,
+      "color": "#808000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "olive",
+      "glyphIndex": 2,
+      "color": "#808000",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 18,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "teal",
+      "glyphIndex": 0,
+      "color": "#008080",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "teal",
+      "glyphIndex": 1,
+      "color": "#008080",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "teal",
+      "glyphIndex": 2,
+      "color": "#008080",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 19,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "magenta-white",
+      "glyphIndex": 0,
+      "color": "#ff80ff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "magenta-white",
+      "glyphIndex": 1,
+      "color": "#ff80ff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "magenta-white",
+      "glyphIndex": 2,
+      "color": "#ff80ff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 20,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "cyan-red",
+      "glyphIndex": 0,
+      "color": "#bf4040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "cyan-red",
+      "glyphIndex": 1,
+      "color": "#bf4040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "cyan-red",
+      "glyphIndex": 2,
+      "color": "#bf4040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 21,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "yellow-blue",
+      "glyphIndex": 0,
+      "color": "#4d4db3",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "yellow-blue",
+      "glyphIndex": 1,
+      "color": "#4d4db3",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "yellow-blue",
+      "glyphIndex": 2,
+      "color": "#4d4db3",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 22,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "chained",
+      "glyphIndex": 0,
+      "color": "#400040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "chained",
+      "glyphIndex": 1,
+      "color": "#400040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "chained",
+      "glyphIndex": 2,
+      "color": "#400040",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 23,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "fractional",
+      "glyphIndex": 0,
+      "color": "#55aaff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "fractional",
+      "glyphIndex": 1,
+      "color": "#55aaff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "fractional",
+      "glyphIndex": 2,
+      "color": "#55aaff",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 24,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "scope-color",
+      "glyphIndex": 0,
+      "color": "#4000ff",
+      "opacity": 0.4,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "scope-color",
+      "glyphIndex": 1,
+      "color": "#4000ff",
+      "opacity": 0.4,
+      "clips": []
+    },
+    {
+      "kind": "glyph",
+      "pathIndex": -1,
+      "node": "scope-color",
+      "glyphIndex": 2,
+      "color": "#4000ff",
+      "opacity": 0.4,
+      "clips": []
+    },
+    {
+      "kind": "path",
+      "pathIndex": 25,
+      "node": "",
+      "glyphIndex": -1,
+      "color": "",
+      "opacity": 1,
+      "clips": []
+    }
+  ]
+}
