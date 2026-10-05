@@ -438,3 +438,10 @@ and three ordinary tests of all path ink bounds and natural SVG dimensions.
 stroke frame. `node tools/TikzVisual/border-pdf-frame-probe.mjs` measures both
 native viewports against cached ordinary PDF on the measured page lattice;
 its 572 repeated measurements select no limits or admitted policy.
+
+The separate [border regional experiments](../tools/TikzVisual/BORDER-REGIONS.md)
+retain 2,520 independent primary and 1,144 native-page PDF measurements, with
+27 passing controls/defects in each trial. A missing short line passes global
+primary gates but fails its local gate; PDF rejects it independently. These
+are unapproved research limits. Guarded policy admission and required CI routing
+remain pending.

@@ -109,5 +109,9 @@ paper, with 51 agreeing SVG/PDF native path records. The triangular fixture's
 4x whole-picture maximum channel error falls from 255 to 166 with the independently
 expanded viewport. Captures, paired crops, and a synchronized viewer are saved
 under `artifacts/border-pdf-frame-probe/`. No PDF limits or policy are selected
-by this experiment. Next calibrate the primary and local PDF comparisons for
-this family and require image-only mutation sensitivity before admission.
+by this experiment. The separate
+[regional experiments](../TikzVisual/BORDER-REGIONS.md) now retain 2,520 primary
+and 1,144 PDF oracle-only measurements. Primary and independent PDF trials each
+pass 27 controls/defects, including rejection in the affected miter/short-line
+regions. These prospective limits are unapproved; a guarded combined route and
+its policy-validation checks remain required before admission.
