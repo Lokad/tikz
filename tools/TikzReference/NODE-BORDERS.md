@@ -49,7 +49,7 @@ frame by 0.091652 CSS px. The checked-in
 [calibration snapshot](../../tests/Reference/NodeBorders/calibration.json) records
 nine oracle-only representations with passing numeric/dimension budgets and
 raw raster differences. It admits no policy. The transformed-node stroke frame
-must be independently measured before explaining that sizing discrepancy.
+is now independently measured below; original failures remain.
 
 ```text
 dotnet run --project tools/TikzReference -c Release -- compare-border-paths --out artifacts/node-border-candidates
@@ -71,3 +71,43 @@ path-region and image-only defect controls, and admit a separately pinned
 policy only when all applicable gates pass. Labeled-node border interactions,
 additional shapes, `to`/`edge`, bends, path labels, and arrow shortening remain
 separate required work. No existing family allowance is inherited.
+
+Native stroke framing now explains the transformed fixture's original crop
+discrepancy. It also exposes a closing triangular miter extending about
+0.459 CSS px beyond the second fixture's driver crop. General drawing paths
+now include miter extensions in their conservative stroke envelope, including
+closing joins and cubic endpoint tangents. Subpath gaps remain separate;
+round/bevel joins retain the circular-pen envelope and miter limits are respected.
+
+The [native frame snapshot](../../tests/Reference/NodeBorders/framing.json)
+uses original PGF paths and independent offset-line intersections. It records
+36 path regions and 104 fixed miter regions, with no candidate or production
+stroke helper invoked. Three ordinary tests check every path ink envelope and
+the complete natural SVG frame against those measurements at 0.00004 CSS px.
+All 835 native path assertions remain; all three independently framed candidate
+dimension checks now pass. This establishes bounds, while image admission
+remains pending.
+
+```text
+dotnet run --project tools/TikzReference -c Release -- measure-border-framing
+dotnet run --project tools/TikzReference -c Release -- compare-border-framed
+node tools/TikzVisual/border-pdf-frame-probe.mjs
+```
+
+The first command measures the trusted cached corpus without invoking the
+converter. The second retains complete original and independently framed
+public-conversion bundles under `artifacts/border-framed-candidates/`; it still
+returns **1** for unapproved exact-primary/PDF comparisons. Its 140 local regions
+link to candidate path/source identities in the trace. Existing reference SVGs,
+PDF pages, and admitted policies are unchanged.
+
+The PDF probe uses the same fixed regions plus three whole-picture regions
+on the measured native PDF page. Its
+[snapshot](../../tests/Reference/NodeBorders/pdf-framing.json) retains 572 repeated
+oracle-only measurements for original and expanded viewports at 1x/4x on white
+paper, with 51 agreeing SVG/PDF native path records. The triangular fixture's
+4x whole-picture maximum channel error falls from 255 to 166 with the independently
+expanded viewport. Captures, paired crops, and a synchronized viewer are saved
+under `artifacts/border-pdf-frame-probe/`. No PDF limits or policy are selected
+by this experiment. Next calibrate the primary and local PDF comparisons for
+this family and require image-only mutation sensitivity before admission.

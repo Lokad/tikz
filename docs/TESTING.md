@@ -431,3 +431,10 @@ Rectangle border arithmetic and path endpoints now have a separate
 consume 29 exact primitive intersections and three original TikZ path fixtures
 without TeX or a browser. `compare-border-paths` retains provisional image
 failures; it does not inherit an admitted node or geometry policy.
+
+The native border stroke-frame experiment adds 140 fixed path/miter regions
+and three ordinary tests of all path ink bounds and natural SVG dimensions.
+`compare-border-framed` retains the original comparison alongside the independent
+stroke frame. `node tools/TikzVisual/border-pdf-frame-probe.mjs` measures both
+native viewports against cached ordinary PDF on the measured page lattice;
+its 572 repeated measurements select no limits or admitted policy.

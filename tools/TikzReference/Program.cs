@@ -24,6 +24,10 @@ internal static partial class ReferenceTool
         {
             Root = FindRoot();
             Profile = Read<OracleProfile>(At("tests/Reference/oracle-profile.json"));
+            if (args.Length > 0 && args[0] == "measure-border-framing")
+                return await BorderFraming(args);
+            if (args.Length > 0 && args[0] == "compare-border-framed")
+                return await CompareBorderFramed(args);
             if (args.Length > 0 && args[0] is "generate-rectangle-borders" or "verify-rectangle-borders")
                 return await RectangleBorders(args);
             if (args.Length > 0 && args[0] == "compare-node-interaction-primary")

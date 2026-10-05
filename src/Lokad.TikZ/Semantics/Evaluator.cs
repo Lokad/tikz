@@ -206,7 +206,7 @@ internal sealed partial class Evaluator(Budget budget)
         }
         if (state.Paint.Fill || state.Paint.Stroke)
         {
-            var ink = state.Paint.Stroke ? bounds.Inflate(state.Paint.Width / 2 * (state.Paint.Cap == "square" ? Math.Sqrt(2) : 1)) : bounds;
+            var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, statement.Source) : bounds;
             foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Path.Bounds);
             _scene.InkBounds = _scene.InkBounds.Union(ink);
             _scene.Add(new(path, state.Paint, [.. state.Clips], statement.Source, ink));
