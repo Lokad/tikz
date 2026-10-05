@@ -43,10 +43,10 @@ internal static class PgfCoordinates
     {
         if (!double.IsFinite(value) || value == 0 || Math.Abs(value) > 16384 - 1 / SpPerPt)
             throw new CompileError("TIKZ004", "Cannot invert this coordinate frame at PGF numeric precision.", source);
-        // PGF reads the printed TeX dimension's five fractional digits. Integer
+        // PGF reads the printed TeX dimension's decimal digits. Integer
         // reciprocals use scaled-point integer division; fractional reciprocals
         // use decimal integer division followed by four scaled-point .1 steps.
-        var printed = Math.Round(value, 5, MidpointRounding.AwayFromZero);
+        var printed = PgfTransform.Printed((long)Math.Round(value * SpPerPt, MidpointRounding.AwayFromZero));
         var integer = Math.Truncate(printed);
         var fraction = Math.Round((Math.Abs(printed) - Math.Abs(integer)) * 100000, MidpointRounding.AwayFromZero);
         if (fraction == 0)

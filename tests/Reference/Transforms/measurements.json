@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-affine-sp-v1",
+  "frames": {
+    "identity": {
+      "a": 1,
+      "b": 0,
+      "c": 0,
+      "d": 1,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "rotate-fraction": {
+      "a": 0.96533,
+      "b": 0.26091,
+      "c": -0.26091,
+      "d": 0.96533,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "rotate-negative": {
+      "a": 0.96533,
+      "b": -0.26091,
+      "c": 0.26091,
+      "d": 0.96533,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "rotate-wrapped": {
+      "a": 0.96533,
+      "b": 0.26091,
+      "c": -0.26091,
+      "d": 0.96533,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "rotate-wrapped-negative": {
+      "a": 0.96533,
+      "b": -0.26091,
+      "c": 0.26091,
+      "d": 0.96533,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "rotate-quarter-boundary": {
+      "a": 0,
+      "b": 0.99998,
+      "c": -0.99998,
+      "d": 0,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "rotate-half-boundary": {
+      "a": -0.99998,
+      "b": 0,
+      "c": 0,
+      "d": -0.99998,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "rotate-composed": {
+      "a": 0.86598,
+      "b": 0.49992,
+      "c": -0.49992,
+      "d": 0.86598,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "nonuniform-rotation": {
+      "a": 1.29904,
+      "b": 0.75,
+      "c": -0.375,
+      "d": 0.64952,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "reflection": {
+      "a": -1.2,
+      "b": 0,
+      "c": 0,
+      "d": 0.8,
+      "eSp": 10813440,
+      "fSp": 2621440
+    },
+    "shear-short-decimal": {
+      "a": 1,
+      "b": 0.3,
+      "c": 0.4,
+      "d": 1,
+      "eSp": 5898240,
+      "fSp": 6225920
+    },
+    "shear-composed": {
+      "a": 1.06921,
+      "b": 0.09445,
+      "c": 0.60498,
+      "d": 1.04102,
+      "eSp": 589824,
+      "fSp": -327680
+    },
+    "shift-before-rotation": {
+      "a": 0.96533,
+      "b": 0.26091,
+      "c": -0.26091,
+      "d": 0.96533,
+      "eSp": 230205,
+      "fSp": -437375
+    },
+    "shift-after-rotation": {
+      "a": 0.96533,
+      "b": 0.26091,
+      "c": -0.26091,
+      "d": 0.96533,
+      "eSp": 336339,
+      "fSp": -362150
+    },
+    "repeated-scales": {
+      "a": 0.99945,
+      "b": 0,
+      "c": 0,
+      "d": 0.99945,
+      "eSp": 0,
+      "fSp": 0
+    },
+    "singular": {
+      "a": 1,
+      "b": 0.4,
+      "c": 0,
+      "d": 0,
+      "eSp": 327680,
+      "fSp": -458752
+    }
+  },
+  "points": {
+    "identity": {
+      "xSp": 466842,
+      "ySp": -232208
+    },
+    "rotate-fraction": {
+      "xSp": 511242,
+      "ySp": -102354
+    },
+    "rotate-negative": {
+      "xSp": 390072,
+      "ySp": -345960
+    },
+    "rotate-wrapped": {
+      "xSp": 511242,
+      "ySp": -102354
+    },
+    "rotate-wrapped-negative": {
+      "xSp": 390072,
+      "ySp": -345960
+    },
+    "rotate-quarter-boundary": {
+      "xSp": 232204,
+      "ySp": 466834
+    },
+    "rotate-half-boundary": {
+      "xSp": -466834,
+      "ySp": 232204
+    },
+    "rotate-composed": {
+      "xSp": 520362,
+      "ySp": 32298
+    },
+    "nonuniform-rotation": {
+      "xSp": 693525,
+      "ySp": 199308
+    },
+    "reflection": {
+      "xSp": 10253232,
+      "ySp": 2435673
+    },
+    "shear-short-decimal": {
+      "xSp": 6272201,
+      "ySp": 6133766
+    },
+    "shear-composed": {
+      "xSp": 948496,
+      "ySp": -525318
+    },
+    "shift-before-rotation": {
+      "xSp": 741447,
+      "ySp": -539729
+    },
+    "shift-after-rotation": {
+      "xSp": 847581,
+      "ySp": -464504
+    },
+    "repeated-scales": {
+      "xSp": 466585,
+      "ySp": -232080
+    },
+    "singular": {
+      "xSp": 794522,
+      "ySp": -272019
+    }
+  },
+  "dimensions": {
+    "cm-one": 1864679,
+    "cm-fraction": 230211,
+    "mm-eight": 1491743,
+    "mm-negative": -230205,
+    "bp-fraction": 468592,
+    "inch-fraction": 584736,
+    "pt-fraction": 466842,
+    "sp-fraction": 1,
+    "px-one": 65782,
+    "px-fraction": 124985
+  }
+}

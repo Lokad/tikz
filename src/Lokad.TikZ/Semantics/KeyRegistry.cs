@@ -84,20 +84,20 @@ internal static class KeyRegistry
                 case "dotted": state.Paint = paint with { Dash = [paint.Width, 2 * 72 / 72.27] }; break;
                 case "dash phase": state.Paint = paint with { DashPhase = state.Dimension(option.Value, budget) }; break;
                 case "dash pattern": state.Paint = paint with { Dash = ParseDash(option.Value, state, budget) }; break;
-                case "scale": var scale = state.Scalar(option.Value, budget); state.Transform = state.Transform.Then(Affine.Scale(scale, scale)); break;
-                case "xscale": state.Transform = state.Transform.Then(Affine.Scale(state.Scalar(option.Value, budget), 1)); break;
-                case "yscale": state.Transform = state.Transform.Then(Affine.Scale(1, state.Scalar(option.Value, budget))); break;
-                case "rotate": state.Transform = state.Transform.Then(Affine.Rotation(state.Scalar(option.Value, budget))); break;
-                case "xshift": state.Transform = state.Transform.Then(Affine.Translation(state.Dimension(option.Value, budget), 0)); break;
-                case "yshift": state.Transform = state.Transform.Then(Affine.Translation(0, state.Dimension(option.Value, budget))); break;
-                case "shift": var shift = PointValue(option.Value, state, budget); state.Transform = state.Transform.Then(Affine.Translation(shift.X, shift.Y)); break;
+                case "scale": var scale = state.Scalar(option.Value, budget); Transform(Affine.Scale(scale, scale)); break;
+                case "xscale": Transform(Affine.Scale(state.Scalar(option.Value, budget), 1)); break;
+                case "yscale": Transform(Affine.Scale(1, state.Scalar(option.Value, budget))); break;
+                case "rotate": Transform(PgfTransform.Rotation(state.Scalar(option.Value, budget), budget, option.Source)); break;
+                case "xshift": Transform(Affine.Translation(state.Dimension(option.Value, budget), 0)); break;
+                case "yshift": Transform(Affine.Translation(0, state.Dimension(option.Value, budget))); break;
+                case "shift": var shift = PointValue(option.Value, state, budget); Transform(Affine.Translation(shift.X, shift.Y)); break;
                 case "x": state.XBasis = option.Value.Span.StartsWith("(") ? PointValue(option.Value, state, budget) : new(state.Dimension(option.Value, budget), 0); break;
                 case "y": state.YBasis = option.Value.Span.StartsWith("(") ? PointValue(option.Value, state, budget) : new(0, state.Dimension(option.Value, budget)); break;
                 case "cm":
                     var parts = Options.Split(option.Value, ',', budget);
                     if (parts.Count != 5) throw new CompileError("TIKZ001", "Expected cm={a,b,c,d,(x,y)}.", option.Source);
                     var offset = PointValue(parts[4], state, budget);
-                    state.Transform = state.Transform.Then(new(state.Scalar(parts[0], budget), state.Scalar(parts[1], budget), state.Scalar(parts[2], budget), state.Scalar(parts[3], budget), offset.X, offset.Y));
+                    Transform(new(state.Scalar(parts[0], budget), state.Scalar(parts[1], budget), state.Scalar(parts[2], budget), state.Scalar(parts[3], budget), offset.X, offset.Y));
                     break;
                 default:
                     if (Color.IsName(key) || key.Contains('!')) { var c = Color.Parse(new Source(key, 0, key.Length), budget); state.Paint = paint with { StrokeColor = c, FillColor = c }; state.Node = state.Node with { TextColor = c }; }
@@ -105,6 +105,7 @@ internal static class KeyRegistry
                     break;
             }
             void Width(double points) { state.NodeLineWidth = null; state.Paint = paint with { Width = points * 72 / 72.27 }; }
+            void Transform(Affine value) => state.Transform = PgfTransform.Then(state.Transform, value, budget, option.Source);
             void Dash(double a, double b) => state.Paint = paint with { Dash = [a * 72 / 72.27, b * 72 / 72.27] };
             double Alpha() { var result = state.Scalar(option.Value, budget); if (result is < 0 or > 1) Invalid(option); return result; }
         }
@@ -138,6 +139,7 @@ internal static class KeyRegistry
         var parts = Options.Split(group, ',', budget);
         if (parts.Count != 2) throw new CompileError("TIKZ001", "Expected (x,y).", source);
         var x = state.Number(parts[0], budget); var y = state.Number(parts[1], budget);
-        return (x.HasUnit ? new Point(x.Bp, 0) : state.XBasis * x.Value) + (y.HasUnit ? new Point(0, y.Bp) : state.YBasis * y.Value);
+        return (x.HasUnit ? new Point(x.Bp, 0) : PgfTransform.Scale(state.XBasis, x.Value, budget, source))
+            + (y.HasUnit ? new Point(0, y.Bp) : PgfTransform.Scale(state.YBasis, y.Value, budget, source));
     }
 }

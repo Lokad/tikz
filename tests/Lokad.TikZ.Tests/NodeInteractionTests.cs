@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text;
 using System.Xml.Linq;
 using Lokad.TikZ.Frontend;
 using Lokad.TikZ.Geometry;
@@ -104,6 +105,45 @@ public sealed class NodeInteractionTests
         Assert.Equal(expected.Length, position);
         // CMYK text color differs between the SVG driver's path and DVI-special
         // routes. The full comparator retains this unresolved color failure.
+    }
+
+    [Theory]
+    [InlineData("state-paint")]
+    [InlineData("transforms")]
+    [InlineData("colors")]
+    public void Public_node_frames_and_queried_anchors_match_native_precision(string id)
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "Nodes", id + ".tikz"));
+        using var document = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "NodeInteractionsRgb", id, "metrics.json")));
+        var native = document.RootElement.GetProperty("nodes").GetProperty("nodes").EnumerateArray().ToArray();
+        var queries = new StringBuilder();
+        foreach (var (node, index) in native.Select((n, i) => (n, i)))
+            foreach (var anchor in node.GetProperty("anchors").EnumerateObject())
+                queries.Append("\\coordinate (probe-").Append(index).Append('-').Append(anchor.Name.Replace(' ', '-'))
+                    .Append(") at (").Append(node.GetProperty("id").GetString()).Append('.').Append(anchor.Name).Append(");\n");
+        var (_, scene) = Convert(source.Replace("\\end{tikzpicture}", queries + "\\end{tikzpicture}", StringComparison.Ordinal));
+        var frames = document.RootElement.GetProperty("frames");
+        for (var index = 0; index < native.Length; index++)
+        {
+            var node = native[index]; var actual = scene.Nodes[index]; var frame = frames.GetProperty(actual.Name);
+            Assert.Equal(frame.GetProperty("a").GetDouble(), actual.Transform.A);
+            Assert.Equal(frame.GetProperty("b").GetDouble(), actual.Transform.B);
+            Assert.Equal(frame.GetProperty("c").GetDouble(), actual.Transform.C);
+            Assert.Equal(frame.GetProperty("d").GetDouble(), actual.Transform.D);
+            Coordinate(frame.GetProperty("eSp").GetInt32(), actual.Transform.E);
+            Coordinate(frame.GetProperty("fSp").GetInt32(), actual.Transform.F);
+            foreach (var anchor in node.GetProperty("anchors").EnumerateObject())
+            {
+                var actualPoint = scene.Coordinates["probe-" + index + '-' + anchor.Name.Replace(' ', '-')];
+                Coordinate(anchor.Value.GetProperty("x").GetInt32(), actualPoint.X);
+                Coordinate(anchor.Value.GetProperty("y").GetInt32(), actualPoint.Y);
+            }
+        }
+        static void Coordinate(int sp, double bp)
+        {
+            Assert.Equal(sp, (int)Math.Round(bp * (72.27 * 65536 / 72), MidpointRounding.AwayFromZero));
+            Assert.InRange(Math.Abs(sp * (72 / (72.27 * 65536)) - bp), 0, 1e-9);
+        }
     }
 
     [Theory]

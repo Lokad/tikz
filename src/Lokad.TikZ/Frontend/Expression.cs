@@ -17,6 +17,33 @@ internal sealed record Literal(Number Number, Source Origin) : Expression(Origin
 {
     public override Number Evaluate(IReadOnlyDictionary<string, Number> variables, Budget budget) { budget.Charge(Source); return Number; }
 }
+internal sealed record PhysicalLiteral(double Value, string Unit, Source Origin) : Expression(Origin)
+{
+    public override Number Evaluate(IReadOnlyDictionary<string, Number> variables, Budget budget)
+    {
+        budget.Charge(Source);
+        const long unity = 65536;
+        var scaled = Unit == "sp" ? Math.Truncate(Value) : Math.Round(Value * unity, MidpointRounding.AwayFromZero);
+        if (!double.IsFinite(scaled) || Math.Abs(scaled) > 1073741823)
+            throw new CompileError("TIKZ004", "The dimension exceeds TeX scaled-point precision.", Source);
+        var (numerator, denominator) = Unit switch
+        {
+            "pt" or "sp" => (1L, 1L), "bp" => (7227L, 7200L),
+            "cm" => (7227L, 254L), "mm" => (7227L, 2540L),
+            "in" => (7227L, 100L),
+            // The pinned TeX pixel dimension is 65782 sp. This input unit is
+            // distinct from the CSS pixels used by the SVG output viewport.
+            "px" => (65782L, 65536L),
+            _ => throw new InvalidOperationException("Unknown physical dimension.")
+        };
+        // TeX rounds the decimal fraction, then truncates the rational unit
+        // conversion. Rounding the final floating physical value loses this.
+        var sp = (long)scaled * numerator / denominator;
+        if (sp is < -1073741823 or > 1073741823)
+            throw new CompileError("TIKZ004", "The dimension exceeds TeX scaled-point precision.", Source);
+        return new(sp / (double)unity, true);
+    }
+}
 internal sealed record FontRelativeLiteral(double Factor, string Unit, Source Origin) : Expression(Origin)
 {
     internal const string EmVariable = "\0font-em-sp";
@@ -156,13 +183,12 @@ internal sealed class ExpressionReader(Source source, Budget budget)
             while (char.IsLetter(_reader.Peek)) _reader.Advance();
             var unit = source.Slice(unitStart, _reader.Position - unitStart).Value.Trim();
             if (unit is "em" or "ex") return new FontRelativeLiteral(value, unit, text);
-            var factor = unit switch
+            return unit switch
             {
-                "" => 1, "pt" => 1, "bp" => 72.27 / 72, "cm" => 72.27 / 2.54, "mm" => 72.27 / 25.4,
-                "in" => 72.27, "sp" => 1.0 / 65536, "px" => 72.27 / 96,
+                "" => new Literal(new(value, false), text),
+                "pt" or "bp" or "cm" or "mm" or "in" or "sp" or "px" => new PhysicalLiteral(value, unit, text),
                 _ => throw new CompileError("TIKZ002", $"Unsupported unit '{unit}'.", text)
             };
-            return new Literal(new(value * factor, unit.Length != 0), text);
         }
         string name;
         if (ch == '\\') name = _reader.Command().Value;

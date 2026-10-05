@@ -389,15 +389,15 @@ internal static partial class ReferenceTool
             foreach (var (key, value) in quantities) Equal(prefix + key, expected.Values[key], value, "integer TeX sp");
             foreach (var (anchor, point) in expected.Anchors)
             {
-                var actualPoint = actual.Transform.Apply(actual.Layout.Anchor(anchor, query, budget, actual.Source).Bp);
+                var actualPoint = Lokad.TikZ.Geometry.PgfTransform.Apply(actual.Transform, actual.Layout.Anchor(anchor, query, budget, actual.Source).Bp, budget, actual.Source);
                 Physical(prefix + "anchor." + anchor + ".x", point.X, actualPoint.X);
                 Physical(prefix + "anchor." + anchor + ".y", point.Y, actualPoint.Y);
             }
             var frame = metrics.Frames[expected.Id];
-            Number(prefix + "frame.a", frame.A, actual.Transform.A, "coefficient", 0.00002);
-            Number(prefix + "frame.b", frame.B, actual.Transform.B, "coefficient", 0.00002);
-            Number(prefix + "frame.c", frame.C, actual.Transform.C, "coefficient", 0.00002);
-            Number(prefix + "frame.d", frame.D, actual.Transform.D, "coefficient", 0.00002);
+            Number(prefix + "frame.a", frame.A, actual.Transform.A, "coefficient", 0);
+            Number(prefix + "frame.b", frame.B, actual.Transform.B, "coefficient", 0);
+            Number(prefix + "frame.c", frame.C, actual.Transform.C, "coefficient", 0);
+            Number(prefix + "frame.d", frame.D, actual.Transform.D, "coefficient", 0);
             Physical(prefix + "frame.e", frame.ESp, actual.Transform.E); Physical(prefix + "frame.f", frame.FSp, actual.Transform.F);
             Equal(prefix + "glyphCount", expected.Glyphs.Length, text.Glyphs.Length);
             var run = scene.Drawables.OfType<PaintedGlyphRun>().Single(r => scene.Nodes[r.NodeId] == actual);
@@ -428,7 +428,10 @@ internal static partial class ReferenceTool
         void Equal(string name, object expected, object actual, string units = "value") => checks.Add(new(name, expected, actual, units, null, 0, expected.Equals(actual)));
         void Number(string name, double expected, double actual, string units, double allowed)
             => checks.Add(new(name, expected, actual, units, Math.Abs(expected - actual), allowed, Math.Abs(expected - actual) <= allowed));
-        void Physical(string name, double sp, double bp) => Number(name, sp * (96 / (72.27 * 65536)), bp * 4 / 3, "CSS pixels", tolerance);
+        // Native frame/anchor quantities are independent integer-sp records;
+        // only binary unit-conversion noise is admitted. Resolved SVG glyph
+        // origins additionally use the independently measured coefficients.
+        void Physical(string name, double sp, double bp) => Number(name, sp * (96 / (72.27 * 65536)), bp * 4 / 3, "CSS pixels", 1e-9);
     }
 
     private sealed record InteractionManifest(int SchemaVersion, string Profile, InteractionCase[] Cases);

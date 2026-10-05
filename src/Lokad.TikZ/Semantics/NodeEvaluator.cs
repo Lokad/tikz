@@ -29,7 +29,7 @@ internal sealed partial class Evaluator
         {
             if (separator < 0 && !allowCenter)
                 throw new CompileError("TIKZ002", "Implicit node border endpoints are not implemented yet; use an explicit anchor.", source);
-            return node.Transform.Apply(node.Layout.Anchor(anchor, Metrics(TextFont.Default, source), budget, source).Bp);
+            return PgfTransform.Apply(node.Transform, node.Layout.Anchor(anchor, Metrics(TextFont.Default, source), budget, source).Bp, budget, source);
         }
         if (separator >= 0 && anchor == "center" && _coordinates.TryGetValue(name, out var coordinate)) return coordinate;
         throw new CompileError("TIKZ003", $"Unknown coordinate '{reference}'.", source);
@@ -37,7 +37,7 @@ internal sealed partial class Evaluator
 
     private void Node(NodeStatement statement, EvaluationState parent)
     {
-        var at = statement.At is null ? parent.Transform.Apply(default) : Resolve(statement.At, parent, default, out _);
+        var at = statement.At is null ? PgfTransform.Apply(parent.Transform, default, budget, statement.Source) : Resolve(statement.At, parent, default, out _);
         var state = parent.Clone(budget, statement.Source);
         state.Transform = Affine.Identity;
         state.IsNodeContext = true;
@@ -76,7 +76,8 @@ internal sealed partial class Evaluator
         var frame = state.Node.TransformShape
             ? new Affine(parent.Transform.A, parent.Transform.B, parent.Transform.C, parent.Transform.D, at.X, at.Y)
             : Affine.Translation(at.X, at.Y);
-        frame = frame.Then(state.Transform).Then(Affine.Translation(-anchor.X, -anchor.Y));
+        frame = PgfTransform.Then(frame, state.Transform, budget, statement.Source);
+        frame = PgfTransform.Then(frame, Affine.Translation(-anchor.X, -anchor.Y), budget, statement.Source);
         var node = new ResolvedNode(statement.Name, layout, frame, textFont, nodeFont, statement.Source);
         var id = _scene.Nodes.Count;
         _scene.Nodes.Add(node);
@@ -87,7 +88,7 @@ internal sealed partial class Evaluator
             var box = Bounds.Empty;
             foreach (var point in new[] { new NodePoint(0, -text.DepthSp), new NodePoint(text.WidthSp, -text.DepthSp),
                 new NodePoint(0, text.HeightSp), new NodePoint(text.WidthSp, text.HeightSp) })
-                box = box.Add(frame.Apply(point.Bp));
+                box = box.Add(PgfTransform.Apply(frame, point.Bp, budget, statement.Source));
             var shapeBounds = state.Paint.Stroke ? background.ControlBounds.Inflate(state.Paint.Width / 2) : background.ControlBounds;
             _scene.PictureBounds = _scene.PictureBounds.Union(box).Union(shapeBounds);
         }

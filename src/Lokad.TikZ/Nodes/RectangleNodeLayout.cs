@@ -107,10 +107,10 @@ internal sealed record RectangleNodeLayout(MeasuredText Text, NodeDimensions Dim
         // PGF's identity-linear-frame fast path paints SW → SE → NE → NW.
         // Its general rectangle construction starts at NE and reverses that
         // traversal. The start and direction remain observable with dashes.
-        var sw = transform.Apply(BackgroundSouthWest.Bp);
-        var se = transform.Apply(new NodePoint(BackgroundNorthEast.X, BackgroundSouthWest.Y).Bp);
-        var ne = transform.Apply(BackgroundNorthEast.Bp);
-        var nw = transform.Apply(new NodePoint(BackgroundSouthWest.X, BackgroundNorthEast.Y).Bp);
+        var sw = PgfTransform.Apply(transform, BackgroundSouthWest.Bp, budget, source);
+        var se = PgfTransform.Apply(transform, new NodePoint(BackgroundNorthEast.X, BackgroundSouthWest.Y).Bp, budget, source);
+        var ne = PgfTransform.Apply(transform, BackgroundNorthEast.Bp, budget, source);
+        var nw = PgfTransform.Apply(transform, new NodePoint(BackgroundSouthWest.X, BackgroundNorthEast.Y).Bp, budget, source);
         if (transform.A == 1 && transform.B == 0 && transform.C == 0 && transform.D == 1)
         {
             path.Move(sw); path.Line(se); path.Line(ne); path.Line(nw);

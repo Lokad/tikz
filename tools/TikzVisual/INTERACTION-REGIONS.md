@@ -84,8 +84,11 @@ metrics and current native numeric tolerances. Their reports localize errors
 to five glyph regions and two path regions. This remains a converter precision
 repair/admission issue: ideal double transforms differ from measured PGF
 coefficients and scaled-point translations. The limits have not been widened.
-Transform mutations are not counted as fully validated local sensitivity until
-the corresponding unchanged control passes.
+This describes the historical trial retained below. The subsequent
+[native transform repair](../TikzReference/TRANSFORM-PRECISION.md) now passes
+every unchanged control and rejects all thirteen defects with the same fixed
+references and regional limits. The separate post-repair snapshot retains its
+implementation and artifact identities; no policy has been admitted.
 
 The checked-in [trial evidence](../../tests/Reference/NodeInteractionsRgb/mutation-trial.json)
 retains both completed outcomes and artifact/tool identities. It is an explicit

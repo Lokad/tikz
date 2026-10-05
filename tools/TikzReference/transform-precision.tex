@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+\pagestyle{empty}
+\makeatletter
+\typeout{LOKAD-PGF-VERSION \pgfversion}
+\def\transformprobe#1#2{%
+  \begin{tikzpicture}[#2]
+    \node[transform shape,anchor=text] (measured) at (0pt,0pt) {};
+    \begingroup
+      \expandafter\pgfsettransform\csname pgf@sh@nt@measured\endcsname
+      \pgfgettransformentries\aa\ab\ba\bb\tx\ty
+      \typeout{LOKAD-AFFINE #1|\aa|\ab|\ba|\bb|\number\pgf@pt@x|\number\pgf@pt@y|END}%
+    \endgroup
+    \pgfpointtransformed{\pgfpoint{7.12345pt}{-3.54321pt}}%
+    \typeout{LOKAD-POINT #1|\number\pgf@x|\number\pgf@y|END}%
+  \end{tikzpicture}%
+}
+\def\dimensionprobe#1#2{%
+  \begingroup
+    \pgf@x=#2\relax
+    \typeout{LOKAD-DIMENSION #1|\number\pgf@x|END}%
+  \endgroup
+}
+\makeatother
+\begin{document}
+% TRUSTED-PROBES
+\end{document}

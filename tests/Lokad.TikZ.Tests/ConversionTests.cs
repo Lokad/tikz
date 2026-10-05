@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text.Json;
 using System.Xml.Linq;
 using Xunit;
 
@@ -11,7 +12,10 @@ public sealed class ConversionTests
     {
         var result = Success(@"\begin{tikzpicture}[scale=2]\draw[line width=2pt] (0,0)--(1,0);\end{tikzpicture}");
         var path = XDocument.Parse(result.Svg).Descendants().Single(e => e.Name.LocalName == "path");
-        Assert.Equal("M0 0 L75.590551 0", path.Attribute("d")?.Value);
+        using var oracle = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "line-units", "reference-metrics.json")));
+        var nativePt = oracle.RootElement.GetProperty("anchorsPt").GetProperty("end").GetProperty("x").GetDouble();
+        var endpoint = double.Parse(path.Attribute("d")!.Value.Split(' ')[2][1..], CultureInfo.InvariantCulture);
+        Assert.InRange(Math.Abs(endpoint - nativePt * (96 / 72.27)), 0, .00001);
         Assert.Equal("2.656704", path.Attribute("stroke-width")?.Value);
         Assert.InRange(result.PictureBounds.Width, 78.24, 78.26);
     }

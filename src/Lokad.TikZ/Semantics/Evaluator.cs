@@ -65,9 +65,10 @@ internal sealed partial class Evaluator(Budget budget)
                 point = y.HasUnit ? new(Math.Cos(angle) * y.Bp, Math.Sin(angle) * y.Bp)
                     : state.XBasis * (Math.Cos(angle) * y.Value) + state.YBasis * (Math.Sin(angle) * y.Value);
             }
-            else point = (x.HasUnit ? new Point(x.Bp, 0) : state.XBasis * x.Value) + (y.HasUnit ? new Point(0, y.Bp) : state.YBasis * y.Value);
-            point = coordinate.Relative == 0 ? state.Transform.Apply(point)
-                : state.Transform.Apply(point) - state.Transform.Apply(default);
+            else point = (x.HasUnit ? new Point(x.Bp, 0) : PgfTransform.Scale(state.XBasis, x.Value, budget, coordinate.Source))
+                + (y.HasUnit ? new Point(0, y.Bp) : PgfTransform.Scale(state.YBasis, y.Value, budget, coordinate.Source));
+            point = coordinate.Relative == 0 ? PgfTransform.Apply(state.Transform, point, budget, coordinate.Source)
+                : PgfTransform.Apply(state.Transform, point, budget, coordinate.Source) - PgfTransform.Apply(state.Transform, default, budget, coordinate.Source);
         }
         if (coordinate.Relative != 0) point += reference;
         budget.Check(point.X, coordinate.Source); budget.Check(point.Y, coordinate.Source);
@@ -158,13 +159,13 @@ internal sealed partial class Evaluator(Budget budget)
         var x = xRadius.Evaluate(state.Variables, budget);
         var y = yRadius.Evaluate(state.Variables, budget);
         if (x.HasUnit != y.HasUnit) throw new CompileError("TIKZ001", "Cannot mix physical and dimensionless radii.", yRadius.Source);
-        var xAxis = TransformVector(state, x.HasUnit ? new(x.Bp, 0) : state.XBasis * x.Value);
-        var yAxis = TransformVector(state, y.HasUnit ? new(0, y.Bp) : state.YBasis * y.Value);
+        var xAxis = Vector(x.HasUnit ? new(x.Bp, 0) : PgfTransform.Scale(state.XBasis, x.Value, budget, xRadius.Source), xRadius.Source);
+        var yAxis = Vector(y.HasUnit ? new(0, y.Bp) : PgfTransform.Scale(state.YBasis, y.Value, budget, yRadius.Source), yRadius.Source);
         budget.Check(xAxis.X, xRadius.Source); budget.Check(xAxis.Y, xRadius.Source);
         budget.Check(yAxis.X, yRadius.Source); budget.Check(yAxis.Y, yRadius.Source);
         return (xAxis, yAxis);
+        Point Vector(Point value, Source source) => PgfTransform.Apply(state.Transform with { E = 0, F = 0 }, value, budget, source);
     }
-    private static Point TransformVector(EvaluationState state, Point point) => state.Transform.Apply(point) - state.Transform.Apply(default);
     private static Point FrameCorner(Point start, Point end, EvaluationState state, bool horizontalFirst, Source source)
     {
         var t = state.Transform;

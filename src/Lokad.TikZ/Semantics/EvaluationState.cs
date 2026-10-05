@@ -7,8 +7,9 @@ namespace Lokad.TikZ.Semantics;
 internal sealed class EvaluationState
 {
     public Affine Transform { get; set; } = Affine.Identity;
-    public Point XBasis { get; set; } = new(72 / 2.54, 0);
-    public Point YBasis { get; set; } = new(0, 72 / 2.54);
+    // TikZ initializes each basis with TeX's native 1cm dimension.
+    public Point XBasis { get; set; } = new NodePoint(1864679, 0).Bp;
+    public Point YBasis { get; set; } = new NodePoint(0, 1864679).Bp;
     public Paint Paint { get; set; } = new();
     public NodeSettings Node { get; set; } = new();
     public bool IsNodeContext { get; set; }

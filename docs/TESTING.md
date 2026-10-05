@@ -338,10 +338,21 @@ The [regional experiment](../tools/TikzVisual/INTERACTION-REGIONS.md) adds 174
 fixed regions derived only from native glyph/path evidence. Its checked-in
 snapshot retains 3,132 independent measurements and prospective limits. The
 global-only mutation trial accepts a missing faint period and short faint
-stroke; local gates reject both. Unchanged transform controls still fail local
-precision checks, so interaction conformance remains pending and no policy is
-approved. Source-attributed regional crops and the viewer preserve those
-failures. Run `npm run test:regions --prefix tools/TikzVisual` for twenty-one required
+stroke; local gates reject both. The retained initial trial also exposes local
+precision failures in unchanged transform controls, repaired by the native
+arithmetic work below. Source-attributed regional crops and the viewer preserve
+that historical evidence. Run `npm run test:regions --prefix tools/TikzVisual` for twenty-one required
 synthetic checks, including dilution, faint-content loss, display-only failures,
 repeatability, and invalid manifests. Full-corpus commands and retained trial
 evidence are described in the experiment document.
+
+The [native transform experiment](../tools/TikzReference/TRANSFORM-PRECISION.md)
+now checks sixteen actual affine frames/points and ten physical dimensions.
+Cached public tests cover fractional rotations, finite coefficient printing,
+unit conversion, and precision-overflow diagnostics. Live verification compares
+all measurements and pinned provenance without writing baselines. Native node
+frame coefficients now match exactly; anchor/frame/glyph origin checks use
+1e-9 CSS pixel rather than the former general geometry allowance. All twenty
+post-repair regional interaction comparisons pass unchanged controls or reject
+their intended defects. Original failure evidence stays available. Interaction
+policy admission and PDF calibration remain pending.
