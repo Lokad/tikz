@@ -373,3 +373,24 @@ tampered/missing evidence, widened limits, a numerical failure with correct
 pixels, a natural-height defect, fitted registration, empty numeric evidence,
 and unapproved PDF input. Raw exact reports remain in each primary bundle.
 Both commands are required visual CI steps; hosted execution remains unverified.
+
+The separate [PDF regional experiment](../tools/TikzVisual/INTERACTION-PDF-REGIONS.md)
+now retains 1,416 oracle-only measurements over 177 fixed regions, including
+three whole-picture cameras. SVG is rendered once on the full measured native
+PDF page, then both sides use integer pixel crops. Ninety-three native path
+records plus bounds/box/explicit anchors agree between SVG and ordinary PDF.
+All six repeated native controls pass and all thirteen image defects are
+rejected. Candidate defects are also rejected, but two unchanged transform
+controls fail the same three local 4x foreground means; no PDF policy is
+approved. Paired source-linked crops, raw measurements, and hashes preserve
+these failures for independent viewport/presentation investigation.
+
+```text
+npm run test:pdf-regions --prefix tools/TikzVisual
+```
+
+These twenty-two required synthetic registration/region/native-log checks run
+in visual CI. The document above gives cached measurement/trial commands and
+their expected exit categories. The candidate PDF trial deliberately returns
+1 while its unchanged controls fail, and remains outside the passing candidate
+conformance gate.

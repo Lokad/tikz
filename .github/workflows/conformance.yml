@@ -53,6 +53,7 @@ jobs:
       - run: npm run test:interaction-crops --prefix tools/TikzVisual
       - run: npm run test:regions --prefix tools/TikzVisual
       - run: npm run test:interaction-primary --prefix tools/TikzVisual
+      - run: npm run test:pdf-regions --prefix tools/TikzVisual
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -70,4 +71,5 @@ jobs:
             artifacts/regional-comparator-mutations/
             artifacts/node-interaction-primary/
             artifacts/interaction-primary-mutations/
+            artifacts/pdf-region-self-tests/
           if-no-files-found: error

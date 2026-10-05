@@ -5,7 +5,9 @@ The `chromium-153-node-interactions-rgb-ink-v1` policy covers the three trusted
 It uses the declared RGB profile, outlined Latin Modern labels, and independent
 stroke-ink framing. It establishes a calibrated primary SVG match for these
 fixtures. Ordinary PDF conformance and wider node/transform families remain
-pending.
+pending. The separate [PDF regional experiment](INTERACTION-PDF-REGIONS.md)
+retains independent measurements, mutation results, and unresolved candidate
+control failures; it supplies no approved allowance to this primary route.
 
 ```text
 dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-primary
