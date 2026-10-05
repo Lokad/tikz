@@ -58,7 +58,7 @@ internal sealed partial class Evaluator
         state.IsNodeContext = true;
         if (state.Styles.TryGetValue("every node", out var every)) KeyRegistry.Apply(every, state, budget);
         KeyRegistry.Apply(statement.Options, state, budget);
-        if (state.Styles.TryGetValue("every rectangle node", out var shapeStyle)) KeyRegistry.Apply(shapeStyle, state, budget);
+        if (state.Styles.TryGetValue("every " + state.Node.Shape.ToString().ToLowerInvariant() + " node", out var shapeStyle)) KeyRegistry.Apply(shapeStyle, state, budget);
         var nodeFont = NodeSettings.ApplyFont(state.Node.NodeFont, TextFont.Default, budget);
         var textFont = NodeSettings.ApplyFont(state.Node.Font, nodeFont, budget);
         var metrics = Metrics(nodeFont, statement.Source);
@@ -86,7 +86,9 @@ internal sealed partial class Evaluator
         if (state.Node.Alignment is null && label.Any(item => item is LabelBreak))
             throw new CompileError("TIKZ002", "Explicit node line breaks require align=left, center or right.", statement.Label);
         var text = new TextLayout().Layout(label, statement.Label, textFont, state.Node.Alignment ?? TextAlignment.Left, budget);
-        var layout = RectangleNodeLayout.Resolve(text, dimensions, budget, statement.Source);
+        INodeLayout layout = state.Node.Shape == NodeShape.Rectangle
+            ? RectangleNodeLayout.Resolve(text, dimensions, budget, statement.Source)
+            : CurvedNodeLayout.Resolve(state.Node.Shape, text, dimensions, budget, statement.Source);
         var anchor = layout.Anchor(state.Node.Anchor, metrics, budget, state.Node.AnchorSource ?? statement.Source).Bp;
         var frame = state.Node.TransformShape
             ? new Affine(parent.Transform.A, parent.Transform.B, parent.Transform.C, parent.Transform.D, at.X, at.Y)
@@ -110,7 +112,9 @@ internal sealed partial class Evaluator
         if (state.Paint.Fill || state.Paint.Stroke)
         {
             var ink = state.Paint.Stroke
-                ? PolygonStrokeBounds.Calculate(background.Segments.Take(4).Select(segment => segment.End).ToArray(), state.Paint, budget, statement.Source)
+                ? layout is RectangleNodeLayout
+                    ? PolygonStrokeBounds.Calculate(background.Segments.Take(4).Select(segment => segment.End).ToArray(), state.Paint, budget, statement.Source)
+                    : PathStrokeBounds.Calculate(background, state.Paint, budget, statement.Source)
                 : background.Bounds;
             ink = Clipped(ink);
             _scene.InkBounds = _scene.InkBounds.Union(ink);

@@ -11,7 +11,7 @@ internal sealed record PaintedPath(GraphicPath Path, Paint Paint, int[] ClipIds,
 internal sealed record ResolvedGlyph(int Outline, PlacedGlyph Placement, Affine Transform, Bounds InkBounds);
 internal sealed record PaintedGlyphRun(ResolvedGlyph[] Glyphs, string Readable, Color Color, double Opacity,
     int[] ClipIds, Source Origin, int NodeId) : Drawable(ClipIds, Origin);
-internal sealed record ResolvedNode(string Name, RectangleNodeLayout Layout, Affine Transform,
+internal sealed record ResolvedNode(string Name, INodeLayout Layout, Affine Transform,
     TextFont Font, TextFont NodeFont, Source Source);
 internal sealed record ClipPath(GraphicPath Path, string FillRule);
 internal sealed class GraphicsScene

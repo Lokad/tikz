@@ -6,6 +6,7 @@ namespace Lokad.TikZ.Nodes;
 
 internal sealed record NodeSettings
 {
+    internal NodeShape Shape { get; init; } = NodeShape.Rectangle;
     internal Source? Font { get; init; }
     internal Source? NodeFont { get; init; }
     internal Source? InnerX { get; init; }

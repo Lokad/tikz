@@ -1,7 +1,8 @@
-# Rectangle-node prototype
+# Node prototypes
 
 The public converter accepts standalone `\node` statements with an optional
-name and `at` coordinate, rectangle geometry, and the [bounded text profile](TEXT.md).
+name and `at` coordinate, rectangle/circle/ellipse geometry, and the
+[bounded text profile](TEXT.md).
 It measures the label before resolving shape dimensions and anchors, then emits
 an ordered background path and self-contained glyph outlines. No TeX, browser,
 installed font, or filesystem is used during conversion.
@@ -58,7 +59,7 @@ this is not an exact-pixel claim against the original driver.
 These results establish the fixture's concrete rectangle/label forms. Inherited
 and local transforms, text color/opacity and style interactions, clipping,
 overlapping node/path paint order, rotated/sheared stroke extents, implicit node
-border endpoints, circle/ellipse nodes, path/inline labels, and secondary PDF
+border endpoints, circle/ellipse image conformance, path/inline labels, and secondary PDF
 fidelity still require their own grounding. Some keys are implemented for the
 next interaction fixtures; acceptance by the parser is not a compatibility claim.
 The [interaction experiment](../tools/TikzReference/NODE-INTERACTIONS.md) now has
@@ -89,8 +90,37 @@ See [testing instructions](TESTING.md) for cached public comparisons, image
 mutations, and explicit live verification. The original SVG, log, native trace,
 measurements, tool/font/input hashes, and probe-invariance evidence are retained.
 
-The separate [circle/ellipse shape oracle](../tools/TikzShapeReference/README.md)
-now provides independent native sizing, anchor, border, background-path, and
-transform measurements for 28 nodes. It prepares those future implementations;
-circle/ellipse nodes remain unsupported and have no candidate or image
-conformance claim.
+## Circle and ellipse numeric prototype
+
+`circle` is built in. `ellipse` requires `shapes.geometric`, loaded before use
+through `\usetikzlibrary{shapes.geometric}` or `TikzOptions.Libraries`.
+The module currently enables ellipse alone; other geometric shapes fail
+explicitly. Library declarations inside a scope persist for that conversion,
+and separate conversions do not share their library state. Shape aliases and
+`shape=...` select the same layout. `every circle node` and `every ellipse node`
+styles follow the existing node style order.
+
+The separate [shape oracle](../tools/TikzShapeReference/README.md) provides
+independent native measurements for 28 nodes. Ordinary
+[tests](../tests/Lokad.TikZ.Tests/CurvedNodeTests.cs) compare the public converter's
+text boxes, 448 global named anchors, all 420 background soft-path tokens,
+native picture bounds, and 448 border endpoints at physical precision below
+1e-9 bp. Sixteen primitive normalized directions and directly resolved shape
+layouts are checked separately. The original fixture and native measurements
+remain unchanged; additional candidate-only paths exercise its border queries.
+
+The shared shape layout contract runs after label measurement. Circle radii
+use finite PGF normalization and division; ellipse axes use the native fixed
+square-root-of-two coefficient. Diagonal anchors and quarter-curve controls
+also use finite coefficients. Painted radii exclude outer separation. Native
+border arithmetic retains the multiplication and truncation order of each
+ellipse branch, including near-center directions. Background paths preserve
+PGF's final move back to the center and enter the ordinary graphics/SVG pipeline.
+
+These numeric results cover the named fixtures. They do not establish image
+or PDF conformance. Direct native glyph-position assertions, focused and
+interaction corpora, independent camera/precision calibration, regional image
+gates, and comparator defects are still required. No rectangle/path raster
+tolerance applies to these new shapes. A degenerate unequal-axis border that
+cannot be computed at native scaled-point precision fails at its source
+coordinate; callers can still use a supported explicit anchor.

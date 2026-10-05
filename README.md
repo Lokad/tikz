@@ -8,8 +8,10 @@ against PGF 3.1.11a with independent numeric measurements and SVG comparisons
 at 1x and 4x. Lines, relative coordinates, and scoped clipping have exact
 primary pixels; transformed coordinates, curves, ellipses/arcs, and rectangle cropping use
 small, independently calibrated allowances. This evidence covers the listed
-fixtures. A [rectangle-node prototype](docs/NODES.md) now emits outlined labels
-and passes native layout and primary SVG checks for 22 actual TikZ nodes.
+fixtures. A [node prototype](docs/NODES.md) now emits outlined labels
+and passes native layout and primary SVG checks for 22 actual TikZ rectangle nodes.
+Circle and ellipse nodes also match native sizing, anchors, background paths,
+and border queries across 28 cases; their image and PDF gates remain pending.
 Broader node/shape coverage, arrows, and libraries remain.
 Unsupported source constructs produce diagnostics.
 The declared [RGB color profile](docs/COLORS.md) has independent path/glyph
@@ -41,7 +43,7 @@ isolated from the production library.
 
 The [bundled font-data prototype](tools/TikzFontData/README.md) has six
 Latin Modern faces with independent TeX metric checks and exact atlas
-comparisons. Its resources now supply the rectangle-node prototype's labels.
+comparisons. Its resources now supply the node prototypes' labels.
 The internal [label layout](docs/TEXT.md) also matches sixteen native TeX
 box/glyph-position cases exactly, with independently calibrated image checks.
 The node corpus also has native glyph-position measurements and its own

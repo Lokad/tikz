@@ -37,7 +37,7 @@ internal sealed record NodeDimensions(int InnerXSp, int InnerYSp, int OuterXSp,
 
 internal sealed record RectangleNodeLayout(MeasuredText Text, NodeDimensions Dimensions,
     NodePoint SouthWest, NodePoint NorthEast, NodePoint Center,
-    NodePoint BackgroundSouthWest, NodePoint BackgroundNorthEast)
+    NodePoint BackgroundSouthWest, NodePoint BackgroundNorthEast) : INodeLayout
 {
     internal static RectangleNodeLayout Resolve(MeasuredText text, NodeDimensions dimensions,
         Budget budget, Source source)
@@ -76,7 +76,7 @@ internal sealed record RectangleNodeLayout(MeasuredText Text, NodeDimensions Dim
 
     // Mid anchors evaluate .5ex in the querying font's context. They are not
     // frozen to the label font (or even to the font that sized the node).
-    internal NodePoint Anchor(string name, NodeFontMetrics context, Budget budget, Source source)
+    public NodePoint Anchor(string name, NodeFontMetrics context, Budget budget, Source source)
     {
         budget.Charge(source);
         return name switch
@@ -101,7 +101,7 @@ internal sealed record RectangleNodeLayout(MeasuredText Text, NodeDimensions Dim
         };
     }
 
-    internal GraphicPath Background(Affine transform, Budget budget, Source source)
+    public GraphicPath Background(Affine transform, Budget budget, Source source)
     {
         var path = new GraphicPath(budget, source);
         // PGF's identity-linear-frame fast path paints SW → SE → NE → NW.
@@ -123,7 +123,7 @@ internal sealed record RectangleNodeLayout(MeasuredText Text, NodeDimensions Dim
         return path;
     }
 
-    internal NodePoint Border(NodePoint direction, Budget budget, Source source)
+    public NodePoint Border(NodePoint direction, Budget budget, Source source)
     {
         // The rectangle's border routine derives its center from SW + half
         // the full size; the separately declared center halves SW/NE first.

@@ -12,6 +12,9 @@ internal sealed class EvaluationState
     public Point YBasis { get; set; } = new NodePoint(0, 1864679).Bp;
     public Paint Paint { get; set; } = new();
     public NodeSettings Node { get; set; } = new();
+    // TeX library definitions are global within this conversion, including
+    // declarations inside a scope. Clones share this per-conversion registry.
+    public HashSet<string> Libraries { get; set; } = new(StringComparer.Ordinal);
     public bool IsNodeContext { get; set; }
     public List<Option> NodeTransforms { get; } = [];
     public Source? NodeLineWidth { get; set; }
@@ -24,7 +27,7 @@ internal sealed class EvaluationState
         budget.Charge(source, Styles.Count + Variables.Count + Clips.Count + 1);
         return new()
         {
-            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Node = Node, RelevantForPictureSize = RelevantForPictureSize,
+            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Node = Node, Libraries = Libraries, RelevantForPictureSize = RelevantForPictureSize,
             Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal)
         };
     }

@@ -57,8 +57,21 @@ trailing move back to the center after a closed background path. Ideal Euclidean
 circles and analytic ray intersections cannot replace those rules without
 checking their measured differences.
 
-This is independent reference preparation. Circle/ellipse nodes are still
-unsupported by the public converter. No candidate numeric pass, primary/PDF
-conformance, or raster tolerance is claimed. These cases need their own public
-conversion, focused/interaction measurements, independent precision and PDF
-calibration, defect controls, and agent-viewable comparison bundles.
+The [public numeric prototype](../../docs/NODES.md#circle-and-ellipse-numeric-prototype)
+now implements these shapes without changing the original fixture or native
+evidence. [Ordinary tests](../../tests/Lokad.TikZ.Tests/CurvedNodeTests.cs) check
+the measured text boxes, named anchors, complete soft paths, picture bounds,
+all 448 border queries, and sixteen normalized primitives. The standalone
+oracle remains independent and cannot invoke the candidate.
+
+The trusted [precision diagnostic](../../tests/Fixtures/Nodes/direction-precision.tex)
+isolates a small-direction division/angle calculation and an ellipse-border
+query. Native logs show that the horizontal ellipse branch reaches 599sp,
+while the opposite multiplication order reaches 600sp. This is an exploratory
+diagnostic; the unchanged 448-query corpus supplies the regression evidence.
+
+Primary/PDF conformance and raster tolerance remain pending. These cases still
+need direct glyph assertions, focused/interaction measurements, independent
+precision and PDF calibration, defect controls, and a reproducible candidate
+comparison command with agent-viewable bundles. Inspection previews establish
+no image policy, and no existing rectangle/path policy is inherited.

@@ -1,0 +1,31 @@
+% Trusted native diagnostics for small-direction ellipse intersection.
+% Outputs are independent of the managed arithmetic under investigation.
+\documentclass{article}
+\usepackage{tikz}
+\makeatletter
+\typeout{LOKAD-PGF-VERSION \pgfversion}
+\let\lokaddivide\pgfmathdivide@
+\def\pgfmathdivide@#1#2{%
+  \typeout{LOKAD-DIVIDE-IN #1|#2}%
+  \lokaddivide{#1}{#2}%
+  \typeout{LOKAD-DIVIDE-OUT \pgfmathresult}%
+}
+\let\lokadatan\pgfmathatantwo
+\def\pgfmathatantwo#1#2{%
+  \typeout{LOKAD-ATAN-IN #1|#2}%
+  \lokadatan{#1}{#2}%
+  \typeout{LOKAD-ATAN-OUT \pgfmathresult}%
+}
+\let\lokadnormal\pgfpointnormalised
+\def\pgfpointnormalised#1{%
+  \pgf@process{#1}%
+  \typeout{LOKAD-NORMAL-IN \number\pgf@x|\number\pgf@y}%
+  \lokadnormal{}%
+  \typeout{LOKAD-NORMAL-OUT \number\pgf@x|\number\pgf@y}%
+}
+\begin{document}
+\pgfpointnormalised{\pgfqpoint{600sp}{2048sp}}%
+\typeout{LOKAD-RESULT direction|\number\pgf@x|\number\pgf@y|END}
+\pgfpointborderellipse{\pgfqpoint{2048sp}{2048sp}}{\pgfqpoint{2188497sp}{641244sp}}%
+\typeout{LOKAD-RESULT ellipse|\number\pgf@x|\number\pgf@y|END}
+\end{document}

@@ -11,11 +11,16 @@ internal sealed partial class Evaluator(Budget budget)
     public GraphicsScene Evaluate(List<Statement> statements, TikzOptions options)
     {
         var state = new EvaluationState();
-        foreach (var library in options.Libraries) LoadLibrary(library, statements.FirstOrDefault()?.Source ?? new Source("", 0, 0));
+        foreach (var library in options.Libraries) LoadLibrary(library, state, statements.FirstOrDefault()?.Source ?? new Source("", 0, 0));
         Statements(statements, state, 0);
         return _scene;
     }
-    private static void LoadLibrary(string name, Source source) => throw new CompileError("TIKZ002", $"Unsupported TikZ library '{name}'.", source);
+    private void LoadLibrary(string name, EvaluationState state, Source source)
+    {
+        budget.Charge(source);
+        if (name != "shapes.geometric") throw new CompileError("TIKZ002", $"Unsupported TikZ library '{name}'.", source);
+        state.Libraries.Add(name);
+    }
     private void Statements(List<Statement> statements, EvaluationState state, int depth)
     {
         foreach (var statement in statements)
@@ -30,7 +35,7 @@ internal sealed partial class Evaluator(Budget budget)
                     break;
                 case SetStatement set: KeyRegistry.Apply(set.Options, state, budget); break;
                 case LibraryStatement libraries:
-                    foreach (var name in Options.Split(libraries.Names, ',', budget)) LoadLibrary(Options.Clean(name), name);
+                    foreach (var name in Options.Split(libraries.Names, ',', budget)) LoadLibrary(Options.Clean(name), state, name);
                     break;
                 case CoordinateStatement coordinate:
                     budget.Node(coordinate.Source);

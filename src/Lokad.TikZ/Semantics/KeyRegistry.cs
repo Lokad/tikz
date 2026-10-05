@@ -1,5 +1,6 @@
 using Lokad.TikZ.Frontend;
 using Lokad.TikZ.Geometry;
+using Lokad.TikZ.Nodes;
 using Lokad.TikZ.Text;
 
 namespace Lokad.TikZ.Semantics;
@@ -43,8 +44,8 @@ internal static class KeyRegistry
                 case "draw": state.Paint = paint with { Stroke = value is not ("none" or "false"), StrokeColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.StrokeColor : Color.Parse(option.Value, budget) }; break;
                 case "fill": state.Paint = paint with { Fill = value is not ("none" or "false"), FillColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.FillColor : Color.Parse(option.Value, budget) }; break;
                 case "color": var color = Color.Parse(option.Value, budget); state.Paint = paint with { StrokeColor = color, FillColor = color }; state.Node = state.Node with { TextColor = color }; break;
-                case "rectangle": break;
-                case "shape": if (value != "rectangle") throw Unsupported(option); break;
+                case "rectangle" or "circle" or "ellipse": Shape(key); break;
+                case "shape": Shape(value); break;
                 case "font": state.Node = state.Node with { Font = option.Value }; break;
                 case "node font": state.Node = state.Node with { NodeFont = option.Value }; break;
                 case "text": state.Node = state.Node with { TextColor = Color.Parse(option.Value, budget) }; break;
@@ -105,6 +106,13 @@ internal static class KeyRegistry
                     break;
             }
             void Width(double points) { state.NodeLineWidth = null; state.Paint = paint with { Width = points * 72 / 72.27 }; }
+            void Shape(string name)
+            {
+                var shape = name switch { "rectangle" => NodeShape.Rectangle, "circle" => NodeShape.Circle, "ellipse" => NodeShape.Ellipse, _ => throw Unsupported(option) };
+                if (shape == NodeShape.Ellipse && !state.Libraries.Contains("shapes.geometric"))
+                    throw new CompileError("TIKZ002", "Ellipse nodes require the shapes.geometric library.", option.Source);
+                state.Node = state.Node with { Shape = shape };
+            }
             void Transform(Affine value) => state.Transform = PgfTransform.Then(state.Transform, value, budget, option.Source);
             void Dash(double a, double b) => state.Paint = paint with { Dash = [a * 72 / 72.27, b * 72 / 72.27] };
             double Alpha() { var result = state.Scalar(option.Value, budget); if (result is < 0 or > 1) Invalid(option); return result; }
