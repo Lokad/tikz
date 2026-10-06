@@ -25,6 +25,7 @@ jobs:
       - run: node tools/TikzVisual/edge-reference.mjs check-cached
       - run: node tools/TikzVisual/edge-evidence-self-test.mjs
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore
+      - run: dotnet run --project tools/TikzEdgeOracle -c Release --no-restore
       - run: node tools/TikzVisual/labelled-border-pdf-diagnostics-self-test.mjs
       - run: dotnet run --project tools/TikzLabelledBorderComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzLabelledBorderOracle -c Release --no-restore
@@ -61,6 +62,7 @@ jobs:
             artifacts/edge-reference/
             artifacts/edge-evidence-controls/
             artifacts/edge-numeric/
+            artifacts/edge-oracle/
           if-no-files-found: error
 
   visual:
@@ -86,6 +88,15 @@ jobs:
       - run: dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-pdf
       - run: node tools/TikzVisual/compare-border-conformance.mjs
       - run: node tools/TikzVisual/edge-candidate-inspect.mjs
+      - run: node tools/TikzVisual/edge-oracle-self-test.mjs
+      - run: node tools/TikzVisual/inspect-edge-oracle.mjs
+      - name: Verify independent edge reference images
+        shell: pwsh
+        run: |
+          $edgeOracleRun = Get-Content artifacts/edge-oracle-inspection/latest.json -Raw | ConvertFrom-Json
+          if (-not $edgeOracleRun.completed) { throw 'Independent edge inspection is incomplete.' }
+          node tools/TikzVisual/check-edge-oracle.mjs ('artifacts/edge-oracle-inspection/' + $edgeOracleRun.report)
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/inspect-shapes.mjs
       - run: node tools/TikzVisual/calibrate-shapes.mjs
       - run: node tools/TikzVisual/shape-frame-self-test.mjs
@@ -146,6 +157,9 @@ jobs:
           path: |
             artifacts/comparisons/
             artifacts/edge-candidate-inspection/
+            artifacts/edge-oracle-controls/
+            artifacts/edge-oracle-inspection/
+            artifacts/edge-oracle-checks/
             artifacts/comparator-mutations/
             artifacts/font-comparisons/
             artifacts/font-comparator-mutations/

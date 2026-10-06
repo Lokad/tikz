@@ -46,11 +46,24 @@ node tools/TikzVisual/edge-evidence-self-test.mjs
 ```
 
 The second command passes 334 integrity, parser, replay, state and semantic controls.
+
 Both commands retain fresh hashed reports under ignored `artifacts/`. A separate
 native SVG/PDF gallery, using the existing pinned development browser, runs with
 `node tools/TikzVisual/edge-inspect.mjs`. Its paired images retain raw differences
 at 1x/4x without a conformance verdict. Explicit live generation and replay
 verification are documented with the corpus.
+
+The [independent edge oracle](../tools/TikzEdgeOracle/README.md) adds a
+framework-only DVI/TFM reader with no converter reference. Run
+`dotnet run --project tools/TikzEdgeOracle -c Release` without TeX or a browser.
+Its native-only image harness runs with
+`node tools/TikzVisual/inspect-edge-oracle.mjs`; arithmetic and renderer controls
+run with `node tools/TikzVisual/edge-oracle-self-test.mjs`.
+The inspection retains 900 primary and 20 ordinary-PDF observations across five
+fixtures, with independent cameras, original/native-semantic SVGs, complete
+local measurements, repeat captures and agent-viewable PNGs. Use the explicit
+saved-run checker documented with the tool to reconstruct native inputs and
+remeasure the images. All reports keep calibration and image admission pending.
 
 The [candidate numeric command](../tools/TikzEdgeComparison/README.md) runs
 `dotnet run --project tools/TikzEdgeComparison -c Release` and needs no TeX or

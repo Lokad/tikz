@@ -7,6 +7,13 @@ picture bounds, node measurements, anchors and glyph positions. Their original
 PGF SVG and ordinary TikZ PDF images are retained. Image calibration and
 conformance remain pending; numeric agreement is a separate result.
 
+The [independent native reconstruction](../tools/TikzEdgeOracle/README.md)
+preserves original driver comparisons and separately renders retained PGF paths,
+effective paint/clips and original glyph outlines. It does not call the public
+converter. Its complete scale/background matrix, ordinary-PDF pairs and saved
+PNG checker ground future image policies. The original SVG's missing round-cap
+dot remains visible; a reconstructed-reference match does not replace it.
+
 ```tex
 \begin{tikzpicture}
   \node[draw] (a) at (0,0) {Input};
