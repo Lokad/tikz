@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-straight-to-edge-v1",
+  "fontProfile": "latin-modern-ec-10-12-v1",
+  "colorProfile": "xcolor-rgb-v1",
+  "libraries": ["shapes.geometric"],
+  "anchors": ["text", "center", "north", "south", "west", "east", "north west", "north east", "south west", "south east", "base", "base west", "base east", "mid", "mid west", "mid east"],
+  "cases": [
+    {"id":"continuation","source":"tests/Fixtures/Edges/continuation.tikz","nodes":[],"features":["to-chain","edge-branch","parent-continuation","repeated-edge","plus-base","plusplus-base","edge-after-relative-point","to-after-relative-point","cycle","unpainted-parent"]},
+    {"id":"styles","source":"tests/Fixtures/Edges/styles.tikz","nodes":[],"features":["to-paint-scope","edge-paint-scope","every-path","every-to","every-edge","empty-every-edge","local-overrides","draw-none","fill-parent","filldraw-parent","dash-inheritance","cap-join","opacity","multiple-option-groups"]},
+    {"id":"coordinates","source":"tests/Fixtures/Edges/coordinates.tikz","nodes":[],"coordinates":["target"],"features":["absolute-target","relative-target-prescan","to-local-transform","edge-local-transform","basis-override","named-coordinate","polar","inherited-frame","reflected-frame","sheared-frame"]},
+    {"id":"nodes","source":"tests/Fixtures/Edges/nodes.tikz","nodes":[{"id":"input","shape":"rectangle"},{"id":"output","shape":"rectangle"},{"id":"round","shape":"circle"},{"id":"wide","shape":"ellipse"}],"features":["measured-label-border","to-node-chain","edge-node-branch","explicit-anchors","relative-node-target","node-font","rotated-node","sheared-node","transformed-query-frame","parent-rectangle"]},
+    {"id":"clipping","source":"tests/Fixtures/Edges/clipping.tikz","nodes":[],"features":["scope-clip","edge-after-parent-fill","edge-on-clip-path","empty-edge-bounds","no-parent-paint","edge-fill-override","degenerate-edge","restored-scope"]}
+  ],
+  "scope": "Independent native path/paint, physical paint order, node/glyph and original SVG/PDF evidence for the fixed fixtures only. No converter invocation or approved image allowance."
+}

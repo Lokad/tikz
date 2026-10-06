@@ -1,0 +1,141 @@
+\pdfinfoomitdate=1
+\pdftrailerid{}
+\pdfsuppressptexinfo=15
+\AtBeginDocument{\edgepdftrue}
+% Development-only mixed labelled-node/connection measurements.
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\pagestyle{empty}
+% Keep the entire tall fixture on one page; dvisvgm selects that page explicitly.
+\paperwidth=600pt \paperheight=800pt
+\pdfpagewidth=\paperwidth \pdfpageheight=\paperheight
+\textwidth=450pt \textheight=600pt
+\makeatletter
+\typeout{LOKAD-PGF-VERSION \pgfversion}
+\newif\iflokadprobes
+\newbox\lokadpicture
+\newcount\lokadpathcounter
+\newif\iflokadinsidenode
+\def\lokadowner{drawing}
+\newdimen\lokadcx
+\newdimen\lokadcy
+\def\lokadquantity#1#2{%
+  \begingroup
+    \pgfmathsetlength\pgf@x{#2}%
+    \typeout{LOKAD-VALUE \lokadnodeid|#1|\number\pgf@x|END}%
+  \endgroup
+}
+\def\lokadpoint#1#2{%
+  \begingroup
+    \pgf@process{#2}%
+    \typeout{LOKAD-POINT \lokadnodeid|#1|\number\pgf@x|\number\pgf@y|END}%
+  \endgroup
+}
+\def\lokadanchor#1#2{%
+  \pgfpointanchor{#1}{#2}%
+  \typeout{LOKAD-ANCHOR #1|#2|\number\pgf@x|\number\pgf@y|END}%
+}
+\def\lokadborder#1#2#3#4{%
+  \begingroup
+    \pgfpointanchor{#1}{center}%
+    \lokadcx=\pgf@x \lokadcy=\pgf@y
+    \advance\lokadcx by #3sp \advance\lokadcy by #4sp
+    \pgfpointshapeborder{#1}{\pgfqpoint{\lokadcx}{\lokadcy}}%
+    \typeout{LOKAD-BORDER #1|#2|\number\pgf@x|\number\pgf@y|END}%
+  \endgroup
+}
+\def\lokadnormal#1#2#3{%
+  \begingroup
+    \pgfpointnormalised{\pgfqpoint{#2sp}{#3sp}}%
+    \typeout{LOKAD-NORMAL #1|\number\pgf@x|\number\pgf@y|END}%
+  \endgroup
+}
+\def\lokadframe{%
+  \begingroup
+    \pgfgettransformentries{\la}{\lb}{\lc}{\ld}{\le}{\lf}%
+    \typeout{LOKAD-FRAME \lokadnodeid|\la|\lb|\lc|\ld|\le|\lf|END}%
+  \endgroup
+}
+\def\lokadpath#1{%
+  \begingroup
+    \pgfgetpath\lokadsoftpath
+    \ifx\lokadsoftpath\pgfutil@empty\else
+    \global\advance\lokadpathcounter by 1
+    \typeout{LOKAD-PATH \the\lokadpathcounter|\lokadowner|#1|\number\pgflinewidth|END}%
+    \def\lokadsegment##1##2##3{%
+      \pgf@x=##2 \pgf@y=##3
+      \typeout{LOKAD-SEG \the\lokadpathcounter|##1|\number\pgf@x|\number\pgf@y|END}%
+    }%
+    \def\pgfsyssoftpath@movetotoken##1##2{\lokadsegment{move}{##1}{##2}}%
+    \def\pgfsyssoftpath@linetotoken##1##2{\lokadsegment{line}{##1}{##2}}%
+    \def\pgfsyssoftpath@rectcornertoken##1##2{\lokadsegment{rectcorner}{##1}{##2}}%
+    \def\pgfsyssoftpath@rectsizetoken##1##2{\lokadsegment{rectsize}{##1}{##2}}%
+    \def\pgfsyssoftpath@curvetosupportatoken##1##2{\lokadsegment{control1}{##1}{##2}}%
+    \def\pgfsyssoftpath@curvetosupportbtoken##1##2{\lokadsegment{control2}{##1}{##2}}%
+    \def\pgfsyssoftpath@curvetotoken##1##2{\lokadsegment{curve}{##1}{##2}}%
+    \def\pgfsyssoftpath@closepathtoken##1##2{\lokadsegment{close}{##1}{##2}}%
+    \lokadsoftpath
+    \fi
+  \endgroup
+}
+\AtBeginDocument{%
+  \iflokadprobes
+    \let\lokadoriginalnode\pgfmultipartnode
+    \def\pgfmultipartnode#1#2#3#4{%
+      \edef\lokadnodeid{#3}%
+      \edef\lokadowner{node-#3}%
+      \lokadinsidenodetrue
+      \typeout{LOKAD-SHAPE #3|#1|END}%
+      \typeout{LOKAD-VALUE #3|width|\number\wd\pgfnodeparttextbox|END}%
+      \typeout{LOKAD-VALUE #3|height|\number\ht\pgfnodeparttextbox|END}%
+      \typeout{LOKAD-VALUE #3|depth|\number\dp\pgfnodeparttextbox|END}%
+      \typeout{LOKAD-VALUE #3|linewidth|\number\pgflinewidth|END}%
+      \lokadquantity{quad}{1em}%
+      \lokadquantity{xheight}{1ex}%
+      \lokadquantity{innerx}{\pgfkeysvalueof{/pgf/inner xsep}}%
+      \lokadquantity{innery}{\pgfkeysvalueof{/pgf/inner ysep}}%
+      \lokadquantity{outerx}{\pgfkeysvalueof{/pgf/outer xsep}}%
+      \lokadquantity{outery}{\pgfkeysvalueof{/pgf/outer ysep}}%
+      \lokadquantity{minimumwidth}{\pgfkeysvalueof{/pgf/minimum width}}%
+      \lokadquantity{minimumheight}{\pgfkeysvalueof{/pgf/minimum height}}%
+      \lokadoriginalnode{#1}{#2}{#3}{#4}%
+      \lokadinsidenodefalse
+      \def\lokadowner{drawing}%
+    }%
+    \let\lokadoriginalellipse\pgfpathellipse
+    \def\pgfpathellipse#1#2#3{%
+      \lokadpoint{center}{#1}%
+      \lokadpoint{xaxis}{#2}%
+      \lokadpoint{yaxis}{#3}%
+      \lokadframe
+      \lokadoriginalellipse{#1}{#2}{#3}%
+    }%
+    \let\lokadoriginalrectangle\pgfpathrectanglecorners
+    \def\pgfpathrectanglecorners#1#2{%
+      \iflokadinsidenode
+        \lokadpoint{southwest}{#1}%
+        \lokadpoint{northeast}{#2}%
+        \lokadframe
+      \fi
+      \lokadoriginalrectangle{#1}{#2}%
+    }%
+    \let\lokadoriginalusepath\pgfusepath
+    \def\pgfusepath#1{\lokadpath{#1}\lokadoriginalusepath{#1}}%
+    \let\lokadoriginalendpicture\endtikzpicture
+    \def\endtikzpicture{%
+      \typeout{LOKAD-BOUNDS \number\pgf@picminx|\number\pgf@picminy|\number\pgf@picmaxx|\number\pgf@picmaxy|END}%
+      \begingroup\pgftransformreset\input{probes.tex}\endgroup
+      \lokadoriginalendpicture
+    }%
+  \fi
+}
+\selectcolormodel{rgb}
+\input{edge-hooks.tex}
+\begin{document}
+\setbox\lokadpicture=\hbox{\input{case.tikz}\unskip}
+\typeout{LOKAD-BOX \number\wd\lokadpicture|\number\ht\lokadpicture|\number\dp\lokadpicture|END}
+\hbox{\pdfsavepos\write16{LOKAD-PDF-PAGE \number\pdflastxpos|\number\pdflastypos|\number\pdfpagewidth|\number\pdfpageheight|END}\box\lokadpicture}
+\end{document}

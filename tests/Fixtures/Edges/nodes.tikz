@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+  \node[draw,inner sep=2pt,outer sep=1pt] (input) at (0pt,0pt) {AV};
+  \node[draw,align=center,font=\bfseries,inner sep=3pt,rotate=15] (output) at (100pt,0pt) {Output\\gyp};
+  \node[circle,draw,inner sep=2pt,font=\itshape,minimum size=24pt] (round) at (0pt,70pt) {ffi.};
+  \node[ellipse,draw,inner sep=2pt,cm={1,.2,.3,1,(0pt,0pt)},outer sep=2pt] (wide) at (100pt,70pt) {gyp};
+  \draw[blue] (input) to (output) to (wide);
+  \draw[red,line width=1pt] (input) edge[blue] (round) -- (output);
+  \draw[line width=1pt] (round) edge[red] (output) edge[blue] (wide) to (wide);
+  \draw[green] (input.east) to (output.west) edge[red] (wide.center) -- (round.center);
+  \draw[dashed] (round) edge[red] +(40pt,10pt) -- ++(30pt,0pt);
+  \begin{scope}[rotate=20,scale=.8]
+    \draw[blue] (input) to (wide) edge[red] (output) -- (round);
+  \end{scope}
+  \draw[red] (input) to[xshift=5pt] (wide) -- (output);
+  \draw[blue] (round) edge[yshift=5pt] (wide) -- (output);
+  \filldraw[fill=yellow,draw=blue] (-20pt,-30pt) rectangle (20pt,-10pt) edge[red] (60pt,-20pt);
+\end{tikzpicture}

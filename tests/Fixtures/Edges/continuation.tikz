@@ -1,0 +1,13 @@
+\begin{tikzpicture}[line width=1pt]
+  \draw[blue] (0pt,0pt) to (20pt,0pt) to (40pt,10pt) -- (60pt,0pt);
+  \draw[red] (0pt,20pt) edge[blue] (20pt,30pt) -- (40pt,20pt);
+  \draw[red] (0pt,40pt) edge[blue] (20pt,50pt) edge[green] (40pt,50pt) -- (60pt,40pt);
+  \draw (10pt,70pt) edge ++(20pt,10pt) edge ++(40pt,0pt) -- +(5pt,0pt);
+  \draw (10pt,90pt) to +(20pt,0pt) -- +(5pt,0pt);
+  \draw (10pt,110pt) to ++(20pt,0pt) -- +(5pt,0pt);
+  \draw (0pt,130pt) -- +(10pt,0pt) edge[red] +(20pt,10pt) -- +(5pt,0pt);
+  \draw (0pt,150pt) -- +(10pt,0pt) to +(20pt,10pt) -- +(5pt,0pt);
+  \filldraw[fill=yellow,draw=black] (0pt,170pt) to (20pt,170pt) edge[red,line width=2pt] (40pt,180pt) -- (20pt,185pt) -- cycle;
+  \path (0pt,205pt) edge[blue] (40pt,205pt);
+  \draw (0pt,225pt) to (0pt,225pt) edge[red] (0pt,225pt) -- (20pt,225pt);
+\end{tikzpicture}

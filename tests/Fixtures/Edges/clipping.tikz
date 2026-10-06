@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+  \begin{scope}
+    \clip (0pt,0pt) rectangle (40pt,35pt);
+    \draw[red,line width=2pt] (-10pt,5pt) edge[blue] (60pt,30pt) to (50pt,10pt) -- (60pt,0pt);
+    \fill[green] (-10pt,20pt) edge[blue,line width=3pt] (60pt,20pt) -- (20pt,40pt) -- (60pt,0pt) --cycle;
+  \end{scope}
+  \begin{scope}
+    \clip (0pt,50pt) rectangle (40pt,80pt) edge[red,line width=2pt] (70pt,65pt);
+    \draw[blue] (-10pt,60pt) to (60pt,60pt);
+  \end{scope}
+  \begin{scope}[every edge/.style={}]
+    \path (0pt,100pt) edge (80pt,130pt);
+  \end{scope}
+  \path (0pt,155pt) edge[blue] (40pt,155pt);
+  \path[fill=none,draw=none] (0pt,175pt) edge[draw=red,fill=yellow] (40pt,185pt);
+  \draw[red,line cap=round,line width=3pt] (0pt,205pt) edge[blue] (0pt,205pt) -- (40pt,205pt);
+  \draw[green] (0pt,230pt) to (40pt,230pt);
+\end{tikzpicture}

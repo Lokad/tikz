@@ -33,6 +33,24 @@ browser. They cover independent bounds, anchors, path segments and paint,
 error behavior, limits, cancellation, culture independence, and
 repeated/concurrent conversion.
 
+The independent [straight `to`/`edge` corpus](../tools/TikzEdgeReference/README.md)
+adds five trusted native fixtures, 99 path calls, 90 paints, four measured nodes,
+64 node anchors and one named coordinate. It has no candidate implementation or
+approved image policy yet. Its required cached CI commands use Node built-ins
+and need neither TeX nor a browser:
+
+```text
+node tools/TikzVisual/edge-reference.mjs check-cached
+node tools/TikzVisual/edge-evidence-self-test.mjs
+```
+
+The second command passes 334 integrity, parser, replay, state and semantic controls.
+Both commands retain fresh hashed reports under ignored `artifacts/`. A separate
+native SVG/PDF gallery, using the existing pinned development browser, runs with
+`node tools/TikzVisual/edge-inspect.mjs`. Its paired images retain raw differences
+at 1x/4x without a conformance verdict. Explicit live generation and replay
+verification are documented with the corpus.
+
 The ordinary suite currently has 307 passing cases. The separate
 [dash harness](DASHES.md) validates forty native dash states and executes
 927 public numeric checks. Cached validation and the browser image trial

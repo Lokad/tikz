@@ -48,6 +48,11 @@ It produces comparison PNGs, failure crops, machine-readable metrics, source
 traces, and a local inspection viewer. Its browser and TeX dependencies are
 isolated from the production library.
 
+A separate [straight `to`/`edge` reference corpus](tools/TikzEdgeReference/README.md)
+now retains independent native paths, node measurements, effective paint state,
+physical paint order and SVG/PDF inspection images. This prepares the compiler
+implementation; `to` and `edge` remain unsupported by the public converter.
+
 Three labeled-border interaction fixtures now have independent native ink/root
 calibration, a passing [prospective primary trial](tools/TikzVisual/LABELLED-BORDER-INK.md)
 and image-only defect checks. Their original-driver differences remain visible.
