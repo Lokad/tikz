@@ -124,6 +124,7 @@ constraint for the three fixtures. It is still separate research evidence.
 The [fresh public combined trial](LABELLED-BORDER-COMBINED-TRIAL.md) now requires
 numeric, ink/root, primary, original-SVG/PDF, public-SVG/PDF and native-page gates
 together. Its saved pixels and source attribution have a separate checker.
-Fresh public image-only PDF/native-page defects remain required before freezing
-portable caches and immutable combined pins. No existing admitted profile
-changes, and no runtime dependency is added.
+The [fresh public image-only PDF/native-page controls](LABELLED-BORDER-PUBLIC-PDF-SENSITIVITY.md)
+now pass against the same independent limits and pixel patterns. Portable
+caches and immutable combined pins remain required. No existing admitted
+profile changes, and no runtime dependency is added.

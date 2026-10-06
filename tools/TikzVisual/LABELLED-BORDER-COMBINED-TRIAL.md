@@ -91,9 +91,9 @@ verifies that a previous successful pointer cannot masquerade as the new result.
 The [PDF calibration](LABELLED-BORDER-PDF-CALIBRATION.md) preserves the failed
 PDF-only trial and independently proves the supplemental native-page guard's
 sensitivity. The earlier [primary trial](LABELLED-BORDER-INK.md) has separate
-fresh public primary defects. Next require fresh public image-only defects
-through the combined trial's PDF/native-page routes, retain their independent
-visibility expectations, then freeze portable evidence and immutable combined
-pins with corruption/sensitivity controls. This baseline trial does not replace
-those remaining public sensitivity or admission checks. Existing admitted
+fresh public primary defects. The [public PDF/native-page sensitivity harness](LABELLED-BORDER-PUBLIC-PDF-SENSITIVITY.md)
+now applies all 32 independent controls to a fresh owned combined baseline and
+retains their visibility expectations and PDF-only blind spots. Its checker
+recomputes 14,784 metrics and 138 full pages. Next freeze portable evidence and
+immutable combined pins with corruption/sensitivity controls. Existing admitted
 profiles and runtime dependencies are unchanged.

@@ -25,6 +25,7 @@ async function publish(r){
   const b=Buffer.from(JSON.stringify(r,null,2)+'\n');await writeArtifact(output,'report.json',b);
   await writeArtifact(base,'latest.json',JSON.stringify({completed:r.completed,
     report:path.relative(base,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(b)},null,2)+'\n');
+  return {report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(b)};
 }
 try{
   toolHashes=await captureLabelledCombinedSources(save,'trial-labelled-border-combined.mjs');
@@ -116,7 +117,9 @@ try{
         pdfViews:24,pdfLocalObservations:1296,pdfChecks:1392,nativePageViews:12,nativePageLocalObservations:648,nativePageChecks:672},
       agent:{viewer:'index.html',command:'node tools/TikzVisual/trial-labelled-border-combined.mjs',
         firstFailedGate:cases.find(c=>!c.combined.passed)?.combined.firstFailedGate??null},artifacts};
-    validateLabelledCombinedTrial(report,inputs,numeric);await publish(report);process.exitCode=trialPassed?0:1;
+    validateLabelledCombinedTrial(report,inputs,numeric);const location=await publish(report);
+    console.log(JSON.stringify({kind:'labelled-border-combined-trial-output',completed:true,trialPassed,...location}));
+    process.exitCode=trialPassed?0:1;
   }finally{await renderer.browser.close();}
 }catch(error){
   process.exitCode=2;console.error(error.stack);await publish({completed:false,phase,converterInvoked:true,

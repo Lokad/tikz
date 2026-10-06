@@ -802,7 +802,8 @@ native evidence, .NET and the pinned development browser. Coverage validation an
 independent regeneration reject altered inputs, limits, roots, cameras, regions,
 crop lattices and gate summaries. The controls command also requires exact
 equality of all public/native PNGs and local measurements. These are unapproved
-research trials: PDF qualification and immutable combined admission are pending.
+research trials. Separate PDF qualification and fresh public sensitivity are
+documented below; immutable combined admission remains pending.
 Prepared CI steps upload every fresh research/control bundle.
 
 The separate [labeled-border PDF investigation](../tools/TikzVisual/LABELLED-BORDER-PDF.md)
@@ -824,9 +825,10 @@ text/state handling, numeric rejection, hashes, coverage, regions and cameras.
 
 These commands need only cached native evidence, .NET and the pinned browser.
 Their fresh bundles are uploaded by prepared visual CI. Raw local differences
-remain substantial in some regions; no PDF image tolerance is granted. Separate
-rasterizer qualification, both original/public SVG-versus-PDF gates, local defect
-sensitivity and immutable combined admission remain required.
+remain substantial in some regions; this instruction investigation grants no
+PDF image tolerance. Separate rasterizer qualification, calibrated PDF gates
+and fresh public defect sensitivity are documented below. Immutable combined
+admission remains required.
 
 The [labeled-border rasterizer experiment](../tools/TikzVisual/LABELLED-BORDER-PDF-RASTERIZERS.md)
 adds an explicit local comparison through pinned Poppler/Splash and Cairo.
@@ -883,8 +885,9 @@ it detects all 114 visible defect views and preserves twelve exact visibility
 controls. Its checker independently re-decodes all 138 baseline/control pages
 and 7,392 whole/local metrics, with 52 controls for conjunction, zero limits and
 visibility selectors. Enlarged paired glyph/period crops expose the faint 1x differences.
-Fresh public PDF/native-page defect trials, portable profile pins and immutable admission
-remain pending; existing admitted profiles and runtime dependencies are unchanged.
+Fresh public PDF/native-page defects now pass the separate harness below.
+Portable profile pins and immutable admission remain pending; existing admitted
+profiles and runtime dependencies are unchanged.
 
 The [public labeled-border combined trial](../tools/TikzVisual/LABELLED-BORDER-COMBINED-TRIAL.md)
 now requires native numeric, ink/root, primary, both SVG-versus-PDF routes and
@@ -904,6 +907,28 @@ and independently re-decodes 3,960 whole/local metrics plus twelve full pages.
 Its 66 controls exercise wrong metadata, camera/coverage/limit changes and
 each required gate's failure. These local research commands need the declared
 ignored calibration bundles, .NET and the pinned browser, without TeX or a PDF
-executable; they are not standalone hosted CI steps. Fresh public PDF/native-page
-image-only defects, portable immutable caches and conformance admission remain
-pending.
+executable; they are not standalone hosted CI steps. Portable immutable caches
+and conformance admission remain pending.
+
+The [fresh public PDF/native-page sensitivity harness](../tools/TikzVisual/LABELLED-BORDER-PUBLIC-PDF-SENSITIVITY.md)
+owns a new combined baseline and applies all 32 independent controls to its
+actual public SVGs with numeric gates bypassed:
+
+```text
+node tools/TikzVisual/check-labelled-border-public-pdf-sensitivity.mjs
+node tools/TikzVisual/labelled-border-public-pdf-self-test.mjs
+node tools/TikzVisual/labelled-border-combined-self-test.mjs
+```
+
+Finish the producer before starting either checker. Verify that the combined
+checker identifies the public sensitivity report's exact baseline digest.
+All 126 mutated public page PNGs equal the independent control PNGs by hash.
+The unchanged conjunction rejects 114 visible views at their target and retains
+twelve exact visibility controls; the four faint 1x PDF-only blind spots remain
+recorded. The new checker re-decodes 14,784 metrics and 138 full pages and passes
+54 integrity controls. Separate fresh public primary sensitivity still runs
+with `check-labelled-border-sensitivity.mjs --public` (26 controls, 102 views).
+These commands consume the declared ignored bundles, .NET, Node and the pinned
+browser. Reports remain unapproved research evidence pending portable immutable
+admission. Full images, source attribution and enlarged faint-loss crops are
+available in each GUID bundle's `index.html`.
