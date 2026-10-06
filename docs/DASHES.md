@@ -427,3 +427,15 @@ Splash's reaches 4, including the literal-PDF-instruction SVG route. These
 measurements and the scoped Cairo qualification do not grant a tolerance or
 image admission. The separate primary/PDF policy and candidate defect gates
 for the line family remain pending.
+
+The forty-line family now also has passing independent
+[primary/PDF sensitivity trials](../tools/TikzVisual/DASH-LINES-TRIAL.md) and a
+fresh public prospective combined comparison. Both independently derived
+policies reject 21 image-only defects in their required target views. An
+additional native-page ink-coverage range rejects a doubled thin stroke at
+1x that cross-renderer error ceilings alone accepted; all existing error
+limits remain unchanged. The public trial passes 927 native checks, twelve
+primary views and both four-view SVG/PDF gates, with all forty source-linked
+paired crops. Its 186 policy controls pass. Immutable admission and its
+corruption/fresh-candidate mutation controls remain required; a trial pass
+does not change the family's pending conformance status.
