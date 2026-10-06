@@ -97,3 +97,9 @@ an explicit local command. Hosted execution and reviewed admission are pending.
 An independent final audit rederives both policies, recomputes all 3,264
 evaluations, checks every owned artifact hash and verifies 20 tool hashes
 against the current files and exact staged Git bytes.
+
+The later [independent sensitivity workflow](../TikzVisual/CURVED-NODE-SENSITIVITY.md)
+tests native reconstructed SVG in both frames and finds a 1x faint-period
+blind spot in the old PDF ceilings. A separately measured native-page ink
+constraint closes it while preserving every old error row and reference.
+Its research reports still grant no immutable admission.
