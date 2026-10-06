@@ -65,3 +65,11 @@ controls. Existing profiles for other corpora do not admit these images.
 
 Everything here is development-only. The runtime assembly references .NET
 framework assemblies only; no TeX, browser or comparison code is packaged.
+
+For the prospective combined image gates, use the
+[public trial](../TikzVisual/EDGE-TRIAL.md). It validates four explicitly selected
+native qualification/checker reports, owns fresh conversion and image-only
+defects, and writes source-attributed paired images under a new GUID directory.
+Its independent checker reconstructs the SVG mutations and frames, reconverts
+and remeasures saved samples. The earlier original-driver gallery remains
+diagnostic. A completed combined trial still awaits immutable admission.

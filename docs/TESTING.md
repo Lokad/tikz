@@ -94,6 +94,18 @@ and integer RGB ink sums in every native crop. Original-driver diagnostics and
 the corrected reference retain distinct roles. This is reference-only work;
 the public combined trial and reviewed immutable admission remain required.
 
+The [public combined image trial](../tools/TikzVisual/EDGE-TRIAL.md) explicitly
+selects all four completed primary/PDF qualification and checker reports before
+converting afresh. Run `trial-edge-images.mjs` with those four exact paths, then
+`check-edge-trial.mjs` with its owned trial report path. Eight gates join the
+native numeric/frame checks, primary views, both PDF routes, exact independently
+reconstructed native pages and fresh public image-only defects. The independent
+checker reconverts and verifies saved samples, ink sums, source attribution,
+coverage and report corruption controls. `edge-trial-self-test.mjs` supplies
+25 focused framing/mutation controls. Complete failed bundles remain available;
+a trial pass grants no immutable image admission. Cached execution needs .NET
+and the pinned development browser, without TeX or a PDF executable.
+
 The [candidate numeric command](../tools/TikzEdgeComparison/README.md) runs
 `dotnet run --project tools/TikzEdgeComparison -c Release` and needs no TeX or
 browser. It retains emitted SVG, source spans, resolved paths/nodes/glyphs,
@@ -105,7 +117,8 @@ amplified differences, overlays and an HTML viewer. No image verdict is assigned
 The native SVG drops the degenerate round-capped edge's dot, while native PDF
 and the candidate paint it; this difference remains explicit.
 
-The ordinary suite currently has 345 passing cases. Fourteen candidate mutation
+The ordinary suite currently has 350 passing cases, including five plain/traced
+public-result parity cases. Fourteen candidate mutation
 controls reject geometry, order, missing edges, paint state, clips, picture bounds,
 glyph positions and node frames; unsupported connection forms and generated-edge
 budgets have source-attributed tests. The separate

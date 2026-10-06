@@ -29,6 +29,27 @@ public sealed class EdgeTests
     }
 
     [Theory]
+    [InlineData("continuation")]
+    [InlineData("styles")]
+    [InlineData("coordinates")]
+    [InlineData("nodes")]
+    [InlineData("clipping")]
+    public void Tracing_preserves_the_public_conversion_result(string caseId)
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "Edges", caseId + ".tikz"));
+        var options = TikzOptions.Default with { Libraries = ["shapes.geometric"], IdPrefix = "candidate" };
+        var ordinary = Assert.IsType<TikzSuccess>(TikzConverter.Convert(source, options, CancellationToken.None));
+        GraphicsScene? scene = null;
+        var traced = Assert.IsType<TikzSuccess>(TikzConverter.ConvertWithTrace(source, options, CancellationToken.None, s => scene = s));
+        Assert.NotNull(scene);
+        Assert.Equal(ordinary.Svg, traced.Svg);
+        Assert.Equal(ordinary.PictureBounds, traced.PictureBounds);
+        Assert.Equal(ordinary.InkBounds, traced.InkBounds);
+        Assert.Equal(ordinary.Diagnostics, traced.Diagnostics);
+        Assert.Equal(ordinary.Statistics, traced.Statistics);
+    }
+
+    [Theory]
     [InlineData("continuation", "geometry", "path.1.1.end.x")]
     [InlineData("continuation", "paint-order", "path.1.drawableOrder")]
     [InlineData("continuation", "missing-edge", "pathCount")]

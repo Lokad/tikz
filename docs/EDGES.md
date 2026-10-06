@@ -4,8 +4,9 @@ The public converter implements a bounded straight `to` and `edge` prototype.
 Five [trusted fixtures](../tests/Fixtures/Edges) match 2,585 independent native
 assertions for geometry, effective paint, physical paint order, clip chains,
 picture bounds, node measurements, anchors and glyph positions. Their original
-PGF SVG and ordinary TikZ PDF images are retained. Image calibration and
-conformance remain pending; numeric agreement is a separate result.
+PGF SVG and ordinary TikZ PDF images are retained. Separate native primary/PDF
+qualifications supply the public image trial; immutable conformance admission
+remains pending.
 
 The [independent native reconstruction](../tools/TikzEdgeOracle/README.md)
 preserves original driver comparisons and separately renders retained PGF paths,
@@ -28,6 +29,15 @@ original, corrected and reconstructed references with ordinary TikZ PDF pages.
 Native positions and integer crops fix registration. Independent local error
 limits, exact RGB ink sums, unchanged viewport controls and image-only defects
 prepare the secondary gate. Public image admission remains pending.
+
+The [public combined trial](../tools/TikzVisual/EDGE-TRIAL.md) owns a fresh
+conversion and requires numeric, conservative frame, primary, both PDF routes,
+exact reconstructed-page and fresh image-only sensitivity gates together.
+Thirteen public SVG mutations exercise small missing marks, displaced labels,
+paint, clipping and root sizing with numeric checks bypassed. Its independent
+checker reconverts, reconstructs expected frames and remeasures the saved PNGs.
+Completed trial passes retain an unapproved role; portable immutable admission
+and broader connection interactions remain separate work.
 
 ```tex
 \begin{tikzpicture}

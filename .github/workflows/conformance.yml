@@ -124,6 +124,27 @@ jobs:
           if (-not $edgePdfRun.completed) { throw 'Native PDF calibration is incomplete.' }
           node tools/TikzVisual/check-edge-pdf.mjs ('artifacts/edge-pdf-calibration/' + $edgePdfRun.report)
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - run: node tools/TikzVisual/edge-trial-self-test.mjs
+      - name: Trial public straight-edge image gates
+        shell: pwsh
+        run: |
+          $edgePrimary = Get-Content artifacts/edge-primary-calibration/latest.json -Raw | ConvertFrom-Json
+          $edgePrimaryCheck = Get-Content artifacts/edge-primary-checks/latest.json -Raw | ConvertFrom-Json
+          $edgePdf = Get-Content artifacts/edge-pdf-calibration/latest.json -Raw | ConvertFrom-Json
+          $edgePdfCheck = Get-Content artifacts/edge-pdf-checks/latest.json -Raw | ConvertFrom-Json
+          if (@($edgePrimary, $edgePrimaryCheck, $edgePdf, $edgePdfCheck).Where({ -not $_.completed }).Count) { throw 'Edge qualification is incomplete.' }
+          $edgeTrialInputs = @(
+            ('artifacts/edge-primary-calibration/' + $edgePrimary.report)
+            ('artifacts/edge-primary-checks/' + $edgePrimaryCheck.report)
+            ('artifacts/edge-pdf-calibration/' + $edgePdf.report)
+            ('artifacts/edge-pdf-checks/' + $edgePdfCheck.report)
+          )
+          node tools/TikzVisual/trial-edge-images.mjs @edgeTrialInputs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $edgeTrial = Get-Content artifacts/edge-public-trial/latest.json -Raw | ConvertFrom-Json
+          if (-not $edgeTrial.completed) { throw 'Public edge trial is incomplete.' }
+          node tools/TikzVisual/check-edge-trial.mjs ('artifacts/edge-public-trial/' + $edgeTrial.report)
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/inspect-shapes.mjs
       - run: node tools/TikzVisual/calibrate-shapes.mjs
       - run: node tools/TikzVisual/shape-frame-self-test.mjs
@@ -196,6 +217,9 @@ jobs:
             artifacts/edge-pdf-controls/
             artifacts/edge-pdf-calibration/
             artifacts/edge-pdf-checks/
+            artifacts/edge-public-controls/
+            artifacts/edge-public-trial/
+            artifacts/edge-public-checks/
             artifacts/comparator-mutations/
             artifacts/font-comparisons/
             artifacts/font-comparator-mutations/
