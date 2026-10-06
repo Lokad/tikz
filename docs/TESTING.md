@@ -102,6 +102,33 @@ Raw differences remain pending research evidence; no candidate output supplies
 a camera or limit. Both commands are prepared visual CI work, and the full
 command includes the controls without a duplicate CI invocation.
 
+The separate [prospective shape PDF trial](../tools/TikzShapeCalibration/PDF-TRIAL.md)
+fixes fixture/representation/region/view limits from fresh oracle-only evidence
+before invoking the converter. It requires both original-SVG/PDF and public
+candidate-SVG/PDF gates, alongside fresh primary, numeric and ink/root gates:
+
+```text
+node tools/TikzVisual/shape-pdf-policy-self-test.mjs
+node tools/TikzVisual/trial-shape-pdf.mjs
+```
+
+All 38 pure policy controls pass and are prepared required visual CI work.
+They cover faint local losses, absent edges, coverage/reference-raster consistency,
+repeat instability, outside-camera ink, contradictory summaries and bypassed
+prerequisites. The full trial runs ten image-only defects at both natural
+white scales and retains fresh GUID bundles under artifacts/node-shape-pdf-trial/.
+Its prospective policies remain unapproved; the full research trial is an
+explicit local command rather than a conformance admission gate.
+
+The local full trial passes 13 expected cases, 32 PDF views and 3,264
+region/page/repeat gates. Both PDF sides, the fresh public primary gate,
+4,461 native checks and 406 ink/root checks pass. All four candidate page PNGs
+match the independent native reconstruction byte for byte. The bundle owns
+1,647 artifacts including 1,570 PNGs; missing-period and cropped-root 4x pairs
+have been inspected. At 4x the outside-camera defect passes whole/local limits
+and fails the separately required full-page check. These results retain pending
+overall conformance, and hosted execution remains unverified.
+
 Run the separate [oracle-only shape calibration](../tools/TikzShapeCalibration/README.md)
 before considering any image allowance:
 

@@ -64,6 +64,7 @@ jobs:
       - run: node tools/TikzVisual/shape-frame-self-test.mjs
       - run: node tools/TikzVisual/shape-raster-self-test.mjs
       - run: node tools/TikzVisual/shape-policy-self-test.mjs
+      - run: node tools/TikzVisual/shape-pdf-policy-self-test.mjs
       - run: node tools/TikzVisual/trial-shape-primary.mjs
       - run: node tools/TikzVisual/calibrate-shape-pdf.mjs
       - run: npm test --prefix tools/TikzVisual

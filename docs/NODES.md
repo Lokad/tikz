@@ -152,6 +152,17 @@ now records seven oracle representations, whole/local differences and exact
 page-coordinate controls without invoking the converter. Its paired images
 are inspectable; raw PDF differences remain unapproved and candidate PDF
 admission is pending.
+The [prospective PDF trial](../tools/TikzShapeCalibration/PDF-TRIAL.md) fixes
+separate original-driver and independently reconstructed native limits before
+public conversion. It combines numeric, ink/root, primary and both PDF gates,
+and tests ten artifact-only image defects with numeric rejection bypassed.
+Its pure policy controls cover faint local losses and absent edges; all trial
+policies remain unapproved and broader shape compatibility is pending.
+The local run passes both PDF sides and fresh primary/numeric/frame gates,
+rejects every tested defect at both scales and retains an inspectable bundle.
+At 4x the added outside-camera ink is caught only by the full-page check;
+whole/local pixel gates alone accept that control. Public and independent
+native page PNGs match byte for byte in all four positive PDF views.
 Further focused and interaction corpora, reviewed image policies and ordinary
 PDF image evidence are still required. No rectangle/path raster tolerance
 applies to these new shapes. A degenerate unequal-axis border that

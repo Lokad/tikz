@@ -94,8 +94,10 @@ with converterInvoked, conformanceClaim and approvedImagePolicy all false.
 Only cached references, .NET and the pinned Node/Playwright/Chromium tooling are
 needed; no TeX or Poppler process is invoked by these commands.
 
-Next derive and exercise a scoped cross-renderer policy using this independent
-evidence, then compare both original-SVG/PDF and public-candidate-SVG/PDF gates.
-Image-only defects must test sensitivity independently of numeric rejection.
+The separate [prospective PDF trial](PDF-TRIAL.md) now derives scoped policies
+from fresh independent observations, replays the measurements before public
+conversion and passes both original-SVG/PDF and public-candidate-SVG/PDF gates.
+All ten image-only defects are rejected independently of numeric checks at
+both tested natural white scales. These prospective policies remain unapproved.
 Reviewed immutable primary/PDF admission, focused/interaction corpora and
 hosted execution remain pending. Existing admitted profiles are unchanged.
