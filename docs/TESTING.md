@@ -85,6 +85,23 @@ Explicit live generate/verify commands additionally need the pinned MiKTeX
 and Poppler tools. This evidence establishes registration and reproducibility;
 image comparison/calibration and shape PDF admission remain pending.
 
+The [independent shape PDF experiment](../tools/TikzShapeCalibration/PDF-CALIBRATION.md)
+now measures both natural and expanded native-page framing:
+
+```text
+node tools/TikzVisual/shape-pdf-self-test.mjs
+node tools/TikzVisual/calibrate-shape-pdf.mjs
+```
+
+The full command includes 59 camera/bitmap controls, fresh independent
+ink/frame reconstruction, 54 exact real-fixture viewport controls, 28
+whole-picture and 2,744 local SVG/PDF observations, and 56 exact unchanged
+captures. Its fresh GUID bundle includes 862 PNGs and exact tool-source copies;
+artifacts/node-shape-pdf-calibration/latest.json identifies the current report.
+Raw differences remain pending research evidence; no candidate output supplies
+a camera or limit. Both commands are prepared visual CI work, and the full
+command includes the controls without a duplicate CI invocation.
+
 Run the separate [oracle-only shape calibration](../tools/TikzShapeCalibration/README.md)
 before considering any image allowance:
 

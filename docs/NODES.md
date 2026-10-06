@@ -146,8 +146,12 @@ results do not establish general shape or PDF compatibility.
 The [ordinary PDF reference](../tools/TikzShapePdfReference/README.md) now
 reproduces all 1,810 native records and retains a shipped-out page camera,
 two embedded font identities and exact plain/probed PDF/PNG invariance.
-It has cached evidence controls and separately executed live verification;
-SVG-versus-PDF image calibration and admission remain pending.
+It has cached evidence controls and separately executed live verification.
+The [independent PDF experiment](../tools/TikzShapeCalibration/PDF-CALIBRATION.md)
+now records seven oracle representations, whole/local differences and exact
+page-coordinate controls without invoking the converter. Its paired images
+are inspectable; raw PDF differences remain unapproved and candidate PDF
+admission is pending.
 Further focused and interaction corpora, reviewed image policies and ordinary
 PDF image evidence are still required. No rectangle/path raster tolerance
 applies to these new shapes. A degenerate unequal-axis border that
