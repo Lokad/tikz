@@ -1,0 +1,12 @@
+% Trusted orthogonal, cubic and closed connections around real text boxes.
+\begin{tikzpicture}[every node/.style={draw,inner sep=2pt}]
+  \node[rectangle,align=center] (r-lines) at (0pt,0pt) {AV\\gyp};
+  \node[circle,font=\large] (c-font) at (105pt,10pt) {AV ffi};
+  \node[ellipse,inner xsep=5pt,outer ysep=1.5pt] (e-descenders) at (0pt,-85pt) {gyp};
+  \node[rectangle,rotate=20,anchor=base] (r-base) at (105pt,-85pt) {AV gyp};
+  \draw (r-lines)-|(c-font);
+  \draw (c-font)|-(e-descenders);
+  \draw (e-descenders).. controls (35pt,-45pt) and (75pt,-45pt)..(r-base);
+  \draw (r-lines)--(r-base)--(e-descenders)--cycle;
+  \draw[red] (e-descenders.base)--(r-base.base);
+\end{tikzpicture}

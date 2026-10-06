@@ -173,3 +173,13 @@ and hosted verification remain required. No rectangle/path raster tolerance
 applies to these shapes. A degenerate unequal-axis border that
 cannot be computed at native scaled-point precision fails at its source
 coordinate; callers can still use a supported explicit anchor.
+
+The separate [labeled-border corpus](../tools/TikzLabelledBorderReference/README.md)
+now measures twelve rectangle/circle/ellipse nodes and fourteen connection
+paths around real labels. Ordinary public tests require native text metrics,
+192 anchors, glyph placement, complete background/connection paths, integer
+stroke widths and picture bounds. The original SVG/PDF and probe-invariance
+evidence are frozen independently. Its numeric checks exposed fractional
+scaled-point defaults in general path paint; defaults and width presets now
+use native dimension conversion consistently. Image calibration, regional
+sensitivity and combined SVG/PDF admission for these interactions remain pending.

@@ -26,7 +26,7 @@ public sealed class DashTests
         Assert.Equal(expected.LengthsSp.Length, actual.Paint.Dash.Length);
         for (var i = 0; i < expected.LengthsSp.Length; i++) Assert.Equal(expected.LengthsSp[i] * spToBp, actual.Paint.Dash[i], 12);
         Assert.Equal(expected.PhaseSp * spToBp, actual.Paint.DashPhase, 12);
-        Assert.Equal(expected.WidthSp, (int)Math.Round(actual.Paint.Width / spToBp, MidpointRounding.AwayFromZero));
+        Assert.InRange(Math.Abs(actual.Paint.Width / spToBp - expected.WidthSp), 0, 1e-4);
         Assert.StartsWith("\\draw", source.Substring(actual.Source.Offset, actual.Source.Length));
         var marker = Regex.Matches(source[..actual.Source.Offset], @"% DASH-CASE ([a-z0-9-]+)")[^1].Groups[1].Value;
         Assert.Equal(expected.Id, marker);

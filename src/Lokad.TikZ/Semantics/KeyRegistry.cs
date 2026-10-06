@@ -113,7 +113,11 @@ internal static class KeyRegistry
                     else throw Unsupported(option);
                     break;
             }
-            void Width(double points) { state.NodeLineWidth = null; state.Paint = paint with { Width = points * 72 / 72.27 }; }
+            void Width(double points)
+            {
+                state.NodeLineWidth = null;
+                state.Paint = paint with { Width = new PhysicalLiteral(points, "pt", option.Source).Evaluate(state.Variables, budget).Bp };
+            }
             void Shape(string name)
             {
                 var shape = name switch { "rectangle" => NodeShape.Rectangle, "circle" => NodeShape.Circle, "ellipse" => NodeShape.Ellipse, _ => throw Unsupported(option) };

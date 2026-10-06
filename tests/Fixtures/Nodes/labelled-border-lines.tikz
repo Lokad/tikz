@@ -1,0 +1,11 @@
+% Trusted interaction fixture: measured labels determine connection borders.
+\begin{tikzpicture}[every node/.style={draw,inner sep=2pt}]
+  \node[rectangle] (r-input) at (0pt,0pt) {AV ffi};
+  \node[rectangle,minimum width=35pt,outer sep=1.25pt] (r-output) at (110pt,25pt) {gyp};
+  \node[circle,minimum size=22pt] (c-period) at (0pt,-70pt) {.};
+  \node[ellipse,node font=\large\bfseries,font=\mdseries\itshape] (e-wide) at (110pt,-70pt) {Wide.};
+  \draw (r-input)--(r-output)--(c-period);
+  \draw[dashed,blue] (r-input.center)--(r-output.center);
+  \draw (c-period)--(e-wide);
+  \draw (e-wide.east)--+(18pt,0pt)--++(0pt,-18pt);
+\end{tikzpicture}

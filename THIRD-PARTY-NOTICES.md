@@ -20,7 +20,8 @@ The same font-derived data appears in the independent metric and atlas
 fixtures under `tests/Reference/Fonts/`.
 
 `tests/Reference/NodeShapes/fonts/` also retains two unmodified Latin Modern
-TFM files as development reference inputs, under the same GUST/LPPL license.
+TFM files, and `tests/Reference/LabelledBorders/fonts/` retains six, as
+development reference inputs under the same GUST/LPPL license.
 Their hashes appear in the font profile. They are not included in the NuGet
 package; the production converter uses its renamed embedded data only.
 

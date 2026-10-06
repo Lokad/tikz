@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-labelled-border-interactions-v1",
+  "fontProfile": "latin-modern-ec-10-12-v1",
+  "libraries": ["shapes.geometric"],
+  "anchors": ["text", "center", "north", "south", "west", "east", "north west", "north east", "south west", "south east", "base", "base west", "base east", "mid", "mid west", "mid east"],
+  "cases": [
+    {"id":"lines","source":"tests/Fixtures/Nodes/labelled-border-lines.tikz","nodes":[{"id":"r-input","shape":"rectangle"},{"id":"r-output","shape":"rectangle"},{"id":"c-period","shape":"circle"},{"id":"e-wide","shape":"ellipse"}],"drawingPaths":4,"features":["measured-label-borders","implicit-chain","explicit-center","outer-separation","period","mixed-font","dash","relative-continuation"]},
+    {"id":"paths","source":"tests/Fixtures/Nodes/labelled-border-paths.tikz","nodes":[{"id":"r-lines","shape":"rectangle"},{"id":"c-font","shape":"circle"},{"id":"e-descenders","shape":"ellipse"},{"id":"r-base","shape":"rectangle"}],"drawingPaths":5,"features":["multiline","orthogonal","cubic-controls","cycle","base-anchors","rotated-node"]},
+    {"id":"transforms","source":"tests/Fixtures/Nodes/labelled-border-transforms.tikz","nodes":[{"id":"r-rotate","shape":"rectangle"},{"id":"e-shear","shape":"ellipse"},{"id":"c-transform","shape":"circle"},{"id":"r-upright","shape":"rectangle"}],"drawingPaths":5,"features":["inherited-frame","node-rotation","sheared-shape","transform-shape","upright-text","query-frame","border-chain"]}
+  ],
+  "scope": "Independent native node/path/glyph and original SVG/PDF evidence for these trusted fixtures only; no candidate or approved image allowance."
+}

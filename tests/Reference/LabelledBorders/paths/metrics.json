@@ -1,0 +1,924 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-labelled-border-interactions-v1",
+  "units": "Integer TeX sp, y-up; global soft paths and anchors; local background/frame",
+  "pictureBox": {
+    "widthSp": 9334074,
+    "heightSp": 8094460,
+    "depthSp": 0
+  },
+  "pictureBounds": {
+    "minXSp": -1210255,
+    "minYSp": -6241881,
+    "maxXSp": 8123819,
+    "maxYSp": 1852579
+  },
+  "nodes": [
+    {
+      "id": "r-lines",
+      "shape": "rectangle",
+      "values": {
+        "width": 1037663,
+        "height": 1237893,
+        "depth": 127430,
+        "linewidth": 26214,
+        "quad": 655360,
+        "xheight": 282165,
+        "innerx": 131072,
+        "innery": 131072,
+        "outerx": 13107,
+        "outery": 13107,
+        "minimumwidth": 65536,
+        "minimumheight": 65536
+      },
+      "anchors": {
+        "text": {
+          "xSp": -518831,
+          "ySp": -555231
+        },
+        "center": {
+          "xSp": 0,
+          "ySp": 0
+        },
+        "north": {
+          "xSp": 0,
+          "ySp": 826840
+        },
+        "south": {
+          "xSp": 0,
+          "ySp": -826840
+        },
+        "west": {
+          "xSp": -663010,
+          "ySp": 0
+        },
+        "east": {
+          "xSp": 663010,
+          "ySp": 0
+        },
+        "north west": {
+          "xSp": -663010,
+          "ySp": 826840
+        },
+        "north east": {
+          "xSp": 663010,
+          "ySp": 826840
+        },
+        "south west": {
+          "xSp": -663010,
+          "ySp": -826840
+        },
+        "south east": {
+          "xSp": 663010,
+          "ySp": -826840
+        },
+        "base": {
+          "xSp": 0,
+          "ySp": -555231
+        },
+        "base west": {
+          "xSp": -663010,
+          "ySp": -555231
+        },
+        "base east": {
+          "xSp": 663010,
+          "ySp": -555231
+        },
+        "mid": {
+          "xSp": 0,
+          "ySp": -414149
+        },
+        "mid west": {
+          "xSp": -663010,
+          "ySp": -414149
+        },
+        "mid east": {
+          "xSp": 663010,
+          "ySp": -414149
+        }
+      },
+      "background": {
+        "southwest": {
+          "xSp": -131072,
+          "ySp": -258502
+        },
+        "northeast": {
+          "xSp": 1168734,
+          "ySp": 1368964
+        }
+      },
+      "frame": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "eSp": -518831,
+        "fSp": -555231
+      }
+    },
+    {
+      "id": "c-font",
+      "shape": "circle",
+      "values": {
+        "width": 1967326,
+        "height": 541752,
+        "depth": 0,
+        "linewidth": 26214,
+        "quad": 655360,
+        "xheight": 282165,
+        "innerx": 131072,
+        "innery": 131072,
+        "outerx": 13107,
+        "outery": 13107,
+        "minimumwidth": 65536,
+        "minimumheight": 65536
+      },
+      "anchors": {
+        "text": {
+          "xSp": 5897617,
+          "ySp": 384484
+        },
+        "center": {
+          "xSp": 6881280,
+          "ySp": 655360
+        },
+        "north": {
+          "xSp": 6881280,
+          "ySp": 1852579
+        },
+        "south": {
+          "xSp": 6881280,
+          "ySp": -541859
+        },
+        "west": {
+          "xSp": 5684061,
+          "ySp": 655360
+        },
+        "east": {
+          "xSp": 8078499,
+          "ySp": 655360
+        },
+        "north west": {
+          "xSp": 6034718,
+          "ySp": 1501922
+        },
+        "north east": {
+          "xSp": 7727842,
+          "ySp": 1501922
+        },
+        "south west": {
+          "xSp": 6034718,
+          "ySp": -191202
+        },
+        "south east": {
+          "xSp": 7727842,
+          "ySp": -191202
+        },
+        "base": {
+          "xSp": 6881280,
+          "ySp": 384484
+        },
+        "base west": {
+          "xSp": 5684061,
+          "ySp": 384484
+        },
+        "base east": {
+          "xSp": 8078499,
+          "ySp": 384484
+        },
+        "mid": {
+          "xSp": 6881280,
+          "ySp": 525566
+        },
+        "mid west": {
+          "xSp": 5684061,
+          "ySp": 525566
+        },
+        "mid east": {
+          "xSp": 8078499,
+          "ySp": 525566
+        }
+      },
+      "background": {
+        "center": {
+          "xSp": 983663,
+          "ySp": 270876
+        },
+        "xaxis": {
+          "xSp": 1184112,
+          "ySp": 0
+        },
+        "yaxis": {
+          "xSp": 0,
+          "ySp": 1184112
+        }
+      },
+      "frame": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "eSp": 5897617,
+        "fSp": 384484
+      }
+    },
+    {
+      "id": "e-descenders",
+      "shape": "ellipse",
+      "values": {
+        "width": 1037663,
+        "height": 282165,
+        "depth": 127430,
+        "linewidth": 26214,
+        "quad": 655360,
+        "xheight": 282165,
+        "innerx": 327680,
+        "innery": 131072,
+        "outerx": 13107,
+        "outery": 98304,
+        "minimumwidth": 65536,
+        "minimumheight": 65536
+      },
+      "anchors": {
+        "text": {
+          "xSp": -518831,
+          "ySp": -5647927
+        },
+        "center": {
+          "xSp": 0,
+          "ySp": -5570560
+        },
+        "north": {
+          "xSp": 0,
+          "ySp": -4997265
+        },
+        "south": {
+          "xSp": 0,
+          "ySp": -6143855
+        },
+        "west": {
+          "xSp": -1210255,
+          "ySp": -5570560
+        },
+        "east": {
+          "xSp": 1210255,
+          "ySp": -5570560
+        },
+        "north west": {
+          "xSp": -855780,
+          "ySp": -5165179
+        },
+        "north east": {
+          "xSp": 855780,
+          "ySp": -5165179
+        },
+        "south west": {
+          "xSp": -855780,
+          "ySp": -5975941
+        },
+        "south east": {
+          "xSp": 855780,
+          "ySp": -5975941
+        },
+        "base": {
+          "xSp": 0,
+          "ySp": -5647927
+        },
+        "base west": {
+          "xSp": -1210255,
+          "ySp": -5647927
+        },
+        "base east": {
+          "xSp": 1210255,
+          "ySp": -5647927
+        },
+        "mid": {
+          "xSp": 0,
+          "ySp": -5506845
+        },
+        "mid west": {
+          "xSp": -1210255,
+          "ySp": -5506845
+        },
+        "mid east": {
+          "xSp": 1210255,
+          "ySp": -5506845
+        }
+      },
+      "background": {
+        "center": {
+          "xSp": 518831,
+          "ySp": 77367
+        },
+        "xaxis": {
+          "xSp": 1197148,
+          "ySp": 0
+        },
+        "yaxis": {
+          "xSp": 0,
+          "ySp": 474991
+        }
+      },
+      "frame": {
+        "a": 1,
+        "b": 0,
+        "c": 0,
+        "d": 1,
+        "eSp": -518831,
+        "fSp": -5647927
+      }
+    },
+    {
+      "id": "r-base",
+      "shape": "rectangle",
+      "values": {
+        "width": 2166337,
+        "height": 451461,
+        "depth": 127430,
+        "linewidth": 26214,
+        "quad": 655360,
+        "xheight": 282165,
+        "innerx": 131072,
+        "innery": 131072,
+        "outerx": 13107,
+        "outery": 13107,
+        "minimumwidth": 65536,
+        "minimumheight": 65536
+      },
+      "anchors": {
+        "text": {
+          "xSp": 5863430,
+          "ySp": -5941031
+        },
+        "center": {
+          "xSp": 6825867,
+          "ySp": -5418315
+        },
+        "north": {
+          "xSp": 6677557,
+          "ySp": -5010840
+        },
+        "south": {
+          "xSp": 6974177,
+          "ySp": -5825790
+        },
+        "west": {
+          "xSp": 5672533,
+          "ySp": -5838098
+        },
+        "east": {
+          "xSp": 7979201,
+          "ySp": -4998531
+        },
+        "north west": {
+          "xSp": 5524223,
+          "ySp": -5430623
+        },
+        "north east": {
+          "xSp": 7830891,
+          "ySp": -4591056
+        },
+        "south west": {
+          "xSp": 5820843,
+          "ySp": -6245573
+        },
+        "south east": {
+          "xSp": 8127511,
+          "ySp": -5406006
+        },
+        "base": {
+          "xSp": 6881280,
+          "ySp": -5570560
+        },
+        "base west": {
+          "xSp": 5727946,
+          "ySp": -5990343
+        },
+        "base east": {
+          "xSp": 8034614,
+          "ySp": -5150776
+        },
+        "mid": {
+          "xSp": 6833027,
+          "ySp": -5437986
+        },
+        "mid west": {
+          "xSp": 5679693,
+          "ySp": -5857769
+        },
+        "mid east": {
+          "xSp": 7986361,
+          "ySp": -5018202
+        }
+      },
+      "background": {
+        "southwest": {
+          "xSp": -131072,
+          "ySp": -258502
+        },
+        "northeast": {
+          "xSp": 2297408,
+          "ySp": 582532
+        }
+      },
+      "frame": {
+        "a": 0.9397,
+        "b": 0.34203,
+        "c": -0.34203,
+        "d": 0.9397,
+        "eSp": 5863430,
+        "fSp": -5941031
+      }
+    }
+  ],
+  "paths": [
+    {
+      "index": 1,
+      "owner": "node-r-lines",
+      "usage": "draw,",
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "point": {
+            "xSp": -649903,
+            "ySp": -813733
+          }
+        },
+        {
+          "kind": "rectsize",
+          "point": {
+            "xSp": 1299806,
+            "ySp": 1627466
+          }
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "owner": "node-c-font",
+      "usage": "draw,",
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 8065392,
+            "ySp": 655360
+          }
+        },
+        {
+          "kind": "control1",
+          "point": {
+            "xSp": 8065392,
+            "ySp": 1309335
+          }
+        },
+        {
+          "kind": "control2",
+          "point": {
+            "xSp": 7535255,
+            "ySp": 1839472
+          }
+        },
+        {
+          "kind": "curve",
+          "point": {
+            "xSp": 6881280,
+            "ySp": 1839472
+          }
+        },
+        {
+          "kind": "control1",
+          "point": {
+            "xSp": 6227305,
+            "ySp": 1839472
+          }
+        },
+        {
+          "kind": "control2",
+          "point": {
+            "xSp": 5697168,
+            "ySp": 1309335
+          }
+        },
+        {
+          "kind": "curve",
+          "point": {
+            "xSp": 5697168,
+            "ySp": 655360
+          }
+        },
+        {
+          "kind": "control1",
+          "point": {
+            "xSp": 5697168,
+            "ySp": 1385
+          }
+        },
+        {
+          "kind": "control2",
+          "point": {
+            "xSp": 6227305,
+            "ySp": -528752
+          }
+        },
+        {
+          "kind": "curve",
+          "point": {
+            "xSp": 6881280,
+            "ySp": -528752
+          }
+        },
+        {
+          "kind": "control1",
+          "point": {
+            "xSp": 7535255,
+            "ySp": -528752
+          }
+        },
+        {
+          "kind": "control2",
+          "point": {
+            "xSp": 8065392,
+            "ySp": 1385
+          }
+        },
+        {
+          "kind": "curve",
+          "point": {
+            "xSp": 8065392,
+            "ySp": 655360
+          }
+        },
+        {
+          "kind": "close",
+          "point": {
+            "xSp": 8065392,
+            "ySp": 655360
+          }
+        },
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 6881280,
+            "ySp": 655360
+          }
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "owner": "node-e-descenders",
+      "usage": "draw,",
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 1197148,
+            "ySp": -5570560
+          }
+        },
+        {
+          "kind": "control1",
+          "point": {
+            "xSp": 1197148,
+            "ySp": -5308227
+          }
+        },
+        {
+          "kind": "control2",
+          "point": {
+            "xSp": 661175,
+            "ySp": -5095569
+          }
+        },
+        {
+          "kind": "curve",
+          "point": {
+            "xSp": 0,
+            "ySp": -5095569
+          }
+        },
+        {
+          "kind": "control1",
+          "point": {
+            "xSp": -661175,
+            "ySp": -5095569
+          }
+        },
+        {
+          "kind": "control2",
+          "point": {
+            "xSp": -1197148,
+            "ySp": -5308227
+          }
+        },
+        {
+          "kind": "curve",
+          "point": {
+            "xSp": -1197148,
+            "ySp": -5570560
+          }
+        },
+        {
+          "kind": "control1",
+          "point": {
+            "xSp": -1197148,
+            "ySp": -5832893
+          }
+        },
+        {
+          "kind": "control2",
+          "point": {
+            "xSp": -661175,
+            "ySp": -6045551
+          }
+        },
+        {
+          "kind": "curve",
+          "point": {
+            "xSp": 0,
+            "ySp": -6045551
+          }
+        },
+        {
+          "kind": "control1",
+          "point": {
+            "xSp": 661175,
+            "ySp": -6045551
+          }
+        },
+        {
+          "kind": "control2",
+          "point": {
+            "xSp": 1197148,
+            "ySp": -5832893
+          }
+        },
+        {
+          "kind": "curve",
+          "point": {
+            "xSp": 1197148,
+            "ySp": -5570560
+          }
+        },
+        {
+          "kind": "close",
+          "point": {
+            "xSp": 1197148,
+            "ySp": -5570560
+          }
+        },
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 0,
+            "ySp": -5570560
+          }
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "owner": "node-r-base",
+      "usage": "draw,",
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 7823058,
+            "ySp": -4607856
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 5541022,
+            "ySp": -5438458
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 5828676,
+            "ySp": -6228774
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 8110712,
+            "ySp": -5398172
+          }
+        },
+        {
+          "kind": "close",
+          "point": {
+            "xSp": 7823058,
+            "ySp": -4607856
+          }
+        },
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 5828676,
+            "ySp": -6228774
+          }
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "owner": "drawing",
+      "usage": "draw,",
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 663010,
+            "ySp": 0
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 6881280,
+            "ySp": 0
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 6881280,
+            "ySp": -541859
+          }
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "owner": "drawing",
+      "usage": "draw,",
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 6881280,
+            "ySp": -541859
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 6881280,
+            "ySp": -5570560
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 1210255,
+            "ySp": -5570560
+          }
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "owner": "drawing",
+      "usage": "draw,",
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 463374,
+            "ySp": -5040987
+          }
+        },
+        {
+          "kind": "control1",
+          "point": {
+            "xSp": 2293760,
+            "ySp": -2949120
+          }
+        },
+        {
+          "kind": "control2",
+          "point": {
+            "xSp": 4915200,
+            "ySp": -2949120
+          }
+        },
+        {
+          "kind": "curve",
+          "point": {
+            "xSp": 6547293,
+            "ySp": -5058253
+          }
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "owner": "drawing",
+      "usage": "draw,",
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 663010,
+            "ySp": -526090
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 6427449,
+            "ySp": -5101873
+          }
+        },
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 5530289,
+            "ySp": -5447290
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 1208851,
+            "ySp": -5543600
+          }
+        },
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 0,
+            "ySp": -5570560
+          }
+        },
+        {
+          "kind": "close",
+          "point": {
+            "xSp": 0,
+            "ySp": -5570560
+          }
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "owner": "drawing",
+      "usage": "draw,",
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "point": {
+            "xSp": 0,
+            "ySp": -5647927
+          }
+        },
+        {
+          "kind": "line",
+          "point": {
+            "xSp": 6881280,
+            "ySp": -5570560
+          }
+        }
+      ]
+    }
+  ],
+  "converterInvoked": false,
+  "approvedImagePolicy": false,
+  "pdfCamera": {
+    "origin": {
+      "x": 202.88852107331883,
+      "y": 203.95264583981944
+    },
+    "page": {
+      "boxXSp": 8799518,
+      "boxBaselineYSp": 36124646,
+      "widthSp": 39321600,
+      "heightSp": 52428800
+    },
+    "rasterSizes": {
+      "1x": {
+        "width": 798,
+        "height": 1063
+      },
+      "4x": {
+        "width": 3189,
+        "height": 4251
+      }
+    }
+  }
+}

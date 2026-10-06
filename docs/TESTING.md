@@ -721,3 +721,23 @@ those unchanged snapshots, recomputes all allowances, validates complete native
 and regional evidence, and requires both SVG-versus-PDF checks. Fresh conversion
 and its comparator/policy checks are required visual CI steps; hosted execution
 remains unverified.
+
+The [labeled-border reference producer](../tools/TikzLabelledBorderReference/README.md)
+adds three independently authored fixtures for measured labels connected through
+rectangle/circle/ellipse borders, including multiline/font and affine-frame
+interactions. Its cached commands need Node built-ins and repository evidence;
+they install or invoke no browser, TeX, or PDF executable:
+
+```text
+node tools/TikzVisual/labelled-border-reference.mjs check-cached
+node tools/TikzVisual/labelled-border-evidence-self-test.mjs
+```
+
+Ordinary .NET tests compare twelve nodes, 192 anchors, all twenty-six painted
+paths, native glyph placement, stroke widths and picture bounds. Independent
+plain/probed SVG/PDF invariance and original six-face TFM inputs are retained.
+An external snapshot pin and mutation controls reject missing, tampered or
+consistently rehashed replacements. Fresh control reports under
+`artifacts/labelled-border-cache-controls/` are uploaded by the prepared ordinary
+Windows/Linux jobs. Image calibration and combined conformance for this new
+family remain pending; no existing image tolerance is inherited.

@@ -27,6 +27,8 @@ tests/Reference/NodeShapes/native/*reference.svg -text whitespace=cr-at-eol
 tests/Reference/NodeShapes/native/*oracle.log -text -whitespace
 tests/Reference/NodeShapes/native/native-positions.log text eol=lf -whitespace
 tests/Reference/NodeShapes/pdf/*.log -text -whitespace
+tests/Reference/LabelledBorders/*/*reference.svg -text whitespace=cr-at-eol
+tests/Reference/LabelledBorders/*/*.log text eol=lf -whitespace
 tests/Reference/Dashes/native/*reference.svg -text whitespace=cr-at-eol
 tests/Reference/Dashes/native/*.log -text -whitespace
 tests/Reference/DashGeometry/native/*reference.svg -text whitespace=cr-at-eol

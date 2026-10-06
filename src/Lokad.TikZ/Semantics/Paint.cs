@@ -46,7 +46,8 @@ internal sealed record Paint
     public bool Fill { get; init; }
     public Color StrokeColor { get; init; } = new(0, 0, 0);
     public Color FillColor { get; init; } = new(0, 0, 0);
-    public double Width { get; init; } = .4 * 72 / 72.27;
+    // PGF's default .4pt is stored in a TeX dimension register as 26214 sp.
+    public double Width { get; init; } = 26214 * (72 / (72.27 * 65536));
     public double StrokeOpacity { get; init; } = 1;
     public double FillOpacity { get; init; } = 1;
     public string Cap { get; init; } = "butt";

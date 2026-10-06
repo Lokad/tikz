@@ -1,0 +1,18 @@
+% Trusted differing node/query frames with mixed shapes and font baselines.
+\begin{tikzpicture}[every node/.style={draw,inner sep=2pt,outer sep=.3pt}]
+  \node[rectangle,rotate=27] (r-rotate) at (0pt,0pt) {AV ffi};
+  \begin{scope}[cm={1,.25,.4,1,(0pt,0pt)}]
+    \node[ellipse,transform shape] (e-shear) at (110pt,0pt) {\itshape gyp};
+  \end{scope}
+  \begin{scope}[shift={(10pt,-90pt)},rotate=31,xscale=1.2,yscale=.8]
+    \node[circle,transform shape,font=\large] (c-transform) at (0pt,0pt) {AV};
+    \node[rectangle] (r-upright) at (90pt,0pt) {gyp.};
+    \draw (c-transform)--(r-upright);
+  \end{scope}
+  \draw (r-rotate)--(e-shear)--(c-transform)--(r-upright);
+  \draw (r-rotate)-|(e-shear);
+  \begin{scope}[cm={1.2,.1,.3,.9,(3pt,5pt)}]
+    \draw (r-rotate)|-(c-transform);
+    \draw (e-shear).. controls (100pt,-40pt) and (80pt,-75pt)..(r-upright);
+  \end{scope}
+\end{tikzpicture}

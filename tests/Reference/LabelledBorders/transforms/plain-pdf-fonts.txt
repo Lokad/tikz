@@ -1,0 +1,5 @@
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+EDPUDA+LMRoman10-Regular             Type 1            Custom           yes yes yes      7  0
+VQLMVA+LMRoman10-Italic              Type 1            Custom           yes yes yes      8  0
+WIBGET+LMRoman12-Regular             Type 1            Custom           yes yes yes      9  0

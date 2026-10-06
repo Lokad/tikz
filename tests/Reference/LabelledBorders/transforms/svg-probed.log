@@ -1,0 +1,550 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=latex 2025.9.25)  6 OCT 2026 12:09
+entering extended mode
+ %&-line parsing enabled.
+**./case.tex
+(case.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(<local>/article.clsDocument Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(<local>/size10.cloFile: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(<local>/fontenc.styPackage: fontenc 2024/12/21 v2.1c Standard LaTeX package
+)
+(<local>/lmodern.styPackage: lmodern 2015/05/01 v1.6.1 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
+)
+(<local>/tikz.sty
+(<local>/pgf.sty
+(<local>/pgfrcs.sty
+(<local>/dimen150
+)
+(<local>/box53
+)
+(<local>/pgfrcs.code.tex
+(<local>/pgf.revision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>/pgfcore.sty
+(<local>/graphicx.styPackage: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(<local>/keyval.styPackage: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(<local>/graphics.styPackage: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(<local>/trig.styPackage: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(<local>/graphics.cfgFile: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 106.
+
+(<local>/dvips.defFile: dvips.def 2022/09/22 v3.1e Graphics/color driver for dvips
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(<local>/pgfsys.sty
+(<local>/pgfsys.code.texPackage: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>/toks20
+
+(<local>/toks21
+))
+\pgf@x=\dimen153
+\pgf@y=\dimen154
+\pgf@xa=\dimen155
+\pgf@ya=\dimen156
+\pgf@xb=\dimen157
+\pgf@yb=\dimen158
+\pgf@xc=\dimen159
+\pgf@yc=\dimen160
+\pgf@xd=\dimen161
+\pgf@yd=\dimen162
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count287
+
+(<local>/pgf.cfgFile: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-dvisvgm.def
+
+(<local>/pgfsys-dvisvgm.defFile: pgfsys-dvisvgm.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>/pgfsys-common-svg.defFile: pgfsys-common-svg.def 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@sys@svg@objectcount=\count288
+\pgf@sys@svg@scopecount=\count289
+\pgf@sys@svg@type@count=\count290
+\pgf@sys@svg@canvascount=\count291
+)))
+(<local>/pgfsyssoftpath.code.texFile: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count292
+\pgfsyssoftpath@bigbuffer@items=\count293
+)
+(<local>/pgfsysprotocol.code.texFile: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>/xcolor.styPackage: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(<local>/color.cfgFile: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: dvips.def on input line 274.
+
+(<local>/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(<local>/pgfcore.code.texPackage: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>/pgfmath.code.tex
+(<local>/pgfmathutil.code.tex)
+(<local>/toks27
+)
+(<local>/pgfmathfunctions.code.tex)
+(<local>/pgfmathfunctions.basic.code.tex)
+(<local>/pgfmathfunctions.trigonometric.code.tex)
+(<local>/pgfmathfunctions.random.code.tex)
+(<local>/pgfmathfunctions.comparison.code.tex)
+(<local>/pgfmathfunctions.base.code.tex)
+(<local>/pgfmathfunctions.round.code.tex)
+(<local>/pgfmathfunctions.misc.code.tex)
+(<local>/pgfmathfunctions.integerarithmetics.code.tex)
+(<local>/pgfmathcalc.code.tex)
+(<local>/count295
+))
+(<local>/pgfint.code.tex)
+(<local>/pgfcorepoints.code.texFile: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen164
+\pgf@picmaxx=\dimen165
+\pgf@picminy=\dimen166
+\pgf@picmaxy=\dimen167
+\pgf@pathminx=\dimen168
+\pgf@pathmaxx=\dimen169
+\pgf@pathminy=\dimen170
+\pgf@pathmaxy=\dimen171
+\pgf@xx=\dimen172
+\pgf@xy=\dimen173
+\pgf@yx=\dimen174
+\pgf@yy=\dimen175
+\pgf@zx=\dimen176
+\pgf@zy=\dimen177
+)
+(<local>/pgfcorepathconstruct.code.texFile: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen178
+\pgf@path@lasty=\dimen179
+)
+(<local>/pgfcorepathusage.code.texFile: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen180
+\pgf@shorten@start@additional=\dimen181
+)
+(<local>/pgfcorescopes.code.texFile: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count296
+)
+(<local>/pgfcoregraphicstate.code.texFile: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen182
+)
+(<local>/pgfcoretransformations.code.texFile: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen183
+\pgf@pt@y=\dimen184
+\pgf@pt@temp=\dimen185
+)
+(<local>/pgfcorequick.code.texFile: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>/pgfcoreobjects.code.texFile: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>/pgfcorepathprocessing.code.texFile: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>/pgfcorearrows.code.texFile: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen186
+)
+(<local>/pgfcoreshade.code.texFile: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen187
+\pgf@sys@shading@range@num=\count297
+\pgf@shadingcount=\count298
+)
+(<local>/pgfcoreimage.code.texFile: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>/pgfcoreexternal.code.texFile: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box58
+)
+(<local>/pgfcorelayers.code.texFile: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>/pgfcoretransparency.code.texFile: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>/pgfcorepatterns.code.texFile: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>/pgfcorerdf.code.texFile: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<local>/pgfmoduleshapes.code.texFile: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box59
+)
+(<local>/pgfmoduleplot.code.texFile: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<local>/pgfcomp-version-0-65.styPackage: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen188
+\pgf@nodesepend=\dimen189
+)
+(<local>/pgfcomp-version-1-18.styPackage: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<local>/pgffor.sty
+(<local>/pgfkeys.sty
+(<local>/pgfkeys.code.tex))
+(<local>/pgfmath.sty
+(<local>/pgfmath.code.tex))
+(<local>/pgffor.code.texPackage: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen190
+\pgffor@skip=\dimen191
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+(<local>/tikz.code.texPackage: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>/pgflibraryplothandlers.code.texFile: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count299
+\pgfplotmarksize=\dimen192
+)
+\tikz@lastx=\dimen193
+\tikz@lasty=\dimen194
+\tikz@lastxsaved=\dimen195
+\tikz@lastysaved=\dimen196
+\tikz@lastmovetox=\dimen197
+\tikz@lastmovetoy=\dimen198
+\tikzleveldistance=\dimen199
+\tikzsiblingdistance=\dimen256
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count300
+\tikznumberofchildren=\count301
+\tikznumberofcurrentchild=\count302
+\tikz@fig@count=\count303
+
+(<local>/pgfmodulematrix.code.texFile: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count304
+\pgfmatrixcurrentcolumn=\count305
+\pgf@matrix@numberofcolumns=\count306
+)
+\tikz@expandcount=\count307
+
+(<local>/tikzlibrarytopaths.code.texFile: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<local>/tikzlibraryshapes.geometric.code.texFile: tikzlibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+
+(<local>/pgflibraryshapes.geometric.code.texFile: pgflibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+LOKAD-PGF-VERSION 3.1.11a
+\lokadpicture=\box64
+\lokadpathcounter=\count308
+\lokadcx=\dimen257
+\lokadcy=\dimen258
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 13
+3.
+(<local>/t1lmr.fdFile: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+(<local>/l3backend-dvips.defFile: l3backend-dvips.def 2025-06-09 L3 backend support: dvips
+\l__pdfannot_backend_content_box=\box65
+\l__pdfannot_backend_model_box=\box66
+\g__pdfannot_backend_int=\count309
+\g__pdfannot_backend_link_int=\count310
+\g__pdfannot_backend_link_sf_int=\count311
+)
+No file case.aux.
+\openout1 = `case.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 133.
+LaTeX Font Info:    ... okay on input line 133.
+(case.tikz
+LOKAD-SHAPE r-rotate|rectangle|END
+LOKAD-VALUE r-rotate|width|1674785|END
+LOKAD-VALUE r-rotate|height|451461|END
+LOKAD-VALUE r-rotate|depth|0|END
+LOKAD-VALUE r-rotate|linewidth|26214|END
+LOKAD-VALUE r-rotate|quad|655360|END
+LOKAD-VALUE r-rotate|xheight|282165|END
+LOKAD-VALUE r-rotate|innerx|131072|END
+LOKAD-VALUE r-rotate|innery|131072|END
+LOKAD-VALUE r-rotate|outerx|19661|END
+LOKAD-VALUE r-rotate|outery|19661|END
+LOKAD-VALUE r-rotate|minimumwidth|65536|END
+LOKAD-VALUE r-rotate|minimumheight|65536|END
+LOKAD-POINT r-rotate|southwest|-131072|-131072|END
+LOKAD-POINT r-rotate|northeast|1805856|582532|END
+LOKAD-FRAME r-rotate|0.891|0.454|-0.454|0.891|-9.82118pt|-8.86989pt|END
+LOKAD-PATH 1|node-r-rotate|draw,|26214|END
+LOKAD-SEG 1|move|700922|757591|END
+LOKAD-SEG 1|line|-1024893|-121764|END
+LOKAD-SEG 1|line|-700921|-757589|END
+LOKAD-SEG 1|line|1024894|121766|END
+LOKAD-SEG 1|close|700922|757591|END
+LOKAD-SEG 1|move|-700921|-757589|END
+LOKAD-SHAPE e-shear|ellipse|END
+LOKAD-VALUE e-shear|width|954629|END
+LOKAD-VALUE e-shear|height|282165|END
+LOKAD-VALUE e-shear|depth|127430|END
+LOKAD-VALUE e-shear|linewidth|26214|END
+LOKAD-VALUE e-shear|quad|655360|END
+LOKAD-VALUE e-shear|xheight|282165|END
+LOKAD-VALUE e-shear|innerx|131072|END
+LOKAD-VALUE e-shear|innery|131072|END
+LOKAD-VALUE e-shear|outerx|19661|END
+LOKAD-VALUE e-shear|outery|19661|END
+LOKAD-VALUE e-shear|minimumwidth|65536|END
+LOKAD-VALUE e-shear|minimumheight|65536|END
+LOKAD-POINT e-shear|center|477314|77367|END
+LOKAD-POINT e-shear|xaxis|860388|0|END
+LOKAD-POINT e-shear|yaxis|0|474991|END
+LOKAD-FRAME e-shear|1.0|0.25|0.4|1.0|102.24457pt|24.49867pt|END
+LOKAD-PATH 2|node-e-shear|draw,|26214|END
+LOKAD-SEG 2|move|8069348|2017337|END
+LOKAD-SEG 2|control1|8174279|2279670|END
+LOKAD-SEG 2|control2|7874138|2396027|END
+LOKAD-SEG 2|curve|7398953|2277231|END
+LOKAD-SEG 2|control1|6923768|2158435|END
+LOKAD-SEG 2|control2|6453503|1849476|END
+LOKAD-SEG 2|curve|6348572|1587143|END
+LOKAD-SEG 2|control1|6243641|1324810|END
+LOKAD-SEG 2|control2|6543782|1208453|END
+LOKAD-SEG 2|curve|7018967|1327249|END
+LOKAD-SEG 2|control1|7494152|1446045|END
+LOKAD-SEG 2|control2|7964417|1755004|END
+LOKAD-SEG 2|curve|8069348|2017337|END
+LOKAD-SEG 2|close|8069348|2017337|END
+LOKAD-SEG 2|move|7208960|1802240|END
+LOKAD-SHAPE c-transform|circle|END
+LOKAD-VALUE c-transform|width|1068918|END
+LOKAD-VALUE c-transform|height|541752|END
+LOKAD-VALUE c-transform|depth|0|END
+LOKAD-VALUE c-transform|linewidth|26214|END
+LOKAD-VALUE c-transform|quad|655360|END
+LOKAD-VALUE c-transform|xheight|282165|END
+LOKAD-VALUE c-transform|innerx|131072|END
+LOKAD-VALUE c-transform|innery|131072|END
+LOKAD-VALUE c-transform|outerx|19661|END
+LOKAD-VALUE c-transform|outery|19661|END
+LOKAD-VALUE c-transform|minimumwidth|65536|END
+LOKAD-VALUE c-transform|minimumheight|65536|END
+LOKAD-POINT c-transform|center|534459|270876|END
+LOKAD-POINT c-transform|xaxis|777968|0|END
+LOKAD-POINT c-transform|yaxis|0|777968|END
+LOKAD-FRAME c-transform|1.02858|0.61804|-0.41203|0.68573|3.31476pt|-97.87453pt|
+END
+LOKAD-PATH 3|node-c-transform|draw,|26214|END
+LOKAD-SEG 3|move|1455562|-5417424|END
+LOKAD-SEG 3|control1|1278526|-5122791|END
+LOKAD-SEG 3|control2|776757|-5099215|END
+LOKAD-SEG 3|curve|334812|-5364765|END
+LOKAD-SEG 3|control1|-107133|-5630315|END
+LOKAD-SEG 3|control2|-321878|-6084423|END
+LOKAD-SEG 3|curve|-144842|-6379056|END
+LOKAD-SEG 3|control1|32194|-6673689|END
+LOKAD-SEG 3|control2|533963|-6697265|END
+LOKAD-SEG 3|curve|975908|-6431715|END
+LOKAD-SEG 3|control1|1417853|-6166165|END
+LOKAD-SEG 3|control2|1632598|-5712057|END
+LOKAD-SEG 3|curve|1455562|-5417424|END
+LOKAD-SEG 3|close|1455562|-5417424|END
+LOKAD-SEG 3|move|655360|-5898240|END
+LOKAD-SHAPE r-upright|rectangle|END
+LOKAD-VALUE r-upright|width|1219706|END
+LOKAD-VALUE r-upright|height|282165|END
+LOKAD-VALUE r-upright|depth|127430|END
+LOKAD-VALUE r-upright|linewidth|26214|END
+LOKAD-VALUE r-upright|quad|655360|END
+LOKAD-VALUE r-upright|xheight|282165|END
+LOKAD-VALUE r-upright|innerx|131072|END
+LOKAD-VALUE r-upright|innery|131072|END
+LOKAD-VALUE r-upright|outerx|19661|END
+LOKAD-VALUE r-upright|outery|19661|END
+LOKAD-VALUE r-upright|minimumwidth|65536|END
+LOKAD-VALUE r-upright|minimumheight|65536|END
+LOKAD-POINT r-upright|southwest|-131072|-258502|END
+LOKAD-POINT r-upright|northeast|1350778|413236|END
+LOKAD-FRAME r-upright|1.0|0.0|0.0|1.0|93.26656pt|-35.55675pt|END
+LOKAD-PATH 4|node-r-upright|draw,|26214|END
+LOKAD-SEG 4|rectcorner|5981245|-2588749|END
+LOKAD-SEG 4|rectsize|1481850|671738|END
+LOKAD-PATH 5|drawing|draw,|26214|END
+LOKAD-SEG 5|move|1475796|-5405265|END
+LOKAD-SEG 5|line|6130646|-2608365|END
+LOKAD-PATH 6|drawing|draw,|26214|END
+LOKAD-SEG 6|move|983602|246112|END
+LOKAD-SEG 6|line|6328911|1582229|END
+LOKAD-SEG 6|move|6750871|1263976|END
+LOKAD-SEG 6|line|1239636|-5211720|END
+LOKAD-SEG 6|move|1475785|-5405272|END
+LOKAD-SEG 6|line|6130579|-2608410|END
+LOKAD-PATH 7|drawing|draw,|26214|END
+LOKAD-SEG 7|move|829069|-79|END
+LOKAD-SEG 7|line|7208938|-79|END
+LOKAD-SEG 7|line|7208938|1367909|END
+LOKAD-PATH 8|drawing|draw,|26214|END
+LOKAD-SEG 8|move|-169645|-509040|END
+LOKAD-SEG 8|line|-2041360|-6124089|END
+LOKAD-SEG 8|line|-199886|-5970623|END
+LOKAD-PATH 9|drawing|draw,|26214|END
+LOKAD-SEG 9|move|7218843|1371327|END
+LOKAD-SEG 9|control1|7274468|-1376200|END
+LOKAD-SEG 9|control2|5013473|-3571650|END
+LOKAD-SEG 9|curve|6262497|-2608732|END
+LOKAD-BOUNDS -2054467|-6710372|8187386|2409134|END
+(probes.tex
+LOKAD-ANCHOR r-rotate|text|-643641|-581297|END
+LOKAD-ANCHOR r-rotate|center|0|0|END
+LOKAD-ANCHOR r-rotate|north|-170912|335431|END
+LOKAD-ANCHOR r-rotate|south|170911|-335430|END
+LOKAD-ANCHOR r-rotate|west|-880425|-448602|END
+LOKAD-ANCHOR r-rotate|east|880426|448604|END
+LOKAD-ANCHOR r-rotate|north west|-1051337|-113171|END
+LOKAD-ANCHOR r-rotate|north east|709514|784035|END
+LOKAD-ANCHOR r-rotate|south west|-709514|-784032|END
+LOKAD-ANCHOR r-rotate|south east|1051337|113174|END
+LOKAD-ANCHOR r-rotate|base|102480|-201126|END
+LOKAD-ANCHOR r-rotate|base west|-777945|-649728|END
+LOKAD-ANCHOR r-rotate|base east|982906|247478|END
+LOKAD-ANCHOR r-rotate|mid|38430|-75422|END
+LOKAD-ANCHOR r-rotate|mid west|-841995|-524024|END
+LOKAD-ANCHOR r-rotate|mid east|918856|373182|END
+LOKAD-ANCHOR e-shear|text|6700700|1605545|END
+LOKAD-ANCHOR e-shear|center|7208960|1802240|END
+LOKAD-ANCHOR e-shear|north|7406818|2296892|END
+LOKAD-ANCHOR e-shear|south|7011103|1307588|END
+LOKAD-ANCHOR e-shear|west|6328911|1582229|END
+LOKAD-ANCHOR e-shear|east|8089009|2022252|END
+LOKAD-ANCHOR e-shear|north west|6726577|1996441|END
+LOKAD-ANCHOR e-shear|north east|7971155|2307584|END
+LOKAD-ANCHOR e-shear|south west|6446765|1296897|END
+LOKAD-ANCHOR e-shear|south east|7691343|1608040|END
+LOKAD-ANCHOR e-shear|base|7178014|1724873|END
+LOKAD-ANCHOR e-shear|base west|6297965|1504862|END
+LOKAD-ANCHOR e-shear|base east|8058063|1944885|END
+LOKAD-ANCHOR e-shear|mid|7234445|1865955|END
+LOKAD-ANCHOR e-shear|mid west|6354396|1645944|END
+LOKAD-ANCHOR e-shear|mid east|8114494|2085967|END
+LOKAD-ANCHOR c-transform|text|217236|-6414305|END
+LOKAD-ANCHOR c-transform|center|655360|-5898240|END
+LOKAD-ANCHOR c-transform|north|326710|-5351282|END
+LOKAD-ANCHOR c-transform|south|984008|-6445197|END
+LOKAD-ANCHOR c-transform|west|-165064|-6391208|END
+LOKAD-ANCHOR c-transform|east|1475785|-5405272|END
+LOKAD-ANCHOR c-transform|north west|-157158|-5860063|END
+LOKAD-ANCHOR c-transform|north east|1003097|-5162901|END
+LOKAD-ANCHOR c-transform|south west|307622|-6633578|END
+LOKAD-ANCHOR c-transform|south east|1467877|-5936416|END
+LOKAD-ANCHOR c-transform|base|766969|-6083987|END
+LOKAD-ANCHOR c-transform|base west|-53455|-6576955|END
+LOKAD-ANCHOR c-transform|base east|1587394|-5591019|END
+LOKAD-ANCHOR c-transform|mid|708839|-5987243|END
+LOKAD-ANCHOR c-transform|mid west|-111585|-6480211|END
+LOKAD-ANCHOR c-transform|mid east|1529264|-5494275|END
+LOKAD-ANCHOR r-upright|text|6112317|-2330247|END
+LOKAD-ANCHOR r-upright|center|6722170|-2252880|END
+LOKAD-ANCHOR r-upright|north|6722170|-1897350|END
+LOKAD-ANCHOR r-upright|south|6722170|-2608410|END
+LOKAD-ANCHOR r-upright|west|5961584|-2252880|END
+LOKAD-ANCHOR r-upright|east|7482756|-2252880|END
+LOKAD-ANCHOR r-upright|north west|5961584|-1897350|END
+LOKAD-ANCHOR r-upright|north east|7482756|-1897350|END
+LOKAD-ANCHOR r-upright|south west|5961584|-2608410|END
+LOKAD-ANCHOR r-upright|south east|7482756|-2608410|END
+LOKAD-ANCHOR r-upright|base|6722170|-2330247|END
+LOKAD-ANCHOR r-upright|base west|5961584|-2330247|END
+LOKAD-ANCHOR r-upright|base east|7482756|-2330247|END
+LOKAD-ANCHOR r-upright|mid|6722170|-2189165|END
+LOKAD-ANCHOR r-upright|mid west|5961584|-2189165|END
+LOKAD-ANCHOR r-upright|mid east|7482756|-2189165|END
+))
+LOKAD-BOX 10241853|9119506|0|END
+
+
+[1
+
+] (case.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+ ) 
+Here is how much of TeX's memory you used:
+ 12459 strings out of 468130
+ 267944 string characters out of 5425798
+ 646657 words of memory out of 5000000
+ 40905 multiletter control sequences out of 15000+600000
+ 637840 words of font info for 44 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 102i,5n,107p,437b,718s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on case.dvi (1 page, 4124 bytes).
