@@ -741,3 +741,21 @@ consistently rehashed replacements. Fresh control reports under
 `artifacts/labelled-border-cache-controls/` are uploaded by the prepared ordinary
 Windows/Linux jobs. Image calibration and combined conformance for this new
 family remain pending; no existing image tolerance is inherited.
+
+The separate [public labeled-border tool](../tools/TikzLabelledBorderComparison/README.md)
+exports all 1,624 native checks and source-aware traces without a browser:
+
+```text
+dotnet run --project tools/TikzLabelledBorderComparison -c Release
+node tools/TikzVisual/inspect-labelled-borders.mjs
+node tools/TikzVisual/labelled-border-inspection-self-test.mjs
+```
+
+The visual commands require the pinned browser but no TeX/PDF executable.
+Fresh immutable bundles retain 36 original-root/expanded view pairs, 1,944 local
+observations, exact reference repeats, and source-linked paired PNG crops. Focus
+selection changes presentation images while retaining the complete measurement
+matrix. Coverage controls reject missing/duplicate views or regions, changed
+cameras, incorrect metrics, artifact links and crop lattice, and stale agent
+guidance. These commands produce research evidence with pending image/PDF
+admission, and are prepared CI steps rather than conformance claims.

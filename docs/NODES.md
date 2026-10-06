@@ -183,3 +183,11 @@ evidence are frozen independently. Its numeric checks exposed fractional
 scaled-point defaults in general path paint; defaults and width presets now
 use native dimension conversion consistently. Image calibration, regional
 sensitivity and combined SVG/PDF admission for these interactions remain pending.
+
+The [labeled-border inspection runner](../tools/TikzLabelledBorderComparison/README.md)
+now exports 1,624 source-linked public checks, 36 paired primary views and 1,944
+fixed local observations. Its native cameras and path/endpoint/glyph regions are
+prepared before conversion. Original-crop and expanded diagnostic views remain
+separate, with raw differences, paired crops and exact reference repeats. This
+is reproducible research evidence; the new family still has no image allowance
+or combined SVG/PDF admission.

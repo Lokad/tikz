@@ -20,6 +20,7 @@
     <None Include="../Reference/LabelledBorders/fonts/*.tfm" Link="Reference/LabelledBorders/fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../Reference/NodeShapes/fonts/*.tfm" Link="Reference/NodeShapes/fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="../../tools/TikzShapeComparison/NativeGlyphTrace.cs" Link="Harness/NativeGlyphTrace.cs" />
+    <Compile Include="../../tools/TikzLabelledBorderComparison/NativeComparison.cs" Link="Harness/LabelledBorderNativeComparison.cs" />
     <Compile Include="../../tools/TikzShapePdfReference/PdfEvidence.cs" Link="Harness/PdfEvidence.cs" />
     <Compile Include="../../tools/TikzDashReference/DashEvidence.cs" Link="Harness/DashEvidence.cs" />
     <Compile Include="../../tools/TikzDashGeometryReference/DashGeometryEvidence.cs" Link="Harness/DashGeometryEvidence.cs" />
