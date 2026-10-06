@@ -1,0 +1,2966 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-dash-geometry-primary-v1",
+  "scope": "Sixteen fixed dash geometry paints and three clips; numeric and original-SVG primary gates; ordinary PDF and label/node interactions pending.",
+  "approvedPrimaryPolicy": true,
+  "approvedPdfPolicy": false,
+  "overallVerdict": "pending",
+  "nativeChecks": 1090,
+  "frameChecks": 6,
+  "requiredViews": [
+    {
+      "frame": "natural",
+      "scale": 1,
+      "background": "transparent"
+    },
+    {
+      "frame": "natural",
+      "scale": 1,
+      "background": "white"
+    },
+    {
+      "frame": "natural",
+      "scale": 1,
+      "background": "black"
+    },
+    {
+      "frame": "natural",
+      "scale": 4,
+      "background": "transparent"
+    },
+    {
+      "frame": "natural",
+      "scale": 4,
+      "background": "white"
+    },
+    {
+      "frame": "natural",
+      "scale": 4,
+      "background": "black"
+    },
+    {
+      "frame": "expanded",
+      "scale": 1,
+      "background": "transparent"
+    },
+    {
+      "frame": "expanded",
+      "scale": 1,
+      "background": "white"
+    },
+    {
+      "frame": "expanded",
+      "scale": 1,
+      "background": "black"
+    },
+    {
+      "frame": "expanded",
+      "scale": 4,
+      "background": "transparent"
+    },
+    {
+      "frame": "expanded",
+      "scale": 4,
+      "background": "white"
+    },
+    {
+      "frame": "expanded",
+      "scale": 4,
+      "background": "black"
+    }
+  ],
+  "calibration": {
+    "file": "tests/Reference/DashGeometry/primary/calibration.json",
+    "sha256": "a4247ca293673cb32df6aba2130da0362481fb9d7592638db0177b5bf63e17cb"
+  },
+  "guardToolHashes": {
+    "tools/TikzVisual/dash-geometry-primary-policy.mjs": "34a17c4d677490dfc07a701054fce3cd973bf7d840226c9ab132be06e3cc717e",
+    "tools/TikzVisual/compare-dash-geometry-primary.mjs": "a501f0ff1ce4a1fb8fcb2b7672c31b16d7eab5571e36115eeabcd4933edfd540",
+    "tools/TikzVisual/dash-geometry-primary-self-test.mjs": "7e5d20d476c79ce89830e7e4ae194a63fb75663c8175d8b1b616df7621617d66",
+    "tools/TikzVisual/promote-dash-geometry-primary.mjs": "538152f78ce4d300e0602bbedb6cb20a42ef8f7232737bd2f257a1a44a00804b"
+  },
+  "camera": {
+    "x": -21,
+    "y": -31,
+    "width": 107,
+    "height": 833
+  },
+  "regions": [
+    {
+      "id": "path-0",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "absolute-cubic",
+      "rectangle": {
+        "x": 17,
+        "y": 1,
+        "width": 87,
+        "height": 34
+      }
+    },
+    {
+      "id": "path-1",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "dotted-cubic",
+      "rectangle": {
+        "x": 17,
+        "y": 53,
+        "width": 88,
+        "height": 62
+      }
+    },
+    {
+      "id": "path-2",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "captured-cubic",
+      "rectangle": {
+        "x": 16,
+        "y": 106,
+        "width": 90,
+        "height": 63
+      }
+    },
+    {
+      "id": "path-3",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "odd-relative-cubic",
+      "rectangle": {
+        "x": 17,
+        "y": 163,
+        "width": 87,
+        "height": 31
+      }
+    },
+    {
+      "id": "path-4",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "compound-subpaths",
+      "rectangle": {
+        "x": 17,
+        "y": 220,
+        "width": 87,
+        "height": 27
+      }
+    },
+    {
+      "id": "path-5",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "closed-triangle",
+      "rectangle": {
+        "x": 17,
+        "y": 266,
+        "width": 88,
+        "height": 35
+      }
+    },
+    {
+      "id": "path-6",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "filled-rectangle",
+      "rectangle": {
+        "x": 17,
+        "y": 319,
+        "width": 88,
+        "height": 35
+      }
+    },
+    {
+      "id": "path-7",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "circle-continuation",
+      "rectangle": {
+        "x": 19,
+        "y": 385,
+        "width": 86,
+        "height": 35
+      }
+    },
+    {
+      "id": "path-8",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "physical-ellipse",
+      "rectangle": {
+        "x": 23,
+        "y": 441,
+        "width": 76,
+        "height": 30
+      }
+    },
+    {
+      "id": "path-9",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "arc-continuation",
+      "rectangle": {
+        "x": 1,
+        "y": 505,
+        "width": 40,
+        "height": 40
+      }
+    },
+    {
+      "id": "path-10",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "ordered-transform",
+      "rectangle": {
+        "x": 17,
+        "y": 503,
+        "width": 80,
+        "height": 64
+      }
+    },
+    {
+      "id": "path-11",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "oblique-ellipse",
+      "rectangle": {
+        "x": 28,
+        "y": 590,
+        "width": 66,
+        "height": 35
+      }
+    },
+    {
+      "id": "path-12",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "clipped-cubic",
+      "rectangle": {
+        "x": 23,
+        "y": 641,
+        "width": 71,
+        "height": 34
+      }
+    },
+    {
+      "id": "path-13",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "nested-clipped-subpaths",
+      "rectangle": {
+        "x": 31,
+        "y": 712,
+        "width": 57,
+        "height": 28
+      }
+    },
+    {
+      "id": "path-14",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "scaled-live-width",
+      "rectangle": {
+        "x": 16,
+        "y": 770,
+        "width": 90,
+        "height": 10
+      }
+    },
+    {
+      "id": "path-15",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "scope-restored",
+      "rectangle": {
+        "x": 17,
+        "y": 824,
+        "width": 87,
+        "height": 8
+      }
+    }
+  ],
+  "limits": {
+    "schemaVersion": 1,
+    "comparisonKind": "unapproved-shape-primary-trial-policy",
+    "approvedImagePolicy": false,
+    "conformanceClaim": false,
+    "scope": "Sixteen fixed dash geometry paints and three clips; numeric and original-SVG primary gates; ordinary PDF and label/node interactions pending.",
+    "rounding": "Foreground mean rounded upward to 1e-9 channel units; every other limit is the independent observation in that exact region/view/background.",
+    "regions": [
+      {
+        "id": "path-0",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 17,
+          "y": 1,
+          "width": 87,
+          "height": 34
+        }
+      },
+      {
+        "id": "path-1",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 17,
+          "y": 53,
+          "width": 88,
+          "height": 62
+        }
+      },
+      {
+        "id": "path-2",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 16,
+          "y": 106,
+          "width": 90,
+          "height": 63
+        }
+      },
+      {
+        "id": "path-3",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 17,
+          "y": 163,
+          "width": 87,
+          "height": 31
+        }
+      },
+      {
+        "id": "path-4",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 17,
+          "y": 220,
+          "width": 87,
+          "height": 27
+        }
+      },
+      {
+        "id": "path-5",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 17,
+          "y": 266,
+          "width": 88,
+          "height": 35
+        }
+      },
+      {
+        "id": "path-6",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 17,
+          "y": 319,
+          "width": 88,
+          "height": 35
+        }
+      },
+      {
+        "id": "path-7",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 19,
+          "y": 385,
+          "width": 86,
+          "height": 35
+        }
+      },
+      {
+        "id": "path-8",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 23,
+          "y": 441,
+          "width": 76,
+          "height": 30
+        }
+      },
+      {
+        "id": "path-9",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 1,
+          "y": 505,
+          "width": 40,
+          "height": 40
+        }
+      },
+      {
+        "id": "path-10",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 17,
+          "y": 503,
+          "width": 80,
+          "height": 64
+        }
+      },
+      {
+        "id": "path-11",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 28,
+          "y": 590,
+          "width": 66,
+          "height": 35
+        }
+      },
+      {
+        "id": "path-12",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 23,
+          "y": 641,
+          "width": 71,
+          "height": 34
+        }
+      },
+      {
+        "id": "path-13",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 31,
+          "y": 712,
+          "width": 57,
+          "height": 28
+        }
+      },
+      {
+        "id": "path-14",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 16,
+          "y": 770,
+          "width": 90,
+          "height": 10
+        }
+      },
+      {
+        "id": "path-15",
+        "nodeId": null,
+        "kind": "path",
+        "rectangle": {
+          "x": 17,
+          "y": 824,
+          "width": 87,
+          "height": 8
+        }
+      }
+    ],
+    "rows": [
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "transparent",
+        "whole": {
+          "rawChangedPixels": 18,
+          "maxRawChannelError": 2,
+          "premultipliedChangedPixels": 18,
+          "maxPremultipliedChannelError": 2,
+          "meanForegroundChannelError": 0.0009015,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 3,
+              "maxRawChannelError": 2,
+              "premultipliedChangedPixels": 3,
+              "maxPremultipliedChannelError": 2,
+              "meanForegroundChannelError": 0.00877193,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 2,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 2,
+              "meanForegroundChannelError": 0.003289474,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 4,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 4,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.008695653,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 4,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 4,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.014705883,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 5,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 5,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.007225434,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 5,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 5,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.00390625,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.003787879,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "white",
+        "whole": {
+          "rawChangedPixels": 14,
+          "maxRawChannelError": 2,
+          "premultipliedChangedPixels": 14,
+          "maxPremultipliedChannelError": 2,
+          "meanForegroundChannelError": 0.002135131,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 2,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 2,
+              "meanForegroundChannelError": 0.019736843,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 2,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 2,
+              "meanForegroundChannelError": 0.009868422,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 3,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 3,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.019565218,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 4,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 4,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.044117648,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 3,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 3,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.013005781,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 3,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 3,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.00703125,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.011363637,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "black",
+        "whole": {
+          "rawChangedPixels": 0,
+          "maxRawChannelError": 0,
+          "premultipliedChangedPixels": 0,
+          "maxPremultipliedChannelError": 0,
+          "meanForegroundChannelError": 0,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "transparent",
+        "whole": {
+          "rawChangedPixels": 25,
+          "maxRawChannelError": 5,
+          "premultipliedChangedPixels": 25,
+          "maxPremultipliedChannelError": 5,
+          "meanForegroundChannelError": 0.00017393,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 3,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 3,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.000296092,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 11,
+              "maxRawChannelError": 4,
+              "premultipliedChangedPixels": 11,
+              "maxPremultipliedChannelError": 4,
+              "meanForegroundChannelError": 0.013580247,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 16,
+              "maxRawChannelError": 5,
+              "premultipliedChangedPixels": 16,
+              "maxPremultipliedChannelError": 5,
+              "meanForegroundChannelError": 0.002538072,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.00010491,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 4,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 4,
+              "meanForegroundChannelError": 0.001445087,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 4,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 4,
+              "meanForegroundChannelError": 0.000484497,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 6,
+              "maxRawChannelError": 3,
+              "premultipliedChangedPixels": 6,
+              "maxPremultipliedChannelError": 3,
+              "meanForegroundChannelError": 0.002607185,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 3,
+              "maxRawChannelError": 2,
+              "premultipliedChangedPixels": 3,
+              "maxPremultipliedChannelError": 2,
+              "meanForegroundChannelError": 0.000419288,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 5,
+              "maxRawChannelError": 3,
+              "premultipliedChangedPixels": 5,
+              "maxPremultipliedChannelError": 3,
+              "meanForegroundChannelError": 0.000365765,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "white",
+        "whole": {
+          "rawChangedPixels": 25,
+          "maxRawChannelError": 5,
+          "premultipliedChangedPixels": 25,
+          "maxPremultipliedChannelError": 5,
+          "meanForegroundChannelError": 0.000521789,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 3,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 3,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.000888275,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 11,
+              "maxRawChannelError": 4,
+              "premultipliedChangedPixels": 11,
+              "maxPremultipliedChannelError": 4,
+              "meanForegroundChannelError": 0.040740741,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 16,
+              "maxRawChannelError": 5,
+              "premultipliedChangedPixels": 16,
+              "maxPremultipliedChannelError": 5,
+              "meanForegroundChannelError": 0.007614214,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.00031473,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 4,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 4,
+              "meanForegroundChannelError": 0.004335261,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 2,
+              "maxRawChannelError": 4,
+              "premultipliedChangedPixels": 2,
+              "maxPremultipliedChannelError": 4,
+              "meanForegroundChannelError": 0.001453489,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 6,
+              "maxRawChannelError": 3,
+              "premultipliedChangedPixels": 6,
+              "maxPremultipliedChannelError": 3,
+              "meanForegroundChannelError": 0.007821553,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 3,
+              "maxRawChannelError": 2,
+              "premultipliedChangedPixels": 3,
+              "maxPremultipliedChannelError": 2,
+              "meanForegroundChannelError": 0.001257862,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 5,
+              "maxRawChannelError": 3,
+              "premultipliedChangedPixels": 5,
+              "maxPremultipliedChannelError": 3,
+              "meanForegroundChannelError": 0.001097294,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "black",
+        "whole": {
+          "rawChangedPixels": 0,
+          "maxRawChannelError": 0,
+          "premultipliedChangedPixels": 0,
+          "maxPremultipliedChannelError": 0,
+          "meanForegroundChannelError": 0,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "transparent",
+        "whole": {
+          "rawChangedPixels": 0,
+          "maxRawChannelError": 0,
+          "premultipliedChangedPixels": 0,
+          "maxPremultipliedChannelError": 0,
+          "meanForegroundChannelError": 0,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white",
+        "whole": {
+          "rawChangedPixels": 0,
+          "maxRawChannelError": 0,
+          "premultipliedChangedPixels": 0,
+          "maxPremultipliedChannelError": 0,
+          "meanForegroundChannelError": 0,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "black",
+        "whole": {
+          "rawChangedPixels": 0,
+          "maxRawChannelError": 0,
+          "premultipliedChangedPixels": 0,
+          "maxPremultipliedChannelError": 0,
+          "meanForegroundChannelError": 0,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "transparent",
+        "whole": {
+          "rawChangedPixels": 1,
+          "maxRawChannelError": 1,
+          "premultipliedChangedPixels": 1,
+          "maxPremultipliedChannelError": 1,
+          "meanForegroundChannelError": 0.00000394,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 1,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 1,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.000098581,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white",
+        "whole": {
+          "rawChangedPixels": 1,
+          "maxRawChannelError": 1,
+          "premultipliedChangedPixels": 1,
+          "maxPremultipliedChannelError": 1,
+          "meanForegroundChannelError": 0.000011819,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 1,
+              "maxRawChannelError": 1,
+              "premultipliedChangedPixels": 1,
+              "maxPremultipliedChannelError": 1,
+              "meanForegroundChannelError": 0.000295742,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "black",
+        "whole": {
+          "rawChangedPixels": 0,
+          "maxRawChannelError": 0,
+          "premultipliedChangedPixels": 0,
+          "maxPremultipliedChannelError": 0,
+          "meanForegroundChannelError": 0,
+          "maxEdgeDisplacementRasterPixels": 0,
+          "componentDifference": 0
+        },
+        "regions": [
+          {
+            "id": "path-0",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-1",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-2",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-3",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-4",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-5",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-6",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-7",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-8",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-9",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-10",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-11",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-12",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-13",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-14",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          },
+          {
+            "id": "path-15",
+            "limits": {
+              "rawChangedPixels": 0,
+              "maxRawChannelError": 0,
+              "premultipliedChangedPixels": 0,
+              "maxPremultipliedChannelError": 0,
+              "meanForegroundChannelError": 0,
+              "maxEdgeDisplacementRasterPixels": 0,
+              "componentDifference": 0
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

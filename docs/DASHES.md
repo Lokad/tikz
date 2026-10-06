@@ -242,7 +242,51 @@ regions and defects to their source spans and SVG elements. `latest.json`
 hashes the completed report. Earlier failed policies, stale-assembly guard
 failures, and resolution-dependent defect experiments remain inspectable.
 
-The trial remains unapproved and reports overall conformance as pending.
-A reviewed immutable primary snapshot with provenance controls, independent
-PDF image admission and defect controls, and label/node interactions remain
-required. Raw images and recorded PDFs alone do not establish conformance.
+The retained research trial remains unapproved. A separately guarded primary
+policy now consumes checked-in oracle-only calibration:
+
+    node tools/TikzVisual/compare-dash-geometry-primary.mjs
+    node tools/TikzVisual/dash-geometry-primary-self-test.mjs
+
+`chromium-153-dash-geometry-primary-v1` is limited to these sixteen paints and
+three clips. The loader pins the native and calibration digests in code,
+validates original sources/artifacts and all calibration/guard tool hashes,
+reconstructs geometry, frames and regions from the original evidence,
+recomputes every allowance from the 96 independent observations, validates
+96 replay views, and rechecks all independent visible-defect and visibility
+controls. It requires the exact browser binary, Node/Playwright versions,
+platform/architecture, launch state and viewport. OS release is recorded;
+hosted execution still needs verification.
+
+The fresh public comparison passes all 1,090 native checks, six frame checks,
+twelve whole-picture views and 192 local comparisons. Its primary label is
+`calibrated-primary-match`, retaining the raw original-SVG differences. All
+twelve candidate PNGs also match the independent per-element reconstruction
+exactly. The report sets the primary claim separately and leaves the combined
+image/PDF claim pending. All sixteen regions have paired enlarged crops and
+source-span/element links, including regions with zero measured error.
+
+The controls exercise missing/changed evidence, modified guard code,
+consistently rehashed unreviewed calibration, widened limits, fitted cameras,
+selected/dropped regions or views, renderer mismatches, incomplete or
+candidate-derived calibration, accepted or untargeted defects, incorrect
+visibility, and failed numeric/frame gates with matching pixels. Nineteen
+fresh candidate image defects bypass numeric gates and must fail in every
+affected view and target region. They use the immutable allowances.
+
+Explicit oracle-only reference work is separate from comparison:
+
+    node tools/TikzVisual/calibrate-dash-geometry-primary.mjs
+    node tools/TikzVisual/promote-dash-geometry-primary.mjs
+
+Calibration invokes no converter and reads no production resource or
+candidate bounds. It preserves 274 views and their immutable tool/input
+provenance under `artifacts/dash-geometry-primary-calibration/`. Promotion
+requires its independently reviewed digest to be updated explicitly in the
+guard; ordinary comparison cannot write or silently refresh a baseline.
+Previous failed experiments and the original native oracle remain unchanged.
+
+The primary policy does not admit ordinary PDF rendering, labels, nodes,
+other fixtures or future library behavior. Independent PDF image admission
+and defect controls, and label/node interactions, remain required before
+combined conformance can pass.

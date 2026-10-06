@@ -13,7 +13,17 @@ Run from the repository root:
 The first command validates the external snapshot, source/artifact hashes,
 native path records, tool/input identities, driver agreement, page frame,
 and plain/probed invariance without TeX. The second invokes the public
-converter and performs 1,090 numeric checks. An image verdict remains pending.
+converter and performs 1,090 numeric checks. These commands do not run the
+separately pinned primary SVG gate:
+
+    node tools/TikzVisual/compare-dash-geometry-primary.mjs
+    node tools/TikzVisual/dash-geometry-primary-self-test.mjs
+
+The primary gate requires twelve whole-picture and 192 local comparisons
+alongside the native/frame checks. Its 106 controls include nineteen fresh
+image-only defects with numeric checks bypassed. Ordinary PDF image admission
+and label/node interactions remain pending; primary success does not assert
+combined conformance.
 
 Sixteen paint cases cover cubic controls, compound subpaths, closed and filled
 paths, circles/ellipses/arcs with continuation, ordered/oblique transforms,
@@ -38,5 +48,5 @@ snapshot pins eight fixture/generator/build inputs and thirteen artifacts;
 changing pinned sources requires regeneration. Each live run preserves its
 source copies before invoking TeX and writes a completion or failure report.
 
-See [dash grounding](../../docs/DASHES.md) for the separate browser inspection,
-source-linked images and remaining primary/PDF admission work.
+See [dash grounding](../../docs/DASHES.md) for source-linked images, independent
+calibration and provenance guards, and remaining PDF/interaction work.
