@@ -16,12 +16,18 @@ identifies and hashes the latest completed report.
 
 The current fixture executes 927 checks for dash state, serialized
 lengths/phase, width, caps, line endpoints, picture bounds, and root
-dimensions. A numeric pass leaves primary and PDF admission pending.
-No image limits are inferred from the candidate.
+dimensions. This command reports numeric evidence only; image admission
+belongs to the separate combined profile. No image limits are inferred
+from the candidate.
 
-The separate browser trial produces agent-viewable images:
+The cached combined browser command requires native/frame/primary and both
+PDF gates, with agent-viewable paired crops and an independent pinned policy:
 
-    node tools/TikzVisual/trial-dashes.mjs
+    node tools/TikzVisual/compare-dash-lines-conformance.mjs
+    node tools/TikzVisual/dash-lines-policy-self-test.mjs
+
+See the [combined profile](../TikzVisual/DASH-LINES-CONFORMANCE.md) for exact
+scope, provenance, controls and the retained earlier research trials.
 
 See [dash grounding](../../docs/DASHES.md) for the independent
 representation experiment, defect controls, and remaining coverage.

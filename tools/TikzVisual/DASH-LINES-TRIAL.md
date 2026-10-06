@@ -114,5 +114,7 @@ input/tool phase. The self-test returns zero only for complete expected
 control outcomes. Failed runs remain retained. These local research commands
 consume mutable latest pointers only where explicitly described; normal CI
 conformance still needs reviewed, checked-in immutable policies and guards.
-Fresh candidate mutations, admission corruption controls, hosted CI and
-further dash/path/label/node interactions remain outstanding.
+The later [immutable combined profile](DASH-LINES-CONFORMANCE.md) supplies
+separate cached admission, corruption checks and fresh public candidate
+mutations. These research reports retain their original pending verdicts.
+Hosted CI and further dash/path/label/node interactions remain outstanding.

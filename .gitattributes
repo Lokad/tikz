@@ -7,6 +7,7 @@
 *.md text eol=lf
 *.pdf binary
 *.png binary
+*.gz binary
 *.tfm binary
 # Keep independently generated SVGs and sanitized oracle logs byte-identical.
 tests/Reference/*/reference.svg -text whitespace=cr-at-eol

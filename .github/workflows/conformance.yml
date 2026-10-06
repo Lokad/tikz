@@ -78,6 +78,8 @@ jobs:
       - run: node tools/TikzVisual/trial-dashes.mjs
       - run: node tools/TikzVisual/dash-pdf-vector-self-test.mjs
       - run: node tools/TikzVisual/dash-lines-oracle-self-test.mjs
+      - run: node tools/TikzVisual/compare-dash-lines-conformance.mjs
+      - run: node tools/TikzVisual/dash-lines-policy-self-test.mjs
       - run: node tools/TikzVisual/inspect-dash-pdf.mjs
       - run: node tools/TikzVisual/dash-geometry-image-self-test.mjs
       - run: dotnet run --project tools/TikzDashComparison -c Release --no-restore -- geometry
@@ -135,6 +137,8 @@ jobs:
             artifacts/dash-image-trial/
             artifacts/dash-pdf-vector/
             artifacts/dash-lines-oracle-controls/
+            artifacts/dash-lines-conformance/
+            artifacts/dash-lines-policy-controls/
             artifacts/dash-comparisons/
             artifacts/dash-geometry-comparisons/
             artifacts/dash-geometry-images/

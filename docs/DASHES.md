@@ -44,6 +44,10 @@ source spans and SVG element IDs link each line back to its case.
 
 ## Image trial and inspection
 
+This initial research trial retains its original pending verdict. The later
+[combined profile](../tools/TikzVisual/DASH-LINES-CONFORMANCE.md) supplies the
+separate immutable primary/PDF admission for these forty cases.
+
 With the pinned development browser installed, run from the repository root:
 
     node tools/TikzVisual/trial-dashes.mjs
@@ -425,8 +429,8 @@ Both installed PDF rasterizers preserve the equivalent spellings in this
 corpus. At 4x, Cairo's maximum SVG/PDF edge discrepancy is 0.25 CSS pixels;
 Splash's reaches 4, including the literal-PDF-instruction SVG route. These
 measurements and the scoped Cairo qualification do not grant a tolerance or
-image admission. The separate primary/PDF policy and candidate defect gates
-for the line family remain pending.
+image admission. The later independent trials and combined admission below
+establish separate limits and candidate defect gates for the line family.
 
 The forty-line family now also has passing independent
 [primary/PDF sensitivity trials](../tools/TikzVisual/DASH-LINES-TRIAL.md) and a
@@ -436,6 +440,19 @@ additional native-page ink-coverage range rejects a doubled thin stroke at
 1x that cross-renderer error ceilings alone accepted; all existing error
 limits remain unchanged. The public trial passes 927 native checks, twelve
 primary views and both four-view SVG/PDF gates, with all forty source-linked
-paired crops. Its 186 policy controls pass. Immutable admission and its
-corruption/fresh-candidate mutation controls remain required; a trial pass
-does not change the family's pending conformance status.
+paired crops. Its 186 policy controls pass. The trial retains its original
+pending status. A separate
+[immutable combined profile](../tools/TikzVisual/DASH-LINES-CONFORMANCE.md)
+now supplies the normal cached admission and its evidence/candidate controls:
+
+    node tools/TikzVisual/compare-dash-lines-conformance.mjs
+    node tools/TikzVisual/dash-lines-policy-self-test.mjs
+
+The loader pins the independent calibration and unchanged Cairo pages,
+rederives both policies, validates source/provenance/renderer contracts,
+and requires numeric/frame/primary and both PDF gates. The public command
+retains all forty source-linked crop sets per view and ranked agent-facing
+regions. It requires neither a TeX/PDF executable nor a local research run.
+The controls mutate fresh public output against both image gates with numeric
+checks bypassed. Hosted CI and broader dash/path/label/node interactions
+remain open; other families inherit no allowance.
