@@ -1,0 +1,65 @@
+% Trusted geometry-only corpus. Probes run in a group before native painting.
+\documentclass{article}
+\ifdefined\lokadpdf\else\def\pgfsysdriver{pgfsys-dvisvgm.def}\fi
+\usepackage{tikz}
+\pagestyle{empty}
+\paperwidth=600pt \paperheight=800pt
+\textwidth=450pt \textheight=680pt
+\ifdefined\lokadpdf
+  \pdfinfoomitdate=1 \pdftrailerid{} \pdfsuppressptexinfo=-1
+\fi
+\makeatletter
+\newif\iflokadprobes
+\newbox\lokadpicture
+\newcount\lokadpath
+\def\lokaddash{}
+\def\lokadphase{0pt}
+\let\lokadsetdash\pgfsys@setdash
+\def\pgfsys@setdash#1#2{\edef\lokaddash{#1}\edef\lokadphase{#2}\lokadsetdash{#1}{#2}}
+\def\lokadlength#1{\pgfmathsetlength\pgf@x{#1}\typeout{LOKAD-DASH-ITEM \the\lokadpath|\number\pgf@x|END}}
+\def\lokadpoint#1#2#3{%
+  \pgf@x=#2\relax \pgf@y=#3\relax
+  \typeout{LOKAD-SEG \the\lokadpath|#1|\number\pgf@x|\number\pgf@y|END}%
+}
+\def\lokadgeometry{%
+  \pgfgetpath\lokadsoftpath
+  \def\pgfsyssoftpath@movetotoken##1##2{\lokadpoint{moveto}{##1}{##2}}%
+  \def\pgfsyssoftpath@linetotoken##1##2{\lokadpoint{lineto}{##1}{##2}}%
+  \def\pgfsyssoftpath@curvetosupportatoken##1##2{\lokadpoint{curvetosupporta}{##1}{##2}}%
+  \def\pgfsyssoftpath@curvetosupportbtoken##1##2{\lokadpoint{curvetosupportb}{##1}{##2}}%
+  \def\pgfsyssoftpath@curvetotoken##1##2{\lokadpoint{curveto}{##1}{##2}}%
+  \def\pgfsyssoftpath@closepathtoken##1##2{\lokadpoint{closepath}{##1}{##2}}%
+  \def\pgfsyssoftpath@rectcornertoken##1##2{\lokadpoint{rectcorner}{##1}{##2}}%
+  \def\pgfsyssoftpath@rectsizetoken##1##2{\lokadpoint{rectsize}{##1}{##2}}%
+  \lokadsoftpath
+}
+\let\lokadusepath\pgfusepath
+\def\pgfusepath#1{%
+  \iflokadprobes
+    \global\advance\lokadpath by1
+    \typeout{LOKAD-DASH \the\lokadpath|width=\number\pgflinewidth|phase=\lokadphase|pattern=\lokaddash|actions=#1|END}%
+    \begingroup
+      \pgfmathsetlength\pgf@x{\lokadphase}%
+      \typeout{LOKAD-DASH-PHASE \the\lokadpath|\number\pgf@x|END}%
+      \ifx\lokaddash\pgfutil@empty\else
+        \pgfutil@for\lokaditem:=\lokaddash\do{\expandafter\lokadlength\expandafter{\lokaditem}}%
+      \fi
+      \lokadgeometry
+    \endgroup
+  \fi
+  \lokadusepath{#1}%
+}
+\typeout{LOKAD-PGF-VERSION \pgfversion}
+\typeout{LOKAD-DRIVER \pgfsysdriver}
+\makeatother
+\begin{document}
+\ifdefined\lokadprobeenable\lokadprobestrue\fi
+\setbox\lokadpicture=\hbox{\input{source.tikz}\unskip}
+\makeatletter
+\typeout{LOKAD-BOUNDS \number\pgf@picminx|\number\pgf@picminy|\number\pgf@picmaxx|\number\pgf@picmaxy|END}
+\makeatother
+\typeout{LOKAD-BOX width=\number\wd\lokadpicture;height=\number\ht\lokadpicture;depth=\number\dp\lokadpicture|END}
+\noindent\ifdefined\lokadpdf\pdfsavepos
+\write16{LOKAD-PAGE x=\the\pdflastxpos;y=\the\pdflastypos;width=\number\paperwidth;height=\number\paperheight|END}\fi
+\box\lokadpicture
+\end{document}

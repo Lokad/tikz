@@ -9,6 +9,8 @@ using Lokad.TikZ;
 using Lokad.TikZ.Graphics;
 using TikzDashReference;
 
+if (args.Length == 1 && args[0] == "geometry") return await DashGeometryComparison.Run();
+
 var json = new JsonSerializerOptions(JsonSerializerDefaults.Web) { WriteIndented = true, NewLine = "\n" };
 var root = Directory.GetCurrentDirectory(); while (!File.Exists(Path.Combine(root, "Lokad.TikZ.slnx"))) root = Directory.GetParent(root)?.FullName ?? throw new InvalidOperationException("Repository root missing.");
 var output = Path.GetFullPath(Path.Combine(root, "artifacts/dash-comparisons/run-" + Guid.NewGuid().ToString("D")));
@@ -22,7 +24,8 @@ try
 {
     Require(args.Length == 0, "Usage: TikzDashComparison (trusted fixed fixture only)");
     var toolHashes = new Dictionary<string, string>(StringComparer.Ordinal);
-    foreach (var file in new[] { "tools/TikzDashComparison/Program.cs", "tools/TikzDashComparison/TikzDashComparison.csproj", "tools/TikzDashComparison/packages.lock.json", "tools/TikzDashReference/DashEvidence.cs" })
+    foreach (var file in new[] { "tools/TikzDashComparison/Program.cs", "tools/TikzDashComparison/TikzDashComparison.csproj", "tools/TikzDashComparison/packages.lock.json", "tools/TikzDashReference/DashEvidence.cs",
+        "tools/TikzDashComparison/DashGeometryComparison.cs", "tools/TikzDashGeometryReference/DashGeometryEvidence.cs" })
     {
         var bytes = File.ReadAllBytes(At(file)); toolHashes[file] = Hash(bytes); var copy = Path.Combine(output, "tool-sources", file);
         Directory.CreateDirectory(Path.GetDirectoryName(copy)!); File.WriteAllBytes(copy, bytes);

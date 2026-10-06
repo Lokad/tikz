@@ -7,17 +7,18 @@ namespace Lokad.TikZ.Geometry;
 internal static class ShapePaths
 {
     // PGF's quarter-circle approximation, also used for arbitrary ellipse axes.
-    private const double QuarterControl = .55228475;
+    private const double QuarterControl = 36195d / 65536;
 
-    public static void Ellipse(GraphicPath path, Point center, Point xAxis, Point yAxis)
+    public static void Ellipse(GraphicPath path, Point center, Point xAxis, Point yAxis, Budget budget, Source source)
     {
         Point[] axes = [xAxis, yAxis, xAxis * -1, yAxis * -1];
+        var controls = axes.Select(axis => PgfTransform.Scale(axis, QuarterControl, budget, source)).ToArray();
         path.Move(center + xAxis);
         for (var i = 0; i < axes.Length; i++)
         {
             var from = axes[i];
             var to = axes[(i + 1) % axes.Length];
-            path.Cubic(center + from + to * QuarterControl, center + to + from * QuarterControl, center + to);
+            path.Cubic(center + from + controls[(i + 1) % axes.Length], center + to + controls[i], center + to);
         }
         path.Close();
         path.Move(center);
@@ -49,7 +50,8 @@ internal static class ShapePaths
             control = Math.CopySign(control, delta);
             var origin = path.Current;
             var target = origin + At(b) - At(a);
-            path.Cubic(origin + Tangent(a) * control, target - Tangent(b) * control, target);
+            path.Cubic(origin + PgfTransform.Scale(Tangent(a), control, budget, source),
+                target - PgfTransform.Scale(Tangent(b), control, budget, source), target);
         }
         Point At(double degrees)
         {

@@ -1,0 +1,61 @@
+\begin{tikzpicture}
+% DASH-GEOMETRY absolute-cubic
+\draw[dashed] (0pt,0pt) .. controls (0pt,20pt) and (60pt,20pt) .. (60pt,0pt);
+% DASH-GEOMETRY dotted-cubic
+\draw[densely dotted,line width=1.2pt,line cap=round]
+  (0pt,-40pt) .. controls (10pt,-20pt) and (50pt,-60pt) .. (60pt,-40pt);
+% DASH-GEOMETRY captured-cubic
+\draw[dashdotted,line width=2pt]
+  (0pt,-80pt) .. controls (10pt,-60pt) and (50pt,-100pt) .. (60pt,-80pt);
+% DASH-GEOMETRY odd-relative-cubic
+\draw[dash pattern={on 2pt off 3pt on 1pt},dash phase=-2pt]
+  (0pt,-120pt) .. controls +(12pt,18pt) and +(-12pt,18pt) .. ++(60pt,0pt);
+% DASH-GEOMETRY compound-subpaths
+\draw[loosely dashed,dash phase=2pt,line join=round]
+  (0pt,-160pt)--(20pt,-150pt)--(30pt,-160pt)
+  (35pt,-160pt)--(60pt,-145pt);
+% DASH-GEOMETRY closed-triangle
+\draw[densely dashed,line width=1pt,line join=round]
+  (0pt,-200pt)--(30pt,-180pt)--(60pt,-200pt)--cycle;
+% DASH-GEOMETRY filled-rectangle
+\filldraw[dashed,dash phase=1pt,fill=black,fill opacity=.1,line width=1pt,line join=round]
+  (0pt,-240pt) rectangle (60pt,-220pt);
+% DASH-GEOMETRY circle-continuation
+\draw[dashdotdotted,line width=1pt] (12pt,-280pt) circle[radius=10pt] -- (60pt,-280pt);
+% DASH-GEOMETRY physical-ellipse
+\draw[dotted,line width=1.5pt,line cap=rect,line join=bevel]
+  (30pt,-320pt) ellipse[x radius=25pt,y radius=8pt];
+% DASH-GEOMETRY arc-continuation
+\draw[densely dashdotted,dash phase=1pt]
+  (0pt,-360pt) arc[start angle=90,end angle=-180,radius=12pt] -- ++(20pt,0pt);
+\begin{scope}[yshift=-400pt,rotate=30,xscale=1.25,yscale=.8]
+% DASH-GEOMETRY ordered-transform
+\draw[dash pattern={on 3pt off 2pt},dash phase=-1pt,line width=1pt,line cap=round]
+  (0pt,0pt)--(50pt,0pt)--(50pt,15pt);
+\end{scope}
+\begin{scope}[yshift=-440pt,x={(1pt,.2pt)},y={(.35pt,1pt)}]
+% DASH-GEOMETRY oblique-ellipse
+\draw[loosely dashdotdotted,line width=1pt] (30,0) ellipse[x radius=20,y radius=8];
+\end{scope}
+\begin{scope}
+\clip (4pt,-482pt) rectangle (52pt,-462pt);
+% DASH-GEOMETRY clipped-cubic
+\draw[dashed,line width=2pt,line cap=round]
+  (0pt,-478pt) .. controls (10pt,-458pt) and (50pt,-482pt) .. (60pt,-470pt);
+\end{scope}
+\begin{scope}
+\clip (2pt,-534pt) rectangle (58pt,-510pt);
+\begin{scope}
+\clip (10pt,-532pt) rectangle (48pt,-514pt);
+% DASH-GEOMETRY nested-clipped-subpaths
+\draw[dotted,line width=2pt,line cap=round]
+  (0pt,-530pt)--(60pt,-516pt) (0pt,-518pt)--(60pt,-530pt);
+\end{scope}
+\end{scope}
+\begin{scope}[yshift=-560pt,scale=1.5]
+% DASH-GEOMETRY scaled-live-width
+\draw[dotted,line width=2pt] (0pt,0pt)--(40pt,0pt);
+\end{scope}
+% DASH-GEOMETRY scope-restored
+\draw[densely dashdotdotted] (0pt,-600pt)--(60pt,-600pt);
+\end{tikzpicture}

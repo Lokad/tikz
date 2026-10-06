@@ -13,6 +13,7 @@
     <Project Path="tools/TikzShapeCalibration/TikzShapeCalibration.csproj" />
     <Project Path="tools/TikzShapePdfReference/TikzShapePdfReference.csproj" />
     <Project Path="tools/TikzDashReference/TikzDashReference.csproj" />
+    <Project Path="tools/TikzDashGeometryReference/TikzDashGeometryReference.csproj" />
     <Project Path="tools/TikzDashComparison/TikzDashComparison.csproj" />
   </Folder>
 </Solution>

@@ -179,7 +179,7 @@ internal sealed partial class Evaluator(Budget budget)
                     Flush();
                     var center = path.Current;
                     var ellipseAxes = Axes(ellipse.X, ellipse.Y, state);
-                    ShapePaths.Ellipse(path, center, ellipseAxes.X, ellipseAxes.Y);
+                    ShapePaths.Ellipse(path, center, ellipseAxes.X, ellipseAxes.Y, budget, ellipse.Source);
                     break;
                 case ArcOperation arc:
                     Flush();

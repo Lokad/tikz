@@ -4,4 +4,7 @@
     <ProjectReference Include="../../src/Lokad.TikZ/Lokad.TikZ.csproj" />
     <Compile Include="../TikzDashReference/DashEvidence.cs" Link="DashEvidence.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../TikzDashGeometryReference/DashGeometryEvidence.cs" Link="DashGeometryEvidence.cs" />
+  </ItemGroup>
 </Project>

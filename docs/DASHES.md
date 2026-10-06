@@ -76,9 +76,10 @@ reach four CSS pixels. Repeat captures are exact, and there is no changed
 ink outside the declared whole region. A reviewed PDF policy and its
 defect controls remain pending; no other corpus's tolerance applies here.
 
-Further grounding is required for curves, compound paths and subpaths,
-closed shapes, transforms, clipping, labels, and nodes. Neither this
-fixture nor the trial establishes general dash conformance.
+The separate geometry corpus below adds numeric evidence for curves,
+compound paths, closed shapes, transforms and clipping. Labels and nodes,
+broader interactions and reviewed image policies remain. Neither corpus
+nor the trial establishes general dash conformance.
 
 ## Cache controls and PDF instruction investigation
 
@@ -124,3 +125,53 @@ records and numeric evidence. Its report records both independently
 measured and PDF-printed origins; no image fitting or candidate is used.
 The rasterizer's handling of thin strokes and subpixel terminal fragments
 still needs investigation before adopting a PDF policy.
+
+## Curved, closed and clipped dash paths
+
+[TikzDashGeometryReference](../tools/TikzDashGeometryReference/README.md)
+has a separate, independently authored sixteen-paint/three-clip corpus.
+It records exact native path coordinates and cubic controls along with dash
+state. Plain and probed DVI/SVG, PDF and both PDF rasters are byte-identical;
+both drivers agree on the integer path records and picture box. Fresh
+nonoverwriting live verification passes. No older image allowance applies.
+
+    dotnet run --project tools/TikzDashGeometryReference -c Release -- check-cached
+    dotnet run --project tools/TikzDashComparison -c Release -- geometry
+    node tools/TikzVisual/dash-geometry-image-self-test.mjs
+    node tools/TikzVisual/inspect-dash-geometry.mjs
+
+The public numeric comparison passes 525 checks for normalized path segments,
+control points, dash arrays/phase, width, stroke/fill, caps/joins, opacity,
+clip bindings and picture bounds. Geometry agrees at the native integer
+scaled-point grid. Eight malformed-record controls reject incomplete paths.
+The initial run exposed 38 incorrect circle/ellipse/quarter-arc control
+coordinates. The converter now uses PGF's finite quarter-curve coefficient
+36195/65536 and scaled-point multiplication rather than ideal real arithmetic.
+The existing nine geometry conformance cases still pass unchanged.
+
+The browser command fixes cameras and sixteen regions from native evidence
+before invoking the converter. It preserves original paths and independently
+reconstructs SVG from native integer geometry, native dash state and the
+original driver's printed paint width. Natural/expanded framing, 1x/4x and
+transparent/white/black backgrounds give 24 views and 384 local observations.
+Repeated original captures are exact. There are no image limits in this route.
+Six unchanged-pair and six negative controls test clipped rendering and reject
+missing clipping, unresolved/external clips, executable attributes and duplicate IDs.
+
+Fresh GUID bundles under artifacts/dash-geometry-images retain the source,
+numeric report, complete scene/paint trace, reference snapshot, exact tool
+copies and hashes. report.json and index.html expose paired images, raw and
+amplified differences, overlays and source-linked regions. Focused crops
+include the filled rectangle, circle with continuation and oblique ellipse.
+latest.json identifies and hashes the completed report.
+
+Some 4x views still have full-channel differences and a 0.75 CSS-pixel
+maximum boundary displacement around the filled rectangle's dashed corners.
+These also occur in the candidate-independent representation. A focused
+oracle-only experiment reproduces the difference in both six- and
+twelve-decimal CSS paths, while retaining native path units plus a scale
+matches the original crop exactly at both scales. This is evidence about one
+serialization/rendering interaction, not a policy or a proposed allowance.
+Broader experiments are required before changing SVG emission. Primary
+admission, independent PDF image comparisons and their defect controls remain
+pending; the recorded PDFs alone do not establish image conformance.

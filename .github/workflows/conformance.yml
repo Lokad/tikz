@@ -23,6 +23,8 @@ jobs:
       - run: dotnet run --project tools/TikzDashReference -c Release --no-restore -- check-cached
       - run: pwsh -NoProfile -File tools/TikzDashReference/check-cached.ps1
       - run: dotnet run --project tools/TikzDashComparison -c Release --no-restore
+      - run: dotnet run --project tools/TikzDashGeometryReference -c Release --no-restore -- check-cached
+      - run: dotnet run --project tools/TikzDashComparison -c Release --no-restore -- geometry
       - run: pwsh -NoProfile -File tools/TikzShapePdfReference/check-cached.ps1
       - run: dotnet run --project tools/TikzShapeComparison -c Release --no-restore -- compare-numeric
       - run: dotnet run --project tools/TikzShapeCalibration -c Release --no-restore -- derive-svg
@@ -40,6 +42,7 @@ jobs:
             artifacts/node-shape-calibration/
             artifacts/dash-comparisons/
             artifacts/dash-cache-controls/
+            artifacts/dash-geometry-comparisons/
           if-no-files-found: error
 
   visual:
@@ -75,6 +78,9 @@ jobs:
       - run: node tools/TikzVisual/trial-dashes.mjs
       - run: node tools/TikzVisual/dash-pdf-vector-self-test.mjs
       - run: node tools/TikzVisual/inspect-dash-pdf.mjs
+      - run: node tools/TikzVisual/dash-geometry-image-self-test.mjs
+      - run: dotnet run --project tools/TikzDashComparison -c Release --no-restore -- geometry
+      - run: node tools/TikzVisual/inspect-dash-geometry.mjs
       - run: npm test --prefix tools/TikzVisual
       - run: npm run test:fonts --prefix tools/TikzVisual
       - run: npm run test:text --prefix tools/TikzVisual
@@ -120,4 +126,6 @@ jobs:
             artifacts/dash-image-trial/
             artifacts/dash-pdf-vector/
             artifacts/dash-comparisons/
+            artifacts/dash-geometry-comparisons/
+            artifacts/dash-geometry-images/
           if-no-files-found: error
