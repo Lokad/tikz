@@ -58,7 +58,9 @@ also compares pinned Cairo/Splash pages and isolated glyph/path operations.
 A separate [PDF calibration and native-page guard](tools/TikzVisual/LABELLED-BORDER-PDF-CALIBRATION.md)
 freeze independent limits and expose two faint 1x losses that PDF-only checks
 miss. Exact native-page comparison detects them; the failed PDF-only trial
-remains available. PDF image acceptance and combined admission are pending.
+remains available. A [fresh public combined trial](tools/TikzVisual/LABELLED-BORDER-COMBINED-TRIAL.md)
+passes all six numeric/image gates. Fresh public PDF/native-page sensitivity
+and immutable combined admission remain pending.
 
 The [bundled font-data prototype](tools/TikzFontData/README.md) has six
 Latin Modern faces with independent TeX metric checks and exact atlas

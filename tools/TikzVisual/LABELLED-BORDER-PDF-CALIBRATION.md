@@ -121,8 +121,9 @@ the operation; the separate public inspector supplies actual source spans.
 A fresh public feasibility probe passes 1,624 native numeric checks and exact
 native-page pixels in twelve PDF-camera views. This supports the zero-difference
 constraint for the three fixtures. It is still separate research evidence.
-Next run a fresh public combined trial requiring numeric, ink/root, primary,
-original-SVG/PDF, public-SVG/PDF and native-page gates together, with fresh public
-defects. Freeze independent pins and portable caches only after that trial and
-its corruption/sensitivity controls pass. No existing admitted profile changes,
-and no runtime dependency is added.
+The [fresh public combined trial](LABELLED-BORDER-COMBINED-TRIAL.md) now requires
+numeric, ink/root, primary, original-SVG/PDF, public-SVG/PDF and native-page gates
+together. Its saved pixels and source attribution have a separate checker.
+Fresh public image-only PDF/native-page defects remain required before freezing
+portable caches and immutable combined pins. No existing admitted profile
+changes, and no runtime dependency is added.

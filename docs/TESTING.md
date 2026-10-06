@@ -883,5 +883,27 @@ it detects all 114 visible defect views and preserves twelve exact visibility
 controls. Its checker independently re-decodes all 138 baseline/control pages
 and 7,392 whole/local metrics, with 52 controls for conjunction, zero limits and
 visibility selectors. Enlarged paired glyph/period crops expose the faint 1x differences.
-Fresh public combined trials, portable profile pins and immutable admission
+Fresh public PDF/native-page defect trials, portable profile pins and immutable admission
 remain pending; existing admitted profiles and runtime dependencies are unchanged.
+
+The [public labeled-border combined trial](../tools/TikzVisual/LABELLED-BORDER-COMBINED-TRIAL.md)
+now requires native numeric, ink/root, primary, both SVG-versus-PDF routes and
+exact native-page gates in one fresh public invocation:
+
+```text
+node tools/TikzVisual/trial-labelled-border-combined.mjs
+node tools/TikzVisual/labelled-border-combined-self-test.mjs
+```
+
+The producer pins and verifies the retained independent calibrations before
+conversion, then saves 36 primary, 24 ordinary-PDF and twelve native-page pairs.
+Its six gates require 1,624 numeric/identity checks, 276 ink/root checks, 1,980
+primary checks, 1,392 PDF checks and 672 native-page checks. The checker
+re-evaluates all gates, source/SVG attribution and actual per-quantity assertions,
+and independently re-decodes 3,960 whole/local metrics plus twelve full pages.
+Its 66 controls exercise wrong metadata, camera/coverage/limit changes and
+each required gate's failure. These local research commands need the declared
+ignored calibration bundles, .NET and the pinned browser, without TeX or a PDF
+executable; they are not standalone hosted CI steps. Fresh public PDF/native-page
+image-only defects, portable immutable caches and conformance admission remain
+pending.
