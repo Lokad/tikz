@@ -18,5 +18,9 @@
     <None Include="../Reference/NodeShapes/native/native-positions.log" Link="Reference/NodeShapes/native/native-positions.log" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../Reference/NodeShapes/fonts/*.tfm" Link="Reference/NodeShapes/fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="../../tools/TikzShapeComparison/NativeGlyphTrace.cs" Link="Harness/NativeGlyphTrace.cs" />
+    <Compile Include="../../tools/TikzShapePdfReference/PdfEvidence.cs" Link="Harness/PdfEvidence.cs" />
+    <None Include="../Reference/NodeShapes/native/oracle.log" Link="Reference/NodeShapes/native/oracle.log" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/NodeShapes/pdf/*.log" Link="Reference/NodeShapes/pdf/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Reference/NodeShapes/pdf/pdf-page-*.png" Link="Reference/NodeShapes/pdf/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

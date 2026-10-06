@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "pgf-3.1.11a-circle-ellipse-pdf-page-sp-v1",
+  "pdfLatexVersion": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+  "pdfRasterizerVersion": "pdftoppm version 24.04.0",
+  "pdfInfoVersion": "pdfinfo version 24.04.0",
+  "pdfFontsVersion": "pdffonts version 24.04.0",
+  "kpseVersion": "MiKTeX 25.4",
+  "pgfVersion": "3.1.11a",
+  "driver": "pgfsys-pdftex.def",
+  "pageWidthSp": 39321600,
+  "pageHeightSp": 52428800,
+  "scales": [1, 4],
+  "maxPagePixels": 20000000,
+  "processTimeoutSeconds": 60,
+  "maxCapturedCharacters": 1000000,
+  "scope": "Ordinary PDF for one trusted 28-node fixture; independent native/page evidence and probe invariance; no candidate or approved image/PDF tolerance."
+}

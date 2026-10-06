@@ -1,0 +1,4 @@
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+YQXFID+LMRoman10-Regular             Type 1            Custom           yes yes yes      7  0
+GNIAUX+LMRoman12-Italic              Type 1            Custom           yes yes yes      8  0

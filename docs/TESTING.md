@@ -48,7 +48,7 @@ in isolated copies. Both are ordinary CI steps without TeX or a browser. Live
 [shape tests](../tests/Lokad.TikZ.Tests/CurvedNodeTests.cs) require exact native
 layout, anchors, full background paths, picture bounds, and all 448 public
 border endpoints. They also check finite normalization, library order/isolation,
-diagnostics, shared limits, and cancellation. The current suite passes 190 tests,
+diagnostics, shared limits, and cancellation. The current suite passes 212 tests,
 including direct native glyph/affine placement and eighteen input-consistency
 controls. A separate [candidate harness](../tools/TikzShapeComparison/README.md)
 exports 4,461 source-aware numeric checks and paired inspection artifacts:
@@ -65,6 +65,25 @@ The inspector requires fresh numeric success and hashes every artifact. It saves
 CI steps. The inspector's successful artifact generation is not an image pass.
 Circle/ellipse image and PDF conformance remain pending; these cases inherit no
 existing node or path raster allowance.
+
+The separate [ordinary shape PDF reference](../tools/TikzShapePdfReference/README.md)
+now retains an independently measured native-page camera and 1x/4x page PNGs:
+
+```text
+dotnet run --project tools/TikzShapePdfReference -c Release -- check-cached
+pwsh -NoProfile -File tools/TikzShapePdfReference/check-cached.ps1
+```
+
+These are ordinary Windows/Linux CI steps with no TeX or browser requirement.
+All 1,810 native records agree with the original SVG route; plain/probed
+PDF and PNG bytes match, and two expected embedded fonts are recorded.
+Twenty-two new ordinary tests check native/page evidence and raster headers.
+Twenty-six cached controls reject missing, false, damaged and rehashed evidence
+against an external snapshot while preserving two positive cases and the
+original baseline. Reports stay under artifacts/node-shape-pdf-cache-tests/.
+Explicit live generate/verify commands additionally need the pinned MiKTeX
+and Poppler tools. This evidence establishes registration and reproducibility;
+image comparison/calibration and shape PDF admission remain pending.
 
 Run the separate [oracle-only shape calibration](../tools/TikzShapeCalibration/README.md)
 before considering any image allowance:

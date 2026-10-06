@@ -143,9 +143,13 @@ and rejects eleven image-only defects at both tested white natural scales.
 Candidate PNGs match the independent native reconstruction; original-driver
 differences remain retained. Prospective limits stay unapproved and these
 results do not establish general shape or PDF compatibility.
-Further focused and interaction corpora, regional edge/component gates,
-comparator defects and ordinary PDF
-evidence are still required. No rectangle/path raster tolerance applies to
-these new shapes. A degenerate unequal-axis border that
+The [ordinary PDF reference](../tools/TikzShapePdfReference/README.md) now
+reproduces all 1,810 native records and retains a shipped-out page camera,
+two embedded font identities and exact plain/probed PDF/PNG invariance.
+It has cached evidence controls and separately executed live verification;
+SVG-versus-PDF image calibration and admission remain pending.
+Further focused and interaction corpora, reviewed image policies and ordinary
+PDF image evidence are still required. No rectangle/path raster tolerance
+applies to these new shapes. A degenerate unequal-axis border that
 cannot be computed at native scaled-point precision fails at its source
 coordinate; callers can still use a supported explicit anchor.

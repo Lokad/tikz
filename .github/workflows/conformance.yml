@@ -19,6 +19,8 @@ jobs:
       - run: dotnet test Lokad.TikZ.slnx -c Release --no-restore
       - run: dotnet run --project tools/TikzShapeReference -c Release --no-restore -- check-cached
       - run: pwsh -NoProfile -File tools/TikzShapeReference/check-cached.ps1
+      - run: dotnet run --project tools/TikzShapePdfReference -c Release --no-restore -- check-cached
+      - run: pwsh -NoProfile -File tools/TikzShapePdfReference/check-cached.ps1
       - run: dotnet run --project tools/TikzShapeComparison -c Release --no-restore -- compare-numeric
       - run: dotnet run --project tools/TikzShapeCalibration -c Release --no-restore -- derive-svg
       - run: dotnet run --project tools/TikzReference -c Release --no-restore -- compare-node-layout
@@ -30,6 +32,7 @@ jobs:
           path: |
             artifacts/node-layout/
             artifacts/node-shape-cache-tests/
+            artifacts/node-shape-pdf-cache-tests/
             artifacts/node-shape-comparisons/
             artifacts/node-shape-calibration/
           if-no-files-found: error

@@ -11,5 +11,6 @@
     <Project Path="tools/TikzShapeReference/TikzShapeReference.csproj" />
     <Project Path="tools/TikzShapeComparison/TikzShapeComparison.csproj" />
     <Project Path="tools/TikzShapeCalibration/TikzShapeCalibration.csproj" />
+    <Project Path="tools/TikzShapePdfReference/TikzShapePdfReference.csproj" />
   </Folder>
 </Solution>
