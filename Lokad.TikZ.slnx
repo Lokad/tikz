@@ -17,5 +17,6 @@
     <Project Path="tools/TikzDashComparison/TikzDashComparison.csproj" />
     <Project Path="tools/TikzLabelledBorderComparison/TikzLabelledBorderComparison.csproj" />
     <Project Path="tools/TikzLabelledBorderOracle/TikzLabelledBorderOracle.csproj" />
+    <Project Path="tools/TikzEdgeComparison/TikzEdgeComparison.csproj" />
   </Folder>
 </Solution>

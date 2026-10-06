@@ -11,6 +11,8 @@ internal sealed partial class Evaluator(Budget budget)
     public GraphicsScene Evaluate(List<Statement> statements, TikzOptions options)
     {
         var state = new EvaluationState();
+        var origin = statements.FirstOrDefault()?.Source ?? new Source("", 0, 0);
+        state.Styles["every edge"] = [new("draw", origin.Slice(0, 0), origin)];
         foreach (var library in options.Libraries) LoadLibrary(library, state, statements.FirstOrDefault()?.Source ?? new Source("", 0, 0));
         Statements(statements, state, 0);
         return _scene;
@@ -67,9 +69,7 @@ internal sealed partial class Evaluator(Budget budget)
             var y = coordinate.Y.Evaluate(state.Variables, budget);
             if (coordinate.Polar)
             {
-                var angle = x.Value * Math.PI / 180;
-                point = y.HasUnit ? new(Math.Cos(angle) * y.Bp, Math.Sin(angle) * y.Bp)
-                    : state.XBasis * (Math.Cos(angle) * y.Value) + state.YBasis * (Math.Sin(angle) * y.Value);
+                point = Polar(x.Value, y, state, coordinate.Source);
             }
             else point = (x.HasUnit ? new Point(x.Bp, 0) : PgfTransform.Scale(state.XBasis, x.Value, budget, coordinate.Source))
                 + (y.HasUnit ? new Point(0, y.Bp) : PgfTransform.Scale(state.YBasis, y.Value, budget, coordinate.Source));
@@ -97,9 +97,7 @@ internal sealed partial class Evaluator(Budget budget)
             var y = coordinate.Y.Evaluate(state.Variables, budget);
             if (coordinate.Polar)
             {
-                var angle = x.Value * Math.PI / 180;
-                point = y.HasUnit ? new(Math.Cos(angle) * y.Bp, Math.Sin(angle) * y.Bp)
-                    : state.XBasis * (Math.Cos(angle) * y.Value) + state.YBasis * (Math.Sin(angle) * y.Value);
+                point = Polar(x.Value, y, state, coordinate.Source);
             }
             else point = (x.HasUnit ? new Point(x.Bp, 0) : PgfTransform.Scale(state.XBasis, x.Value, budget, coordinate.Source))
                 + (y.HasUnit ? new Point(0, y.Bp) : PgfTransform.Scale(state.YBasis, y.Value, budget, coordinate.Source));
@@ -107,6 +105,20 @@ internal sealed partial class Evaluator(Budget budget)
         if (coordinate.Relative != 0) point += reference;
         budget.Check(point.X, coordinate.Source); budget.Check(point.Y, coordinate.Source);
         return point;
+    }
+    private Point Polar(double degrees, Number radius, EvaluationState state, Source source)
+    {
+        var rotation = PgfTransform.Rotation(degrees, budget, source);
+        if (radius.HasUnit)
+            return PgfTransform.Scale(new(radius.Bp, 0), rotation.A, budget, source) + PgfTransform.Scale(new(0, radius.Bp), rotation.B, budget, source);
+        // pgfpointpolarxy first multiplies the radius as a TeX pt register,
+        // then prints that finite result before multiplying the basis vectors.
+        var register = new Point(radius.Value * 72 / 72.27, 0);
+        var x = PgfTransform.Scale(register, rotation.A, budget, source).X;
+        var y = PgfTransform.Scale(register, rotation.B, budget, source).X;
+        const double spPerBp = 72.27 * 65536 / 72;
+        return PgfTransform.Scale(state.XBasis, PgfTransform.Printed((long)Math.Round(x * spPerBp)), budget, source)
+            + PgfTransform.Scale(state.YBasis, PgfTransform.Printed((long)Math.Round(y * spPerBp)), budget, source);
     }
     private void Path(PathStatement statement, EvaluationState parent)
     {
@@ -119,6 +131,7 @@ internal sealed partial class Evaluator(Budget budget)
         if (state.Styles.TryGetValue("every path", out var every)) KeyRegistry.Apply(every, state, budget);
         KeyRegistry.Apply(statement.Options, state, budget);
         var path = new GraphicPath(budget, statement.Source);
+        var edges = new List<(GraphicPath Path, EvaluationState State, Source Source)>();
         var reference = default(Point);
         var position = default(Point);
         ResolvedNode? pending = null;
@@ -166,6 +179,35 @@ internal sealed partial class Evaluator(Budget budget)
                     path.Cubic(Global(a), Global(b), Global(curveNode is null ? target : NodeBorder(curveNode, b, state.Transform, curve.End.Source)));
                     position = target;
                     pending = curveNode; pendingSource = curve.End.Source;
+                    break;
+                case ToOperation to:
+                    // TikZ prescans +/++ in the enclosing coordinate system,
+                    // before applying grouped every-to and local options.
+                    var scanned = to.Target.Relative == 0 ? (Point?)null : PathCoordinate(to.Target, state, reference, out _);
+                    var enclosing = state;
+                    state = ConnectionState(to.Options, "every to", to.Source, false);
+                    var toEnd = scanned ?? PathCoordinate(to.Target, state, reference, out _);
+                    if (to.Target.Relative != 1) reference = toEnd;
+                    var toNode = scanned.HasValue ? null : ImplicitNode(to.Target);
+                    var toBorder = toNode is null ? toEnd : NodeBorder(toNode, position, state.Transform, to.Target.Source);
+                    FlushToward(toBorder); path.Line(Global(toBorder));
+                    position = toEnd; pending = toNode; pendingSource = to.Target.Source;
+                    DashPattern.Resolve(state, budget);
+                    state = enclosing;
+                    break;
+                case EdgeOperation edge:
+                    var scannedEdge = edge.Target.Relative == 0 ? (Point?)null : PathCoordinate(edge.Target, state, reference, out _);
+                    var edgeState = ConnectionState(edge.Options, "every edge", edge.Source, true);
+                    var edgeEnd = scannedEdge ?? PathCoordinate(edge.Target, edgeState, reference, out _);
+                    var edgeStart = pending is null ? position : PgfCoordinates.ToLocal(NodeAnchor(pending.Name, edge.Source), edgeState.Transform, edge.Source);
+                    var edgeNode = scannedEdge.HasValue ? null : ImplicitNode(edge.Target);
+                    var edgeBorder = edgeNode is null ? edgeEnd : NodeBorder(edgeNode, edgeStart, edgeState.Transform, edge.Target.Source);
+                    var edgeFrom = pending is null ? edgeStart : NodeBorder(pending, edgeBorder, edgeState.Transform, edge.Source);
+                    var edgePath = new GraphicPath(budget, edge.Source);
+                    edgePath.Move(PgfTransform.Apply(edgeState.Transform, edgeFrom, budget, edge.Source));
+                    edgePath.Line(PgfTransform.Apply(edgeState.Transform, edgeBorder, budget, edge.Source));
+                    DashPattern.Resolve(edgeState, budget);
+                    edges.Add((edgePath, edgeState, edge.Source));
                     break;
                 case RectangleOperation rectangle:
                     Flush();
@@ -218,6 +260,32 @@ internal sealed partial class Evaluator(Budget budget)
             _scene.InkBounds = _scene.InkBounds.Union(ink);
             _scene.Add(new(path, state.Paint, [.. state.Clips], statement.Source, ink));
         }
+        foreach (var edge in edges)
+        {
+            budget.Charge(edge.Source);
+            edge.State.Paint = EdgePaint.Resolve(edge.State, state.Paint);
+            edge.State.Clips = [.. state.Clips];
+            if (statement.Command == "\\clip")
+            {
+                edge.State.Clips.Add(_scene.Clips.Count - 1);
+                edge.State.RelevantForPictureSize = false;
+            }
+            PaintEdge(edge.Path, edge.State, edge.Source);
+        }
+        EvaluationState ConnectionState(List<Option> options, string style, Source origin, bool separate)
+        {
+            var child = state.Clone(budget, origin);
+            if (separate)
+            {
+                child.Paint = child.Paint with { Stroke = false, Fill = false };
+                child.PaintChanges = PaintChanges.None;
+                child.PendingDash = null;
+                if (child.Styles.TryGetValue("every path", out var everyPath)) KeyRegistry.Apply(everyPath, child, budget);
+            }
+            if (child.Styles.TryGetValue(style, out var everyConnection)) KeyRegistry.Apply(everyConnection, child, budget);
+            KeyRegistry.Apply(options, child, budget);
+            return child;
+        }
         Point Point(Coordinate coordinate)
         {
             var point = PathCoordinate(coordinate, state, reference, out var update);
@@ -242,6 +310,19 @@ internal sealed partial class Evaluator(Budget budget)
         Point Global(Point local) => PgfTransform.Apply(state.Transform, local, budget, statement.Source);
         static Point Corner(Point start, Point end, bool horizontalFirst)
             => horizontalFirst ? new(end.X, start.Y) : new(start.X, end.Y);
+    }
+    private void PaintEdge(GraphicPath path, EvaluationState state, Source source)
+    {
+        if (state.RelevantForPictureSize)
+        {
+            var picture = path.ControlBounds;
+            _scene.PictureBounds = _scene.PictureBounds.Union(state.Paint.Stroke ? picture.Inflate(state.Paint.Width / 2) : picture);
+        }
+        if (!state.Paint.Fill && !state.Paint.Stroke) return;
+        var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, source) : path.Bounds;
+        foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Path.Bounds);
+        _scene.InkBounds = _scene.InkBounds.Union(ink);
+        _scene.Add(new(path, state.Paint, [.. state.Clips], source, ink));
     }
     private (Point X, Point Y) Axes(Expression xRadius, Expression yRadius, EvaluationState state)
     {

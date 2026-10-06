@@ -51,7 +51,10 @@ isolated from the production library.
 A separate [straight `to`/`edge` reference corpus](tools/TikzEdgeReference/README.md)
 now retains independent native paths, node measurements, effective paint state,
 physical paint order and SVG/PDF inspection images. This prepares the compiler
-implementation; `to` and `edge` remain unsupported by the public converter.
+comparisons for the [straight connection prototype](docs/EDGES.md). The public
+converter now passes 2,585 native numeric assertions across the fixed corpus.
+Candidate images retain original-driver differences; edge image calibration
+and conformance remain pending.
 
 Three labeled-border interaction fixtures now have independent native ink/root
 calibration, a passing [prospective primary trial](tools/TikzVisual/LABELLED-BORDER-INK.md)

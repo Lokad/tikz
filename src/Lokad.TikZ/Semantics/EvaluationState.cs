@@ -11,6 +11,7 @@ internal sealed class EvaluationState
     public Point XBasis { get; set; } = new NodePoint(1864679, 0).Bp;
     public Point YBasis { get; set; } = new NodePoint(0, 1864679).Bp;
     public Paint Paint { get; set; } = new();
+    public PaintChanges PaintChanges { get; set; }
     public DashLength[] ConfiguredDash { get; set; } = [];
     public DashLength ConfiguredDashPhase { get; set; }
     public PendingDash? PendingDash { get; set; }

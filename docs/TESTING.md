@@ -35,8 +35,9 @@ repeated/concurrent conversion.
 
 The independent [straight `to`/`edge` corpus](../tools/TikzEdgeReference/README.md)
 adds five trusted native fixtures, 99 path calls, 90 paints, four measured nodes,
-64 node anchors and one named coordinate. It has no candidate implementation or
-approved image policy yet. Its required cached CI commands use Node built-ins
+64 node anchors and one named coordinate. The public straight connection
+prototype passes 2,585 numeric assertions. Image calibration remains pending.
+Its required cached CI commands use Node built-ins
 and need neither TeX nor a browser:
 
 ```text
@@ -51,7 +52,21 @@ native SVG/PDF gallery, using the existing pinned development browser, runs with
 at 1x/4x without a conformance verdict. Explicit live generation and replay
 verification are documented with the corpus.
 
-The ordinary suite currently has 307 passing cases. The separate
+The [candidate numeric command](../tools/TikzEdgeComparison/README.md) runs
+`dotnet run --project tools/TikzEdgeComparison -c Release` and needs no TeX or
+browser. It retains emitted SVG, source spans, resolved paths/nodes/glyphs,
+individual numeric assertions and captured source/reference hashes.
+`node tools/TikzVisual/edge-candidate-inspect.mjs` owns a fresh numeric run and
+renders candidate/original-SVG and candidate/original-PDF pairs at 1x/4x on
+the measured native page. It retains full pages, common integer crops, raw and
+amplified differences, overlays and an HTML viewer. No image verdict is assigned.
+The native SVG drops the degenerate round-capped edge's dot, while native PDF
+and the candidate paint it; this difference remains explicit.
+
+The ordinary suite currently has 345 passing cases. Fourteen candidate mutation
+controls reject geometry, order, missing edges, paint state, clips, picture bounds,
+glyph positions and node frames; unsupported connection forms and generated-edge
+budgets have source-attributed tests. The separate
 [dash harness](DASHES.md) validates forty native dash states and executes
 927 public numeric checks. Cached validation and the browser image trial
 are separate commands:

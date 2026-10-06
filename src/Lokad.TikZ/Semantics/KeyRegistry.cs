@@ -31,6 +31,26 @@ internal static class KeyRegistry
             }
             var value = Options.Clean(option.Value);
             var paint = state.Paint;
+            // A deferred edge overrides only commands it actually issues.
+            // Equality with the inherited value does not mean an option is absent.
+            state.PaintChanges |= key switch
+            {
+                "draw" when value.Length > 0 && value is not ("none" or "false" or "true") => PaintChanges.StrokeColor,
+                "fill" when value.Length > 0 && value is not ("none" or "false" or "true") => PaintChanges.FillColor,
+                "color" => PaintChanges.StrokeColor | PaintChanges.FillColor,
+                "opacity" => PaintChanges.StrokeOpacity | PaintChanges.FillOpacity,
+                "draw opacity" => PaintChanges.StrokeOpacity,
+                "fill opacity" => PaintChanges.FillOpacity,
+                "line cap" => PaintChanges.Cap,
+                "line join" => PaintChanges.Join,
+                "miter limit" => PaintChanges.Miter,
+                "solid" or "dashed" or "densely dashed" or "loosely dashed" or "dotted" or "densely dotted" or "loosely dotted"
+                    or "dashdotted" or "dash dot" or "densely dashdotted" or "densely dash dot" or "loosely dashdotted" or "loosely dash dot"
+                    or "dashdotdotted" or "dash dot dot" or "densely dashdotdotted" or "densely dash dot dot" or "loosely dashdotdotted" or "loosely dash dot dot"
+                    or "dash phase" or "dash pattern" => PaintChanges.Dash,
+                _ when Color.IsName(key) || key.Contains('!') => PaintChanges.StrokeColor | PaintChanges.FillColor,
+                _ => PaintChanges.None
+            };
             if (state.IsNodeContext)
             {
                 if (key is "scale" or "xscale" or "yscale" or "rotate" or "shift" or "xshift" or "yshift" or "cm")

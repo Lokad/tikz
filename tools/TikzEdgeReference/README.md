@@ -1,9 +1,10 @@
 # Straight `to` and `edge` native grounding
 
-This development-only corpus records PGF/TikZ 3.1.11a behavior before the public
-converter implements straight `to` and `edge`. Neither operation is supported by
-Lokad.TikZ yet. No command here invokes the converter, admits an image allowance,
-or establishes candidate rendering conformance.
+This development-only corpus records independent PGF/TikZ 3.1.11a behavior.
+The [public straight connection prototype](../../docs/EDGES.md) now agrees with
+its fixed numeric evidence. Native generation/validation commands here do not
+invoke the converter, admit an image allowance, or establish candidate rendering
+conformance. The references remain unchanged by candidate comparisons.
 
 Five authored [fixtures](../../tests/Fixtures/Edges) cover continuation, styles,
 coordinates, measured node borders and clipping. They produce 99 native path
@@ -101,7 +102,9 @@ and glyph edges. No thresholds are selected and no image pass is reported.
 The current driver reader verifies paint state and clip chains; it does not
 prove path geometry, text placement, or raster equivalence. Native soft paths,
 node measurements, glyph traces and original files supply the subsequent
-candidate comparison. Broader edge paths, bends, labels, arrows, libraries and
-candidate numeric/image admission remain required. Hosted CI is prepared and
+candidate comparison. A separate [numeric command and candidate gallery](../TikzEdgeComparison/README.md)
+now execute 2,585 public assertions and retain original SVG/PDF comparisons.
+Broader edge paths, bends, labels, arrows, libraries and candidate image admission
+remain required. Hosted CI is prepared and
 has not been verified by this local work. All tools stay outside the production
 package, whose dependency policy remains .NET only.

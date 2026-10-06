@@ -10,6 +10,8 @@ internal sealed record PathStatement(string Command, List<Option> Options, List<
 internal abstract record PathOperation(Source Source);
 internal sealed record MoveOperation(Coordinate Point, Source Origin) : PathOperation(Origin);
 internal sealed record LineOperation(Coordinate Point, string Kind, Source Origin) : PathOperation(Origin);
+internal sealed record ToOperation(Coordinate Target, List<Option> Options, Source Origin) : PathOperation(Origin);
+internal sealed record EdgeOperation(Coordinate Target, List<Option> Options, Source Origin) : PathOperation(Origin);
 internal sealed record CurveOperation(Coordinate A, Coordinate B, Coordinate End, Source Origin) : PathOperation(Origin);
 internal sealed record RectangleOperation(Coordinate End, Source Origin) : PathOperation(Origin);
 internal sealed record EllipseOperation(Expression X, Expression Y, Source Origin) : PathOperation(Origin);

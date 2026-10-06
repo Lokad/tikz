@@ -117,6 +117,8 @@ internal sealed class Parser(Source source, Budget budget)
             else if (_reader.Take("--")) operations.Add(_reader.Word("cycle") ? new CloseOperation(origin) : new LineOperation(ReadCoordinate(), "line", origin));
             else if (_reader.Take("|-")) operations.Add(new LineOperation(ReadCoordinate(), "vh", origin));
             else if (_reader.Take("-|")) operations.Add(new LineOperation(ReadCoordinate(), "hv", origin));
+            else if (_reader.Word("to")) operations.Add(ReadConnection(origin, false));
+            else if (_reader.Word("edge")) operations.Add(ReadConnection(origin, true));
             else if (_reader.Take(".."))
             {
                 if (!_reader.Word("controls")) throw new CompileError("TIKZ001", "Expected 'controls'.", _reader.Here);
@@ -188,6 +190,16 @@ internal sealed class Parser(Source source, Budget budget)
         var options = ReadOptions();
         CheckShapeKeys(options, key);
         return RequiredValue(options, key, _reader.Here);
+    }
+    private PathOperation ReadConnection(Source origin, bool separate)
+    {
+        var options = new List<Option>();
+        while (_reader.Peek == '[') options.AddRange(ReadOptions());
+        if (_reader.Peek is not ('(' or '+'))
+            throw new CompileError("TIKZ002", "Straight to/edge requires a coordinate target; path labels and custom to paths are unsupported.", _reader.Here);
+        var target = ReadCoordinate();
+        var span = new Source(origin.Text, origin.Offset, source.Offset + _reader.Position - origin.Offset);
+        return separate ? new EdgeOperation(target, options, span) : new ToOperation(target, options, span);
     }
     private static void CheckShapeKeys(List<Option> options, params string[] keys)
     {
