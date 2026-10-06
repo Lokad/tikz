@@ -78,5 +78,8 @@ if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 The checker converts afresh, reconstructs controlled public SVGs and expected
 frames, verifies source attribution, independently decodes saved primary/PDF/
 native-page samples and RGB sums, and rejects weakened or incomplete reports.
-It cannot promote data. Reviewed immutable admission, portable tracked evidence,
-hosted CI and broader M1–M4 compatibility remain separate work.
+It cannot promote data. [Portable tracked evidence](EDGE-CACHED.md) supplies a
+fresh trial without old research folders. The separate
+[fixed conformance command](EDGE-CONFORMANCE.md) requires that owned trial and
+checker under an immutable profile. Hosted CI and broader M1–M4 compatibility
+remain separate work.

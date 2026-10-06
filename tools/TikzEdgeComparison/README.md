@@ -59,9 +59,10 @@ an inspection run; the overall image verdict remains pending.
 The coordinate fixture has zero observed primary-page differences at 1x/4x.
 Other fixtures retain raw differences. A degenerate round-capped edge paints a
 blue dot in ordinary native PDF and the candidate SVG, while original native
-SVG reduces the path to a move and omits it. The other differences still need
-oracle-only framing/serialization/raster calibration and image-only defect
-controls. Existing profiles for other corpora do not admit these images.
+SVG reduces the path to a move and omits it. Independent framing/raster
+qualification and image-only defect controls now supply a separate
+[fixed combined admission](../TikzVisual/EDGE-CONFORMANCE.md). This inspection
+keeps its original diagnostic role; profiles for other corpora grant no allowance.
 
 Everything here is development-only. The runtime assembly references .NET
 framework assemblies only; no TeX, browser or comparison code is packaged.

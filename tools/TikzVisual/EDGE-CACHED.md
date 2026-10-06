@@ -46,7 +46,9 @@ The cached runner remains a prospective trial: `approvedImagePolicy: false`,
 `imageConformanceClaim: false`, and overall admission pending. Original-driver
 diagnostics, the corrected dot reference and reconstructed native-page equality
 retain distinct meanings. No image threshold or required view is changed.
-Immutable admission and broader TikZ interactions remain separate work.
+The [fixed conformance command](EDGE-CONFORMANCE.md) can admit this exact
+corpus through its separately pinned profile and owned proof. Broader TikZ
+interactions remain separate work.
 
 Renderer identity retains the original authoritative profile, including its OS
 release. An incompatible environment fails; no platform upgrade is inferred

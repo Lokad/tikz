@@ -25,6 +25,7 @@ jobs:
       - run: node tools/TikzVisual/edge-reference.mjs check-cached
       - run: node tools/TikzVisual/edge-evidence-self-test.mjs
       - run: node tools/TikzVisual/edge-image-cache-self-test.mjs
+      - run: node tools/TikzVisual/edge-admission-self-test.mjs
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeOracle -c Release --no-restore
       - run: node tools/TikzVisual/labelled-border-pdf-diagnostics-self-test.mjs
@@ -63,6 +64,7 @@ jobs:
             artifacts/edge-reference/
             artifacts/edge-evidence-controls/
             artifacts/edge-image-cache-controls/
+            artifacts/edge-admission-controls/
             artifacts/edge-numeric/
             artifacts/edge-oracle/
           if-no-files-found: error

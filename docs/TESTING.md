@@ -36,7 +36,9 @@ repeated/concurrent conversion.
 The independent [straight `to`/`edge` corpus](../tools/TikzEdgeReference/README.md)
 adds five trusted native fixtures, 99 path calls, 90 paints, four measured nodes,
 64 node anchors and one named coordinate. The public straight connection
-prototype passes 2,585 numeric assertions. Image calibration remains pending.
+prototype passes 2,585 numeric assertions. Its fixed image profile requires
+separate primary/PDF limits and exact independent native-page agreement;
+broader connection interactions remain pending.
 Its required cached CI commands use Node built-ins
 and need neither TeX nor a browser:
 
@@ -112,7 +114,17 @@ integrity controls, then `trial-edge-cached.mjs` for an owned fresh public trial
 and that exact trial's independent checker. The tracked independent cache keeps
 all original reports and artifacts, with compressed/decoded pins outside the
 archive. Limits, views and original-driver diagnostics remain unchanged.
-Renderer-environment compatibility and immutable admission remain explicit.
+Renderer-environment compatibility remains explicit.
+
+The [fixed straight-edge admission](../tools/TikzVisual/EDGE-CONFORMANCE.md)
+runs with `node tools/TikzVisual/compare-edge-conformance.mjs`. It requires the
+owned cached trial and checker under a separate immutable eight-gate profile,
+then retains a self-contained agent gallery with source/scene links and all
+proof artifacts. `edge-admission-self-test.mjs` supplies 80 browser-free policy
+controls; `--report <explicit admission report>` additionally verifies saved
+bytes, process/report bindings and rejected proof weakening. Raw observations
+retain unapproved roles. Hosted validation and broader connection coverage
+remain pending.
 
 The [candidate numeric command](../tools/TikzEdgeComparison/README.md) runs
 `dotnet run --project tools/TikzEdgeComparison -c Release` and needs no TeX or

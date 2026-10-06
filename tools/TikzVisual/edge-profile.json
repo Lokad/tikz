@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-native-pgf-straight-edges-v1",
+  "scope": "Only the five fixed straight to/edge fixtures: 99 paths, 90 paints, two clips, four nodes, 64 anchors, one named coordinate and 16 glyphs. Calibrated derived-driver and ordinary-PDF agreement; exact pixels refer only to the independently reconstructed native SVG page.",
+  "approvedImagePolicy": true,
+  "calibration": {
+    "file": "tests/Reference/Edges/conformance/qualifications.json.gz",
+    "sha256": "38345002d507eb509e3617475927b86e7df245c2095576b41a924203e156c7fa",
+    "decodedSha256": "630c7b9166c947b1d266df605277fdffa924f1ceef2611a714291138887ff35f",
+    "snapshotSha256": "269a0bdd6eaa7f2e71b8558ba8b2a80b797c101139ad9b52c674d1aec4f0287a"
+  },
+  "qualification": {
+    "cacheControls": "36b97cffd754194b2afb7a5df429f1ed8d1df259d88f02c6cdbb92021f57af4d",
+    "cachedTrial": "071acc378e2ca0d50a53dd47f9711392acbbadd57e8589c814c646444aa5ded1",
+    "trial": "41473c68c456a3cf7a5b4e27aa5383fbb51bdce994d6d80eb4e8840f9f85a3c9",
+    "checker": "03787497c4c7fe6bdf6ff2828a0aa2427011e91108a529edb45eb386605b099e"
+  },
+  "renderer": {
+    "profile": "chromium-153-geometry-v3",
+    "playwright": "1.63.0",
+    "browser": "153.0.8010.12",
+    "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+    "os": "win32",
+    "osRelease": "10.0.19045",
+    "architecture": "x64",
+    "node": "v24.12.0",
+    "headless": true,
+    "deviceScaleFactor": 1,
+    "viewport": {
+      "width": 1200,
+      "height": 900
+    },
+    "launchArguments": [
+      "--disable-gpu",
+      "--force-color-profile=srgb"
+    ],
+    "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+  },
+  "requiredGates": [
+    "numeric",
+    "frame",
+    "primary",
+    "derivedPdf",
+    "candidatePdf",
+    "nativePage",
+    "freshPrimary",
+    "freshPdfNative"
+  ],
+  "executedChecks": {
+    "numeric": 2585,
+    "frame": 630,
+    "primary": 3936,
+    "derivedPdf": 1372,
+    "candidatePdf": 1372,
+    "nativePage": 1332,
+    "freshPrimary": 150,
+    "freshPdfNative": 50
+  },
+  "requiredViews": {
+    "primary": [
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "black"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "black"
+      }
+    ],
+    "pdf": [
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      }
+    ]
+  },
+  "numericCounts": [
+    441,
+    462,
+    435,
+    957,
+    290
+  ],
+  "nativePageRawLimit": 0,
+  "primaryPolicySha256": "6d61146a519f912616588003b4af87ff738c03143a4e4e1b63e502c6d80c0501",
+  "claims": {
+    "primary": "calibrated-derived-driver-with-explicit-dot-correction",
+    "pdf": "separate-calibrated-derived-driver-and-native",
+    "nativePage": "exact-independent-native-SVG-page",
+    "originalDriver": "diagnostic-only",
+    "hostedExecution": "unverified"
+  },
+  "counts": {
+    "cases": 5,
+    "nativePaths": 99,
+    "paints": 90,
+    "clips": 2,
+    "nodes": 4,
+    "anchors": 64,
+    "namedCoordinates": 1,
+    "glyphs": 16,
+    "primaryViews": 60,
+    "originalDiagnosticViews": 12,
+    "pdfViewsPerRoute": 20,
+    "nativePages": 20,
+    "defects": 13,
+    "visiblePrimaryDefectViews": 134,
+    "invisiblePrimaryDefectViews": 16,
+    "primaryDefectViews": 150,
+    "pdfNativeDefectViews": 50,
+    "sourceRegions": 323
+  },
+  "defects": [
+    {
+      "name": "missing-branch",
+      "caseId": "continuation",
+      "target": "path-2",
+      "change": "remove"
+    },
+    {
+      "name": "quarter-pixel-shift",
+      "caseId": "coordinates",
+      "target": "path-15",
+      "change": "shift",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "doubled-stroke",
+      "caseId": "continuation",
+      "target": "path-2",
+      "change": "width"
+    },
+    {
+      "name": "changed-blue",
+      "caseId": "continuation",
+      "target": "path-2",
+      "change": "color"
+    },
+    {
+      "name": "missing-dashes",
+      "caseId": "styles",
+      "target": "path-13",
+      "change": "dash"
+    },
+    {
+      "name": "missing-round-cap",
+      "caseId": "styles",
+      "target": "path-16",
+      "change": "cap"
+    },
+    {
+      "name": "disabled-clip",
+      "caseId": "clipping",
+      "target": "path-2",
+      "change": "clip"
+    },
+    {
+      "name": "missing-blue-dot",
+      "caseId": "clipping",
+      "target": "path-15",
+      "change": "remove"
+    },
+    {
+      "name": "missing-period",
+      "caseId": "nodes",
+      "target": "glyph-12",
+      "change": "remove",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "missing-ligature",
+      "caseId": "nodes",
+      "target": "glyph-11",
+      "change": "remove",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "shifted-label-baseline",
+      "caseId": "nodes",
+      "target": "glyph-5",
+      "change": "baseline",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "wrong-opacity",
+      "caseId": "styles",
+      "target": "path-19",
+      "change": "opacity"
+    },
+    {
+      "name": "cropped-root",
+      "caseId": "continuation",
+      "target": "path-1",
+      "change": "root",
+      "frames": [
+        "natural"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "continuation",
+      "primaryFrameSha256": "6abece7f5be51269165bfcf52175ccd9833f19c6ffcdd109764ba644251fac9d",
+      "corrections": [],
+      "pdfCameraSha256": "59478e305a5c1206f1841a0c74602214cc51a6cdf6f611b4ebf1d6d243e78efb",
+      "pdfRegionsSha256": "43f9cc1f10f48f9408cc63eb5b36c3f50729d361cf13971f0c2097686f9a1f49",
+      "pdfPoliciesSha256": "3c36112c1874ca87a5552a5750cfbe6957edb39467e422d1122203b746f123a6"
+    },
+    {
+      "id": "styles",
+      "primaryFrameSha256": "ab350bc62b73bdd76c7556b8d8782b7737cb9ec09ac4a87a19b25ac47f64b3ea",
+      "corrections": [],
+      "pdfCameraSha256": "2a2380ca6e445adc025adc51bb745e37c1c98f52992c89e557988c7f0f809d7d",
+      "pdfRegionsSha256": "4d7c97ef971b9949b8ab310e9f4ac42088e32e4c8012b92bfc4bf2779f0aeecc",
+      "pdfPoliciesSha256": "22c9228dac7128e3ab60a2ead6f23cc5994a497b9ead061d6059b1dfcfbb2f49"
+    },
+    {
+      "id": "coordinates",
+      "primaryFrameSha256": "e6eb0a2f1023edb57a6bcb5d3039f5ed8f6333aa6113fb03eefa3215f079fce8",
+      "corrections": [],
+      "pdfCameraSha256": "ff2e448be64aa8159d432438cc465fff6f8bc42aef282ebd356cb2d0e69d5c92",
+      "pdfRegionsSha256": "d59f8fde1e4995c44b955a4fff54314a3f80053ab867b930864df8194badf8fb",
+      "pdfPoliciesSha256": "330467fb3ff21ac8aaf8162ef48029861ac4dd0fb563e4d897471c44343ce8c8"
+    },
+    {
+      "id": "nodes",
+      "primaryFrameSha256": "d22c9bcdf4ecedf2a4f51b6468a46eb8fbf794b80df9da57de0fe68f44d81492",
+      "corrections": [],
+      "pdfCameraSha256": "f1395fe341c0c2710c7a6f8cc2cc6644fd0da13ad91dca799cfda88670d4245b",
+      "pdfRegionsSha256": "6c91df2b958a7f29ae5b02e71759fadb978f68b586f9eebcab77f72996850b17",
+      "pdfPoliciesSha256": "1847decc16adf0fd637f06d9dc60a3a9038bd4e6916fbb6c966de6dcc137506f"
+    },
+    {
+      "id": "clipping",
+      "primaryFrameSha256": "81593736b72703cad227945416ade0b642b692e5a75e059623a7149fc3b73747",
+      "corrections": [
+        {
+          "nativePathId": 15,
+          "physicalPaintIndex": 9,
+          "original": "M0 205",
+          "restored": "M0 205L0 205",
+          "pointSp": {
+            "x": 0,
+            "y": 13434880
+          },
+          "widthSp": 196608,
+          "constructionCap": 0,
+          "shippedCap": 1,
+          "basis": "Both native backends retain the identical move and line; effective shipped state is an opaque blue round cap. Ordinary PDF retains the dot."
+        }
+      ],
+      "pdfCameraSha256": "6d33d558dc10c827b51e7f4b2ba770e3fe2cbf675bd4a8aa0bac3f4d87092aa7",
+      "pdfRegionsSha256": "ae1c5e50cbd04353e6aeb5d18fad05fdd54c1ebeded3c9da983b239b5a907374",
+      "pdfPoliciesSha256": "cc9aadec85b06e09796fb05bf96cfd1425ec44dd07ebef14dab38093922aa885"
+    }
+  ],
+  "guardToolHashes": {
+    "Directory.Build.props": "98e3d5ccc9e3bb57654b334f141886b192aea9e534cfb3328d88f1e0c52229f6",
+    "Lokad.TikZ.slnx": "bc809ef34f343c987b3daee8753e3faa76bf7fb9c11e35f2e5899b455e093022",
+    "global.json": "f8895c3e857eaa25f38be5e57a7581cc624727b527c94f2701fa1ba57e64f100",
+    "tools/TikzEdgeOracle/Program.cs": "ee2b0eaf76e76e22bfab5e934c43b5949bccfdd41030eba7afaa265a8acaee22",
+    "tools/TikzEdgeOracle/TikzEdgeOracle.csproj": "43d912bac94695f94a506e45b247eeff57220eed5dad99f53eaf9f177a548a2e",
+    "tools/TikzEdgeOracle/packages.lock.json": "03eeadc5ef377c17f787ab65f41fb4c8a9c936bb7f7f4171111fdeec8a81cb46",
+    "tools/TikzShapeComparison/NativeGlyphTrace.cs": "2695161667fdb35dcb3948e8d02c8c5fe035bfdd12cdddb7e8a43c375ff6e8b1",
+    "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
+    "tools/TikzVisual/calibrate-edge-pdf.mjs": "b2aa31068659b479b9f125258dfb7a40c27947e651bb57fc3738d75bd09174f8",
+    "tools/TikzVisual/calibrate-edge-primary.mjs": "4bd16f697d7d3b5b2b036c32a81eed9dfbd25048ad68efb7cbacc64564130acb",
+    "tools/TikzVisual/check-edge-pdf.mjs": "27e26a186ab62524f3f34f18672a2628970a3e7469f7144da5a464d7c22e0daa",
+    "tools/TikzVisual/check-edge-primary.mjs": "5bbd99e52324ba5cf261e6c27e8a0e56c8f9305f600de133d45b9ced4f21d53f",
+    "tools/TikzVisual/check-edge-trial.mjs": "7dc72ed7cdc90ac7f89bbcdf00967450449d782e08f3709639dde21e54f4e998",
+    "tools/TikzVisual/compare-edge-conformance.mjs": "1a39d72f51814a13e264a9cdc91c78e70cef815866a601c8ae3854beabe4e659",
+    "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+    "tools/TikzVisual/curved-node-path-units.mjs": "89e4f26565a054eda254ffbde48d7a1b08fa655ed5b3a2a1425a2fb026e53b04",
+    "tools/TikzVisual/edge-admission-owned-child.mjs": "b0355042187a682c3cf93fe6686bc3f07b5fbb7985f0f0cd5427a54a8e145e78",
+    "tools/TikzVisual/edge-admission-policy.mjs": "1634ff05c255a75bd7d6d6d09cc3d9368f0cd6c5f49cfbea9a1c7c54ee2e1cf9",
+    "tools/TikzVisual/edge-admission-self-test.mjs": "c399f69e0ce8846080ecc330c756121558761ead39e83c70ab4088c7418c60c8",
+    "tools/TikzVisual/edge-evidence.mjs": "3c94995c1a0ac044355bccf0aaff49dc4f34f495455cad0a8cb19368434ba82d",
+    "tools/TikzVisual/edge-image-cache.mjs": "9ab802aa750d06ee94db44186c458716cfac923df8b2393e7537944e2492e189",
+    "tools/TikzVisual/edge-image-owned-child.mjs": "c19156778f7f6f1c2167f2e1983642800d08b7bf5c3fa87afb2598c9b3f3fa96",
+    "tools/TikzVisual/edge-oracle-frame.mjs": "36b17d86236494ad7962becea5fcc39b962c64ebbbfcd6cdcf316fef119fac05",
+    "tools/TikzVisual/edge-oracle-pair.mjs": "20df641b0a7f6ffdb3e0795991ad2f3f709ab63e633e83087e47078c432b01d6",
+    "tools/TikzVisual/edge-oracle-pdf.mjs": "c984a9be177e1b2e3b26a568758e18e373372b30f33ab7128b73bdc5c7f7b005",
+    "tools/TikzVisual/edge-oracle-png-pair.mjs": "531e9b61384218abe95ac79a0df1be9c734dc0c510f683a142aa57c6650d23b6",
+    "tools/TikzVisual/edge-oracle.mjs": "aa4e4c2257d6aab9836186062660d8b67852f082fe09a2085e21d3cce2b928e8",
+    "tools/TikzVisual/edge-pdf-image-pair.mjs": "75e5c4fe967b280eeb1e5ab47dde1085292f021a8da455bba917736dedd14693",
+    "tools/TikzVisual/edge-pdf-ink.mjs": "de3c4ca8dc167d4384746d85d492c42c6ca64ff40b542fde999e1126d844513e",
+    "tools/TikzVisual/edge-pdf-policy.mjs": "f37686674ca4774ea1ba8b83d6ab4f9c9eba76a4dbf69703c65ab8213f6ef4d0",
+    "tools/TikzVisual/edge-pdf-registration.mjs": "90fb9a65a0f0f7dacee37936c60e0ddf748ccdb3614ea957cd971103478f6976",
+    "tools/TikzVisual/edge-pdf-sources.mjs": "faeb8b4946be9865fa845818b85a6e517223397a6801b305e179478cb9186a01",
+    "tools/TikzVisual/edge-pdf-viewport.mjs": "71e643a8987fc8d1193fe8bf6c88e5907bc022ae3a7ae972b2016b77f3195fea",
+    "tools/TikzVisual/edge-primary-defects.mjs": "254dd0d15e53f81b1d05a736f59ce32c040edf8310e5f6a3d94a3cdf40c361ee",
+    "tools/TikzVisual/edge-primary-policy.mjs": "1157bc7abfff8d7a2d847409323a5792f7f08c23598eb3ef69aa1c217af2a352",
+    "tools/TikzVisual/edge-primary-reference.mjs": "d7d3d29b516e3ad92cd109b09a8052ecda12221b2a76ac9f4cf112be514cf636",
+    "tools/TikzVisual/edge-primary-visibility.mjs": "383abd0e1f9e385317b027f4c873b0235d6eb91ee402a73e972928d5857fdb9a",
+    "tools/TikzVisual/edge-trial-defects.mjs": "8887e4a1d264b657f606e982edd745c22ec2fca07ba0d6cecd393b7b872b5ac2",
+    "tools/TikzVisual/edge-trial-frame.mjs": "b9df9e76393f114c680ed8a10d2d98f221f66a021f00ad47b62ca05c21b4abf1",
+    "tools/TikzVisual/edge-trial-images.mjs": "29a0efbe4a0f9c235436bbada725619d0e88135e9233ae92c8d824457273d320",
+    "tools/TikzVisual/edge-trial-inputs.mjs": "1688d8c38c0c537dce5325211b86faeec6767f8eb2a38441c61f959e70e6afe1",
+    "tools/TikzVisual/edge-trial-policy.mjs": "23205818e317f973be6989a20067e2a8021349f84fced0d967e99297fc40c643",
+    "tools/TikzVisual/edge-trial-sources.mjs": "847b058eaafa0e9ec5c1323c1105aceede95c3956c812c87b3f676fb741237ae",
+    "tools/TikzVisual/materialize-edge-image-cache.mjs": "bc6a4e313ad1c3c24570dabcfc1e51f138701363d1fe38f94e196a619c4a004b",
+    "tools/TikzVisual/node-profile.json": "0b60e056b2643c13d04baa7388dc1293b55081c06cd1707be23901a9245015dd",
+    "tools/TikzVisual/package-lock.json": "1493ab1a08080e8e7434844c2ff7feff20da79de3ea2c13df399d426b82316f1",
+    "tools/TikzVisual/package.json": "a7562ff94fff07cf54821025a58dec5b9bf9e3c2cae836d6d9516eae90072b9f",
+    "tools/TikzVisual/prepare-edge-admission.mjs": "fe4ffb217c53df643ef5668134e4f46065fce2e3fd1c8e731bf6780d16b0fd7b",
+    "tools/TikzVisual/shape-frame-math.mjs": "a58534df72c79553763108078400f2010b69c125d394ea6f2628d0d77545fb44",
+    "tools/TikzVisual/shape-image-pair.mjs": "32347ca682e73a1b8324928b46491da954a124a7e65bbe2ad268ab6b14707efe",
+    "tools/TikzVisual/shape-oracle-bundle.mjs": "bc0e2657627ff5caf8405cb6005da2f645b4fe3f398655c58cb867e5d38d8125",
+    "tools/TikzVisual/shape-pdf-camera.mjs": "9941c14fb2783d41a82c29c4899cac9f0d4a137008d00ffefc22c89a30613658",
+    "tools/TikzVisual/shape-pdf-image-pair.mjs": "e0cb5dc44d789dba524349c7595c6569ddd7c1c3cc61fe68bd9598daf4d260ec",
+    "tools/TikzVisual/shape-pdf-trial-policy.mjs": "fcd52ca4f9caa1512bed5b68760b541ee5be29f3a91286ef892cef42a854b4e4",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "7cbbce06ba3175ecfc4289f6019ca1571355fd70e78e280892adf00877f689c2",
+    "tools/TikzVisual/shape-raster-metrics.mjs": "bb4becb5e6025fe3d296b7536214536e486c127ffd46a4adf62fc11778861936",
+    "tools/TikzVisual/text-profile.json": "5d51a7482e3cec8896b02ebe8f9a872f8cb0bc535ddced6312bbad10f87231e1",
+    "tools/TikzVisual/trial-edge-cached.mjs": "3c9efca79526a85d2855b46cf39f78654fa311f8f69f0830d28eb29610b105c5",
+    "tools/TikzVisual/trial-edge-images.mjs": "b38c9ac8a1a92d633eb6d411d0a0507822b0356a38fcb653d113e21d1d416847"
+  }
+}

@@ -22,6 +22,8 @@ relicense font resources or generated references.
 
 See [portable trial instructions](../../../../tools/TikzVisual/EDGE-CACHED.md).
 This is development evidence, outside the runtime assembly and NuGet package.
-Its reports retain unapproved research roles; immutable image admission remains
-pending. The consumer pins both archive digests outside this file and validates
-the original report/asset bindings before invoking the converter.
+Its reports retain unapproved research roles. The separate
+[fixed conformance command](../../../../tools/TikzVisual/EDGE-CONFORMANCE.md)
+requires an owned fresh trial and checker under its immutable profile. The
+consumer pins both archive digests outside this file and validates the original
+report/asset bindings before invoking the converter.

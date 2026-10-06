@@ -5,8 +5,8 @@ Five [trusted fixtures](../tests/Fixtures/Edges) match 2,585 independent native
 assertions for geometry, effective paint, physical paint order, clip chains,
 picture bounds, node measurements, anchors and glyph positions. Their original
 PGF SVG and ordinary TikZ PDF images are retained. Separate native primary/PDF
-qualifications supply the public image trial; immutable conformance admission
-remains pending.
+qualifications supply the public image trial and its separately scoped
+[fixed conformance admission](../tools/TikzVisual/EDGE-CONFORMANCE.md).
 
 The [independent native reconstruction](../tools/TikzEdgeOracle/README.md)
 preserves original driver comparisons and separately renders retained PGF paths,
@@ -28,7 +28,7 @@ The [native-page PDF qualification](../tools/TikzVisual/EDGE-PDF.md) compares
 original, corrected and reconstructed references with ordinary TikZ PDF pages.
 Native positions and integer crops fix registration. Independent local error
 limits, exact RGB ink sums, unchanged viewport controls and image-only defects
-prepare the secondary gate. Public image admission remains pending.
+prepare the secondary gate without granting a general PDF pixel-identity claim.
 
 The [public combined trial](../tools/TikzVisual/EDGE-TRIAL.md) owns a fresh
 conversion and requires numeric, conservative frame, primary, both PDF routes,
@@ -36,8 +36,9 @@ exact reconstructed-page and fresh image-only sensitivity gates together.
 Thirteen public SVG mutations exercise small missing marks, displaced labels,
 paint, clipping and root sizing with numeric checks bypassed. Its independent
 checker reconverts, reconstructs expected frames and remeasures the saved PNGs.
-Completed trial passes retain an unapproved role; portable immutable admission
-and broader connection interactions remain separate work.
+Completed trial passes retain an unapproved role. A separate fixed profile
+admits an owned fresh trial/checker only when all eight gates pass. Broader
+connection interactions remain separate work.
 
 A [portable cached command](../tools/TikzVisual/EDGE-CACHED.md) supplies those
 independent qualification bundles entirely from tracked evidence, then owns

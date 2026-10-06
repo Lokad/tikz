@@ -53,8 +53,12 @@ now retains independent native paths, node measurements, effective paint state,
 physical paint order and SVG/PDF inspection images. This prepares the compiler
 comparisons for the [straight connection prototype](docs/EDGES.md). The public
 converter now passes 2,585 native numeric assertions across the fixed corpus.
-Candidate images retain original-driver differences; edge image calibration
-and conformance remain pending.
+Candidate images retain original-driver differences. A separate
+[fixed conformance command](tools/TikzVisual/EDGE-CONFORMANCE.md) requires all
+eight native/frame/image/sensitivity gates and an owned independent checker
+under a pinned profile. Its calibrated SVG/PDF and exact native-SVG-page claims
+apply only to those five fixtures; hosted validation and broader coverage remain
+pending.
 
 Three labeled-border interaction fixtures now have independent native ink/root
 calibration, a passing [prospective primary trial](tools/TikzVisual/LABELLED-BORDER-INK.md)
