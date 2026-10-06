@@ -68,11 +68,12 @@ also agree exactly. The diagnosis explicitly marks candidate evidence as
 consumed and never contributes a limit to independent calibration.
 
 This establishes the source of the mismatch: the earlier policy measured
-CSS paths while the writer preserves native path units. Independent
-calibration and complete sensitivity for the declared native-unit contract
-remain required before any fresh public or immutable admission. Retain the
-old CSS policy, failed trials and all competing representations. A renderer
-representation difference does not waive numeric or missing-ink checks.
+CSS paths while the writer preserves native path units. The subsequent
+[native-unit workflow](CURVED-NODE-NATIVE-UNITS.md) now performs separate
+independent calibration, complete sensitivity and a fresh public trial.
+Immutable admission remains pending. Retain the old CSS policy, failed
+trials and all competing representations. A renderer representation
+difference does not waive numeric or missing-ink checks.
 
 This experiment declares canonical UTF-8/LF source snapshots. Historical
 raw source bytes remain verified against their original hashes, and raw,
