@@ -23,7 +23,10 @@ baseline digest; the combined checker must identify that same baseline.
 These local commands require .NET 10, Node, the pinned development browser and
 the declared ignored qualification bundles. They launch neither TeX nor a PDF
 executable. A fresh checkout lacks those research bundles. Portable immutable
-profile admission and standalone hosted execution remain future work.
+profile admission and standalone hosted execution remain future work. A separate
+[portable cached research route](LABELLED-BORDER-CACHE.md) uses checked-in
+independent evidence; the historical commands above retain their original
+local bundle requirements.
 
 ## Independent expectations and retained blind spots
 
@@ -86,5 +89,6 @@ Each producer/checker attempt captures tool sources and artifacts in a fresh
 GUID bundle. Its latest pointer is incomplete on startup and failure. Failed
 attempts are preserved. A completed passing trial still has
 `approvedImagePolicy: false`, `imageConformanceClaim: false` and
-`overallVerdict: pending`. The next step is to freeze portable evidence and
-immutable combined pins with fresh sensitivity and corruption controls.
+`overallVerdict: pending`. Portable evidence is now frozen by the separate cached
+route. Immutable combined pins with fresh sensitivity and corruption controls
+remain required.

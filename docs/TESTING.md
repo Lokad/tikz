@@ -907,8 +907,8 @@ and independently re-decodes 3,960 whole/local metrics plus twelve full pages.
 Its 66 controls exercise wrong metadata, camera/coverage/limit changes and
 each required gate's failure. These local research commands need the declared
 ignored calibration bundles, .NET and the pinned browser, without TeX or a PDF
-executable; they are not standalone hosted CI steps. Portable immutable caches
-and conformance admission remain pending.
+executable; they are not standalone hosted CI steps. The separate portable route
+below freezes the evidence; conformance admission remains pending.
 
 The [fresh public PDF/native-page sensitivity harness](../tools/TikzVisual/LABELLED-BORDER-PUBLIC-PDF-SENSITIVITY.md)
 owns a new combined baseline and applies all 32 independent controls to its
@@ -932,3 +932,23 @@ These commands consume the declared ignored bundles, .NET, Node and the pinned
 browser. Reports remain unapproved research evidence pending portable immutable
 admission. Full images, source attribution and enlarged faint-loss crops are
 available in each GUID bundle's `index.html`.
+
+The [portable labeled-border cache and public trial](../tools/TikzVisual/LABELLED-BORDER-CACHE.md)
+now consume tracked independent evidence without the ignored research bundles:
+
+```text
+node tools/TikzVisual/labelled-border-cache-self-test.mjs
+node tools/TikzVisual/trial-labelled-border-cached.mjs
+node tools/TikzVisual/labelled-border-cached-self-test.mjs
+```
+
+Finish the trial before its saved-image checker. The cache checker reproduces
+17,424 independent metrics, 138 full pages and all 126 control PNG hashes, with
+44 integrity controls. The public trial requires six baseline gates plus the
+26/102-view primary and 32/126-view PDF/native image-only controls. The separate
+checker re-decodes 22,908 public metrics and 138 full pages, passes 50 controls
+and verifies all 1,624 numeric assertions and actual source attribution. Missing or weakened
+evidence fails. These commands need .NET 10, Node and the pinned browser;
+they launch no TeX or PDF executable. Existing research commands keep their
+original bundle requirements. Portable trial results remain unapproved pending
+immutable combined profile admission; hosted execution remains unverified.

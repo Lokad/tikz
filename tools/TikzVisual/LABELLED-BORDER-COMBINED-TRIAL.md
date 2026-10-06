@@ -94,6 +94,8 @@ sensitivity. The earlier [primary trial](LABELLED-BORDER-INK.md) has separate
 fresh public primary defects. The [public PDF/native-page sensitivity harness](LABELLED-BORDER-PUBLIC-PDF-SENSITIVITY.md)
 now applies all 32 independent controls to a fresh owned combined baseline and
 retains their visibility expectations and PDF-only blind spots. Its checker
-recomputes 14,784 metrics and 138 full pages. Next freeze portable evidence and
-immutable combined pins with corruption/sensitivity controls. Existing admitted
-profiles and runtime dependencies are unchanged.
+recomputes 14,784 metrics and 138 full pages. Next freeze immutable combined
+profile pins with corruption/sensitivity controls. The separate
+[portable cached trial](LABELLED-BORDER-CACHE.md) now freezes the independent
+evidence and requires fresh public primary/PDF/native controls in one run.
+Existing admitted profiles and runtime dependencies are unchanged.
