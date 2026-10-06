@@ -121,9 +121,13 @@ SVG/PDF/native/font/tool evidence and earlier observations are copied under
 indices and the original fixture identify each operation. Candidate source
 spans remain available from the separate public inspector.
 
-All attempts retain fresh GUID bundles. The next step derives a separately
-frozen PDF policy from unchanged independent evidence, then tests image-only
-defects in the full diagrams at both scales. Both original-SVG-versus-PDF and
-fresh-public-SVG-versus-PDF must pass alongside numeric, ink/root and primary
-gates before immutable combined admission. This family inherits no earlier
-shape, border or dash image allowance.
+All attempts retain fresh GUID bundles. The separate
+[PDF calibration and native-page guard](LABELLED-BORDER-PDF-CALIBRATION.md) now
+freeze original/native limits from these unchanged Cairo observations. The
+completed PDF-only trial exposes two faint 1x losses; an exact independent
+native-page gate detects them while retaining the original failed trial and
+unchanged PDF limits. Fresh public combined trials, portable immutable pins and
+conformance admission remain pending. Both original-SVG-versus-PDF and
+fresh-public-SVG-versus-PDF must pass alongside numeric, ink/root, primary and
+native-page gates. This family inherits no earlier shape, border or dash image
+allowance.

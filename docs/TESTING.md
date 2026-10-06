@@ -855,5 +855,33 @@ node tools/TikzVisual/labelled-border-pdf-diagnostics-self-test.mjs
 Its 72 controls need only Node and trusted repository evidence; neither browser
 nor PDF engine is invoked. CI uploads `artifacts/labelled-border-pdf-diagnostic-controls/`.
 Live rasterizer investigation is separate from cached CI. Raw differences and
-combined-window topology effects remain; PDF image limits, full-diagram defect
-sensitivity and immutable combined admission are pending.
+combined-window topology effects remain. The next local research stage is the
+[PDF calibration and native-page guard](../tools/TikzVisual/LABELLED-BORDER-PDF-CALIBRATION.md):
+
+```text
+node tools/TikzVisual/calibrate-labelled-border-pdf.mjs
+node tools/TikzVisual/labelled-border-pdf-calibration-self-test.mjs
+node tools/TikzVisual/check-labelled-border-pdf-sensitivity.mjs
+node tools/TikzVisual/check-labelled-border-pdf-page-guard.mjs
+node tools/TikzVisual/labelled-border-pdf-page-guard-self-test.mjs
+```
+
+These commands require the declared retained local qualification bundle, .NET,
+Node and the pinned browser, without launching TeX or a PDF engine. A new clone
+does not contain the ignored research bundles; these are not standalone hosted
+CI steps. Finish each producer before starting its dependent command.
+The PDF-only sensitivity command intentionally exits 1 with a completed failed
+trial: two visible faint losses pass its fixed 1x PDF limits, and two join
+changes produce identical 1x pixels. Preserve and inspect that report before
+running the supplementary guard against the explicitly pinned failed trial.
+
+Separate original/native calibration retains 24 pairs, 1,296 local observations
+and 1,392 policy checks. The 62-control checker reconstructs 908 native PDF
+quantities and re-decodes 1,320 whole/local measurements. The exact native-page
+guard requires the original PDF verdict and zero independent RGBA difference;
+it detects all 114 visible defect views and preserves twelve exact visibility
+controls. Its checker independently re-decodes all 138 baseline/control pages
+and 7,392 whole/local metrics, with 52 controls for conjunction, zero limits and
+visibility selectors. Enlarged paired glyph/period crops expose the faint 1x differences.
+Fresh public combined trials, portable profile pins and immutable admission
+remain pending; existing admitted profiles and runtime dependencies are unchanged.
