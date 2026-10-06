@@ -92,3 +92,9 @@ remains pending, with `converterInvoked:false`, `conformanceClaim:false` and
 defect trials, combined candidate gates, focused/interaction coverage, ordinary
 PDF calibration and reviewed admission remain required. Existing rectangle/path
 allowances do not apply. Prepared CI execution is distinct from hosted evidence.
+
+The separate [primary policy trial](PRIMARY-TRIAL.md) now consumes a fresh
+calibration, replays every recorded metric, derives independently scoped limits,
+and runs the public converter and image-only defect controls. That trial keeps
+overall admission pending and never turns these observations into a universal
+tolerance.

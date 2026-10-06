@@ -137,6 +137,12 @@ also reconstructs the declared natural root independently and records global
 and per-region channel, foreground, edge and component observations. Its
 root-only controls separate framing from changing drawing instructions;
 successful evidence generation retains pending image/PDF admission.
+The [primary image trial](../tools/TikzShapeCalibration/PRIMARY-TRIAL.md) now
+passes independently derived global/local limits in all twelve candidate views
+and rejects eleven image-only defects at both tested white natural scales.
+Candidate PNGs match the independent native reconstruction; original-driver
+differences remain retained. Prospective limits stay unapproved and these
+results do not establish general shape or PDF compatibility.
 Further focused and interaction corpora, regional edge/component gates,
 comparator defects and ordinary PDF
 evidence are still required. No rectangle/path raster tolerance applies to

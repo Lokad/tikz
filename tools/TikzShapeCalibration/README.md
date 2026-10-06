@@ -88,3 +88,9 @@ declared zero-padding root from independent native picture/ink bounds, retaining
 every native six-decimal drawing instruction. Original-primary and root-only
 pairs record global and fixed-region channel, edge and component observations.
 This remains oracle-only evidence generation with a pending admission verdict.
+
+The [primary policy trial](PRIMARY-TRIAL.md) now replays those measurements,
+derives per-region/view/background limits before candidate conversion, and tests
+missing/faint-content artifacts with numeric gates bypassed. Its public
+candidate and eleven defect controls pass their expected outcomes. The policy
+remains unapproved; PDF and wider reference coverage remain outstanding.

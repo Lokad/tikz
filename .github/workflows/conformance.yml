@@ -60,8 +60,8 @@ jobs:
       - run: node tools/TikzVisual/calibrate-shapes.mjs
       - run: node tools/TikzVisual/shape-frame-self-test.mjs
       - run: node tools/TikzVisual/shape-raster-self-test.mjs
-      - run: node tools/TikzVisual/calibrate-shape-semantic-frame.mjs
-      - run: node tools/TikzVisual/compare-shape-frames.mjs
+      - run: node tools/TikzVisual/shape-policy-self-test.mjs
+      - run: node tools/TikzVisual/trial-shape-primary.mjs
       - run: npm test --prefix tools/TikzVisual
       - run: npm run test:fonts --prefix tools/TikzVisual
       - run: npm run test:text --prefix tools/TikzVisual
@@ -101,4 +101,5 @@ jobs:
             artifacts/node-shape-frames/
             artifacts/node-shape-frame-comparisons/
             artifacts/node-shape-semantic-frame/
+            artifacts/node-shape-primary-trial/
           if-no-files-found: error

@@ -118,6 +118,25 @@ channel/foreground/edge/component observations and exact repeat controls under
 and rerun commands for direct agent inspection. Evidence generation remains
 distinct from candidate image/PDF admission; no new tolerance is approved.
 
+The [primary shape trial](../tools/TikzShapeCalibration/PRIMARY-TRIAL.md) exercises
+prospective limits against the public converter and deliberate image defects:
+
+```text
+node tools/TikzVisual/shape-policy-self-test.mjs
+node tools/TikzVisual/trial-shape-primary.mjs
+```
+
+Twenty-three policy checks reject incomplete/contradictory evidence and prove
+that local image gates can reject a faint loss that passes global metrics.
+The full trial generates fresh independent calibration before candidate
+conversion, requires the existing 4,461 native and 406 ink/frame checks, and
+passes fourteen expected control outcomes. Eleven image defects are rejected
+at both white natural scales with numeric gates bypassed. Public and independent
+replay pairs run all twelve required views. Reports, source-linked crops and
+784 PNGs remain under `artifacts/node-shape-primary-trial/` with unapproved
+limits and pending image/PDF admission. The trial includes the separate
+semantic-frame and public frame commands; CI need not invoke them again.
+
 ## Cached visual conformance
 
 Install the pinned development-only browser tooling once:
