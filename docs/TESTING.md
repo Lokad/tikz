@@ -48,6 +48,18 @@ artifacts/dash-image-trial. Its primary policy is an unapproved trial,
 and the independently registered PDF observations remain pending.
 The live verify command belongs to separate explicit MiKTeX work.
 
+Dash cache-integrity controls and independent PDF instruction diagnostics
+are also separate from admission:
+
+    pwsh -NoProfile -File tools/TikzDashReference/check-cached.ps1
+    node tools/TikzVisual/dash-pdf-vector-self-test.mjs
+    node tools/TikzVisual/inspect-dash-pdf.mjs
+
+The cache controls require the Release reference tool to be built.
+The full PDF investigation also needs the pinned development browser.
+Its 444 numeric checks and eight raw raster observations do not invoke
+the candidate or grant any image allowance.
+
 The [circle/ellipse node oracle](../tools/TikzShapeReference/README.md) supplies
 independent native references for the public numeric prototype:
 

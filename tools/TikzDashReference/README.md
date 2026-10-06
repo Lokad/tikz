@@ -14,6 +14,17 @@ records, declared tool/input identities, driver agreement, and plain/probed
 invariance without invoking TeX. Cached evidence is research evidence;
 image admission is explicitly false.
 
+After a Release build, run the separate integrity controls:
+
+    pwsh -NoProfile -File tools/TikzDashReference/check-cached.ps1
+
+Thirty disposable copies exercise two positive and twenty-eight negative
+cases, including missing/changed sources, tools and recorded inputs,
+false oracle/admission claims, and rehashed SVG/PDF/raster/log/page-origin
+tampering. Each cached check runs with PATH empty. The original snapshot,
+baseline and source hashes remain unchanged. Fresh hashed reports and
+exact control-source copies live under artifacts/dash-cache-controls.
+
 For nonoverwriting live verification:
 
     dotnet run --project tools/TikzDashReference -c Release -- verify

@@ -79,3 +79,48 @@ defect controls remain pending; no other corpus's tolerance applies here.
 Further grounding is required for curves, compound paths and subpaths,
 closed shapes, transforms, clipping, labels, and nodes. Neither this
 fixture nor the trial establishes general dash conformance.
+
+## Cache controls and PDF instruction investigation
+
+The independent cache validator also has thirty executable controls:
+
+    dotnet build tools/TikzDashReference -c Release
+    pwsh -NoProfile -File tools/TikzDashReference/check-cached.ps1
+
+Two positive copies pass and twenty-eight missing/tampered/rehashed copies
+are rejected. Each check uses a disposable repository subset and PATH
+empty; the real snapshot, artifacts and pinned sources remain unchanged.
+This tests cached integrity, separately from image-policy admission.
+
+The fixed PDF corpus has an oracle-only vector/raster diagnostic:
+
+    node tools/TikzVisual/dash-pdf-vector-self-test.mjs
+    node tools/TikzVisual/inspect-dash-pdf.mjs
+
+The decoder supports only this geometry-only reference's operations and
+has twenty-two malformed-PDF controls. Its interval analysis uses integer
+grids so floating-point remainders cannot invent terminal fragments.
+The full command validates the cache, retains original PDF instructions,
+and compares native state with PDF state: 444 checks pass. Dash dimensions
+and coordinates must round-trip to exact converted scaled-point integers;
+page dimensions and position have their separate primitive serialization
+budgets. These numeric budgets authorize no image allowance.
+
+PGF's PDF backend uses the finite factor 0.99627, represented in TeX as
+65292/65536, followed by scaled-point truncation and shortest decimal
+serialization. Its emitted values differ from SVG's physical unit ratio.
+For dense dashes, the printed PDF pattern leaves a final 0.00008 CSS-pixel
+fragment where the original SVG pattern ends in a gap. Dense dots have
+fifty original-SVG intervals versus fifty-one native/PDF intervals,
+including a tiny terminal fragment. Interval counts are geometric
+observations; they are distinct from thresholded raster component counts.
+
+Rendering reconstructed PDF instructions through the SVG browser retains
+the same four-CSS-pixel maximum boundary difference against the original
+PDF raster. Finite conversion alone does not explain those raster errors.
+The fresh GUID bundle under artifacts/dash-pdf-vector contains eight raw
+observations, exact tool copies, paired crops/contact sheets, interval
+records and numeric evidence. Its report records both independently
+measured and PDF-printed origins; no image fitting or candidate is used.
+The rasterizer's handling of thin strokes and subpixel terminal fragments
+still needs investigation before adopting a PDF policy.
