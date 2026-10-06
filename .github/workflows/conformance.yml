@@ -82,6 +82,7 @@ jobs:
       - run: dotnet run --project tools/TikzDashComparison -c Release --no-restore -- geometry
       - run: node tools/TikzVisual/inspect-dash-geometry.mjs
       - run: node tools/TikzVisual/trial-dash-path-units.mjs
+      - run: node tools/TikzVisual/trial-dash-geometry-primary.mjs
       - run: npm test --prefix tools/TikzVisual
       - run: npm run test:fonts --prefix tools/TikzVisual
       - run: npm run test:text --prefix tools/TikzVisual
@@ -130,4 +131,5 @@ jobs:
             artifacts/dash-geometry-comparisons/
             artifacts/dash-geometry-images/
             artifacts/dash-path-units/
+            artifacts/dash-geometry-primary-trial/
           if-no-files-found: error

@@ -195,6 +195,54 @@ views. All nine existing geometry conformance cases, the 22-node SVG gate,
 and the admitted RGB/rectangle-border primary/PDF gates still pass their
 unchanged profiles. No original reference or allowance was modified.
 
-Primary policy/provenance/coverage controls, independent PDF image comparisons
-and their defect controls remain pending for this new dash family. Raw image
-observations and recorded PDFs alone do not establish image conformance.
+The prospective primary trial is a separate development command:
+
+    node tools/TikzVisual/trial-dash-geometry-primary.mjs
+
+It fixes the camera and sixteen local regions from native evidence, then
+measures eight representations before invoking the converter. These combine
+native picture bounds or native control hulls expanded by the original
+printed pen width, printed or native stroke widths, and physical scaling on
+a group or individual paths. The two roots agree within half a scaled point
+in all four extents and both dimensions. Clipped paths do not contribute to
+the reconstructed picture box, following the independently observed PGF
+picture-size behavior. Each representation preserves native path integers;
+the trial performs 4,072 serialization checks.
+
+Limits are the component-wise maxima of oracle-only observations in each
+exact region/frame/scale/background, with explicit upward rounding of the
+foreground mean. No candidate measurements select a camera or allowance.
+Every representation must replay successfully. The public candidate then
+requires all 1,090 numeric checks and all twelve primary views.
+
+Nineteen visible image defects bypass numeric gates and must be rejected at
+both 1x and 4x in their affected regions, over white with natural/expanded
+frames. Root cropping uses the natural frame. Defects cover pattern/phase,
+captured width, cubic controls, subpaths, closure and continuation, caps,
+joins, physical transforms, faint strokes and fill, clips, and dimensions.
+Thirteen coverage/consistency controls reject missing or duplicate views,
+missing or chosen regions, nonfinite measurements, lost components, empty
+numeric evidence, contradictory summaries, and attempts to override failed
+numeric/frame gates with matching images.
+
+Independent visibility controls retain two limits of raster comparisons.
+The filled rectangle has dash gaps at its corners, so changing its join
+produces identical sampled pixels. An additional one-percent-opacity
+0.4pt-wide, 4pt-long line disappears at 1x and is detected at 4x. These are
+proved against independent geometry before conversion, with exact encoded
+PNG comparisons. A visible join on the triangle and a one-percent-opacity
+1pt-wide line separately test rejection at both resolutions. Semantic
+differences still require numeric checks even when images agree.
+
+Fresh GUID bundles under `artifacts/dash-geometry-primary-trial/` retain
+original, independent, candidate and defect SVGs; tool source copies;
+numeric/scene evidence; fixed regions; raw and amplified differences;
+overlays; enlarged crops; and a local viewer. The report links candidate
+regions and defects to their source spans and SVG elements. `latest.json`
+hashes the completed report. Earlier failed policies, stale-assembly guard
+failures, and resolution-dependent defect experiments remain inspectable.
+
+The trial remains unapproved and reports overall conformance as pending.
+A reviewed immutable primary snapshot with provenance controls, independent
+PDF image admission and defect controls, and label/node interactions remain
+required. Raw images and recorded PDFs alone do not establish conformance.
