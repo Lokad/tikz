@@ -75,6 +75,16 @@ and remeasures saved PNGs. Nonempty clipped-ink controls prevent a repeated blan
 pair from masquerading as a valid renderer result. These are diagnostics;
 independent tolerance calibration and public image admission remain pending.
 
+The [native primary calibration](../tools/TikzVisual/EDGE-PRIMARY.md) runs with
+`node tools/TikzVisual/calibrate-edge-primary.mjs`. Its controls run with
+`node tools/TikzVisual/edge-primary-self-test.mjs`, and an explicitly selected
+`check-edge-primary.mjs` verifies the saved run. Short native-point paths and
+six-decimal glyph matrices supply independent local limits. A derived-driver
+copy restores only the independently verified missing dot; original comparisons
+remain separate. Image-only controls distinguish visible losses from unchanged
+black-on-black and subquantum samples. These tools cannot approve conformance;
+PDF qualification and the public combined/admission gates remain required.
+
 The [candidate numeric command](../tools/TikzEdgeComparison/README.md) runs
 `dotnet run --project tools/TikzEdgeComparison -c Release` and needs no TeX or
 browser. It retains emitted SVG, source spans, resolved paths/nodes/glyphs,

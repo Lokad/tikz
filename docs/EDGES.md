@@ -17,6 +17,11 @@ Separate [operation diagnostics](../tools/TikzVisual/EDGE-OPERATIONS.md) preserv
 full cameras and effective state while isolating each native paint and glyph.
 They distinguish driver transform arithmetic from missing ink, without granting
 a converter tolerance.
+The [primary calibration](../tools/TikzVisual/EDGE-PRIMARY.md) retains a labeled
+derived-driver reference that restores only the independently verified omitted
+zero-length line. It preserves original-driver differences and tests local
+image-only sensitivity under a preselected native encoding. It grants no public
+conformance claim or PDF allowance.
 
 ```tex
 \begin{tikzpicture}

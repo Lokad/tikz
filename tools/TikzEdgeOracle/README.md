@@ -96,6 +96,13 @@ No converter image conformance is admitted. Next qualify independent precision
 and raster allowances, prove local image-only sensitivity, and run a fresh
 public-converter combined trial under a separately reviewed profile.
 
+The [native primary calibration](../TikzVisual/EDGE-PRIMARY.md) preselects short
+TeX-point paths and six-decimal glyph matrices. A labeled derived-driver copy
+restores only the verified omitted line, retaining all original comparisons.
+The complete natural/expanded matrix, independent local limits and image-only
+defects ground primary sensitivity. Renderer-only faint-paint probes have their
+own explicit calibration and visibility scope. Image/PDF admission stays pending.
+
 These tools and their browser dependencies are excluded from the runtime
 package. Cached operation needs neither TeX nor a PDF executable. Hosted CI
 steps are prepared; hosted execution and broader TikZ compatibility remain

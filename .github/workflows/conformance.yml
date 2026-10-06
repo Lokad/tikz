@@ -106,6 +106,15 @@ jobs:
           if (-not $edgeOperationRun.completed) { throw 'Native operation inspection is incomplete.' }
           node tools/TikzVisual/check-edge-operations.mjs ('artifacts/edge-operation-inspection/' + $edgeOperationRun.report)
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - run: node tools/TikzVisual/edge-primary-self-test.mjs
+      - run: node tools/TikzVisual/calibrate-edge-primary.mjs
+      - name: Verify native edge primary calibration
+        shell: pwsh
+        run: |
+          $edgePrimaryRun = Get-Content artifacts/edge-primary-calibration/latest.json -Raw | ConvertFrom-Json
+          if (-not $edgePrimaryRun.completed) { throw 'Native primary calibration is incomplete.' }
+          node tools/TikzVisual/check-edge-primary.mjs ('artifacts/edge-primary-calibration/' + $edgePrimaryRun.report)
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/inspect-shapes.mjs
       - run: node tools/TikzVisual/calibrate-shapes.mjs
       - run: node tools/TikzVisual/shape-frame-self-test.mjs
@@ -172,6 +181,9 @@ jobs:
             artifacts/edge-operation-controls/
             artifacts/edge-operation-inspection/
             artifacts/edge-operation-checks/
+            artifacts/edge-primary-controls/
+            artifacts/edge-primary-calibration/
+            artifacts/edge-primary-checks/
             artifacts/comparator-mutations/
             artifacts/font-comparisons/
             artifacts/font-comparator-mutations/
