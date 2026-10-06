@@ -21,9 +21,19 @@ separately pinned primary SVG gate:
 
 The primary gate requires twelve whole-picture and 192 local comparisons
 alongside the native/frame checks. Its 106 controls include nineteen fresh
-image-only defects with numeric checks bypassed. Ordinary PDF image admission
-and label/node interactions remain pending; primary success does not assert
-combined conformance.
+image-only defects with numeric checks bypassed. The combined gate now uses a
+separately qualified, immutable Cairo PDF profile:
+
+    node tools/TikzVisual/compare-dash-geometry-conformance.mjs
+    node tools/TikzVisual/dash-geometry-pdf-policy-self-test.mjs
+
+It requires the fresh native/frame/primary gates and four PDF views on each
+SVG side with whole-picture and sixteen local gates. Normal comparison uses
+checked-in reference rasters and needs no installed PDF engine. Its limits
+come from independent observations, exact replays, viewport controls and
+nineteen rejected defects; the original Splash references stay unchanged.
+Primary success alone does not assert combined conformance. Labels/nodes and
+other fixtures retain their separate admission states.
 
 Independent ordinary-PDF diagnostics are separate from the primary gate:
 

@@ -87,6 +87,8 @@ jobs:
       - run: node tools/TikzVisual/dash-geometry-primary-self-test.mjs
       - run: node tools/TikzVisual/dash-geometry-pdf-vector-self-test.mjs
       - run: node tools/TikzVisual/inspect-dash-geometry-pdf.mjs
+      - run: node tools/TikzVisual/compare-dash-geometry-conformance.mjs
+      - run: node tools/TikzVisual/dash-geometry-pdf-policy-self-test.mjs
       - run: npm test --prefix tools/TikzVisual
       - run: npm run test:fonts --prefix tools/TikzVisual
       - run: npm run test:text --prefix tools/TikzVisual
@@ -140,4 +142,6 @@ jobs:
             artifacts/dash-geometry-primary-controls/
             artifacts/dash-geometry-pdf-vector-controls/
             artifacts/dash-geometry-pdf/
+            artifacts/dash-geometry-conformance/
+            artifacts/dash-geometry-pdf-policy-controls/
           if-no-files-found: error

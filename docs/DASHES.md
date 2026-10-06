@@ -352,3 +352,63 @@ differences remain. The fresh diagnosis bundle owns all observations and
 paired crops; it never rewrites references or selects a tolerance. This
 isolates a reference-renderer discrepancy and grants no Cairo, PDF or combined
 admission. The converter's dash semantics and primary profile are unchanged.
+
+A separate, reviewed `cairo-24.04-dash-geometry-pdf-v1` profile now requires the
+combined native/frame/primary/PDF gates for this fixed corpus:
+
+    node tools/TikzVisual/compare-dash-geometry-conformance.mjs
+    node tools/TikzVisual/dash-geometry-pdf-policy-self-test.mjs
+
+Normal comparison uses checked-in, hash-pinned Cairo rasters of the unchanged
+ordinary TikZ PDF. It needs the pinned development browser and .NET tools;
+TeX, Cairo and upstream checkouts are required only for explicit reference
+work. Original Splash rasters, earlier research, and other fixture policies
+remain unchanged. Cairo was qualified using equivalent dash spellings and
+exact repeats before any limits or candidate measurements were considered.
+
+Independent calibration has forty observations and forty exact replays,
+54 exact native-page viewport controls, nineteen image-only defects over
+74 views, and six coverage controls. All nineteen defects fail in each
+required target region at both resolutions, including faint stroke/fill,
+pattern/phase, controls, closure/continuation, caps/joins, transforms, clips,
+extra faint content and root cropping. A separate research self-test passes
+64 controls. No converter contributes to calibration.
+
+The original SVG has its own four PDF limit rows. Candidate limits are the
+per-view/per-region maxima of exactly eight independent native SVG
+representations, with explicit upward rounding of foreground means and no
+extra margin. Literal PDF instructions provide a separate diagnostic profile
+and contribute no candidate allowance. The combined loader pins calibration
+and native digests, validates all 22 calibration-tool hashes and policy guards,
+reconstructs numeric geometry, camera, regions and representations, recomputes
+the limits, and verifies qualification/replay/defect evidence. Modified or
+consistently rehashed unreviewed data cannot silently refresh a baseline.
+
+Fresh comparison requires 1,090 public native checks, six frame checks, twelve
+primary views with 192 local regions, and four PDF views on each SVG side.
+The frozen PDF reader additionally checks 446 original instruction quantities.
+Every PDF view has whole-picture and sixteen local gates, exact repeat/page
+controls and source-linked enlarged crops. The reported labels remain
+`calibrated-primary-match` and `calibrated-PDF-cross-check`; these are measured
+allowances, with raw differences preserved. A complete combined pass applies
+only to this sixteen-paint/three-clip profile.
+
+Explicit independent research/preparation/promotion commands are:
+
+    node tools/TikzVisual/calibrate-dash-geometry-pdf-cairo.mjs
+    node tools/TikzVisual/dash-geometry-pdf-trial-self-test.mjs
+    node tools/TikzVisual/trial-dash-geometry-pdf-cairo.mjs
+    node tools/TikzVisual/prepare-dash-geometry-pdf-admission.mjs
+    node tools/TikzVisual/promote-dash-geometry-pdf.mjs
+
+The calibration producer consumes its explicitly reviewed local qualification
+report; its path and digest require an explicit source revision for new
+qualification. Preparation strips absolute executable paths and writes only
+ignored artifacts. Promotion requires the independently reviewed digest in
+the guard. Normal comparison has no baseline-writing mode. These commands
+retain the unapproved research trial and its original sources and images.
+
+Cached visual CI requires the combined gate and its corruption/candidate
+defect controls and uploads both inspection bundles. Hosted execution remains
+unverified. The forty-line dash family, labels, nodes, other fixtures and
+future libraries retain their separate admission states.

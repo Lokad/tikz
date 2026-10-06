@@ -59,8 +59,8 @@ Its 1,090 numeric checks and 24 primary views/384 local observations have
 separate provenance and admission states. Six repeated positive and six
 negative controls exercise clipped image rendering. The browser inspection
 retains raw differences without an approved threshold. A separate pinned
-primary policy now admits the sixteen-path corpus; its ordinary PDF image
-gate remains pending. Cached numeric checks belong to ordinary CI; browser
+primary policy admits the sixteen-path corpus. A separate qualified Cairo
+profile now also admits its combined PDF gate. Cached numeric checks belong to ordinary CI; browser
 inspection and its controls belong to visual CI. These inspection commands
 do not upgrade this family's evidence to combined image conformance.
 
@@ -80,7 +80,19 @@ eight independent SVG representations and literal PDF instructions in SVG
 against the unchanged ordinary TikZ PDF rasters. Fresh GUID bundles contain
 paired crops, differences, a viewer, numeric records and tool/input hashes.
 No PDF image limit is selected by this experiment. Full-channel differences
-and dash-phase discrepancies remain visible; PDF admission stays pending.
+and dash-phase discrepancies remain visible in its retained Splash results.
+The separately qualified immutable Cairo profile runs with:
+
+    node tools/TikzVisual/compare-dash-geometry-conformance.mjs
+    node tools/TikzVisual/dash-geometry-pdf-policy-self-test.mjs
+
+It requires fresh native/frame/primary gates and both original/candidate
+PDF comparisons, using checked-in independent Cairo evidence. Its allowance
+comes from forty oracle observations, forty exact replays and nineteen
+rejected image-only defects. Cached comparison needs no installed PDF engine.
+Its raw differences, source-linked crops and guard/defect evidence remain
+separate from the earlier unapproved research. See [dash grounding](DASHES.md)
+for its qualification, scope and explicit reference-revision workflow.
 
 The native path-unit experiment additionally runs with:
 

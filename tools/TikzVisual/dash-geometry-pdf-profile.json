@@ -1,0 +1,5968 @@
+{
+  "schemaVersion": 1,
+  "id": "cairo-24.04-dash-geometry-pdf-v1",
+  "scope": "Only the fixed sixteen geometry paints and three clips; independent numeric/frame/primary and both white PDF views are required.",
+  "approvedPdfPolicy": true,
+  "nativeChecks": 1090,
+  "frameChecks": 6,
+  "pdfInstructionChecks": 446,
+  "requiredViews": [
+    {
+      "frame": "natural",
+      "scale": 1,
+      "background": "white"
+    },
+    {
+      "frame": "natural",
+      "scale": 4,
+      "background": "white"
+    },
+    {
+      "frame": "expanded",
+      "scale": 1,
+      "background": "white"
+    },
+    {
+      "frame": "expanded",
+      "scale": 4,
+      "background": "white"
+    }
+  ],
+  "primaryPolicyId": "chromium-153-dash-geometry-primary-v1",
+  "primaryPolicySha256": "30646f0a06246dbec2b654751ea192f640068b549e89ef466fe83ff2a8c5a449",
+  "calibration": {
+    "file": "tests/Reference/DashGeometry/pdf-cairo/calibration.json",
+    "sha256": "36cfa5c12a6434813e681df8c4791017a689b2e9d2a4972e8fa8f13d8794001e"
+  },
+  "guardToolHashes": {
+    "tools/TikzVisual/dash-geometry-pdf-policy.mjs": "eb1e86804f9b9ed6ac92cd43feda8c8aa0c06f2d4aaaf2876e073affff716bd3",
+    "tools/TikzVisual/compare-dash-geometry-conformance.mjs": "27154d6246f759432e62c534180601825bd0f314b8ccb96a247e6dd08a0e9c0d",
+    "tools/TikzVisual/dash-geometry-pdf-policy-self-test.mjs": "f97dc62f0a99f36d8d8b0a99f57ceb5e9bba3ebf231a6c2c40f6a8b3b21e609d",
+    "tools/TikzVisual/promote-dash-geometry-pdf.mjs": "5cf7d3fb32fa839c3248e461fd961a7271296d4d7a38b71d1b9b6fd92e1183ac"
+  },
+  "camera": {
+    "origin": {
+      "x": 194.5637007381175,
+      "y": 193.23534872483398
+    },
+    "picture": {
+      "minX": -16.205890508250313,
+      "minY": -26.832706614518475,
+      "maxX": 81.02947281029473,
+      "maxY": 797.2768743189603
+    },
+    "physicalPage": {
+      "width": 797.0112079701122,
+      "height": 1062.681610626816
+    },
+    "rasterSizes": {
+      "1x": {
+        "width": 798,
+        "height": 1063
+      },
+      "4x": {
+        "width": 3189,
+        "height": 4251
+      }
+    }
+  },
+  "regions": [
+    {
+      "id": "whole-picture",
+      "nodeId": null,
+      "kind": "picture",
+      "rectangle": {
+        "x": -21,
+        "y": -31,
+        "width": 107,
+        "height": 833
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 173,
+          "y": 162,
+          "width": 108,
+          "height": 834
+        },
+        "4x": {
+          "x": 694,
+          "y": 648,
+          "width": 429,
+          "height": 3333
+        }
+      }
+    },
+    {
+      "id": "path-0",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "absolute-cubic",
+      "rectangle": {
+        "x": -4,
+        "y": -30,
+        "width": 87,
+        "height": 34
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 190,
+          "y": 163,
+          "width": 88,
+          "height": 35
+        },
+        "4x": {
+          "x": 762,
+          "y": 652,
+          "width": 349,
+          "height": 137
+        }
+      }
+    },
+    {
+      "id": "path-1",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "dotted-cubic",
+      "rectangle": {
+        "x": -4,
+        "y": 22,
+        "width": 88,
+        "height": 62
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 190,
+          "y": 215,
+          "width": 89,
+          "height": 63
+        },
+        "4x": {
+          "x": 762,
+          "y": 860,
+          "width": 353,
+          "height": 249
+        }
+      }
+    },
+    {
+      "id": "path-2",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "captured-cubic",
+      "rectangle": {
+        "x": -5,
+        "y": 75,
+        "width": 90,
+        "height": 63
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 189,
+          "y": 268,
+          "width": 91,
+          "height": 64
+        },
+        "4x": {
+          "x": 758,
+          "y": 1072,
+          "width": 361,
+          "height": 253
+        }
+      }
+    },
+    {
+      "id": "path-3",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "odd-relative-cubic",
+      "rectangle": {
+        "x": -4,
+        "y": 132,
+        "width": 87,
+        "height": 31
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 190,
+          "y": 325,
+          "width": 88,
+          "height": 32
+        },
+        "4x": {
+          "x": 762,
+          "y": 1300,
+          "width": 349,
+          "height": 125
+        }
+      }
+    },
+    {
+      "id": "path-4",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "compound-subpaths",
+      "rectangle": {
+        "x": -4,
+        "y": 189,
+        "width": 87,
+        "height": 27
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 190,
+          "y": 382,
+          "width": 88,
+          "height": 28
+        },
+        "4x": {
+          "x": 762,
+          "y": 1528,
+          "width": 349,
+          "height": 109
+        }
+      }
+    },
+    {
+      "id": "path-5",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "closed-triangle",
+      "rectangle": {
+        "x": -4,
+        "y": 235,
+        "width": 88,
+        "height": 35
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 190,
+          "y": 428,
+          "width": 89,
+          "height": 36
+        },
+        "4x": {
+          "x": 762,
+          "y": 1712,
+          "width": 353,
+          "height": 141
+        }
+      }
+    },
+    {
+      "id": "path-6",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "filled-rectangle",
+      "rectangle": {
+        "x": -4,
+        "y": 288,
+        "width": 88,
+        "height": 35
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 190,
+          "y": 481,
+          "width": 89,
+          "height": 36
+        },
+        "4x": {
+          "x": 762,
+          "y": 1924,
+          "width": 353,
+          "height": 141
+        }
+      }
+    },
+    {
+      "id": "path-7",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "circle-continuation",
+      "rectangle": {
+        "x": -2,
+        "y": 354,
+        "width": 86,
+        "height": 35
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 192,
+          "y": 547,
+          "width": 87,
+          "height": 36
+        },
+        "4x": {
+          "x": 770,
+          "y": 2188,
+          "width": 345,
+          "height": 141
+        }
+      }
+    },
+    {
+      "id": "path-8",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "physical-ellipse",
+      "rectangle": {
+        "x": 2,
+        "y": 410,
+        "width": 76,
+        "height": 30
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 196,
+          "y": 603,
+          "width": 77,
+          "height": 31
+        },
+        "4x": {
+          "x": 786,
+          "y": 2412,
+          "width": 305,
+          "height": 121
+        }
+      }
+    },
+    {
+      "id": "path-9",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "arc-continuation",
+      "rectangle": {
+        "x": -20,
+        "y": 474,
+        "width": 40,
+        "height": 40
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 174,
+          "y": 667,
+          "width": 41,
+          "height": 41
+        },
+        "4x": {
+          "x": 698,
+          "y": 2668,
+          "width": 161,
+          "height": 161
+        }
+      }
+    },
+    {
+      "id": "path-10",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "ordered-transform",
+      "rectangle": {
+        "x": -4,
+        "y": 472,
+        "width": 80,
+        "height": 64
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 190,
+          "y": 665,
+          "width": 81,
+          "height": 65
+        },
+        "4x": {
+          "x": 762,
+          "y": 2660,
+          "width": 321,
+          "height": 257
+        }
+      }
+    },
+    {
+      "id": "path-11",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "oblique-ellipse",
+      "rectangle": {
+        "x": 7,
+        "y": 559,
+        "width": 66,
+        "height": 35
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 201,
+          "y": 752,
+          "width": 67,
+          "height": 36
+        },
+        "4x": {
+          "x": 806,
+          "y": 3008,
+          "width": 265,
+          "height": 141
+        }
+      }
+    },
+    {
+      "id": "path-12",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "clipped-cubic",
+      "rectangle": {
+        "x": 2,
+        "y": 610,
+        "width": 71,
+        "height": 34
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 196,
+          "y": 803,
+          "width": 72,
+          "height": 35
+        },
+        "4x": {
+          "x": 786,
+          "y": 3212,
+          "width": 285,
+          "height": 137
+        }
+      }
+    },
+    {
+      "id": "path-13",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "nested-clipped-subpaths",
+      "rectangle": {
+        "x": 10,
+        "y": 681,
+        "width": 57,
+        "height": 28
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 204,
+          "y": 874,
+          "width": 58,
+          "height": 29
+        },
+        "4x": {
+          "x": 818,
+          "y": 3496,
+          "width": 229,
+          "height": 113
+        }
+      }
+    },
+    {
+      "id": "path-14",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "scaled-live-width",
+      "rectangle": {
+        "x": -5,
+        "y": 739,
+        "width": 90,
+        "height": 10
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 189,
+          "y": 932,
+          "width": 91,
+          "height": 11
+        },
+        "4x": {
+          "x": 758,
+          "y": 3728,
+          "width": 361,
+          "height": 41
+        }
+      }
+    },
+    {
+      "id": "path-15",
+      "nodeId": null,
+      "kind": "path",
+      "caseId": "scope-restored",
+      "rectangle": {
+        "x": -4,
+        "y": 793,
+        "width": 87,
+        "height": 8
+      },
+      "rasterRectangles": {
+        "1x": {
+          "x": 190,
+          "y": 986,
+          "width": 88,
+          "height": 9
+        },
+        "4x": {
+          "x": 762,
+          "y": 3944,
+          "width": 349,
+          "height": 33
+        }
+      }
+    }
+  ],
+  "limits": {
+    "original": {
+      "schemaVersion": 1,
+      "comparisonKind": "unapproved-shape-pdf-trial-policy",
+      "approvedImagePolicy": false,
+      "conformanceClaim": false,
+      "mode": "original-svg",
+      "camera": {
+        "origin": {
+          "x": 194.5637007381175,
+          "y": 193.23534872483398
+        },
+        "picture": {
+          "minX": -16.205890508250313,
+          "minY": -26.832706614518475,
+          "maxX": 81.02947281029473,
+          "maxY": 797.2768743189603
+        },
+        "physicalPage": {
+          "width": 797.0112079701122,
+          "height": 1062.681610626816
+        },
+        "rasterSizes": {
+          "1x": {
+            "width": 798,
+            "height": 1063
+          },
+          "4x": {
+            "width": 3189,
+            "height": 4251
+          }
+        }
+      },
+      "regions": [
+        {
+          "id": "whole-picture",
+          "nodeId": null,
+          "kind": "picture",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -21,
+            "y": -31,
+            "width": 107,
+            "height": 833
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 173,
+              "y": 162,
+              "width": 108,
+              "height": 834
+            },
+            "4x": {
+              "x": 694,
+              "y": 648,
+              "width": 429,
+              "height": 3333
+            }
+          }
+        },
+        {
+          "id": "path-0",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": -30,
+            "width": 87,
+            "height": 34
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 163,
+              "width": 88,
+              "height": 35
+            },
+            "4x": {
+              "x": 762,
+              "y": 652,
+              "width": 349,
+              "height": 137
+            }
+          }
+        },
+        {
+          "id": "path-1",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 22,
+            "width": 88,
+            "height": 62
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 215,
+              "width": 89,
+              "height": 63
+            },
+            "4x": {
+              "x": 762,
+              "y": 860,
+              "width": 353,
+              "height": 249
+            }
+          }
+        },
+        {
+          "id": "path-2",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -5,
+            "y": 75,
+            "width": 90,
+            "height": 63
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 189,
+              "y": 268,
+              "width": 91,
+              "height": 64
+            },
+            "4x": {
+              "x": 758,
+              "y": 1072,
+              "width": 361,
+              "height": 253
+            }
+          }
+        },
+        {
+          "id": "path-3",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 132,
+            "width": 87,
+            "height": 31
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 325,
+              "width": 88,
+              "height": 32
+            },
+            "4x": {
+              "x": 762,
+              "y": 1300,
+              "width": 349,
+              "height": 125
+            }
+          }
+        },
+        {
+          "id": "path-4",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 189,
+            "width": 87,
+            "height": 27
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 382,
+              "width": 88,
+              "height": 28
+            },
+            "4x": {
+              "x": 762,
+              "y": 1528,
+              "width": 349,
+              "height": 109
+            }
+          }
+        },
+        {
+          "id": "path-5",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 235,
+            "width": 88,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 428,
+              "width": 89,
+              "height": 36
+            },
+            "4x": {
+              "x": 762,
+              "y": 1712,
+              "width": 353,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-6",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 288,
+            "width": 88,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 481,
+              "width": 89,
+              "height": 36
+            },
+            "4x": {
+              "x": 762,
+              "y": 1924,
+              "width": 353,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-7",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -2,
+            "y": 354,
+            "width": 86,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 192,
+              "y": 547,
+              "width": 87,
+              "height": 36
+            },
+            "4x": {
+              "x": 770,
+              "y": 2188,
+              "width": 345,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-8",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 2,
+            "y": 410,
+            "width": 76,
+            "height": 30
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 196,
+              "y": 603,
+              "width": 77,
+              "height": 31
+            },
+            "4x": {
+              "x": 786,
+              "y": 2412,
+              "width": 305,
+              "height": 121
+            }
+          }
+        },
+        {
+          "id": "path-9",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -20,
+            "y": 474,
+            "width": 40,
+            "height": 40
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 174,
+              "y": 667,
+              "width": 41,
+              "height": 41
+            },
+            "4x": {
+              "x": 698,
+              "y": 2668,
+              "width": 161,
+              "height": 161
+            }
+          }
+        },
+        {
+          "id": "path-10",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 472,
+            "width": 80,
+            "height": 64
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 665,
+              "width": 81,
+              "height": 65
+            },
+            "4x": {
+              "x": 762,
+              "y": 2660,
+              "width": 321,
+              "height": 257
+            }
+          }
+        },
+        {
+          "id": "path-11",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 7,
+            "y": 559,
+            "width": 66,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 201,
+              "y": 752,
+              "width": 67,
+              "height": 36
+            },
+            "4x": {
+              "x": 806,
+              "y": 3008,
+              "width": 265,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-12",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 2,
+            "y": 610,
+            "width": 71,
+            "height": 34
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 196,
+              "y": 803,
+              "width": 72,
+              "height": 35
+            },
+            "4x": {
+              "x": 786,
+              "y": 3212,
+              "width": 285,
+              "height": 137
+            }
+          }
+        },
+        {
+          "id": "path-13",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 10,
+            "y": 681,
+            "width": 57,
+            "height": 28
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 204,
+              "y": 874,
+              "width": 58,
+              "height": 29
+            },
+            "4x": {
+              "x": 818,
+              "y": 3496,
+              "width": 229,
+              "height": 113
+            }
+          }
+        },
+        {
+          "id": "path-14",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -5,
+            "y": 739,
+            "width": 90,
+            "height": 10
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 189,
+              "y": 932,
+              "width": 91,
+              "height": 11
+            },
+            "4x": {
+              "x": 758,
+              "y": 3728,
+              "width": 361,
+              "height": 41
+            }
+          }
+        },
+        {
+          "id": "path-15",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 793,
+            "width": 87,
+            "height": 8
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 986,
+              "width": 88,
+              "height": 9
+            },
+            "4x": {
+              "x": 762,
+              "y": 3944,
+              "width": 349,
+              "height": 33
+            }
+          }
+        }
+      ],
+      "rows": [
+        {
+          "frame": "natural",
+          "scale": 1,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 5139,
+                "maxRawChannelError": 144,
+                "premultipliedChangedPixels": 5139,
+                "maxPremultipliedChannelError": 144,
+                "meanForegroundChannelError": 8.751765226,
+                "componentDifference": 23,
+                "maxEdgeDisplacementRasterPixels": 2,
+                "foregroundCountDifference": 344,
+                "reference": {
+                  "foregroundPixels": 5630,
+                  "components": 175,
+                  "edgePixels": 2485
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 132,
+                "maxRawChannelError": 131,
+                "premultipliedChangedPixels": 132,
+                "maxPremultipliedChannelError": 131,
+                "meanForegroundChannelError": 36.552631579,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 14,
+                "reference": {
+                  "foregroundPixels": 131,
+                  "components": 13,
+                  "edgePixels": 110
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 218,
+                "maxRawChannelError": 44,
+                "premultipliedChangedPixels": 218,
+                "maxPremultipliedChannelError": 44,
+                "meanForegroundChannelError": 7.81097561,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 245,
+                  "components": 1,
+                  "edgePixels": 168
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 53,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 53,
+                "meanForegroundChannelError": 8.217948718,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 22,
+                "reference": {
+                  "foregroundPixels": 231,
+                  "components": 18,
+                  "edgePixels": 143
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 144,
+                "maxRawChannelError": 131,
+                "premultipliedChangedPixels": 144,
+                "maxPremultipliedChannelError": 131,
+                "meanForegroundChannelError": 32.565517242,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 26,
+                "reference": {
+                  "foregroundPixels": 140,
+                  "components": 13,
+                  "edgePixels": 101
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 95,
+                "maxRawChannelError": 120,
+                "premultipliedChangedPixels": 95,
+                "maxPremultipliedChannelError": 120,
+                "meanForegroundChannelError": 34.365789474,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 27,
+                "reference": {
+                  "foregroundPixels": 92,
+                  "components": 9,
+                  "edgePixels": 61
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 307,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 307,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 6.916139241,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 40,
+                "reference": {
+                  "foregroundPixels": 316,
+                  "components": 25,
+                  "edgePixels": 238
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 2236,
+                "maxRawChannelError": 28,
+                "premultipliedChangedPixels": 2236,
+                "maxPremultipliedChannelError": 28,
+                "meanForegroundChannelError": 1.619755994,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 34,
+                "reference": {
+                  "foregroundPixels": 2336,
+                  "components": 1,
+                  "edgePixels": 232
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 104,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 104,
+                "meanForegroundChannelError": 12.753731344,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 23,
+                "reference": {
+                  "foregroundPixels": 198,
+                  "components": 32,
+                  "edgePixels": 161
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 369,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 369,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 10.284065935,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 32,
+                "reference": {
+                  "foregroundPixels": 454,
+                  "components": 1,
+                  "edgePixels": 279
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 210,
+                "maxRawChannelError": 136,
+                "premultipliedChangedPixels": 210,
+                "maxPremultipliedChannelError": 136,
+                "meanForegroundChannelError": 33.878571429,
+                "componentDifference": 8,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 200,
+                  "components": 7,
+                  "edgePixels": 154
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 364,
+                "maxRawChannelError": 127,
+                "premultipliedChangedPixels": 364,
+                "maxPremultipliedChannelError": 127,
+                "meanForegroundChannelError": 16.424796748,
+                "componentDifference": 9,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 44,
+                "reference": {
+                  "foregroundPixels": 365,
+                  "components": 10,
+                  "edgePixels": 266
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 116,
+                "maxRawChannelError": 79,
+                "premultipliedChangedPixels": 116,
+                "maxPremultipliedChannelError": 79,
+                "meanForegroundChannelError": 11.711065574,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 24,
+                "reference": {
+                  "foregroundPixels": 117,
+                  "components": 18,
+                  "edgePixels": 82
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 151,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 151,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 6.746606335,
+                "componentDifference": 3,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 16,
+                "reference": {
+                  "foregroundPixels": 221,
+                  "components": 4,
+                  "edgePixels": 133
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 237,
+                "maxRawChannelError": 49,
+                "premultipliedChangedPixels": 237,
+                "maxPremultipliedChannelError": 49,
+                "meanForegroundChannelError": 4.721207866,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 16,
+                "reference": {
+                  "foregroundPixels": 356,
+                  "components": 1,
+                  "edgePixels": 176
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 168,
+                "maxRawChannelError": 14,
+                "premultipliedChangedPixels": 168,
+                "maxPremultipliedChannelError": 14,
+                "meanForegroundChannelError": 3.593181819,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 5,
+                "reference": {
+                  "foregroundPixels": 220,
+                  "components": 15,
+                  "edgePixels": 157
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 150,
+                "maxRawChannelError": 144,
+                "premultipliedChangedPixels": 150,
+                "maxPremultipliedChannelError": 144,
+                "meanForegroundChannelError": 37.96381579,
+                "componentDifference": 12,
+                "maxEdgeDisplacementRasterPixels": 2,
+                "foregroundCountDifference": 2,
+                "reference": {
+                  "foregroundPixels": 150,
+                  "components": 11,
+                  "edgePixels": 132
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        },
+        {
+          "frame": "natural",
+          "scale": 4,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 45506,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 45506,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 2.593181749,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 1456,
+                "reference": {
+                  "foregroundPixels": 64797,
+                  "components": 260,
+                  "edgePixels": 10412
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 505,
+                "maxRawChannelError": 83,
+                "premultipliedChangedPixels": 505,
+                "maxPremultipliedChannelError": 83,
+                "meanForegroundChannelError": 7.982683983,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 36,
+                "reference": {
+                  "foregroundPixels": 688,
+                  "components": 13,
+                  "edgePixels": 415
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 922,
+                "maxRawChannelError": 119,
+                "premultipliedChangedPixels": 922,
+                "maxPremultipliedChannelError": 119,
+                "meanForegroundChannelError": 4.975546606,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 55,
+                "reference": {
+                  "foregroundPixels": 2599,
+                  "components": 1,
+                  "edgePixels": 681
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 821,
+                "maxRawChannelError": 81,
+                "premultipliedChangedPixels": 821,
+                "maxPremultipliedChannelError": 81,
+                "meanForegroundChannelError": 4.684198332,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 84,
+                "reference": {
+                  "foregroundPixels": 2154,
+                  "components": 18,
+                  "edgePixels": 645
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 518,
+                "maxRawChannelError": 64,
+                "premultipliedChangedPixels": 518,
+                "maxPremultipliedChannelError": 64,
+                "meanForegroundChannelError": 7.131676558,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 46,
+                "reference": {
+                  "foregroundPixels": 667,
+                  "components": 18,
+                  "edgePixels": 388
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 350,
+                "maxRawChannelError": 41,
+                "premultipliedChangedPixels": 350,
+                "maxPremultipliedChannelError": 41,
+                "meanForegroundChannelError": 5.322748268,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 42,
+                "reference": {
+                  "foregroundPixels": 433,
+                  "components": 9,
+                  "edgePixels": 231
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 1040,
+                "maxRawChannelError": 40,
+                "premultipliedChangedPixels": 1040,
+                "maxPremultipliedChannelError": 40,
+                "meanForegroundChannelError": 1.994383995,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 83,
+                "reference": {
+                  "foregroundPixels": 2849,
+                  "components": 26,
+                  "edgePixels": 991
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 33820,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 33820,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 0.846135443,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 156,
+                "reference": {
+                  "foregroundPixels": 35528,
+                  "components": 1,
+                  "edgePixels": 957
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 894,
+                "maxRawChannelError": 124,
+                "premultipliedChangedPixels": 894,
+                "maxPremultipliedChannelError": 124,
+                "meanForegroundChannelError": 9.336024663,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 56,
+                "reference": {
+                  "foregroundPixels": 1691,
+                  "components": 33,
+                  "edgePixels": 758
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 1705,
+                "maxRawChannelError": 121,
+                "premultipliedChangedPixels": 1705,
+                "maxPremultipliedChannelError": 121,
+                "meanForegroundChannelError": 5.176610616,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 140,
+                "reference": {
+                  "foregroundPixels": 4906,
+                  "components": 27,
+                  "edgePixels": 1399
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 739,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 739,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 13.008975713,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 76,
+                "reference": {
+                  "foregroundPixels": 931,
+                  "components": 29,
+                  "edgePixels": 573
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 1393,
+                "maxRawChannelError": 106,
+                "premultipliedChangedPixels": 1393,
+                "maxPremultipliedChannelError": 106,
+                "meanForegroundChannelError": 5.811325967,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 4.47213595499958,
+                "foregroundCountDifference": 125,
+                "reference": {
+                  "foregroundPixels": 2702,
+                  "components": 36,
+                  "edgePixels": 1035
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 503,
+                "maxRawChannelError": 103,
+                "premultipliedChangedPixels": 503,
+                "maxPremultipliedChannelError": 103,
+                "meanForegroundChannelError": 9.379058442,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 55,
+                "reference": {
+                  "foregroundPixels": 922,
+                  "components": 18,
+                  "edgePixels": 391
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 628,
+                "maxRawChannelError": 89,
+                "premultipliedChangedPixels": 628,
+                "maxPremultipliedChannelError": 89,
+                "meanForegroundChannelError": 3.408364084,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 61,
+                "reference": {
+                  "foregroundPixels": 2432,
+                  "components": 9,
+                  "edgePixels": 525
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 1082,
+                "maxRawChannelError": 62,
+                "premultipliedChangedPixels": 1082,
+                "maxPremultipliedChannelError": 62,
+                "meanForegroundChannelError": 2.185178572,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 85,
+                "reference": {
+                  "foregroundPixels": 4200,
+                  "components": 1,
+                  "edgePixels": 770
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 589,
+                "maxRawChannelError": 20,
+                "premultipliedChangedPixels": 589,
+                "maxPremultipliedChannelError": 20,
+                "meanForegroundChannelError": 2.208223858,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 0,
+                "foregroundCountDifference": 0,
+                "reference": {
+                  "foregroundPixels": 1903,
+                  "components": 15,
+                  "edgePixels": 616
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 493,
+                "maxRawChannelError": 22,
+                "premultipliedChangedPixels": 493,
+                "maxPremultipliedChannelError": 22,
+                "meanForegroundChannelError": 5.397076736,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 409,
+                "reference": {
+                  "foregroundPixels": 821,
+                  "components": 27,
+                  "edgePixels": 427
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        },
+        {
+          "frame": "expanded",
+          "scale": 1,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 5138,
+                "maxRawChannelError": 136,
+                "premultipliedChangedPixels": 5138,
+                "maxPremultipliedChannelError": 136,
+                "meanForegroundChannelError": 8.43799647,
+                "componentDifference": 15,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 344,
+                "reference": {
+                  "foregroundPixels": 5630,
+                  "components": 175,
+                  "edgePixels": 2485
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 132,
+                "maxRawChannelError": 130,
+                "premultipliedChangedPixels": 132,
+                "maxPremultipliedChannelError": 130,
+                "meanForegroundChannelError": 36.389097745,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 14,
+                "reference": {
+                  "foregroundPixels": 131,
+                  "components": 13,
+                  "edgePixels": 110
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 218,
+                "maxRawChannelError": 44,
+                "premultipliedChangedPixels": 218,
+                "maxPremultipliedChannelError": 44,
+                "meanForegroundChannelError": 7.81097561,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 245,
+                  "components": 1,
+                  "edgePixels": 168
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 53,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 53,
+                "meanForegroundChannelError": 8.217948718,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 22,
+                "reference": {
+                  "foregroundPixels": 231,
+                  "components": 18,
+                  "edgePixels": 143
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 143,
+                "maxRawChannelError": 130,
+                "premultipliedChangedPixels": 143,
+                "maxPremultipliedChannelError": 130,
+                "meanForegroundChannelError": 32.451724138,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 26,
+                "reference": {
+                  "foregroundPixels": 140,
+                  "components": 13,
+                  "edgePixels": 101
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 95,
+                "maxRawChannelError": 120,
+                "premultipliedChangedPixels": 95,
+                "maxPremultipliedChannelError": 120,
+                "meanForegroundChannelError": 34.365789474,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 27,
+                "reference": {
+                  "foregroundPixels": 92,
+                  "components": 9,
+                  "edgePixels": 61
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 307,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 307,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 6.916139241,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 40,
+                "reference": {
+                  "foregroundPixels": 316,
+                  "components": 25,
+                  "edgePixels": 238
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 2236,
+                "maxRawChannelError": 28,
+                "premultipliedChangedPixels": 2236,
+                "maxPremultipliedChannelError": 28,
+                "meanForegroundChannelError": 1.619755994,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 34,
+                "reference": {
+                  "foregroundPixels": 2336,
+                  "components": 1,
+                  "edgePixels": 232
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 104,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 104,
+                "meanForegroundChannelError": 12.753731344,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 23,
+                "reference": {
+                  "foregroundPixels": 198,
+                  "components": 32,
+                  "edgePixels": 161
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 369,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 369,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 10.284065935,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 32,
+                "reference": {
+                  "foregroundPixels": 454,
+                  "components": 1,
+                  "edgePixels": 279
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 210,
+                "maxRawChannelError": 136,
+                "premultipliedChangedPixels": 210,
+                "maxPremultipliedChannelError": 136,
+                "meanForegroundChannelError": 33.485714286,
+                "componentDifference": 8,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 200,
+                  "components": 7,
+                  "edgePixels": 154
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 364,
+                "maxRawChannelError": 127,
+                "premultipliedChangedPixels": 364,
+                "maxPremultipliedChannelError": 127,
+                "meanForegroundChannelError": 16.396341464,
+                "componentDifference": 9,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 44,
+                "reference": {
+                  "foregroundPixels": 365,
+                  "components": 10,
+                  "edgePixels": 266
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 116,
+                "maxRawChannelError": 79,
+                "premultipliedChangedPixels": 116,
+                "maxPremultipliedChannelError": 79,
+                "meanForegroundChannelError": 11.711065574,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 24,
+                "reference": {
+                  "foregroundPixels": 117,
+                  "components": 18,
+                  "edgePixels": 82
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 151,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 151,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 6.746606335,
+                "componentDifference": 3,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 16,
+                "reference": {
+                  "foregroundPixels": 221,
+                  "components": 4,
+                  "edgePixels": 133
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 237,
+                "maxRawChannelError": 49,
+                "premultipliedChangedPixels": 237,
+                "maxPremultipliedChannelError": 49,
+                "meanForegroundChannelError": 4.721207866,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 16,
+                "reference": {
+                  "foregroundPixels": 356,
+                  "components": 1,
+                  "edgePixels": 176
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 168,
+                "maxRawChannelError": 14,
+                "premultipliedChangedPixels": 168,
+                "maxPremultipliedChannelError": 14,
+                "meanForegroundChannelError": 3.593181819,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 5,
+                "reference": {
+                  "foregroundPixels": 220,
+                  "components": 15,
+                  "edgePixels": 157
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 150,
+                "maxRawChannelError": 95,
+                "premultipliedChangedPixels": 150,
+                "maxPremultipliedChannelError": 95,
+                "meanForegroundChannelError": 27.064144737,
+                "componentDifference": 4,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 2,
+                "reference": {
+                  "foregroundPixels": 150,
+                  "components": 11,
+                  "edgePixels": 132
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        },
+        {
+          "frame": "expanded",
+          "scale": 4,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 45506,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 45506,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 2.592673211,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 1456,
+                "reference": {
+                  "foregroundPixels": 64797,
+                  "components": 260,
+                  "edgePixels": 10412
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 505,
+                "maxRawChannelError": 83,
+                "premultipliedChangedPixels": 505,
+                "maxPremultipliedChannelError": 83,
+                "meanForegroundChannelError": 7.982683983,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 36,
+                "reference": {
+                  "foregroundPixels": 688,
+                  "components": 13,
+                  "edgePixels": 415
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 922,
+                "maxRawChannelError": 119,
+                "premultipliedChangedPixels": 922,
+                "maxPremultipliedChannelError": 119,
+                "meanForegroundChannelError": 4.975546606,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 55,
+                "reference": {
+                  "foregroundPixels": 2599,
+                  "components": 1,
+                  "edgePixels": 681
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 821,
+                "maxRawChannelError": 81,
+                "premultipliedChangedPixels": 821,
+                "maxPremultipliedChannelError": 81,
+                "meanForegroundChannelError": 4.684198332,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 84,
+                "reference": {
+                  "foregroundPixels": 2154,
+                  "components": 18,
+                  "edgePixels": 645
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 518,
+                "maxRawChannelError": 64,
+                "premultipliedChangedPixels": 518,
+                "maxPremultipliedChannelError": 64,
+                "meanForegroundChannelError": 7.131676558,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 46,
+                "reference": {
+                  "foregroundPixels": 667,
+                  "components": 18,
+                  "edgePixels": 388
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 350,
+                "maxRawChannelError": 41,
+                "premultipliedChangedPixels": 350,
+                "maxPremultipliedChannelError": 41,
+                "meanForegroundChannelError": 5.322748268,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 42,
+                "reference": {
+                  "foregroundPixels": 433,
+                  "components": 9,
+                  "edgePixels": 231
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 1040,
+                "maxRawChannelError": 40,
+                "premultipliedChangedPixels": 1040,
+                "maxPremultipliedChannelError": 40,
+                "meanForegroundChannelError": 1.994383995,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 83,
+                "reference": {
+                  "foregroundPixels": 2849,
+                  "components": 26,
+                  "edgePixels": 991
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 33820,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 33820,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 0.846135443,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 156,
+                "reference": {
+                  "foregroundPixels": 35528,
+                  "components": 1,
+                  "edgePixels": 957
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 894,
+                "maxRawChannelError": 124,
+                "premultipliedChangedPixels": 894,
+                "maxPremultipliedChannelError": 124,
+                "meanForegroundChannelError": 9.336024663,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 56,
+                "reference": {
+                  "foregroundPixels": 1691,
+                  "components": 33,
+                  "edgePixels": 758
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 1705,
+                "maxRawChannelError": 121,
+                "premultipliedChangedPixels": 1705,
+                "maxPremultipliedChannelError": 121,
+                "meanForegroundChannelError": 5.176610616,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 140,
+                "reference": {
+                  "foregroundPixels": 4906,
+                  "components": 27,
+                  "edgePixels": 1399
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 739,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 739,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 12.974128828,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 76,
+                "reference": {
+                  "foregroundPixels": 931,
+                  "components": 29,
+                  "edgePixels": 573
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 1393,
+                "maxRawChannelError": 106,
+                "premultipliedChangedPixels": 1393,
+                "maxPremultipliedChannelError": 106,
+                "meanForegroundChannelError": 5.811325967,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 4.47213595499958,
+                "foregroundCountDifference": 125,
+                "reference": {
+                  "foregroundPixels": 2702,
+                  "components": 36,
+                  "edgePixels": 1035
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 503,
+                "maxRawChannelError": 103,
+                "premultipliedChangedPixels": 503,
+                "maxPremultipliedChannelError": 103,
+                "meanForegroundChannelError": 9.379058442,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 55,
+                "reference": {
+                  "foregroundPixels": 922,
+                  "components": 18,
+                  "edgePixels": 391
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 628,
+                "maxRawChannelError": 89,
+                "premultipliedChangedPixels": 628,
+                "maxPremultipliedChannelError": 89,
+                "meanForegroundChannelError": 3.408364084,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 61,
+                "reference": {
+                  "foregroundPixels": 2432,
+                  "components": 9,
+                  "edgePixels": 525
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 1082,
+                "maxRawChannelError": 62,
+                "premultipliedChangedPixels": 1082,
+                "maxPremultipliedChannelError": 62,
+                "meanForegroundChannelError": 2.185178572,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 85,
+                "reference": {
+                  "foregroundPixels": 4200,
+                  "components": 1,
+                  "edgePixels": 770
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 589,
+                "maxRawChannelError": 20,
+                "premultipliedChangedPixels": 589,
+                "maxPremultipliedChannelError": 20,
+                "meanForegroundChannelError": 2.208223858,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 0,
+                "foregroundCountDifference": 0,
+                "reference": {
+                  "foregroundPixels": 1903,
+                  "components": 15,
+                  "edgePixels": 616
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 493,
+                "maxRawChannelError": 22,
+                "premultipliedChangedPixels": 493,
+                "maxPremultipliedChannelError": 22,
+                "meanForegroundChannelError": 5.397076736,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 409,
+                "reference": {
+                  "foregroundPixels": 821,
+                  "components": 27,
+                  "edgePixels": 427
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        }
+      ],
+      "scope": "Only this independently registered fixture, representation, white background, region and view. No inherited or candidate-derived allowance.",
+      "rounding": "Foreground mean rounded upward to 1e-9; other maxima are the exact independent observation. Absent edges are never allowed for measured-edge regions."
+    },
+    "native": {
+      "schemaVersion": 1,
+      "comparisonKind": "unapproved-shape-pdf-trial-policy",
+      "approvedImagePolicy": false,
+      "conformanceClaim": false,
+      "mode": "native-geometric-svg",
+      "camera": {
+        "origin": {
+          "x": 194.5637007381175,
+          "y": 193.23534872483398
+        },
+        "picture": {
+          "minX": -16.205890508250313,
+          "minY": -26.832706614518475,
+          "maxX": 81.02947281029473,
+          "maxY": 797.2768743189603
+        },
+        "physicalPage": {
+          "width": 797.0112079701122,
+          "height": 1062.681610626816
+        },
+        "rasterSizes": {
+          "1x": {
+            "width": 798,
+            "height": 1063
+          },
+          "4x": {
+            "width": 3189,
+            "height": 4251
+          }
+        }
+      },
+      "regions": [
+        {
+          "id": "whole-picture",
+          "nodeId": null,
+          "kind": "picture",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -21,
+            "y": -31,
+            "width": 107,
+            "height": 833
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 173,
+              "y": 162,
+              "width": 108,
+              "height": 834
+            },
+            "4x": {
+              "x": 694,
+              "y": 648,
+              "width": 429,
+              "height": 3333
+            }
+          }
+        },
+        {
+          "id": "path-0",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": -30,
+            "width": 87,
+            "height": 34
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 163,
+              "width": 88,
+              "height": 35
+            },
+            "4x": {
+              "x": 762,
+              "y": 652,
+              "width": 349,
+              "height": 137
+            }
+          }
+        },
+        {
+          "id": "path-1",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 22,
+            "width": 88,
+            "height": 62
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 215,
+              "width": 89,
+              "height": 63
+            },
+            "4x": {
+              "x": 762,
+              "y": 860,
+              "width": 353,
+              "height": 249
+            }
+          }
+        },
+        {
+          "id": "path-2",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -5,
+            "y": 75,
+            "width": 90,
+            "height": 63
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 189,
+              "y": 268,
+              "width": 91,
+              "height": 64
+            },
+            "4x": {
+              "x": 758,
+              "y": 1072,
+              "width": 361,
+              "height": 253
+            }
+          }
+        },
+        {
+          "id": "path-3",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 132,
+            "width": 87,
+            "height": 31
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 325,
+              "width": 88,
+              "height": 32
+            },
+            "4x": {
+              "x": 762,
+              "y": 1300,
+              "width": 349,
+              "height": 125
+            }
+          }
+        },
+        {
+          "id": "path-4",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 189,
+            "width": 87,
+            "height": 27
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 382,
+              "width": 88,
+              "height": 28
+            },
+            "4x": {
+              "x": 762,
+              "y": 1528,
+              "width": 349,
+              "height": 109
+            }
+          }
+        },
+        {
+          "id": "path-5",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 235,
+            "width": 88,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 428,
+              "width": 89,
+              "height": 36
+            },
+            "4x": {
+              "x": 762,
+              "y": 1712,
+              "width": 353,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-6",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 288,
+            "width": 88,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 481,
+              "width": 89,
+              "height": 36
+            },
+            "4x": {
+              "x": 762,
+              "y": 1924,
+              "width": 353,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-7",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -2,
+            "y": 354,
+            "width": 86,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 192,
+              "y": 547,
+              "width": 87,
+              "height": 36
+            },
+            "4x": {
+              "x": 770,
+              "y": 2188,
+              "width": 345,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-8",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 2,
+            "y": 410,
+            "width": 76,
+            "height": 30
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 196,
+              "y": 603,
+              "width": 77,
+              "height": 31
+            },
+            "4x": {
+              "x": 786,
+              "y": 2412,
+              "width": 305,
+              "height": 121
+            }
+          }
+        },
+        {
+          "id": "path-9",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -20,
+            "y": 474,
+            "width": 40,
+            "height": 40
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 174,
+              "y": 667,
+              "width": 41,
+              "height": 41
+            },
+            "4x": {
+              "x": 698,
+              "y": 2668,
+              "width": 161,
+              "height": 161
+            }
+          }
+        },
+        {
+          "id": "path-10",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 472,
+            "width": 80,
+            "height": 64
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 665,
+              "width": 81,
+              "height": 65
+            },
+            "4x": {
+              "x": 762,
+              "y": 2660,
+              "width": 321,
+              "height": 257
+            }
+          }
+        },
+        {
+          "id": "path-11",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 7,
+            "y": 559,
+            "width": 66,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 201,
+              "y": 752,
+              "width": 67,
+              "height": 36
+            },
+            "4x": {
+              "x": 806,
+              "y": 3008,
+              "width": 265,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-12",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 2,
+            "y": 610,
+            "width": 71,
+            "height": 34
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 196,
+              "y": 803,
+              "width": 72,
+              "height": 35
+            },
+            "4x": {
+              "x": 786,
+              "y": 3212,
+              "width": 285,
+              "height": 137
+            }
+          }
+        },
+        {
+          "id": "path-13",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 10,
+            "y": 681,
+            "width": 57,
+            "height": 28
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 204,
+              "y": 874,
+              "width": 58,
+              "height": 29
+            },
+            "4x": {
+              "x": 818,
+              "y": 3496,
+              "width": 229,
+              "height": 113
+            }
+          }
+        },
+        {
+          "id": "path-14",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -5,
+            "y": 739,
+            "width": 90,
+            "height": 10
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 189,
+              "y": 932,
+              "width": 91,
+              "height": 11
+            },
+            "4x": {
+              "x": 758,
+              "y": 3728,
+              "width": 361,
+              "height": 41
+            }
+          }
+        },
+        {
+          "id": "path-15",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 793,
+            "width": 87,
+            "height": 8
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 986,
+              "width": 88,
+              "height": 9
+            },
+            "4x": {
+              "x": 762,
+              "y": 3944,
+              "width": 349,
+              "height": 33
+            }
+          }
+        }
+      ],
+      "rows": [
+        {
+          "frame": "natural",
+          "scale": 1,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 5139,
+                "maxRawChannelError": 144,
+                "premultipliedChangedPixels": 5139,
+                "maxPremultipliedChannelError": 144,
+                "meanForegroundChannelError": 8.751765226,
+                "componentDifference": 23,
+                "maxEdgeDisplacementRasterPixels": 2,
+                "foregroundCountDifference": 344,
+                "reference": {
+                  "foregroundPixels": 5630,
+                  "components": 175,
+                  "edgePixels": 2485
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 132,
+                "maxRawChannelError": 131,
+                "premultipliedChangedPixels": 132,
+                "maxPremultipliedChannelError": 131,
+                "meanForegroundChannelError": 36.552631579,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 14,
+                "reference": {
+                  "foregroundPixels": 131,
+                  "components": 13,
+                  "edgePixels": 110
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 218,
+                "maxRawChannelError": 44,
+                "premultipliedChangedPixels": 218,
+                "maxPremultipliedChannelError": 44,
+                "meanForegroundChannelError": 7.81097561,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 245,
+                  "components": 1,
+                  "edgePixels": 168
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 53,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 53,
+                "meanForegroundChannelError": 8.217948718,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 22,
+                "reference": {
+                  "foregroundPixels": 231,
+                  "components": 18,
+                  "edgePixels": 143
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 144,
+                "maxRawChannelError": 131,
+                "premultipliedChangedPixels": 144,
+                "maxPremultipliedChannelError": 131,
+                "meanForegroundChannelError": 32.565517242,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 26,
+                "reference": {
+                  "foregroundPixels": 140,
+                  "components": 13,
+                  "edgePixels": 101
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 95,
+                "maxRawChannelError": 120,
+                "premultipliedChangedPixels": 95,
+                "maxPremultipliedChannelError": 120,
+                "meanForegroundChannelError": 34.365789474,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 27,
+                "reference": {
+                  "foregroundPixels": 92,
+                  "components": 9,
+                  "edgePixels": 61
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 307,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 307,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 6.916139241,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 40,
+                "reference": {
+                  "foregroundPixels": 316,
+                  "components": 25,
+                  "edgePixels": 238
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 2236,
+                "maxRawChannelError": 28,
+                "premultipliedChangedPixels": 2236,
+                "maxPremultipliedChannelError": 28,
+                "meanForegroundChannelError": 1.619755994,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 34,
+                "reference": {
+                  "foregroundPixels": 2336,
+                  "components": 1,
+                  "edgePixels": 232
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 104,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 104,
+                "meanForegroundChannelError": 12.753731344,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 23,
+                "reference": {
+                  "foregroundPixels": 198,
+                  "components": 32,
+                  "edgePixels": 161
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 369,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 369,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 10.284065935,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 32,
+                "reference": {
+                  "foregroundPixels": 454,
+                  "components": 1,
+                  "edgePixels": 279
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 210,
+                "maxRawChannelError": 136,
+                "premultipliedChangedPixels": 210,
+                "maxPremultipliedChannelError": 136,
+                "meanForegroundChannelError": 33.878571429,
+                "componentDifference": 8,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 200,
+                  "components": 7,
+                  "edgePixels": 154
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 364,
+                "maxRawChannelError": 127,
+                "premultipliedChangedPixels": 364,
+                "maxPremultipliedChannelError": 127,
+                "meanForegroundChannelError": 16.424796748,
+                "componentDifference": 9,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 44,
+                "reference": {
+                  "foregroundPixels": 365,
+                  "components": 10,
+                  "edgePixels": 266
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 116,
+                "maxRawChannelError": 79,
+                "premultipliedChangedPixels": 116,
+                "maxPremultipliedChannelError": 79,
+                "meanForegroundChannelError": 11.711065574,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 24,
+                "reference": {
+                  "foregroundPixels": 117,
+                  "components": 18,
+                  "edgePixels": 82
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 151,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 151,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 6.746606335,
+                "componentDifference": 3,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 16,
+                "reference": {
+                  "foregroundPixels": 221,
+                  "components": 4,
+                  "edgePixels": 133
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 237,
+                "maxRawChannelError": 49,
+                "premultipliedChangedPixels": 237,
+                "maxPremultipliedChannelError": 49,
+                "meanForegroundChannelError": 4.721207866,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 16,
+                "reference": {
+                  "foregroundPixels": 356,
+                  "components": 1,
+                  "edgePixels": 176
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 168,
+                "maxRawChannelError": 14,
+                "premultipliedChangedPixels": 168,
+                "maxPremultipliedChannelError": 14,
+                "meanForegroundChannelError": 3.593181819,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 5,
+                "reference": {
+                  "foregroundPixels": 220,
+                  "components": 15,
+                  "edgePixels": 157
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 150,
+                "maxRawChannelError": 144,
+                "premultipliedChangedPixels": 150,
+                "maxPremultipliedChannelError": 144,
+                "meanForegroundChannelError": 37.96381579,
+                "componentDifference": 12,
+                "maxEdgeDisplacementRasterPixels": 2,
+                "foregroundCountDifference": 2,
+                "reference": {
+                  "foregroundPixels": 150,
+                  "components": 11,
+                  "edgePixels": 132
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        },
+        {
+          "frame": "natural",
+          "scale": 4,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 45506,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 45506,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 2.593181749,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 1456,
+                "reference": {
+                  "foregroundPixels": 64797,
+                  "components": 260,
+                  "edgePixels": 10412
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 505,
+                "maxRawChannelError": 83,
+                "premultipliedChangedPixels": 505,
+                "maxPremultipliedChannelError": 83,
+                "meanForegroundChannelError": 7.982683983,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 36,
+                "reference": {
+                  "foregroundPixels": 688,
+                  "components": 13,
+                  "edgePixels": 415
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 922,
+                "maxRawChannelError": 119,
+                "premultipliedChangedPixels": 922,
+                "maxPremultipliedChannelError": 119,
+                "meanForegroundChannelError": 4.975546606,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 55,
+                "reference": {
+                  "foregroundPixels": 2599,
+                  "components": 1,
+                  "edgePixels": 681
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 821,
+                "maxRawChannelError": 81,
+                "premultipliedChangedPixels": 821,
+                "maxPremultipliedChannelError": 81,
+                "meanForegroundChannelError": 4.684198332,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 84,
+                "reference": {
+                  "foregroundPixels": 2154,
+                  "components": 18,
+                  "edgePixels": 645
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 518,
+                "maxRawChannelError": 64,
+                "premultipliedChangedPixels": 518,
+                "maxPremultipliedChannelError": 64,
+                "meanForegroundChannelError": 7.131676558,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 46,
+                "reference": {
+                  "foregroundPixels": 667,
+                  "components": 18,
+                  "edgePixels": 388
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 350,
+                "maxRawChannelError": 41,
+                "premultipliedChangedPixels": 350,
+                "maxPremultipliedChannelError": 41,
+                "meanForegroundChannelError": 5.322748268,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 42,
+                "reference": {
+                  "foregroundPixels": 433,
+                  "components": 9,
+                  "edgePixels": 231
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 1040,
+                "maxRawChannelError": 40,
+                "premultipliedChangedPixels": 1040,
+                "maxPremultipliedChannelError": 40,
+                "meanForegroundChannelError": 1.994383995,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 83,
+                "reference": {
+                  "foregroundPixels": 2849,
+                  "components": 26,
+                  "edgePixels": 991
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 33820,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 33820,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 0.846135443,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 156,
+                "reference": {
+                  "foregroundPixels": 35528,
+                  "components": 1,
+                  "edgePixels": 957
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 894,
+                "maxRawChannelError": 124,
+                "premultipliedChangedPixels": 894,
+                "maxPremultipliedChannelError": 124,
+                "meanForegroundChannelError": 9.336024663,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 56,
+                "reference": {
+                  "foregroundPixels": 1691,
+                  "components": 33,
+                  "edgePixels": 758
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 1705,
+                "maxRawChannelError": 121,
+                "premultipliedChangedPixels": 1705,
+                "maxPremultipliedChannelError": 121,
+                "meanForegroundChannelError": 5.176610616,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 140,
+                "reference": {
+                  "foregroundPixels": 4906,
+                  "components": 27,
+                  "edgePixels": 1399
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 739,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 739,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 13.008975713,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 76,
+                "reference": {
+                  "foregroundPixels": 931,
+                  "components": 29,
+                  "edgePixels": 573
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 1393,
+                "maxRawChannelError": 106,
+                "premultipliedChangedPixels": 1393,
+                "maxPremultipliedChannelError": 106,
+                "meanForegroundChannelError": 5.811325967,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 4.47213595499958,
+                "foregroundCountDifference": 125,
+                "reference": {
+                  "foregroundPixels": 2702,
+                  "components": 36,
+                  "edgePixels": 1035
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 503,
+                "maxRawChannelError": 103,
+                "premultipliedChangedPixels": 503,
+                "maxPremultipliedChannelError": 103,
+                "meanForegroundChannelError": 9.379058442,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 55,
+                "reference": {
+                  "foregroundPixels": 922,
+                  "components": 18,
+                  "edgePixels": 391
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 628,
+                "maxRawChannelError": 89,
+                "premultipliedChangedPixels": 628,
+                "maxPremultipliedChannelError": 89,
+                "meanForegroundChannelError": 3.408364084,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 61,
+                "reference": {
+                  "foregroundPixels": 2432,
+                  "components": 9,
+                  "edgePixels": 525
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 1082,
+                "maxRawChannelError": 62,
+                "premultipliedChangedPixels": 1082,
+                "maxPremultipliedChannelError": 62,
+                "meanForegroundChannelError": 2.185178572,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 85,
+                "reference": {
+                  "foregroundPixels": 4200,
+                  "components": 1,
+                  "edgePixels": 770
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 589,
+                "maxRawChannelError": 20,
+                "premultipliedChangedPixels": 589,
+                "maxPremultipliedChannelError": 20,
+                "meanForegroundChannelError": 2.208223858,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 0,
+                "foregroundCountDifference": 0,
+                "reference": {
+                  "foregroundPixels": 1903,
+                  "components": 15,
+                  "edgePixels": 616
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 493,
+                "maxRawChannelError": 22,
+                "premultipliedChangedPixels": 493,
+                "maxPremultipliedChannelError": 22,
+                "meanForegroundChannelError": 5.397076736,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 409,
+                "reference": {
+                  "foregroundPixels": 821,
+                  "components": 27,
+                  "edgePixels": 427
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        },
+        {
+          "frame": "expanded",
+          "scale": 1,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 5138,
+                "maxRawChannelError": 136,
+                "premultipliedChangedPixels": 5138,
+                "maxPremultipliedChannelError": 136,
+                "meanForegroundChannelError": 8.43799647,
+                "componentDifference": 15,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 344,
+                "reference": {
+                  "foregroundPixels": 5630,
+                  "components": 175,
+                  "edgePixels": 2485
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 132,
+                "maxRawChannelError": 130,
+                "premultipliedChangedPixels": 132,
+                "maxPremultipliedChannelError": 130,
+                "meanForegroundChannelError": 36.389097745,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 14,
+                "reference": {
+                  "foregroundPixels": 131,
+                  "components": 13,
+                  "edgePixels": 110
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 218,
+                "maxRawChannelError": 44,
+                "premultipliedChangedPixels": 218,
+                "maxPremultipliedChannelError": 44,
+                "meanForegroundChannelError": 7.81097561,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 245,
+                  "components": 1,
+                  "edgePixels": 168
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 53,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 53,
+                "meanForegroundChannelError": 8.217948718,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 22,
+                "reference": {
+                  "foregroundPixels": 231,
+                  "components": 18,
+                  "edgePixels": 143
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 143,
+                "maxRawChannelError": 130,
+                "premultipliedChangedPixels": 143,
+                "maxPremultipliedChannelError": 130,
+                "meanForegroundChannelError": 32.451724138,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 26,
+                "reference": {
+                  "foregroundPixels": 140,
+                  "components": 13,
+                  "edgePixels": 101
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 95,
+                "maxRawChannelError": 120,
+                "premultipliedChangedPixels": 95,
+                "maxPremultipliedChannelError": 120,
+                "meanForegroundChannelError": 34.365789474,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 27,
+                "reference": {
+                  "foregroundPixels": 92,
+                  "components": 9,
+                  "edgePixels": 61
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 307,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 307,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 6.916139241,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 40,
+                "reference": {
+                  "foregroundPixels": 316,
+                  "components": 25,
+                  "edgePixels": 238
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 2236,
+                "maxRawChannelError": 28,
+                "premultipliedChangedPixels": 2236,
+                "maxPremultipliedChannelError": 28,
+                "meanForegroundChannelError": 1.619755994,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 34,
+                "reference": {
+                  "foregroundPixels": 2336,
+                  "components": 1,
+                  "edgePixels": 232
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 104,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 104,
+                "meanForegroundChannelError": 12.753731344,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 23,
+                "reference": {
+                  "foregroundPixels": 198,
+                  "components": 32,
+                  "edgePixels": 161
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 369,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 369,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 10.284065935,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 32,
+                "reference": {
+                  "foregroundPixels": 454,
+                  "components": 1,
+                  "edgePixels": 279
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 210,
+                "maxRawChannelError": 136,
+                "premultipliedChangedPixels": 210,
+                "maxPremultipliedChannelError": 136,
+                "meanForegroundChannelError": 33.485714286,
+                "componentDifference": 8,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 200,
+                  "components": 7,
+                  "edgePixels": 154
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 364,
+                "maxRawChannelError": 127,
+                "premultipliedChangedPixels": 364,
+                "maxPremultipliedChannelError": 127,
+                "meanForegroundChannelError": 16.396341464,
+                "componentDifference": 9,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 44,
+                "reference": {
+                  "foregroundPixels": 365,
+                  "components": 10,
+                  "edgePixels": 266
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 116,
+                "maxRawChannelError": 79,
+                "premultipliedChangedPixels": 116,
+                "maxPremultipliedChannelError": 79,
+                "meanForegroundChannelError": 11.711065574,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 24,
+                "reference": {
+                  "foregroundPixels": 117,
+                  "components": 18,
+                  "edgePixels": 82
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 151,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 151,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 6.746606335,
+                "componentDifference": 3,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 16,
+                "reference": {
+                  "foregroundPixels": 221,
+                  "components": 4,
+                  "edgePixels": 133
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 237,
+                "maxRawChannelError": 49,
+                "premultipliedChangedPixels": 237,
+                "maxPremultipliedChannelError": 49,
+                "meanForegroundChannelError": 4.721207866,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 16,
+                "reference": {
+                  "foregroundPixels": 356,
+                  "components": 1,
+                  "edgePixels": 176
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 168,
+                "maxRawChannelError": 14,
+                "premultipliedChangedPixels": 168,
+                "maxPremultipliedChannelError": 14,
+                "meanForegroundChannelError": 3.593181819,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 5,
+                "reference": {
+                  "foregroundPixels": 220,
+                  "components": 15,
+                  "edgePixels": 157
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 150,
+                "maxRawChannelError": 95,
+                "premultipliedChangedPixels": 150,
+                "maxPremultipliedChannelError": 95,
+                "meanForegroundChannelError": 27.064144737,
+                "componentDifference": 4,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 2,
+                "reference": {
+                  "foregroundPixels": 150,
+                  "components": 11,
+                  "edgePixels": 132
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        },
+        {
+          "frame": "expanded",
+          "scale": 4,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 45506,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 45506,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 2.592673211,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 1456,
+                "reference": {
+                  "foregroundPixels": 64797,
+                  "components": 260,
+                  "edgePixels": 10412
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 505,
+                "maxRawChannelError": 83,
+                "premultipliedChangedPixels": 505,
+                "maxPremultipliedChannelError": 83,
+                "meanForegroundChannelError": 7.982683983,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 36,
+                "reference": {
+                  "foregroundPixels": 688,
+                  "components": 13,
+                  "edgePixels": 415
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 922,
+                "maxRawChannelError": 119,
+                "premultipliedChangedPixels": 922,
+                "maxPremultipliedChannelError": 119,
+                "meanForegroundChannelError": 4.975546606,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 55,
+                "reference": {
+                  "foregroundPixels": 2599,
+                  "components": 1,
+                  "edgePixels": 681
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 821,
+                "maxRawChannelError": 81,
+                "premultipliedChangedPixels": 821,
+                "maxPremultipliedChannelError": 81,
+                "meanForegroundChannelError": 4.684198332,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 84,
+                "reference": {
+                  "foregroundPixels": 2154,
+                  "components": 18,
+                  "edgePixels": 645
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 518,
+                "maxRawChannelError": 64,
+                "premultipliedChangedPixels": 518,
+                "maxPremultipliedChannelError": 64,
+                "meanForegroundChannelError": 7.131676558,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 46,
+                "reference": {
+                  "foregroundPixels": 667,
+                  "components": 18,
+                  "edgePixels": 388
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 350,
+                "maxRawChannelError": 41,
+                "premultipliedChangedPixels": 350,
+                "maxPremultipliedChannelError": 41,
+                "meanForegroundChannelError": 5.322748268,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 42,
+                "reference": {
+                  "foregroundPixels": 433,
+                  "components": 9,
+                  "edgePixels": 231
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 1040,
+                "maxRawChannelError": 40,
+                "premultipliedChangedPixels": 1040,
+                "maxPremultipliedChannelError": 40,
+                "meanForegroundChannelError": 1.994383995,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 83,
+                "reference": {
+                  "foregroundPixels": 2849,
+                  "components": 26,
+                  "edgePixels": 991
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 33820,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 33820,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 0.846135443,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 156,
+                "reference": {
+                  "foregroundPixels": 35528,
+                  "components": 1,
+                  "edgePixels": 957
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 894,
+                "maxRawChannelError": 124,
+                "premultipliedChangedPixels": 894,
+                "maxPremultipliedChannelError": 124,
+                "meanForegroundChannelError": 9.336024663,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 56,
+                "reference": {
+                  "foregroundPixels": 1691,
+                  "components": 33,
+                  "edgePixels": 758
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 1705,
+                "maxRawChannelError": 121,
+                "premultipliedChangedPixels": 1705,
+                "maxPremultipliedChannelError": 121,
+                "meanForegroundChannelError": 5.176610616,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 140,
+                "reference": {
+                  "foregroundPixels": 4906,
+                  "components": 27,
+                  "edgePixels": 1399
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 739,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 739,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 12.974128828,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 76,
+                "reference": {
+                  "foregroundPixels": 931,
+                  "components": 29,
+                  "edgePixels": 573
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 1393,
+                "maxRawChannelError": 106,
+                "premultipliedChangedPixels": 1393,
+                "maxPremultipliedChannelError": 106,
+                "meanForegroundChannelError": 5.811325967,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 4.47213595499958,
+                "foregroundCountDifference": 125,
+                "reference": {
+                  "foregroundPixels": 2702,
+                  "components": 36,
+                  "edgePixels": 1035
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 503,
+                "maxRawChannelError": 103,
+                "premultipliedChangedPixels": 503,
+                "maxPremultipliedChannelError": 103,
+                "meanForegroundChannelError": 9.379058442,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 55,
+                "reference": {
+                  "foregroundPixels": 922,
+                  "components": 18,
+                  "edgePixels": 391
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 628,
+                "maxRawChannelError": 89,
+                "premultipliedChangedPixels": 628,
+                "maxPremultipliedChannelError": 89,
+                "meanForegroundChannelError": 3.408364084,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 61,
+                "reference": {
+                  "foregroundPixels": 2432,
+                  "components": 9,
+                  "edgePixels": 525
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 1082,
+                "maxRawChannelError": 62,
+                "premultipliedChangedPixels": 1082,
+                "maxPremultipliedChannelError": 62,
+                "meanForegroundChannelError": 2.185178572,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 85,
+                "reference": {
+                  "foregroundPixels": 4200,
+                  "components": 1,
+                  "edgePixels": 770
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 589,
+                "maxRawChannelError": 20,
+                "premultipliedChangedPixels": 589,
+                "maxPremultipliedChannelError": 20,
+                "meanForegroundChannelError": 2.208223858,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 0,
+                "foregroundCountDifference": 0,
+                "reference": {
+                  "foregroundPixels": 1903,
+                  "components": 15,
+                  "edgePixels": 616
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 493,
+                "maxRawChannelError": 22,
+                "premultipliedChangedPixels": 493,
+                "maxPremultipliedChannelError": 22,
+                "meanForegroundChannelError": 5.397076736,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 409,
+                "reference": {
+                  "foregroundPixels": 821,
+                  "components": 27,
+                  "edgePixels": 427
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        }
+      ],
+      "scope": "Only the fixed sixteen-paint/three-clip native geometric SVG representations against qualified ordinary PDF/Cairo.",
+      "rounding": "Per-view/per-region maxima across exactly eight oracle-only representations; foreground means rounded upward to 1e-9. No additional margin."
+    },
+    "instructions": {
+      "schemaVersion": 1,
+      "comparisonKind": "unapproved-shape-pdf-trial-policy",
+      "approvedImagePolicy": false,
+      "conformanceClaim": false,
+      "mode": "pdf-instructions",
+      "camera": {
+        "origin": {
+          "x": 194.5637007381175,
+          "y": 193.23534872483398
+        },
+        "picture": {
+          "minX": -16.205890508250313,
+          "minY": -26.832706614518475,
+          "maxX": 81.02947281029473,
+          "maxY": 797.2768743189603
+        },
+        "physicalPage": {
+          "width": 797.0112079701122,
+          "height": 1062.681610626816
+        },
+        "rasterSizes": {
+          "1x": {
+            "width": 798,
+            "height": 1063
+          },
+          "4x": {
+            "width": 3189,
+            "height": 4251
+          }
+        }
+      },
+      "regions": [
+        {
+          "id": "whole-picture",
+          "nodeId": null,
+          "kind": "picture",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -21,
+            "y": -31,
+            "width": 107,
+            "height": 833
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 173,
+              "y": 162,
+              "width": 108,
+              "height": 834
+            },
+            "4x": {
+              "x": 694,
+              "y": 648,
+              "width": 429,
+              "height": 3333
+            }
+          }
+        },
+        {
+          "id": "path-0",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": -30,
+            "width": 87,
+            "height": 34
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 163,
+              "width": 88,
+              "height": 35
+            },
+            "4x": {
+              "x": 762,
+              "y": 652,
+              "width": 349,
+              "height": 137
+            }
+          }
+        },
+        {
+          "id": "path-1",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 22,
+            "width": 88,
+            "height": 62
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 215,
+              "width": 89,
+              "height": 63
+            },
+            "4x": {
+              "x": 762,
+              "y": 860,
+              "width": 353,
+              "height": 249
+            }
+          }
+        },
+        {
+          "id": "path-2",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -5,
+            "y": 75,
+            "width": 90,
+            "height": 63
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 189,
+              "y": 268,
+              "width": 91,
+              "height": 64
+            },
+            "4x": {
+              "x": 758,
+              "y": 1072,
+              "width": 361,
+              "height": 253
+            }
+          }
+        },
+        {
+          "id": "path-3",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 132,
+            "width": 87,
+            "height": 31
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 325,
+              "width": 88,
+              "height": 32
+            },
+            "4x": {
+              "x": 762,
+              "y": 1300,
+              "width": 349,
+              "height": 125
+            }
+          }
+        },
+        {
+          "id": "path-4",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 189,
+            "width": 87,
+            "height": 27
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 382,
+              "width": 88,
+              "height": 28
+            },
+            "4x": {
+              "x": 762,
+              "y": 1528,
+              "width": 349,
+              "height": 109
+            }
+          }
+        },
+        {
+          "id": "path-5",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 235,
+            "width": 88,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 428,
+              "width": 89,
+              "height": 36
+            },
+            "4x": {
+              "x": 762,
+              "y": 1712,
+              "width": 353,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-6",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 288,
+            "width": 88,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 481,
+              "width": 89,
+              "height": 36
+            },
+            "4x": {
+              "x": 762,
+              "y": 1924,
+              "width": 353,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-7",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -2,
+            "y": 354,
+            "width": 86,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 192,
+              "y": 547,
+              "width": 87,
+              "height": 36
+            },
+            "4x": {
+              "x": 770,
+              "y": 2188,
+              "width": 345,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-8",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 2,
+            "y": 410,
+            "width": 76,
+            "height": 30
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 196,
+              "y": 603,
+              "width": 77,
+              "height": 31
+            },
+            "4x": {
+              "x": 786,
+              "y": 2412,
+              "width": 305,
+              "height": 121
+            }
+          }
+        },
+        {
+          "id": "path-9",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -20,
+            "y": 474,
+            "width": 40,
+            "height": 40
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 174,
+              "y": 667,
+              "width": 41,
+              "height": 41
+            },
+            "4x": {
+              "x": 698,
+              "y": 2668,
+              "width": 161,
+              "height": 161
+            }
+          }
+        },
+        {
+          "id": "path-10",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 472,
+            "width": 80,
+            "height": 64
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 665,
+              "width": 81,
+              "height": 65
+            },
+            "4x": {
+              "x": 762,
+              "y": 2660,
+              "width": 321,
+              "height": 257
+            }
+          }
+        },
+        {
+          "id": "path-11",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 7,
+            "y": 559,
+            "width": 66,
+            "height": 35
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 201,
+              "y": 752,
+              "width": 67,
+              "height": 36
+            },
+            "4x": {
+              "x": 806,
+              "y": 3008,
+              "width": 265,
+              "height": 141
+            }
+          }
+        },
+        {
+          "id": "path-12",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 2,
+            "y": 610,
+            "width": 71,
+            "height": 34
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 196,
+              "y": 803,
+              "width": 72,
+              "height": 35
+            },
+            "4x": {
+              "x": 786,
+              "y": 3212,
+              "width": 285,
+              "height": 137
+            }
+          }
+        },
+        {
+          "id": "path-13",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": 10,
+            "y": 681,
+            "width": 57,
+            "height": 28
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 204,
+              "y": 874,
+              "width": 58,
+              "height": 29
+            },
+            "4x": {
+              "x": 818,
+              "y": 3496,
+              "width": 229,
+              "height": 113
+            }
+          }
+        },
+        {
+          "id": "path-14",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -5,
+            "y": 739,
+            "width": 90,
+            "height": 10
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 189,
+              "y": 932,
+              "width": 91,
+              "height": 11
+            },
+            "4x": {
+              "x": 758,
+              "y": 3728,
+              "width": 361,
+              "height": 41
+            }
+          }
+        },
+        {
+          "id": "path-15",
+          "nodeId": null,
+          "kind": "path",
+          "font": null,
+          "slot": null,
+          "rectangle": {
+            "x": -4,
+            "y": 793,
+            "width": 87,
+            "height": 8
+          },
+          "rasterRectangles": {
+            "1x": {
+              "x": 190,
+              "y": 986,
+              "width": 88,
+              "height": 9
+            },
+            "4x": {
+              "x": 762,
+              "y": 3944,
+              "width": 349,
+              "height": 33
+            }
+          }
+        }
+      ],
+      "rows": [
+        {
+          "frame": "natural",
+          "scale": 1,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 5103,
+                "maxRawChannelError": 143,
+                "premultipliedChangedPixels": 5103,
+                "maxPremultipliedChannelError": 143,
+                "meanForegroundChannelError": 8.787625862,
+                "componentDifference": 22,
+                "maxEdgeDisplacementRasterPixels": 2,
+                "foregroundCountDifference": 345,
+                "reference": {
+                  "foregroundPixels": 5630,
+                  "components": 175,
+                  "edgePixels": 2485
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 132,
+                "maxRawChannelError": 131,
+                "premultipliedChangedPixels": 132,
+                "maxPremultipliedChannelError": 131,
+                "meanForegroundChannelError": 36.541353384,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 14,
+                "reference": {
+                  "foregroundPixels": 131,
+                  "components": 13,
+                  "edgePixels": 110
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 218,
+                "maxRawChannelError": 44,
+                "premultipliedChangedPixels": 218,
+                "maxPremultipliedChannelError": 44,
+                "meanForegroundChannelError": 7.795731708,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 245,
+                  "components": 1,
+                  "edgePixels": 168
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 193,
+                "maxRawChannelError": 52,
+                "premultipliedChangedPixels": 193,
+                "maxPremultipliedChannelError": 52,
+                "meanForegroundChannelError": 8.185622318,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 23,
+                "reference": {
+                  "foregroundPixels": 231,
+                  "components": 18,
+                  "edgePixels": 143
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 144,
+                "maxRawChannelError": 130,
+                "premultipliedChangedPixels": 144,
+                "maxPremultipliedChannelError": 130,
+                "meanForegroundChannelError": 32.601724138,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 26,
+                "reference": {
+                  "foregroundPixels": 140,
+                  "components": 13,
+                  "edgePixels": 101
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 95,
+                "maxRawChannelError": 122,
+                "premultipliedChangedPixels": 95,
+                "maxPremultipliedChannelError": 122,
+                "meanForegroundChannelError": 34.389473685,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 28,
+                "reference": {
+                  "foregroundPixels": 92,
+                  "components": 9,
+                  "edgePixels": 61
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 305,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 305,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 6.892405064,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 40,
+                "reference": {
+                  "foregroundPixels": 316,
+                  "components": 25,
+                  "edgePixels": 238
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 2206,
+                "maxRawChannelError": 28,
+                "premultipliedChangedPixels": 2206,
+                "maxPremultipliedChannelError": 28,
+                "meanForegroundChannelError": 1.610124144,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 34,
+                "reference": {
+                  "foregroundPixels": 2336,
+                  "components": 1,
+                  "edgePixels": 232
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 104,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 104,
+                "meanForegroundChannelError": 12.79477612,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 22,
+                "reference": {
+                  "foregroundPixels": 198,
+                  "components": 32,
+                  "edgePixels": 161
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 369,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 369,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 10.394505495,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 31,
+                "reference": {
+                  "foregroundPixels": 454,
+                  "components": 1,
+                  "edgePixels": 279
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 209,
+                "maxRawChannelError": 136,
+                "premultipliedChangedPixels": 209,
+                "maxPremultipliedChannelError": 136,
+                "meanForegroundChannelError": 33.889285715,
+                "componentDifference": 8,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 20,
+                "reference": {
+                  "foregroundPixels": 200,
+                  "components": 7,
+                  "edgePixels": 154
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 364,
+                "maxRawChannelError": 127,
+                "premultipliedChangedPixels": 364,
+                "maxPremultipliedChannelError": 127,
+                "meanForegroundChannelError": 16.615853659,
+                "componentDifference": 9,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 43,
+                "reference": {
+                  "foregroundPixels": 365,
+                  "components": 10,
+                  "edgePixels": 266
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 116,
+                "maxRawChannelError": 79,
+                "premultipliedChangedPixels": 116,
+                "maxPremultipliedChannelError": 79,
+                "meanForegroundChannelError": 12.080578513,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 24,
+                "reference": {
+                  "foregroundPixels": 117,
+                  "components": 18,
+                  "edgePixels": 82
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 152,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 152,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 6.811085973,
+                "componentDifference": 3,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 17,
+                "reference": {
+                  "foregroundPixels": 221,
+                  "components": 4,
+                  "edgePixels": 133
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 232,
+                "maxRawChannelError": 49,
+                "premultipliedChangedPixels": 232,
+                "maxPremultipliedChannelError": 49,
+                "meanForegroundChannelError": 4.748595506,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 15,
+                "reference": {
+                  "foregroundPixels": 356,
+                  "components": 1,
+                  "edgePixels": 176
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 170,
+                "maxRawChannelError": 13,
+                "premultipliedChangedPixels": 170,
+                "maxPremultipliedChannelError": 13,
+                "meanForegroundChannelError": 3.582954546,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 5,
+                "reference": {
+                  "foregroundPixels": 220,
+                  "components": 15,
+                  "edgePixels": 157
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 149,
+                "maxRawChannelError": 143,
+                "premultipliedChangedPixels": 149,
+                "maxPremultipliedChannelError": 143,
+                "meanForegroundChannelError": 38.665,
+                "componentDifference": 11,
+                "maxEdgeDisplacementRasterPixels": 2,
+                "foregroundCountDifference": 0,
+                "reference": {
+                  "foregroundPixels": 150,
+                  "components": 11,
+                  "edgePixels": 132
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        },
+        {
+          "frame": "natural",
+          "scale": 4,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 45303,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 45303,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 2.574301212,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 1429,
+                "reference": {
+                  "foregroundPixels": 64797,
+                  "components": 260,
+                  "edgePixels": 10412
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 504,
+                "maxRawChannelError": 85,
+                "premultipliedChangedPixels": 504,
+                "maxPremultipliedChannelError": 85,
+                "meanForegroundChannelError": 7.957792208,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 36,
+                "reference": {
+                  "foregroundPixels": 688,
+                  "components": 13,
+                  "edgePixels": 415
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 920,
+                "maxRawChannelError": 119,
+                "premultipliedChangedPixels": 920,
+                "maxPremultipliedChannelError": 119,
+                "meanForegroundChannelError": 4.989930956,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 56,
+                "reference": {
+                  "foregroundPixels": 2599,
+                  "components": 1,
+                  "edgePixels": 681
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 822,
+                "maxRawChannelError": 82,
+                "premultipliedChangedPixels": 822,
+                "maxPremultipliedChannelError": 82,
+                "meanForegroundChannelError": 4.776992586,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 85,
+                "reference": {
+                  "foregroundPixels": 2154,
+                  "components": 18,
+                  "edgePixels": 645
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 519,
+                "maxRawChannelError": 65,
+                "premultipliedChangedPixels": 519,
+                "maxPremultipliedChannelError": 65,
+                "meanForegroundChannelError": 7.150593472,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 44,
+                "reference": {
+                  "foregroundPixels": 667,
+                  "components": 18,
+                  "edgePixels": 388
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 347,
+                "maxRawChannelError": 44,
+                "premultipliedChangedPixels": 347,
+                "maxPremultipliedChannelError": 44,
+                "meanForegroundChannelError": 5.8926097,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 42,
+                "reference": {
+                  "foregroundPixels": 433,
+                  "components": 9,
+                  "edgePixels": 231
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 1028,
+                "maxRawChannelError": 71,
+                "premultipliedChangedPixels": 1028,
+                "maxPremultipliedChannelError": 71,
+                "meanForegroundChannelError": 1.997631579,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 83,
+                "reference": {
+                  "foregroundPixels": 2849,
+                  "components": 26,
+                  "edgePixels": 991
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 33791,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 33791,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 0.842377843,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 157,
+                "reference": {
+                  "foregroundPixels": 35528,
+                  "components": 1,
+                  "edgePixels": 957
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 877,
+                "maxRawChannelError": 124,
+                "premultipliedChangedPixels": 877,
+                "maxPremultipliedChannelError": 124,
+                "meanForegroundChannelError": 8.999118684,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 58,
+                "reference": {
+                  "foregroundPixels": 1691,
+                  "components": 33,
+                  "edgePixels": 758
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 1705,
+                "maxRawChannelError": 121,
+                "premultipliedChangedPixels": 1705,
+                "maxPremultipliedChannelError": 121,
+                "meanForegroundChannelError": 5.157977324,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 129,
+                "reference": {
+                  "foregroundPixels": 4906,
+                  "components": 27,
+                  "edgePixels": 1399
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 739,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 739,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 13.156282999,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 72,
+                "reference": {
+                  "foregroundPixels": 931,
+                  "components": 29,
+                  "edgePixels": 573
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 1395,
+                "maxRawChannelError": 106,
+                "premultipliedChangedPixels": 1395,
+                "maxPremultipliedChannelError": 106,
+                "meanForegroundChannelError": 5.767955802,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 4.47213595499958,
+                "foregroundCountDifference": 124,
+                "reference": {
+                  "foregroundPixels": 2702,
+                  "components": 36,
+                  "edgePixels": 1035
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 504,
+                "maxRawChannelError": 113,
+                "premultipliedChangedPixels": 504,
+                "maxPremultipliedChannelError": 113,
+                "meanForegroundChannelError": 9.438786566,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 56,
+                "reference": {
+                  "foregroundPixels": 922,
+                  "components": 18,
+                  "edgePixels": 391
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 626,
+                "maxRawChannelError": 89,
+                "premultipliedChangedPixels": 626,
+                "maxPremultipliedChannelError": 89,
+                "meanForegroundChannelError": 3.316209579,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 46,
+                "reference": {
+                  "foregroundPixels": 2432,
+                  "components": 9,
+                  "edgePixels": 525
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 1067,
+                "maxRawChannelError": 62,
+                "premultipliedChangedPixels": 1067,
+                "maxPremultipliedChannelError": 62,
+                "meanForegroundChannelError": 2.105535715,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 82,
+                "reference": {
+                  "foregroundPixels": 4200,
+                  "components": 1,
+                  "edgePixels": 770
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 490,
+                "maxRawChannelError": 20,
+                "premultipliedChangedPixels": 490,
+                "maxPremultipliedChannelError": 20,
+                "meanForegroundChannelError": 2.110483448,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 0,
+                "foregroundCountDifference": 0,
+                "reference": {
+                  "foregroundPixels": 1903,
+                  "components": 15,
+                  "edgePixels": 616
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 465,
+                "maxRawChannelError": 22,
+                "premultipliedChangedPixels": 465,
+                "maxPremultipliedChannelError": 22,
+                "meanForegroundChannelError": 5.33495737,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 409,
+                "reference": {
+                  "foregroundPixels": 821,
+                  "components": 27,
+                  "edgePixels": 427
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        },
+        {
+          "frame": "expanded",
+          "scale": 1,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 5102,
+                "maxRawChannelError": 136,
+                "premultipliedChangedPixels": 5102,
+                "maxPremultipliedChannelError": 136,
+                "meanForegroundChannelError": 8.466083731,
+                "componentDifference": 15,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 345,
+                "reference": {
+                  "foregroundPixels": 5630,
+                  "components": 175,
+                  "edgePixels": 2485
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 132,
+                "maxRawChannelError": 130,
+                "premultipliedChangedPixels": 132,
+                "maxPremultipliedChannelError": 130,
+                "meanForegroundChannelError": 36.394736843,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 14,
+                "reference": {
+                  "foregroundPixels": 131,
+                  "components": 13,
+                  "edgePixels": 110
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 218,
+                "maxRawChannelError": 44,
+                "premultipliedChangedPixels": 218,
+                "maxPremultipliedChannelError": 44,
+                "meanForegroundChannelError": 7.795731708,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 21,
+                "reference": {
+                  "foregroundPixels": 245,
+                  "components": 1,
+                  "edgePixels": 168
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 193,
+                "maxRawChannelError": 52,
+                "premultipliedChangedPixels": 193,
+                "maxPremultipliedChannelError": 52,
+                "meanForegroundChannelError": 8.185622318,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 23,
+                "reference": {
+                  "foregroundPixels": 231,
+                  "components": 18,
+                  "edgePixels": 143
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 143,
+                "maxRawChannelError": 130,
+                "premultipliedChangedPixels": 143,
+                "maxPremultipliedChannelError": 130,
+                "meanForegroundChannelError": 32.482758621,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 26,
+                "reference": {
+                  "foregroundPixels": 140,
+                  "components": 13,
+                  "edgePixels": 101
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 95,
+                "maxRawChannelError": 122,
+                "premultipliedChangedPixels": 95,
+                "maxPremultipliedChannelError": 122,
+                "meanForegroundChannelError": 34.389473685,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 28,
+                "reference": {
+                  "foregroundPixels": 92,
+                  "components": 9,
+                  "edgePixels": 61
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 305,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 305,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 6.892405064,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 40,
+                "reference": {
+                  "foregroundPixels": 316,
+                  "components": 25,
+                  "edgePixels": 238
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 2206,
+                "maxRawChannelError": 28,
+                "premultipliedChangedPixels": 2206,
+                "maxPremultipliedChannelError": 28,
+                "meanForegroundChannelError": 1.610124144,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 34,
+                "reference": {
+                  "foregroundPixels": 2336,
+                  "components": 1,
+                  "edgePixels": 232
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 194,
+                "maxRawChannelError": 104,
+                "premultipliedChangedPixels": 194,
+                "maxPremultipliedChannelError": 104,
+                "meanForegroundChannelError": 12.79477612,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 22,
+                "reference": {
+                  "foregroundPixels": 198,
+                  "components": 32,
+                  "edgePixels": 161
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 369,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 369,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 10.394505495,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 31,
+                "reference": {
+                  "foregroundPixels": 454,
+                  "components": 1,
+                  "edgePixels": 279
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 209,
+                "maxRawChannelError": 136,
+                "premultipliedChangedPixels": 209,
+                "maxPremultipliedChannelError": 136,
+                "meanForegroundChannelError": 33.475,
+                "componentDifference": 8,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 20,
+                "reference": {
+                  "foregroundPixels": 200,
+                  "components": 7,
+                  "edgePixels": 154
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 364,
+                "maxRawChannelError": 127,
+                "premultipliedChangedPixels": 364,
+                "maxPremultipliedChannelError": 127,
+                "meanForegroundChannelError": 16.583333334,
+                "componentDifference": 9,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 43,
+                "reference": {
+                  "foregroundPixels": 365,
+                  "components": 10,
+                  "edgePixels": 266
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 116,
+                "maxRawChannelError": 79,
+                "premultipliedChangedPixels": 116,
+                "maxPremultipliedChannelError": 79,
+                "meanForegroundChannelError": 12.080578513,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 24,
+                "reference": {
+                  "foregroundPixels": 117,
+                  "components": 18,
+                  "edgePixels": 82
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 152,
+                "maxRawChannelError": 88,
+                "premultipliedChangedPixels": 152,
+                "maxPremultipliedChannelError": 88,
+                "meanForegroundChannelError": 6.811085973,
+                "componentDifference": 3,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 17,
+                "reference": {
+                  "foregroundPixels": 221,
+                  "components": 4,
+                  "edgePixels": 133
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 232,
+                "maxRawChannelError": 49,
+                "premultipliedChangedPixels": 232,
+                "maxPremultipliedChannelError": 49,
+                "meanForegroundChannelError": 4.748595506,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 15,
+                "reference": {
+                  "foregroundPixels": 356,
+                  "components": 1,
+                  "edgePixels": 176
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 170,
+                "maxRawChannelError": 13,
+                "premultipliedChangedPixels": 170,
+                "maxPremultipliedChannelError": 13,
+                "meanForegroundChannelError": 3.582954546,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 5,
+                "reference": {
+                  "foregroundPixels": 220,
+                  "components": 15,
+                  "edgePixels": 157
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 149,
+                "maxRawChannelError": 93,
+                "premultipliedChangedPixels": 149,
+                "maxPremultipliedChannelError": 93,
+                "meanForegroundChannelError": 27.355,
+                "componentDifference": 4,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 0,
+                "reference": {
+                  "foregroundPixels": 150,
+                  "components": 11,
+                  "edgePixels": 132
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        },
+        {
+          "frame": "expanded",
+          "scale": 4,
+          "background": "white",
+          "regions": [
+            {
+              "id": "whole-picture",
+              "limits": {
+                "rawChangedPixels": 45303,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 45303,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 2.573792721,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 1429,
+                "reference": {
+                  "foregroundPixels": 64797,
+                  "components": 260,
+                  "edgePixels": 10412
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-0",
+              "limits": {
+                "rawChangedPixels": 504,
+                "maxRawChannelError": 85,
+                "premultipliedChangedPixels": 504,
+                "maxPremultipliedChannelError": 85,
+                "meanForegroundChannelError": 7.957792208,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 36,
+                "reference": {
+                  "foregroundPixels": 688,
+                  "components": 13,
+                  "edgePixels": 415
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-1",
+              "limits": {
+                "rawChangedPixels": 920,
+                "maxRawChannelError": 119,
+                "premultipliedChangedPixels": 920,
+                "maxPremultipliedChannelError": 119,
+                "meanForegroundChannelError": 4.989930956,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 56,
+                "reference": {
+                  "foregroundPixels": 2599,
+                  "components": 1,
+                  "edgePixels": 681
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-2",
+              "limits": {
+                "rawChangedPixels": 822,
+                "maxRawChannelError": 82,
+                "premultipliedChangedPixels": 822,
+                "maxPremultipliedChannelError": 82,
+                "meanForegroundChannelError": 4.776992586,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 85,
+                "reference": {
+                  "foregroundPixels": 2154,
+                  "components": 18,
+                  "edgePixels": 645
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-3",
+              "limits": {
+                "rawChangedPixels": 519,
+                "maxRawChannelError": 65,
+                "premultipliedChangedPixels": 519,
+                "maxPremultipliedChannelError": 65,
+                "meanForegroundChannelError": 7.150593472,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 44,
+                "reference": {
+                  "foregroundPixels": 667,
+                  "components": 18,
+                  "edgePixels": 388
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-4",
+              "limits": {
+                "rawChangedPixels": 347,
+                "maxRawChannelError": 44,
+                "premultipliedChangedPixels": 347,
+                "maxPremultipliedChannelError": 44,
+                "meanForegroundChannelError": 5.8926097,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 42,
+                "reference": {
+                  "foregroundPixels": 433,
+                  "components": 9,
+                  "edgePixels": 231
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-5",
+              "limits": {
+                "rawChangedPixels": 1028,
+                "maxRawChannelError": 71,
+                "premultipliedChangedPixels": 1028,
+                "maxPremultipliedChannelError": 71,
+                "meanForegroundChannelError": 1.997631579,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 83,
+                "reference": {
+                  "foregroundPixels": 2849,
+                  "components": 26,
+                  "edgePixels": 991
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-6",
+              "limits": {
+                "rawChangedPixels": 33791,
+                "maxRawChannelError": 30,
+                "premultipliedChangedPixels": 33791,
+                "maxPremultipliedChannelError": 30,
+                "meanForegroundChannelError": 0.842377843,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 157,
+                "reference": {
+                  "foregroundPixels": 35528,
+                  "components": 1,
+                  "edgePixels": 957
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-7",
+              "limits": {
+                "rawChangedPixels": 877,
+                "maxRawChannelError": 124,
+                "premultipliedChangedPixels": 877,
+                "maxPremultipliedChannelError": 124,
+                "meanForegroundChannelError": 8.999118684,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 58,
+                "reference": {
+                  "foregroundPixels": 1691,
+                  "components": 33,
+                  "edgePixels": 758
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-8",
+              "limits": {
+                "rawChangedPixels": 1705,
+                "maxRawChannelError": 121,
+                "premultipliedChangedPixels": 1705,
+                "maxPremultipliedChannelError": 121,
+                "meanForegroundChannelError": 5.157977324,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 129,
+                "reference": {
+                  "foregroundPixels": 4906,
+                  "components": 27,
+                  "edgePixels": 1399
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-9",
+              "limits": {
+                "rawChangedPixels": 739,
+                "maxRawChannelError": 126,
+                "premultipliedChangedPixels": 739,
+                "maxPremultipliedChannelError": 126,
+                "meanForegroundChannelError": 13.121436115,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 72,
+                "reference": {
+                  "foregroundPixels": 931,
+                  "components": 29,
+                  "edgePixels": 573
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-10",
+              "limits": {
+                "rawChangedPixels": 1395,
+                "maxRawChannelError": 106,
+                "premultipliedChangedPixels": 1395,
+                "maxPremultipliedChannelError": 106,
+                "meanForegroundChannelError": 5.767955802,
+                "componentDifference": 1,
+                "maxEdgeDisplacementRasterPixels": 4.47213595499958,
+                "foregroundCountDifference": 124,
+                "reference": {
+                  "foregroundPixels": 2702,
+                  "components": 36,
+                  "edgePixels": 1035
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-11",
+              "limits": {
+                "rawChangedPixels": 504,
+                "maxRawChannelError": 113,
+                "premultipliedChangedPixels": 504,
+                "maxPremultipliedChannelError": 113,
+                "meanForegroundChannelError": 9.438786566,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 56,
+                "reference": {
+                  "foregroundPixels": 922,
+                  "components": 18,
+                  "edgePixels": 391
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-12",
+              "limits": {
+                "rawChangedPixels": 626,
+                "maxRawChannelError": 89,
+                "premultipliedChangedPixels": 626,
+                "maxPremultipliedChannelError": 89,
+                "meanForegroundChannelError": 3.316209579,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 46,
+                "reference": {
+                  "foregroundPixels": 2432,
+                  "components": 9,
+                  "edgePixels": 525
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-13",
+              "limits": {
+                "rawChangedPixels": 1067,
+                "maxRawChannelError": 62,
+                "premultipliedChangedPixels": 1067,
+                "maxPremultipliedChannelError": 62,
+                "meanForegroundChannelError": 2.105535715,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 82,
+                "reference": {
+                  "foregroundPixels": 4200,
+                  "components": 1,
+                  "edgePixels": 770
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-14",
+              "limits": {
+                "rawChangedPixels": 490,
+                "maxRawChannelError": 20,
+                "premultipliedChangedPixels": 490,
+                "maxPremultipliedChannelError": 20,
+                "meanForegroundChannelError": 2.110483448,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 0,
+                "foregroundCountDifference": 0,
+                "reference": {
+                  "foregroundPixels": 1903,
+                  "components": 15,
+                  "edgePixels": 616
+                },
+                "edgeState": "measured"
+              }
+            },
+            {
+              "id": "path-15",
+              "limits": {
+                "rawChangedPixels": 465,
+                "maxRawChannelError": 22,
+                "premultipliedChangedPixels": 465,
+                "maxPremultipliedChannelError": 22,
+                "meanForegroundChannelError": 5.33495737,
+                "componentDifference": 0,
+                "maxEdgeDisplacementRasterPixels": 1,
+                "foregroundCountDifference": 409,
+                "reference": {
+                  "foregroundPixels": 821,
+                  "components": 27,
+                  "edgePixels": 427
+                },
+                "edgeState": "measured"
+              }
+            }
+          ]
+        }
+      ],
+      "scope": "Only this independently registered fixture, representation, white background, region and view. No inherited or candidate-derived allowance.",
+      "rounding": "Foreground mean rounded upward to 1e-9; other maxima are the exact independent observation. Absent edges are never allowed for measured-edge regions."
+    }
+  }
+}
