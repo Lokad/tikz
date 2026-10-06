@@ -115,3 +115,9 @@ cached CI admission gate. Immutable reviewed profiles, evidence corruption
 controls, fresh public comparison/defect trials, broader node/label
 interactions and hosted execution remain required. No other fixture family
 inherits these limits or ink signatures.
+
+The subsequent [path-unit experiment](CURVED-NODE-PATH-UNITS.md) varies
+independent background representation while holding glyphs and framing
+fixed. It reproduces the public failures without loading the converter;
+the separate post-experiment diagnosis proves identical PNGs and metrics.
+Native-unit calibration and sensitivity remain required before admission.
