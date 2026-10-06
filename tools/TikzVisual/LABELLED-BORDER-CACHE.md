@@ -1,23 +1,28 @@
-# Portable labeled-border evidence and public trial
+# Portable labeled-border evidence and scoped admission
 
 The three trusted `LabelledBorders` fixtures now have a checked-in independent
 [calibration cache](../../tests/Reference/LabelledBorders/conformance/calibration.json.gz).
 It freezes the existing primary and ordinary-PDF allowances and native-page
 visibility expectations. It supplies no new tolerance and admits no broader
-TikZ scope. Immutable combined profile admission remains pending.
+TikZ scope. The separate [immutable profile](labelled-border-profile.json) admits
+only these three fixtures under `chromium-153-native-pgf-labelled-borders-v1`.
 
 ```text
 node tools/TikzVisual/labelled-border-cache-self-test.mjs
-node tools/TikzVisual/trial-labelled-border-cached.mjs
-node tools/TikzVisual/labelled-border-cached-self-test.mjs
+node tools/TikzVisual/compare-labelled-border-conformance.mjs
+node tools/TikzVisual/labelled-border-admission-self-test.mjs
 ```
 
-Finish the trial before starting its saved-image checker. These commands use
+Finish the comparison before starting its admission checker. These commands use
 only tracked reference files, .NET 10, Node and the pinned development browser.
 They require no ignored research bundles, TeX installation or PDF executable.
 The reference records, fonts and rasterizer pages come from the original
 independent investigations. The public trial invokes the framework-only
 `TikzLabelledBorderComparison` exporter after verifying the independent images.
+The admitted command owns both the trial and its saved-image checker. It consumes
+their exact completion records, report paths and SHA-256 values; the checker
+receives an explicit GUID trial report rather than a latest pointer. Both child
+reports and all their artifacts are copied byte-for-byte into the admitted bundle.
 
 ## Frozen evidence
 
@@ -96,23 +101,52 @@ assertion must fail with unchanged passing images.
 
 ## Agent inspection and preparation
 
-Read the hashed `latest.json` under `artifacts/labelled-border-cached-trial/`,
+Read the hashed `latest.json` under `artifacts/labelled-border-conformance/`,
 verify its report digest and completion, then inspect `combined.gates` and
 `agent.firstFailedGate`. Open the GUID bundle's `index.html`, actual source and
 scene files, primary contact sheets, ordinary-PDF/public sheets, raw differences,
 local target crops and native-page crops. Amplification and integer enlargement
 affect presentation only. Extra-ink controls have no invented source span; other
 targets identify the original fixture operation changed in SVG. Every local
-window is measured independently of crop selection.
+window is measured independently of crop selection. The outer viewer links each
+source and scene, all white-background 4x primary pairs/raw differences, and independently
+registered 4x native full pages. Its embedded trial viewer exposes defect crops.
 
 The cache and public checkers keep their own GUID reports and source captures.
 Latest pointers are incomplete on startup and failure; earlier attempts remain.
-Completed passing reports carry false approval/conformance flags and a pending
-overall verdict. These are portable research checks awaiting a separately
-reviewed immutable combined profile. Hosted CI execution remains unverified.
+The raw trial and checker retain false approval/conformance flags and a pending
+overall verdict, even when they pass. Only the outer admitted comparison carries
+`approvedImagePolicy: true`, `imageConformanceClaim: true` and `overallVerdict: pass`,
+after all eight gates and the owned 50-control saved-image checker succeed.
+Hosted CI execution remains unverified.
+
+The profile pins the existing compressed/decoded cache, independent frame and
+camera/region/policy identities, qualification report digests, exact counts and
+views, zero native-page allowance, and current guard-tool sources. It supplies no
+candidate-derived tolerance. The admission checker verifies every copied byte
+and the child completion logs, then tests profile corruption, missing/changed
+guard sources, detached checker inputs, contradictory roles and every failed
+gate. It consumes the owned independent pixel proof; it does not claim to repeat
+that pixel calculation itself.
+
+The raw research commands remain available:
+
+```text
+node tools/TikzVisual/trial-labelled-border-cached.mjs
+node tools/TikzVisual/labelled-border-cached-self-test.mjs --report artifacts/labelled-border-cached-trial/run-<GUID>/report.json
+```
+
+Use the exact report printed by the trial. The optional admission checker
+`--report artifacts/labelled-border-conformance/run-<GUID>/report.json` likewise
+selects one retained admitted bundle.
 
 `node tools/TikzVisual/prepare-labelled-border-cache.mjs` is a separate explicit
 preparation command. It requires the declared original ignored qualification
 bundles, invokes no converter or reference engine, and writes a new ignored
 bundle. It never overwrites the checked-in cache. Regeneration or promotion is
 an explicit reference review with its own tests and commit.
+`node tools/TikzVisual/promote-labelled-borders.mjs` is the separate explicit
+profile writer. It requires the three fixed local qualification reports,
+verifies their artifacts/current sources and the exact trial/checker binding,
+and records promotion provenance in a new ignored bundle. Ordinary comparison
+and checker commands never rewrite a profile, cache, reference or prior report.

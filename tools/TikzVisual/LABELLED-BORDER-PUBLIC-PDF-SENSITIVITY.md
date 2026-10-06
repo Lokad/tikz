@@ -5,7 +5,8 @@ to fresh public converter output for the three trusted `LabelledBorders` fixture
 All 126 views satisfy their fixed visibility expectations: 114 visible changes
 fail at their target, while twelve declared controls remain pixel-identical.
 Numeric gates are bypassed for the mutations, so image checks must detect them.
-Conformance admission remains pending.
+These reports retain their research status. The separate
+[portable admission](LABELLED-BORDER-CACHE.md) covers the same fixed fixtures.
 
 ```text
 node tools/TikzVisual/check-labelled-border-public-pdf-sensitivity.mjs
@@ -23,8 +24,8 @@ baseline digest; the combined checker must identify that same baseline.
 These local commands require .NET 10, Node, the pinned development browser and
 the declared ignored qualification bundles. They launch neither TeX nor a PDF
 executable. A fresh checkout lacks those research bundles. Portable immutable
-profile admission and standalone hosted execution remain future work. A separate
-[portable cached research route](LABELLED-BORDER-CACHE.md) uses checked-in
+profile admission now uses a separate command; standalone hosted execution
+remains unverified. The [portable admission](LABELLED-BORDER-CACHE.md) uses checked-in
 independent evidence; the historical commands above retain their original
 local bundle requirements.
 

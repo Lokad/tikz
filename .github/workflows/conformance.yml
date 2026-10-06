@@ -100,8 +100,8 @@ jobs:
       - run: node tools/TikzVisual/check-labelled-border-sensitivity.mjs --public
       - run: node tools/TikzVisual/labelled-border-ink-controls.mjs
       - run: node tools/TikzVisual/labelled-border-cache-self-test.mjs
-      - run: node tools/TikzVisual/trial-labelled-border-cached.mjs
-      - run: node tools/TikzVisual/labelled-border-cached-self-test.mjs
+      - run: node tools/TikzVisual/compare-labelled-border-conformance.mjs
+      - run: node tools/TikzVisual/labelled-border-admission-self-test.mjs
       - run: node tools/TikzVisual/inspect-labelled-border-pdf.mjs
       - run: node tools/TikzVisual/labelled-border-pdf-self-test.mjs
       - run: node tools/TikzVisual/trial-dashes.mjs
@@ -169,6 +169,8 @@ jobs:
             artifacts/labelled-border-cache-controls/
             artifacts/labelled-border-cached-trial/
             artifacts/labelled-border-cached-controls/
+            artifacts/labelled-border-conformance/
+            artifacts/labelled-border-admission-controls/
             artifacts/labelled-border-pdf/
             artifacts/labelled-border-pdf-controls/
             artifacts/node-shape-calibration/

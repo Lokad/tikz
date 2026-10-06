@@ -803,7 +803,7 @@ independent regeneration reject altered inputs, limits, roots, cameras, regions,
 crop lattices and gate summaries. The controls command also requires exact
 equality of all public/native PNGs and local measurements. These are unapproved
 research trials. Separate PDF qualification and fresh public sensitivity are
-documented below; immutable combined admission remains pending.
+documented below; scoped immutable admission uses the separate portable command.
 Prepared CI steps upload every fresh research/control bundle.
 
 The separate [labeled-border PDF investigation](../tools/TikzVisual/LABELLED-BORDER-PDF.md)
@@ -827,8 +827,8 @@ These commands need only cached native evidence, .NET and the pinned browser.
 Their fresh bundles are uploaded by prepared visual CI. Raw local differences
 remain substantial in some regions; this instruction investigation grants no
 PDF image tolerance. Separate rasterizer qualification, calibrated PDF gates
-and fresh public defect sensitivity are documented below. Immutable combined
-admission remains required.
+and fresh public defect sensitivity are documented below. Scoped immutable
+admission uses the separate portable command.
 
 The [labeled-border rasterizer experiment](../tools/TikzVisual/LABELLED-BORDER-PDF-RASTERIZERS.md)
 adds an explicit local comparison through pinned Poppler/Splash and Cairo.
@@ -886,8 +886,8 @@ controls. Its checker independently re-decodes all 138 baseline/control pages
 and 7,392 whole/local metrics, with 52 controls for conjunction, zero limits and
 visibility selectors. Enlarged paired glyph/period crops expose the faint 1x differences.
 Fresh public PDF/native-page defects now pass the separate harness below.
-Portable profile pins and immutable admission remain pending; existing admitted
-profiles and runtime dependencies are unchanged.
+Portable profile pins and scoped immutable admission are documented below;
+previously admitted profiles and runtime dependencies are unchanged.
 
 The [public labeled-border combined trial](../tools/TikzVisual/LABELLED-BORDER-COMBINED-TRIAL.md)
 now requires native numeric, ink/root, primary, both SVG-versus-PDF routes and
@@ -908,7 +908,7 @@ Its 66 controls exercise wrong metadata, camera/coverage/limit changes and
 each required gate's failure. These local research commands need the declared
 ignored calibration bundles, .NET and the pinned browser, without TeX or a PDF
 executable; they are not standalone hosted CI steps. The separate portable route
-below freezes the evidence; conformance admission remains pending.
+below freezes the evidence and provides the separate scoped admission command.
 
 The [fresh public PDF/native-page sensitivity harness](../tools/TikzVisual/LABELLED-BORDER-PUBLIC-PDF-SENSITIVITY.md)
 owns a new combined baseline and applies all 32 independent controls to its
@@ -929,8 +929,8 @@ recorded. The new checker re-decodes 14,784 metrics and 138 full pages and passe
 54 integrity controls. Separate fresh public primary sensitivity still runs
 with `check-labelled-border-sensitivity.mjs --public` (26 controls, 102 views).
 These commands consume the declared ignored bundles, .NET, Node and the pinned
-browser. Reports remain unapproved research evidence pending portable immutable
-admission. Full images, source attribution and enlarged faint-loss crops are
+browser. Reports remain unapproved research evidence; portable immutable
+admission uses the separate command below. Full images, source attribution and enlarged faint-loss crops are
 available in each GUID bundle's `index.html`.
 
 The [portable labeled-border cache and public trial](../tools/TikzVisual/LABELLED-BORDER-CACHE.md)
@@ -950,5 +950,33 @@ checker re-decodes 22,908 public metrics and 138 full pages, passes 50 controls
 and verifies all 1,624 numeric assertions and actual source attribution. Missing or weakened
 evidence fails. These commands need .NET 10, Node and the pinned browser;
 they launch no TeX or PDF executable. Existing research commands keep their
-original bundle requirements. Portable trial results remain unapproved pending
-immutable combined profile admission; hosted execution remains unverified.
+original bundle requirements. Portable raw trial results remain unapproved;
+hosted execution remains unverified.
+
+The scoped immutable labeled-border admission uses the same fixed cache and
+allowances, and is the prepared required visual CI route:
+
+```text
+node tools/TikzVisual/compare-labelled-border-conformance.mjs
+node tools/TikzVisual/labelled-border-admission-self-test.mjs
+```
+
+The comparison owns a fresh eight-gate trial and explicitly selects its exact
+report for the 50-control saved-image checker. Completion records and digests
+bind both child reports; the complete copied bundles retain raw unapproved
+roles. Only the outer comparison can claim conformance for the three pinned
+fixtures. Its profile fixes coverage, views, original primary and separate PDF
+allowances, exact native-page zero limit, independent frame/camera/region hashes,
+qualification lineage and guard-tool sources. Ordinary runs never promote data.
+
+The admission checker verifies all copied artifacts and completion logs, current
+converter/tool sources and the owned numeric/source/pixel proof. It adds profile,
+source and report-binding corruption controls plus forced failures of every gate.
+An explicit `--report artifacts/labelled-border-conformance/run-<GUID>/report.json`
+selects one retained bundle. Open its `index.html` for source/scene links, paired
+defect crops, 4x primary pairs/raw differences and native full-page images. Viewer
+links must identify saved artifacts before a completed report is published; the
+checker rejects missing/undefined links. Four ordinary-PDF blind spots
+remain exposed rather than counted as exact PDF agreement. The explicit profile
+promotion command requires reviewed local qualification bundles; normal CI
+consumers require only tracked evidence, .NET, Node and the pinned browser.

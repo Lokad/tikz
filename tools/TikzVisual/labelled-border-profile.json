@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-native-pgf-labelled-borders-v1",
+  "scope": "Only lines, paths and transforms in the fixed LabelledBorders corpus: 12 nodes, 26 paths, 40 glyphs and 192 anchors. Independent primary and ordinary-PDF limits with exact native-page comparison; no inherited allowance.",
+  "approvedImagePolicy": true,
+  "calibration": {
+    "file": "tests/Reference/LabelledBorders/conformance/calibration.json.gz",
+    "sha256": "f696141b6a17ee0d17d9c6fa1e176cd456a165f775febeec6d8c7dcae921ca8f",
+    "decodedSha256": "3d4253d6c9fe09b1d099bf33b1b2f72ab815cd4a9f59df708e2d177d304a9b28"
+  },
+  "qualification": {
+    "cache": "3ca33e831222e3f91b517bf343629e98387c389d26666d1e925a9abb46b77ffb",
+    "trial": "1dcdb3ff44995b7346e803cec4aa6ea13601f9e1d0818c3c8d034aa0a979a9fd",
+    "checker": "9a8d3147e6512aa350daed9d396c243c36674e9c982dbe2544017368a827cf48"
+  },
+  "requiredGates": [
+    "numeric",
+    "inkRoot",
+    "primary",
+    "originalPdf",
+    "candidatePdf",
+    "nativePage",
+    "freshPrimary",
+    "freshPdfNative"
+  ],
+  "requiredViews": {
+    "primary": [
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "black"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "black"
+      }
+    ],
+    "pdf": [
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      }
+    ]
+  },
+  "counts": {
+    "cases": 3,
+    "nodes": 12,
+    "paths": 26,
+    "glyphs": 40,
+    "anchors": 192,
+    "numeric": 1624,
+    "inkRoot": 276,
+    "primary": 1980,
+    "pdfPerRoute": 696,
+    "nativePage": 672,
+    "primaryControls": 26,
+    "primaryControlViews": 102,
+    "pdfControls": 32,
+    "pdfControlViews": 126,
+    "visiblePdfRejections": 114,
+    "exactPdfVisibilityControls": 12,
+    "pdfOnlyBlindSpotViews": 4
+  },
+  "nativePageRawLimit": 0,
+  "claims": {
+    "primary": "calibrated-original-driver",
+    "pdf": "separate-calibrated-original-and-native",
+    "nativePage": "exact-independent-native-SVG-page"
+  },
+  "cases": [
+    {
+      "caseId": "lines",
+      "primaryFrameSha256": "fb5262b66330e721c9fbc3d0f4cc661c9ec609acaafa1bc126b990834e5141b5",
+      "primaryPolicySha256": "53bd49877063725c9144db87420ce0e32723faccd0572f031b800922fd2265e8",
+      "pdfCameraSha256": "b8942bf493ce440711b102898f9f1391270dcaae6b0c24609aa000fa45b425b5",
+      "pdfRegionsSha256": "8c61c7d0f9a9bb7ec48161be220f8c6c24ee0d84c10c5a41a7e8c1db9f7629e8",
+      "pdfPoliciesSha256": "999ddb2336acd8cd280886bd53613bbac33d3c3d16c2a76f0f1aed683fa5574f"
+    },
+    {
+      "caseId": "paths",
+      "primaryFrameSha256": "df7196ae9d2496d1e151f1739d1ebc630d3aacf98a4757d473f1489c00ab0f03",
+      "primaryPolicySha256": "741ab771dc9e0229fb0ed24675adfdc3a40a36953b1475a6bc160b6555dc5ff8",
+      "pdfCameraSha256": "e892cd26d8d43979b359566713c4875256a39ffbacd180071aa608c5e103c6d5",
+      "pdfRegionsSha256": "0bc0c04c7e2741dd97c24625af374d98c3c96f85284e4df545d307c0dfb5af1e",
+      "pdfPoliciesSha256": "bac35ceec8bbcf90525d53756f8f58f9eed489775d0aa3664a54707e4e5d0e35"
+    },
+    {
+      "caseId": "transforms",
+      "primaryFrameSha256": "447e2b3dd4cbaae7402c03465aaec86ce4f46c3d3529be6a06afe8b5e18992df",
+      "primaryPolicySha256": "d303d1d4c71b7ad01a65a1215c82ae5d9183041082d6f0e453322e74cab5bf59",
+      "pdfCameraSha256": "835d8d1c19497397556a0719589be7b5a2aea536e1ce30e48be03f2bdf0bb2e9",
+      "pdfRegionsSha256": "a7bb5f1910f5c52d9b277cce9cd8c1bbbddd2ec78e6fd245f318d6392c38468d",
+      "pdfPoliciesSha256": "c190f854a269362ce0be59f62a4522eb12bbaa06a94ffce14ef424be20c5dd47"
+    }
+  ],
+  "guardToolHashes": {
+    "tools/TikzLabelledBorderComparison/NativeComparison.cs": "6f1e5b1e0e2dd509905b77905c44a2c2545246197d1921d711f93924f3519f75",
+    "tools/TikzLabelledBorderComparison/Program.cs": "1ebac0db4ee826c37938bf2225640c4c8d06214c2f0c13ebdc72ed3bba5dc261",
+    "tools/TikzLabelledBorderComparison/TikzLabelledBorderComparison.csproj": "de162dcd6a1f305abd3ca45253bf2ec5454bc126b951111deaee7a6d6bf7c20d",
+    "tools/TikzLabelledBorderComparison/packages.lock.json": "65df2f460d407c1487f98513f3524286a8fd66b0806b42717c4c92e649241d1c",
+    "tools/TikzShapeComparison/NativeGlyphTrace.cs": "2695161667fdb35dcb3948e8d02c8c5fe035bfdd12cdddb7e8a43c375ff6e8b1",
+    "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
+    "tools/TikzVisual/calibrate-labelled-border-ink.mjs": "ab3894e86b7e7492adbf3b03e689d35cfb9b8dd20ccae05da8def26412caa26d",
+    "tools/TikzVisual/calibrate-labelled-border-pdf.mjs": "de5302832a8f230aa0b17879e7b1cea26c84a50f5cee8ed1fc49262d914ce496",
+    "tools/TikzVisual/check-labelled-border-pdf-page-guard.mjs": "51ee83323031da165b89dcd08d186866f398f886847dd44d1ddfcd58112b5390",
+    "tools/TikzVisual/check-labelled-border-pdf-sensitivity.mjs": "b2aed8a4bfc45e070beb2730f3650a02c5a7dafd33b411cbcaf3a51a5e027087",
+    "tools/TikzVisual/compare-labelled-border-conformance.mjs": "4bfd9b06074e26c64e91dd280336195786996d3e7368208aec5eacc6d5065032",
+    "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+    "tools/TikzVisual/curved-node-path-units.mjs": "89e4f26565a054eda254ffbde48d7a1b08fa655ed5b3a2a1425a2fb026e53b04",
+    "tools/TikzVisual/dash-pdf-vector.mjs": "9c2c9b5a94813e2264268c8e76af44bda352ef1ae8bc4e9e7ebb72a2ae566fcd",
+    "tools/TikzVisual/inspect-labelled-border-pdf-rasterizers.mjs": "957043b417ac5eb4cb9ae1e6c53987a769c7da6b5ad3d01f795146aa6dd7a98a",
+    "tools/TikzVisual/inspect-labelled-border-pdf.mjs": "40fd86eb8d95f54bfca3ce8f6b7096caa293a87381db33d4b7011c069eab3d96",
+    "tools/TikzVisual/labelled-border-admission-policy.mjs": "c964a4d90c52e64b3ef8fd7d78763944e452ca85c0fa3e52406207168b2277d5",
+    "tools/TikzVisual/labelled-border-admission-self-test.mjs": "f6913ca0dfa8f651eaf6bad2934407e2b2ac85b41a4c667b8b04eb513dfb519e",
+    "tools/TikzVisual/labelled-border-cache-images.mjs": "aacaf808b55c932668a6632a302ecffc69cdad9acd918414507409a5a6035f6c",
+    "tools/TikzVisual/labelled-border-cache-self-test.mjs": "ebffbd39307bc20fd6feff09881ed6f8557a2344a45c3c78f485669bbb4d13cd",
+    "tools/TikzVisual/labelled-border-cache.mjs": "0a3bfc92c6563762024db30f92655955612e1283cf282c35691a658fcb8295fa",
+    "tools/TikzVisual/labelled-border-cached-coverage.mjs": "ed724fac5b6699f641f0cde139c6a60904fa79ee4d88bd1ef92e584b1d2bca6c",
+    "tools/TikzVisual/labelled-border-cached-self-test.mjs": "06f5b6c3f584edd47d4cbdd9ed6e79533ce6c59c0f7dff0a5aaf99506ff089e5",
+    "tools/TikzVisual/labelled-border-combined-common.mjs": "76838861e476380d87b1143b980d46d6d43d87824b47bd673613e7265d85fbd4",
+    "tools/TikzVisual/labelled-border-combined-coverage.mjs": "b55a83e7ce41d57effebfd176194dac6547060b388533e3ccf39a09570552205",
+    "tools/TikzVisual/labelled-border-coverage.mjs": "9c43223a494f36424a17cf447836620c6993c55d306eb4162da901fa7cf02ccb",
+    "tools/TikzVisual/labelled-border-evidence.mjs": "f834efb99475a3e607c5f130be593a5c28217adaaa805326b143d5f5455eb7ff",
+    "tools/TikzVisual/labelled-border-frame.mjs": "dba4cc1d0944fcdb17cf37951a6a45a787eac4c3c91f1babaf71ce1c92101c50",
+    "tools/TikzVisual/labelled-border-image-defects.mjs": "82660e299fec94c5048b77bcf94c60efcc679608b3f475e2dac9bda3f4ef52fb",
+    "tools/TikzVisual/labelled-border-ink.mjs": "0754d36188780ba7e4a17bbe6b129a8c5aa3e5ba95c9ab2777c030b732a3d154",
+    "tools/TikzVisual/labelled-border-log.mjs": "1589c923a5935eea83837ce93f67d19a6a7de45cc448d786b82a009316803a1a",
+    "tools/TikzVisual/labelled-border-oracle.mjs": "d5af3d643f1e74dbc5282fe811fe8945c1424a46e1931bb8af260884624f8616",
+    "tools/TikzVisual/labelled-border-owned-child.mjs": "2761fcac7f76ac40f30df7d8a0895ed929a60144b773aa843a88f06d56c89f57",
+    "tools/TikzVisual/labelled-border-pdf-calibration-common.mjs": "dff339f337decd2362a09232c77f86ab68f270045d573c77d8755f7925227d4e",
+    "tools/TikzVisual/labelled-border-pdf-calibration-coverage.mjs": "18450fb0c153e0e571faa5ff736ed7066401baa3c68dc3a1a75f4d0ce24aa47a",
+    "tools/TikzVisual/labelled-border-pdf-coverage.mjs": "88024c43f060b48d69fc766051c9227e5e218d05072dcd79983b1853be522a2b",
+    "tools/TikzVisual/labelled-border-pdf-diagnostics.mjs": "78ec03f39ea0ba2aa9a57c7abbce70a89d8185c50b845b9870a470f731cbca09",
+    "tools/TikzVisual/labelled-border-pdf-page-guard-coverage.mjs": "b08df3de95638f7f4cbf75d6cc80c03bc6c93f75dee396a377df37a50210ac1a",
+    "tools/TikzVisual/labelled-border-pdf-page-guard-self-test.mjs": "d39eb412e1cd4b818829c236a74b72968e3c19b10bee14dc14f6bfd7dc9c6c63",
+    "tools/TikzVisual/labelled-border-pdf-page-guard.mjs": "26d1ac44ec6c34a1a11928c79394507a163470a38d045368011dbe3a97ef87b0",
+    "tools/TikzVisual/labelled-border-pdf-rasterizer-coverage.mjs": "36c0825d3028b4041a3b9863510c53434f17c3c76563a45c8cbae2b64b02d0b2",
+    "tools/TikzVisual/labelled-border-pdf-vector.mjs": "4ad3e38812160a30aefa7ab978391358841b7e2e01c435b813c6dbeb6aa26845",
+    "tools/TikzVisual/labelled-border-pdf-viewport.mjs": "1122e21a650df29000c74cb577ab414baea3296ff6fefc49a22028282cc00d8d",
+    "tools/TikzVisual/labelled-border-public-pdf-coverage.mjs": "d5581c4c3ad4df5fd7befa6ded5e4c08a059b323490bbd773554c0d62591ac7a",
+    "tools/TikzVisual/labelled-border-research.mjs": "aca3428c49ed80a77b25dfa0dbd243099280a1bfeeb2d0282036ac42d3dcd08a",
+    "tools/TikzVisual/node-profile.json": "0b60e056b2643c13d04baa7388dc1293b55081c06cd1707be23901a9245015dd",
+    "tools/TikzVisual/package-lock.json": "1493ab1a08080e8e7434844c2ff7feff20da79de3ea2c13df399d426b82316f1",
+    "tools/TikzVisual/package.json": "a7562ff94fff07cf54821025a58dec5b9bf9e3c2cae836d6d9516eae90072b9f",
+    "tools/TikzVisual/prepare-labelled-border-cache.mjs": "d270a2e4fa71d6402fd28f4db254965f907f6594bbfb265371d89259fb1892d4",
+    "tools/TikzVisual/promote-labelled-borders.mjs": "af09069276910ef13e402ec08e1c28633fad4dde58e3f21c3e8e93bb23443dc9",
+    "tools/TikzVisual/shape-frame-math.mjs": "a58534df72c79553763108078400f2010b69c125d394ea6f2628d0d77545fb44",
+    "tools/TikzVisual/shape-image-pair.mjs": "32347ca682e73a1b8324928b46491da954a124a7e65bbe2ad268ab6b14707efe",
+    "tools/TikzVisual/shape-oracle-bundle.mjs": "bc0e2657627ff5caf8405cb6005da2f645b4fe3f398655c58cb867e5d38d8125",
+    "tools/TikzVisual/shape-pdf-camera.mjs": "9941c14fb2783d41a82c29c4899cac9f0d4a137008d00ffefc22c89a30613658",
+    "tools/TikzVisual/shape-pdf-image-pair.mjs": "e0cb5dc44d789dba524349c7595c6569ddd7c1c3cc61fe68bd9598daf4d260ec",
+    "tools/TikzVisual/shape-pdf-trial-policy.mjs": "fcd52ca4f9caa1512bed5b68760b541ee5be29f3a91286ef892cef42a854b4e4",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "7cbbce06ba3175ecfc4289f6019ca1571355fd70e78e280892adf00877f689c2",
+    "tools/TikzVisual/shape-raster-metrics.mjs": "bb4becb5e6025fe3d296b7536214536e486c127ffd46a4adf62fc11778861936",
+    "tools/TikzVisual/text-profile.json": "5d51a7482e3cec8896b02ebe8f9a872f8cb0bc535ddced6312bbad10f87231e1",
+    "tools/TikzVisual/trial-labelled-border-cached.mjs": "10b9f22ef5e901a749b6fc1d7399d39d7adb97857e719ad0898d411864076135"
+  }
+}

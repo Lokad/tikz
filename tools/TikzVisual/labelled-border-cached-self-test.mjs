@@ -18,7 +18,8 @@ const artifacts={},controls=[];let toolHashes={},inputReportSha256=null;
 const save=(p,b)=>writeArtifact(output,p,b,artifacts);
 async function publish(r){const b=Buffer.from(JSON.stringify(r,null,2)+'\n');await writeArtifact(output,'report.json',b);
   await writeArtifact(base,'latest.json',JSON.stringify({completed:r.completed,
-    report:path.relative(base,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(b)},null,2)+'\n');}
+    report:path.relative(base,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(b)},null,2)+'\n');
+  return {report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(b)};}
 function reject(name,action){let error;try{action();}catch(e){error=e.message;}assert.ok(error,'Accepted portable trial control: '+name);
   controls.push({name,expected:'reject',passed:true,error});}
 function numericChecks(q,count){
@@ -37,11 +38,19 @@ function numericChecks(q,count){
 try{
   const own='tools/TikzVisual/labelled-border-cached-self-test.mjs',ownBytes=canonical(await readFile(path.join(root,own)));
   toolHashes[own]=sha256(ownBytes);await save('tool-sources/'+own,ownBytes);
-  await publish({completed:false,passed:false,converterInvoked:false,toolHashes,artifacts});assert.equal(process.argv.length,2);
+  await publish({completed:false,passed:false,converterInvoked:false,toolHashes,artifacts});
+  assert.ok(process.argv.length===2||(process.argv.length===4&&process.argv[2]==='--report'));
   const e=await loadLabelledCache(),folder=path.join(root,'artifacts/labelled-border-cached-trial');
-  const pointer=JSON.parse(await readFile(path.join(folder,'latest.json')));assert.equal(pointer.completed,true);
-  assert.match(pointer.report,/^run-[a-f0-9-]+\/report.json$/);const input=path.dirname(path.join(folder,pointer.report));
-  const bytes=await readFile(path.join(input,'report.json'));assert.equal(sha256(bytes),pointer.sha256);inputReportSha256=pointer.sha256;
+  let input,bytes;
+  if(process.argv.length===4){
+    assert.match(process.argv[3],/^artifacts\/labelled-border-cached-trial\/run-[a-f0-9-]+\/report.json$/);
+    input=path.dirname(path.join(root,process.argv[3]));bytes=await readFile(path.join(input,'report.json'));
+  }else{
+    const pointer=JSON.parse(await readFile(path.join(folder,'latest.json')));assert.equal(pointer.completed,true);
+    assert.match(pointer.report,/^run-[a-f0-9-]+\/report.json$/);input=path.dirname(path.join(folder,pointer.report));
+    bytes=await readFile(path.join(input,'report.json'));assert.equal(sha256(bytes),pointer.sha256);
+  }
+  inputReportSha256=sha256(bytes);
   const r=JSON.parse(bytes),read=async p=>readFile(await outputPath(input,p));
   for(const[p,h]of Object.entries(r.artifacts))assert.equal(sha256(await read(p)),h,p);
   await verifyLabelledSourceHashes(r.toolHashes);Object.assign(toolHashes,r.toolHashes);
@@ -144,8 +153,10 @@ try{
   reject('Forged source containment',()=>{const q=structuredClone(quantities[0]);q.checks.find(q=>q.unit==='source containment').actual=false;numericChecks(q,512);});
   reject('Forged source span',()=>{const q={...r,cases:[structuredClone(r.cases[0]),...r.cases.slice(1)]};q.cases[0].sources[0].source.offset++;attribution(q,scenes,texts);});
   await verifyLabelledSourceHashes(toolHashes);
-  await publish({schemaVersion:1,completed:true,passed:true,converterInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,overallVerdict:'pending',
+  const location=await publish({schemaVersion:1,completed:true,passed:true,converterInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,overallVerdict:'pending',
     inputReportSha256,cacheSha256:labelledCacheSha256,numericAssertions,metricsRecomputed,pagesRecomputed,controls,toolHashes,artifacts});
+  console.log(JSON.stringify({kind:'labelled-border-cached-check-output',final:true,completed:true,passed:true,inputReportSha256,...location}));
   console.log('Portable public checker: '+controls.length+' controls, '+metricsRecomputed+' metrics, '+pagesRecomputed+' full pages.');
-}catch(error){process.exitCode=2;console.error(error.stack);await publish({completed:false,passed:false,converterInvoked:false,
-  approvedImagePolicy:false,imageConformanceClaim:false,error:error.message.replaceAll(root,'<repo>'),inputReportSha256,controls,toolHashes,artifacts});}
+}catch(error){process.exitCode=2;console.error(error.stack);const location=await publish({completed:false,passed:false,converterInvoked:false,
+  approvedImagePolicy:false,imageConformanceClaim:false,error:error.message.replaceAll(root,'<repo>'),inputReportSha256,controls,toolHashes,artifacts});
+  console.log(JSON.stringify({kind:'labelled-border-cached-check-output',final:true,completed:false,passed:false,inputReportSha256,...location}));}

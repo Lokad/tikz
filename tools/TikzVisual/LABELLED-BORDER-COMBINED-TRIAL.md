@@ -4,7 +4,8 @@ This prospective research trial converts all three trusted `LabelledBorders`
 fixtures through the public API and requires six independent gates in one
 fresh report. It uses the previously frozen primary limits, separate
 original/native PDF limits and exact native-page constraint. It changes no
-reference, allowance or production code. Conformance admission remains pending.
+reference, allowance or production code. This research report remains unapproved;
+the separate [portable admission](LABELLED-BORDER-CACHE.md) covers these fixtures.
 
 ```text
 node tools/TikzVisual/trial-labelled-border-combined.mjs
@@ -18,7 +19,7 @@ TeX or a PDF executable. `labelled-border-combined-common.mjs` pins the exact
 primary/PDF calibrations and the independent native-page guard checker. Their
 bytes, artifacts and current tool sources are verified before conversion.
 A fresh checkout lacks these ignored research bundles. Portable profile
-admission and hosted execution remain pending.
+admission uses the separate portable command; hosted execution remains pending.
 
 ## Gates and independent inputs
 
@@ -86,7 +87,7 @@ validation. Completed trials still carry `approvedImagePolicy: false`,
 pointer incomplete on startup and failure. A rejected invalid-command control
 verifies that a previous successful pointer cannot masquerade as the new result.
 
-## Remaining admission
+## Separate portable admission
 
 The [PDF calibration](LABELLED-BORDER-PDF-CALIBRATION.md) preserves the failed
 PDF-only trial and independently proves the supplemental native-page guard's
@@ -94,8 +95,9 @@ sensitivity. The earlier [primary trial](LABELLED-BORDER-INK.md) has separate
 fresh public primary defects. The [public PDF/native-page sensitivity harness](LABELLED-BORDER-PUBLIC-PDF-SENSITIVITY.md)
 now applies all 32 independent controls to a fresh owned combined baseline and
 retains their visibility expectations and PDF-only blind spots. Its checker
-recomputes 14,784 metrics and 138 full pages. Next freeze immutable combined
-profile pins with corruption/sensitivity controls. The separate
-[portable cached trial](LABELLED-BORDER-CACHE.md) now freezes the independent
-evidence and requires fresh public primary/PDF/native controls in one run.
+recomputes 14,784 metrics and 138 full pages. The separate
+[portable admission](LABELLED-BORDER-CACHE.md) freezes the independent evidence
+and requires fresh public primary/PDF/native controls in one owned eight-gate
+trial, followed by its exact saved-image checker and admission integrity controls.
+The historical command above keeps its raw research roles and bundle requirements.
 Existing admitted profiles and runtime dependencies are unchanged.

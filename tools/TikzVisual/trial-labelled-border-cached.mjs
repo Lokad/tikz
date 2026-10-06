@@ -25,7 +25,8 @@ const artifacts={},cases=[],primaryControls=[],pdfControls=[];let toolHashes={},
 const save=(p,b)=>writeArtifact(output,p,b,artifacts),read=p=>readFile(path.join(output,p));
 async function publish(r){const b=Buffer.from(JSON.stringify(r,null,2)+'\n');await writeArtifact(output,'report.json',b);
   await writeArtifact(base,'latest.json',JSON.stringify({completed:r.completed,
-    report:path.relative(base,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(b)},null,2)+'\n');}
+    report:path.relative(base,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(b)},null,2)+'\n');
+  return {report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(b)};}
 try{
   toolHashes=await captureLabelledCombinedSources(save,'trial-labelled-border-cached.mjs');
   for(const file of ['labelled-border-cache.mjs','labelled-border-cache-images.mjs','labelled-border-cached-coverage.mjs']){
@@ -142,8 +143,10 @@ try{
       coverage:{cases:3,numericChecks:1624,inkRootChecks:276,primaryViews:36,pdfViews:24,nativePageViews:12,
         primaryControls:26,primaryControlViews:102,pdfControls:32,pdfControlViews:126,visiblePdfRejections:114,exactPdfVisibilityControls:12,pdfOnlyBlindSpotViews:4},
       agent:{viewer:'index.html',firstFailedGate:combined.firstFailedGate,command:'node tools/TikzVisual/trial-labelled-border-cached.mjs'},artifacts};
-    validateLabelledCachedTrial(report,e,numeric);await publish(report);process.exitCode=combined.passed?0:1;
+    validateLabelledCachedTrial(report,e,numeric);const location=await publish(report);process.exitCode=combined.passed?0:1;
+    console.log(JSON.stringify({kind:'labelled-border-cached-trial-output',final:true,completed:true,passed:combined.passed,...location}));
     console.log('Portable public labeled-border trial: '+(combined.firstFailedGate??'all eight gates pass'));
   }finally{await renderer.browser.close();}
-}catch(error){process.exitCode=2;console.error(error.stack);await publish({completed:false,phase,converterInvoked,
-  approvedImagePolicy:false,imageConformanceClaim:false,error:error.message.replaceAll(root,'<repo>'),cases,primaryControls,pdfControls,toolHashes,artifacts});}
+}catch(error){process.exitCode=2;console.error(error.stack);const location=await publish({completed:false,phase,converterInvoked,
+  approvedImagePolicy:false,imageConformanceClaim:false,error:error.message.replaceAll(root,'<repo>'),cases,primaryControls,pdfControls,toolHashes,artifacts});
+  console.log(JSON.stringify({kind:'labelled-border-cached-trial-output',final:true,completed:false,passed:false,...location}));}
