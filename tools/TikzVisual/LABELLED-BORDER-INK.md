@@ -137,5 +137,7 @@ gate summaries and sensitivity expectations.
 
 All output directories are fresh GUID bundles; failed experiments stay in place.
 Prepared CI commands upload them. Hosted execution remains unverified. Independent
-PDF qualification, both SVG-versus-PDF routes and immutable combined admission
-are still required before a labeled-border conformance claim.
+[PDF instruction and page-registration evidence](LABELLED-BORDER-PDF.md) now adds
+908 native checks, 162 exact viewport controls and 36 raw comparison pairs.
+PDF rasterizer/image qualification, both SVG-versus-PDF routes and immutable
+combined admission are still required before a labeled-border conformance claim.

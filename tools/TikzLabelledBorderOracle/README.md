@@ -50,7 +50,9 @@ and reports `overallVerdict: pending`, `converterInvoked: false` and
 `imageConformanceClaim: false`. A separate
 [ink calibration and sensitivity harness](../TikzVisual/LABELLED-BORDER-INK.md)
 now qualifies all native envelopes and the full-ink root, freezes primary limits
-before public conversion and tests image-only defects. PDF comparisons and
-immutable combined admission remain required.
+before public conversion and tests image-only defects. A separate
+[PDF investigation](../TikzVisual/LABELLED-BORDER-PDF.md) checks original PDF
+instructions, exact page registration and raw local image differences.
+PDF image qualification and immutable combined admission remain required.
 Prepared cached CI commands retain these research artifacts; hosted execution
 remains unverified.

@@ -739,8 +739,9 @@ plain/probed SVG/PDF invariance and original six-face TFM inputs are retained.
 An external snapshot pin and mutation controls reject missing, tampered or
 consistently rehashed replacements. Fresh control reports under
 `artifacts/labelled-border-cache-controls/` are uploaded by the prepared ordinary
-Windows/Linux jobs. Image calibration and combined conformance for this new
-family remain pending; no existing image tolerance is inherited.
+Windows/Linux jobs. Independent primary research follows below; PDF image
+acceptance and combined conformance remain pending. No existing image tolerance
+is inherited.
 
 The separate [public labeled-border tool](../tools/TikzLabelledBorderComparison/README.md)
 exports all 1,624 native checks and source-aware traces without a browser:
@@ -803,3 +804,26 @@ crop lattices and gate summaries. The controls command also requires exact
 equality of all public/native PNGs and local measurements. These are unapproved
 research trials: PDF qualification and immutable combined admission are pending.
 Prepared CI steps upload every fresh research/control bundle.
+
+The separate [labeled-border PDF investigation](../tools/TikzVisual/LABELLED-BORDER-PDF.md)
+checks ordinary PDF instructions against native PGF and DVI/TFM records before
+comparing page pixels. It invokes the independent reader, never the converter:
+
+```text
+node tools/TikzVisual/inspect-labelled-border-pdf.mjs
+node tools/TikzVisual/labelled-border-pdf-self-test.mjs
+```
+
+The 908 scalar checks include exact pdfTeX font-size/width grids and explicitly
+propagated baseline rounding. Three representations isolate original SVG,
+native ink and printed PDF operands. All 162 page-viewport controls must be
+pixel-exact; the self-test separately rederives all 81 control SVGs. The ordinary
+PDF comparisons retain 36 pairs and 1,944 local measurements on the native page
+lattice, repeated originals, overlays and paired crops. The 111 controls verify
+text/state handling, numeric rejection, hashes, coverage, regions and cameras.
+
+These commands need only cached native evidence, .NET and the pinned browser.
+Their fresh bundles are uploaded by prepared visual CI. Raw local differences
+remain substantial in some regions; no PDF image tolerance is granted. Separate
+rasterizer qualification, both original/public SVG-versus-PDF gates, local defect
+sensitivity and immutable combined admission remain required.

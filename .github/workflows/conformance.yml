@@ -97,6 +97,8 @@ jobs:
       - run: node tools/TikzVisual/check-labelled-border-sensitivity.mjs
       - run: node tools/TikzVisual/check-labelled-border-sensitivity.mjs --public
       - run: node tools/TikzVisual/labelled-border-ink-controls.mjs
+      - run: node tools/TikzVisual/inspect-labelled-border-pdf.mjs
+      - run: node tools/TikzVisual/labelled-border-pdf-self-test.mjs
       - run: node tools/TikzVisual/trial-dashes.mjs
       - run: node tools/TikzVisual/dash-pdf-vector-self-test.mjs
       - run: node tools/TikzVisual/dash-lines-oracle-self-test.mjs
@@ -159,6 +161,8 @@ jobs:
             artifacts/labelled-border-oracle-sensitivity/
             artifacts/labelled-border-public-sensitivity/
             artifacts/labelled-border-ink-controls/
+            artifacts/labelled-border-pdf/
+            artifacts/labelled-border-pdf-controls/
             artifacts/node-shape-calibration/
             artifacts/node-shape-frames/
             artifacts/node-shape-frame-comparisons/

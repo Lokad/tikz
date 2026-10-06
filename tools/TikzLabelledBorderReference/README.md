@@ -65,8 +65,12 @@ picture bounds. The path default and width presets now use the same integer
 TeX dimensions as node paint. Numeric checks preserve their fixed precision.
 
 This is independent native evidence and a public numeric regression corpus.
-Primary image calibration, local region sensitivity, PDF image acceptance,
-combined admission and agent comparison bundles for this family remain pending.
+The [primary research harness](../TikzVisual/LABELLED-BORDER-INK.md) now freezes
+independent ink/primary limits, tests local image-only sensitivity and retains
+agent comparison bundles. The separate
+[PDF investigation](../TikzVisual/LABELLED-BORDER-PDF.md) adds native instruction
+and page-registration checks with raw differences. PDF image acceptance and
+combined admission for this family remain pending.
 It inherits no shape, border or dash image allowance. Regeneration legitimately
 changes provenance; review old/new evidence and update the external pins
 explicitly before accepting it.
