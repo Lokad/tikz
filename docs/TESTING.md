@@ -85,6 +85,15 @@ remain separate. Image-only controls distinguish visible losses from unchanged
 black-on-black and subquantum samples. These tools cannot approve conformance;
 PDF qualification and the public combined/admission gates remain required.
 
+The [native-page PDF qualification](../tools/TikzVisual/EDGE-PDF.md) runs with
+`node tools/TikzVisual/calibrate-edge-pdf.mjs`; focused controls run with
+`node tools/TikzVisual/edge-pdf-self-test.mjs`. Select its completed report for
+`check-edge-pdf.mjs`. The checker rebuilds native references and mutations,
+replays root-boundary controls and independently measures saved page pixels
+and integer RGB ink sums in every native crop. Original-driver diagnostics and
+the corrected reference retain distinct roles. This is reference-only work;
+the public combined trial and reviewed immutable admission remain required.
+
 The [candidate numeric command](../tools/TikzEdgeComparison/README.md) runs
 `dotnet run --project tools/TikzEdgeComparison -c Release` and needs no TeX or
 browser. It retains emitted SVG, source spans, resolved paths/nodes/glyphs,

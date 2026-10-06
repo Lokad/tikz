@@ -115,6 +115,15 @@ jobs:
           if (-not $edgePrimaryRun.completed) { throw 'Native primary calibration is incomplete.' }
           node tools/TikzVisual/check-edge-primary.mjs ('artifacts/edge-primary-calibration/' + $edgePrimaryRun.report)
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - run: node tools/TikzVisual/edge-pdf-self-test.mjs
+      - run: node tools/TikzVisual/calibrate-edge-pdf.mjs
+      - name: Verify native edge PDF qualification
+        shell: pwsh
+        run: |
+          $edgePdfRun = Get-Content artifacts/edge-pdf-calibration/latest.json -Raw | ConvertFrom-Json
+          if (-not $edgePdfRun.completed) { throw 'Native PDF calibration is incomplete.' }
+          node tools/TikzVisual/check-edge-pdf.mjs ('artifacts/edge-pdf-calibration/' + $edgePdfRun.report)
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/inspect-shapes.mjs
       - run: node tools/TikzVisual/calibrate-shapes.mjs
       - run: node tools/TikzVisual/shape-frame-self-test.mjs
@@ -184,6 +193,9 @@ jobs:
             artifacts/edge-primary-controls/
             artifacts/edge-primary-calibration/
             artifacts/edge-primary-checks/
+            artifacts/edge-pdf-controls/
+            artifacts/edge-pdf-calibration/
+            artifacts/edge-pdf-checks/
             artifacts/comparator-mutations/
             artifacts/font-comparisons/
             artifacts/font-comparator-mutations/

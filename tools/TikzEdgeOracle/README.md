@@ -103,6 +103,12 @@ The complete natural/expanded matrix, independent local limits and image-only
 defects ground primary sensitivity. Renderer-only faint-paint probes have their
 own explicit calibration and visibility scope. Image/PDF admission stays pending.
 
+The [native-page PDF qualification](../TikzVisual/EDGE-PDF.md) registers original,
+derived-driver and native-semantic SVGs on ordinary PDF paper. Separate prospective
+local policies retain exact RGB ink, unchanged viewport controls and image-only
+target sensitivity. Its fresh checker rebuilds SVGs and remeasures saved pages.
+It invokes no converter and cannot approve a public image policy.
+
 These tools and their browser dependencies are excluded from the runtime
 package. Cached operation needs neither TeX nor a PDF executable. Hosted CI
 steps are prepared; hosted execution and broader TikZ compatibility remain

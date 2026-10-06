@@ -23,6 +23,12 @@ zero-length line. It preserves original-driver differences and tests local
 image-only sensitivity under a preselected native encoding. It grants no public
 conformance claim or PDF allowance.
 
+The [native-page PDF qualification](../tools/TikzVisual/EDGE-PDF.md) compares
+original, corrected and reconstructed references with ordinary TikZ PDF pages.
+Native positions and integer crops fix registration. Independent local error
+limits, exact RGB ink sums, unchanged viewport controls and image-only defects
+prepare the secondary gate. Public image admission remains pending.
+
 ```tex
 \begin{tikzpicture}
   \node[draw] (a) at (0,0) {Input};
