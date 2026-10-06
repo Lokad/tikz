@@ -13,6 +13,10 @@ effective paint/clips and original glyph outlines. It does not call the public
 converter. Its complete scale/background matrix, ordinary-PDF pairs and saved
 PNG checker ground future image policies. The original SVG's missing round-cap
 dot remains visible; a reconstructed-reference match does not replace it.
+Separate [operation diagnostics](../tools/TikzVisual/EDGE-OPERATIONS.md) preserve
+full cameras and effective state while isolating each native paint and glyph.
+They distinguish driver transform arithmetic from missing ink, without granting
+a converter tolerance.
 
 ```tex
 \begin{tikzpicture}

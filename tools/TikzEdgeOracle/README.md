@@ -87,7 +87,11 @@ The native SVG drops a zero-length round-capped blue stroke. Original paths,
 native PDF and the reconstruction retain its dot. Both original-driver and
 reconstructed-reference comparisons remain visible. The ordinary-PDF dot pair
 still has cross-renderer edge differences; they are observations, not limits.
-Node glyph serialization and natural-root clipping also retain raw differences.
+Node serialization and natural-root clipping also retain raw differences.
+The separate [operation diagnostics](../TikzVisual/EDGE-OPERATIONS.md) isolate
+all ninety paints and sixteen glyphs, preserving full cameras and inherited
+state. Their native driver-frame experiment distinguishes thin-stroke matrix
+arithmetic from glyph-edge differences and the missing original-driver dot.
 No converter image conformance is admitted. Next qualify independent precision
 and raster allowances, prove local image-only sensitivity, and run a fresh
 public-converter combined trial under a separately reviewed profile.

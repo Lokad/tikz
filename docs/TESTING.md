@@ -65,6 +65,16 @@ local measurements, repeat captures and agent-viewable PNGs. Use the explicit
 saved-run checker documented with the tool to reconstruct native inputs and
 remeasure the images. All reports keep calibration and image admission pending.
 
+The [operation diagnostics](../tools/TikzVisual/EDGE-OPERATIONS.md) further
+isolate ninety native paints and sixteen glyphs, preserving the same cameras,
+paint inheritance and clips. Run `edge-operation-self-test.mjs`, then
+`inspect-edge-operations.mjs` under `tools/TikzVisual/`. The full matrix retains
+ninety whole-picture and 1,908 isolated pairs in three independent encodings.
+Its explicitly selected `check-edge-operations.mjs` reconstructs all 651 SVGs
+and remeasures saved PNGs. Nonempty clipped-ink controls prevent a repeated blank
+pair from masquerading as a valid renderer result. These are diagnostics;
+independent tolerance calibration and public image admission remain pending.
+
 The [candidate numeric command](../tools/TikzEdgeComparison/README.md) runs
 `dotnet run --project tools/TikzEdgeComparison -c Release` and needs no TeX or
 browser. It retains emitted SVG, source spans, resolved paths/nodes/glyphs,

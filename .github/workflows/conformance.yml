@@ -97,6 +97,15 @@ jobs:
           if (-not $edgeOracleRun.completed) { throw 'Independent edge inspection is incomplete.' }
           node tools/TikzVisual/check-edge-oracle.mjs ('artifacts/edge-oracle-inspection/' + $edgeOracleRun.report)
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - run: node tools/TikzVisual/edge-operation-self-test.mjs
+      - run: node tools/TikzVisual/inspect-edge-operations.mjs
+      - name: Verify native edge operation observations
+        shell: pwsh
+        run: |
+          $edgeOperationRun = Get-Content artifacts/edge-operation-inspection/latest.json -Raw | ConvertFrom-Json
+          if (-not $edgeOperationRun.completed) { throw 'Native operation inspection is incomplete.' }
+          node tools/TikzVisual/check-edge-operations.mjs ('artifacts/edge-operation-inspection/' + $edgeOperationRun.report)
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/inspect-shapes.mjs
       - run: node tools/TikzVisual/calibrate-shapes.mjs
       - run: node tools/TikzVisual/shape-frame-self-test.mjs
@@ -160,6 +169,9 @@ jobs:
             artifacts/edge-oracle-controls/
             artifacts/edge-oracle-inspection/
             artifacts/edge-oracle-checks/
+            artifacts/edge-operation-controls/
+            artifacts/edge-operation-inspection/
+            artifacts/edge-operation-checks/
             artifacts/comparator-mutations/
             artifacts/font-comparisons/
             artifacts/font-comparator-mutations/
