@@ -106,6 +106,14 @@ coverage and report corruption controls. `edge-trial-self-test.mjs` supplies
 a trial pass grants no immutable image admission. Cached execution needs .NET
 and the pinned development browser, without TeX or a PDF executable.
 
+The [portable cached trial](../tools/TikzVisual/EDGE-CACHED.md) needs no old local
+qualification folders. Run `edge-image-cache-self-test.mjs` for 33 archive/source
+integrity controls, then `trial-edge-cached.mjs` for an owned fresh public trial
+and that exact trial's independent checker. The tracked independent cache keeps
+all original reports and artifacts, with compressed/decoded pins outside the
+archive. Limits, views and original-driver diagnostics remain unchanged.
+Renderer-environment compatibility and immutable admission remain explicit.
+
 The [candidate numeric command](../tools/TikzEdgeComparison/README.md) runs
 `dotnet run --project tools/TikzEdgeComparison -c Release` and needs no TeX or
 browser. It retains emitted SVG, source spans, resolved paths/nodes/glyphs,

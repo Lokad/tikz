@@ -39,6 +39,11 @@ checker reconverts, reconstructs expected frames and remeasures the saved PNGs.
 Completed trial passes retain an unapproved role; portable immutable admission
 and broader connection interactions remain separate work.
 
+A [portable cached command](../tools/TikzVisual/EDGE-CACHED.md) supplies those
+independent qualification bundles entirely from tracked evidence, then owns
+the same public trial and checker. It requires no ignored research folders,
+TeX or PDF executable. Cached transport changes no image gate or fidelity claim.
+
 ```tex
 \begin{tikzpicture}
   \node[draw] (a) at (0,0) {Input};
