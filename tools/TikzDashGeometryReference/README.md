@@ -25,6 +25,21 @@ image-only defects with numeric checks bypassed. Ordinary PDF image admission
 and label/node interactions remain pending; primary success does not assert
 combined conformance.
 
+Independent ordinary-PDF diagnostics are separate from the primary gate:
+
+    node tools/TikzVisual/dash-geometry-pdf-vector-self-test.mjs
+    node tools/TikzVisual/inspect-dash-geometry-pdf.mjs
+
+These development commands require the pinned browser, read only this trusted
+fixture's original PDF/SVG/native evidence, and invoke no converter. The
+bounded PDF reader checks 446 finite-coordinate/paint/page quantities and
+35 parser/numeric controls. The image investigation checks 54 exact native
+page-viewport controls, then retains 40 whole-picture and 640 regional
+observations, including literal PDF instructions rendered as SVG. Fresh
+artifact bundles expose paired crops, differences, original instructions,
+native measurements and source/tool hashes. They grant no PDF tolerance or
+combined admission.
+
 Sixteen paint cases cover cubic controls, compound subpaths, closed and filled
 paths, circles/ellipses/arcs with continuation, ordered/oblique transforms,
 width ordering and scope restoration. Three native clip paths cover ordinary

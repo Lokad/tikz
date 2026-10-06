@@ -290,3 +290,65 @@ The primary policy does not admit ordinary PDF rendering, labels, nodes,
 other fixtures or future library behavior. Independent PDF image admission
 and defect controls, and label/node interactions, remain required before
 combined conformance can pass.
+
+The independent PDF investigation now retains the complete geometry corpus:
+
+    node tools/TikzVisual/dash-geometry-pdf-vector-self-test.mjs
+    node tools/TikzVisual/inspect-dash-geometry-pdf.mjs
+
+Its bounded reader accepts only the trusted fixture's small PDF grammar. It
+preserves original operations for inspection and reconstruction while using
+the oracle's normalization of consecutive/unpainted moves for numeric checks.
+All line/cubic coordinates, widths, dash items and phases recover PGF's finite
+PDF conversion. Caps, joins, fill/stroke opacity, clip chains, page size and
+the independently measured origin are also checked: 446 quantities and 35
+positive/negative controls. This is a diagnostic reader, not a general PDF
+interpreter or a runtime dependency.
+
+The camera and sixteen local regions come from native measurements before
+rendering. Original SVG, eight independently grounded SVG representations,
+and the literal PDF instructions reconstructed as SVG are registered on the
+PDF page at 1x and 4x, with natural and expanded frames. Fifty-four viewport
+controls show exact pixels when each source's unchanged drawing is padded or
+its root boundaries are perturbed by four scaled points. The investigation
+retains 40 whole-picture and 640 local observations, exact repeat captures,
+raw/amplified differences, overlays, paired crops and tool/input hashes under
+`artifacts/dash-geometry-pdf/`. Every local region has inspectable image pairs.
+
+Literal PDF instructions still produce substantial cross-renderer errors,
+including the odd-length pattern with negative phase. These observations
+grant no allowance. PDF image admission needs an explanation of this behavior
+and independent defect sensitivity before a combined gate can pass. Primary
+SVG admission and its immutable limits remain unchanged.
+
+An explicit local diagnosis also compares the two installed PDF rasterizers:
+
+    node tools/TikzVisual/inspect-dash-geometry-pdf-rasterizers.mjs
+
+First run the ordinary-PDF investigation above. This research command also
+requires pdftoppm/pdftocairo 24.04.0 and the ignored upstream source directory
+`external/poppler-24.04.0/`. Download the [official Poppler 24.04.0 archive](https://poppler.freedesktop.org/poppler-24.04.0.tar.xz)
+there as `poppler-24.04.0.tar.xz`; its SHA-256 must be
+`1e804ec565acf7126eb2e9bb3b56422ab2039f7e05863a5dfabdd1ffd1bb77a7`.
+Extract its `splash/Splash.cc`, `poppler/SplashOutputDev.cc` and
+`utils/pdftoppm.cc` into the corresponding paths below that directory.
+
+The diagnosis records upstream sources, exact binary hashes and commands,
+unchanged original PDF rasters and repeat captures. Four diagnostic PDFs
+preserve all graphics instructions while changing only the spelling of the
+odd dash pattern. The unchanged-instruction wrapper must reproduce the
+original pixels. Sixteen equivalence controls verify both scales: Cairo
+preserves pixels under all spellings; Splash changes placement when the odd
+array is explicitly doubled. The upstream Splash source normalizes phase
+over the supplied array sum, which is half the complete odd-array cycle.
+The [SVG stroke-dashing rule](https://www.w3.org/TR/SVG2/painting.html#StrokeDashing)
+uses the repeated even array.
+
+At 4x, explicit repetition reduces this region's Splash/SVG mean error from
+121.215 to 10.362 channel levels; its measured edge displacement falls from
+about 2.016 to 0.25 CSS pixels. Cairo's unchanged original PDF has mean error
+7.151 and displacement 0.25 in that region. Other measured raster/topology
+differences remain. The fresh diagnosis bundle owns all observations and
+paired crops; it never rewrites references or selects a tolerance. This
+isolates a reference-renderer discrepancy and grants no Cairo, PDF or combined
+admission. The converter's dash semantics and primary profile are unchanged.

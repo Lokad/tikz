@@ -58,10 +58,29 @@ The separate dash geometry corpus adds sixteen painted paths and three clips:
 Its 1,090 numeric checks and 24 primary views/384 local observations have
 separate provenance and admission states. Six repeated positive and six
 negative controls exercise clipped image rendering. The browser inspection
-retains raw differences without an approved threshold; primary and PDF image
-gates remain pending. Cached numeric checks belong to ordinary CI; browser
-inspection and its controls belong to visual CI. Neither command upgrades
-this family's evidence to image conformance.
+retains raw differences without an approved threshold. A separate pinned
+primary policy now admits the sixteen-path corpus; its ordinary PDF image
+gate remains pending. Cached numeric checks belong to ordinary CI; browser
+inspection and its controls belong to visual CI. These inspection commands
+do not upgrade this family's evidence to combined image conformance.
+
+The ordinary-PDF geometry investigation has its own commands:
+
+    node tools/TikzVisual/dash-geometry-pdf-vector-self-test.mjs
+    node tools/TikzVisual/inspect-dash-geometry-pdf.mjs
+
+The bounded PDF reader checks all sixteen paints and three clips, including
+cubic controls, finite PGF point conversion, state, opacity, inherited clip
+chains and page registration. Its 446 numeric checks and 35 positive/negative
+controls require the pinned development browser but invoke no converter.
+The separate image command fixes the camera and sixteen local regions from
+native measurements, verifies 54 exact page-viewport controls, and retains
+40 whole-picture/640 local observations at 1x/4x. It compares original SVG,
+eight independent SVG representations and literal PDF instructions in SVG
+against the unchanged ordinary TikZ PDF rasters. Fresh GUID bundles contain
+paired crops, differences, a viewer, numeric records and tool/input hashes.
+No PDF image limit is selected by this experiment. Full-channel differences
+and dash-phase discrepancies remain visible; PDF admission stays pending.
 
 The native path-unit experiment additionally runs with:
 
