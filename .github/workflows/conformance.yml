@@ -23,6 +23,7 @@ jobs:
       - run: node tools/TikzVisual/labelled-border-reference.mjs check-cached
       - run: node tools/TikzVisual/labelled-border-evidence-self-test.mjs
       - run: dotnet run --project tools/TikzLabelledBorderComparison -c Release --no-restore
+      - run: dotnet run --project tools/TikzLabelledBorderOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzShapeReference -c Release --no-restore -- check-cached
       - run: pwsh -NoProfile -File tools/TikzShapeReference/check-cached.ps1
       - run: dotnet run --project tools/TikzShapePdfReference -c Release --no-restore -- check-cached
@@ -51,6 +52,7 @@ jobs:
             artifacts/dash-geometry-comparisons/
             artifacts/labelled-border-cache-controls/
             artifacts/labelled-border-numeric/
+            artifacts/labelled-border-oracle/
           if-no-files-found: error
 
   visual:
@@ -87,6 +89,8 @@ jobs:
       - run: node tools/TikzVisual/curved-node-admission-self-test.mjs
       - run: node tools/TikzVisual/inspect-labelled-borders.mjs
       - run: node tools/TikzVisual/labelled-border-inspection-self-test.mjs
+      - run: node tools/TikzVisual/inspect-labelled-border-oracle.mjs
+      - run: node tools/TikzVisual/labelled-border-oracle-self-test.mjs
       - run: node tools/TikzVisual/trial-dashes.mjs
       - run: node tools/TikzVisual/dash-pdf-vector-self-test.mjs
       - run: node tools/TikzVisual/dash-lines-oracle-self-test.mjs
@@ -141,6 +145,8 @@ jobs:
             artifacts/node-shape-comparisons/
             artifacts/labelled-border-inspection/
             artifacts/labelled-border-inspection-controls/
+            artifacts/labelled-border-oracle-inspection/
+            artifacts/labelled-border-oracle-controls/
             artifacts/node-shape-calibration/
             artifacts/node-shape-frames/
             artifacts/node-shape-frame-comparisons/

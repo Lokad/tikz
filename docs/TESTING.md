@@ -759,3 +759,20 @@ matrix. Coverage controls reject missing/duplicate views or regions, changed
 cameras, incorrect metrics, artifact links and crop lattice, and stale agent
 guidance. These commands produce research evidence with pending image/PDF
 admission, and are prepared CI steps rather than conformance claims.
+
+The [independent labeled-border experiment](../tools/TikzLabelledBorderOracle/README.md)
+separates path units, glyph precision and root framing without reading candidate
+artifacts or loading the production assembly:
+
+```text
+dotnet run --project tools/TikzLabelledBorderOracle -c Release
+node tools/TikzVisual/inspect-labelled-border-oracle.mjs
+node tools/TikzVisual/labelled-border-oracle-self-test.mjs
+```
+
+Its framework-only DVI/TFM reader supplies forty native glyphs. Five instruction
+representations and two root contracts retain 360 view pairs and 19,440 local
+observations. Regeneration checks all serialized quantities, outline/order
+identity, exact repeated originals and root-independent expanded captures.
+These are reference-only precision observations; they supply no image allowance
+or primary/PDF admission. Ordinary and visual CI commands are prepared.

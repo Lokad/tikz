@@ -191,3 +191,11 @@ prepared before conversion. Original-crop and expanded diagnostic views remain
 separate, with raw differences, paired crops and exact reference repeats. This
 is reproducible research evidence; the new family still has no image allowance
 or combined SVG/PDF admission.
+
+The separate [oracle-only precision experiment](../tools/TikzLabelledBorderOracle/README.md)
+now varies path units, glyph matrix precision and root framing independently.
+Its DVI/TFM reader has no converter reference. All 360 views use fixed native
+cameras/regions and retain raw differences; exact expanded normalization
+controls distinguish drawing changes from natural-image framing effects.
+Independent ink bounds, visible-defect sensitivity and SVG/PDF policy admission
+remain required for the labeled-border family.
