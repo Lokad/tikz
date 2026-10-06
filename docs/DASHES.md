@@ -412,3 +412,18 @@ Cached visual CI requires the combined gate and its corruption/candidate
 defect controls and uploads both inspection bundles. Hosted execution remains
 unverified. The forty-line dash family, labels, nodes, other fixtures and
 future libraries retain their separate admission states.
+
+The forty-line family now has a separate oracle-only
+[PDF rasterizer investigation](../tools/TikzVisual/DASH-LINES-PDF.md):
+
+    node tools/TikzVisual/dash-lines-oracle-self-test.mjs
+    node tools/TikzVisual/inspect-dash-lines-pdf-rasterizers.mjs
+
+It retains 444 PDF numeric checks, 54 exact viewport controls, equivalent dash
+spellings, repeated renders and all forty paired path crops in 24 raw views.
+Both installed PDF rasterizers preserve the equivalent spellings in this
+corpus. At 4x, Cairo's maximum SVG/PDF edge discrepancy is 0.25 CSS pixels;
+Splash's reaches 4, including the literal-PDF-instruction SVG route. These
+measurements and the scoped Cairo qualification do not grant a tolerance or
+image admission. The separate primary/PDF policy and candidate defect gates
+for the line family remain pending.
