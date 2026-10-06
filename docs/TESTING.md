@@ -14,9 +14,10 @@ The required corpus currently contains nine independently authored fixtures:
 | `ellipse-basis` | Oblique basis vectors, affine ellipse axes, physical radii independent of basis lengths |
 | `arc-sweeps` | Clockwise/counterclockwise sweeps, PGF segment subdivision, physical/basis radii and relative continuation |
 
-These fixtures establish behavior for their concrete forms. Dashes, text,
-additional shape options, and other combinations still need their own oracle
-evidence. Named coordinates remain stored globally; path references reproduce
+These fixtures establish behavior for their concrete forms. Separate text,
+node, and dash corpora have their own scoped evidence and admission states.
+Additional shape options and combinations still need oracle evidence.
+Named coordinates remain stored globally; path references reproduce
 PGF's bounded reciprocal/scaled-point round trip through the local frame.
 Mixed physical and dimensionless radii are rejected, and generated shape
 segments consume the same conversion budget as explicit path segments.
@@ -31,6 +32,21 @@ These tests consume checked-in PGF measurements and need neither TeX nor a
 browser. They cover independent bounds, anchors, path segments and paint,
 error behavior, limits, cancellation, culture independence, and
 repeated/concurrent conversion.
+
+The ordinary suite currently has 268 passing cases. The separate
+[dash harness](DASHES.md) validates forty native dash states and executes
+647 public numeric checks. Cached validation and the browser image trial
+are separate commands:
+
+    dotnet run --project tools/TikzDashReference -c Release -- check-cached
+    dotnet run --project tools/TikzDashComparison -c Release
+    node tools/TikzVisual/trial-dashes.mjs
+
+The last command needs the pinned development browser and creates paired
+PNGs, local crops, contact sheets, source traces, and hashed reports under
+artifacts/dash-image-trial. Its primary policy is an unapproved trial,
+and the independently registered PDF observations remain pending.
+The live verify command belongs to separate explicit MiKTeX work.
 
 The [circle/ellipse node oracle](../tools/TikzShapeReference/README.md) supplies
 independent native references for the public numeric prototype:

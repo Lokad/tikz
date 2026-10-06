@@ -1,0 +1,54 @@
+% Trusted geometry-only dash fixture; plain and probed runs must agree.
+\documentclass{article}
+\ifdefined\lokadpdf\else\def\pgfsysdriver{pgfsys-dvisvgm.def}\fi
+\usepackage{tikz}
+\pagestyle{empty}
+\paperwidth=600pt \paperheight=800pt
+\textwidth=450pt \textheight=680pt
+\ifdefined\lokadpdf
+  \pdfinfoomitdate=1 \pdftrailerid{} \pdfsuppressptexinfo=-1
+\fi
+\makeatletter
+\newif\iflokadprobes
+\newbox\lokadpicture
+\newcount\lokadpath
+\def\lokaddash{}
+\def\lokadphase{0pt}
+\let\lokadsetdash\pgfsys@setdash
+\def\pgfsys@setdash#1#2{%
+  \edef\lokaddash{#1}\edef\lokadphase{#2}%
+  \lokadsetdash{#1}{#2}%
+}
+\def\lokadlength#1{%
+  \pgfmathsetlength\pgf@x{#1}%
+  \typeout{LOKAD-DASH-ITEM \the\lokadpath|\number\pgf@x|END}%
+}
+\let\lokadusepath\pgfusepath
+\def\pgfusepath#1{%
+  \iflokadprobes
+    \global\advance\lokadpath by1
+    \typeout{LOKAD-DASH \the\lokadpath|width=\number\pgflinewidth|phase=\lokadphase|pattern=\lokaddash|actions=#1|END}%
+    \begingroup
+      \pgfmathsetlength\pgf@x{\lokadphase}%
+      \typeout{LOKAD-DASH-PHASE \the\lokadpath|\number\pgf@x|END}%
+      \ifx\lokaddash\pgfutil@empty\else
+        \pgfutil@for\lokaditem:=\lokaddash\do{\expandafter\lokadlength\expandafter{\lokaditem}}%
+      \fi
+    \endgroup
+  \fi
+  \lokadusepath{#1}%
+}
+\typeout{LOKAD-PGF-VERSION \pgfversion}
+\typeout{LOKAD-DRIVER \pgfsysdriver}
+\makeatother
+\begin{document}
+\ifdefined\lokadprobeenable\lokadprobestrue\fi
+\setbox\lokadpicture=\hbox{\input{source.tikz}\unskip}
+\makeatletter
+\typeout{LOKAD-BOUNDS \number\pgf@picminx|\number\pgf@picminy|\number\pgf@picmaxx|\number\pgf@picmaxy|END}
+\makeatother
+\typeout{LOKAD-BOX width=\number\wd\lokadpicture;height=\number\ht\lokadpicture;depth=\number\dp\lokadpicture|END}
+\noindent\ifdefined\lokadpdf\pdfsavepos
+\write16{LOKAD-PAGE x=\the\pdflastxpos;y=\the\pdflastypos;width=\number\paperwidth;height=\number\paperheight|END}\fi
+\box\lokadpicture
+\end{document}

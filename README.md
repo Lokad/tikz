@@ -14,6 +14,9 @@ Circle and ellipse nodes also match native sizing, anchors, background paths,
 and border queries across 28 cases; their image and PDF gates remain pending.
 Broader node/shape coverage, arrows, and libraries remain.
 Unsupported source constructs produce diagnostics.
+The [dash prototype and differential harness](docs/DASHES.md) match
+forty native dash-state cases and pass an unapproved primary image trial.
+Its PDF policy and broader path interactions remain pending.
 The declared [RGB color profile](docs/COLORS.md) has independent path/glyph
 checks for all nineteen supported names and selected mixtures.
 

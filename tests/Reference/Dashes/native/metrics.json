@@ -1,0 +1,847 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "9cce62c1ce5cbd870a926c652c5c3e53987ce3acb3c7c0a6ab96402316ad49bd",
+  "converterInvoked": false,
+  "approvedImagePolicy": false,
+  "plainProbedSvgIdentical": true,
+  "plainProbedPdfIdentical": true,
+  "svg": {
+    "records": [
+      {
+        "id": "solid",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": []
+      },
+      {
+        "id": "dashed",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "densely-dashed",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072
+        ]
+      },
+      {
+        "id": "loosely-dashed",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          393216
+        ]
+      },
+      {
+        "id": "dotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dashdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dashdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          65536,
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dashdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          262144,
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dashdotdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dashdotdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          65536,
+          26214,
+          65536,
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dashdotdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          262144,
+          26214,
+          262144,
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dash-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dash-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          65536,
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dash-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          262144,
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dash-dot-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dash-dot-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          65536,
+          26214,
+          65536,
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dash-dot-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          262144,
+          26214,
+          262144,
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dotted-width-before",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "dotted-width-after",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "dashdot-width-before",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "dashdot-width-after",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "phase-before-solid-pattern",
+        "widthSp": 26214,
+        "phaseSp": 131072,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "phase-pattern-solid-pattern",
+        "widthSp": 26214,
+        "phaseSp": 131072,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "phase-after-pattern",
+        "widthSp": 26214,
+        "phaseSp": 131072,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "explicit-empty",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": []
+      },
+      {
+        "id": "empty-then-phase",
+        "widthSp": 26214,
+        "phaseSp": 131072,
+        "lengthsSp": []
+      },
+      {
+        "id": "odd-pattern",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          65536,
+          131072,
+          196608
+        ]
+      },
+      {
+        "id": "single-on",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608
+        ]
+      },
+      {
+        "id": "zero-on-round",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          0,
+          262144
+        ]
+      },
+      {
+        "id": "physical-literals",
+        "widthSp": 26214,
+        "phaseSp": -65781,
+        "lengthsSp": [
+          65781,
+          93233,
+          1,
+          37301
+        ]
+      },
+      {
+        "id": "live-width-register",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "captured-width-register",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "inline-width",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "phase-inherited",
+        "widthSp": 131072,
+        "phaseSp": 131072,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "scope-restored",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "style-width",
+        "widthSp": 131072,
+        "phaseSp": 65536,
+        "lengthsSp": [
+          196608,
+          131072,
+          131072,
+          131072,
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "inherited-pattern-no-reapply",
+        "widthSp": 196608,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "inherited-pattern-phase-reapply",
+        "widthSp": 196608,
+        "phaseSp": 65536,
+        "lengthsSp": [
+          196608,
+          131072
+        ]
+      }
+    ],
+    "bounds": {
+      "minX": -98304,
+      "minY": -35880960,
+      "maxX": 4685824,
+      "maxY": 13107
+    },
+    "box": {
+      "width": 4784128,
+      "height": 35894067,
+      "depth": 0
+    },
+    "page": null
+  },
+  "pdf": {
+    "records": [
+      {
+        "id": "solid",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": []
+      },
+      {
+        "id": "dashed",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "densely-dashed",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072
+        ]
+      },
+      {
+        "id": "loosely-dashed",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          393216
+        ]
+      },
+      {
+        "id": "dotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dashdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dashdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          65536,
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dashdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          262144,
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dashdotdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dashdotdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          65536,
+          26214,
+          65536,
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dashdotdotted",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          262144,
+          26214,
+          262144,
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dash-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dash-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          65536,
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dash-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          262144,
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dash-dot-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "densely-dash-dot-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          65536,
+          26214,
+          65536,
+          26214,
+          65536
+        ]
+      },
+      {
+        "id": "loosely-dash-dot-dot-alias",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          262144,
+          26214,
+          262144,
+          26214,
+          262144
+        ]
+      },
+      {
+        "id": "dotted-width-before",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "dotted-width-after",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "dashdot-width-before",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "dashdot-width-after",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608,
+          131072,
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "phase-before-solid-pattern",
+        "widthSp": 26214,
+        "phaseSp": 131072,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "phase-pattern-solid-pattern",
+        "widthSp": 26214,
+        "phaseSp": 131072,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "phase-after-pattern",
+        "widthSp": 26214,
+        "phaseSp": 131072,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "explicit-empty",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": []
+      },
+      {
+        "id": "empty-then-phase",
+        "widthSp": 26214,
+        "phaseSp": 131072,
+        "lengthsSp": []
+      },
+      {
+        "id": "odd-pattern",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          65536,
+          131072,
+          196608
+        ]
+      },
+      {
+        "id": "single-on",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          196608
+        ]
+      },
+      {
+        "id": "zero-on-round",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          0,
+          262144
+        ]
+      },
+      {
+        "id": "physical-literals",
+        "widthSp": 26214,
+        "phaseSp": -65781,
+        "lengthsSp": [
+          65781,
+          93233,
+          1,
+          37301
+        ]
+      },
+      {
+        "id": "live-width-register",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "captured-width-register",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "inline-width",
+        "widthSp": 131072,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "phase-inherited",
+        "widthSp": 131072,
+        "phaseSp": 131072,
+        "lengthsSp": [
+          196608,
+          196608
+        ]
+      },
+      {
+        "id": "scope-restored",
+        "widthSp": 26214,
+        "phaseSp": 0,
+        "lengthsSp": [
+          26214,
+          131072
+        ]
+      },
+      {
+        "id": "style-width",
+        "widthSp": 131072,
+        "phaseSp": 65536,
+        "lengthsSp": [
+          196608,
+          131072,
+          131072,
+          131072,
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "inherited-pattern-no-reapply",
+        "widthSp": 196608,
+        "phaseSp": 0,
+        "lengthsSp": [
+          131072,
+          131072
+        ]
+      },
+      {
+        "id": "inherited-pattern-phase-reapply",
+        "widthSp": 196608,
+        "phaseSp": 65536,
+        "lengthsSp": [
+          196608,
+          131072
+        ]
+      }
+    ],
+    "bounds": {
+      "minX": -98304,
+      "minY": -35880960,
+      "maxX": 4685824,
+      "maxY": 13107
+    },
+    "box": {
+      "width": 4784128,
+      "height": 35894067,
+      "depth": 0
+    },
+    "page": {
+      "x": 8799518,
+      "baselineY": 8325039,
+      "width": 39321600,
+      "height": 52428800
+    }
+  },
+  "driverOriginBp": {
+    "x": 63.262765,
+    "y": 53.001242
+  },
+  "pdfOriginCss": {
+    "x": 180.35033824979246,
+    "y": 166.66830845916357
+  }
+}

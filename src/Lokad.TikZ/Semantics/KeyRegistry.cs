@@ -78,13 +78,21 @@ internal static class KeyRegistry
                 case "miter limit": var miter = state.Scalar(option.Value, budget); if (miter < 1 || miter > 1000) Invalid(option); state.Paint = paint with { Miter = miter }; break;
                 case "nonzero rule": state.Paint = paint with { FillRule = "nonzero" }; break;
                 case "even odd rule": state.Paint = paint with { FillRule = "evenodd" }; break;
-                case "solid": state.Paint = paint with { Dash = [], DashPhase = 0 }; break;
+                case "solid": DashPattern.Set(state, [], option.Source, budget); break;
                 case "dashed": Dash(3, 3); break;
                 case "densely dashed": Dash(3, 2); break;
                 case "loosely dashed": Dash(3, 6); break;
-                case "dotted": state.Paint = paint with { Dash = [paint.Width, 2 * 72 / 72.27] }; break;
-                case "dash phase": state.Paint = paint with { DashPhase = state.Dimension(option.Value, budget) }; break;
-                case "dash pattern": state.Paint = paint with { Dash = ParseDash(option.Value, state, budget) }; break;
+                case "dotted": Dots(2, 0); break;
+                case "densely dotted": Dots(1, 0); break;
+                case "loosely dotted": Dots(4, 0); break;
+                case "dashdotted" or "dash dot": Dots(2, 1); break;
+                case "densely dashdotted" or "densely dash dot": Dots(1, 1); break;
+                case "loosely dashdotted" or "loosely dash dot": Dots(4, 1); break;
+                case "dashdotdotted" or "dash dot dot": Dots(2, 2); break;
+                case "densely dashdotdotted" or "densely dash dot dot": Dots(1, 2); break;
+                case "loosely dashdotdotted" or "loosely dash dot dot": Dots(4, 2); break;
+                case "dash phase": state.ConfiguredDashPhase = DashPattern.ReadLength(option.Value, state, budget); DashPattern.Schedule(state, false, option.Source, budget); break;
+                case "dash pattern": DashPattern.Set(state, DashPattern.Read(option.Value, state, budget), option.Source, budget); break;
                 case "scale": var scale = state.Scalar(option.Value, budget); Transform(Affine.Scale(scale, scale)); break;
                 case "xscale": Transform(Affine.Scale(state.Scalar(option.Value, budget), 1)); break;
                 case "yscale": Transform(Affine.Scale(1, state.Scalar(option.Value, budget))); break;
@@ -114,32 +122,24 @@ internal static class KeyRegistry
                 state.Node = state.Node with { Shape = shape };
             }
             void Transform(Affine value) => state.Transform = PgfTransform.Then(state.Transform, value, budget, option.Source);
-            void Dash(double a, double b) => state.Paint = paint with { Dash = [a * 72 / 72.27, b * 72 / 72.27] };
+            DashLength Fixed(double points) => new(points * 72 / 72.27, DashLengthKind.Fixed, option.Source);
+            void Dash(double a, double b) => DashPattern.Set(state, [Fixed(a), Fixed(b)], option.Source, budget);
+            void Dots(double gap, int count)
+            {
+                var lengths = new List<DashLength>();
+                if (count > 0) { lengths.Add(Fixed(3)); lengths.Add(Fixed(gap)); }
+                for (var i = 0; i < Math.Max(1, count); i++)
+                {
+                    lengths.Add(new(0, count == 0 ? DashLengthKind.LiveWidth : DashLengthKind.CapturedWidth, option.Source));
+                    lengths.Add(Fixed(gap));
+                }
+                DashPattern.Set(state, [.. lengths], option.Source, budget);
+            }
             double Alpha() { var result = state.Scalar(option.Value, budget); if (result is < 0 or > 1) Invalid(option); return result; }
         }
     }
     private static CompileError Unsupported(Option option) => new("TIKZ002", $"Unsupported option '{option.Key}'.", option.Source);
     private static void Invalid(Option option) => throw new CompileError("TIKZ001", $"Invalid value for '{option.Key}'.", option.Source);
-    private static double[] ParseDash(Source source, EvaluationState state, Budget budget)
-    {
-        var reader = new Cursor(source, budget);
-        var lengths = new List<double>();
-        while (!reader.End)
-        {
-            if (!(lengths.Count % 2 == 0 ? reader.Word("on") : reader.Word("off"))) throw new CompileError("TIKZ001", "Expected alternating 'on' and 'off' dash lengths.", reader.Here);
-            var start = reader.Position;
-            while (!reader.End)
-            {
-                if (reader.Source.Span[reader.Position..].StartsWith("on", StringComparison.Ordinal) || reader.Source.Span[reader.Position..].StartsWith("off", StringComparison.Ordinal)) break;
-                reader.Advance();
-            }
-            var value = state.Dimension(source.Slice(start, reader.Position - start), budget);
-            if (value < 0) throw new CompileError("TIKZ001", "Negative dash length.", source);
-            lengths.Add(value);
-        }
-        if (lengths.Count == 0 || lengths.Count % 2 != 0 || lengths.All(v => v == 0)) throw new CompileError("TIKZ001", "Invalid dash pattern.", source);
-        return [.. lengths];
-    }
     private static Point PointValue(Source source, EvaluationState state, Budget budget)
     {
         var reader = new Cursor(source, budget);

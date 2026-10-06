@@ -76,6 +76,7 @@ internal sealed partial class Evaluator
         // integer width for both shape defaults and emitted paint/bounds.
         var lineWidthSp = ToSp(state.Paint.Width, statement.Source);
         state.Paint = state.Paint with { Width = new NodePoint(lineWidthSp, 0).Bp.X };
+        DashPattern.Resolve(state, budget);
         var dimensions = NodeDimensions.Default(metrics, lineWidthSp);
         dimensions = dimensions with {
             InnerXSp = Dimension(state.Node.InnerX, dimensions.InnerXSp), InnerYSp = Dimension(state.Node.InnerY, dimensions.InnerYSp),

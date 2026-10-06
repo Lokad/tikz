@@ -1,0 +1,87 @@
+\begin{tikzpicture}
+% DASH-CASE solid
+\draw[solid] (0pt,0pt) -- (70pt,0pt);
+% DASH-CASE dashed
+\draw[dashed] (0pt,-14pt) -- (70pt,-14pt);
+% DASH-CASE densely-dashed
+\draw[densely dashed] (0pt,-28pt) -- (70pt,-28pt);
+% DASH-CASE loosely-dashed
+\draw[loosely dashed] (0pt,-42pt) -- (70pt,-42pt);
+% DASH-CASE dotted
+\draw[dotted] (0pt,-56pt) -- (70pt,-56pt);
+% DASH-CASE densely-dotted
+\draw[densely dotted] (0pt,-70pt) -- (70pt,-70pt);
+% DASH-CASE loosely-dotted
+\draw[loosely dotted] (0pt,-84pt) -- (70pt,-84pt);
+% DASH-CASE dashdotted
+\draw[dashdotted] (0pt,-98pt) -- (70pt,-98pt);
+% DASH-CASE densely-dashdotted
+\draw[densely dashdotted] (0pt,-112pt) -- (70pt,-112pt);
+% DASH-CASE loosely-dashdotted
+\draw[loosely dashdotted] (0pt,-126pt) -- (70pt,-126pt);
+% DASH-CASE dashdotdotted
+\draw[dashdotdotted] (0pt,-140pt) -- (70pt,-140pt);
+% DASH-CASE densely-dashdotdotted
+\draw[densely dashdotdotted] (0pt,-154pt) -- (70pt,-154pt);
+% DASH-CASE loosely-dashdotdotted
+\draw[loosely dashdotdotted] (0pt,-168pt) -- (70pt,-168pt);
+% DASH-CASE dash-dot-alias
+\draw[dash dot] (0pt,-182pt) -- (70pt,-182pt);
+% DASH-CASE densely-dash-dot-alias
+\draw[densely dash dot] (0pt,-196pt) -- (70pt,-196pt);
+% DASH-CASE loosely-dash-dot-alias
+\draw[loosely dash dot] (0pt,-210pt) -- (70pt,-210pt);
+% DASH-CASE dash-dot-dot-alias
+\draw[dash dot dot] (0pt,-224pt) -- (70pt,-224pt);
+% DASH-CASE densely-dash-dot-dot-alias
+\draw[densely dash dot dot] (0pt,-238pt) -- (70pt,-238pt);
+% DASH-CASE loosely-dash-dot-dot-alias
+\draw[loosely dash dot dot] (0pt,-252pt) -- (70pt,-252pt);
+% DASH-CASE dotted-width-before
+\draw[line width=2pt,dotted,line cap=round] (0pt,-266pt) -- (70pt,-266pt);
+% DASH-CASE dotted-width-after
+\draw[dotted,line width=2pt,line cap=round] (0pt,-280pt) -- (70pt,-280pt);
+% DASH-CASE dashdot-width-before
+\draw[line width=2pt,dashdotted] (0pt,-294pt) -- (70pt,-294pt);
+% DASH-CASE dashdot-width-after
+\draw[dashdotted,line width=2pt] (0pt,-308pt) -- (70pt,-308pt);
+% DASH-CASE phase-before-solid-pattern
+\draw[dash phase=2pt,solid,dashed] (0pt,-322pt) -- (70pt,-322pt);
+% DASH-CASE phase-pattern-solid-pattern
+\draw[dash phase=2pt,dashed,solid,dashed] (0pt,-336pt) -- (70pt,-336pt);
+% DASH-CASE phase-after-pattern
+\draw[dashed,dash phase=2pt] (0pt,-350pt) -- (70pt,-350pt);
+% DASH-CASE explicit-empty
+\draw[dashed,dash pattern=] (0pt,-364pt) -- (70pt,-364pt);
+% DASH-CASE empty-then-phase
+\draw[dash pattern=,dash phase=2pt] (0pt,-378pt) -- (70pt,-378pt);
+% DASH-CASE odd-pattern
+\draw[dash pattern=on 1pt off 2pt on 3pt] (0pt,-392pt) -- (70pt,-392pt);
+% DASH-CASE single-on
+\draw[dash pattern=on 3pt] (0pt,-406pt) -- (70pt,-406pt);
+% DASH-CASE zero-on-round
+\draw[dash pattern=on 0pt off 4pt,line cap=round,line width=2pt] (0pt,-420pt) -- (70pt,-420pt);
+% DASH-CASE physical-literals
+\draw[dash pattern=on 1bp off 0.5mm on 1sp off 0.02cm,dash phase=-1bp] (0pt,-434pt) -- (70pt,-434pt);
+% DASH-CASE live-width-register
+\draw[dash pattern=on \pgflinewidth off 2pt,line width=2pt] (0pt,-448pt) -- (70pt,-448pt);
+% DASH-CASE captured-width-register
+\draw[dash pattern=on \the\pgflinewidth off 2pt,line width=2pt] (0pt,-462pt) -- (70pt,-462pt);
+% DASH-CASE inline-width
+\draw[dotted] (0pt,-476pt) [line width=2pt] -- (70pt,-476pt);
+% DASH-CASE phase-inherited
+\begin{scope}[dash phase=2pt,dotted,line width=2pt]
+\draw[solid,dashed] (0pt,-490pt) -- (70pt,-490pt);
+\end{scope}
+% DASH-CASE scope-restored
+\draw[dotted] (0pt,-504pt) -- (70pt,-504pt);
+% DASH-CASE style-width
+\tikzset{dash-example/.style={dashdotdotted,line width=2pt},dash-example/.append style={dash phase=1pt}}
+\draw[dash-example] (0pt,-518pt) -- (70pt,-518pt);
+\begin{scope}[dotted,line width=2pt]
+% DASH-CASE inherited-pattern-no-reapply
+\draw[line width=3pt] (0pt,-532pt) -- (70pt,-532pt);
+% DASH-CASE inherited-pattern-phase-reapply
+\draw[line width=3pt,dash phase=1pt] (0pt,-546pt) -- (70pt,-546pt);
+\end{scope}
+\end{tikzpicture}

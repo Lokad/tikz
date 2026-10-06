@@ -31,6 +31,7 @@ internal sealed partial class Evaluator(Budget budget)
                 case ScopeStatement scope:
                     var child = state.Clone(budget, scope.Source);
                     KeyRegistry.Apply(scope.Options, child, budget);
+                    DashPattern.Resolve(child, budget);
                     Statements(scope.Body, child, depth + 1);
                     break;
                 case SetStatement set: KeyRegistry.Apply(set.Options, state, budget); break;
@@ -196,6 +197,7 @@ internal sealed partial class Evaluator(Budget budget)
                 default: throw new InvalidOperationException("Unknown path operation.");
             }
         }
+        DashPattern.Resolve(state, budget);
         var bounds = path.Bounds;
         if (state.RelevantForPictureSize)
         {

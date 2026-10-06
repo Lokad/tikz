@@ -11,6 +11,9 @@ internal sealed class EvaluationState
     public Point XBasis { get; set; } = new NodePoint(1864679, 0).Bp;
     public Point YBasis { get; set; } = new NodePoint(0, 1864679).Bp;
     public Paint Paint { get; set; } = new();
+    public DashLength[] ConfiguredDash { get; set; } = [];
+    public DashLength ConfiguredDashPhase { get; set; }
+    public PendingDash? PendingDash { get; set; }
     public NodeSettings Node { get; set; } = new();
     // TeX library definitions are global within this conversion, including
     // declarations inside a scope. Clones share this per-conversion registry.
@@ -28,6 +31,7 @@ internal sealed class EvaluationState
         return new()
         {
             Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Node = Node, Libraries = Libraries, RelevantForPictureSize = RelevantForPictureSize,
+            ConfiguredDash = ConfiguredDash, ConfiguredDashPhase = ConfiguredDashPhase, PendingDash = PendingDash,
             Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal)
         };
     }
