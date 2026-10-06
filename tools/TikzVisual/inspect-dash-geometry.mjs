@@ -14,7 +14,7 @@ const folder = path.join(root, 'tests/Reference/DashGeometry/native');
 const files = ['inspect-dash-geometry.mjs', 'compare.mjs', 'browser-profile.json', 'package.json', 'package-lock.json', 'shape-oracle-bundle.mjs',
   'dash-geometry-image-pair.mjs', 'shape-raster-metrics.mjs', 'shape-primary-trial-policy.mjs'].map(p => 'tools/TikzVisual/' + p);
 files.push('tools/TikzDashComparison/Program.cs', 'tools/TikzDashComparison/DashGeometryComparison.cs', 'tools/TikzDashComparison/TikzDashComparison.csproj',
-  'tools/TikzDashComparison/packages.lock.json', 'tools/TikzDashGeometryReference/DashGeometryEvidence.cs');
+  'tools/TikzDashComparison/packages.lock.json', 'tools/TikzDashGeometryReference/DashGeometryEvidence.cs', 'tools/TikzDashComparison/EmittedSvgEvidence.cs', 'src/Lokad.TikZ/Svg/SvgWriter.cs');
 const save = (p, b) => writeArtifact(output, p, b, artifacts);
 let toolHashes = {}, phase = 'independent-inputs';
 async function publish(report) {
@@ -95,7 +95,7 @@ async function main() {
     const pointer = JSON.parse(await readFile(path.join(root, 'artifacts/dash-geometry-comparisons/latest.json')));
     const numericFile = path.join(root, 'artifacts/dash-geometry-comparisons', pointer.report), numericBytes = await readFile(numericFile);
     assert.equal(sha256(numericBytes), pointer.sha256); const numeric = JSON.parse(numericBytes);
-    assert.equal(numeric.numeric.passed, true); assert.equal(numeric.numeric.checks.length, 525);
+    assert.equal(numeric.numeric.passed, true); assert.equal(numeric.numeric.checks.length, 1090);
     assert.equal(numeric.referenceSnapshotSha256, sha256(snapshotBytes));
     for (const [p, h] of Object.entries(numeric.artifacts)) {
       const bytes = await readFile(path.join(path.dirname(numericFile), p)); assert.equal(sha256(bytes), h, p); await save('candidate-evidence/' + p, bytes);
@@ -122,11 +122,11 @@ async function main() {
       + observations.map(o => '<h2>' + o.name + ' / ' + o.frame + ' / ' + o.scale + 'x / ' + o.background + '</h2><img style="max-width:100%" src="' + o.artifacts.comparison + '">').join(''));
     await publish({ schemaVersion: 1, comparisonKind: 'dash-geometry-raw-primary-observations', completed: true, verdict: 'observations-complete',
       overallVerdict: 'pending', approvedImagePolicy: false, imageConformanceClaim: false, referenceSnapshotSha256: sha256(snapshotBytes), toolHashes,
-      renderer: renderer.identity, camera, regions, numeric: { passed: true, checks: 525, evidence: 'candidate-numeric-report.json' },
+      renderer: renderer.identity, camera, regions, numeric: { passed: true, checks: 1090, evidence: 'candidate-numeric-report.json' },
       independentRepresentation: { source: 'native-paths-driver-paint.svg', sha256: sha256(independent), converterInvoked: false },
       observations, artifacts, agent: { viewer: 'index.html', scene: 'candidate-evidence/actual-scene.json', focusedRerun: 'node tools/TikzVisual/inspect-dash-geometry.mjs' },
       remaining: ['Reviewed primary policy and image-only defects.', 'Independent PDF image checks and policy.', 'Labels and node dash interactions.'] });
-    console.log('Dash geometry: 525 numeric checks; 24 primary views/384 local observations retained; no image allowance or admission.');
+    console.log('Dash geometry: 1090 numeric checks; 24 primary views/384 local observations retained; no image allowance or admission.');
   } finally { await renderer.browser.close(); }
 }
 try { await main(); } catch (error) {

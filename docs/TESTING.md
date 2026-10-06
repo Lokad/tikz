@@ -33,9 +33,9 @@ browser. They cover independent bounds, anchors, path segments and paint,
 error behavior, limits, cancellation, culture independence, and
 repeated/concurrent conversion.
 
-The ordinary suite currently has 296 passing cases. The separate
+The ordinary suite currently has 307 passing cases. The separate
 [dash harness](DASHES.md) validates forty native dash states and executes
-647 public numeric checks. Cached validation and the browser image trial
+927 public numeric checks. Cached validation and the browser image trial
 are separate commands:
 
     dotnet run --project tools/TikzDashReference -c Release -- check-cached
@@ -55,13 +55,23 @@ The separate dash geometry corpus adds sixteen painted paths and three clips:
     node tools/TikzVisual/dash-geometry-image-self-test.mjs
     node tools/TikzVisual/inspect-dash-geometry.mjs
 
-Its 525 numeric checks and 24 primary views/384 local observations have
+Its 1,090 numeric checks and 24 primary views/384 local observations have
 separate provenance and admission states. Six repeated positive and six
 negative controls exercise clipped image rendering. The browser inspection
 retains raw differences without an approved threshold; primary and PDF image
 gates remain pending. Cached numeric checks belong to ordinary CI; browser
 inspection and its controls belong to visual CI. Neither command upgrades
 this family's evidence to image conformance.
+
+The native path-unit experiment additionally runs with:
+
+    node tools/TikzVisual/trial-dash-path-units.mjs
+
+It retains seven independently derived representations and public candidate
+images: 3,054 serialization checks, 96 views and 1,536 local observations.
+Each fresh artifacts/dash-path-units bundle owns its source/tool copies,
+original/candidate SVGs, raw image differences, paired crops, scene trace
+and machine-readable hashes. It derives no image policy.
 
 Dash cache-integrity controls and independent PDF instruction diagnostics
 are also separate from admission:

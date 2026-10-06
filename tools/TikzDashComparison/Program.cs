@@ -25,7 +25,7 @@ try
     Require(args.Length == 0, "Usage: TikzDashComparison (trusted fixed fixture only)");
     var toolHashes = new Dictionary<string, string>(StringComparer.Ordinal);
     foreach (var file in new[] { "tools/TikzDashComparison/Program.cs", "tools/TikzDashComparison/TikzDashComparison.csproj", "tools/TikzDashComparison/packages.lock.json", "tools/TikzDashReference/DashEvidence.cs",
-        "tools/TikzDashComparison/DashGeometryComparison.cs", "tools/TikzDashGeometryReference/DashGeometryEvidence.cs" })
+        "tools/TikzDashComparison/DashGeometryComparison.cs", "tools/TikzDashGeometryReference/DashGeometryEvidence.cs", "tools/TikzDashComparison/EmittedSvgEvidence.cs", "src/Lokad.TikZ/Svg/SvgWriter.cs" })
     {
         var bytes = File.ReadAllBytes(At(file)); toolHashes[file] = Hash(bytes); var copy = Path.Combine(output, "tool-sources", file);
         Directory.CreateDirectory(Path.GetDirectoryName(copy)!); File.WriteAllBytes(copy, bytes);
@@ -62,10 +62,14 @@ try
         for (var j = 0; j < Math.Min(expected.LengthsSp.Length, paint.Dash.Length); j++) Scalar(expected.Id + ".dash." + j, expected.LengthsSp[j] * spToCss, paint.Dash[j] * 4 / 3, 1e-10, i);
         Scalar(expected.Id + ".phase", expected.PhaseSp * spToCss, paint.DashPhase * 4 / 3, 1e-10, i);
         Scalar(expected.Id + ".width.sp", expected.WidthSp, Math.Round(paint.Width * (72.27 * 65536 / 72), MidpointRounding.AwayFromZero), 0, i);
-        var dash = (candidatePaths[i].Attribute("stroke-dasharray")?.Value ?? "").Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(D).ToArray();
+        var emitted = EmittedSvgEvidence.Read(candidatePaths[i]);
+        Scalar(expected.Id + ".svg.scale.x", ptToCss, emitted.ScaleX, 1e-14, i);
+        Scalar(expected.Id + ".svg.scale.y", -ptToCss, emitted.ScaleY, 1e-14, i);
+        Scalar(expected.Id + ".svg.width.sp", expected.WidthSp, emitted.WidthSp, 0, i);
+        var dash = emitted.DashSp;
         Scalar(expected.Id + ".svg.dash.count", expected.LengthsSp.Length, dash.Length, 0, i);
-        for (var j = 0; j < Math.Min(expected.LengthsSp.Length, dash.Length); j++) Scalar(expected.Id + ".svg.dash." + j, expected.LengthsSp[j] * spToCss, dash[j], .000000500001, i);
-        if (dash.Length > 0) Scalar(expected.Id + ".svg.phase", expected.PhaseSp * spToCss, D(candidatePaths[i].Attribute("stroke-dashoffset")!.Value), .000000500001, i);
+        for (var j = 0; j < Math.Min(expected.LengthsSp.Length, dash.Length); j++) Scalar(expected.Id + ".svg.dash.sp." + j, expected.LengthsSp[j], dash[j], 0, i);
+        if (dash.Length > 0) Scalar(expected.Id + ".svg.phase.sp", expected.PhaseSp, emitted.PhaseSp, 0, i);
         static int Cap(string? cap) => cap switch { "butt" => 0, "round" => 1, "square" => 2, _ => -1 };
         Scalar(expected.Id + ".svg.cap", Cap(Attribute(referencePaths[i], "stroke-linecap", "butt")), Cap(candidatePaths[i].Attribute("stroke-linecap")?.Value), 0, i);
         // These focused cases have one independently retained horizontal line.
@@ -76,6 +80,13 @@ try
         Scalar(expected.Id + ".move.y", D(line.Groups[2].Value) * ptToCss, path.Path.Segments[0].End.Y * 4 / 3, 1e-9, i);
         Scalar(expected.Id + ".line.x", D(line.Groups[3].Value) * ptToCss, path.Path.Segments[1].End.X * 4 / 3, 1e-9, i);
         Scalar(expected.Id + ".line.y", D(line.Groups[2].Value) * ptToCss, path.Path.Segments[1].End.Y * 4 / 3, 1e-9, i);
+        Require(emitted.Segments.Length == 2 && emitted.Segments[0].Kind == "Move" && emitted.Segments[1].Kind == "Line", "Emitted line topology differs.");
+        for (var j = 0; j < 2; j++)
+        {
+            var x = D(line.Groups[j == 0 ? 1 : 3].Value); var y = D(line.Groups[2].Value);
+            Scalar(expected.Id + ".svg." + j + ".x.sp", Math.Round(x * 65536), emitted.Segments[j].End.X, 0, i);
+            Scalar(expected.Id + ".svg." + j + ".y.sp", Math.Round(y * 65536), emitted.Segments[j].End.Y, 0, i);
+        }
         exports.Add(new { expected.Id, source = path.Source.Location, svgElementId = "candidate-p" + i, paint = new { width = paint.Width * 4 / 3,
             dash = paint.Dash.Select(d => d * 4 / 3), phase = paint.DashPhase * 4 / 3, paint.Cap, paint.Join },
             segments = path.Path.Segments.Select(s => new { kind = s.Kind.ToString(), x = s.End.X * 4 / 3, y = -s.End.Y * 4 / 3 }), ink = path.InkBounds.Pixels });

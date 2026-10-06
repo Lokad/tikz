@@ -25,7 +25,7 @@ internal static class DashGeometryComparison
         try
         {
             foreach (var p in new[] { "tools/TikzDashComparison/Program.cs", "tools/TikzDashComparison/DashGeometryComparison.cs", "tools/TikzDashComparison/TikzDashComparison.csproj",
-                "tools/TikzDashComparison/packages.lock.json", "tools/TikzDashGeometryReference/DashGeometryEvidence.cs" })
+                "tools/TikzDashComparison/packages.lock.json", "tools/TikzDashGeometryReference/DashGeometryEvidence.cs", "tools/TikzDashComparison/EmittedSvgEvidence.cs", "src/Lokad.TikZ/Svg/SvgWriter.cs" })
             {
                 var bytes = File.ReadAllBytes(At(p)); toolHashes[p] = Hash(bytes); var copy = Path.Combine(output, "tool-sources", p);
                 Directory.CreateDirectory(Path.GetDirectoryName(copy)!); File.WriteAllBytes(copy, bytes);
@@ -62,22 +62,35 @@ internal static class DashGeometryComparison
                 new((int)Math.Round(s.End.X * spPerBp), (int)Math.Round(s.End.Y * spPerBp)),
                 new((int)Math.Round(s.A.X * spPerBp), (int)Math.Round(s.A.Y * spPerBp)),
                 new((int)Math.Round(s.B.X * spPerBp), (int)Math.Round(s.B.Y * spPerBp)))));
-            void Geometry(GeometryRecord expected, GraphicPath path, TikzSourceSpan? span)
+            void Geometry(GeometryRecord expected, NativeSegment[] actual, TikzSourceSpan? span, string prefix = "")
             {
-                var actual = Segments(path); Scalar(expected.Id, "segments.count", expected.Segments.Length, actual.Length, 0, span);
+                Scalar(expected.Id, prefix + "segments.count", expected.Segments.Length, actual.Length, 0, span);
                 for (var j = 0; j < Math.Min(actual.Length, expected.Segments.Length); j++)
                 {
                     var e = expected.Segments[j]; var a = actual[j];
-                    Scalar(expected.Id, j + ".kind", Array.IndexOf(new[] { "Move", "Line", "Cubic", "Close" }, e.Kind), Array.IndexOf(new[] { "Move", "Line", "Cubic", "Close" }, a.Kind), 0, span);
-                    void Point(string q, NativePoint ep, NativePoint ap) { Scalar(expected.Id, j + "." + q + ".x", ep.X, ap.X, 0, span); Scalar(expected.Id, j + "." + q + ".y", ep.Y, ap.Y, 0, span); }
+                    Scalar(expected.Id, prefix + j + ".kind", Array.IndexOf(new[] { "Move", "Line", "Cubic", "Close" }, e.Kind), Array.IndexOf(new[] { "Move", "Line", "Cubic", "Close" }, a.Kind), 0, span);
+                    void Point(string q, NativePoint ep, NativePoint ap) { Scalar(expected.Id, prefix + j + "." + q + ".x", ep.X, ap.X, 0, span); Scalar(expected.Id, prefix + j + "." + q + ".y", ep.Y, ap.Y, 0, span); }
                     Point("end", e.End, a.End); if (e.Kind == "Cubic") { Point("a", e.A, a.A); Point("b", e.B, a.B); }
                 }
             }
             var exports = new List<object>();
+            var candidateSvg = XDocument.Parse(success.Svg);
+            var candidatePaths = candidateSvg.Descendants().Where(e => e.Name.LocalName == "path" && !e.Ancestors().Any(a => a.Name.LocalName is "defs" or "clipPath")).ToArray();
+            var candidateClips = candidateSvg.Descendants().Where(e => e.Name.LocalName == "clipPath").Select(e => e.Descendants().Single(p => p.Name.LocalName == "path")).ToArray();
+            Require(candidatePaths.Length == 16 && candidateClips.Length == 3, "Emitted paint/clip coverage differs.");
+            var candidateClipIds = candidateClips.Select((p, i) => (Id: p.Parent!.Attribute("id")!.Value, Index: i)).ToDictionary(p => p.Id, p => p.Index);
             for (var i = 0; i < 16; i++)
             {
                 var expected = paints[i]; var path = scene.Paths[i]; var paint = path.Paint;
-                Geometry(expected, path.Path, path.Source.Location);
+                Geometry(expected, Segments(path.Path), path.Source.Location);
+                var emitted = EmittedSvgEvidence.Read(candidatePaths[i]);
+                Geometry(expected, emitted.Segments, path.Source.Location, "svg.");
+                Scalar(expected.Id, "svg.scale.x", 96 / 72.27, emitted.ScaleX, 1e-14, path.Source.Location);
+                Scalar(expected.Id, "svg.scale.y", -96 / 72.27, emitted.ScaleY, 1e-14, path.Source.Location);
+                Scalar(expected.Id, "svg.width.sp", expected.WidthSp, emitted.WidthSp, 0, path.Source.Location);
+                Scalar(expected.Id, "svg.dash.count", expected.LengthsSp.Length, emitted.DashSp.Length, 0, path.Source.Location);
+                for (var j = 0; j < Math.Min(expected.LengthsSp.Length, emitted.DashSp.Length); j++) Scalar(expected.Id, "svg.dash.sp." + j, expected.LengthsSp[j], emitted.DashSp[j], 0, path.Source.Location);
+                if (emitted.DashSp.Length > 0) Scalar(expected.Id, "svg.phase.sp", expected.PhaseSp, emitted.PhaseSp, 0, path.Source.Location);
                 Scalar(expected.Id, "dash.count", expected.LengthsSp.Length, paint.Dash.Length, 0, path.Source.Location);
                 for (var j = 0; j < Math.Min(paint.Dash.Length, expected.LengthsSp.Length); j++) Scalar(expected.Id, "dash." + j, expected.LengthsSp[j], Math.Round(paint.Dash[j] * spPerBp), 0, path.Source.Location);
                 Scalar(expected.Id, "phase", expected.PhaseSp, Math.Round(paint.DashPhase * spPerBp), 0, path.Source.Location);
@@ -92,20 +105,48 @@ internal static class DashGeometryComparison
                 Scalar(expected.Id, "join", Join(Attribute("stroke-linejoin", "miter")), Join(paint.Join), 0, path.Source.Location);
                 Scalar(expected.Id, "stroke.opacity", double.Parse(Attribute("stroke-opacity", "1"), CultureInfo.InvariantCulture), paint.StrokeOpacity, 0, path.Source.Location);
                 if (paint.Fill) Scalar(expected.Id, "fill.opacity", double.Parse(Attribute("fill-opacity", "1"), CultureInfo.InvariantCulture), paint.FillOpacity, 0, path.Source.Location);
+                string EmittedAttribute(string name, string fallback) => candidatePaths[i].Attribute(name)?.Value ?? fallback;
+                Scalar(expected.Id, "svg.stroke", 1, EmittedAttribute("stroke", "none") != "none" ? 1 : 0, 0, path.Source.Location);
+                Scalar(expected.Id, "svg.fill", actions.Contains("fill") ? 1 : 0, EmittedAttribute("fill", "#000") != "none" ? 1 : 0, 0, path.Source.Location);
+                Scalar(expected.Id, "svg.cap", Cap(Attribute("stroke-linecap", "butt")), Cap(EmittedAttribute("stroke-linecap", "butt")), 0, path.Source.Location);
+                Scalar(expected.Id, "svg.join", Join(Attribute("stroke-linejoin", "miter")), Join(EmittedAttribute("stroke-linejoin", "miter")), 0, path.Source.Location);
+                Scalar(expected.Id, "svg.stroke.opacity", double.Parse(Attribute("stroke-opacity", "1"), CultureInfo.InvariantCulture), double.Parse(EmittedAttribute("stroke-opacity", "1"), CultureInfo.InvariantCulture), 0, path.Source.Location);
+                if (paint.Fill) Scalar(expected.Id, "svg.fill.opacity", double.Parse(Attribute("fill-opacity", "1"), CultureInfo.InvariantCulture), double.Parse(EmittedAttribute("fill-opacity", "1"), CultureInfo.InvariantCulture), 0, path.Source.Location);
                 var active = referencePaths[i].AncestorsAndSelf().Reverse().Select(e => e.Attribute("clip-path")?.Value).Where(v => v is not null)
                     .Select(v => { Require(v!.StartsWith("url(#", StringComparison.Ordinal) && v.EndsWith(')'), "Unexpected clip reference."); return clipIds[v[5..^1]]; }).ToArray();
                 Scalar(expected.Id, "clips.count", active.Length, path.Clips.Length, 0, path.Source.Location);
                 for (var j = 0; j < Math.Min(active.Length, path.Clips.Length); j++) Scalar(expected.Id, "clip." + j, active[j], path.Clips[j], 0, path.Source.Location);
+                var emittedActive = candidatePaths[i].AncestorsAndSelf().Reverse().Select(e => e.Attribute("clip-path")?.Value).Where(v => v is not null)
+                    .Select(v => { Require(v!.StartsWith("url(#", StringComparison.Ordinal) && v.EndsWith(')'), "Unexpected emitted clip reference."); return candidateClipIds[v[5..^1]]; }).ToArray();
+                Scalar(expected.Id, "svg.clips.count", active.Length, emittedActive.Length, 0, path.Source.Location);
+                for (var j = 0; j < Math.Min(active.Length, emittedActive.Length); j++) Scalar(expected.Id, "svg.clip." + j, active[j], emittedActive[j], 0, path.Source.Location);
                 exports.Add(new { expected.Id, source = path.Source.Location, svgElementId = "geometry-p" + i, segments = Segments(path.Path),
                     paint = new { width = paint.Width * 4 / 3, dash = paint.Dash.Select(d => d * 4 / 3), phase = paint.DashPhase * 4 / 3, paint.Cap, paint.Join, paint.FillRule,
                         paint.Stroke, paint.Fill, paint.StrokeColor, paint.FillColor, paint.StrokeOpacity, paint.FillOpacity },
                     clips = path.Clips, ink = path.InkBounds.Pixels });
             }
-            for (var i = 0; i < 3; i++) Geometry(clips[i], scene.Clips[i].Path, null);
+            for (var i = 0; i < 3; i++)
+            {
+                Geometry(clips[i], Segments(scene.Clips[i].Path), null);
+                var emitted = EmittedSvgEvidence.Read(candidateClips[i]);
+                Geometry(clips[i], emitted.Segments, null, "svg.");
+                Scalar(clips[i].Id, "svg.scale.x", 96 / 72.27, emitted.ScaleX, 1e-14);
+                Scalar(clips[i].Id, "svg.scale.y", -96 / 72.27, emitted.ScaleY, 1e-14);
+            }
             Scalar("picture", "minX", native.Bounds.MinX * spToCss, success.PictureBounds.MinX, .5 * spToCss);
             Scalar("picture", "minY", -native.Bounds.MaxY * spToCss, success.PictureBounds.MinY, .5 * spToCss);
             Scalar("picture", "maxX", native.Bounds.MaxX * spToCss, success.PictureBounds.MaxX, .5 * spToCss);
             Scalar("picture", "maxY", -native.Bounds.MinY * spToCss, success.PictureBounds.MaxY, .5 * spToCss);
+            var rootElement = candidateSvg.Root!;
+            var view = rootElement.Attribute("viewBox")!.Value.Split(' ').Select(v => double.Parse(v, CultureInfo.InvariantCulture)).ToArray();
+            Require(view.Length == 4, "Malformed emitted viewBox.");
+            var frame = new[] { native.Bounds.MinX * spToCss, -native.Bounds.MaxY * spToCss, native.Box.Width * spToCss, native.Box.Height * spToCss };
+            for (var i = 0; i < 4; i++) Scalar("picture", "svg.viewBox." + i, frame[i], view[i], .5 * spToCss + .000000500001);
+            foreach (var name in new[] { "width", "height" })
+            {
+                var value = rootElement.Attribute(name)!.Value; Require(value.EndsWith("px", StringComparison.Ordinal), "Unexpected emitted root unit.");
+                Scalar("picture", "svg." + name, view[name == "width" ? 2 : 3], double.Parse(value[..^2], CultureInfo.InvariantCulture), 0);
+            }
             File.WriteAllBytes(Path.Combine(output, "source.tikz"), sourceBytes);
             File.WriteAllText(Path.Combine(output, "actual.svg"), success.Svg, new UTF8Encoding(false)); File.Copy(Path.Combine(baseline, "reference.svg"), Path.Combine(output, "reference.svg"));
             File.Copy(Path.Combine(baseline, "metrics.json"), Path.Combine(output, "native-metrics.json")); File.WriteAllBytes(Path.Combine(output, "reference-snapshot.json"), snapshotBytes);

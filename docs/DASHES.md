@@ -38,7 +38,7 @@ validation needs no TeX installation:
     dotnet run --project tools/TikzDashReference -c Release -- check-cached
     dotnet run --project tools/TikzDashComparison -c Release
 
-The public comparison executes 647 numeric checks, including serialized
+The public comparison executes 927 numeric checks, including serialized
 dash lengths and phases, line geometry, caps, and root dimensions. Its
 source spans and SVG element IDs link each line back to its case.
 
@@ -140,9 +140,9 @@ nonoverwriting live verification passes. No older image allowance applies.
     node tools/TikzVisual/dash-geometry-image-self-test.mjs
     node tools/TikzVisual/inspect-dash-geometry.mjs
 
-The public numeric comparison passes 525 checks for normalized path segments,
+The public numeric comparison passes 1,090 checks for normalized path segments,
 control points, dash arrays/phase, width, stroke/fill, caps/joins, opacity,
-clip bindings and picture bounds. Geometry agrees at the native integer
+clip bindings and picture bounds, including the emitted SVG. Geometry agrees at the native integer
 scaled-point grid. Eight malformed-record controls reject incomplete paths.
 The initial run exposed 38 incorrect circle/ellipse/quarter-arc control
 coordinates. The converter now uses PGF's finite quarter-curve coefficient
@@ -165,13 +165,36 @@ amplified differences, overlays and source-linked regions. Focused crops
 include the filled rectangle, circle with continuation and oblique ellipse.
 latest.json identifies and hashes the completed report.
 
-Some 4x views still have full-channel differences and a 0.75 CSS-pixel
-maximum boundary displacement around the filled rectangle's dashed corners.
-These also occur in the candidate-independent representation. A focused
-oracle-only experiment reproduces the difference in both six- and
-twelve-decimal CSS paths, while retaining native path units plus a scale
-matches the original crop exactly at both scales. This is evidence about one
-serialization/rendering interaction, not a policy or a proposed allowance.
-Broader experiments are required before changing SVG emission. Primary
-admission, independent PDF image comparisons and their defect controls remain
-pending; the recorded PDFs alone do not establish image conformance.
+The original CSS-coordinate representation retains full-channel differences
+and a 0.75 CSS-pixel boundary displacement at dashed rectangle corners.
+Keeping native path units through rasterization resolves that discrepancy.
+The separate, reproducible experiment compares seven candidate-independent
+representations before running the public converter:
+
+    node tools/TikzVisual/trial-dash-path-units.mjs
+
+It checks six/twelve-decimal and short native-point representations, with
+both native and original printed widths, across all sixteen paths and three
+clips. There are 3,054 serialization checks, 96 primary views and 1,536 local
+observations. The short decimals must restore the exact native scaled-point
+integer; this numeric rule grants no image allowance.
+
+The SVG writer now emits geometric paths and clips in native TeX points
+under a physical scale, with matching width, dash and phase units. It uses
+short decimals for integer-grid quantities and twelve decimals for values
+between scaled points. Root dimensions, glyph placements and public bounds
+use CSS pixels. The separate emitted-SVG reader verifies native coordinates,
+dimensions, physical transforms, paint/clip state and root framing; ten
+malformed-primitive controls prevent invalid output becoming numeric evidence.
+
+The full corpus matches the original expanded-frame oracle exactly at 1x.
+At 4x, one pixel differs by one channel level. Natural-frame observations
+retain 14/24 changed pixels at 1x/4x over white, with maximum channel errors
+2/4 and zero measured edge displacement. This evidence covers these concrete
+views. All nine existing geometry conformance cases, the 22-node SVG gate,
+and the admitted RGB/rectangle-border primary/PDF gates still pass their
+unchanged profiles. No original reference or allowance was modified.
+
+Primary policy/provenance/coverage controls, independent PDF image comparisons
+and their defect controls remain pending for this new dash family. Raw image
+observations and recorded PDFs alone do not establish image conformance.

@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text.Json;
 using System.Xml.Linq;
+using System.Text.RegularExpressions;
 using Xunit;
 
 namespace Lokad.TikZ.Tests;
@@ -15,8 +16,15 @@ public sealed class ConversionTests
         using var oracle = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "line-units", "reference-metrics.json")));
         var nativePt = oracle.RootElement.GetProperty("anchorsPt").GetProperty("end").GetProperty("x").GetDouble();
         var endpoint = double.Parse(path.Attribute("d")!.Value.Split(' ')[2][1..], CultureInfo.InvariantCulture);
-        Assert.InRange(Math.Abs(endpoint - nativePt * (96 / 72.27)), 0, .00001);
-        Assert.Equal("2.656704", path.Attribute("stroke-width")?.Value);
+        var transform = Regex.Match(path.Attribute("transform")!.Value, @"^scale\(([-\d.]+) ([-\d.]+)\)$");
+        Assert.True(transform.Success);
+        var xScale = double.Parse(transform.Groups[1].Value, CultureInfo.InvariantCulture);
+        var yScale = double.Parse(transform.Groups[2].Value, CultureInfo.InvariantCulture);
+        Assert.InRange(Math.Abs(xScale - 96 / 72.27), 0, 1e-14);
+        Assert.Equal(-xScale, yScale);
+        Assert.InRange(Math.Abs(endpoint * xScale - nativePt * (96 / 72.27)), 0, .00001);
+        var stroke = double.Parse(path.Attribute("stroke-width")!.Value, CultureInfo.InvariantCulture);
+        Assert.InRange(Math.Abs(stroke * xScale - 2 * 96 / 72.27), 0, .000001);
         Assert.InRange(result.PictureBounds.Width, 78.24, 78.26);
     }
     [Theory]

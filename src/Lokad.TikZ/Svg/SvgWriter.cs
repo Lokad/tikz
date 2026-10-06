@@ -11,8 +11,31 @@ namespace Lokad.TikZ.Svg;
 internal static class SvgWriter
 {
     private const string Namespace = "http://www.w3.org/2000/svg";
+    // Preserve TeX path units through rasterization: flattening geometry and
+    // dash dimensions into CSS pixels can change a dash crossing a corner.
+    private const double BpToPt = 72.27 / 72;
+    private const string PathTransform = "scale(1.32835201328352 -1.32835201328352)";
     public static string Number(double value)
         => (Math.Abs(value) < .0000005 ? 0 : value).ToString("0.######", CultureInfo.InvariantCulture);
+    private static string PathNumber(double value, Budget budget, Source source)
+    {
+        // A shorter decimal can recover the exact native dimension even when
+        // it differs from its ideal real value. Keep precision for values
+        // between scaled points, such as analytic curve coordinates.
+        var scaled = value * 65536;
+        var integer = Math.Round(scaled, MidpointRounding.AwayFromZero);
+        if (Math.Abs(scaled - integer) <= 0.000001)
+        {
+            for (var places = 0; places <= 5; places++)
+            {
+                budget.Charge(source);
+                var candidate = Math.Round(value, places, MidpointRounding.AwayFromZero);
+                if (Math.Round(candidate * 65536, MidpointRounding.AwayFromZero) == integer)
+                    return candidate.ToString("0.#####", CultureInfo.InvariantCulture);
+            }
+        }
+        return (Math.Abs(value) < .0000000000005 ? 0 : value).ToString("0.############", CultureInfo.InvariantCulture);
+    }
     public static string PathData(GraphicPath path, Budget budget, Source source)
     {
         var data = new StringBuilder();
@@ -32,7 +55,7 @@ internal static class SvgWriter
         void Point(Geometry.Point point)
         {
             budget.Check(point.X, source); budget.Check(point.Y, source);
-            data.Append(Number(point.X * 4 / 3)).Append(' ').Append(Number(-point.Y * 4 / 3)).Append(' ');
+            data.Append(PathNumber(point.X * BpToPt, budget, source)).Append(' ').Append(PathNumber(point.Y * BpToPt, budget, source)).Append(' ');
             if (data.Length > budget.Limits.MaxOutputBytes) Budget.Fail(source, "SVG bytes");
         }
     }
@@ -65,6 +88,7 @@ internal static class SvgWriter
                     writer.WriteAttributeString("id", $"{prefix}-c{i}");
                     writer.WriteAttributeString("clipPathUnits", "userSpaceOnUse");
                     writer.WriteStartElement("path");
+                    writer.WriteAttributeString("transform", PathTransform);
                     writer.WriteAttributeString("d", PathData(clip.Path, budget, source));
                     writer.WriteAttributeString("clip-rule", clip.FillRule);
                     writer.WriteEndElement(); writer.WriteEndElement();
@@ -114,6 +138,7 @@ internal static class SvgWriter
                 var path = (PaintedPath)drawable;
                 writer.WriteStartElement("path");
                 writer.WriteAttributeString("id", $"{prefix}-p{pathIndex++}");
+                writer.WriteAttributeString("transform", PathTransform);
                 writer.WriteAttributeString("d", PathData(path.Path, budget, path.Source));
                 var paint = path.Paint;
                 writer.WriteAttributeString("fill", paint.Fill ? paint.FillColor.PgfSvg : "none");
@@ -121,15 +146,15 @@ internal static class SvgWriter
                 if (paint.Fill) { writer.WriteAttributeString("fill-rule", paint.FillRule); writer.WriteAttributeString("fill-opacity", Number(paint.FillOpacity)); }
                 if (paint.Stroke)
                 {
-                    writer.WriteAttributeString("stroke-width", Number(paint.Width * 4 / 3));
+                    writer.WriteAttributeString("stroke-width", PathNumber(paint.Width * BpToPt, budget, path.Source));
                     writer.WriteAttributeString("stroke-opacity", Number(paint.StrokeOpacity));
                     writer.WriteAttributeString("stroke-linecap", paint.Cap);
                     writer.WriteAttributeString("stroke-linejoin", paint.Join);
                     writer.WriteAttributeString("stroke-miterlimit", Number(paint.Miter));
                     if (paint.Dash.Length > 0)
                     {
-                        writer.WriteAttributeString("stroke-dasharray", string.Join(' ', paint.Dash.Select(d => Number(d * 4 / 3))));
-                        writer.WriteAttributeString("stroke-dashoffset", Number(paint.DashPhase * 4 / 3));
+                        writer.WriteAttributeString("stroke-dasharray", string.Join(' ', paint.Dash.Select(d => PathNumber(d * BpToPt, budget, path.Source))));
+                        writer.WriteAttributeString("stroke-dashoffset", PathNumber(paint.DashPhase * BpToPt, budget, path.Source));
                     }
                 }
                 writer.WriteEndElement();

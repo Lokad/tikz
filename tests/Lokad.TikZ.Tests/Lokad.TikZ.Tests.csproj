@@ -21,6 +21,7 @@
     <Compile Include="../../tools/TikzShapePdfReference/PdfEvidence.cs" Link="Harness/PdfEvidence.cs" />
     <Compile Include="../../tools/TikzDashReference/DashEvidence.cs" Link="Harness/DashEvidence.cs" />
     <Compile Include="../../tools/TikzDashGeometryReference/DashGeometryEvidence.cs" Link="Harness/DashGeometryEvidence.cs" />
+    <Compile Include="../../tools/TikzDashComparison/EmittedSvgEvidence.cs" Link="Harness/EmittedSvgEvidence.cs" />
     <None Include="../Reference/DashGeometry/native/*.log" Link="Reference/DashGeometry/native/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../Reference/DashGeometry/native/*.pdf" Link="Reference/DashGeometry/native/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../Reference/DashGeometry/native/*.png" Link="Reference/DashGeometry/native/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />

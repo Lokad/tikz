@@ -13,7 +13,7 @@ Run from the repository root:
 The first command validates the external snapshot, source/artifact hashes,
 native path records, tool/input identities, driver agreement, page frame,
 and plain/probed invariance without TeX. The second invokes the public
-converter and performs 525 numeric checks. An image verdict remains pending.
+converter and performs 1,090 numeric checks. An image verdict remains pending.
 
 Sixteen paint cases cover cubic controls, compound subpaths, closed and filled
 paths, circles/ellipses/arcs with continuation, ordered/oblique transforms,

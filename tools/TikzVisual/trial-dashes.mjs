@@ -15,7 +15,8 @@ const base = path.join(root, 'artifacts/dash-image-trial'), output = path.join(b
 const referenceFolder = path.join(root, 'tests/Reference/Dashes/native'), candidateBase = path.join(root, 'artifacts/dash-comparisons');
 const toolFiles = ['trial-dashes.mjs', 'compare.mjs', 'browser-profile.json', 'package.json', 'package-lock.json', 'shape-oracle-bundle.mjs',
   'shape-image-pair.mjs', 'shape-raster-metrics.mjs', 'shape-primary-trial-policy.mjs', 'shape-pdf-camera.mjs', 'shape-pdf-image-pair.mjs'].map(f => 'tools/TikzVisual/' + f);
-toolFiles.push('tools/TikzDashComparison/Program.cs', 'tools/TikzDashComparison/TikzDashComparison.csproj', 'tools/TikzDashComparison/packages.lock.json');
+toolFiles.push('tools/TikzDashComparison/Program.cs', 'tools/TikzDashComparison/TikzDashComparison.csproj', 'tools/TikzDashComparison/packages.lock.json',
+  'tools/TikzDashComparison/EmittedSvgEvidence.cs', 'src/Lokad.TikZ/Svg/SvgWriter.cs');
 let phase = 'independent-inputs', toolHashes = {};
 const save = (file, bytes) => writeArtifact(output, file, bytes, artifacts);
 async function publish(report) {
@@ -130,7 +131,7 @@ async function main() {
     await command(['run', '--project', 'tools/TikzDashComparison', '-c', 'Release', '--no-restore']);
     const pointer = JSON.parse(await readFile(path.join(candidateBase, 'latest.json'))), candidateReport = await outputPath(candidateBase, pointer.report), candidateFolder = path.dirname(candidateReport);
     const candidateBytes = await readFile(candidateReport), numeric = JSON.parse(candidateBytes); assert.equal(sha256(candidateBytes), pointer.sha256);
-    assert.equal(numeric.verdict, 'numeric-pass'); assert.equal(numeric.executedCases, 40); assert.equal(numeric.numeric.checks.length, 647); assert.ok(numeric.numeric.checks.every(c => c.passed));
+    assert.equal(numeric.verdict, 'numeric-pass'); assert.equal(numeric.executedCases, 40); assert.equal(numeric.numeric.checks.length, 927); assert.ok(numeric.numeric.checks.every(c => c.passed));
     assert.equal(numeric.referenceSnapshotSha256, sha256(snapshotBytes)); assert.equal(numeric.sourceSha256, sha256(source));
     for (const [file, hash] of Object.entries(numeric.toolHashes)) assert.equal(sha256(await readFile(path.join(root, file))), hash, file);
     assert.equal(numeric.compiler.sha256, sha256(await readFile(path.join(root, 'src/Lokad.TikZ/bin/Release/net10.0/Lokad.TikZ.dll'))));
@@ -180,7 +181,7 @@ async function main() {
       pdf.push({ mode: variant.mode, ...result, images: undefined, crops: undefined, artifacts: links, regions: result.regions.map(r => ({ ...r, crops: crops.get(r.id) ?? null })) });
     }
     await verify(); for (const [file, hash] of Object.entries(artifacts)) assert.equal(sha256(await readFile(await outputPath(output, file))), hash);
-    const controlsPassed = cases.filter(c => c.expectedPassed !== null).every(c => c.passed), numericGate = { state: 'passed', executedChecks: 647 };
+    const controlsPassed = cases.filter(c => c.expectedPassed !== null).every(c => c.passed), numericGate = { state: 'passed', executedChecks: 927 };
     // Frame checks are part of the explicit native numeric report above. This
     // remains an unapproved trial, with the ordinary PDF gate still pending.
     const combined = combineShapeTrial(numericGate, { state: 'passed', executedChecks: 10 }, candidate.comparisons);
