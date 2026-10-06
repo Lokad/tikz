@@ -22,6 +22,7 @@ jobs:
       - run: dotnet test Lokad.TikZ.slnx -c Release --no-restore
       - run: node tools/TikzVisual/labelled-border-reference.mjs check-cached
       - run: node tools/TikzVisual/labelled-border-evidence-self-test.mjs
+      - run: node tools/TikzVisual/labelled-border-pdf-diagnostics-self-test.mjs
       - run: dotnet run --project tools/TikzLabelledBorderComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzLabelledBorderOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzShapeReference -c Release --no-restore -- check-cached
@@ -53,6 +54,7 @@ jobs:
             artifacts/labelled-border-cache-controls/
             artifacts/labelled-border-numeric/
             artifacts/labelled-border-oracle/
+            artifacts/labelled-border-pdf-diagnostic-controls/
           if-no-files-found: error
 
   visual:

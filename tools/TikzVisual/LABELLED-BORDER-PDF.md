@@ -132,8 +132,9 @@ evidence, false roles, altered cameras, viewport pixels and artifact links.
 Prepared CI runs both commands and uploads their bundles; hosted execution
 remains unverified.
 
-The next gate qualifies rasterizer and font effects independently, including
-a separately pinned Cairo comparison and isolated local diagnostics. Any later
+A separate [rasterizer and isolation experiment](LABELLED-BORDER-PDF-RASTERIZERS.md)
+now checks pinned Cairo/Splash pages, preserved font resources and selected
+glyph/path effects, with independent PNG remeasurement. Any later
 PDF calibration must retain these raw observations and prove local sensitivity
 to missing/faint glyphs, endpoints, joins, cropping and extra ink at both scales.
 Both original-SVG-versus-PDF and fresh-public-SVG-versus-PDF gates must then pass

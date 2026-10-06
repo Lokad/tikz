@@ -53,6 +53,8 @@ calibration, a passing [prospective primary trial](tools/TikzVisual/LABELLED-BOR
 and image-only defect checks. Their original-driver differences remain visible.
 A separate [PDF investigation](tools/TikzVisual/LABELLED-BORDER-PDF.md) now checks
 native instructions and page registration and retains whole/local raw images.
+Its [rasterizer investigation](tools/TikzVisual/LABELLED-BORDER-PDF-RASTERIZERS.md)
+also compares pinned Cairo/Splash pages and isolated glyph/path operations.
 PDF image acceptance and combined admission are pending.
 
 The [bundled font-data prototype](tools/TikzFontData/README.md) has six

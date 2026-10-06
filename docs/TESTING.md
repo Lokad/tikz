@@ -827,3 +827,33 @@ Their fresh bundles are uploaded by prepared visual CI. Raw local differences
 remain substantial in some regions; no PDF image tolerance is granted. Separate
 rasterizer qualification, both original/public SVG-versus-PDF gates, local defect
 sensitivity and immutable combined admission remain required.
+
+The [labeled-border rasterizer experiment](../tools/TikzVisual/LABELLED-BORDER-PDF-RASTERIZERS.md)
+adds an explicit local comparison through pinned Poppler/Splash and Cairo.
+The producer needs both native PDF executables and inspected release sources:
+
+```text
+node tools/TikzVisual/inspect-labelled-border-pdf-rasterizers.mjs
+node tools/TikzVisual/labelled-border-pdf-rasterizer-self-test.mjs
+```
+
+All 60 original/diagnostic page renders have exact repeats. Twelve original
+instruction wrappers render exactly in both engines, and six fresh Splash
+pages match the frozen pages byte for byte. Twelve diagnostic documents retain
+embedded resources while separating text, paths, a V, an italic period and an
+orthogonal path without moving the selected operations. The experiment retains
+72 fresh views with 3,852 locals plus 36 imported Splash views with 1,944 locals.
+The cached checker verifies 39 corruption controls and independently recomputes
+all 5,904 whole/local metrics from saved PNGs, with no PDF executable required.
+
+A portable diagnostics check is a prepared ordinary Windows/Linux CI step:
+
+```text
+node tools/TikzVisual/labelled-border-pdf-diagnostics-self-test.mjs
+```
+
+Its 72 controls need only Node and trusted repository evidence; neither browser
+nor PDF engine is invoked. CI uploads `artifacts/labelled-border-pdf-diagnostic-controls/`.
+Live rasterizer investigation is separate from cached CI. Raw differences and
+combined-window topology effects remain; PDF image limits, full-diagram defect
+sensitivity and immutable combined admission are pending.
