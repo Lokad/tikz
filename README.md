@@ -11,14 +11,16 @@ small, independently calibrated allowances. This evidence covers the listed
 fixtures. A [node prototype](docs/NODES.md) now emits outlined labels
 and passes native layout and primary SVG checks for 22 actual TikZ rectangle nodes.
 Circle and ellipse nodes also match native sizing, anchors, background paths,
-and border queries across 28 cases; their image and PDF gates remain pending.
+and border queries across 28 cases. Their separately calibrated
+[cached combined profile](tools/TikzVisual/CURVED-NODE-ADMISSION.md) requires
+native/frame, whole/local primary, both PDF and fresh sensitivity gates.
 Broader node/shape coverage, arrows, and libraries remain.
 Unsupported source constructs produce diagnostics.
 The [dash prototype and differential harness](docs/DASHES.md) match
 forty native dash-state cases and sixteen curved/closed/transformed/clipped
-paths. The line corpus passes an unapproved primary trial; geometry images
-retain raw differences. Their primary/PDF admission and further interactions
-remain pending.
+paths. Both fixed corpora now have separate immutable primary/PDF profiles;
+raw differences and earlier failed trials remain available. Further
+path/label/node interactions remain pending.
 The declared [RGB color profile](docs/COLORS.md) has independent path/glyph
 checks for all nineteen supported names and selected mixtures.
 

@@ -286,6 +286,26 @@ semantic-frame and public frame commands; CI need not invoke them again.
 
 ## Cached visual conformance
 
+The fixed circle/ellipse family has its own
+[immutable native-unit combined profile](../tools/TikzVisual/CURVED-NODE-ADMISSION.md).
+The earlier local trials above retain their research status. Cached admission
+uses checked-in original references and digest-pinned independent calibration:
+
+```text
+node tools/TikzVisual/compare-curved-node-conformance.mjs
+node tools/TikzVisual/curved-node-admission-self-test.mjs
+```
+
+It requires 4,461 native, 406 frame, 1,188 primary and 408 checks on each PDF
+route, all 98 local regions and fifteen fresh emitted-SVG controls. The
+261 evidence/coverage controls reject missing, changed and rehashed inputs,
+altered cameras/limits and incomplete or inconsistent measurements.
+Reports and direct agent-viewable paired PNGs live in separate runs under
+`artifacts/curved-node-conformance/`. `--crop-region glyph-22` selects saved
+presentation crops while every required measurement still executes.
+The claim is calibrated primary/PDF agreement for the fixed family;
+broader compatibility and hosted execution remain separate gates.
+
 Install the pinned development-only browser tooling once:
 
 ```text

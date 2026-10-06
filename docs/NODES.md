@@ -59,7 +59,7 @@ this is not an exact-pixel claim against the original driver.
 These results establish the fixture's concrete rectangle/label forms. Inherited
 and local transforms, text color/opacity and style interactions, clipping,
 overlapping node/path paint order, rotated/sheared stroke extents, implicit node
-border endpoints, circle/ellipse image conformance, path/inline labels, and secondary PDF
+border endpoints, additional shapes, path/inline labels, and secondary PDF
 fidelity still require their own grounding. Some keys are implemented for the
 next interaction fixtures; acceptance by the parser is not a compatibility claim.
 The [interaction experiment](../tools/TikzReference/NODE-INTERACTIONS.md) now has
@@ -163,8 +163,13 @@ rejects every tested defect at both scales and retains an inspectable bundle.
 At 4x the added outside-camera ink is caught only by the full-page check;
 whole/local pixel gates alone accept that control. Public and independent
 native page PNGs match byte for byte in all four positive PDF views.
-Further focused and interaction corpora, reviewed image policies and ordinary
-PDF image evidence are still required. No rectangle/path raster tolerance
-applies to these new shapes. A degenerate unequal-axis border that
+These earlier research policies retain their unapproved status. A separate
+[immutable native-unit profile](../tools/TikzVisual/CURVED-NODE-ADMISSION.md)
+now consumes the original references and independently calibrated evidence
+for this fixed 28-node family. It requires every native/frame, primary/local,
+original/candidate PDF and fresh emitted-SVG defect gate, with evidence and
+coverage corruption controls. Additional shape/label/edge/arrow interactions
+and hosted verification remain required. No rectangle/path raster tolerance
+applies to these shapes. A degenerate unequal-axis border that
 cannot be computed at native scaled-point precision fails at its source
 coordinate; callers can still use a supported explicit anchor.

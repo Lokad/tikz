@@ -172,6 +172,7 @@ internal static class Comparison
             var artifacts = owned.ToDictionary(f => f, f => HashFile(Path.Combine(output, f)));
             Write(output, "candidate-provenance.json", new { schemaVersion = 1, command = "compare-numeric", cachedOracleVerification = oracleCheck,
                 converterAssemblySha256 = HashFile(typeof(TikzConverter).Assembly.Location), comparisonAssemblySha256 = HashFile(typeof(Comparison).Assembly.Location),
+                converterAssemblyReferences = typeof(TikzConverter).Assembly.GetReferencedAssemblies().Select(a => a.Name ?? "").Order(StringComparer.Ordinal).ToArray(),
                 toolSources = Directory.EnumerateFiles(At("tools/TikzShapeComparison"), "*", SearchOption.TopDirectoryOnly).Where(f => Path.GetExtension(f) is ".cs" or ".csproj")
                     .Order(StringComparer.Ordinal).ToDictionary(f => Path.GetRelativePath(Root, f).Replace('\\', '/'), HashFile),
                 converterSources = Directory.EnumerateFiles(At("src/Lokad.TikZ"), "*", SearchOption.AllDirectories)

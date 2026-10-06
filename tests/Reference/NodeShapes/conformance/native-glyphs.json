@@ -1,0 +1,958 @@
+{
+  "nodes": [
+    {
+      "id": "c-regular",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 65,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 86,
+          "xSp": 418701,
+          "ySp": 0,
+          "absoluteXSp": 24025092,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24025092,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 84,
+          "xSp": 1128674,
+          "ySp": 0,
+          "absoluteXSp": 24735065,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24735065,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 111,
+          "xSp": 1547361,
+          "ySp": 0,
+          "absoluteXSp": 25153752,
+          "absoluteYSp": 5087267,
+          "driverXSp": 25153752.25,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 30,
+          "xSp": 2093494,
+          "ySp": 0,
+          "absoluteXSp": 25699885,
+          "absoluteYSp": 5087267,
+          "driverXSp": 25699885.25,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-empty",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": []
+    },
+    {
+      "id": "c-period",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-descenders",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 103,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 121,
+          "xSp": 327680,
+          "ySp": 0,
+          "absoluteXSp": 23934071,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23934071,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 112,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-lines",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 65,
+          "xSp": 63721,
+          "ySp": -786432,
+          "absoluteXSp": 23670112,
+          "absoluteYSp": 4300835,
+          "driverXSp": 23670112,
+          "driverYSp": 4300835
+        },
+        {
+          "font": "regular-10",
+          "slot": 86,
+          "xSp": 482422,
+          "ySp": -786432,
+          "absoluteXSp": 24088813,
+          "absoluteYSp": 4300835,
+          "driverXSp": 24088813,
+          "driverYSp": 4300835
+        },
+        {
+          "font": "regular-10",
+          "slot": 103,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 121,
+          "xSp": 327680,
+          "ySp": 0,
+          "absoluteXSp": 23934071,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23934071,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 112,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-minimum",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-width",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-height",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-separation",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 103,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 121,
+          "xSp": 327680,
+          "ySp": 0,
+          "absoluteXSp": 23934071,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23934071,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 112,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-negative",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 87,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 105,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 100,
+          "xSp": 855621,
+          "ySp": 0,
+          "absoluteXSp": 24462012,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24462012.875,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 101,
+          "xSp": 1219706,
+          "ySp": 0,
+          "absoluteXSp": 24826097,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24826097.875,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-odd",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-font",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "italic-12",
+          "slot": 65,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "italic-12",
+          "slot": 86,
+          "xSp": 492962,
+          "ySp": 0,
+          "absoluteXSp": 24099353,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24099353,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "italic-12",
+          "slot": 103,
+          "xSp": 1339817,
+          "ySp": 0,
+          "absoluteXSp": 24946208,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24946208,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "italic-12",
+          "slot": 121,
+          "xSp": 1693711,
+          "ySp": 0,
+          "absoluteXSp": 25300102,
+          "absoluteYSp": 5087267,
+          "driverXSp": 25300102.25,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "italic-12",
+          "slot": 112,
+          "xSp": 2067265,
+          "ySp": 0,
+          "absoluteXSp": 25673656,
+          "absoluteYSp": 5087267,
+          "driverXSp": 25673657,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-rotate",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 103,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 121,
+          "xSp": 327680,
+          "ySp": 0,
+          "absoluteXSp": 23934071,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23934071,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 112,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "c-shear",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 65,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 86,
+          "xSp": 418701,
+          "ySp": 0,
+          "absoluteXSp": 24025092,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24025092,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-regular",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 65,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 86,
+          "xSp": 418701,
+          "ySp": 0,
+          "absoluteXSp": 24025092,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24025092,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 84,
+          "xSp": 1128674,
+          "ySp": 0,
+          "absoluteXSp": 24735065,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24735065,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 111,
+          "xSp": 1547361,
+          "ySp": 0,
+          "absoluteXSp": 25153752,
+          "absoluteYSp": 5087267,
+          "driverXSp": 25153752.25,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 30,
+          "xSp": 2093494,
+          "ySp": 0,
+          "absoluteXSp": 25699885,
+          "absoluteYSp": 5087267,
+          "driverXSp": 25699885.25,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-empty",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": []
+    },
+    {
+      "id": "e-period",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-descenders",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 103,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 121,
+          "xSp": 327680,
+          "ySp": 0,
+          "absoluteXSp": 23934071,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23934071,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 112,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-lines",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 65,
+          "xSp": 63721,
+          "ySp": -786432,
+          "absoluteXSp": 23670112,
+          "absoluteYSp": 4300835,
+          "driverXSp": 23670112,
+          "driverYSp": 4300835
+        },
+        {
+          "font": "regular-10",
+          "slot": 86,
+          "xSp": 482422,
+          "ySp": -786432,
+          "absoluteXSp": 24088813,
+          "absoluteYSp": 4300835,
+          "driverXSp": 24088813,
+          "driverYSp": 4300835
+        },
+        {
+          "font": "regular-10",
+          "slot": 103,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 121,
+          "xSp": 327680,
+          "ySp": 0,
+          "absoluteXSp": 23934071,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23934071,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 112,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-minimum",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-width",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-height",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-separation",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 103,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 121,
+          "xSp": 327680,
+          "ySp": 0,
+          "absoluteXSp": 23934071,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23934071,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 112,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-negative",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 87,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 105,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 100,
+          "xSp": 855621,
+          "ySp": 0,
+          "absoluteXSp": 24462012,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24462012.875,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 101,
+          "xSp": 1219706,
+          "ySp": 0,
+          "absoluteXSp": 24826097,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24826097.875,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-odd",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 46,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-font",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "italic-12",
+          "slot": 65,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "italic-12",
+          "slot": 86,
+          "xSp": 492962,
+          "ySp": 0,
+          "absoluteXSp": 24099353,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24099353,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "italic-12",
+          "slot": 103,
+          "xSp": 1339817,
+          "ySp": 0,
+          "absoluteXSp": 24946208,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24946208,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "italic-12",
+          "slot": 121,
+          "xSp": 1693711,
+          "ySp": 0,
+          "absoluteXSp": 25300102,
+          "absoluteYSp": 5087267,
+          "driverXSp": 25300102.25,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "italic-12",
+          "slot": 112,
+          "xSp": 2067265,
+          "ySp": 0,
+          "absoluteXSp": 25673656,
+          "absoluteYSp": 5087267,
+          "driverXSp": 25673657,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-rotate",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 103,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 121,
+          "xSp": 327680,
+          "ySp": 0,
+          "absoluteXSp": 23934071,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23934071,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 112,
+          "xSp": 673578,
+          "ySp": 0,
+          "absoluteXSp": 24279969,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24279969.75,
+          "driverYSp": 5087267
+        }
+      ]
+    },
+    {
+      "id": "e-shear",
+      "originXSp": 23606391,
+      "originYSp": 5087267,
+      "driverOriginXSp": 23606391,
+      "driverOriginYSp": 5087267,
+      "glyphs": [
+        {
+          "font": "regular-10",
+          "slot": 65,
+          "xSp": 0,
+          "ySp": 0,
+          "absoluteXSp": 23606391,
+          "absoluteYSp": 5087267,
+          "driverXSp": 23606391,
+          "driverYSp": 5087267
+        },
+        {
+          "font": "regular-10",
+          "slot": 86,
+          "xSp": 418701,
+          "ySp": 0,
+          "absoluteXSp": 24025092,
+          "absoluteYSp": 5087267,
+          "driverXSp": 24025092,
+          "driverYSp": 5087267
+        }
+      ]
+    }
+  ],
+  "svgFontDefinitions": {
+    "g1": "regular-10",
+    "g0": "italic-12"
+  }
+}

@@ -83,7 +83,9 @@ This changes no coordinate, SVG or error bound.
 
 These are fixed local research commands. Their completed reports retain
 `approvedImagePolicy: false`, `imageConformanceClaim: false` and pending
-admission. Immutable profile preparation, independent evidence/candidate
-corruption controls, portable cached CI execution, wider shape/label/node
-interactions and hosted verification remain required. No other fixture or
-library inherits this policy.
+admission. The separately prepared
+[immutable cached profile](CURVED-NODE-ADMISSION.md) now consumes these
+unchanged independent observations, with evidence/coverage corruption checks
+and fresh public sensitivity controls. Wider shape/label/node interactions
+and hosted verification remain required. No other fixture or library inherits
+this policy.

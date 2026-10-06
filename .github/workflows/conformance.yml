@@ -75,6 +75,8 @@ jobs:
       - run: node tools/TikzVisual/shape-pdf-policy-self-test.mjs
       - run: node tools/TikzVisual/trial-shape-primary.mjs
       - run: node tools/TikzVisual/calibrate-shape-pdf.mjs
+      - run: node tools/TikzVisual/compare-curved-node-conformance.mjs
+      - run: node tools/TikzVisual/curved-node-admission-self-test.mjs
       - run: node tools/TikzVisual/trial-dashes.mjs
       - run: node tools/TikzVisual/dash-pdf-vector-self-test.mjs
       - run: node tools/TikzVisual/dash-lines-oracle-self-test.mjs
@@ -134,6 +136,8 @@ jobs:
             artifacts/node-shape-primary-trial/
             artifacts/node-shape-pdf-controls/
             artifacts/node-shape-pdf-calibration/
+            artifacts/curved-node-conformance/
+            artifacts/curved-node-admission-controls/
             artifacts/dash-image-trial/
             artifacts/dash-pdf-vector/
             artifacts/dash-lines-oracle-controls/
