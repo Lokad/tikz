@@ -47,7 +47,10 @@ corrupt coverage, roots, metrics, roles, artifacts and reader dependencies.
 
 The experiment measures precision/framing effects. It derives no image tolerance
 and reports `overallVerdict: pending`, `converterInvoked: false` and
-`imageConformanceClaim: false`. Image-only sensitivity, independent ink bounds,
-PDF comparisons and immutable combined admission remain separate required work.
+`imageConformanceClaim: false`. A separate
+[ink calibration and sensitivity harness](../TikzVisual/LABELLED-BORDER-INK.md)
+now qualifies all native envelopes and the full-ink root, freezes primary limits
+before public conversion and tests image-only defects. PDF comparisons and
+immutable combined admission remain required.
 Prepared cached CI commands retain these research artifacts; hosted execution
 remains unverified.

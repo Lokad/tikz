@@ -91,6 +91,12 @@ jobs:
       - run: node tools/TikzVisual/labelled-border-inspection-self-test.mjs
       - run: node tools/TikzVisual/inspect-labelled-border-oracle.mjs
       - run: node tools/TikzVisual/labelled-border-oracle-self-test.mjs
+      - run: node tools/TikzVisual/labelled-border-ink-self-test.mjs
+      - run: node tools/TikzVisual/calibrate-labelled-border-ink.mjs
+      - run: node tools/TikzVisual/trial-labelled-border-primary.mjs
+      - run: node tools/TikzVisual/check-labelled-border-sensitivity.mjs
+      - run: node tools/TikzVisual/check-labelled-border-sensitivity.mjs --public
+      - run: node tools/TikzVisual/labelled-border-ink-controls.mjs
       - run: node tools/TikzVisual/trial-dashes.mjs
       - run: node tools/TikzVisual/dash-pdf-vector-self-test.mjs
       - run: node tools/TikzVisual/dash-lines-oracle-self-test.mjs
@@ -147,6 +153,12 @@ jobs:
             artifacts/labelled-border-inspection-controls/
             artifacts/labelled-border-oracle-inspection/
             artifacts/labelled-border-oracle-controls/
+            artifacts/labelled-border-ink-math-controls/
+            artifacts/labelled-border-ink-calibration/
+            artifacts/labelled-border-primary-trial/
+            artifacts/labelled-border-oracle-sensitivity/
+            artifacts/labelled-border-public-sensitivity/
+            artifacts/labelled-border-ink-controls/
             artifacts/node-shape-calibration/
             artifacts/node-shape-frames/
             artifacts/node-shape-frame-comparisons/

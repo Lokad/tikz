@@ -48,6 +48,11 @@ It produces comparison PNGs, failure crops, machine-readable metrics, source
 traces, and a local inspection viewer. Its browser and TeX dependencies are
 isolated from the production library.
 
+Three labeled-border interaction fixtures now have independent native ink/root
+calibration, a passing [prospective primary trial](tools/TikzVisual/LABELLED-BORDER-INK.md)
+and image-only defect checks. Their original-driver differences remain visible;
+PDF qualification and combined admission are pending.
+
 The [bundled font-data prototype](tools/TikzFontData/README.md) has six
 Latin Modern faces with independent TeX metric checks and exact atlas
 comparisons. Its resources now supply the node prototypes' labels.

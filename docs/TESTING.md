@@ -776,3 +776,30 @@ observations. Regeneration checks all serialized quantities, outline/order
 identity, exact repeated originals and root-independent expanded captures.
 These are reference-only precision observations; they supply no image allowance
 or primary/PDF admission. Ordinary and visual CI commands are prepared.
+
+The separate [labeled-border ink and sensitivity harness](../tools/TikzVisual/LABELLED-BORDER-INK.md)
+derives native path/glyph envelopes and a full-ink root before conversion. Its
+oracle-only primary calibration freezes limits for the exact case/view/region.
+A fresh public trial checks 1,624 native quantities, 276 ink/root quantities and
+all 36 primary views with 1,944 local observations. Image-only commands separately
+test 26 controls in 102 white views against both independent and public drawings.
+The bevel corner is pixel-identical at 1x and must fail locally at 4x; both
+expectations are asserted, with no relaxation of the calibration.
+
+```text
+node tools/TikzVisual/labelled-border-ink-self-test.mjs
+node tools/TikzVisual/calibrate-labelled-border-ink.mjs
+node tools/TikzVisual/trial-labelled-border-primary.mjs
+node tools/TikzVisual/check-labelled-border-sensitivity.mjs
+node tools/TikzVisual/check-labelled-border-sensitivity.mjs --public
+node tools/TikzVisual/labelled-border-ink-controls.mjs
+```
+
+Run these in order. Calibration invokes no converter; the public trial and
+`--public` sensitivity generate fresh actual SVGs. All commands need only cached
+native evidence, .NET and the pinned development browser. Coverage validation and
+independent regeneration reject altered inputs, limits, roots, cameras, regions,
+crop lattices and gate summaries. The controls command also requires exact
+equality of all public/native PNGs and local measurements. These are unapproved
+research trials: PDF qualification and immutable combined admission are pending.
+Prepared CI steps upload every fresh research/control bundle.

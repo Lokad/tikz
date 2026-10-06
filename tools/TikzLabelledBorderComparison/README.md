@@ -61,5 +61,9 @@ Successful inspection means reproducible artifact production with explicit
 numeric state. It reports `overallVerdict: pending`, with primary/PDF admission
 pending and `imageConformanceClaim: false`. The measured differences need their
 own oracle-only precision/framing experiments, image-only sensitivity and PDF
-policy; no existing shape, border or dash allowance applies. Both cached numeric
+policy; no existing shape, border or dash allowance applies. The separate
+[native-ink primary trial](../TikzVisual/LABELLED-BORDER-INK.md) now checks
+independent bounds/roots and previously frozen primary limits, with fresh
+image-only sensitivity. PDF qualification and immutable admission remain pending.
+Both cached numeric
 and visual inspection jobs are prepared in CI; hosted execution remains unverified.
