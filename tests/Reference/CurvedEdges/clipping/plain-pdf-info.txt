@@ -1,0 +1,16 @@
+Creator:         TeX
+Producer:        MiKTeX pdfTeX-1.40.27
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           1
+Encrypted:       no
+Page size:       597.758 x 797.011 pts
+Page rot:        0
+File size:       1246 bytes
+Optimized:       no
+PDF version:     1.5

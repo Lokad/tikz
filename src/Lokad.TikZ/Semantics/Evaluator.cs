@@ -186,26 +186,58 @@ internal sealed partial class Evaluator(Budget budget)
                     var scanned = to.Target.Relative == 0 ? (Point?)null : PathCoordinate(to.Target, state, reference, out _);
                     var enclosing = state;
                     state = ConnectionState(to.Options, "every to", to.Source, false);
+                    CurveStyle(state);
                     var toEnd = scanned ?? PathCoordinate(to.Target, state, reference, out _);
                     if (to.Target.Relative != 1) reference = toEnd;
                     var toNode = scanned.HasValue ? null : ImplicitNode(to.Target);
-                    var toBorder = toNode is null ? toEnd : NodeBorder(toNode, position, state.Transform, to.Target.Source);
-                    FlushToward(toBorder); path.Line(Global(toBorder));
-                    position = toEnd; pending = toNode; pendingSource = to.Target.Source;
+                    var nextPosition = toEnd;
+                    if (state.Connection.Curved)
+                    {
+                        var startPoint = pending is null ? position : PgfCoordinates.ToLocal(NodeAnchor(pending.Name, to.Source), state.Transform, to.Source);
+                        var curveTo = Curve(startPoint, toEnd, pending, toNode, state, to.Source);
+                        if (pending is not null) { path.Move(Global(curveTo.Start)); pending = null; }
+                        path.Cubic(Global(curveTo.A), Global(curveTo.B), Global(curveTo.End));
+                        if (state.Connection.Relative)
+                        {
+                            // Relative curves expand their node borders to explicit
+                            // coordinates. Continuation starts at that coordinate.
+                            nextPosition = curveTo.End; toNode = null;
+                        }
+                    }
+                    else
+                    {
+                        var toBorder = toNode is null ? toEnd : NodeBorder(toNode, position, state.Transform, to.Target.Source);
+                        FlushToward(toBorder); path.Line(Global(toBorder));
+                    }
+                    position = nextPosition; pending = toNode; pendingSource = to.Target.Source;
                     DashPattern.Resolve(state, budget);
                     state = enclosing;
                     break;
                 case EdgeOperation edge:
                     var scannedEdge = edge.Target.Relative == 0 ? (Point?)null : PathCoordinate(edge.Target, state, reference, out _);
                     var edgeState = ConnectionState(edge.Options, "every edge", edge.Source, true);
+                    var edgeStartTransform = edgeState.Transform;
+                    CurveStyle(edgeState);
                     var edgeEnd = scannedEdge ?? PathCoordinate(edge.Target, edgeState, reference, out _);
                     var edgeStart = pending is null ? position : PgfCoordinates.ToLocal(NodeAnchor(pending.Name, edge.Source), edgeState.Transform, edge.Source);
                     var edgeNode = scannedEdge.HasValue ? null : ImplicitNode(edge.Target);
-                    var edgeBorder = edgeNode is null ? edgeEnd : NodeBorder(edgeNode, edgeStart, edgeState.Transform, edge.Target.Source);
-                    var edgeFrom = pending is null ? edgeStart : NodeBorder(pending, edgeBorder, edgeState.Transform, edge.Source);
                     var edgePath = new GraphicPath(budget, edge.Source);
-                    edgePath.Move(PgfTransform.Apply(edgeState.Transform, edgeFrom, budget, edge.Source));
-                    edgePath.Line(PgfTransform.Apply(edgeState.Transform, edgeBorder, budget, edge.Source));
+                    if (edgeState.Connection.Curved)
+                    {
+                        var curvedEdge = Curve(edgeStart, edgeEnd, pending, edgeNode, edgeState, edge.Source);
+                        // An explicit edge start is moved before every-curve
+                        // options run; an implicit node start waits for its border.
+                        edgePath.Move(PgfTransform.Apply(pending is null ? edgeStartTransform : edgeState.Transform, curvedEdge.Start, budget, edge.Source));
+                        edgePath.Cubic(PgfTransform.Apply(edgeState.Transform, curvedEdge.A, budget, edge.Source),
+                            PgfTransform.Apply(edgeState.Transform, curvedEdge.B, budget, edge.Source), PgfTransform.Apply(edgeState.Transform, curvedEdge.End, budget, edge.Source));
+                    }
+                    else
+                    {
+                        var edgeBorder = edgeNode is null ? edgeEnd : NodeBorder(edgeNode, edgeStart, edgeState.Transform, edge.Target.Source);
+                        var edgeFrom = pending is null ? edgeStart : NodeBorder(pending, edgeBorder, edgeState.Transform, edge.Source);
+                        edgePath.Move(PgfTransform.Apply(edgeState.Transform, edgeFrom, budget, edge.Source));
+                        edgePath.Line(PgfTransform.Apply(edgeState.Transform, edgeBorder, budget, edge.Source));
+                    }
                     DashPattern.Resolve(edgeState, budget);
                     edges.Add((edgePath, edgeState, edge.Source));
                     break;
@@ -244,7 +276,7 @@ internal sealed partial class Evaluator(Budget budget)
         if (state.RelevantForPictureSize)
         {
             var picture = path.ControlBounds;
-            _scene.PictureBounds = _scene.PictureBounds.Union(state.Paint.Stroke ? picture.Inflate(state.Paint.Width / 2) : picture);
+            _scene.PictureBounds = _scene.PictureBounds.Union(state.Paint.Stroke ? picture.Inflate(PictureStrokeRadius(state.Paint.Width)) : picture);
         }
         if (statement.Command == "\\clip")
         {
@@ -253,7 +285,7 @@ internal sealed partial class Evaluator(Budget budget)
             parent.Clips.Add(id);
             parent.RelevantForPictureSize = false;
         }
-        if (state.Paint.Fill || state.Paint.Stroke)
+        if (path.Segments.Count != 0 && (state.Paint.Fill || state.Paint.Stroke))
         {
             var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, statement.Source) : bounds;
             foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Path.Bounds);
@@ -286,6 +318,11 @@ internal sealed partial class Evaluator(Budget budget)
             KeyRegistry.Apply(options, child, budget);
             return child;
         }
+        void CurveStyle(EvaluationState child)
+        {
+            if (child.Connection.Curved && child.Styles.TryGetValue("every curve to", out var everyCurve))
+                KeyRegistry.Apply(everyCurve, child, budget);
+        }
         Point Point(Coordinate coordinate)
         {
             var point = PathCoordinate(coordinate, state, reference, out var update);
@@ -316,13 +353,18 @@ internal sealed partial class Evaluator(Budget budget)
         if (state.RelevantForPictureSize)
         {
             var picture = path.ControlBounds;
-            _scene.PictureBounds = _scene.PictureBounds.Union(state.Paint.Stroke ? picture.Inflate(state.Paint.Width / 2) : picture);
+            _scene.PictureBounds = _scene.PictureBounds.Union(state.Paint.Stroke ? picture.Inflate(PictureStrokeRadius(state.Paint.Width)) : picture);
         }
         if (!state.Paint.Fill && !state.Paint.Stroke) return;
         var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, source) : path.Bounds;
         foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Path.Bounds);
         _scene.InkBounds = _scene.InkBounds.Union(ink);
         _scene.Add(new(path, state.Paint, [.. state.Clips], source, ink));
+    }
+    private static double PictureStrokeRadius(double width)
+    {
+        const double spPerBp = 72.27 * 65536 / 72;
+        return (long)Math.Round(width * spPerBp, MidpointRounding.AwayFromZero) / 2 / spPerBp;
     }
     private (Point X, Point Y) Axes(Expression xRadius, Expression yRadius, EvaluationState state)
     {

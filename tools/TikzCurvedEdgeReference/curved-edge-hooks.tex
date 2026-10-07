@@ -1,0 +1,84 @@
+% Read-only native paint state and physical-order observations. Loaded after
+% the existing node/path wrapper. These probes never inject SVG markup.
+\makeatletter
+\newif\ifedgepdf
+\newif\ifcurvededgepaintpending
+\newdimen\edgephase
+\def\edgestroke{0,0,0}\def\edgefill{0,0,0}
+\def\edgecap{0}\def\edgejoin{0}\def\edgemiter{10}
+\def\edgestrokealpha{1}\def\edgefillalpha{1}\def\edgedash{}
+\def\edgemarker#1{%
+  \ifedgepdf\write16{EDGE-ORDER #1|END}%
+  \else\special{lokad-edge-path #1}\fi
+}
+\def\edgepaint#1{%
+  \ifcurvededgepaintpending
+  \global\curvededgepaintpendingfalse
+  \typeout{EDGE-PAINT \edgecurrent|#1|\number\pgflinewidth|\edgecap|\edgejoin|\edgemiter|\edgestrokealpha|\edgefillalpha|\edgestroke|\edgefill|END}%
+  \typeout{EDGE-DASH \edgecurrent|\edgedash|\number\edgephase|END}%
+  \else\typeout{CURVED-EMPTY-PAINT #1|END}\fi
+}
+\AtBeginDocument{%
+  \iflokadprobes
+    % pdfTeX installs ordinary xcolor colors through its color stack rather
+    % than pgfsys@color@rgb. Observe that shared call as well as PGF's separate
+    % stroke/fill setters. All assignments retain the native TeX scope.
+    \let\edgeoldsetcolor\set@color
+    \def\set@color{%
+      \extractcolorspecs{.}{\edgemodel}{\edgespec}%
+      \convertcolorspec{\edgemodel}{\edgespec}{rgb}{\edgergb}%
+      \edef\edgestroke{\edgergb}\edef\edgefill{\edgergb}%
+      \edgeoldsetcolor
+    }%
+    \let\edgeoldpath\pgfusepath
+    \def\pgfusepath#1{%
+      \global\curvededgepaintpendingfalse
+      \pgfgetpath\edgesoft
+      \ifx\edgesoft\pgfutil@empty\else
+        \global\curvededgepaintpendingtrue
+        \xdef\edgecurrent{\number\numexpr\lokadpathcounter+1\relax}%
+        \expandafter\edgemarker\expandafter{\edgecurrent}%
+      \fi
+      \edgeoldpath{#1}%
+      \global\curvededgepaintpendingfalse
+    }%
+    \let\edgeoldrgb\pgfsys@color@rgb
+    \def\pgfsys@color@rgb#1#2#3{\edef\edgestroke{#1,#2,#3}\edef\edgefill{#1,#2,#3}\edgeoldrgb{#1}{#2}{#3}}%
+    \let\edgeoldgray\pgfsys@color@gray
+    \def\pgfsys@color@gray#1{\edef\edgestroke{#1,#1,#1}\edef\edgefill{#1,#1,#1}\edgeoldgray{#1}}%
+    \let\edgeoldrgbstroke\pgfsys@color@rgb@stroke
+    \def\pgfsys@color@rgb@stroke#1#2#3{\edef\edgestroke{#1,#2,#3}\edgeoldrgbstroke{#1}{#2}{#3}}%
+    \let\edgeoldrgbfill\pgfsys@color@rgb@fill
+    \def\pgfsys@color@rgb@fill#1#2#3{\edef\edgefill{#1,#2,#3}\edgeoldrgbfill{#1}{#2}{#3}}%
+    \let\edgeoldgraystroke\pgfsys@color@gray@stroke
+    \def\pgfsys@color@gray@stroke#1{\edef\edgestroke{#1,#1,#1}\edgeoldgraystroke{#1}}%
+    \let\edgeoldgrayfill\pgfsys@color@gray@fill
+    \def\pgfsys@color@gray@fill#1{\edef\edgefill{#1,#1,#1}\edgeoldgrayfill{#1}}%
+    \let\edgeoldbutt\pgfsys@buttcap
+    \def\pgfsys@buttcap{\def\edgecap{0}\edgeoldbutt}%
+    \let\edgeoldround\pgfsys@roundcap
+    \def\pgfsys@roundcap{\def\edgecap{1}\edgeoldround}%
+    \let\edgeoldrect\pgfsys@rectcap
+    \def\pgfsys@rectcap{\def\edgecap{2}\edgeoldrect}%
+    \let\edgeoldmiterjoin\pgfsys@miterjoin
+    \def\pgfsys@miterjoin{\def\edgejoin{0}\edgeoldmiterjoin}%
+    \let\edgeoldroundjoin\pgfsys@roundjoin
+    \def\pgfsys@roundjoin{\def\edgejoin{1}\edgeoldroundjoin}%
+    \let\edgeoldbeveljoin\pgfsys@beveljoin
+    \def\pgfsys@beveljoin{\def\edgejoin{2}\edgeoldbeveljoin}%
+    \let\edgeoldmiter\pgfsys@setmiterlimit
+    \def\pgfsys@setmiterlimit#1{\edef\edgemiter{#1}\edgeoldmiter{#1}}%
+    \let\edgeoldstrokealpha\pgfsys@stroke@opacity
+    \def\pgfsys@stroke@opacity#1{\edef\edgestrokealpha{#1}\edgeoldstrokealpha{#1}}%
+    \let\edgeoldfillalpha\pgfsys@fill@opacity
+    \def\pgfsys@fill@opacity#1{\edef\edgefillalpha{#1}\edgeoldfillalpha{#1}}%
+    \let\edgeolddash\pgfsys@setdash
+    \def\pgfsys@setdash#1#2{\edef\edgedash{#1}\edgephase=#2\relax\edgeolddash{#1}{#2}}%
+    \let\edgeoldstroke\pgfsys@stroke
+    \def\pgfsys@stroke{\edgepaint{stroke}\edgeoldstroke}%
+    \let\edgeoldfill\pgfsys@fill
+    \def\pgfsys@fill{\edgepaint{fill}\edgeoldfill}%
+    \let\edgeoldfillstroke\pgfsys@fillstroke
+    \def\pgfsys@fillstroke{\edgepaint{fillstroke}\edgeoldfillstroke}%
+  \fi
+}

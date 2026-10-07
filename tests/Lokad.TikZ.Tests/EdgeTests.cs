@@ -90,8 +90,8 @@ public sealed class EdgeTests
     }
 
     [Theory]
-    [InlineData(@"\draw (0,0) to[bend left] (1,0);", "bend left", "TIKZ002")]
-    [InlineData(@"\draw (0,0) edge[in=20,out=30] (1,0);", "in=20", "TIKZ002")]
+    [InlineData(@"\draw (0,0) to[out control={(1,1)}] (1,0);", "out control", "TIKZ002")]
+    [InlineData(@"\draw (0,0) edge[loop] (1,0);", "loop", "TIKZ002")]
     [InlineData(@"\draw (0,0) to[to path={-- (1,0)}] (1,0);", "to path", "TIKZ002")]
     [InlineData(@"\draw (0,0) edge node {label} (1,0);", "n", "TIKZ002")]
     [InlineData(@"\draw (0,0) to (1,0) node {label};", "n", "TIKZ002")]

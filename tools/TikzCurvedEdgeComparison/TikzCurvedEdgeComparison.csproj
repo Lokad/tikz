@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><IsPackable>false</IsPackable></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Lokad.TikZ/Lokad.TikZ.csproj" />
+    <Compile Include="../TikzEdgeComparison/NativeComparison.cs" Link="NativeComparison.cs" />
+    <Compile Include="../TikzShapeComparison/NativeGlyphTrace.cs" Link="NativeGlyphTrace.cs" />
+  </ItemGroup>
+</Project>

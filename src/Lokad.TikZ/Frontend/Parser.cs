@@ -196,7 +196,7 @@ internal sealed class Parser(Source source, Budget budget)
         var options = new List<Option>();
         while (_reader.Peek == '[') options.AddRange(ReadOptions());
         if (_reader.Peek is not ('(' or '+'))
-            throw new CompileError("TIKZ002", "Straight to/edge requires a coordinate target; path labels and custom to paths are unsupported.", _reader.Here);
+            throw new CompileError("TIKZ002", "To/edge requires a coordinate target; path labels and custom to paths are unsupported.", _reader.Here);
         var target = ReadCoordinate();
         var span = new Source(origin.Text, origin.Offset, source.Offset + _reader.Position - origin.Offset);
         return separate ? new EdgeOperation(target, options, span) : new ToOperation(target, options, span);

@@ -1,0 +1,18 @@
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \coordinate (target) at (40,20);
+  \draw (0,0) to[bend left,rotate=25] (40,0);
+  \draw (0,40) edge[bend right,x=2pt,y=3pt] (20,0);
+  \draw (0,60) to[bend left,rotate=25] +(40,0) -- +(5,0);
+  \draw (0,80) edge[out=30,in=150,rotate=25] +(40,0) -- +(5,0);
+  \draw (0,100) to[bend left] (45:30pt);
+  \draw (0,120) to[out=25,in=155] (target);
+  \begin{scope}[shift={(0,140)},rotate=25,xscale=-1]
+    \draw (0,0) to[bend left] (40,15);
+    \draw (0,20) edge[out=25,in=155] (40,35);
+  \end{scope}
+  \begin{scope}[cm={1,.25,.4,1,(0,200)}]
+    \draw (0,0) to[bend right=12.375] (40,15);
+    \draw (0,20) edge[out=-370,in=725,distance=8pt] (40,35);
+  \end{scope}
+  \draw (0pt,245pt) to[bend left] (2.345pt,253pt);
+\end{tikzpicture}

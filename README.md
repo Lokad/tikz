@@ -60,6 +60,13 @@ under a pinned profile. Its calibrated SVG/PDF and exact native-SVG-page claims
 apply only to those five fixtures; hosted validation and broader coverage remain
 pending.
 
+The [curved connection prototype](docs/CURVED-EDGES.md) adds bends, `in`/`out`
+angles, looseness and distance controls. Five separate fixtures retain 70 native
+path calls and pass 2,066 numeric assertions. A dedicated
+[inspection command](tools/TikzVisual/CURVED-EDGE-INSPECTION.md) saves paired
+PNGs, raw differences, crops and overlay viewers. Independent image calibration
+and admission for this family remain pending.
+
 Three labeled-border interaction fixtures now have independent native ink/root
 calibration, a passing [prospective primary trial](tools/TikzVisual/LABELLED-BORDER-INK.md)
 and image-only defect checks. Their original-driver differences remain visible.

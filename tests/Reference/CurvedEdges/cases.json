@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-curved-to-edge-v1",
+  "fontProfile": "latin-modern-ec-10-12-v1",
+  "colorProfile": "xcolor-rgb-v1",
+  "libraries": ["shapes.geometric"],
+  "anchors": ["text", "center", "north", "south", "west", "east", "north west", "north east", "south west", "south east", "base", "base west", "base east", "mid", "mid west", "mid east"],
+  "cases": [
+    {"id":"continuation","source":"tests/Fixtures/CurvedEdges/continuation.tikz","nodes":[],"features":["bend-left-right","absolute-in-out","to-chain","edge-branch","plus-plusplus","zero-length","relative-angles"]},
+    {"id":"styles","source":"tests/Fixtures/CurvedEdges/styles.tikz","nodes":[],"features":["bend-angle","looseness","asymmetric-looseness","explicit-distances","distance-clamps","zero-negative-looseness","every-to","every-curve-to","option-order","scope-restoration","paint-inheritance"]},
+    {"id":"coordinates","source":"tests/Fixtures/CurvedEdges/coordinates.tikz","nodes":[],"coordinates":["target"],"features":["local-transforms","basis-override","relative-prescan","polar-target","named-target","reflected-frame","sheared-frame","fractional-angles","wrapped-angles","short-oblique-vector"]},
+    {"id":"nodes","source":"tests/Fixtures/CurvedEdges/nodes.tikz","nodes":[{"id":"input","shape":"rectangle"},{"id":"output","shape":"rectangle"},{"id":"round","shape":"circle"},{"id":"wide","shape":"ellipse"}],"features":["measured-labels","relative-node-border","absolute-node-angle","explicit-anchors","node-chain","transformed-query-frame","rotated-sheared-node"]},
+    {"id":"clipping","source":"tests/Fixtures/CurvedEdges/clipping.tikz","nodes":[],"features":["scope-clip","curved-clip","deferred-edge","compound-fill","unpainted-bounds","dash-cap","scope-restoration"]}
+  ],
+  "scope": "Independent native cubic controls, endpoints, continuation, paint/order, node/glyph and original SVG/PDF evidence for the fixed curved fixtures. No candidate-derived values or image allowance."
+}

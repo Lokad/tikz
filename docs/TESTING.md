@@ -1088,3 +1088,13 @@ checker rejects missing/undefined links. Four ordinary-PDF blind spots
 remain exposed rather than counted as exact PDF agreement. The explicit profile
 promotion command requires reviewed local qualification bundles; normal CI
 consumers require only tracked evidence, .NET, Node and the pinned browser.
+
+Curved `to`/`edge` connections have a separate native corpus and public numeric
+command. Ordinary tests consume its externally pinned snapshot and reject
+one-scaled-point control errors. The [native producer](../tools/TikzCurvedEdgeReference/README.md)
+checks probe noninterference and original SVG/PDF state; its cache reader and
+37 controls run without TeX or a browser. The
+[image diagnostics](../tools/TikzVisual/CURVED-EDGE-INSPECTION.md) create paired
+PNGs, raw differences and local viewers from one completed numeric report.
+Independent image calibration remains pending, and straight-edge profiles
+grant no allowance to curved connections.

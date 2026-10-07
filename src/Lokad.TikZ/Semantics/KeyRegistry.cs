@@ -96,6 +96,26 @@ internal static class KeyRegistry
                 case "line cap": state.Paint = paint with { Cap = value switch { "butt" or "round" => value, "rect" => "square", _ => throw Unsupported(option) } }; break;
                 case "line join": state.Paint = paint with { Join = value switch { "miter" or "round" or "bevel" => value, _ => throw Unsupported(option) } }; break;
                 case "miter limit": var miter = state.Scalar(option.Value, budget); if (miter < 1 || miter > 1000) Invalid(option); state.Paint = paint with { Miter = miter }; break;
+                case "bend angle": state.Connection = state.Connection with { Bend = state.Scalar(option.Value, budget) }; break;
+                case "bend left" or "bend right":
+                    var bend = value.Length == 0 ? state.Connection.Bend : state.Scalar(option.Value, budget);
+                    var outgoing = key == "bend left" ? bend : -bend;
+                    state.Connection = state.Connection with { Curved = true, Relative = true, Bend = bend, Out = outgoing, In = 180 - outgoing }; break;
+                case "in": state.Connection = state.Connection with { Curved = true, In = state.Scalar(option.Value, budget) }; break;
+                case "out": state.Connection = state.Connection with { Curved = true, Out = state.Scalar(option.Value, budget) }; break;
+                case "relative": state.Connection = state.Connection with { Relative = value switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) } }; break;
+                case "looseness": var looseness = state.Scalar(option.Value, budget); state.Connection = state.Connection with { Curved = true, InLooseness = looseness, OutLooseness = looseness }; break;
+                case "in looseness": state.Connection = state.Connection with { Curved = true, InLooseness = state.Scalar(option.Value, budget) }; break;
+                case "out looseness": state.Connection = state.Connection with { Curved = true, OutLooseness = state.Scalar(option.Value, budget) }; break;
+                case "in min distance": state.Connection = state.Connection with { Curved = true, InMin = state.Dimension(option.Value, budget) }; break;
+                case "in max distance": state.Connection = state.Connection with { Curved = true, InMax = state.Dimension(option.Value, budget) }; break;
+                case "out min distance": state.Connection = state.Connection with { Curved = true, OutMin = state.Dimension(option.Value, budget) }; break;
+                case "out max distance": state.Connection = state.Connection with { Curved = true, OutMax = state.Dimension(option.Value, budget) }; break;
+                case "in distance": var inDistance = state.Dimension(option.Value, budget); state.Connection = state.Connection with { Curved = true, InMin = inDistance, InMax = inDistance }; break;
+                case "out distance": var outDistance = state.Dimension(option.Value, budget); state.Connection = state.Connection with { Curved = true, OutMin = outDistance, OutMax = outDistance }; break;
+                case "min distance": var minDistance = state.Dimension(option.Value, budget); state.Connection = state.Connection with { Curved = true, InMin = minDistance, OutMin = minDistance }; break;
+                case "max distance": var maxDistance = state.Dimension(option.Value, budget); state.Connection = state.Connection with { Curved = true, InMax = maxDistance, OutMax = maxDistance }; break;
+                case "distance": var distance = state.Dimension(option.Value, budget); state.Connection = state.Connection with { Curved = true, InMin = distance, InMax = distance, OutMin = distance, OutMax = distance }; break;
                 case "nonzero rule": state.Paint = paint with { FillRule = "nonzero" }; break;
                 case "even odd rule": state.Paint = paint with { FillRule = "evenodd" }; break;
                 case "solid": DashPattern.Set(state, [], option.Source, budget); break;

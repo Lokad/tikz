@@ -1,6 +1,7 @@
 # Straight connections
 
 The public converter implements a bounded straight `to` and `edge` prototype.
+Curved forms have a separate [prototype and reference corpus](CURVED-EDGES.md).
 Five [trusted fixtures](../tests/Fixtures/Edges) match 2,585 independent native
 assertions for geometry, effective paint, physical paint order, clip chains,
 picture bounds, node measurements, anchors and glyph positions. Their original

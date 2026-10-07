@@ -1,0 +1,16 @@
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \node[draw,rectangle] (input) at (0,0) {AV};
+  \node[draw,rectangle,rotate=20,transform shape] (output) at (80,0) {gyp};
+  \node[draw,circle,font=\itshape] (round) at (0,70) {ffi.};
+  \node[draw,ellipse,cm={1,.2,.3,1,(0,0)},transform shape] (wide) at (80,70) {gyp};
+  \draw[blue] (input) to[bend left] (output);
+  \draw[red] (input) edge[bend right] (output);
+  \draw (round) to[out=20,in=160] (wide);
+  \draw (input) to[bend left=15] (wide) to[bend right=40] (round);
+  \draw (input.east) to[out=20,in=160] (output.west);
+  \draw (round.north) edge[bend left] (wide.north);
+  \begin{scope}[rotate=15,xscale=1.25]
+    \draw (input) to[bend left] (wide);
+    \draw (round) edge[out=35,in=155] (output);
+  \end{scope}
+\end{tikzpicture}

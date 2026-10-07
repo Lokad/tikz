@@ -1,0 +1,19 @@
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \draw (0,0) to[bend angle=40,bend right] (40,0);
+  \draw (0,20) to[out=25,in=140,looseness=1.5] (40,20);
+  \draw (0,40) edge[out=25,in=140,out looseness=.5,in looseness=2] (40,40);
+  \draw (0,60) to[out=0,in=180,out distance=10pt,in distance=5pt] (40,60);
+  \draw (0,80) to[bend left,min distance=30pt,max distance=35pt] (40,80);
+  \draw (0,100) to[bend right,out min distance=20pt,in max distance=4pt] (40,100);
+  \draw (0,120) to[bend left,looseness=0] (40,120);
+  \draw (0,140) to[bend left,looseness=-1] (40,140);
+  \begin{scope}[every to/.style={bend left=12.375},every curve to/.style={looseness=.75}]
+    \draw[red,thick,dashed] (0,160) to[blue,bend right=20] (40,160);
+    \draw (0,180) edge[bend left] (40,180);
+  \end{scope}
+  \draw[bend angle=17] (0,200) edge[bend left=45] (40,200) edge[bend right] (40,200);
+  \begin{scope}[every curve to/.style={rotate=25,x=2pt,y=3pt}]
+    \draw (0,220) to[bend left] (20,0);
+    \draw (0,240) edge[out=25,in=155] +(20,0);
+  \end{scope}
+\end{tikzpicture}

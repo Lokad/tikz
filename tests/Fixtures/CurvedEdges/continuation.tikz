@@ -1,0 +1,12 @@
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \draw (0,0) to[bend left] (40,0) -- (60,0);
+  \draw (0,20) to[bend right] (40,20);
+  \draw (0,40) to[out=25,in=170] (40,40) to[out=-25,in=-170] (80,40);
+  \draw (0,60) edge[bend left] (40,60) edge[bend right] (40,60) -- (80,60);
+  \draw (0,80) to[bend left] +(40,0) -- ++(5,0);
+  \draw (0,100) to[bend right] ++(40,0) -- +(5,0);
+  \draw (0,120) edge[bend left] ++(40,0) -- +(5,0);
+  \draw (0,140) to[bend left] (0,140);
+  \draw (0,160) to[bend left=0] (40,160);
+  \draw (0,180) to[relative=true,out=15,in=160] (40,200);
+\end{tikzpicture}

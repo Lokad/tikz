@@ -1,0 +1,14 @@
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \begin{scope}
+    \clip (-10,-10) rectangle (70,130);
+    \draw[red,thick,dashed] (0,0) to[bend left] (80,0) edge[blue,bend right] (0,0);
+    \fill[red] (0,30) to[bend left] (80,30) -- (40,60) -- cycle
+      edge[blue,draw,bend right] (80,30);
+    \begin{scope}
+      \clip (0,65) to[out=30,in=150] (70,65) -- (70,120) -- (0,120) -- cycle;
+      \draw[blue,line cap=round,line width=2pt] (0,90) edge[bend left] (80,90);
+    \end{scope}
+  \end{scope}
+  \path (0,145) to[bend left] (70,145) edge[bend right,draw=none] (0,145);
+  \draw[green] (0,175) to[bend right] (70,175);
+\end{tikzpicture}

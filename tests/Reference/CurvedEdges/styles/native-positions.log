@@ -1,0 +1,224 @@
+This is DVItype, Version 3.6 (MiKTeX 25.4)
+Options selected:
+  Starting page = * 
+  Maximum number of pages = 1000000
+  Output level = 4 (the works)
+  Resolution = 300.00000000 pixels per inch
+numerator/denominator=25400000/473628672
+magnification=1000;       0.00006334 pixels per DVI unit
+' TeX output <timestamp>'
+Postamble starts at byte 3467.
+maxv=44761088, maxh=33554432, maxstackdepth=10, totalpages=1
+ 
+42: beginning of page 1 
+87: push 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+88: xxx 'header=l3backend-dvips.pro' 
+116: xxx 'papersize=600.0pt,800.0pt' 
+143: pop 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+144: push 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+145: push 
+level 1:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+146: down3 -4736286 v:=0-4736286=-4736286, vv:=-300 
+150: pop 
+level 1:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+151: pop 
+level 0:(h=0,v=0,w=0,x=0,y=0,z=0,hh=0,vv=0) 
+152: down4 44761088 v:=0+44761088=44761088, vv:=2835 
+157: push 
+level 0:(h=0,v=44761088,w=0,x=0,y=0,z=0,hh=0,vv=2835) 
+158: down4 -42926080 v:=44761088-42926080=1835008, vv:=116 
+163: push 
+level 1:(h=0,v=1835008,w=0,x=0,y=0,z=0,hh=0,vv=116) 
+164: push 
+level 2:(h=0,v=1835008,w=0,x=0,y=0,z=0,hh=0,vv=116) 
+165: right3 4063232 h:=0+4063232=4063232, hh:=257 
+[ ]
+169: xxx 'color push gray 0' 
+188: right4 29491200 h:=4063232+29491200=33554432, hh:=2125 
+[ ]
+193: xxx 'color pop' 
+204: pop 
+level 2:(h=0,v=1835008,w=0,x=0,y=0,z=0,hh=0,vv=116) 
+205: pop 
+level 1:(h=0,v=1835008,w=0,x=0,y=0,z=0,hh=0,vv=116) 
+206: down4 40960000 v:=1835008+40960000=42795008, vv:=2711 
+211: push 
+level 1:(h=0,v=42795008,w=0,x=0,y=0,z=0,hh=0,vv=2711) 
+212: right3 4063232 h:=0+4063232=4063232, hh:=257 
+[ ]
+216: down4 -39321600 v:=42795008-39321600=3473408, vv:=220 
+221: xxx 'color push gray 0' 
+240: down4 16411969 v:=3473408+16411969=19885377, vv:=1260 
+245: push 
+level 2:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+246: push 
+level 3:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+247: push 
+level 4:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+248: xxx 'dvisvgm:bbox 137.01607 250.42677' 
+282: xxx 'dvisvgm:bbox lock' 
+301: push 
+level 5:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+302: push 
+level 6:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+303: right3 6331831 h:=4063232+6331831=10395063, hh:=658 
+[ ]
+307: down3 -670222 v:=19885377-670222=19215155, vv:=1217 
+311: xxx 'color push gray 0' 
+330: xxx 'dvisvgm:raw <g stroke-miterlimit="10" transform="translate({?x},{?y})scale(0.996264,-0.996264)">' 
+428: xxx 'dvisvgm:raw <g stroke="#000" fill="#000">{?nl} ' 
+477: xxx 'dvisvgm:raw <g stroke-width="0.4">{?nl} ' 
+519: push 
+level 7:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+520: xxx 'lokad-edge-path 1' 
+539: xxx 'dvisvgm:raw <path d=" ' 
+563: xxx 'dvisvgm:raw M 0.0 0.0 C 11.94925 -10.02678 28.05075 -10.02678 40.0 0.0  ' 
+637: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+672: xxx 'lokad-edge-path 2' 
+691: xxx 'dvisvgm:raw <path d=" ' 
+715: xxx 'dvisvgm:raw M 0.0 20.0 C 21.20604 29.8886 22.07613 35.04016 40.0 20.0  ' 
+788: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+823: xxx 'lokad-edge-path 4' 
+842: xxx 'dvisvgm:raw <path d=" ' 
+866: xxx 'dvisvgm:raw M 0.0 40.0  ' 
+892: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+927: push 
+level 8:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+928: push 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+929: xxx 'lokad-edge-path 3' 
+948: xxx 'dvisvgm:raw <path d=" ' 
+972: xxx 'dvisvgm:raw M 0.0 40.0 C 7.06866 43.29619 16.10149 60.05356 40.0 40.0  ' 
+1045: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+1080: pop 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+1081: pop 
+level 8:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+1082: xxx 'lokad-edge-path 5' 
+1101: xxx 'dvisvgm:raw <path d=" ' 
+1125: xxx 'dvisvgm:raw M 0.0 60.0 C 10.0 60.0 35.0 60.0 40.0 60.0  ' 
+1183: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+1218: xxx 'lokad-edge-path 6' 
+1237: xxx 'dvisvgm:raw <path d=" ' 
+1261: xxx 'dvisvgm:raw M 0.0 80.0 C 25.98083 95.0 14.01917 95.0 40.0 80.0  ' 
+1327: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+1362: xxx 'lokad-edge-path 7' 
+1381: xxx 'dvisvgm:raw <path d=" ' 
+1405: xxx 'dvisvgm:raw M 0.0 100.0 C 17.32056 90.0 36.53589 98.0 40.0 100.0  ' 
+1473: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+1508: xxx 'lokad-edge-path 8' 
+1527: xxx 'dvisvgm:raw <path d=" ' 
+1551: xxx 'dvisvgm:raw M 0.0 120.0 C 0.0 120.0 40.0 120.0 40.0 120.0  ' 
+1612: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+1647: xxx 'lokad-edge-path 9' 
+1666: xxx 'dvisvgm:raw <path d=" ' 
+1690: xxx 'dvisvgm:raw M 0.0 140.0 C 0.0 140.0 40.0 140.0 40.0 140.0  ' 
+1751: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+1786: xxx 'dvisvgm:raw <g stroke="#f00" fill="#f00">{?nl} ' 
+1835: xxx 'dvisvgm:raw <g stroke-width="0.8">{?nl} ' 
+1877: xxx 'dvisvgm:raw <g stroke-dasharray="3.0,3.0" stroke-dashoffset="0.0">{?nl} ' 
+1951: xxx 'lokad-edge-path 10' 
+1971: xxx 'dvisvgm:raw <path d=" ' 
+1995: xxx 'dvisvgm:raw M 0.0 160.0 C 10.9936 155.99861 29.0064 155.99861 40.0 160.0  ' 
+2071: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+2106: xxx 'dvisvgm:raw </g>{?nl} ' 
+2130: xxx 'dvisvgm:raw </g>{?nl} ' 
+2154: xxx 'dvisvgm:raw </g>{?nl} ' 
+2178: xxx 'lokad-edge-path 12' 
+2198: xxx 'dvisvgm:raw <path d=" ' 
+2222: xxx 'dvisvgm:raw M 0.0 180.0  ' 
+2249: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+2284: push 
+level 8:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2285: push 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2286: xxx 'lokad-edge-path 11' 
+2306: xxx 'dvisvgm:raw <path d=" ' 
+2330: xxx 'dvisvgm:raw M 0.0 180.0 C 10.13173 185.84955 29.86827 185.84955 40.0 180.0  ' 
+2408: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+2443: pop 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2444: pop 
+level 8:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2445: xxx 'lokad-edge-path 15' 
+2465: xxx 'dvisvgm:raw <path d=" ' 
+2489: xxx 'dvisvgm:raw M 0.0 200.0  ' 
+2516: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+2551: push 
+level 8:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2552: push 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2553: xxx 'lokad-edge-path 13' 
+2573: xxx 'dvisvgm:raw <path d=" ' 
+2597: xxx 'dvisvgm:raw M 0.0 200.0 C 11.03003 211.03003 28.96997 211.03003 40.0 200.0  ' 
+2675: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+2710: pop 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2711: push 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2712: xxx 'lokad-edge-path 14' 
+2732: xxx 'dvisvgm:raw <path d=" ' 
+2756: xxx 'dvisvgm:raw M 0.0 200.0 C 14.91711 195.43933 25.08289 195.43933 40.0 200.0  ' 
+2834: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+2869: pop 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2870: pop 
+level 8:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+2871: xxx 'lokad-edge-path 16' 
+2891: xxx 'dvisvgm:raw <path d=" ' 
+2915: xxx 'dvisvgm:raw M 0.0 220.0 C -13.48683 162.834 28.16422 104.02257 36.25244 16.9049  ' 
+2998: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+3033: xxx 'lokad-edge-path 18' 
+3053: xxx 'dvisvgm:raw <path d=" ' 
+3077: xxx 'dvisvgm:raw M 0.0 240.0  ' 
+3104: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+3139: push 
+level 8:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+3140: push 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+3141: xxx 'lokad-edge-path 17' 
+3161: xxx 'dvisvgm:raw <path d=" ' 
+3185: xxx 'dvisvgm:raw M 0.0 240.0 C -96.41608 223.48938 -91.10268 225.96709 -83.30322 225.9671  ' 
+3273: xxx 'dvisvgm:raw " fill="none"/>{?nl} ' 
+3308: pop 
+level 9:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+3309: pop 
+level 8:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+3310: pop 
+level 7:(h=10395063,v=19215155,w=0,x=0,y=0,z=0,hh=658,vv=1217) 
+3311: xxx 'dvisvgm:raw </g>{?nl} ' 
+3335: xxx 'dvisvgm:raw </g>{?nl} ' 
+3359: xxx 'dvisvgm:raw </g>' 
+3377: xxx 'color pop' 
+3388: pop 
+level 6:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+3389: pop 
+level 5:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+3390: right4 8979485 h:=4063232+8979485=13042717, hh:=826 
+[ ]
+3395: xxx 'dvisvgm:bbox unlock' 
+3416: pop 
+level 4:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+3417: pop 
+level 3:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+3418: pop 
+level 2:(h=4063232,v=19885377,w=0,x=0,y=0,z=0,hh=257,vv=1260) 
+3419: pop 
+level 1:(h=0,v=42795008,w=0,x=0,y=0,z=0,hh=0,vv=2711) 
+3420: down3 1966080 v:=42795008+1966080=44761088, vv:=2835 
+3424: push 
+level 1:(h=0,v=44761088,w=0,x=0,y=0,z=0,hh=0,vv=2835) 
+3425: right3 4063232 h:=0+4063232=4063232, hh:=257 
+[ ]
+3429: xxx 'color push gray 0' 
+3448: right4 29491200 h:=4063232+29491200=33554432, hh:=2125 
+[ ]
+3453: xxx 'color pop' 
+3464: pop 
+level 1:(h=0,v=44761088,w=0,x=0,y=0,z=0,hh=0,vv=2835) 
+3465: pop 
+level 0:(h=0,v=44761088,w=0,x=0,y=0,z=0,hh=0,vv=2835) 
+3466: eop 

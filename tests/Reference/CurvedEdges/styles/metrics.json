@@ -1,0 +1,1322 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-curved-to-edge-v1",
+  "caseId": "styles",
+  "converterInvoked": false,
+  "approvedImagePolicy": false,
+  "imageConformanceClaim": false,
+  "units": "integer TeX sp and native paint coefficients; y-up; physical origin; no fitted registration",
+  "paths": [
+    {
+      "index": 1,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 0
+        },
+        {
+          "kind": "control1",
+          "xSp": 783106,
+          "ySp": -657115
+        },
+        {
+          "kind": "control2",
+          "xSp": 1838334,
+          "ySp": -657115
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 0
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 2,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 1310720
+        },
+        {
+          "kind": "control1",
+          "xSp": 1389759,
+          "ySp": 1958779
+        },
+        {
+          "kind": "control2",
+          "xSp": 1446781,
+          "ySp": 2296392
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 1310720
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 3,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 2621440
+        },
+        {
+          "kind": "control1",
+          "xSp": 463252,
+          "ySp": 2837459
+        },
+        {
+          "kind": "control2",
+          "xSp": 1055227,
+          "ySp": 3935670
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 2621440
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 4,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 2621440
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 5,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 3932160
+        },
+        {
+          "kind": "control1",
+          "xSp": 655360,
+          "ySp": 3932160
+        },
+        {
+          "kind": "control2",
+          "xSp": 2293760,
+          "ySp": 3932160
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 3932160
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 6,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 5242880
+        },
+        {
+          "kind": "control1",
+          "xSp": 1702680,
+          "ySp": 6225920
+        },
+        {
+          "kind": "control2",
+          "xSp": 918760,
+          "ySp": 6225920
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 5242880
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 7,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 6553600
+        },
+        {
+          "kind": "control1",
+          "xSp": 1135120,
+          "ySp": 5898240
+        },
+        {
+          "kind": "control2",
+          "xSp": 2394416,
+          "ySp": 6422528
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 6553600
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 8,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 7864320
+        },
+        {
+          "kind": "control1",
+          "xSp": 0,
+          "ySp": 7864320
+        },
+        {
+          "kind": "control2",
+          "xSp": 2621440,
+          "ySp": 7864320
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 7864320
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 9,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 9175040
+        },
+        {
+          "kind": "control1",
+          "xSp": 0,
+          "ySp": 9175040
+        },
+        {
+          "kind": "control2",
+          "xSp": 2621440,
+          "ySp": 9175040
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 9175040
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 10,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 52429,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 10485760
+        },
+        {
+          "kind": "control1",
+          "xSp": 720477,
+          "ySp": 10223525
+        },
+        {
+          "kind": "control2",
+          "xSp": 1900963,
+          "ySp": 10223525
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 10485760
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 52429,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          1,
+          0,
+          0
+        ],
+        "fillRgb": [
+          1,
+          0,
+          0
+        ],
+        "dashSerialization": "3.0pt,3.0pt",
+        "dashSp": [
+          196608,
+          196608
+        ],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 11,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 11796480
+        },
+        {
+          "kind": "control1",
+          "xSp": 663993,
+          "ySp": 12179836
+        },
+        {
+          "kind": "control2",
+          "xSp": 1957447,
+          "ySp": 12179836
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 11796480
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 12,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 11796480
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 13,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 13107200
+        },
+        {
+          "kind": "control1",
+          "xSp": 722864,
+          "ySp": 13830064
+        },
+        {
+          "kind": "control2",
+          "xSp": 1898576,
+          "ySp": 13830064
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 13107200
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 14,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 13107200
+        },
+        {
+          "kind": "control1",
+          "xSp": 977608,
+          "ySp": 12808312
+        },
+        {
+          "kind": "control2",
+          "xSp": 1643832,
+          "ySp": 12808312
+        },
+        {
+          "kind": "curve",
+          "xSp": 2621440,
+          "ySp": 13107200
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 15,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 13107200
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 16,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 14417920
+        },
+        {
+          "kind": "control1",
+          "xSp": -883873,
+          "ySp": 10671489
+        },
+        {
+          "kind": "control2",
+          "xSp": 1845770,
+          "ySp": 6817223
+        },
+        {
+          "kind": "curve",
+          "xSp": 2375840,
+          "ySp": 1107880
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 17,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 15728640
+        },
+        {
+          "kind": "control1",
+          "xSp": -6318724,
+          "ySp": 14646600
+        },
+        {
+          "kind": "control2",
+          "xSp": -5970505,
+          "ySp": 14808979
+        },
+        {
+          "kind": "curve",
+          "xSp": -5459360,
+          "ySp": 14808980
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    },
+    {
+      "index": 18,
+      "owner": "drawing",
+      "modes": [
+        "draw"
+      ],
+      "widthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 0,
+          "ySp": 15728640
+        }
+      ],
+      "paint": {
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSerialization": "",
+        "dashSp": [],
+        "dashPhaseSp": 0
+      }
+    }
+  ],
+  "nodes": [],
+  "coordinates": [],
+  "pictureBounds": {
+    "minXSp": -6331831,
+    "minYSp": -670222,
+    "maxXSp": 2647654,
+    "maxYSp": 15741747
+  },
+  "pictureBox": {
+    "widthSp": 8979485,
+    "heightSp": 16411969,
+    "depthSp": 0
+  },
+  "physicalOrder": {
+    "allPathCalls": [
+      1,
+      2,
+      4,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      11,
+      15,
+      13,
+      14,
+      16,
+      18,
+      17
+    ],
+    "paintedPaths": [
+      1,
+      2,
+      4,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      11,
+      15,
+      13,
+      14,
+      16,
+      18,
+      17
+    ]
+  },
+  "driverState": {
+    "checks": 222,
+    "pathPaints": 18,
+    "clipPaths": 0,
+    "passed": true,
+    "units": "native sp recovered from SVG dimensions; SVG/PDF effective state; physical paint order",
+    "paints": [
+      {
+        "pathId": 1,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 2,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 4,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 3,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 5,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 6,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 7,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 8,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 9,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 10,
+        "operation": "stroke",
+        "widthSp": 52429,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          1,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [
+          196608,
+          196608
+        ],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 12,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 11,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 15,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 13,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 14,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 16,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 18,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      },
+      {
+        "pathId": 17,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "dashPhaseSp": 0,
+        "clips": []
+      }
+    ],
+    "constructionDifferences": []
+  },
+  "pdfCamera": {
+    "origin": {
+      "x": 306.69796612313206,
+      "y": 485.47279164720845
+    },
+    "page": {
+      "boxXSp": 8799518,
+      "boxBaselineYSp": 27807137,
+      "widthSp": 39321600,
+      "heightSp": 52428800
+    },
+    "rasterSizes": {
+      "1x": {
+        "width": 798,
+        "height": 1063
+      },
+      "4x": {
+        "width": 3189,
+        "height": 4251
+      }
+    }
+  }
+}
