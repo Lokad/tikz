@@ -1127,3 +1127,18 @@ exact qualification/checker reports before conversion, measures all eight gates,
 and writes source-attributed image artifacts. Its focused controls and owned
 saved-evidence checker remain explicit development commands. Ordinary curved
 tests also require clip source retention and plain/traced public parity.
+
+The [portable curved trial](../tools/TikzVisual/CURVED-EDGE-CACHED.md) consumes
+tracked independent qualifications, creates fresh public evidence and owns its
+exact saved-evidence checker. It needs .NET and the pinned Node/browser tools,
+without old research folders or native TeX/PDF commands:
+
+```text
+node tools/TikzVisual/curved-edge-image-cache-self-test.mjs
+node tools/TikzVisual/trial-curved-edge-cached.mjs
+```
+
+The first command checks original bytes, roles, provenance and corruption
+controls without a browser or converter. The second requires all eight public
+gates and the owned checker together. Both remain unapproved research evidence;
+immutable admission and hosted/release qualification remain separate.

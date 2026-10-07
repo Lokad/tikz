@@ -79,3 +79,10 @@ fresh numeric conversion to the independent primary and PDF policies. It retains
 all native regions and direct path/glyph/clip source spans, then exercises fresh
 image-only defects. A separate checker converts afresh and remeasures the saved
 images. These trial commands cannot promote a policy or claim immutable admission.
+
+The [portable trial](../tools/TikzVisual/CURVED-EDGE-CACHED.md) now materializes
+the original independent qualifications from a tracked, externally pinned
+archive. It owns the fresh public trial and that exact trial's saved-evidence
+checker, without old research directories or native reference tools. Archive
+integrity and original source identities are checked before conversion; no
+candidate output supplies an expected value. Immutable admission remains separate.
