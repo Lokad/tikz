@@ -21,6 +21,7 @@ jobs:
       - run: dotnet restore Lokad.TikZ.slnx --locked-mode
       - run: dotnet restore tools/TikzCurvedEdgeComparison --locked-mode
       - run: dotnet restore tools/TikzCurvedEdgeOracle --locked-mode
+      - run: dotnet restore tools/TikzArrowComparison --locked-mode
       - run: dotnet test Lokad.TikZ.slnx -c Release --no-restore
       - run: node tools/TikzVisual/labelled-border-reference.mjs check-cached
       - run: node tools/TikzVisual/labelled-border-evidence-self-test.mjs
@@ -37,6 +38,7 @@ jobs:
       - run: node tools/TikzVisual/curved-edge-admission-self-test.mjs
       - run: node tools/TikzVisual/arrow-reference.mjs check-cached
       - run: node tools/TikzVisual/arrow-reference-self-test.mjs
+      - run: dotnet run --project tools/TikzArrowComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzCurvedEdgeOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeOracle -c Release --no-restore
@@ -89,6 +91,7 @@ jobs:
             artifacts/curved-edge-oracle/
             artifacts/arrow-reference/
             artifacts/arrow-native-controls/
+            artifacts/arrow-numeric/
           if-no-files-found: error
 
   visual:

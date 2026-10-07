@@ -12,6 +12,7 @@ internal sealed class EvaluationState
     public Point YBasis { get; set; } = new NodePoint(0, 1864679).Bp;
     public Paint Paint { get; set; } = new();
     public ConnectionSettings Connection { get; set; } = new();
+    public ArrowSettings Arrows { get; set; } = new();
     public PaintChanges PaintChanges { get; set; }
     public DashLength[] ConfiguredDash { get; set; } = [];
     public DashLength ConfiguredDashPhase { get; set; }
@@ -32,7 +33,7 @@ internal sealed class EvaluationState
         budget.Charge(source, Styles.Count + Variables.Count + Clips.Count + 1);
         return new()
         {
-            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Node = Node, Libraries = Libraries, RelevantForPictureSize = RelevantForPictureSize,
+            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Arrows = Arrows, Node = Node, Libraries = Libraries, RelevantForPictureSize = RelevantForPictureSize,
             ConfiguredDash = ConfiguredDash, ConfiguredDashPhase = ConfiguredDashPhase, PendingDash = PendingDash,
             Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal)
         };

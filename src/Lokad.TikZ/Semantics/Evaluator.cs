@@ -20,7 +20,7 @@ internal sealed partial class Evaluator(Budget budget)
     private void LoadLibrary(string name, EvaluationState state, Source source)
     {
         budget.Charge(source);
-        if (name != "shapes.geometric") throw new CompileError("TIKZ002", $"Unsupported TikZ library '{name}'.", source);
+        if (name is not ("shapes.geometric" or "arrows.meta")) throw new CompileError("TIKZ002", $"Unsupported TikZ library '{name}'.", source);
         state.Libraries.Add(name);
     }
     private void Statements(List<Statement> statements, EvaluationState state, int depth)
@@ -287,10 +287,7 @@ internal sealed partial class Evaluator(Budget budget)
         }
         if (path.Segments.Count != 0 && (state.Paint.Fill || state.Paint.Stroke))
         {
-            var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, statement.Source) : bounds;
-            foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Path.Bounds);
-            _scene.InkBounds = _scene.InkBounds.Union(ink);
-            _scene.Add(new(path, state.Paint, [.. state.Clips], statement.Source, ink));
+            PaintResolvedPath(path, state, statement.Source, statement.Command != "\\clip", bounds);
         }
         foreach (var edge in edges)
         {
@@ -356,10 +353,28 @@ internal sealed partial class Evaluator(Budget budget)
             _scene.PictureBounds = _scene.PictureBounds.Union(state.Paint.Stroke ? picture.Inflate(PictureStrokeRadius(state.Paint.Width)) : picture);
         }
         if (!state.Paint.Fill && !state.Paint.Stroke) return;
-        var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, source) : path.Bounds;
+        PaintResolvedPath(path, state, source, true);
+    }
+    private void PaintResolvedPath(GraphicPath original, EvaluationState state, Source source, bool arrows, Bounds? originalBounds = null)
+    {
+        var lowering = arrows ? ArrowGeometry.Lower(original, state, budget, source) : new ArrowLowering(original, []);
+        var path = lowering.Shaft;
+        var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, source)
+            : ReferenceEquals(path, original) && originalBounds is { } existingBounds ? existingBounds : path.Bounds;
         foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Path.Bounds);
         _scene.InkBounds = _scene.InkBounds.Union(ink);
         _scene.Add(new(path, state.Paint, [.. state.Clips], source, ink));
+        foreach (var tip in lowering.Tips)
+        {
+            budget.Charge(tip.Source);
+            if (state.RelevantForPictureSize)
+                foreach (var point in tip.Template.Hull)
+                    _scene.PictureBounds = _scene.PictureBounds.Add(PgfTransform.Apply(tip.Transform, point.Bp, budget, tip.Source));
+            var tipInk = ArrowGeometry.InkBounds(tip, budget);
+            foreach (var clip in state.Clips) tipInk = tipInk.Intersect(_scene.Clips[clip].Path.Bounds);
+            _scene.InkBounds = _scene.InkBounds.Union(tipInk);
+            _scene.Add(new(tip.Template.Path, tip.Template.Paint, [.. state.Clips], tip.Source, tipInk) { Transform = tip.Transform, Arrow = tip });
+        }
     }
     private static double PictureStrokeRadius(double width)
     {

@@ -72,6 +72,11 @@ regions and exposes a local paired-image viewer. Calibrated original-SVG/PDF
 and exact reconstructed-native-page claims apply only to these five fixtures;
 wider interactions and hosted qualification remain pending.
 
+The [arrow prototype](docs/ARROWS.md) adds legacy/modern `To`, `Stealth`, `Latex`,
+physical dimensions and native path shortening. Six frozen fixtures pass 12,062
+scene/public-SVG numeric checks. A separate inspection command owns paired
+images and source-attributed tip crops. Arrow image admission remains pending.
+
 Three labeled-border interaction fixtures now have independent native ink/root
 calibration, a passing [prospective primary trial](tools/TikzVisual/LABELLED-BORDER-INK.md)
 and image-only defect checks. Their original-driver differences remain visible.

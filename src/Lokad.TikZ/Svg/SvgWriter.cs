@@ -138,7 +138,9 @@ internal static class SvgWriter
                 var path = (PaintedPath)drawable;
                 writer.WriteStartElement("path");
                 writer.WriteAttributeString("id", $"{prefix}-p{pathIndex++}");
-                writer.WriteAttributeString("transform", PathTransform);
+                var transform = path.Transform;
+                writer.WriteAttributeString("transform", transform == Geometry.Affine.Identity ? PathTransform
+                    : $"{PathTransform} matrix({Number(transform.A)} {Number(transform.B)} {Number(transform.C)} {Number(transform.D)} {PathNumber(transform.E * BpToPt, budget, path.Source)} {PathNumber(transform.F * BpToPt, budget, path.Source)})");
                 writer.WriteAttributeString("d", PathData(path.Path, budget, path.Source));
                 var paint = path.Paint;
                 writer.WriteAttributeString("fill", paint.Fill ? paint.FillColor.PgfSvg : "none");

@@ -30,6 +30,7 @@ internal static class KeyRegistry
                 continue;
             }
             var value = Options.Clean(option.Value);
+            if (ArrowOptions.Apply(option with { Key = key }, state, budget)) continue;
             var paint = state.Paint;
             // A deferred edge overrides only commands it actually issues.
             // Equality with the inherited value does not mean an option is absent.

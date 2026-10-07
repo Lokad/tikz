@@ -7,7 +7,11 @@ using Lokad.TikZ.Text;
 namespace Lokad.TikZ.Graphics;
 
 internal abstract record Drawable(int[] Clips, Source Source);
-internal sealed record PaintedPath(GraphicPath Path, Paint Paint, int[] ClipIds, Source Origin, Bounds InkBounds) : Drawable(ClipIds, Origin);
+internal sealed record PaintedPath(GraphicPath Path, Paint Paint, int[] ClipIds, Source Origin, Bounds InkBounds) : Drawable(ClipIds, Origin)
+{
+    public Affine Transform { get; init; } = Affine.Identity;
+    public ArrowPlacement? Arrow { get; init; }
+}
 internal sealed record ResolvedGlyph(int Outline, PlacedGlyph Placement, Affine Transform, Bounds InkBounds);
 internal sealed record PaintedGlyphRun(ResolvedGlyph[] Glyphs, string Readable, Color Color, double Opacity,
     int[] ClipIds, Source Origin, int NodeId) : Drawable(ClipIds, Origin);
