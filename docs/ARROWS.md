@@ -372,6 +372,49 @@ views, changed source identity, weakened policy, and consistently rehashed
 SVG/PNG substitutions. The completed report links the exact owned input report;
 partial output retains its failed phase and completed-view count.
 
+The physical-page certificate consumes a completed meet-primary producer and
+its completed independent checker:
+
+```text
+node tools/TikzVisual/calibrate-arrow-meet-pdf.mjs artifacts/arrow-meet-source-calibration/run-<uuid>/report.json artifacts/arrow-meet-source-checks/run-<uuid>/report.json
+node tools/TikzVisual/check-arrow-meet-pdf.mjs artifacts/arrow-meet-pdf-calibration/run-<uuid>/report.json
+node tools/TikzVisual/calibrate-arrow-meet-pdf.mjs --replay artifacts/arrow-meet-pdf-calibration/run-<uuid>/report.json
+```
+
+Use the exact completed report paths printed by the commands. Each run owns a
+fresh directory, captures its source identities, and retains failed output.
+Replay reads the embedded primary inputs instead of requiring their original
+experiment directories. Bounded loaders check paths, manifests, report bindings
+and the pinned native cache before rendering.
+
+The certificate preserves every original PDF page, physical camera, source and
+scene region, and raster route. It changes only the source SVG's outer aspect
+ratio and requires all 792 source/scene captures and their numeric records to
+equal the earlier pinned captures exactly. It rederives the complete PDF model
+without widening a limit. Exact capture reproduction is distinct from the
+separately calibrated agreement between SVG and ordinary PDF.
+
+The independent reader recaptures the bound primary images before checking the
+physical pages. It also independently decodes saved PDF/SVG pairs, recomputes
+regional metrics, integer RGB ink mass and first moments, checks fault deltas
+and artifact coverage, and exercises rehashed substitutions through the actual
+loader and verifier. A prior checker report alone cannot supply a trusted
+source gate. Physical-page wrappers remove the root aspect-ratio declaration;
+their success therefore requires the original meet-primary presentation gate.
+These are native qualification tools and grant no public converter admission.
+
+Native comparisons use strict deep equality with bounded failure messages.
+Formatting a complete policy diff can exceed the memory needed for rendering;
+the checker retains the view/control phase and the linked data for inspection.
+It constructs each corruption fixture before invoking validation and requires
+an assertion rejection, so a mutation or infrastructure error cannot count as
+a passed control.
+
+Each view record links the ordinary PDF raster, SVG raster, raw and amplified
+differences, overlay and numbers. Baseline records also link a labeled paired
+contact sheet. Open these PNGs directly or use the owned static `index.html`;
+the common synchronized viewer and agent adapter retain their separate scope.
+
 Open the owned `index.html` or its paired PNGs to inspect native comparisons.
 These outputs remain unapproved research evidence. Independently qualifying
 the source/PDF routes, freezing the new policy, public image-only sensitivity,
