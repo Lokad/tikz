@@ -1,0 +1,470 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-native-pgf-curved-connections-v1",
+  "scope": "Only the five fixed curved to/edge fixtures: 70 native paths, 66 paints, two clips, four nodes, 64 anchors, one named coordinate and ten glyphs. Separately calibrated original-driver SVG and ordinary-PDF agreement; exact pixels refer only to the independently reconstructed native SVG page.",
+  "approvedImagePolicy": true,
+  "calibration": {
+    "file": "tests/Reference/CurvedEdges/conformance/qualifications.json.gz",
+    "sha256": "a95de58283f0a5b91dc2a7d6232b3667954c4cd4997590beaeec5ff0e5c4c2c1",
+    "decodedSha256": "62b2369e974131d025276f96ef1fe984445d0c88ce0ed434496dce8bae439f9e",
+    "snapshotSha256": "5d5730145e1a848d6f22c964d901be3c151bba3ebf5336c258144ec14076e0b1"
+  },
+  "qualification": {
+    "cacheControls": "cba85500602a8de7b41c484bb635438fe34f8d26c5a334fd96e6984e04cb1876",
+    "cachedTrial": "2e38cfc2daf710bd377af8ba05a5348c5158c175a294ac21a8715e59e186cb37",
+    "trial": "e60e35a877e4d9384b12e699f2c0af3b1cf4f83f915bda01e91e9e61b36d4cf1",
+    "checker": "950537a347e1e5a75155e16e5b6405c9d43cdcc75e9e4f90790013f771da6f5b"
+  },
+  "renderer": {
+    "profile": "chromium-153-geometry-v3",
+    "playwright": "1.63.0",
+    "browser": "153.0.8010.12",
+    "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+    "os": "win32",
+    "osRelease": "10.0.19045",
+    "architecture": "x64",
+    "node": "v24.12.0",
+    "headless": true,
+    "deviceScaleFactor": 1,
+    "viewport": {
+      "width": 1200,
+      "height": 900
+    },
+    "launchArguments": [
+      "--disable-gpu",
+      "--force-color-profile=srgb"
+    ],
+    "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+  },
+  "requiredGates": [
+    "numeric",
+    "frame",
+    "primary",
+    "originalPdf",
+    "candidatePdf",
+    "nativePage",
+    "freshPrimary",
+    "freshPdfNative"
+  ],
+  "executedChecks": {
+    "numeric": 2066,
+    "frame": 471,
+    "primary": 4728,
+    "originalPdf": 1636,
+    "candidatePdf": 1636,
+    "nativePage": 1596,
+    "freshPrimary": 210,
+    "freshPdfNative": 70
+  },
+  "requiredViews": {
+    "primary": [
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "black"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "black"
+      }
+    ],
+    "pdf": [
+      {
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      }
+    ]
+  },
+  "numericCounts": [
+    342,
+    421,
+    356,
+    719,
+    228
+  ],
+  "nativePageRawLimit": 0,
+  "primaryPolicySha256": "5cb54eea2e43c478cd05fb7a2be5fc37e6498dc44529853e211f2a0746936f57",
+  "claims": {
+    "primary": "calibrated-unchanged-original-driver",
+    "pdf": "separate-calibrated-original-driver-and-native",
+    "nativePage": "exact-independent-native-SVG-page",
+    "originalDriver": "required-calibrated-uncorrected",
+    "hostedExecution": "unverified"
+  },
+  "counts": {
+    "cases": 5,
+    "nativePaths": 70,
+    "paints": 66,
+    "clips": 2,
+    "nodes": 4,
+    "anchors": 64,
+    "namedCoordinates": 1,
+    "glyphs": 10,
+    "primaryViews": 60,
+    "originalDiagnosticViews": 0,
+    "pdfViewsPerRoute": 20,
+    "nativePages": 20,
+    "defects": 18,
+    "visiblePrimaryDefectViews": 169,
+    "invisiblePrimaryDefectViews": 41,
+    "primaryDefectViews": 210,
+    "visiblePdfDefectViews": 68,
+    "invisiblePdfDefectViews": 2,
+    "pdfNativeDefectViews": 70,
+    "sourceRegions": 389,
+    "cubicSamples": 183
+  },
+  "defects": [
+    {
+      "name": "missing-bend",
+      "caseId": "continuation",
+      "target": "path-2",
+      "change": "remove",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "quarter-pixel-oblique-shift",
+      "caseId": "coordinates",
+      "target": "path-15",
+      "change": "shift",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "wrong-first-control",
+      "caseId": "continuation",
+      "target": "path-2.curve-1.t-0.5",
+      "change": "control",
+      "controlDeltaPt": 1,
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "straightened-bend",
+      "caseId": "continuation",
+      "target": "path-1.curve-1.t-0.5",
+      "change": "straight",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "swapped-asymmetric-controls",
+      "caseId": "styles",
+      "target": "path-3.curve-1.t-0.25",
+      "change": "swap",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "doubled-node-connection-stroke",
+      "caseId": "nodes",
+      "target": "path-5",
+      "change": "width"
+    },
+    {
+      "name": "changed-node-connection-blue",
+      "caseId": "nodes",
+      "target": "path-5",
+      "change": "color"
+    },
+    {
+      "name": "missing-curved-dashes",
+      "caseId": "styles",
+      "target": "path-10",
+      "change": "dash"
+    },
+    {
+      "name": "disabled-rectangle-clip",
+      "caseId": "clipping",
+      "target": "path-2",
+      "change": "clip",
+      "invisibleViews": [
+        "natural/1x-transparent",
+        "natural/1x-white",
+        "natural/1x-black"
+      ]
+    },
+    {
+      "name": "shifted-curved-clip",
+      "caseId": "clipping",
+      "target": "path-7",
+      "change": "clip-shift",
+      "clipIndex": 1,
+      "clipDeltaPt": 30
+    },
+    {
+      "name": "missing-round-cap",
+      "caseId": "clipping",
+      "target": "path-7.endpoint-0",
+      "change": "cap"
+    },
+    {
+      "name": "missing-period",
+      "caseId": "nodes",
+      "target": "glyph-6",
+      "change": "remove",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "missing-ligature",
+      "caseId": "nodes",
+      "target": "glyph-5",
+      "change": "remove",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "shifted-label-baseline",
+      "caseId": "nodes",
+      "target": "glyph-2",
+      "change": "baseline",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "missing-node-connection-opacity",
+      "caseId": "nodes",
+      "target": "path-5",
+      "change": "opacity"
+    },
+    {
+      "name": "cropped-root",
+      "caseId": "continuation",
+      "target": "path-1",
+      "change": "root",
+      "frames": [
+        "natural"
+      ],
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    },
+    {
+      "name": "changed-compound-fill",
+      "caseId": "clipping",
+      "target": "path-5",
+      "change": "fill-color"
+    },
+    {
+      "name": "missing-ellipse-outline",
+      "caseId": "nodes",
+      "target": "path-4",
+      "change": "remove",
+      "invisibleBackgrounds": [
+        "black"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "id": "continuation",
+      "primaryFrameSha256": "6ba71b97f564ee43ba47d63d035c958aa00f65dfb16c0f305bbca0c2c5f18a82",
+      "corrections": [],
+      "pdfCameraSha256": "42793b126c2fe50c998f050094e70390b9ff08b94632c0e2d145f54ad6c8a2d7",
+      "pdfRegionsSha256": "bf48ce2e14e95ae2c74c542c785da3ef55791ec95dfa20a78241c1d87776529b",
+      "pdfPoliciesSha256": "c0d9a218effb2578405223b1e13a5aff7d465af267ca0d8c9d16023509fd0b4d"
+    },
+    {
+      "id": "styles",
+      "primaryFrameSha256": "3035a84bdd60c8889b6bd6d595a7efa615e8c2e28b7dea918fae58f81bb00b92",
+      "corrections": [],
+      "pdfCameraSha256": "1591c175bc3776915cccbe3a16ef4d57554c7ebce54ee91ea3777e2bb981df60",
+      "pdfRegionsSha256": "68b12efaa7ec34a1616a5525ce8bf38f897f8669dd9d348bd8d70d36b226714a",
+      "pdfPoliciesSha256": "d5b9b209fcfaba9e0ce7c02c35ad7eabbf2436a4968994cc2d0910d0a0bf9cde"
+    },
+    {
+      "id": "coordinates",
+      "primaryFrameSha256": "ad99888d0163f97ea770dacdbc2c650f52a05ffbc1ae85f440ec14700f9505f4",
+      "corrections": [],
+      "pdfCameraSha256": "9cf66cec2b257e6e9207dd48b85fbab51ce57f232ea72d330717e13bf46553f4",
+      "pdfRegionsSha256": "da75312b7869b8e148692908250729b4dc85a0a3aec43062d0f15b481c850c39",
+      "pdfPoliciesSha256": "3593fbab8624c1875d6d130467705b67fbbbca02f073ee675b925a4eb72d7dfe"
+    },
+    {
+      "id": "nodes",
+      "primaryFrameSha256": "29de915f02966a1d29e0096de102d2e58b2ac02dcb44b222eb978cbdeeed0aef",
+      "corrections": [],
+      "pdfCameraSha256": "74a8766927032ee0dcac5ef248f13c16ed505e9011e047f3ee0b370872affd9b",
+      "pdfRegionsSha256": "b7faa44edb3ca152071f5c662630b071321fba1ab0a6ccd6cae172217e3e4a7b",
+      "pdfPoliciesSha256": "a06bdd836c19cd2e2efb448387368d0c5ac91cc75ef54b60ed4fe5ddd7862841"
+    },
+    {
+      "id": "clipping",
+      "primaryFrameSha256": "e2c63e2b7e000f20b8371ce43b92b9f11ae381610e1c327117378103c7674c12",
+      "corrections": [],
+      "pdfCameraSha256": "38d82f2a84586bc4c712609f945ad72a2cfc7a258ecca484a1d55e1410046ab6",
+      "pdfRegionsSha256": "943770040bda74d645de37d8fbb5d3cf7ec2a0a056a87fa9eedca349a80eecda",
+      "pdfPoliciesSha256": "4678aaaffc70b7668579dd9ed1f8e391569fdc8e3235c529b0939e3455961381"
+    }
+  ],
+  "guardToolHashes": {
+    "Directory.Build.props": "98e3d5ccc9e3bb57654b334f141886b192aea9e534cfb3328d88f1e0c52229f6",
+    "Lokad.TikZ.slnx": "bc809ef34f343c987b3daee8753e3faa76bf7fb9c11e35f2e5899b455e093022",
+    "global.json": "f8895c3e857eaa25f38be5e57a7581cc624727b527c94f2701fa1ba57e64f100",
+    "tests/Fixtures/CurvedEdges/clipping.tikz": "c3554fc0c78b6812880be36e10341494696e70ed5b04286247c319893adf1f63",
+    "tests/Fixtures/CurvedEdges/continuation.tikz": "2e0f1c6ca5601729f2a149422f87df02731fd2952c8644a37030b3a35a502587",
+    "tests/Fixtures/CurvedEdges/coordinates.tikz": "17e5a9ca1c4b1790bc0c31aa5f5b68013d93c70cb2e88048421838febe5c6735",
+    "tests/Fixtures/CurvedEdges/nodes.tikz": "94ade3bfe9fa693c06237cdeb062339af46cdf2e77ed676d57765d14924903ca",
+    "tests/Fixtures/CurvedEdges/styles.tikz": "abb0980db4baa781addfac90403db1206aea455818e237310f5856d23e0febb6",
+    "tests/Reference/CurvedEdges/cases.json": "e175036d218c43f452d9e570e4711cb160b3454437a39e3b3e221acb5e0a721f",
+    "tests/Reference/NodeShapes/oracle-profile.json": "27a5409ae9ce2b607be744d157a1962f4bf1f96d97a062c39959705ff4c3e51d",
+    "tests/Reference/NodeShapes/pdf-oracle-profile.json": "d7a2ec5f1cfba57fffffd500451ec2ffebb388783ae97a44556d7cd4731082c2",
+    "tools/TikzCurvedEdgeOracle/Program.cs": "dc672381c15e5b22c9fce55e9b8464e06347347ba1434377573a3d0e5d794d10",
+    "tools/TikzCurvedEdgeOracle/TikzCurvedEdgeOracle.csproj": "43d912bac94695f94a506e45b247eeff57220eed5dad99f53eaf9f177a548a2e",
+    "tools/TikzCurvedEdgeOracle/packages.lock.json": "03eeadc5ef377c17f787ab65f41fb4c8a9c936bb7f7f4171111fdeec8a81cb46",
+    "tools/TikzCurvedEdgeReference/curved-edge-hooks.tex": "d7b43221f29a16c90a88a9fa659cd595743ce1932edd1db29b0949bcb2842214",
+    "tools/TikzEdgeReference/edge-hooks.tex": "527c300a6d9b94a4dbb5efacf58c9495dc8964e899dea96b7f4d785ee965b4c7",
+    "tools/TikzFontData/font-profile.json": "0f1fd5e433f78ca8e21ebbc12045ee96259316235aa25e4e3758b96561000fe9",
+    "tools/TikzLabelledBorderReference/labelled-borders.tex": "d54d35fa6c9dddd143b6ebf9ca56c425f9b0f4d00e190ead2b74d32dd0b127b4",
+    "tools/TikzShapeComparison/NativeGlyphTrace.cs": "2695161667fdb35dcb3948e8d02c8c5fe035bfdd12cdddb7e8a43c375ff6e8b1",
+    "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
+    "tools/TikzVisual/calibrate-curved-edge-pdf.mjs": "56d9472e98c8a88b32b021ae8afe33f211eb3aab44791c82df565a4081e8fb2e",
+    "tools/TikzVisual/calibrate-curved-edge-primary.mjs": "84d805e9981cc2d00bb577867342a4f09709933db1c34b6a969232ffd3456a66",
+    "tools/TikzVisual/check-curved-edge-pdf.mjs": "1b0a36bce77998abf06470aa8006f1cfae0a0853e9def1130fbae1ed9dd35c0d",
+    "tools/TikzVisual/check-curved-edge-primary.mjs": "1666d6224f7ddefee0738af1c1fb20ac1600475f2609047ada7f6ce719a9e5f0",
+    "tools/TikzVisual/check-curved-edge-trial.mjs": "f487c1f9f120c25cf62cd336afc809ae12292e2ae0d9d86c447eee64a7f6d3b6",
+    "tools/TikzVisual/compare-curved-edge-conformance.mjs": "047c28e4e262618449bf35ac2097c18bf98f8a2e169066760fd0470b351b5f3f",
+    "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+    "tools/TikzVisual/curved-edge-admission-owned-child.mjs": "80424136691ce42b0ff27548cec106b9f7effbe1096250eb7b56ba42a5ae7ab5",
+    "tools/TikzVisual/curved-edge-admission-policy.mjs": "e294ec4edc0fa14ce26d77d6e878b4f634f044fd72d3e5048255b65259b4be6c",
+    "tools/TikzVisual/curved-edge-admission-self-test.mjs": "b725f4e734621690042cf3ea81c25b170e83a057fbf012945c144425ee9caddd",
+    "tools/TikzVisual/curved-edge-agent-self-test.mjs": "feb456969f5ab2182f2870651848e5fc28effdbc4ed5029ca1ee7083a37493d5",
+    "tools/TikzVisual/curved-edge-agent-viewer.mjs": "5ed786a02cfbc2d9e64020ee4c7a825214c6b6c1320e3e17c8fd5905fe0650b9",
+    "tools/TikzVisual/curved-edge-agent.mjs": "ab2ec18ac15171d9459b14d7eef21401e96292cf95efd4f70c49bbe02a2778b1",
+    "tools/TikzVisual/curved-edge-driver-state.mjs": "1e245b2d3799accf190df7976b93bb59668a52e3627019e782630afbd312e250",
+    "tools/TikzVisual/curved-edge-evidence.mjs": "06c5a07984c394b94fbdebc2cb5970d9835061a06901581b409aee2573168a83",
+    "tools/TikzVisual/curved-edge-frame.mjs": "4e1aa543d81e2737b6d01941dba0e3f6aa048b99d220ef0334c9de1afb358ddb",
+    "tools/TikzVisual/curved-edge-image-cache.mjs": "a11fcf469764dea1837ef266ade1e815cff4117b904125b16ab5a2facc404f96",
+    "tools/TikzVisual/curved-edge-image-owned-child.mjs": "7dbd9e1de0acf88342b9a0fcf5f28571d359871259503692bdbd2005afc9580a",
+    "tools/TikzVisual/curved-edge-log.mjs": "dde6ab086b4650a6b4fec013a812aec439140f943676e1937a27b13a48b5316d",
+    "tools/TikzVisual/curved-edge-original.mjs": "8b14a2bface0fe91a88e0c5542acc47e6f63bef639ea8453fe52ed590b40d54e",
+    "tools/TikzVisual/curved-edge-pdf-crops.mjs": "e64906a62227b36a9a70a652cefd5ece0840f9835efb331b463603bf8e138bc6",
+    "tools/TikzVisual/curved-edge-pdf-policy.mjs": "82ade30c20a00ee26ca1bba8fc6da8dd63169f1c0b1e26eb6860afd151034e77",
+    "tools/TikzVisual/curved-edge-pdf-registration.mjs": "fb1d1304c1eae78d165cba689c2e9a36fe403bea7ada280019de6bfbcca224ea",
+    "tools/TikzVisual/curved-edge-pdf-self-test.mjs": "e4042ca13460a0f59774264cd0ed286781a5c8457014b926be631feaebab83cd",
+    "tools/TikzVisual/curved-edge-pdf-sources.mjs": "76c7bd2cc200c734a8568db22094dcddc24705d5904b1b5062bff8d6485e11c1",
+    "tools/TikzVisual/curved-edge-pdf-viewport.mjs": "643142046c205d1ae20b161bcf9783f72bee101fd8ab01e54f2ad1cd3568b236",
+    "tools/TikzVisual/curved-edge-pdf-visibility.mjs": "68a0387409871bd3a83dfb6393717f62568d295d0e6fd4388d20fab65a744d6d",
+    "tools/TikzVisual/curved-edge-primary-defects.mjs": "5976f004eba608e82ff9e8ff67350189bef976c07e654dc0238f6e46450f9afc",
+    "tools/TikzVisual/curved-edge-primary-policy.mjs": "e1ddeaebead8a910007caf859ff97407c410f2ca2bc1b1511662ba24c5d5197a",
+    "tools/TikzVisual/curved-edge-primary-reference.mjs": "865db312d60d17ad84b3676a4210431ef4ad91206aeffd5d18240e05382ed609",
+    "tools/TikzVisual/curved-edge-primary-visibility.mjs": "907c754a0515c94155a6bd8fa3b57942451349ed46d4e72f43436c809d2c0efc",
+    "tools/TikzVisual/curved-edge-reference.mjs": "ab28373002406857d85cf5348683fd9c14d65d9c401d85ad0ca20f977b75d419",
+    "tools/TikzVisual/curved-edge-trial-defects.mjs": "ebc4e0bbab570bcee1c844490b4ab64da83770ae8e320861b7958d24099a9ce2",
+    "tools/TikzVisual/curved-edge-trial-frame.mjs": "9ccbd2f46bf9152385b649f5f2facdb62fe66bca942e325672c312fa308008e1",
+    "tools/TikzVisual/curved-edge-trial-inputs.mjs": "e18f8b574e3ff22cfd0c247ff93d73af5d8e26b8b7f2e6852b65e6cb19941333",
+    "tools/TikzVisual/curved-edge-trial-policy.mjs": "c5bc0968b1c947bccdec11ffeea7d97af7d215da22825d36820c8e7c17999413",
+    "tools/TikzVisual/curved-edge-trial-self-test.mjs": "be5a15f8adbf38ac2127578c4f871dcc216bc7d308a622b321ebeec27eabc097",
+    "tools/TikzVisual/curved-edge-trial-sources.mjs": "ba8330ff85f88b59eb8b434d53aa627f59a63bdba642624550c7cfd0c441b332",
+    "tools/TikzVisual/curved-node-path-units.mjs": "89e4f26565a054eda254ffbde48d7a1b08fa655ed5b3a2a1425a2fb026e53b04",
+    "tools/TikzVisual/dash-pdf-vector.mjs": "9c2c9b5a94813e2264268c8e76af44bda352ef1ae8bc4e9e7ebb72a2ae566fcd",
+    "tools/TikzVisual/edge-driver-state.mjs": "c4644552717e8bfc5791de6ba810bbed91d5ea3b13968beea30cb9db3c887e47",
+    "tools/TikzVisual/edge-log.mjs": "da9ad234192ac7296362d7c9b76a9b75bf3ce19044cecd78b32d4a2f9ce8d6e2",
+    "tools/TikzVisual/edge-oracle-frame.mjs": "36b17d86236494ad7962becea5fcc39b962c64ebbbfcd6cdcf316fef119fac05",
+    "tools/TikzVisual/edge-oracle-pair.mjs": "20df641b0a7f6ffdb3e0795991ad2f3f709ab63e633e83087e47078c432b01d6",
+    "tools/TikzVisual/edge-oracle-pdf.mjs": "c984a9be177e1b2e3b26a568758e18e373372b30f33ab7128b73bdc5c7f7b005",
+    "tools/TikzVisual/edge-oracle-png-pair.mjs": "531e9b61384218abe95ac79a0df1be9c734dc0c510f683a142aa57c6650d23b6",
+    "tools/TikzVisual/edge-oracle.mjs": "aa4e4c2257d6aab9836186062660d8b67852f082fe09a2085e21d3cce2b928e8",
+    "tools/TikzVisual/edge-pdf-image-pair.mjs": "75e5c4fe967b280eeb1e5ab47dde1085292f021a8da455bba917736dedd14693",
+    "tools/TikzVisual/edge-pdf-ink.mjs": "de3c4ca8dc167d4384746d85d492c42c6ca64ff40b542fde999e1126d844513e",
+    "tools/TikzVisual/edge-pdf-policy.mjs": "f37686674ca4774ea1ba8b83d6ab4f9c9eba76a4dbf69703c65ab8213f6ef4d0",
+    "tools/TikzVisual/edge-replay.mjs": "c51334cbe7803a872b0bed7ab0007005b20ab5248452fcc1a8d79bac86a5c067",
+    "tools/TikzVisual/edge-trial-frame.mjs": "b9df9e76393f114c680ed8a10d2d98f221f66a021f00ad47b62ca05c21b4abf1",
+    "tools/TikzVisual/edge-trial-images.mjs": "29a0efbe4a0f9c235436bbada725619d0e88135e9233ae92c8d824457273d320",
+    "tools/TikzVisual/labelled-border-log.mjs": "1589c923a5935eea83837ce93f67d19a6a7de45cc448d786b82a009316803a1a",
+    "tools/TikzVisual/labelled-border-pdf-vector.mjs": "4ad3e38812160a30aefa7ab978391358841b7e2e01c435b813c6dbeb6aa26845",
+    "tools/TikzVisual/materialize-curved-edge-image-cache.mjs": "313d8621393df01df178171779a77a67ee9f09b958649507876facc32653e40b",
+    "tools/TikzVisual/node-profile.json": "0b60e056b2643c13d04baa7388dc1293b55081c06cd1707be23901a9245015dd",
+    "tools/TikzVisual/package-lock.json": "1493ab1a08080e8e7434844c2ff7feff20da79de3ea2c13df399d426b82316f1",
+    "tools/TikzVisual/package.json": "a7562ff94fff07cf54821025a58dec5b9bf9e3c2cae836d6d9516eae90072b9f",
+    "tools/TikzVisual/prepare-curved-edge-admission.mjs": "c7d562647e3b319a3ca8d2726fad8f377d8d4fc23a918a6ffb6f9c757d8826c2",
+    "tools/TikzVisual/shape-frame-math.mjs": "a58534df72c79553763108078400f2010b69c125d394ea6f2628d0d77545fb44",
+    "tools/TikzVisual/shape-image-pair.mjs": "32347ca682e73a1b8324928b46491da954a124a7e65bbe2ad268ab6b14707efe",
+    "tools/TikzVisual/shape-oracle-bundle.mjs": "bc0e2657627ff5caf8405cb6005da2f645b4fe3f398655c58cb867e5d38d8125",
+    "tools/TikzVisual/shape-pdf-camera.mjs": "9941c14fb2783d41a82c29c4899cac9f0d4a137008d00ffefc22c89a30613658",
+    "tools/TikzVisual/shape-pdf-image-pair.mjs": "e0cb5dc44d789dba524349c7595c6569ddd7c1c3cc61fe68bd9598daf4d260ec",
+    "tools/TikzVisual/shape-pdf-trial-policy.mjs": "fcd52ca4f9caa1512bed5b68760b541ee5be29f3a91286ef892cef42a854b4e4",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "7cbbce06ba3175ecfc4289f6019ca1571355fd70e78e280892adf00877f689c2",
+    "tools/TikzVisual/shape-raster-metrics.mjs": "bb4becb5e6025fe3d296b7536214536e486c127ffd46a4adf62fc11778861936",
+    "tools/TikzVisual/text-profile.json": "5d51a7482e3cec8896b02ebe8f9a872f8cb0bc535ddced6312bbad10f87231e1",
+    "tools/TikzVisual/trial-curved-edge-cached.mjs": "0c7eda0654129ea6550d7458f1ce70dee5cd40a212f0a3a37b38691b01fd0498",
+    "tools/TikzVisual/trial-curved-edge-images.mjs": "8f98c80dd4aa7e260f99c1646810c647556d0c87f250b4d89530892ac40da96c"
+  }
+}

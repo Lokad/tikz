@@ -5,7 +5,8 @@ Five independently authored [fixtures](../tests/Fixtures/CurvedEdges) retain
 70 native PGF path calls, original SVG/PDF outputs, measured node borders,
 glyph positions, effective paint state and physical paint order. The converter
 passes 2,066 numeric assertions against that evidence. These counts cover the
-fixed corpus; pixel conformance for this family remains pending.
+fixed corpus. Its separate immutable conformance command requires the scoped
+numeric, framing and independently calibrated image gates together.
 
 Supported connection parameters are `bend left`, `bend right`, `bend angle`,
 `in`, `out`, `relative`, `looseness`, `in looseness`, `out looseness`,
@@ -50,7 +51,8 @@ crops, source/scene links and a local overlay/blink viewer. It retains original
 SVG and ordinary-PDF differences under exact diagnostic comparisons. It grants
 no image allowance or admission. The native frame, primary and PDF commands
 below provide independent measurements and image-only controls. A combined
-public trial and scoped immutable admission remain required for this family.
+public trial provides the raw research evidence; the separate admission command
+below consumes a pinned profile for these fixed fixtures.
 
 A separate [native-only frame and rendering experiment](../tools/TikzVisual/CURVED-EDGE-ORACLE.md)
 now derives conservative frames, curved clip bounds and 389 local regions from
@@ -63,8 +65,8 @@ selects one independently serialized representation and measures per-view/local
 limits against unchanged original SVG. Eighteen image-only faults and three
 separate opacity probes test sensitivity with numeric gates bypassed. A saved
 image checker rebuilds the native inputs and recomputes every measurement.
-These development limits remain unapproved; PDF qualification and a public
-combined trial are still required.
+These raw development reports keep their unapproved roles. The combined
+consumer requires the separately qualified PDF evidence and a fresh public trial.
 
 The [native PDF qualification](../tools/TikzVisual/CURVED-EDGE-PDF.md) now supplies
 separate original-driver/native-semantic page comparisons, complete replays and
@@ -72,7 +74,8 @@ signed root-boundary controls. PDF-grid defect visibility and controlled SVG
 faint-ink expectations are independent of the primary policy. A saved-evidence
 checker reconstructs native inputs and remeasures full pages and inspection
 panels. These remain unapproved development evidence; a fresh combined public
-trial, immutable admission and broader interactions are still required.
+trial and separately pinned admission consume them; broader interactions need
+additional independent evidence.
 
 The [public combined trial](../tools/TikzVisual/CURVED-EDGE-TRIAL.md) now connects
 fresh numeric conversion to the independent primary and PDF policies. It retains
@@ -86,3 +89,17 @@ archive. It owns the fresh public trial and that exact trial's saved-evidence
 checker, without old research directories or native reference tools. Archive
 integrity and original source identities are checked before conversion; no
 candidate output supplies an expected value. Immutable admission remains separate.
+
+The [fixed-family admission](../tools/TikzVisual/CURVED-EDGE-CONFORMANCE.md)
+checks the profile's external digest, native/cache identities, complete coverage
+and guard sources before owning a fresh cached trial/checker. All eight gates
+are required, including the exact independently reconstructed native SVG pages
+and fresh image-only defects. Original-driver SVG and ordinary PDF keep their
+separate calibrated claims. Only a completed admission report claims a pass.
+
+Its agent report ranks 6,224 regional observations with direct path, glyph and
+clip source spans. The local viewer embeds the exact paired PNGs and provides
+integer zoom, synchronized scroll, blink, overlay and differences. Independent
+inspection controls check saved-image bindings, crop pixels, source spans and
+navigation, including a visible defect. Wider interactions, loops, arrows,
+path labels and hosted qualification remain outside this fixed profile.

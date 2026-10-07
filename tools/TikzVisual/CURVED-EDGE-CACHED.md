@@ -58,3 +58,8 @@ host does not qualify a platform upgrade or hosted environment.
 original investigations. It scans decoded artifact bytes for private host
 markers and writes a fresh ignored archive and provenance report. It cannot
 overwrite the tracked archive or change its acceptance pins.
+
+The separate [fixed-family admission](CURVED-EDGE-CONFORMANCE.md) owns this
+runner under an externally pinned profile. Its completed parent can claim a
+scoped pass; this cached trial and its original child reports retain their
+unapproved research roles and unchanged limits.

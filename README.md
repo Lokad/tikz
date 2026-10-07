@@ -64,8 +64,13 @@ The [curved connection prototype](docs/CURVED-EDGES.md) adds bends, `in`/`out`
 angles, looseness and distance controls. Five separate fixtures retain 70 native
 path calls and pass 2,066 numeric assertions. A dedicated
 [inspection command](tools/TikzVisual/CURVED-EDGE-INSPECTION.md) saves paired
-PNGs, raw differences, crops and overlay viewers. Independent image calibration
-and admission for this family remain pending.
+PNGs, raw differences, crops and overlay viewers. The separate
+[fixed-family conformance command](tools/TikzVisual/CURVED-EDGE-CONFORMANCE.md)
+requires all eight numeric/image gates and its owned independent checker under
+an externally pinned profile. Its agent report ranks 6,224 source-attributed
+regions and exposes a local paired-image viewer. Calibrated original-SVG/PDF
+and exact reconstructed-native-page claims apply only to these five fixtures;
+wider interactions and hosted qualification remain pending.
 
 Three labeled-border interaction fixtures now have independent native ink/root
 calibration, a passing [prospective primary trial](tools/TikzVisual/LABELLED-BORDER-INK.md)

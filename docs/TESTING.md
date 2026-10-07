@@ -1142,3 +1142,25 @@ The first command checks original bytes, roles, provenance and corruption
 controls without a browser or converter. The second requires all eight public
 gates and the owned checker together. Both remain unapproved research evidence;
 immutable admission and hosted/release qualification remain separate.
+
+The [fixed curved-family admission](../tools/TikzVisual/CURVED-EDGE-CONFORMANCE.md)
+consumes that evidence through an externally pinned profile and owns a fresh
+cached trial/checker. Run the browser-free policy controls and the complete
+comparison, then use the exact final stdout report path for saved-proof and
+agent-inspection controls:
+
+```text
+node tools/TikzVisual/curved-edge-admission-self-test.mjs
+node tools/TikzVisual/compare-curved-edge-conformance.mjs
+node tools/TikzVisual/curved-edge-admission-self-test.mjs --report artifacts/curved-edge-conformance/run-<id>/report.json
+node tools/TikzVisual/curved-edge-agent-self-test.mjs --report artifacts/curved-edge-conformance/run-<id>/report.json
+```
+
+All eight gates, every required region/view and the exact owned independent
+checker are mandatory. Raw child reports keep their unapproved roles. The
+agent projection ranks 6,224 local observations; its viewer uses checked
+embedded PNGs and identical integer crop rectangles, with direct source and
+scene links. Inspection controls independently check pixel mapping, enlargement,
+empty filters, synchronized scroll, route selection and visible-defect navigation.
+Only the completed parent admits these five fixtures. Hosted execution and
+broader syntax/interaction coverage remain separate requirements.

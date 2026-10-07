@@ -33,6 +33,8 @@ jobs:
       - run: dotnet run --project tools/TikzCurvedEdgeComparison -c Release --no-restore
       - run: node tools/TikzVisual/curved-edge-frame-self-test.mjs
       - run: node tools/TikzVisual/curved-edge-primary-self-test.mjs
+      - run: node tools/TikzVisual/curved-edge-image-cache-self-test.mjs
+      - run: node tools/TikzVisual/curved-edge-admission-self-test.mjs
       - run: dotnet run --project tools/TikzCurvedEdgeOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeOracle -c Release --no-restore
@@ -80,6 +82,8 @@ jobs:
             artifacts/curved-edge-numeric/
             artifacts/curved-edge-frame-controls/
             artifacts/curved-edge-primary-controls/
+            artifacts/curved-edge-image-cache-controls/
+            artifacts/curved-edge-admission-controls/
             artifacts/curved-edge-oracle/
           if-no-files-found: error
 
@@ -105,6 +109,19 @@ jobs:
       - run: dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-primary
       - run: dotnet run --project tools/TikzReference -c Release -- compare-node-interaction-pdf
       - run: node tools/TikzVisual/compare-border-conformance.mjs
+      - name: Verify fixed curved-connection admission and inspection
+        shell: pwsh
+        run: |
+          node tools/TikzVisual/compare-curved-edge-conformance.mjs | Tee-Object -Variable curvedAdmissionLines
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $curvedMarkers = @($curvedAdmissionLines | Where-Object { $_.StartsWith('{') } | ForEach-Object { $_ | ConvertFrom-Json } | Where-Object { $_.kind -eq 'curved-edge-conformance' -and $_.final })
+          if ($curvedMarkers.Count -ne 1 -or -not $curvedMarkers[0].completed -or -not $curvedMarkers[0].passed) { throw 'Curved admission is incomplete.' }
+          $curvedReport = $curvedMarkers[0].report
+          if ((Get-FileHash -LiteralPath $curvedReport -Algorithm SHA256).Hash.ToLowerInvariant() -ne $curvedMarkers[0].sha256) { throw 'Curved report changed.' }
+          node tools/TikzVisual/curved-edge-admission-self-test.mjs --report $curvedReport
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          node tools/TikzVisual/curved-edge-agent-self-test.mjs --report $curvedReport
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/edge-candidate-inspect.mjs
       - run: node tools/TikzVisual/edge-oracle-self-test.mjs
       - run: node tools/TikzVisual/inspect-edge-oracle.mjs
@@ -222,6 +239,12 @@ jobs:
           name: tikz-comparisons
           path: |
             artifacts/comparisons/
+            artifacts/curved-edge-conformance/
+            artifacts/curved-edge-cached-trial/
+            artifacts/curved-edge-public-trial/
+            artifacts/curved-edge-public-checks/
+            artifacts/curved-edge-admission-controls/
+            artifacts/curved-edge-agent-controls/
             artifacts/edge-candidate-inspection/
             artifacts/edge-oracle-controls/
             artifacts/edge-oracle-inspection/

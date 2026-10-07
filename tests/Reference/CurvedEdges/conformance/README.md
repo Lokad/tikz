@@ -28,3 +28,7 @@ archive. Loading bounds decompression, reconciles all required artifacts,
 rederives image policies and checks current native/qualification sources before
 conversion. These development fixtures stay outside the runtime assembly and
 NuGet package. Their roles remain unapproved; immutable admission is separate.
+
+The [fixed-family consumer](../../../../tools/TikzVisual/CURVED-EDGE-CONFORMANCE.md)
+requires a separately pinned profile, fresh owned public evidence and its exact
+independent checker. It preserves this archive's original roles and bytes.
