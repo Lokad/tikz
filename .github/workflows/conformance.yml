@@ -38,6 +38,7 @@ jobs:
       - run: node tools/TikzVisual/curved-edge-admission-self-test.mjs
       - run: node tools/TikzVisual/arrow-reference.mjs check-cached
       - run: node tools/TikzVisual/arrow-reference-self-test.mjs
+      - run: node tools/TikzVisual/arrow-native-self-test.mjs
       - run: dotnet run --project tools/TikzArrowComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzCurvedEdgeOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore

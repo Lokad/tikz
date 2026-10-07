@@ -73,11 +73,34 @@ attribution, JSON reports and a local gallery remain available without a hosted
 service. Both reference and candidate captures must repeat exactly. Existing
 inspection helpers are reused without changing their qualified policies.
 
-These are prototype numeric results and unapproved image observations.
-Independent arrow frame/ink qualification, primary/PDF calibration, image-only
-defect sensitivity, an owned combined checker, labeled-node interactions and
-hosted qualification remain required. No older fixture family's image allowance
-applies to arrows.
+The native-only grounding harness reconstructs the frozen paints without invoking
+the converter. It distinguishes original picture bounds from shortened-path ink,
+checks finite tip hull arithmetic, and derives fixed cameras and 741 regions for
+paints, placements, endpoints, curve samples and clips. Browser-free controls
+include independently calculated line/cubic bounds, pen caps, empty geometry,
+finite hull products and over-shortening. Native tip matrices remain continuous
+for rendering; the picture hull uses finite scaled-point arithmetic.
+
+```text
+node tools/TikzVisual/arrow-native-self-test.mjs
+node tools/TikzVisual/inspect-arrow-native.mjs
+node tools/TikzVisual/check-arrow-native.mjs artifacts/arrow-native-inspection/run-<uuid>/report.json
+```
+
+Inspection compares four declared coordinate representations (short/twelve-digit
+TeX points and six/twelve-digit CSS pixels), picture/ink roots, intrinsic/expanded
+frames, 1x/4x scales and three backgrounds: 576 primary views. Another 120 views
+compare the original driver and all four reconstructions with the unchanged
+ordinary PDF pages. Every tip has paired 1x/4x inspection crops. The separate
+checker reconstructs frame/serialization bindings, checks source and artifact
+coverage, and re-decodes saved images to verify whole/local measurements and
+presentation pixels. Source captures, retained failures, reports and the local
+gallery stay under ignored `artifacts/`.
+
+These are prototype numeric results and native-only image observations.
+Independent primary/PDF calibration, image-only defect sensitivity, an owned
+combined public checker, labeled-node interactions and hosted qualification
+remain required. No older fixture family's image allowance applies to arrows.
 
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
