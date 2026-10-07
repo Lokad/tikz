@@ -281,6 +281,30 @@ checker. Saved-image checking reconstructs registration, decodes metrics and
 integer ink moments, and validates every paired focus panel. These observations
 require independent immutable qualification before public image admission.
 
+The frozen native source cache preserves the complete checked producer bundles
+and both independent readers. Its 19,005 indexed files include the outer
+manifest; 6,328 distinct byte sequences occupy a 56.5 MB gzip archive. The binary
+container has a bounded JSON index and original blobs, with independent SHA-256
+bindings for reports, manifests, every blob and both encoded/decoded archives.
+It is development reference data and is excluded from the production package.
+
+```text
+node tools/TikzVisual/arrow-image-cache-self-test.mjs
+node tools/TikzVisual/prepare-arrow-image-cache.mjs --replay
+node tools/TikzVisual/materialize-arrow-image-cache.mjs
+```
+
+Loading checks all native source guards and rederives the conservative envelopes,
+primary policies, source/scene PDF policies, view gates, fault outcomes and
+declared visibility limits. It needs no browser, converter or native tool, and
+does not read original experiment directories. Materialization recreates complete
+producer inputs in fresh ignored folders while preserving original report bytes
+and recording their new locations separately. Replay reconstructs the identical
+cache under the pinned environment. Corruption controls exercise the actual
+codec and loader, including rehashed image/limit replacements, lost raster
+coverage, false approval and stale sources. Public image admission remains
+pending; cached native observations preserve their original unapproved roles.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source

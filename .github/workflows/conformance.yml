@@ -47,6 +47,7 @@ jobs:
       - run: node tools/TikzVisual/arrow-viewport-self-test.mjs
       - run: node tools/TikzVisual/arrow-source-primary-self-test.mjs
       - run: node tools/TikzVisual/arrow-source-pdf-self-test.mjs
+      - run: node tools/TikzVisual/arrow-image-cache-self-test.mjs
       - run: dotnet run --project tools/TikzArrowComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzCurvedEdgeOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore
