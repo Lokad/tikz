@@ -188,6 +188,29 @@ report links a self-contained manifest, complete policies/outcomes and a local
 inspection index. This experiment grants neither policy approval nor public
 admission; a common-viewport decision and immutable qualification remain open.
 
+The next native viewport experiment separates source presentation from scene
+paint. It retains the original source SVG, source frame and all intrinsic
+presentation fingerprints. For the scene comparison, only the outer SVG
+viewport is normalized to the fixed physical page; every path, transform,
+paint attribute and explicit clip stays intact. Ordinary PDF pixels stay
+unchanged. The full page exposes extra geometry outside the native diagram,
+where changed pixels must be zero. Root-only faults remain required source
+faults, even when scene normalization makes their paint invariant.
+
+```text
+node tools/TikzVisual/arrow-viewport-self-test.mjs
+node tools/TikzVisual/calibrate-arrow-viewport.mjs <owned-faint-report> <owned-faint-check-report>
+node tools/TikzVisual/check-arrow-viewport.mjs artifacts/arrow-viewport-calibration/run-<uuid>/report.json
+node tools/TikzVisual/calibrate-arrow-viewport.mjs --replay artifacts/arrow-viewport-calibration/run-<uuid>/report.json
+```
+
+All 296 earlier views remain, with 144 added outside-diagram ink controls across
+all fixtures, roots, rasters, natural/expanded frames and scales. The local
+index links recovered endpoints, faint regions, extra ink, original source
+pages and every coupled gate. Source/scene checks are prospective native
+evidence. Immutable intrinsic-primary/PDF qualification and public combined
+admission remain required.
+
 The compact agent adapter binds five explicit completed reports: primary
 observations and their saved-image check, PDF observations and their check, and
 public prototype inspection. It copies their artifacts into a self-contained
