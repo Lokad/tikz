@@ -123,6 +123,29 @@ experiment inputs and re-decodes every saved measurement and presentation panel.
 These experiments explain representation sensitivity; they set no image limits
 and grant no public conformance claim.
 
+The separate primary experiment fixes short native-point printing and native
+picture bounds before applying SVG-only faults. It uses the original intrinsic
+natural/expanded routes at both scales and all three backgrounds. Native ink
+roots remain diagnostics: shortened ink can escape the picture and the original
+SVG viewport can clip it. The policy refuses a changed component count or lost
+edge set; it does not enlarge a tolerance to accommodate that clipping mismatch.
+
+```text
+node tools/TikzVisual/arrow-primary-self-test.mjs
+node tools/TikzVisual/calibrate-arrow-primary.mjs
+node tools/TikzVisual/check-arrow-primary.mjs artifacts/arrow-primary-calibration/run-<uuid>/report.json
+```
+
+The owned report includes 72 calibration views, 72 ink-root diagnostics, 186
+image-only defect views and 48 controlled visibility views. Deliberate faults
+cover missing/shifted/reversed tips, shortening, cubic controls/endpoints,
+paint, dashes, caps, clips, degenerate directions, picture cropping and deferred
+paint order. Controlled faint/subquantum tips probe renderer visibility without
+claiming a new native fixture. The saved-image checker rederives limits from
+decoded reference/native pixels and verifies local target crops and outcomes.
+Visible faults accepted by the limits and faults without a raster change stay
+in the report; a completed report grants neither approval nor public admission.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
