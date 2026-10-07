@@ -48,9 +48,9 @@ The [inspection command](../tools/TikzVisual/CURVED-EDGE-INSPECTION.md) turns on
 completed numeric run into paired 1x/4x PNGs, raw differences, worst-region
 crops, source/scene links and a local overlay/blink viewer. It retains original
 SVG and ordinary-PDF differences under exact diagnostic comparisons. It grants
-no image allowance or admission. Independent frame/region validation,
-primary/PDF calibration and image-only defect controls are the next grounding
-steps for this family.
+no image allowance or admission. The native frame, primary and PDF commands
+below provide independent measurements and image-only controls. A combined
+public trial and scoped immutable admission remain required for this family.
 
 A separate [native-only frame and rendering experiment](../tools/TikzVisual/CURVED-EDGE-ORACLE.md)
 now derives conservative frames, curved clip bounds and 389 local regions from
@@ -65,3 +65,11 @@ separate opacity probes test sensitivity with numeric gates bypassed. A saved
 image checker rebuilds the native inputs and recomputes every measurement.
 These development limits remain unapproved; PDF qualification and a public
 combined trial are still required.
+
+The [native PDF qualification](../tools/TikzVisual/CURVED-EDGE-PDF.md) now supplies
+separate original-driver/native-semantic page comparisons, complete replays and
+signed root-boundary controls. PDF-grid defect visibility and controlled SVG
+faint-ink expectations are independent of the primary policy. A saved-evidence
+checker reconstructs native inputs and remeasures full pages and inspection
+panels. These remain unapproved development evidence; a fresh combined public
+trial, immutable admission and broader interactions are still required.

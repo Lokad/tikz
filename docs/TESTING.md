@@ -1096,8 +1096,8 @@ checks probe noninterference and original SVG/PDF state; its cache reader and
 37 controls run without TeX or a browser. The
 [image diagnostics](../tools/TikzVisual/CURVED-EDGE-INSPECTION.md) create paired
 PNGs, raw differences and local viewers from one completed numeric report.
-Independent image calibration remains pending, and straight-edge profiles
-grant no allowance to curved connections.
+Independent image evidence remains unapproved; straight-edge profiles grant
+no allowance to curved connections.
 
 The [curved native-only frame experiment](../tools/TikzVisual/CURVED-EDGE-ORACLE.md)
 owns an independent DVI/TFM reader with no converter reference, derives local bend
@@ -1113,3 +1113,11 @@ probes derive their own limits and record visible versus quantized/background
 invisible losses. Its independent saved-image checker reconstructs inputs and
 remeasures PNGs. Thirty-five browser-free path/policy controls run in ordinary CI;
 primary limits remain unapproved until PDF qualification and a combined trial.
+
+The separate [curved PDF qualification](../tools/TikzVisual/CURVED-EDGE-PDF.md)
+compares original and independently reconstructed SVGs with frozen native PDF
+pages at measured page origins. It owns complete replays, signed viewport
+controls, eighteen defects and separate faint-ink experiments. Its independent
+checker remeasures every native crop and verifies saved inspection panels against
+full-page pixels. The focused synthetic controls require the pinned browser;
+these explicit development commands do not approve curved candidate conformance.
