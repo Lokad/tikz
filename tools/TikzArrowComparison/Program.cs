@@ -115,6 +115,7 @@ try
     Write("report.json", new { schemaVersion = 1, completed = true, passed, phase, snapshotSha256 = snapshotHash, checks = total,
         converterInvoked = true, numericConformanceClaim = passed, approvedImagePolicy = false, imageConformanceClaim = false,
         cases = rows, inputs, sources, assemblySha256 = Hash(File.ReadAllBytes(typeof(TikzConverter).Assembly.Location)),
+        converterAssemblyReferences = typeof(TikzConverter).Assembly.GetReferencedAssemblies().Select(a => a.Name).Order(StringComparer.Ordinal).ToArray(),
         artifacts = new Dictionary<string, string>(artifacts) });
     Console.WriteLine("Report: " + Path.Combine(output, "report.json"));
     return passed ? 0 : 1;

@@ -305,6 +305,37 @@ codec and loader, including rehashed image/limit replacements, lost raster
 coverage, false approval and stale sources. Public image admission remains
 pending; cached native observations preserve their original unapproved roles.
 
+The owned public source baseline trial consumes this frozen cache before it
+invokes the public converter. It saves numeric/trace parity, intrinsic source
+frames, 144 primary pairs and 192 source/scene PDF comparisons. Native policy
+bindings are recorded before conversion; public errors supply no image limits.
+Both original PGF and reconstructed-native routes remain visible, and exact
+qualified SVG-page agreement is distinct from separately calibrated PDF agreement.
+
+```text
+node tools/TikzVisual/trial-arrow-source-baselines.mjs
+node tools/TikzVisual/check-arrow-source-baselines.mjs artifacts/arrow-public-source-baselines/run-<uuid>/report.json
+node tools/TikzVisual/probe-arrow-aspect-ratio.mjs artifacts/arrow-public-source-baselines/run-<uuid>/report.json
+```
+
+Open the trial's `index.html` for paired primary images and fixed-region crops;
+the compact entry links complete measurements, numeric output and PDF records.
+The independent reader checks the report/manifest and complete coverage, reruns
+the public numeric comparison, reconstructs source frames, decodes every saved
+pair, recomputes local metrics and integer ink moments, and checks presentation
+panels. Successful evidence checking preserves a failed baseline's verdict.
+Its corruption controls invoke the actual bundle validator.
+
+The first baseline remains failed: all 12,062 numeric checks and every PDF route
+pass, but 28 natural views per primary route fail. A native encoding probe
+changes only `preserveAspectRatio="none"` to the SVG default, preserving drawing
+children and every other root attribute. This reproduces all measured public
+errors, with exact public diagnostic pixels in all 72 views. The probe derives
+no policy and invokes no production converter. An explicit production root
+contract, a repaired fresh baseline, public image-only defects and visibility
+controls, independent checking and fresh exported-tree proof remain required
+before fixed-family public image admission.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
