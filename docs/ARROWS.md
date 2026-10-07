@@ -102,6 +102,27 @@ Independent primary/PDF calibration, image-only defect sensitivity, an owned
 combined public checker, labeled-node interactions and hosted qualification
 remain required. No older fixture family's image allowance applies to arrows.
 
+Native precision research separates three printing factors: path/clip coordinates,
+pen/dash dimensions and placement translations. An eight-way matrix and isolated
+diagonal-pen probes compare short and twelve-digit decimals without invoking the
+converter. The original intrinsic-image captures remain available alongside an
+explicit viewport route using the same registered camera and declared root clips.
+Subpixel and cropped-root controls check both routes. Rounded intrinsic image
+dimensions do not establish bitmap upsampling; both routes resolve a quarter-CSS-
+pixel square at 4x in the pinned renderer.
+
+```text
+node tools/TikzVisual/arrow-precision-self-test.mjs
+node tools/TikzVisual/inspect-arrow-precision.mjs
+node tools/TikzVisual/check-arrow-precision.mjs artifacts/arrow-precision-inspection/run-<uuid>/report.json
+```
+
+The report keeps a small entry point and links separately hashed whole/local
+measurement files, SVG inputs and paired PNGs. The checker reconstructs the
+experiment inputs and re-decodes every saved measurement and presentation panel.
+These experiments explain representation sensitivity; they set no image limits
+and grant no public conformance claim.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
