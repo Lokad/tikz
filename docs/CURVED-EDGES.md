@@ -51,3 +51,9 @@ SVG and ordinary-PDF differences under exact diagnostic comparisons. It grants
 no image allowance or admission. Independent frame/region validation,
 primary/PDF calibration and image-only defect controls are the next grounding
 steps for this family.
+
+A separate [native-only frame and rendering experiment](../tools/TikzVisual/CURVED-EDGE-ORACLE.md)
+now derives conservative frames, curved clip bounds and 389 local regions from
+the reference alone. It compares native encodings/root choices with original
+SVG and ordinary PDF and exposes a saved-image checker. It invokes no public
+converter and grants no image acceptance limit.

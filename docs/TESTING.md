@@ -1098,3 +1098,10 @@ checks probe noninterference and original SVG/PDF state; its cache reader and
 PNGs, raw differences and local viewers from one completed numeric report.
 Independent image calibration remains pending, and straight-edge profiles
 grant no allowance to curved connections.
+
+The [curved native-only frame experiment](../tools/TikzVisual/CURVED-EDGE-ORACLE.md)
+owns an independent DVI/TFM reader with no converter reference, derives local bend
+and clip regions, and compares native representations with original SVG/PDF.
+Its saved-image checker reconstructs frames and SVGs and remeasures PNGs. Ordinary
+CI runs the 36 pure arithmetic controls and the independent glyph reader; the
+rendering experiment remains an explicit pinned-environment command.
