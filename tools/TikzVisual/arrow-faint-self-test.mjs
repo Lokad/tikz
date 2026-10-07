@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+import {deriveArrowFaintPolicy,evaluateArrowFaint} from './arrow-faint-policy.mjs';
+import {shapePdfViews,deriveShapePdfTrialPolicy} from './shape-pdf-trial-policy.mjs';
+import {shapePdfRasterRectangle} from './shape-pdf-camera.mjs';
+export function runArrowFaintControls(){const controls=[],pass=(name,fn)=>{fn();controls.push({name,passed:true});};
+ const camera={origin:{x:0,y:0},rasterSizes:{'1x':{width:100,height:100},'4x':{width:400,height:400}}},regions=['whole-picture','tiny-curve'].map(id=>({id,rectangle:{x:0,y:0,width:10,height:10},rasterRectangles:Object.fromEntries([1,4].map(s=>[s+'x',shapePdfRasterRectangle({x:0,y:0,width:10,height:10},camera,s)]))}));
+ const rows=shapePdfViews.map(v=>({...v,converterInvoked:false,mode:'analytical',pageSize:camera.rasterSizes[v.scale+'x'],outsideWholeChangedPixels:0,repeat:{pdf:{exactRgbaMatch:true,rawChangedPixels:0,maxRawChannelError:0},svg:{exactRgbaMatch:true,rawChangedPixels:0,maxRawChannelError:0}},...Object.fromEntries(['whole','regions'].map(k=>[k,k==='whole'?sample(regions[0],v.scale):[sample(regions[1],v.scale)]]))}));
+ function sample(r,scale){return{...r,exactRgbaMatch:false,rawChangedPixels:2,maxRawChannelError:243,premultipliedChangedPixels:2,maxPremultipliedChannelError:243,foregroundPixels:2,referenceForegroundPixels:1,actualForegroundPixels:2,meanForegroundChannelError:127,
+  topology:{threshold:16,connectivity:8,edgeNeighborhood:4,referenceComponents:1,actualComponents:0,componentDifference:1,referenceEdgePixels:1,actualEdgePixels:0,edgeState:'actual-empty',maxEdgeDisplacementRasterPixels:null,maxEdgeDisplacementCssPixels:null},inkCoverage:{id:r.id,reference:[255,255,255],actual:[23,23,23]},inkMoments:{reference:Array.from({length:3},()=>({mass:255,x:255*scale,y:255*scale})),actual:Array.from({length:3},()=>({mass:23,x:34*scale,y:23*scale}))}};}
+ const derive=(input=rows)=>deriveArrowFaintPolicy(input,camera,regions,'analytical'),policy=derive();
+ pass('unchanged strict policy still rejects faint mask',()=>assert.throws(()=>deriveShapePdfTrialPolicy(rows,camera,regions,'analytical'),/lost an entire edge set/));
+ pass('nonzero native faint ink eligible',()=>{assert.equal(policy.state,'eligible');assert.ok(policy.rows.every(v=>v.regions.every(r=>r.basis==='nonzero-native-ink-below-mask')));});
+ pass('exact faint native observation passes',()=>assert.ok(rows.every(r=>evaluateArrowFaint(policy,r).passed)));
+ const altered=fn=>{const clone=structuredClone(rows[0]);fn(clone);return clone;};
+ pass('equal-mass position change rejected',()=>{const r=altered(r=>r.regions[0].inkMoments.actual[0].x++);assert.equal(evaluateArrowFaint(policy,r).passed,false);});
+ const erase=q=>{q.actualForegroundPixels=0;q.foregroundPixels=q.referenceForegroundPixels;q.rawChangedPixels=q.premultipliedChangedPixels=q.referenceForegroundPixels;q.maxRawChannelError=q.maxPremultipliedChannelError=q.meanForegroundChannelError=255;q.inkCoverage.actual=[0,0,0];q.inkMoments.actual=q.inkMoments.actual.map(()=>({mass:0,x:0,y:0}));};
+ pass('faint ink loss rejected despite same mask state',()=>{const r=altered(r=>erase(r.regions[0]));assert.equal(evaluateArrowFaint(policy,r).passed,false);});
+ pass('genuinely missing native ink remains ineligible',()=>{const input=structuredClone(rows);for(const r of input)erase(r.regions[0]);assert.equal(derive(input).state,'ineligible');});
+ pass('candidate cannot contribute calibration',()=>{const input=structuredClone(rows);input[0].converterInvoked=true;assert.throws(()=>derive(input));});
+ pass('missing view rejected',()=>assert.throws(()=>derive(rows.slice(1))));pass('duplicate view rejected',()=>assert.throws(()=>derive([rows[0],rows[0],...rows.slice(2)])));
+ for(const k of ['mass','x','y'])pass('negative ink '+k,()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.inkMoments.actual[0][k]=-1))));
+ pass('ink moments outside fixed crop rejected',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.inkMoments.actual[0].x=10000))));
+ pass('nonzero moments for zero mass rejected',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>{r.whole.inkMoments.actual[0].mass=0;r.whole.inkCoverage.actual[0]=0;}))));
+ pass('changed PDF reference rejected',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.inkMoments.reference[0].x++))));
+ pass('mask threshold cannot change',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.topology.threshold=1))));
+ pass('invented measured distance rejected',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.topology.maxEdgeDisplacementRasterPixels=0))));
+ pass('ink sum and moments must agree',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.inkCoverage.actual[0]++))));
+ pass('ink and raw foreground must agree',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.actualForegroundPixels=0))));
+ pass('foreground union cannot invent pixels',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.foregroundPixels=4))));
+ pass('mask edges cannot exceed raw ink pixels',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.topology.referenceEdgePixels=2))));
+ pass('opaque raw and premultiplied metrics agree',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.premultipliedChangedPixels=1))));
+ pass('ink coverage identity cannot change',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.whole.inkCoverage.id='other'))));
+ pass('missing region rejected',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.regions=[]))));
+ pass('changed page rejected',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.pageSize.width++))));
+ pass('changed rectangle rejected',()=>assert.throws(()=>evaluateArrowFaint(policy,altered(r=>r.regions[0].rectangle.x++))));
+ pass('outside paint rejected',()=>assert.equal(evaluateArrowFaint(policy,altered(r=>r.outsideWholeChangedPixels=1)).passed,false));
+ pass('changed repeat rejected',()=>assert.equal(evaluateArrowFaint(policy,altered(r=>r.repeat.svg.rawChangedPixels=1)).passed,false));
+ for(const k of ['approvedImagePolicy','imageConformanceClaim','converterInvoked'])pass('false policy '+k,()=>assert.throws(()=>evaluateArrowFaint({...policy,[k]:true},rows[0])));
+ return controls;
+}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url))console.log(JSON.stringify({kind:'arrow-faint-pure-controls',controls:runArrowFaintControls()}));

@@ -43,6 +43,7 @@ jobs:
       - run: node tools/TikzVisual/arrow-primary-self-test.mjs
       - run: node tools/TikzVisual/arrow-pdf-self-test.mjs
       - run: node tools/TikzVisual/arrow-agent-self-test.mjs
+      - run: node tools/TikzVisual/arrow-faint-self-test.mjs
       - run: dotnet run --project tools/TikzArrowComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzCurvedEdgeOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore

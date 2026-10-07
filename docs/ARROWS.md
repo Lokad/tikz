@@ -164,6 +164,30 @@ node tools/TikzVisual/check-arrow-pdf.mjs artifacts/arrow-pdf-calibration/run-<u
 The 296-view experiment retains all strict failures and sensitivity blind spots.
 These PDF observations do not approve an arrow image policy or public admission.
 
+A separate prospective PDF rule distinguishes nonzero raw ink below the mask
+threshold from an entirely empty native route. It keeps threshold 16 and binds
+each eligible region to exact native RGB mass and first x/y moments, along with
+native cross-renderer metric limits. Ordinary PDF pixels and moments remain
+unchanged. A genuinely missing raw-ink region stays ineligible. Every natural
+and expanded 1x/4x view remains required; expanded success does not excuse a
+natural picture crop. The earlier strict policy and its failures remain intact.
+
+```text
+node tools/TikzVisual/arrow-faint-self-test.mjs
+node tools/TikzVisual/calibrate-arrow-faint.mjs <owned-PDF-report> <owned-PDF-check-report>
+node tools/TikzVisual/check-arrow-faint.mjs artifacts/arrow-faint-calibration/run-<uuid>/report.json
+node tools/TikzVisual/calibrate-arrow-faint.mjs --replay artifacts/arrow-faint-calibration/run-<uuid>/report.json
+```
+
+The owned experiment retains all 296 earlier views and tests the prospective
+rule against their image-only faults and visibility controls. Focus panels
+show exact saved crops of faint regions and actual ink loss, with differences
+amplified sixteen times and integer enlargement. Its independent reader
+decodes every saved pair, ink moment, fault delta and focus panel. The compact
+report links a self-contained manifest, complete policies/outcomes and a local
+inspection index. This experiment grants neither policy approval nor public
+admission; a common-viewport decision and immutable qualification remain open.
+
 The compact agent adapter binds five explicit completed reports: primary
 observations and their saved-image check, PDF observations and their check, and
 public prototype inspection. It copies their artifacts into a self-contained
