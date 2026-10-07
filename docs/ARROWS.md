@@ -237,6 +237,28 @@ manifest-bound bytes through an intercepted synthetic origin; it starts no
 server and blocks other requests. All image policies and public admission remain
 pending. Native controls and public prototype images remain distinct evidence.
 
+The stand-alone source-primary experiment prescribes the SVG viewport from
+native picture geometry and conservative pen envelopes. The six-decimal header
+is computed from native quantities; candidate bounds and pixels supply no
+expectations. The original SVG bytes and earlier intrinsic observations remain
+available. Its derived reference changes only the outer viewport and preserves
+every drawing child, transform, paint attribute and explicit clip.
+
+```text
+node tools/TikzVisual/arrow-source-primary-self-test.mjs
+node tools/TikzVisual/calibrate-arrow-source-primary.mjs <owned-primary-report> <owned-primary-check-report>
+node tools/TikzVisual/check-arrow-source-primary.mjs artifacts/arrow-source-primary-calibration/run-<uuid>/report.json
+node tools/TikzVisual/calibrate-arrow-source-primary.mjs --replay artifacts/arrow-source-primary-calibration/run-<uuid>/report.json
+```
+
+All 306 new views retain both scales, all three backgrounds and both frames.
+Limits are saved before faults. Source framing and pixel checks remain separate;
+a cropped root cannot pass through later scene normalization. The owned bundle
+copies the 378-view earlier experiment and its checker, preserves raw pixels,
+and provides paired focus panels and independent saved-image validation.
+Source PDF observations, immutable qualification and public admission remain
+required. Production code and package dependencies are unchanged.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
