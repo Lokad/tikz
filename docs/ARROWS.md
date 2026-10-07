@@ -146,6 +146,24 @@ decoded reference/native pixels and verifies local target crops and outcomes.
 Visible faults accepted by the limits and faults without a raster change stay
 in the report; a completed report grants neither approval nor public admission.
 
+Ordinary-PDF observations register the original driver and both native roots
+on unchanged reference pages. They retain relative and absolute viewport
+rasterization separately. The existing strict PDF policy is attempted without
+relaxing lost-edge failures. A separate prospective SVG ink fingerprint uses
+exact integer channel mass and first position moments in fixed page regions;
+it tests SVG-only faults and faint content without claiming PDF pixel identity.
+Expanded padding controls prove that a root-only change does not move paint on
+paper. Both saved measurements and presentation crops have an independent reader.
+
+```text
+node tools/TikzVisual/arrow-pdf-self-test.mjs
+node tools/TikzVisual/calibrate-arrow-pdf.mjs
+node tools/TikzVisual/check-arrow-pdf.mjs artifacts/arrow-pdf-calibration/run-<uuid>/report.json
+```
+
+The 296-view experiment retains all strict failures and sensitivity blind spots.
+These PDF observations do not approve an arrow image policy or public admission.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
