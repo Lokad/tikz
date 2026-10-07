@@ -415,6 +415,37 @@ differences, overlay and numbers. Baseline records also link a labeled paired
 contact sheet. Open these PNGs directly or use the owned static `index.html`;
 the common synchronized viewer and agent adapter retain their separate scope.
 
+The portable meet cache preserves the complete certificate, embedded primary
+inputs, both independent PDF readers, the fresh-export receipt and the native
+qualification commit audit. Its seven reports retain their original bytes and
+digests. The new `native-meet.bin.gz` and original `native-source.bin.gz` are
+separately pinned; the original evidence and comparison helpers remain intact.
+The consumer validates all 12,325 logical artifacts and their fixed report
+bindings, checks the current native source guards, and rebuilds the complete
+primary/PDF models and gates without invoking a browser, converter or native
+TeX/PDF executable.
+
+```text
+node tools/TikzVisual/prepare-arrow-meet-image-cache.mjs
+node tools/TikzVisual/prepare-arrow-meet-image-cache.mjs --replay
+node tools/TikzVisual/arrow-meet-image-cache-self-test.mjs
+```
+
+Explicit preparation reads the completed qualified experiment reports and owns
+fresh ignored output. It prints both archive digests and never updates the
+checked-in cache or pins. Replay and normal consumers read the tracked caches;
+they do not require the original experiment directories. Historical paths in
+the reports identify provenance and are resolved through the archive.
+
+The versioned logical-file wrapper uses the unchanged binary codec. It divides
+large files into ordered chunks of at most 16 MiB, verifies their original
+lengths and SHA-256 after reconstruction, and rejects missing, reordered, unused
+or substituted content. This preserves the exact 30,263,040-byte policy under
+the original 30 MB physical-blob bound. Compressed, decoded, logical-file,
+logical-total and index sizes are bounded independently. Fixed external pins
+prevent consistently rehashed replacement evidence from becoming an accepted
+profile. Cache qualification still grants no public converter image admission.
+
 Open the owned `index.html` or its paired PNGs to inspect native comparisons.
 These outputs remain unapproved research evidence. Independently qualifying
 the source/PDF routes, freezing the new policy, public image-only sensitivity,
