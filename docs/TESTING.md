@@ -1121,3 +1121,9 @@ controls, eighteen defects and separate faint-ink experiments. Its independent
 checker remeasures every native crop and verifies saved inspection panels against
 full-page pixels. The focused synthetic controls require the pinned browser;
 these explicit development commands do not approve curved candidate conformance.
+
+The [curved public trial](../tools/TikzVisual/CURVED-EDGE-TRIAL.md) consumes four
+exact qualification/checker reports before conversion, measures all eight gates,
+and writes source-attributed image artifacts. Its focused controls and owned
+saved-evidence checker remain explicit development commands. Ordinary curved
+tests also require clip source retention and plain/traced public parity.

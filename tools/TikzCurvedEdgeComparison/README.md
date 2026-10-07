@@ -20,4 +20,9 @@ parity is tested in the ordinary suite. The report grants no image claim.
 
 Use the saved report with the separate
 [diagnostic image command](../TikzVisual/CURVED-EDGE-INSPECTION.md) to inspect
-paired PNGs, crops and overlays. Independent pixel calibration remains pending.
+paired PNGs, crops and overlays. The separate native-only
+[primary](../TikzVisual/CURVED-EDGE-PRIMARY.md) and
+[PDF](../TikzVisual/CURVED-EDGE-PDF.md) qualifications supply independently
+checked policies to the [public combined trial](../TikzVisual/CURVED-EDGE-TRIAL.md).
+The numeric report alone grants no image claim; immutable admission remains
+separate work.

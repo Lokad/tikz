@@ -281,7 +281,7 @@ internal sealed partial class Evaluator(Budget budget)
         if (statement.Command == "\\clip")
         {
             var id = _scene.Clips.Count;
-            _scene.Clips.Add(new(path, state.Paint.FillRule));
+            _scene.Clips.Add(new(path, state.Paint.FillRule, statement.Source));
             parent.Clips.Add(id);
             parent.RelevantForPictureSize = false;
         }

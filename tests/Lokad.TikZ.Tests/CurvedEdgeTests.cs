@@ -24,6 +24,12 @@ public sealed class CurvedEdgeTests
         Assert.True(checks.All(c => c.Passed), string.Join(Environment.NewLine, checks.Where(c => !c.Passed)
             .Select(c => $"{c.Quantity}: expected {c.Expected}, actual {c.Actual}, delta {c.Delta} {c.Unit}, limit {c.Limit}")));
         var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", "CurvedEdges", id + ".tikz"));
+        foreach (var clip in scene.Clips)
+        {
+            Assert.Equal(source, clip.Source.Text);
+            Assert.StartsWith("\\clip", clip.Source.Value);
+            Assert.True(clip.Source.Length > "\\clip".Length);
+        }
         var ordinary = Assert.IsType<TikzSuccess>(TikzConverter.Convert(source, Options, CancellationToken.None));
         Assert.Equal(ordinary.Svg, success.Svg);
         Assert.Equal(ordinary.PictureBounds, success.PictureBounds);

@@ -13,7 +13,7 @@ internal sealed record PaintedGlyphRun(ResolvedGlyph[] Glyphs, string Readable, 
     int[] ClipIds, Source Origin, int NodeId) : Drawable(ClipIds, Origin);
 internal sealed record ResolvedNode(string Name, INodeLayout Layout, Affine Transform,
     TextFont Font, TextFont NodeFont, Source Source);
-internal sealed record ClipPath(GraphicPath Path, string FillRule);
+internal sealed record ClipPath(GraphicPath Path, string FillRule, Source Source);
 internal sealed class GraphicsScene
 {
     public List<PaintedPath> Paths { get; } = [];

@@ -73,3 +73,9 @@ faint-ink expectations are independent of the primary policy. A saved-evidence
 checker reconstructs native inputs and remeasures full pages and inspection
 panels. These remain unapproved development evidence; a fresh combined public
 trial, immutable admission and broader interactions are still required.
+
+The [public combined trial](../tools/TikzVisual/CURVED-EDGE-TRIAL.md) now connects
+fresh numeric conversion to the independent primary and PDF policies. It retains
+all native regions and direct path/glyph/clip source spans, then exercises fresh
+image-only defects. A separate checker converts afresh and remeasures the saved
+images. These trial commands cannot promote a policy or claim immutable admission.

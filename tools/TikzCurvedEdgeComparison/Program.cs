@@ -66,7 +66,7 @@ try
         Write(id + "/actual-scene.json", new {
             schemaVersion = 1, units = "bp/y-up geometry, integer-sp label layout, CSS-pixel/y-down public bounds", success.PictureBounds, success.InkBounds, success.Statistics,
             paths = scene.Paths.Select((p, i) => new { svgElementId = "candidate-p" + i, source = p.Source.Location, p.Paint, p.Clips, segmentsBp = p.Path.Segments, inkBounds = p.InkBounds.Pixels }),
-            clips = scene.Clips.Select((p, i) => new { svgElementId = "candidate-c" + i, p.FillRule, segmentsBp = p.Path.Segments }),
+            clips = scene.Clips.Select((p, i) => new { svgElementId = "candidate-c" + i, source = p.Source.Location, p.FillRule, segmentsBp = p.Path.Segments }),
             nodes = scene.Nodes.Select((n, i) => new { svgElementId = "candidate-n" + i, n.Name, source = n.Source.Location, n.Layout.Text.WidthSp, n.Layout.Text.HeightSp, n.Layout.Text.DepthSp, n.Layout.Dimensions, n.Transform, n.Font, n.NodeFont }),
             glyphs = scene.Drawables.OfType<PaintedGlyphRun>().SelectMany(r => r.Glyphs.Select(g => new { source = g.Placement.Source.Location, g.Placement.FontId, g.Placement.Slot, g.Placement.XSp, g.Placement.YSp, g.Transform, r.NodeId })),
             paintOrder = scene.Drawables.Select((d, i) => new { index = i, kind = d is PaintedPath ? "path" : "glyph-run", source = d.Source.Location }) });
