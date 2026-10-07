@@ -57,3 +57,11 @@ now derives conservative frames, curved clip bounds and 389 local regions from
 the reference alone. It compares native encodings/root choices with original
 SVG and ordinary PDF and exposes a saved-image checker. It invokes no public
 converter and grants no image acceptance limit.
+
+The [native primary calibration](../tools/TikzVisual/CURVED-EDGE-PRIMARY.md)
+selects one independently serialized representation and measures per-view/local
+limits against unchanged original SVG. Eighteen image-only faults and three
+separate opacity probes test sensitivity with numeric gates bypassed. A saved
+image checker rebuilds the native inputs and recomputes every measurement.
+These development limits remain unapproved; PDF qualification and a public
+combined trial are still required.

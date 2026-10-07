@@ -32,6 +32,7 @@ jobs:
       - run: node tools/TikzVisual/curved-edge-evidence-self-test.mjs
       - run: dotnet run --project tools/TikzCurvedEdgeComparison -c Release --no-restore
       - run: node tools/TikzVisual/curved-edge-frame-self-test.mjs
+      - run: node tools/TikzVisual/curved-edge-primary-self-test.mjs
       - run: dotnet run --project tools/TikzCurvedEdgeOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeOracle -c Release --no-restore
@@ -78,6 +79,7 @@ jobs:
             artifacts/curved-edge-evidence-controls/
             artifacts/curved-edge-numeric/
             artifacts/curved-edge-frame-controls/
+            artifacts/curved-edge-primary-controls/
             artifacts/curved-edge-oracle/
           if-no-files-found: error
 

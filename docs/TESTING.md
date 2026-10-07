@@ -1105,3 +1105,11 @@ and clip regions, and compares native representations with original SVG/PDF.
 Its saved-image checker reconstructs frames and SVGs and remeasures PNGs. Ordinary
 CI runs the 36 pure arithmetic controls and the independent glyph reader; the
 rendering experiment remains an explicit pinned-environment command.
+
+The [curved primary calibration](../tools/TikzVisual/CURVED-EDGE-PRIMARY.md)
+uses unchanged original SVG and a preselected native encoding, with complete
+local-region coverage, repeat/replay checks and image-only faults. Three opacity
+probes derive their own limits and record visible versus quantized/background
+invisible losses. Its independent saved-image checker reconstructs inputs and
+remeasures PNGs. Thirty-five browser-free path/policy controls run in ordinary CI;
+primary limits remain unapproved until PDF qualification and a combined trial.
