@@ -259,6 +259,28 @@ and provides paired focus panels and independent saved-image validation.
 Source PDF observations, immutable qualification and public admission remain
 required. Production code and package dependencies are unchanged.
 
+The conservative source-PDF experiment compares both the prescribed consumer
+viewport and the unchanged drawing exposed on the full physical page. It retains
+both original-reference and native reconstruction routes, both raster routes,
+all natural/expanded 1x/4x white views, and unchanged ordinary PDF pixels.
+
+```text
+node tools/TikzVisual/arrow-source-pdf-self-test.mjs
+node tools/TikzVisual/calibrate-arrow-source-pdf.mjs <owned-source-primary-report> <owned-source-primary-check-report>
+node tools/TikzVisual/check-arrow-source-pdf.mjs artifacts/arrow-source-pdf-calibration/run-<uuid>/report.json
+node tools/TikzVisual/calibrate-arrow-source-pdf.mjs --replay artifacts/arrow-source-pdf-calibration/run-<uuid>/report.json
+```
+
+Its 396 views include deliberate native faults, faint/subquantum controls,
+outside-diagram paint and expanded padding. Source framing, source PDF pixels
+and full-page scene pixels are separate gates. Native-only limits are saved
+before faults and indexed in separate files per case, route and raster; earlier
+strict topology attempts remain diagnostic evidence.
+The owned bundle retains the complete primary experiment and its independent
+checker. Saved-image checking reconstructs registration, decodes metrics and
+integer ink moments, and validates every paired focus panel. These observations
+require independent immutable qualification before public image admission.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
