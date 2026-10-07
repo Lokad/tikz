@@ -164,6 +164,32 @@ node tools/TikzVisual/check-arrow-pdf.mjs artifacts/arrow-pdf-calibration/run-<u
 The 296-view experiment retains all strict failures and sensitivity blind spots.
 These PDF observations do not approve an arrow image policy or public admission.
 
+The compact agent adapter binds five explicit completed reports: primary
+observations and their saved-image check, PDF observations and their check, and
+public prototype inspection. It copies their artifacts into a self-contained
+bundle. The small `report.json` links to a hash-bound manifest, six case reports,
+and an offline viewer; no latest pointer or original experiment folder is needed
+for replay. It preserves all 746 views, fixed rectangles, native IDs, pending
+gates, and actual public source spans. Native controls have no candidate span.
+
+```text
+node tools/TikzVisual/arrow-agent-self-test.mjs
+node tools/TikzVisual/inspect-arrow-agent.mjs <primary-report> <primary-check-report> <pdf-report> <pdf-check-report> <public-inspection-report>
+node tools/TikzVisual/check-arrow-agent.mjs artifacts/arrow-agent-inspection/run-<uuid>/report.json
+node tools/TikzVisual/inspect-arrow-agent.mjs --replay artifacts/arrow-agent-inspection/run-<uuid>/report.json
+```
+
+Open the bundle's `index.html` to choose a case, family, view and fixed region.
+The viewer provides paired saved pixels, raw RGB/alpha difference amplified
+16 times, overlay and blink, integer zoom and synchronized scrolling. Links
+open the exact measurement, input SVG, images, fixture and public trace. The
+checker reconstructs every case and link, independently decodes all 72 public
+image pairs and local regions, and exercises viewer pixels for selected 1x/4x
+rows across all six cases and three families. Browser qualification serves only
+manifest-bound bytes through an intercepted synthetic origin; it starts no
+server and blocks other requests. All image policies and public admission remain
+pending. Native controls and public prototype images remain distinct evidence.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
