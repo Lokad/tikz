@@ -1,0 +1,125 @@
+% Development-only observations; no injected drawing commands.
+\newcount\arrowoperation
+\newcount\arrowinvocation
+\newcount\arrowplacement
+\newcount\arrowevent
+\def\arrowrole{shaft}
+\def\arrowside{none}
+\def\arrowcacheid{\ifdefined\pgf@arrow@id\pgf@arrow@id\else0\fi}
+\def\arrowsegments#1{%
+  \begingroup
+  \def\arrowsegment##1##2##3{%
+    \pgf@x=##2 \pgf@y=##3
+    \typeout{ARROW-SEG #1|##1|\number\pgf@x|\number\pgf@y|END}%
+  }%
+  \def\pgfsyssoftpath@movetotoken##1##2{\arrowsegment{move}{##1}{##2}}%
+  \def\pgfsyssoftpath@linetotoken##1##2{\arrowsegment{line}{##1}{##2}}%
+  \def\pgfsyssoftpath@rectcornertoken##1##2{\arrowsegment{rectcorner}{##1}{##2}}%
+  \def\pgfsyssoftpath@rectsizetoken##1##2{\arrowsegment{rectsize}{##1}{##2}}%
+  \def\pgfsyssoftpath@curvetosupportatoken##1##2{\arrowsegment{control1}{##1}{##2}}%
+  \def\pgfsyssoftpath@curvetosupportbtoken##1##2{\arrowsegment{control2}{##1}{##2}}%
+  \def\pgfsyssoftpath@curvetotoken##1##2{\arrowsegment{curve}{##1}{##2}}%
+  \def\pgfsyssoftpath@closepathtoken##1##2{\arrowsegment{close}{##1}{##2}}%
+  \pgfsyssoftpath@thepath\pgfsyssoftpath@bigbuffer\pgfsyssoftpath@smallbuffer
+  \endgroup
+}
+\let\arrowoldusepath\pgfusepath
+\def\pgfusepath#1{%
+  \global\advance\arrowoperation by1
+  \begingroup
+    \pgf@x=\pgf@shorten@start@additional \pgf@y=\pgf@shorten@end@additional
+    \typeout{ARROW-INPUT \the\arrowoperation|#1|\number\pgflinewidth|\number\pgf@x|\number\pgf@y|END}%
+  \endgroup
+  \arrowsegments{input-\the\arrowoperation}%
+  \arrowoldusepath{#1}%
+}
+\let\arrowoldinvoke\pgfsyssoftpath@invokecurrentpath
+\def\pgfsyssoftpath@invokecurrentpath{%
+  \global\advance\arrowinvocation by1
+  \typeout{ARROW-PATH \the\arrowinvocation|\arrowrole|\the\arrowoperation|\arrowcacheid|\number\pgflinewidth|END}%
+  \arrowsegments{path-\the\arrowinvocation}%
+  \arrowoldinvoke
+}
+\def\arrowends#1#2#3{%
+  \pgf@x=#1 \pgf@y=#2 \pgf@xa=#3
+  \typeout{ARROW-ENDS \pgf@arrow@id|\number\pgf@x|\number\pgf@y|\number\pgf@xa|END}%
+}
+\def\arrowvisualends#1#2#3{%
+  \pgf@x=#1 \pgf@y=#2
+  \typeout{ARROW-VISUAL-ENDS \pgf@arrow@id|\number\pgf@x|\number\pgf@y|END}%
+}
+\let\arrowoldinstantiate\pgf@arrows@instantiate
+\def\pgf@arrows@instantiate#1{%
+  \def\arrowrole{template}%
+  \begingroup
+    \ifdefined\pgfarrowlength
+      \typeout{ARROW-SIZE \number\numexpr\pgf@arrow@id@count+1\relax|\number\pgfarrowlength|\number\pgfarrowwidth|\number\pgfarrowinset|\number\pgfarrowlinewidth|END}%
+    \fi
+  \endgroup
+  \arrowoldinstantiate{#1}%
+  \def\arrowrole{shaft}%
+  \begingroup
+    \typeout{ARROW-TEMPLATE \pgf@arrow@id|#1|END}%
+    \csname pgf@ar@saves@\pgf@arrow@id\endcsname
+    \expandafter\expandafter\expandafter\arrowends\csname pgf@ar@ends@\pgf@arrow@id\endcsname
+    \expandafter\expandafter\expandafter\arrowvisualends\csname pgf@ar@visual@\pgf@arrow@id\endcsname
+    \ifdefined\pgfarrowlength
+      \typeout{ARROW-FINAL-SIZE \pgf@arrow@id|\number\pgfarrowlength|\number\pgfarrowwidth|\number\pgfarrowinset|\number\pgfarrowlinewidth|END}%
+    \fi
+    \def\pgf@arrow@hull@point##1##2{%
+      \pgf@x=##1 \pgf@y=##2
+      \typeout{ARROW-HULL \pgf@arrow@id|\number\pgf@x|\number\pgf@y|END}%
+    }%
+    \csname pgf@ar@hull@\pgf@arrow@id\endcsname
+  \endgroup
+}
+\let\arrowoldsync\pgflowlevelsynccm
+\def\pgflowlevelsynccm{%
+  \ifnum\arrowdrawing=1
+    \global\advance\arrowplacement by1
+    \begingroup
+      \pgfgettransformentries{\aa}{\ab}{\ac}{\ad}{\ae}{\af}%
+      \pgf@x=\ae \pgf@y=\af
+      \typeout{ARROW-PLACE \the\arrowplacement|\the\arrowoperation|\arrowside|\pgf@arrow@id|\aa|\ab|\ac|\ad|\number\pgf@x|\number\pgf@y|END}%
+      \global\advance\arrowevent by1
+      \typeout{ARROW-EVENT \the\arrowevent|tip|\the\arrowplacement|END}%
+    \endgroup
+  \fi
+  \arrowoldsync
+}
+\def\arrowdrawing{0}
+\let\arrowolddrawer\pgf@arrow@drawer
+\def\pgf@arrow@drawer#1#2{\def\arrowdrawing{1}\arrowolddrawer{#1}{#2}\def\arrowdrawing{0}}
+\let\arrowoldstart\pgf@add@arrow@at@start
+\def\pgf@add@arrow@at@start{\def\arrowside{start}\arrowoldstart\def\arrowside{none}}
+\let\arrowoldend\pgf@add@arrow@at@end
+\def\pgf@add@arrow@at@end{\def\arrowside{end}\arrowoldend\def\arrowside{none}}
+\def\arrowshortening#1{%
+  \ifx\pgf@arrowpath\pgfutil@empty\else
+    \begingroup
+      \pgf@x=\pgf@path@shortening@distance
+      \pgf@y=\pgf@arrow@tip@total@length
+      \typeout{ARROW-SHORT \the\arrowoperation|#1|\number\pgf@x|\number\pgf@y|\ifpgf@precise@shortening1\else0\fi|END}%
+    \endgroup
+  \fi
+}
+\let\arrowoldprepareend\pgf@prepare@end@of@path
+\def\pgf@prepare@end@of@path{\arrowoldprepareend\arrowshortening{end}}
+\let\arrowoldpreparestart\pgf@prepare@start@of@path
+\def\pgf@prepare@start@of@path{\arrowoldpreparestart\arrowshortening{start}}
+\def\arrowpaint#1{%
+  \typeout{ARROW-PAINT \the\arrowinvocation|\arrowrole|#1|END}%
+  \ifx\arrowrole\arrowshaftrole
+    \global\advance\arrowevent by1
+    \typeout{ARROW-EVENT \the\arrowevent|path|\the\arrowinvocation|END}%
+  \fi
+}
+\def\arrowshaftrole{shaft}
+\let\arrowoldstroke\pgfsys@stroke
+\def\pgfsys@stroke{\arrowpaint{stroke}\arrowoldstroke}
+\let\arrowoldfill\pgfsys@fill
+\def\pgfsys@fill{\arrowpaint{fill}\arrowoldfill}
+\let\arrowoldfillstroke\pgfsys@fillstroke
+\def\pgfsys@fillstroke{\arrowpaint{fillstroke}\arrowoldfillstroke}
+\let\arrowoldclip\pgfsys@clipnext
+\def\pgfsys@clipnext{\typeout{ARROW-CLIP \the\arrowinvocation|END}\arrowoldclip}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-arrow-native-v1",
+  "cases": [
+    {"id":"legacy-defaults","meta":false,"source":"tests/Reference/Arrows/legacy-defaults/source.tikz","features":["legacy-To","start","end","both","cache-reuse","width"]},
+    {"id":"meta-defaults","meta":true,"source":"tests/Reference/Arrows/meta-defaults/source.tikz","features":["To","Stealth","Latex","start","end","both","cache-reuse","style-order"]},
+    {"id":"dimensions","meta":true,"source":"tests/Reference/Arrows/dimensions/source.tikz","features":["length","width","inset","explicit-shortening","negative-shortening","over-shortening","tip-pen-clamp"]},
+    {"id":"transforms","meta":true,"source":"tests/Reference/Arrows/transforms/source.tikz","features":["rotation","reflection","nonuniform-scale","oblique-basis","cm","physical-tip-size"]},
+    {"id":"curves-nodes","meta":true,"source":"tests/Reference/Arrows/curves-nodes/source.tikz","features":["cubic-tangents","degenerate-controls","bent-to","deferred-edge","empty-node-border"]},
+    {"id":"paint-boundaries","meta":true,"source":"tests/Reference/Arrows/paint-boundaries/source.tikz","features":["dash-reset","paint-state","opacity","clipping","closed-path","compound-path","zero-length","move-only"]}
+  ]
+}

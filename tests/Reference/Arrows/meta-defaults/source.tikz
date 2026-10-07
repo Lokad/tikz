@@ -1,0 +1,13 @@
+\usetikzlibrary{arrows.meta}%
+\begin{tikzpicture}[endtip/.style={-{Stealth}},thin-tip/.style={line width=.2pt}]
+\draw[->] (0,0) -- (2,0);
+\draw[-{Stealth}] (0,.5) -- (2,.5);
+\draw[-{Latex}] (0,1) -- (2,1);
+\draw[{Stealth}-] (0,1.5) -- (2,1.5);
+\draw[{Latex}-{Stealth}] (0,2) -- (2,2);
+\draw[>=Latex,<->] (0,2.5) -- (2,2.5);
+\draw[endtip,thin-tip] (0,3) -- (2,3);
+\draw[thin-tip,endtip,line width=1pt] (0,3.5) -- (2,3.5);
+\draw[-{Stealth},line width=2pt] (0,4) -- (2,4);
+\draw[-{Latex},line width=2pt] (0,4.5) -- (2,4.5);
+\end{tikzpicture}

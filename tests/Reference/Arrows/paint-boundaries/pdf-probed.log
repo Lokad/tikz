@@ -1,0 +1,702 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.25)  <date>
+entering extended mode
+ %&-line parsing enabled.
+**./case.tex
+(case.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+(wrapper.tex
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/base\article.
+cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.c
+lo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen148
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendl
+ayer\tikz.sty
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgf.sty
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfrcs.sty
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-common.tex
+\pgfutil@everybye=\toks17
+\pgfutil@tempdima=\dimen149
+\pgfutil@tempdimb=\dimen150
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfutil-latex.def
+\pgfutil@abb=\box53
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfrcs.code.tex
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.rev
+ision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclaye
+r\pgfcore.sty
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyv
+al.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks18
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\grap
+hics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig
+.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\
+pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen151
+\Gin@req@width=\dimen152
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlay
+er\pgfsys.sty
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks21
+))
+\pgf@x=\dimen153
+\pgf@y=\dimen154
+\pgf@xa=\dimen155
+\pgf@ya=\dimen156
+\pgf@xb=\dimen157
+\pgf@yb=\dimen158
+\pgf@xc=\dimen159
+\pgf@yc=\dimen160
+\pgf@xd=\dimen161
+\pgf@yd=\dimen162
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count283
+\c@pgf@countb=\count284
+\c@pgf@countc=\count285
+\c@pgf@countd=\count286
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count287
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count288
+\pgfsyssoftpath@bigbuffer@items=\count289
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systeml
+ayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor
+.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\
+color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/graphics\math
+color.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathutil.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathparser.code.tex
+\pgfmath@dimen=\dimen163
+\pgfmath@count=\count290
+\pgfmath@box=\box54
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.basic.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.trigonometric.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.random.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.comparison.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.base.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.round.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.misc.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfunctions.integerarithmetics.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathcalc.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count291
+))
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fint.code.tex)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen164
+\pgf@picmaxx=\dimen165
+\pgf@picminy=\dimen166
+\pgf@picmaxy=\dimen167
+\pgf@pathminx=\dimen168
+\pgf@pathmaxx=\dimen169
+\pgf@pathminy=\dimen170
+\pgf@pathmaxy=\dimen171
+\pgf@xx=\dimen172
+\pgf@xy=\dimen173
+\pgf@yx=\dimen174
+\pgf@yy=\dimen175
+\pgf@zx=\dimen176
+\pgf@zy=\dimen177
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen178
+\pgf@path@lasty=\dimen179
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen180
+\pgf@shorten@start@additional=\dimen181
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box55
+\pgf@hbox=\box56
+\pgf@layerbox@main=\box57
+\pgf@picture@serial@count=\count292
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen182
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen183
+\pgf@pt@y=\dimen184
+\pgf@pt@temp=\dimen185
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen186
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen187
+\pgf@sys@shading@range@num=\count293
+\pgf@shadingcount=\count294
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box58
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basicla
+yer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box59
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen188
+\pgf@nodesepend=\dimen189
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibi
+lity\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgffor.sty
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities
+\pgfkeys.sty
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgfkeys.code.tex))
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfm
+ath.sty
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pg
+fmath.code.tex))
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utiliti
+es\pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen190
+\pgffor@skip=\dimen191
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz\tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/librari
+es\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count295
+\pgfplotmarksize=\dimen192
+)
+\tikz@lastx=\dimen193
+\tikz@lasty=\dimen194
+\tikz@lastxsaved=\dimen195
+\tikz@lastysaved=\dimen196
+\tikz@lastmovetox=\dimen197
+\tikz@lastmovetoy=\dimen198
+\tikzleveldistance=\dimen199
+\tikzsiblingdistance=\dimen256
+\tikz@figbox=\box60
+\tikz@figbox@bg=\box61
+\tikz@tempbox=\box62
+\tikz@tempbox@bg=\box63
+\tikztreelevel=\count296
+\tikznumberofchildren=\count297
+\tikznumberofcurrentchild=\count298
+\tikz@fig@count=\count299
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules
+\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count300
+\pgfmatrixcurrentcolumn=\count301
+\pgf@matrix@numberofcolumns=\count302
+)
+\tikz@expandcount=\count303
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/fronten
+dlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+\arrowpicture=\box64
+
+ARROW-PGF 3.1.11a|END
+(arrow-hooks.tex
+\arrowoperation=\count304
+\arrowinvocation=\count305
+\arrowplacement=\count306
+\arrowevent=\count307
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3b
+ackend-pdftex.def
+File: l3backend-pdftex.def 2025-06-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count308
+)
+No file case.aux.
+\openout1 = `case.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\s
+upp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count309
+\scratchdimen=\dimen257
+\scratchbox=\box65
+\nofMPsegments=\count310
+\nofMParguments=\count311
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count312
+\MPscratchDim=\dimen258
+\MPnumerator=\count313
+\makeMPintoPDFobject=\count314
+\everyMPtoPDFconversion=\toks31
+)
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\
+epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(<user>\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epst
+opdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+)) (case.tikz
+(<user>\AppData\Local\Programs\MiKTeX\tex/generic/pgf/librari
+es\pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowinset=\dimen259
+\pgfarrowlength=\dimen260
+\pgfarrowwidth=\dimen261
+\pgfarrowlinewidth=\dimen262
+)
+ARROW-INPUT 1|draw,|26214|0|0|END
+ARROW-SEG input-1|move|0|0|END
+ARROW-SEG input-1|line|3729358|0|END
+ARROW-SIZE 1|314571|235928|102234|26214|END
+ARROW-PATH 1|template|1|1|26214|END
+ARROW-SEG path-1|move|277243|0|END
+ARROW-SEG path-1|line|42326|88523|END
+ARROW-SEG path-1|line|119577|0|END
+ARROW-SEG path-1|line|42326|-88523|END
+ARROW-SEG path-1|close|277243|0|END
+ARROW-PAINT 1|template|fillstroke|END
+ARROW-TEMPLATE 1|Stealth|END
+ARROW-ENDS 1|314571|0|113024|END
+ARROW-VISUAL-ENDS 1|314571|102234|END
+ARROW-FINAL-SIZE 1|314571|235928|119577|26214|END
+ARROW-HULL 1|314571|0|END
+ARROW-HULL 1|0|117964|END
+ARROW-HULL 1|0|-117964|END
+ARROW-HULL 1|102234|0|END
+ARROW-SHORT 1|end|201547|314571|0|END
+ARROW-SHORT 1|start|0|0|0|END
+ARROW-PATH 2|shaft|1|1|26214|END
+ARROW-SEG path-2|move|0|0|END
+ARROW-SEG path-2|line|3527811|0|END
+ARROW-PAINT 2|shaft|stroke|END
+ARROW-EVENT 1|path|2|END
+ARROW-PLACE 1|1|end|1|1.0|0.0|0.0|1.0|3414787|0|END
+ARROW-EVENT 2|tip|1|END
+ARROW-INPUT 2|fill,draw,|26214|0|0|END
+ARROW-SEG input-2|move|0|932339|END
+ARROW-SEG input-2|line|3729358|932339|END
+ARROW-SIZE 2|314571|235928|0|26214|END
+ARROW-PATH 3|template|2|2|26214|END
+ARROW-SEG path-3|move|247423|0|END
+ARROW-SEG path-3|control1|217038|7414|END
+ARROW-SEG path-3|control2|83477|49426|END
+ARROW-SEG path-3|curve|0|95145|END
+ARROW-SEG path-3|line|0|-95145|END
+ARROW-SEG path-3|control1|83477|-49426|END
+ARROW-SEG path-3|control2|217038|-7414|END
+ARROW-SEG path-3|curve|247423|0|END
+ARROW-SEG path-3|close|247423|0|END
+ARROW-PAINT 3|template|fillstroke|END
+ARROW-TEMPLATE 2|Latex|END
+ARROW-ENDS 2|301464|-13107|0|END
+ARROW-VISUAL-ENDS 2|301464|-13107|END
+ARROW-FINAL-SIZE 2|314571|235928|0|26214|END
+ARROW-HULL 2|301464|0|END
+ARROW-HULL 2|-13107|117964|END
+ARROW-HULL 2|-13107|-117964|END
+ARROW-SHORT 2|end|301464|314571|0|END
+ARROW-SHORT 2|start|0|0|0|END
+ARROW-PATH 4|shaft|2|2|26214|END
+ARROW-SEG path-4|move|0|932339|END
+ARROW-SEG path-4|line|3427894|932339|END
+ARROW-PAINT 4|shaft|fillstroke|END
+ARROW-EVENT 3|path|4|END
+ARROW-PLACE 2|2|end|2|1.0|0.0|0.0|1.0|3427894|932339|END
+ARROW-EVENT 4|tip|2|END
+ARROW-INPUT 3|draw,|26214|0|0|END
+ARROW-SEG input-3|move|0|1864679|END
+ARROW-SEG input-3|line|3729358|1864679|END
+ARROW-SIZE 3|162528|340784|0|26214|END
+ARROW-PATH 5|template|3|3|26214|END
+ARROW-SEG path-5|move|-136314|157285|END
+ARROW-SEG path-5|control1|-111410|62913|END
+ARROW-SEG path-5|control2|-55914|18350|END
+ARROW-SEG path-5|curve|0|0|END
+ARROW-SEG path-5|control1|-55914|-18350|END
+ARROW-SEG path-5|control2|-111410|-62913|END
+ARROW-SEG path-5|curve|-136314|-157285|END
+ARROW-PAINT 5|template|stroke|END
+ARROW-TEMPLATE 3|Computer Modern Rightarrow|END
+ARROW-ENDS 3|13107|-149421|-13107|END
+ARROW-VISUAL-ENDS 3|13107|13107|END
+ARROW-FINAL-SIZE 3|162528|340784|0|26214|END
+ARROW-HULL 3|13107|13107|END
+ARROW-HULL 3|13107|-13107|END
+ARROW-HULL 3|-123207|170392|END
+ARROW-HULL 3|-123207|-170392|END
+ARROW-HULL 3|-149421|170392|END
+ARROW-HULL 3|-149421|-170392|END
+ARROW-SHORT 3|end|26214|162528|0|END
+ARROW-SHORT 3|start|0|0|0|END
+ARROW-PATH 6|shaft|3|3|26214|END
+ARROW-SEG path-6|move|0|1864679|END
+ARROW-SEG path-6|line|3703144|1864679|END
+ARROW-PAINT 6|shaft|stroke|END
+ARROW-EVENT 5|path|6|END
+ARROW-PLACE 3|3|end|3|1.0|0.0|0.0|1.0|3716251|1864679|END
+ARROW-EVENT 6|tip|3|END
+ARROW-INPUT 4|clip|26214|0|0|END
+ARROW-SEG input-4|move|0|2424088|END
+ARROW-SEG input-4|move|0|2424088|END
+ARROW-SEG input-4|line|0|4102288|END
+ARROW-SEG input-4|line|3356427|4102288|END
+ARROW-SEG input-4|line|3356427|2424088|END
+ARROW-SEG input-4|close|0|2424088|END
+ARROW-SEG input-4|move|3356427|4102288|END
+ARROW-PATH 7|shaft|4|3|26214|END
+ARROW-SEG path-7|move|0|2424088|END
+ARROW-SEG path-7|move|0|2424088|END
+ARROW-SEG path-7|line|0|4102288|END
+ARROW-SEG path-7|line|3356427|4102288|END
+ARROW-SEG path-7|line|3356427|2424088|END
+ARROW-SEG path-7|close|0|2424088|END
+ARROW-SEG path-7|move|3356427|4102288|END
+ARROW-CLIP 7|END
+ARROW-INPUT 5|draw,|26214|0|0|END
+ARROW-SEG input-5|move|0|2797018|END
+ARROW-SEG input-5|line|3729358|2797018|END
+ARROW-SHORT 5|end|201547|314571|0|END
+ARROW-SHORT 5|start|0|0|0|END
+ARROW-PATH 8|shaft|5|1|26214|END
+ARROW-SEG path-8|move|0|2797018|END
+ARROW-SEG path-8|line|3527811|2797018|END
+ARROW-PAINT 8|shaft|stroke|END
+ARROW-EVENT 7|path|8|END
+ARROW-PLACE 4|5|end|1|1.0|0.0|0.0|1.0|3414787|2797018|END
+ARROW-EVENT 8|tip|4|END
+ARROW-INPUT 6|draw,|26214|0|0|END
+ARROW-SEG input-6|move|0|3729358|END
+ARROW-SEG input-6|line|3729358|3729358|END
+ARROW-SHORT 6|end|301464|314571|0|END
+ARROW-SHORT 6|start|0|0|0|END
+ARROW-PATH 9|shaft|6|2|26214|END
+ARROW-SEG path-9|move|0|3729358|END
+ARROW-SEG path-9|line|3427894|3729358|END
+ARROW-PAINT 9|shaft|stroke|END
+ARROW-EVENT 9|path|9|END
+ARROW-PLACE 5|6|end|2|1.0|0.0|0.0|1.0|3427894|3729358|END
+ARROW-EVENT 10|tip|5|END
+ARROW-INPUT 7|draw,|26214|0|0|END
+ARROW-SEG input-7|move|0|4661697|END
+ARROW-SEG input-7|line|1864679|4661697|END
+ARROW-SEG input-7|line|1864679|5594037|END
+ARROW-SEG input-7|close|0|4661697|END
+ARROW-PATH 10|shaft|7|2|26214|END
+ARROW-SEG path-10|move|0|4661697|END
+ARROW-SEG path-10|line|1864679|4661697|END
+ARROW-SEG path-10|line|1864679|5594037|END
+ARROW-SEG path-10|close|0|4661697|END
+ARROW-PAINT 10|shaft|stroke|END
+ARROW-EVENT 11|path|10|END
+ARROW-INPUT 8|draw,|26214|0|0|END
+ARROW-SEG input-8|move|0|6526376|END
+ARROW-SEG input-8|line|1864679|6526376|END
+ARROW-SEG input-8|move|2797018|6526376|END
+ARROW-SEG input-8|line|4661697|6526376|END
+ARROW-SHORT 8|end|301464|314571|0|END
+ARROW-SHORT 8|start|0|0|0|END
+ARROW-PATH 11|shaft|8|2|26214|END
+ARROW-SEG path-11|move|0|6526376|END
+ARROW-SEG path-11|line|1864679|6526376|END
+ARROW-SEG path-11|move|2797018|6526376|END
+ARROW-SEG path-11|line|4360233|6526376|END
+ARROW-PAINT 11|shaft|stroke|END
+ARROW-EVENT 12|path|11|END
+ARROW-PLACE 6|8|end|2|1.0|0.0|0.0|1.0|4360233|6526376|END
+ARROW-EVENT 13|tip|6|END
+ARROW-INPUT 9|draw,|26214|0|0|END
+ARROW-SEG input-9|move|0|7458716|END
+ARROW-SEG input-9|line|0|7458716|END
+ARROW-SHORT 9|end|201547|314571|0|END
+ARROW-SHORT 9|start|0|0|0|END
+ARROW-PATH 12|shaft|9|1|26214|END
+ARROW-SEG path-12|move|0|7458716|END
+ARROW-SEG path-12|line|0|7660263|END
+ARROW-PAINT 12|shaft|stroke|END
+ARROW-EVENT 14|path|12|END
+ARROW-PLACE 7|9|end|1|0.0|1.0|-1.0|0.0|0|7144145|END
+ARROW-EVENT 15|tip|7|END
+ARROW-INPUT 10|draw,|26214|0|0|END
+ARROW-SEG input-10|move|1864679|7458716|END
+ARROW-SEG input-10|line|1864679|7458716|END
+ARROW-SHORT 10|end|26214|162528|0|END
+ARROW-SHORT 10|start|0|0|0|END
+ARROW-PATH 13|shaft|10|3|26214|END
+ARROW-SEG path-13|move|1864679|7458716|END
+ARROW-SEG path-13|line|1864679|7484930|END
+ARROW-PAINT 13|shaft|stroke|END
+ARROW-EVENT 16|path|13|END
+ARROW-PLACE 8|10|end|3|0.0|1.0|-1.0|0.0|1864679|7445609|END
+ARROW-EVENT 17|tip|8|END
+ARROW-INPUT 11|draw,|26214|0|0|END
+ARROW-SEG input-11|move|3729358|7458716|END
+ARROW-SHORT 11|end|301464|314571|0|END
+ARROW-SHORT 11|start|0|0|0|END
+ARROW-PATH 14|shaft|11|2|26214|END
+ARROW-SEG path-14|move|3729358|7458716|END
+ARROW-PAINT 14|shaft|stroke|END
+ARROW-EVENT 18|path|14|END
+ARROW-PLACE 9|11|end|2|0.0|1.0|-1.0|0.0|3729358|7157252|END
+ARROW-EVENT 19|tip|9|END
+ARROW-INPUT 12|draw,|26214|0|0|END
+ARROW-SEG input-12|move|0|8391055|END
+ARROW-SEG input-12|line|1864679|8391055|END
+ARROW-SEG input-12|move|2797018|8391055|END
+ARROW-SEG input-12|line|3729358|8391055|END
+ARROW-SEG input-12|line|3729358|9323395|END
+ARROW-SEG input-12|close|2797018|8391055|END
+ARROW-PATH 15|shaft|12|2|26214|END
+ARROW-SEG path-15|move|0|8391055|END
+ARROW-SEG path-15|line|1864679|8391055|END
+ARROW-SEG path-15|move|2797018|8391055|END
+ARROW-SEG path-15|line|3729358|8391055|END
+ARROW-SEG path-15|line|3729358|9323395|END
+ARROW-SEG path-15|close|2797018|8391055|END
+ARROW-PAINT 15|shaft|stroke|END
+ARROW-EVENT 20|path|15|END
+ARROW-INPUT 13|draw,|26214|0|0|END
+ARROW-SEG input-13|move|0|10255734|END
+ARROW-SEG input-13|line|3729358|10255734|END
+ARROW-SHORT 13|end|201547|314571|0|END
+ARROW-SHORT 13|start|0|0|0|END
+ARROW-PATH 16|shaft|13|1|26214|END
+ARROW-SEG path-16|move|0|10255734|END
+ARROW-SEG path-16|line|3527811|10255734|END
+ARROW-PAINT 16|shaft|stroke|END
+ARROW-EVENT 21|path|16|END
+ARROW-PLACE 10|13|end|1|1.0|0.0|0.0|1.0|3414787|10255734|END
+ARROW-EVENT 22|tip|10|END
+ARROW-BOUNDS -117964|-117964|4674804|10373698|END
+)
+ARROW-BOX 4792768|10491662|0|END
+
+
+[1
+
+
+ARROW-PAGE 8799518|20620244|32768000|39321600|END
+] (case.aux)
+ ***********
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+ ***********
+ ) ) 
+Here is how much of TeX's memory you used:
+ 12150 strings out of 468129
+ 261740 string characters out of 5425772
+ 621828 words of memory out of 5000000
+ 40597 multiletter control sequences out of 15000+600000
+ 626825 words of font info for 40 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 107i,5n,110p,424b,1101s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on case.pdf (1 page, 1542 bytes).
+PDF statistics:
+ 9 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+

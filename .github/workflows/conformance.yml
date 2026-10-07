@@ -35,6 +35,8 @@ jobs:
       - run: node tools/TikzVisual/curved-edge-primary-self-test.mjs
       - run: node tools/TikzVisual/curved-edge-image-cache-self-test.mjs
       - run: node tools/TikzVisual/curved-edge-admission-self-test.mjs
+      - run: node tools/TikzVisual/arrow-reference.mjs check-cached
+      - run: node tools/TikzVisual/arrow-reference-self-test.mjs
       - run: dotnet run --project tools/TikzCurvedEdgeOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeOracle -c Release --no-restore
@@ -85,6 +87,8 @@ jobs:
             artifacts/curved-edge-image-cache-controls/
             artifacts/curved-edge-admission-controls/
             artifacts/curved-edge-oracle/
+            artifacts/arrow-reference/
+            artifacts/arrow-native-controls/
           if-no-files-found: error
 
   visual:

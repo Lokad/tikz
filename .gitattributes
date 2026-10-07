@@ -33,6 +33,9 @@ tests/Reference/Edges/*/*reference.svg -text whitespace=cr-at-eol
 tests/Reference/Edges/*/*.log text eol=lf -whitespace
 tests/Reference/CurvedEdges/*/*reference.svg -text whitespace=cr-at-eol
 tests/Reference/CurvedEdges/*/*.log text eol=lf -whitespace
+tests/Reference/Arrows/*/*reference.svg -text whitespace=cr-at-eol
+tests/Reference/Arrows/*/*.log text eol=lf -whitespace
+tests/Reference/Arrows/*/*.dvi binary
 tests/Reference/Dashes/native/*reference.svg -text whitespace=cr-at-eol
 tests/Reference/Dashes/native/*.log -text -whitespace
 tests/Reference/DashGeometry/native/*reference.svg -text whitespace=cr-at-eol

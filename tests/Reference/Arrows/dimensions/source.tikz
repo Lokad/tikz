@@ -1,0 +1,13 @@
+\usetikzlibrary{arrows.meta}%
+\begin{tikzpicture}
+\draw[-{Stealth[length=8pt,width=6pt,inset=2pt]}] (0,0) -- (2,0);
+\draw[-{Latex[length=7pt,width=5pt]}] (0,.5) -- (2,.5);
+\draw[{Stealth[length=6pt]}-{Latex[length=8pt]}] (0,1) -- (2,1);
+\draw[-{Stealth},shorten >=2pt,shorten <=1pt] (0,1.5) -- (2,1.5);
+\draw[-{Latex},shorten >=-2pt,shorten <=-1pt] (0,2) -- (2,2);
+\draw[shorten >=2pt,shorten <=1pt] (0,2.5) -- (2,2.5);
+\draw[-{Stealth[length=3pt,width=2pt]},line width=4pt] (0,3) -- (2,3);
+\draw[-{Latex[length=3pt,width=2pt]},line width=4pt] (0,3.5) -- (2,3.5);
+\draw[-{Stealth},shorten >=15pt,shorten <=15pt] (0,4) -- (.5,4);
+\draw[-{Latex[length=5pt,width=8pt]}] (0,4.5) -- (2,4.5);
+\end{tikzpicture}

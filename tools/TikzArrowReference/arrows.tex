@@ -1,0 +1,25 @@
+\ifdefined\arrowpdf
+  \pdfinfoomitdate=1 \pdftrailerid{} \pdfsuppressptexinfo=15
+\else
+  \def\pgfsysdriver{pgfsys-dvisvgm.def}
+\fi
+\documentclass{article}
+\usepackage{tikz}
+\pagestyle{empty}
+\paperwidth=500pt \paperheight=600pt
+\textwidth=400pt \textheight=500pt
+\ifdefined\arrowpdf \pdfpagewidth=\paperwidth \pdfpageheight=\paperheight \fi
+\makeatletter
+\newbox\arrowpicture
+\typeout{ARROW-PGF \pgfversion|END}
+\ifdefined\arrowprobes \input{arrow-hooks.tex} \fi
+\let\arrowoldendpicture\endtikzpicture
+\def\endtikzpicture{%
+  \typeout{ARROW-BOUNDS \number\pgf@picminx|\number\pgf@picminy|\number\pgf@picmaxx|\number\pgf@picmaxy|END}%
+  \arrowoldendpicture
+}
+\begin{document}
+\setbox\arrowpicture=\hbox{\input{case.tikz}\unskip}
+\typeout{ARROW-BOX \number\wd\arrowpicture|\number\ht\arrowpicture|\number\dp\arrowpicture|END}
+\hbox{\ifdefined\arrowpdf\pdfsavepos\write16{ARROW-PAGE \number\pdflastxpos|\number\pdflastypos|\number\pdfpagewidth|\number\pdfpageheight|END}\fi\box\arrowpicture}
+\end{document}
