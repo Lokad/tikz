@@ -336,6 +336,50 @@ contract, a repaired fresh baseline, public image-only defects and visibility
 controls, independent checking and fresh exported-tree proof remain required
 before fixed-family public image admission.
 
+The production SVG root now declares `preserveAspectRatio="xMidYMid meet"`.
+This makes the aspect-preserving SVG default explicit when a consumer changes
+the containing viewport. A global `none` experiment improves the six arrow
+baselines under the earlier source encoding but fails prior geometry, node,
+border and edge profiles. Those failures remain evidence; the old cache and
+its limits are unchanged. The root behavior must be checked across supported
+families, including intrinsic, wide, tall and proportionally scaled viewports.
+[SVG 2 viewport rules](https://www.w3.org/TR/SVG2/coords.html#PreserveAspectRatioAttribute)
+define the uniform scale and alignment.
+
+A separate native-only experiment qualifies the aspect-preserving source
+representation without invoking the converter or native TeX/PDF executables:
+
+```text
+node tools/TikzVisual/calibrate-arrow-meet-source.mjs
+node tools/TikzVisual/check-arrow-meet-source.mjs artifacts/arrow-meet-source-calibration/run-<uuid>/report.json
+```
+
+The producer consumes the pinned original cache and changes only the outer
+aspect-ratio declaration in each original/reconstructed SVG. It records hashes
+of the drawing children and other root attributes, retains unchanged native
+envelopes/cameras/regions, and captures all 306 views: 72 baselines, 186 defect
+views across sixteen families, and 48 faint/subquantum controls. Limits derive
+only from the new native baseline pairs and have a distinct scope. Unchanged
+rasters and visibility blind spots stay explicit. The experiment does not reuse
+the old `none` limits to approve the new presentation.
+
+The independent reader reconstructs every linked SVG from the pinned cache,
+recaptures the complete image and crop set, independently decodes the saved
+reference/actual pairs, and rederives metrics, source frames, policies and gates.
+This establishes a link from source SVG to saved PNG in addition to hash and
+metric integrity. Its actual validation path rejects false approval, missing
+views, changed source identity, weakened policy, and consistently rehashed
+SVG/PNG substitutions. The completed report links the exact owned input report;
+partial output retains its failed phase and completed-view count.
+
+Open the owned `index.html` or its paired PNGs to inspect native comparisons.
+These outputs remain unapproved research evidence. Independently qualifying
+the source/PDF routes, freezing the new policy, public image-only sensitivity,
+a new owned public combined trial and fresh exported-tree reproduction remain
+required before public arrow image admission. Earlier public baseline and
+aspect-ratio diagnostics describe their original captured sources; they are
+historical evidence when the current emitter differs.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source

@@ -13,6 +13,7 @@ public sealed class EmittedSvgTests
         var native = DashGeometryEvidence.Parse(source, File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference/DashGeometry/native/svg.log")), false);
         var success = Assert.IsType<TikzSuccess>(TikzConverter.Convert(source, TikzOptions.Default, CancellationToken.None));
         var doc = XDocument.Parse(success.Svg);
+        Assert.Equal("xMidYMid meet", doc.Root!.Attribute("preserveAspectRatio")?.Value);
         var paths = doc.Descendants().Where(e => e.Name.LocalName == "path" && !e.Ancestors().Any(a => a.Name.LocalName is "defs" or "clipPath")).ToArray();
         var clips = doc.Descendants().Where(e => e.Name.LocalName == "clipPath").Select(e => e.Descendants().Single(p => p.Name.LocalName == "path")).ToArray();
         Assert.Equal(16, paths.Length); Assert.Equal(3, clips.Length);

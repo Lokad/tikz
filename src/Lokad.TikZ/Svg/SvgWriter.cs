@@ -78,6 +78,8 @@ internal static class SvgWriter
             writer.WriteAttributeString("width", Number(width) + "px");
             writer.WriteAttributeString("height", Number(height) + "px");
             writer.WriteAttributeString("viewBox", $"{Number(minX)} {Number(minY)} {Number(width)} {Number(height)}");
+            // Preserve diagram proportions when the containing viewport changes.
+            writer.WriteAttributeString("preserveAspectRatio", "xMidYMid meet");
             if (scene.Clips.Count > 0 || scene.Outlines.Count > 0)
             {
                 writer.WriteStartElement("defs");
