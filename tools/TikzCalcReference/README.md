@@ -301,3 +301,36 @@ paired image, 1x/4x crops, differences and verified path-to-source identities.
 The static `index.html` gallery focuses on defect crops. A `trial-pass` is
 fixed-fixture research evidence. Reviewed combined admission,
 broader interactions, root integration and release qualification remain open.
+
+## Portable public-trial evidence
+
+The pinned `tests/Reference/CalcCoordinates/public-trial.bin.gz` preserves the
+completed public trial, the independent check, its owned source recapture,
+fresh functional export, corruption overlays and captured source bytes. The
+development archive stores each distinct byte sequence once. Its bounded
+decoder rejects unsafe paths, unused/missing blobs, altered metadata, changed
+artifact bytes and trailing content. Compressed and decoded hashes have separate
+external pins; preparation never updates those pins or the tracked cache.
+
+```powershell
+node tools/TikzVisual/calc-trial-cache-self-test.mjs
+node tools/TikzVisual/prepare-calc-trial-cache.mjs --replay
+```
+
+The first command independently recomputes the 540 image pairs and 13,212
+regional observations, verifies the complete owned recapture and fresh export
+bindings, and replays the eighteen saved corruption overlays through the actual
+pixel or source-binding verifier. It also exercises the archive decoder and
+external pin checks. The second command recreates the same archive from its
+tracked evidence. Both emit fresh owned receipts. Neither invokes TeX, a browser
+or the converter. Initial preparation without `--replay` consumes only the exact
+completed local proof paths and hashes in `calc-trial-cache-pin.mjs`.
+
+Historical production hashes remain evidence of the qualified snapshot. Loader
+guards check the current evidence tools separately; checking this cache cannot
+prove that a changed production compiler conforms. Structural-only loading is
+explicitly labeled and supplies no pixel qualification. Current image admission
+still requires a separately reviewed combined profile and a new public trial
+with the pinned renderer. The compact native projection preserves selected
+native calibration records and complete source manifests; it does not contain
+the original full calibration PNG bundles or claim to replay them.

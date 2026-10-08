@@ -85,5 +85,10 @@ visibility matrices run with numeric gates bypassed. An independent checker
 recomputes saved pixels and gates, requires fresh public-output agreement,
 and recaptures the complete trial from owned inputs. This remains fixed-fixture
 research; reviewed combined admission and broader interactions remain required.
+The completed public trial and its independent recapture, fresh export and
+corruption overlays also have a pinned portable development archive. Its loader
+recomputes the saved image evidence, and its controls replay the saved mutations
+through the actual verifiers. This archive records a historical snapshot;
+current production changes need a fresh trial before claiming conformance.
 The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
 records commands for reproducing measurements and paired images.
