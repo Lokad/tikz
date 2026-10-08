@@ -62,7 +62,21 @@ The PDF checker independently decodes full-page and local pixels, rederives both
 policies and registration, and recaptures every native source. Corruption controls
 cover missing/duplicate routes and consistently rehashed pixels and policies.
 
+Current checking joins primary and PDF reports for the same numeric output:
+
+```sh
+node tools/TikzVisual/check-path-label-current.mjs <current-primary-report> <independent-primary-check-report> <current-PDF-report> <independent-PDF-check-report>
+node tools/TikzVisual/path-label-current-self-test.mjs <current-primary-report> <current-PDF-report>
+```
+
+It independently decodes required whole/local PNG metrics and recomputes each
+verdict and gate. It checks intrinsic framing against native picture bounds,
+validates source captures, performs fresh public conversion and recaptures all
+32 primary/PDF views exactly. It rejects omitted views, split numeric provenance,
+wrong framing and rehashed false metrics/verdicts. Frozen native calibration is
+validated through its qualified receipts and current dependency hashes.
+
 The comparison commands use a fresh numeric receipt and produce paired current
-images. These are iteration checks. Independent current-output checking, portable calibration
+images. These are iteration checks. Portable calibration
 and final-tree fresh-export acceptance remain release gates. No command here
 declares complete feature or image conformance.

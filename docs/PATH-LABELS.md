@@ -62,7 +62,11 @@ independent encodings against the unchanged PDF raster. Their natural frames
 use measured native picture bounds; the larger miter envelope remains an
 inspection camera. Registration includes measured wrapper glue and uses no fit.
 Fresh output is compared through both PDF gates.
-Full image qualification, independent current-output checking, portable
-calibration and final-tree fresh-export acceptance remain open.
+The current-output checker independently decodes all required primary/PDF views,
+checks verdicts and intrinsic framing, verifies common numeric provenance, and
+recaptures them from a fresh public conversion. Its frame check allows one native
+scaled point plus six-decimal SVG serialization rounding; pixel limits remain
+unchanged. Full image qualification, portable calibration and final-tree
+fresh-export acceptance remain open.
 Focused numeric agreement and paired-image inspection establish no
 approved image tolerance or general pixel-identity claim.
