@@ -247,3 +247,57 @@ visibly different; a completed calibration/check is reproducible research,
 not a pixel-perfect claim or an admitted image policy. Fresh public candidate
 qualification, combined admission, interactions and root integration remain
 open. None of these development tools becomes a production dependency.
+
+For a current public SVG trial against these frozen research policies:
+
+```powershell
+node tools/TikzVisual/prepare-calc-trial-reference.mjs <primary-check/report.json> <pdf-check/report.json> <primary-controls/report.json> <pdf-controls/report.json>
+dotnet run --project tools/TikzReference -c Release -- export-calc-coordinates
+node tools/TikzVisual/trial-calc.mjs <candidate-export/report.json> <prepared-native-reference/report.json>
+node tools/TikzVisual/check-calc-trial.mjs <completed-public-trial/report.json>
+node tools/TikzVisual/calc-trial-self-test.mjs <completed-public-check/report.json>
+```
+
+Preparation accepts the exact previously verified native research digests in
+`calc-trial-reference.mjs`. It copies the original native inputs, complete proof
+manifests and selected calibration records into a compact owned projection.
+The original calibration PNGs stay in their source bundles. Each selected
+artifact must match its pinned manifest; policies are derived again from the
+native records. This research pin supplies no image admission and has no
+candidate-derived camera, region, limit or refresh option.
+
+The public trial requires 50 anchor quantities, 416 native path/state checks,
+six picture-bound quantities and four serialized root dimensions. It runs
+24 primary views and four ordinary-PDF views for each of original/public SVG,
+followed by 32 separately captured replays. Eleven opaque image-only defect
+families each run all 24 primary and four PDF views. Visible changes must fail
+their intended region, and invisible changes must preserve decoded samples.
+
+Lost-half-clip and 1%/0.1% opacity controls separately compare unchanged and
+altered public encodings in all primary/PDF views. These candidate-only
+comparator baselines cannot change any native allowance or establish native
+clipping/opacity compatibility. Controlled PDF records link both SVG page PNGs
+for direct inspection; the ordinary opaque PDF remains a separate reference.
+
+The checker independently decodes all 540 pairs and recomputes 13,212 regional
+observations, policies, defect visibility and all combined gates. It requires
+a fresh public conversion to reproduce every functional export artifact and
+compiler source guard. New commit/build provenance is retained separately.
+The owned original export and compact native projection then recapture the
+entire trial; PNGs and presentation artifacts must reproduce exactly, with
+only declared input-path provenance normalized. It needs the pinned browser
+and .NET development tools, and invokes no native TeX/PDF executable.
+
+Actual-verifier corruption controls cover manifests, completion, coverage,
+native pins/camera, candidate anchors, pixels, RGB ink/moments, gate summaries
+and agent source attribution. A primary PNG substitution updates its replay,
+hidden-frame control, whole/local metrics and verdicts while retaining the
+native policy. Saved-pixel verification must accept the consistent forgery,
+and source reconstruction must reject it. Mutation evidence remains a hashed
+overlay on its bound baseline.
+
+`agent-inspection.json` links native agreement, declared frames, every selected
+paired image, 1x/4x crops, differences and verified path-to-source identities.
+The static `index.html` gallery focuses on defect crops. A `trial-pass` is
+fixed-fixture research evidence. Reviewed combined admission,
+broader interactions, root integration and release qualification remain open.

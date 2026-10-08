@@ -78,7 +78,12 @@ measured page, with pixel/edge limits and regional RGB ink/moment ranges.
 Image-only defects include a fixed page-corner overflow region. The independent
 saved-PDF checker recomputes all measurements and recaptures the complete
 native-only calibration, requiring identical PNGs and presentation artifacts.
-A fresh public primary/PDF trial, combined admission and broader interactions
-remain separate requirements.
+A separate public trial uses frozen native research pins, checks every native
+anchor/path and declared frame, and captures both primary routes and the
+original/public SVG against ordinary PDF. Full image-only defect and controlled
+visibility matrices run with numeric gates bypassed. An independent checker
+recomputes saved pixels and gates, requires fresh public-output agreement,
+and recaptures the complete trial from owned inputs. This remains fixed-fixture
+research; reviewed combined admission and broader interactions remain required.
 The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
 records commands for reproducing measurements and paired images.
