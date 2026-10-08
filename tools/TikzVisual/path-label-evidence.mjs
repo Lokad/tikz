@@ -8,12 +8,18 @@ import {parsePathLabelNative,pathLabelPhysicalCalls,pathLabelDriverState} from '
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 import {edgeCanonical} from './edge-log.mjs';
 export const pathLabelReference='tests/Reference/PathLabels/native/report.json';
-export const pathLabelReferenceSha256='52cb8efe3ff4eed3801cee0623189ec95749c00f72f31a52f2b781d8d8c6b1df';
-export async function loadPathLabelEvidence(){
- const b=await loadCalcSavedReport(path.join(root,pathLabelReference),'path-label-native-reference');
- assert.equal(b.sha256,pathLabelReferenceSha256,'Frozen path-label native report changed.');
+export const pathLabelReferenceSha256='e8a8e511265aab232f33054dd810536fec236c9a6e2e43a34025ff59f99f6eb3';
+const cases={
+ placement:{file:pathLabelReference,sha256:pathLabelReferenceSha256,counts:{nodes:13,pathCalls:23,paintedPaths:13,anchors:208}},
+ interactions:{file:'tests/Reference/PathLabels/interactions-native/report.json',sha256:'d361241a94334310ae8b575a92527415d2891fcccc096d92ddf66f29ded81d62',counts:{nodes:8,pathCalls:15,paintedPaths:11,anchors:128}}
+};
+export async function loadPathLabelEvidence(id='placement'){
+ assert.ok(Object.hasOwn(cases,id),'Only fixed trusted repository fixtures are accepted.');const expected=cases[id];
+ const b=await loadCalcSavedReport(path.join(root,expected.file),'path-label-native-reference');
+ assert.equal(b.sha256,expected.sha256,'Frozen path-label native report changed.');
+ assert.equal(b.report.definition.id,id);
  assert.equal(b.report.converterInvoked,false);assert.equal(b.report.nativeToolInvoked,true);
- assert.deepEqual(b.report.counts,{nodes:13,pathCalls:23,paintedPaths:13,anchors:208});
+ assert.deepEqual(b.report.counts,expected.counts);
  for(const [file,hash]of Object.entries(b.report.sourceHashes)){
   assert.equal(calcHash(edgeCanonical(await readFile(path.join(root,file)))),hash,'Native reference source changed: '+file);
   assert.equal(calcHash(b.files.get('source-captures/'+file)),hash);

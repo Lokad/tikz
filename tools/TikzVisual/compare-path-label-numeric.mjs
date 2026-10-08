@@ -7,7 +7,8 @@ import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {loadPathLabelEvidence} from './path-label-evidence.mjs';
 import {runCalcChild,readCalcChild,ownCalcBundle} from './calc-admission-child.mjs';
 
-assert.equal(process.argv.length,2,'Usage: node tools/TikzVisual/compare-path-label-numeric.mjs');
+assert.ok(process.argv.length===2||process.argv.length===3,'Usage: node tools/TikzVisual/compare-path-label-numeric.mjs [placement|interactions]');
+const fixture=process.argv[2]??'placement';
 const output=path.join(root,'artifacts/path-label-iteration/run-'+randomUUID()),artifacts={};
 const save=(p,b)=>writeArtifact(output,p,b,artifacts);
 let phase='native-input',converterInvoked=false;
@@ -20,7 +21,7 @@ async function publish(completed,result={}){
 }
 await publish(false);
 try{
- const native=await loadPathLabelEvidence();await ownCalcBundle(native,'native',save);
+ const native=await loadPathLabelEvidence(fixture);await ownCalcBundle(native,'native',save);
  phase='current-conversion';converterInvoked=true;
  const handle=await runCalcChild(root,'dotnet',['run','--project','tools/TikzPathLabelComparison','-c','Release','--',
   path.relative(root,path.join(output,'native/report.json'))],'numeric',save);
@@ -29,8 +30,9 @@ try{
  const result=candidate.report.result;
  assert.equal(candidate.report.converterInvoked,true);assert.equal(candidate.report.nativeToolInvoked,false);
  assert.equal(result.nativeInputSha256,native.sha256);assert.equal(result.numericPassed,true);
- assert.equal(result.publicTraceParity,true);assert.equal(result.nodes,13);assert.equal(result.glyphs,42);
- assert.equal(result.checks,1056);assert.deepEqual(result.failed,[]);
+ assert.equal(result.publicTraceParity,true);assert.equal(result.nodes,native.report.counts.nodes);
+ const counts=fixture==='placement'?{glyphs:42,checks:1070}:{glyphs:25,checks:674};
+ assert.equal(result.glyphs,counts.glyphs);assert.equal(result.checks,counts.checks);assert.deepEqual(result.failed,[]);
  await publish(true,{...result,nativeDriverChecks:native.metrics.driverState.checks,
-  scope:'Fixed placement fixture: text boxes, anchors, glyphs, effective paint and physical order. Image and feature acceptance remain open.'});
+  fixture,scope:'Fixed trusted fixture: text boxes, anchors, glyphs, effective paint, clips and physical order. Image and feature acceptance remain open.'});
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,{error:error.message});process.exitCode=1;}

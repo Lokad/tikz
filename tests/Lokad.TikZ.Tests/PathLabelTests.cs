@@ -6,6 +6,7 @@ using Lokad.TikZ.Geometry;
 using Lokad.TikZ.Graphics;
 using Lokad.TikZ.Nodes;
 using Lokad.TikZ.Semantics;
+using Lokad.TikZ.Svg;
 using Lokad.TikZ.Text;
 using Xunit;
 
@@ -116,4 +117,44 @@ public sealed class PathLabelTests
     }
 
     private static int Sp(double bp) => (int)Math.Round(bp * (72.27 * 65536 / 72), MidpointRounding.AwayFromZero);
+
+    [Fact]
+    public void Continuation_styles_and_nested_existing_clips_convert_through_the_public_API()
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/PathLabels/interactions.tikz"));
+        GraphicsScene? scene = null;
+        var result = Assert.IsType<TikzSuccess>(TikzConverter.ConvertWithTrace(source, TikzOptions.Default,
+            CancellationToken.None, value => scene = value));
+        Assert.Equal(8, result.Statistics.Nodes);
+        Assert.Equal(2, scene!.Clips.Count);
+        Assert.Equal(result.Svg, Assert.IsType<TikzSuccess>(TikzConverter.Convert(source, TikzOptions.Default, CancellationToken.None)).Svg);
+        foreach (var (name, clips) in new[] { ("clipped", new[] { 0 }), ("continued", new[] { 0 }), ("nested", new[] { 0, 1 }), ("escaped", Array.Empty<int>()) })
+        {
+            var id = scene.Nodes.FindIndex(n => n.Name == name);
+            var run = Assert.Single(scene.Drawables.OfType<PaintedGlyphRun>(), r => r.NodeId == id);
+            Assert.Equal(clips, run.Clips);
+        }
+        using var cancelled = new CancellationTokenSource(); cancelled.Cancel();
+        var error = Assert.Throws<OperationCanceledException>(() => TikzConverter.Convert(source, TikzOptions.Default, cancelled.Token));
+        Assert.Equal(cancelled.Token, error.CancellationToken);
+    }
+
+    [Theory]
+    [InlineData("resolve")]
+    [InlineData("svg")]
+    public void Label_interactions_preserve_the_shared_token_at_each_phase_boundary(string phase)
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/PathLabels/interactions.tikz"));
+        using var cancellation = new CancellationTokenSource();
+        var budget = new Budget(TikzLimits.Default, cancellation.Token);
+        var program = new Parser(new(source, 0, source.Length), budget).Parse(TikzInputKind.Picture);
+        GraphicsScene? scene = phase == "svg" ? new Evaluator(budget).Evaluate(program, TikzOptions.Default) : null;
+        cancellation.Cancel();
+        var error = Assert.Throws<OperationCanceledException>(() =>
+        {
+            if (scene is null) new Evaluator(budget).Evaluate(program, TikzOptions.Default);
+            else SvgWriter.Write(scene, source, TikzOptions.Default, budget);
+        });
+        Assert.Equal(cancellation.Token, error.CancellationToken);
+    }
 }

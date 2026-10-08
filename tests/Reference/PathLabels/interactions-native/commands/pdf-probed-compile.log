@@ -1,0 +1,462 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex.fmt)
+entering extended mode
+(case.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(<local>/article.clsDocument Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(<local>/size10.clo))
+(<local>/fontenc.sty)
+(<local>/lmodern.sty)
+(<local>/tikz.sty
+(<local>/pgf.sty
+(<local>/pgfrcs.sty
+(<local>/pgfutil-common.tex)
+(<local>/pgfutil-latex.def)
+(<local>/pgfrcs.code.tex
+(<local>/pgf.revision.tex)))
+(<local>/pgfcore.sty
+(<local>/graphicx.sty
+(<local>/keyval.sty)
+(<local>/graphics.sty
+(<local>/trig.sty)
+(<local>/graphics.cfg)
+(<local>/pdftex.def)))
+(<local>/pgfsys.sty
+(<local>/pgfsys.code.tex
+(<local>/pgfkeys.code.tex
+(<local>/pgfkeyslibraryfiltered.code.tex))
+(<local>/pgf.cfg)
+(<local>/pgfsys-pdftex.def
+(<local>/pgfsys-common-pdf.def)))
+(<local>/pgfsyssoftpath.code.tex)
+(<local>/pgfsysprotocol.code.tex))
+(<local>/xcolor.sty
+(<local>/color.cfg)
+(<local>/mathcolor.ltx))
+(<local>/pgfcore.code.tex
+(<local>/pgfmath.code.tex
+(<local>/pgfmathutil.code.tex)
+(<local>/pgfmathparser.code.tex)
+(<local>/pgfmathfunctions.code.tex)
+(<local>/pgfmathfunctions.basic.code.tex)
+(<local>/pgfmathfunctions.trigonometric.code.tex)
+(<local>/pgfmathfunctions.random.code.tex)
+(<local>/pgfmathfunctions.comparison.code.tex)
+(<local>/pgfmathfunctions.base.code.tex)
+(<local>/pgfmathfunctions.round.code.tex)
+(<local>/pgfmathfunctions.misc.code.tex)
+(<local>/pgfmathfunctions.integerarithmetics.code.tex)
+(<local>/pgfmathcalc.code.tex)
+(<local>/pgfmathfloat.code.tex))
+(<local>/pgfint.code.tex)
+(<local>/pgfcorepoints.code.tex)
+(<local>/pgfcorepathconstruct.code.tex)
+(<local>/pgfcorepathusage.code.tex)
+(<local>/pgfcorescopes.code.tex)
+(<local>/pgfcoregraphicstate.code.tex)
+(<local>/pgfcoretransformations.code.tex)
+(<local>/pgfcorequick.code.tex)
+(<local>/pgfcoreobjects.code.tex)
+(<local>/pgfcorepathprocessing.code.tex)
+(<local>/pgfcorearrows.code.tex)
+(<local>/pgfcoreshade.code.tex)
+(<local>/pgfcoreimage.code.tex)
+(<local>/pgfcoreexternal.code.tex)
+(<local>/pgfcorelayers.code.tex)
+(<local>/pgfcoretransparency.code.tex)
+(<local>/pgfcorepatterns.code.tex)
+(<local>/pgfcorerdf.code.tex)))
+(<local>/pgfmoduleshapes.code.tex)
+(<local>/pgfmoduleplot.code.tex)
+(<local>/pgfcomp-version-0-65.sty)
+(<local>/pgfcomp-version-1-18.sty))
+(<local>/pgffor.sty
+(<local>/pgfkeys.sty
+(<local>/pgfkeys.code.tex))
+(<local>/pgfmath.sty
+(<local>/pgfmath.code.tex))
+(<local>/pgffor.code.tex))
+(<local>/tikz.code.tex
+(<local>/pgflibraryplothandlers.code.tex)
+(<local>/pgfmodulematrix.code.tex)
+(<local>/tikzlibrarytopaths.code.tex)))
+(<local>/tikzlibraryshapes.geometric.code.tex
+(<local>/pgflibraryshapes.geometric.code.tex))
+LOKAD-PGF-VERSION 3.1.11a
+(edge-hooks.tex)
+(<local>/t1lmr.fd)
+(<local>/l3backend-pdftex.def)
+No file case.aux.
+
+(<local>/supp-pdf.mkii[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(<local>/epstopdf-base.sty
+(<local>/epstopdf-sys.cfg)) (case.tikz
+LOKAD-SHAPE seed|rectangle|END
+LOKAD-VALUE seed|width|569770|END
+LOKAD-VALUE seed|height|458128|END
+LOKAD-VALUE seed|depth|0|END
+LOKAD-VALUE seed|linewidth|26214|END
+LOKAD-VALUE seed|quad|655360|END
+LOKAD-VALUE seed|xheight|282165|END
+LOKAD-VALUE seed|innerx|218430|END
+LOKAD-VALUE seed|innery|218430|END
+LOKAD-VALUE seed|outerx|13107|END
+LOKAD-VALUE seed|outery|13107|END
+LOKAD-VALUE seed|minimumwidth|65536|END
+LOKAD-VALUE seed|minimumheight|65536|END
+LOKAD-POINT seed|southwest|-218430|-218430|END
+LOKAD-POINT seed|northeast|788200|676558|END
+LOKAD-FRAME seed|1.0|0.0|0.0|1.0|-4.347pt|-3.49524pt|END
+LOKAD-PATH 1|node-seed|draw,|26214|END
+LOKAD-SEG 1|rectcorner|-503315|-447494|END
+LOKAD-SEG 1|rectsize|1006630|894988|END
+EDGE-PAINT 1|stroke|26214|0|0|10|1|1|0,0,0|0,0,0|END
+EDGE-DASH 1||0|END
+LOKAD-SHAPE first|rectangle|END
+LOKAD-VALUE first|width|1140981|END
+LOKAD-VALUE first|height|300368|END
+LOKAD-VALUE first|depth|0|END
+LOKAD-VALUE first|linewidth|52429|END
+LOKAD-VALUE first|quad|655360|END
+LOKAD-VALUE first|xheight|282165|END
+LOKAD-VALUE first|innerx|65536|END
+LOKAD-VALUE first|innery|65536|END
+LOKAD-VALUE first|outerx|26214|END
+LOKAD-VALUE first|outery|26214|END
+LOKAD-VALUE first|minimumwidth|65536|END
+LOKAD-VALUE first|minimumheight|65536|END
+LOKAD-POINT first|southwest|-65536|-65536|END
+LOKAD-POINT first|northeast|1206516|365904|END
+LOKAD-FRAME first|1.0|0.0|0.0|1.0|25.235pt|1.4pt|END
+LOKAD-PATH 2|node-first|fill,draw,|52429|END
+LOKAD-SEG 2|rectcorner|1588265|26214|END
+LOKAD-SEG 2|rectsize|1272052|431440|END
+EDGE-PAINT 2|fillstroke|52429|0|0|10|1|1|0,0,1|1,1,1|END
+EDGE-DASH 2||0|END
+LOKAD-SHAPE second|rectangle|END
+LOKAD-VALUE second|width|1172378|END
+LOKAD-VALUE second|height|433013|END
+LOKAD-VALUE second|depth|0|END
+LOKAD-VALUE second|linewidth|52429|END
+LOKAD-VALUE second|quad|655360|END
+LOKAD-VALUE second|xheight|282165|END
+LOKAD-VALUE second|innerx|218430|END
+LOKAD-VALUE second|innery|218430|END
+LOKAD-VALUE second|outerx|26214|END
+LOKAD-VALUE second|outery|26214|END
+LOKAD-VALUE second|minimumwidth|65536|END
+LOKAD-VALUE second|minimumheight|65536|END
+LOKAD-POINT second|southwest|-218430|-218430|END
+LOKAD-POINT second|northeast|1390808|651442|END
+LOKAD-FRAME second|1.0|0.0|0.0|1.0|96.05547pt|4.65979pt|END
+LOKAD-PATH 3|node-second||52429|END
+LOKAD-SEG 3|rectcorner|6076661|86954|END
+LOKAD-SEG 3|rectsize|1609238|869872|END
+LOKAD-PATH 4|drawing|draw,|52429|END
+LOKAD-SEG 4|move|516422|0|END
+LOKAD-SEG 4|line|3932160|0|END
+LOKAD-SEG 4|line|7864320|1310720|END
+EDGE-PAINT 4|stroke|52429|0|0|10|1|1|0,1,0|0,0,0|END
+EDGE-DASH 4||0|END
+LOKAD-SHAPE reuse|rectangle|END
+LOKAD-VALUE reuse|width|753662|END
+LOKAD-VALUE reuse|height|300368|END
+LOKAD-VALUE reuse|depth|127430|END
+LOKAD-VALUE reuse|linewidth|26214|END
+LOKAD-VALUE reuse|quad|655360|END
+LOKAD-VALUE reuse|xheight|282165|END
+LOKAD-VALUE reuse|innerx|218430|END
+LOKAD-VALUE reuse|innery|218430|END
+LOKAD-VALUE reuse|outerx|13107|END
+LOKAD-VALUE reuse|outery|13107|END
+LOKAD-VALUE reuse|minimumwidth|65536|END
+LOKAD-VALUE reuse|minimumheight|65536|END
+LOKAD-POINT reuse|southwest|-218430|-345860|END
+LOKAD-POINT reuse|northeast|972092|518798|END
+LOKAD-FRAME reuse|1.0|0.0|0.0|1.0|73.00296pt|2.6623pt|END
+LOKAD-PATH 5|node-reuse||26214|END
+LOKAD-SEG 5|rectcorner|4565892|-171384|END
+LOKAD-SEG 5|rectsize|1190522|864658|END
+LOKAD-PATH 6|drawing|draw,|26214|END
+LOKAD-SEG 6|move|2224291|0|END
+LOKAD-SEG 6|line|6881280|521890|END
+EDGE-PAINT 6|stroke|26214|0|0|10|1|1|0,0,0|0,0,0|END
+EDGE-DASH 6||0|END
+LOKAD-PATH 7|drawing|clip|26214|END
+LOKAD-SEG 7|move|655360|-5570560|END
+LOKAD-SEG 7|move|655360|-5570560|END
+LOKAD-SEG 7|line|655360|-1310720|END
+LOKAD-SEG 7|line|5898240|-1310720|END
+LOKAD-SEG 7|line|5898240|-5570560|END
+LOKAD-SEG 7|close|655360|-5570560|END
+LOKAD-SEG 7|move|5898240|-1310720|END
+LOKAD-SHAPE clipped|rectangle|END
+LOKAD-VALUE clipped|width|1172373|END
+LOKAD-VALUE clipped|height|458128|END
+LOKAD-VALUE clipped|depth|127430|END
+LOKAD-VALUE clipped|linewidth|26214|END
+LOKAD-VALUE clipped|quad|655360|END
+LOKAD-VALUE clipped|xheight|282165|END
+LOKAD-VALUE clipped|innerx|65536|END
+LOKAD-VALUE clipped|innery|65536|END
+LOKAD-VALUE clipped|outerx|13107|END
+LOKAD-VALUE clipped|outery|13107|END
+LOKAD-VALUE clipped|minimumwidth|65536|END
+LOKAD-VALUE clipped|minimumheight|65536|END
+LOKAD-POINT clipped|southwest|-65536|-192966|END
+LOKAD-POINT clipped|northeast|1237908|523664|END
+LOKAD-FRAME clipped|0.98634|0.16437|-0.16437|0.98634|50.66084pt|-28.36871pt|END
+
+LOKAD-PATH 8|node-clipped|fill,draw,|26214|END
+LOKAD-SEG 8|move|4455038|-1139188|END
+LOKAD-SEG 8|line|3169395|-1353432|END
+LOKAD-SEG 8|line|3287185|-2060274|END
+LOKAD-SEG 8|line|4572828|-1846030|END
+LOKAD-SEG 8|close|4455038|-1139188|END
+LOKAD-SEG 8|move|3287185|-2060274|END
+EDGE-PAINT 8|fillstroke|26214|0|0|10|1|1|0,0,1|1,1,1|END
+EDGE-DASH 8||0|END
+LOKAD-SHAPE continued|rectangle|END
+LOKAD-VALUE continued|width|1078132|END
+LOKAD-VALUE continued|height|458128|END
+LOKAD-VALUE continued|depth|0|END
+LOKAD-VALUE continued|linewidth|26214|END
+LOKAD-VALUE continued|quad|655360|END
+LOKAD-VALUE continued|xheight|282165|END
+LOKAD-VALUE continued|innerx|65536|END
+LOKAD-VALUE continued|innery|65536|END
+LOKAD-VALUE continued|outerx|13107|END
+LOKAD-VALUE continued|outery|13107|END
+LOKAD-VALUE continued|minimumwidth|65536|END
+LOKAD-VALUE continued|minimumheight|65536|END
+LOKAD-POINT continued|southwest|-65536|-65536|END
+LOKAD-POINT continued|northeast|1143668|523664|END
+LOKAD-FRAME continued|1.0|0.0|0.0|1.0|111.7745pt|-50.69048pt|END
+LOKAD-PATH 9|node-continued|fill,draw,|26214|END
+LOKAD-SEG 9|rectcorner|7259718|-3387587|END
+LOKAD-SEG 9|rectsize|1209204|589200|END
+EDGE-PAINT 9|fillstroke|26214|0|0|10|1|1|0,0,1|1,1,1|END
+EDGE-DASH 9||0|END
+LOKAD-PATH 10|drawing|draw,|26214|END
+LOKAD-SEG 10|move|0|-2621440|END
+LOKAD-SEG 10|line|7864320|-1310720|END
+LOKAD-SEG 10|line|7864320|-4259840|END
+EDGE-PAINT 10|stroke|26214|0|0|10|1|1|0,0,0|0,0,0|END
+EDGE-DASH 10||0|END
+LOKAD-PATH 11|drawing|clip|26214|END
+LOKAD-SEG 11|move|3276800|-4915200|END
+LOKAD-SEG 11|move|3276800|-4915200|END
+LOKAD-SEG 11|line|3276800|-1966080|END
+LOKAD-SEG 11|line|5242880|-1966080|END
+LOKAD-SEG 11|line|5242880|-4915200|END
+LOKAD-SEG 11|close|3276800|-4915200|END
+LOKAD-SEG 11|move|5242880|-1966080|END
+LOKAD-SHAPE nested|rectangle|END
+LOKAD-VALUE nested|width|1354497|END
+LOKAD-VALUE nested|height|433013|END
+LOKAD-VALUE nested|depth|0|END
+LOKAD-VALUE nested|linewidth|26214|END
+LOKAD-VALUE nested|quad|655360|END
+LOKAD-VALUE nested|xheight|282165|END
+LOKAD-VALUE nested|innerx|65536|END
+LOKAD-VALUE nested|innery|65536|END
+LOKAD-VALUE nested|outerx|13107|END
+LOKAD-VALUE nested|outery|13107|END
+LOKAD-VALUE nested|minimumwidth|65536|END
+LOKAD-VALUE nested|minimumheight|65536|END
+LOKAD-POINT nested|southwest|-65536|-65536|END
+LOKAD-POINT nested|northeast|1420032|498548|END
+LOKAD-FRAME nested|1.0|0.0|0.0|1.0|49.66602pt|-63.30362pt|END
+LOKAD-PATH 12|node-nested|fill,draw,|26214|END
+LOKAD-SEG 12|rectcorner|3189376|-4214202|END
+LOKAD-SEG 12|rectsize|1485568|564084|END
+EDGE-PAINT 12|fillstroke|26214|0|0|10|1|1|0,0,1|1,1,1|END
+EDGE-DASH 12||0|END
+LOKAD-PATH 13|drawing|draw,|26214|END
+LOKAD-SEG 13|move|1966080|-3932160|END
+LOKAD-SEG 13|line|5898240|-3932160|END
+EDGE-PAINT 13|stroke|26214|0|0|10|1|1|0,0,0|0,0,0|END
+EDGE-DASH 13||0|END
+LOKAD-SHAPE escaped|rectangle|END
+LOKAD-VALUE escaped|width|1231551|END
+LOKAD-VALUE escaped|height|458128|END
+LOKAD-VALUE escaped|depth|0|END
+LOKAD-VALUE escaped|linewidth|26214|END
+LOKAD-VALUE escaped|quad|655360|END
+LOKAD-VALUE escaped|xheight|282165|END
+LOKAD-VALUE escaped|innerx|65536|END
+LOKAD-VALUE escaped|innery|65536|END
+LOKAD-VALUE escaped|outerx|13107|END
+LOKAD-VALUE escaped|outery|13107|END
+LOKAD-VALUE escaped|minimumwidth|65536|END
+LOKAD-VALUE escaped|minimumheight|65536|END
+LOKAD-POINT escaped|southwest|-65536|-65536|END
+LOKAD-POINT escaped|northeast|1297086|523664|END
+LOKAD-FRAME escaped|1.0|0.0|0.0|1.0|50.60402pt|-103.8pt|END
+LOKAD-PATH 14|node-escaped|fill,draw,|26214|END
+LOKAD-SEG 14|rectcorner|3250849|-6868173|END
+LOKAD-SEG 14|rectsize|1362622|589200|END
+EDGE-PAINT 14|fillstroke|26214|0|0|10|1|1|0,0,1|1,1,1|END
+EDGE-DASH 14||0|END
+LOKAD-PATH 15|drawing|draw,|26214|END
+LOKAD-SEG 15|move|0|-6881280|END
+LOKAD-SEG 15|line|7864320|-6881280|END
+EDGE-PAINT 15|stroke|26214|0|0|10|1|1|0,0,0|0,0,0|END
+EDGE-DASH 15||0|END
+LOKAD-BOUNDS -516422|-6894387|7890534|1336934|END
+(probes.tex
+LOKAD-ANCHOR seed|text|-284885|-229064|END
+LOKAD-ANCHOR seed|center|0|0|END
+LOKAD-ANCHOR seed|north|0|460601|END
+LOKAD-ANCHOR seed|south|0|-460601|END
+LOKAD-ANCHOR seed|west|-516422|0|END
+LOKAD-ANCHOR seed|east|516422|0|END
+LOKAD-ANCHOR seed|north west|-516422|460601|END
+LOKAD-ANCHOR seed|north east|516422|460601|END
+LOKAD-ANCHOR seed|south west|-516422|-460601|END
+LOKAD-ANCHOR seed|south east|516422|-460601|END
+LOKAD-ANCHOR seed|base|0|-229064|END
+LOKAD-ANCHOR seed|base west|-516422|-229064|END
+LOKAD-ANCHOR seed|base east|516422|-229064|END
+LOKAD-ANCHOR seed|mid|0|-87982|END
+LOKAD-ANCHOR seed|mid west|-516422|-87982|END
+LOKAD-ANCHOR seed|mid east|516422|-87982|END
+LOKAD-ANCHOR first|text|1653801|91750|END
+LOKAD-ANCHOR first|center|2224291|241934|END
+LOKAD-ANCHOR first|north|2224291|483868|END
+LOKAD-ANCHOR first|south|2224291|0|END
+LOKAD-ANCHOR first|west|1562051|241934|END
+LOKAD-ANCHOR first|east|2886531|241934|END
+LOKAD-ANCHOR first|north west|1562051|483868|END
+LOKAD-ANCHOR first|north east|2886531|483868|END
+LOKAD-ANCHOR first|south west|1562051|0|END
+LOKAD-ANCHOR first|south east|2886531|0|END
+LOKAD-ANCHOR first|base|2224291|91750|END
+LOKAD-ANCHOR first|base west|1562051|91750|END
+LOKAD-ANCHOR first|base east|2886531|91750|END
+LOKAD-ANCHOR first|mid|2224291|232832|END
+LOKAD-ANCHOR first|mid west|1562051|232832|END
+LOKAD-ANCHOR first|mid east|2886531|232832|END
+LOKAD-ANCHOR second|text|6295091|305384|END
+LOKAD-ANCHOR second|center|6881280|521890|END
+LOKAD-ANCHOR second|north|6881280|983040|END
+LOKAD-ANCHOR second|south|6881280|60740|END
+LOKAD-ANCHOR second|west|6050447|521890|END
+LOKAD-ANCHOR second|east|7712113|521890|END
+LOKAD-ANCHOR second|north west|6050447|983040|END
+LOKAD-ANCHOR second|north east|7712113|983040|END
+LOKAD-ANCHOR second|south west|6050447|60740|END
+LOKAD-ANCHOR second|south east|7712113|60740|END
+LOKAD-ANCHOR second|base|6881280|305384|END
+LOKAD-ANCHOR second|base west|6050447|305384|END
+LOKAD-ANCHOR second|base east|7712113|305384|END
+LOKAD-ANCHOR second|mid|6881280|446466|END
+LOKAD-ANCHOR second|mid west|6050447|446466|END
+LOKAD-ANCHOR second|mid east|7712113|446466|END
+LOKAD-ANCHOR reuse|text|4784322|174476|END
+LOKAD-ANCHOR reuse|center|5161153|260945|END
+LOKAD-ANCHOR reuse|north|5161153|706381|END
+LOKAD-ANCHOR reuse|south|5161153|-184491|END
+LOKAD-ANCHOR reuse|west|4552785|260945|END
+LOKAD-ANCHOR reuse|east|5769521|260945|END
+LOKAD-ANCHOR reuse|north west|4552785|706381|END
+LOKAD-ANCHOR reuse|north east|5769521|706381|END
+LOKAD-ANCHOR reuse|south west|4552785|-184491|END
+LOKAD-ANCHOR reuse|south east|5769521|-184491|END
+LOKAD-ANCHOR reuse|base|5161153|174476|END
+LOKAD-ANCHOR reuse|base west|4552785|174476|END
+LOKAD-ANCHOR reuse|base east|5769521|174476|END
+LOKAD-ANCHOR reuse|mid|5161153|315558|END
+LOKAD-ANCHOR reuse|mid west|4552785|315558|END
+LOKAD-ANCHOR reuse|mid east|5769521|315558|END
+LOKAD-ANCHOR clipped|text|3320109|-1859172|END
+LOKAD-ANCHOR clipped|center|3871111|-1599732|END
+LOKAD-ANCHOR clipped|north|3810062|-1233382|END
+LOKAD-ANCHOR clipped|south|3932160|-1966080|END
+LOKAD-ANCHOR clipped|west|3215362|-1709008|END
+LOKAD-ANCHOR clipped|east|4526861|-1490456|END
+LOKAD-ANCHOR clipped|north west|3154313|-1342658|END
+LOKAD-ANCHOR clipped|north east|4465812|-1124106|END
+LOKAD-ANCHOR clipped|south west|3276411|-2075356|END
+LOKAD-ANCHOR clipped|south east|4587910|-1856804|END
+LOKAD-ANCHOR clipped|base|3898289|-1762822|END
+LOKAD-ANCHOR clipped|base west|3242540|-1872098|END
+LOKAD-ANCHOR clipped|base east|4554039|-1653546|END
+LOKAD-ANCHOR clipped|mid|3875100|-1623667|END
+LOKAD-ANCHOR clipped|mid west|3219351|-1732943|END
+LOKAD-ANCHOR clipped|mid east|4530850|-1514391|END
+LOKAD-ANCHOR continued|text|7325254|-3322051|END
+LOKAD-ANCHOR continued|center|7864320|-3092987|END
+LOKAD-ANCHOR continued|north|7864320|-2785280|END
+LOKAD-ANCHOR continued|south|7864320|-3400694|END
+LOKAD-ANCHOR continued|west|7246611|-3092987|END
+LOKAD-ANCHOR continued|east|8482029|-3092987|END
+LOKAD-ANCHOR continued|north west|7246611|-2785280|END
+LOKAD-ANCHOR continued|north east|8482029|-2785280|END
+LOKAD-ANCHOR continued|south west|7246611|-3400694|END
+LOKAD-ANCHOR continued|south east|8482029|-3400694|END
+LOKAD-ANCHOR continued|base|7864320|-3322051|END
+LOKAD-ANCHOR continued|base west|7246611|-3322051|END
+LOKAD-ANCHOR continued|base east|8482029|-3322051|END
+LOKAD-ANCHOR continued|mid|7864320|-3180969|END
+LOKAD-ANCHOR continued|mid west|7246611|-3180969|END
+LOKAD-ANCHOR continued|mid east|8482029|-3180969|END
+LOKAD-ANCHOR nested|text|3254912|-4148666|END
+LOKAD-ANCHOR nested|center|3932160|-3932160|END
+LOKAD-ANCHOR nested|north|3932160|-3637011|END
+LOKAD-ANCHOR nested|south|3932160|-4227309|END
+LOKAD-ANCHOR nested|west|3176269|-3932160|END
+LOKAD-ANCHOR nested|east|4688051|-3932160|END
+LOKAD-ANCHOR nested|north west|3176269|-3637011|END
+LOKAD-ANCHOR nested|north east|4688051|-3637011|END
+LOKAD-ANCHOR nested|south west|3176269|-4227309|END
+LOKAD-ANCHOR nested|south east|4688051|-4227309|END
+LOKAD-ANCHOR nested|base|3932160|-4148666|END
+LOKAD-ANCHOR nested|base west|3176269|-4148666|END
+LOKAD-ANCHOR nested|base east|4688051|-4148666|END
+LOKAD-ANCHOR nested|mid|3932160|-4007584|END
+LOKAD-ANCHOR nested|mid west|3176269|-4007584|END
+LOKAD-ANCHOR nested|mid east|4688051|-4007584|END
+LOKAD-ANCHOR escaped|text|3316385|-6802637|END
+LOKAD-ANCHOR escaped|center|3932160|-6573573|END
+LOKAD-ANCHOR escaped|north|3932160|-6265866|END
+LOKAD-ANCHOR escaped|south|3932160|-6881280|END
+LOKAD-ANCHOR escaped|west|3237742|-6573573|END
+LOKAD-ANCHOR escaped|east|4626578|-6573573|END
+LOKAD-ANCHOR escaped|north west|3237742|-6265866|END
+LOKAD-ANCHOR escaped|north east|4626578|-6265866|END
+LOKAD-ANCHOR escaped|south west|3237742|-6881280|END
+LOKAD-ANCHOR escaped|south east|4626578|-6881280|END
+LOKAD-ANCHOR escaped|base|3932160|-6802637|END
+LOKAD-ANCHOR escaped|base west|3237742|-6802637|END
+LOKAD-ANCHOR escaped|base east|4626578|-6802637|END
+LOKAD-ANCHOR escaped|mid|3932160|-6661555|END
+LOKAD-ANCHOR escaped|mid west|3237742|-6661555|END
+LOKAD-ANCHOR escaped|mid east|4626578|-6661555|END
+))
+LOKAD-BOX 8406956|8231321|0|END
+
+[1
+LOKAD-PDF-PAGE 8799518|35987785|39321600|52428800|END
+EDGE-ORDER 1|END
+{<local>/pdftex.map}{<local>/lm-ec.enc}
+EDGE-ORDER 4|END
+EDGE-ORDER 2|END
+EDGE-ORDER 3|END
+EDGE-ORDER 6|END
+EDGE-ORDER 5|END
+EDGE-ORDER 7|END
+EDGE-ORDER 10|END
+EDGE-ORDER 8|END
+EDGE-ORDER 9|END
+EDGE-ORDER 11|END
+EDGE-ORDER 13|END
+EDGE-ORDER 12|END
+EDGE-ORDER 15|END
+EDGE-ORDER 14|END
+] (case.aux) )<<local>/lmbx10.pfb>
+Output written on case.pdf (1 page, 26824 bytes).
+Transcript written on case.log.

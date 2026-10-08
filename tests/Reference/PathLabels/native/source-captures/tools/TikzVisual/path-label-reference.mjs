@@ -9,9 +9,14 @@ import {edgeAnchors,edgeWrapper,edgeHooks,edgeCanonical,edgeSanitize,edgePdfPage
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 import {parsePathLabelNative,pathLabelPhysicalCalls,pathLabelDriverState} from './path-label-native.mjs';
 
-assert.equal(process.argv.length,2,'Usage: node tools/TikzVisual/path-label-reference.mjs');
-const source='tests/Fixtures/PathLabels/placement.tikz',ids=['straight','quarter','reverse','inverted','bend','absolute','from','target','border','reset','full','zero','one'];
-const definition={id:'placement',nodes:ids.map(id=>({id,shape:'rectangle'})),coordinates:[]};
+assert.ok(process.argv.length===2||process.argv.length===3,'Usage: node tools/TikzVisual/path-label-reference.mjs [placement|interactions]');
+const cases={
+ placement:['straight','quarter','reverse','inverted','bend','absolute','from','target','border','reset','full','zero','one'],
+ interactions:['seed','first','second','reuse','clipped','continued','nested','escaped']
+};
+const id=process.argv[2]??'placement';assert.ok(Object.hasOwn(cases,id),'Only fixed trusted repository fixtures are accepted.');
+const source='tests/Fixtures/PathLabels/'+id+'.tikz',ids=cases[id];
+const definition={id,nodes:ids.map(id=>({id,shape:'rectangle'})),coordinates:[]};
 const output=path.join(root,'artifacts/path-label-reference/run-'+randomUUID()),artifacts={},commands=[];
 const save=(p,b)=>writeArtifact(output,p,b,artifacts),json=(p,v)=>save(p,JSON.stringify(v,null,2)+'\n');
 let phase='inputs';

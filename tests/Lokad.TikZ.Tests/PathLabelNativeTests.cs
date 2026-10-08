@@ -9,13 +9,30 @@ namespace Lokad.TikZ.Tests;
 
 public sealed class PathLabelNativeTests
 {
-    [Fact]
-    public void Current_labels_match_original_native_glyphs_paint_and_physical_order()
+    [Theory]
+    [InlineData("placement", 1070)]
+    [InlineData("interactions", 674)]
+    public void Current_labels_match_original_native_glyphs_paint_and_physical_order(string id, int expectedChecks)
     {
-        using var fixture = Read();
+        using var fixture = Read(id);
         var checks = fixture.Compare();
-        Assert.Equal(1056, checks.Length);
+        Assert.Equal(expectedChecks, checks.Length);
         Assert.All(checks, check => Assert.True(check.Passed, check.Quantity + ": " + check.Expected + " != " + check.Actual));
+    }
+
+    [Theory]
+    [InlineData("clipped")]
+    [InlineData("nested")]
+    [InlineData("escaped")]
+    public void Native_glyph_clip_chains_detect_missing_or_leaked_scope_clips(string name)
+    {
+        using var fixture = Read("interactions");
+        var scene = fixture.Scene;
+        var id = scene.Nodes.FindIndex(n => n.Name == name);
+        var index = scene.Drawables.FindIndex(d => d is PaintedGlyphRun r && r.NodeId == id);
+        var run = (PaintedGlyphRun)scene.Drawables[index];
+        scene.Drawables[index] = run with { Clips = name == "escaped" ? [0] : [] };
+        Assert.Contains(fixture.Compare(), c => !c.Passed && c.Quantity == name + ".glyphClips");
     }
 
     [Theory]
@@ -62,9 +79,9 @@ public sealed class PathLabelNativeTests
         public void Dispose() => Native.Dispose();
     }
 
-    private static Fixture Read()
+    private static Fixture Read(string id = "placement")
     {
-        var folder = Path.Combine(AppContext.BaseDirectory, "Reference/PathLabels/native");
+        var folder = Path.Combine(AppContext.BaseDirectory, "Reference/PathLabels", id == "placement" ? "native" : "interactions-native");
         var native = JsonDocument.Parse(File.ReadAllText(Path.Combine(folder, "metrics.json")));
         var ids = native.RootElement.GetProperty("nodes").EnumerateArray().Select(n => n.GetProperty("id").GetString()!).ToArray();
         var svg = File.ReadAllText(Path.Combine(folder, "probed-reference.svg"));
@@ -72,7 +89,7 @@ public sealed class PathLabelNativeTests
             File.ReadAllText(Path.Combine(folder, "source-captures/tools/TikzFontData/font-profile.json")), ids, svg,
             Directory.GetFiles(Path.Combine(folder, "fonts"), "*.tfm").ToDictionary(f => Path.GetFileName(f), File.ReadAllBytes));
         GraphicsScene? scene = null;
-        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/PathLabels/placement.tikz"));
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/PathLabels/" + id + ".tikz"));
         var result = Assert.IsType<TikzSuccess>(TikzConverter.ConvertWithTrace(source, TikzOptions.Default,
             CancellationToken.None, value => scene = value));
         return new(scene!, result, native, glyphs, svg);

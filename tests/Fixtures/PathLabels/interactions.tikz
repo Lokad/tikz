@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+  \tikzset{tag/.style={draw=blue,fill=white,text=red,inner sep=1pt},every node/.style={font=\bfseries}}
+  \node[draw] (seed) at (0pt,0pt) {A};
+  \draw[draw=green,line width=.8pt] (seed)
+    -- node[tag,above] (first) {one} (60pt,0pt)
+    -- node[pos=.75,below] (second) {two} (120pt,20pt);
+  \draw (first.south) -- node[midway,right] (reuse) {go} (second.center);
+  \begin{scope}
+    \clip (10pt,-85pt) rectangle (90pt,-20pt);
+    \draw (0pt,-40pt)
+      -- node[tag,sloped,above] (clipped) {clip} (120pt,-20pt)
+      -- node[tag,below] (continued) {tail} (120pt,-65pt);
+    \begin{scope}
+      \clip (50pt,-75pt) rectangle (80pt,-30pt);
+      \draw (30pt,-60pt) -- node[tag] (nested) {nest} (90pt,-60pt);
+    \end{scope}
+  \end{scope}
+  \draw (0pt,-105pt) -- node[tag,above] (escaped) {free} (120pt,-105pt);
+\end{tikzpicture}

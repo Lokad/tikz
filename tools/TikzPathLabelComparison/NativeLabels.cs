@@ -23,10 +23,12 @@ internal static class NativeLabels
         var paints = native.GetProperty("driverState").GetProperty("paints").EnumerateArray().ToArray();
         var doc = XDocument.Parse(originalSvg);
         var nativeUses = doc.Descendants().Where(e => e.Name.LocalName == "use").ToArray();
+        var nativeClips = doc.Descendants().Where(e => e.Name.LocalName == "clipPath").Select(e => e.Attribute("id")!.Value).ToArray();
         var firstGlyph = 0;
         Equal("nodes", nodes.Length, scene.Nodes.Count);
         Equal("glyphs", glyphs.Nodes.Sum(n => n.Glyphs.Length), result.Statistics.Glyphs);
         Equal("paintedPaths", paints.Length, scene.Paths.Count);
+        Equal("clipPaths", nativeClips.Length, scene.Clips.Count);
         for (var i = 0; i < Math.Min(nodes.Length, scene.Nodes.Count); i++)
         {
             var actual = scene.Nodes[i]; var n = nodes[i]; var id = n.GetProperty("id").GetString()!;
@@ -50,6 +52,11 @@ internal static class NativeLabels
             var nodeFirstGlyph = firstGlyph;
             firstGlyph += expectedGlyphs.Length;
             if (run is null) continue;
+            var expectedClips = nativeUses[nodeFirstGlyph].AncestorsAndSelf().Reverse()
+                .Select(e => e.Attribute("clip-path")?.Value).Where(value => value is not null)
+                .Select(value => Array.IndexOf(nativeClips, value![5..^1])).ToArray();
+            if (expectedClips.Any(id => id < 0)) throw new InvalidDataException("Unowned native glyph clip.");
+            Equal(id + ".glyphClips", string.Join(",", expectedClips), string.Join(",", run.Clips), origin.Location);
             for (var j = 0; j < Math.Min(run.Glyphs.Length, expectedGlyphs.Length); j++)
             {
                 var g = run.Glyphs[j]; var wanted = expectedGlyphs[j]; var prefix = id + ".glyph." + j;

@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 1,
+  "role": "path-label-native-reference",
+  "completed": true,
+  "phase": "complete",
+  "converterInvoked": false,
+  "nativeToolInvoked": true,
+  "approvedImagePolicy": false,
+  "imageConformanceClaim": false,
+  "imageAdmission": "pending",
+  "artifacts": {
+    "commands/identity-latex.log": "847e69f5ea478292fb740ba2748931792ffcd72dcc4ac3de985546db0df2c36e",
+    "commands/identity-pdflatex.log": "847e69f5ea478292fb740ba2748931792ffcd72dcc4ac3de985546db0df2c36e",
+    "commands/identity-dvisvgm.log": "fca0cdb624038e058a98b89690167149b1c07b3c9c911b00bd49ddcd07e0cf24",
+    "commands/identity-dvitype.log": "cd968485e55b2b70a43a7403877f7d76a3e5741065604db9d5be33010ed9efef",
+    "commands/identity-pdftoppm.log": "63117823706c0f59887a865ea3726a11afd2d38914aad2005d3a82731e5508ea",
+    "source-captures/tests/Fixtures/PathLabels/interactions.tikz": "1dd3861c5956a1c2629829d2b5370b06c274294452c94032e8587f7039a0e9a0",
+    "source-captures/tools/TikzLabelledBorderReference/labelled-borders.tex": "d54d35fa6c9dddd143b6ebf9ca56c425f9b0f4d00e190ead2b74d32dd0b127b4",
+    "source-captures/tools/TikzEdgeReference/edge-hooks.tex": "527c300a6d9b94a4dbb5efacf58c9495dc8964e899dea96b7f4d785ee965b4c7",
+    "source-captures/tools/TikzVisual/path-label-reference.mjs": "0f2fed474be9118472fc0c24f075eaa888204c08e76433884e34b1a825a3231c",
+    "source-captures/tools/TikzVisual/path-label-native.mjs": "bf922770354ce885a5aecb7fa7ea107fac3bae339f1ad2f7cf5fb4a8f5794b2f",
+    "source-captures/tools/TikzVisual/qualification-process.mjs": "bf9cb0795e91d6998a6af4f56d5b5494988a214eb765ce683468350710f14727",
+    "source-captures/tools/TikzVisual/edge-log.mjs": "da9ad234192ac7296362d7c9b76a9b75bf3ce19044cecd78b32d4a2f9ce8d6e2",
+    "source-captures/tools/TikzVisual/edge-replay.mjs": "c51334cbe7803a872b0bed7ab0007005b20ab5248452fcc1a8d79bac86a5c067",
+    "source-captures/tools/TikzVisual/edge-driver-state.mjs": "c4644552717e8bfc5791de6ba810bbed91d5ea3b13968beea30cb9db3c887e47",
+    "source-captures/tools/TikzFontData/font-profile.json": "0f1fd5e433f78ca8e21ebbc12045ee96259316235aa25e4e3758b96561000fe9",
+    "fonts/ec-lmr10.tfm": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5",
+    "fonts/ec-lmbx10.tfm": "0895c940bd2e763b70dcab18ebf27fd3f93c2490f43b2a8c028fc7fc24b2e855",
+    "fonts/ec-lmri10.tfm": "372f968b4eeb47bf6a6c941c8793bce118d1800f12e194a351c7493ecc158f2a",
+    "fonts/ec-lmr12.tfm": "299021120f0a29ef61278a2363903bd8defbb8faaade458eb79067342aecb56f",
+    "fonts/ec-lmbx12.tfm": "d19c45859d453c0802699d27aa2bff735574b9bc97d8791aa76e3c7de6c38a36",
+    "fonts/ec-lmri12.tfm": "879072f2a2086f46e61934977f2e919bb6f196c08442b5b62242e78e576820ce",
+    "probes.tex": "d9cb900d4842f3ec1d60438dc26fa9904dd180483cf12838e698a005a6d79bd7",
+    "svg-wrapper.tex": "06bf7bf88e8092a135a87a940e427eb2ee455854963bd6c76e0b94fe62e620ef",
+    "pdf-wrapper.tex": "3804b6dd96e89078e9bd8c93e43fc0b1b9b27f0d43ccff764323c68210831ecf",
+    "commands/svg-plain-compile.log": "2cbac2920989a89d12c49f29f8f10167cb98131b492f1751658a293ce469d38e",
+    "svg-plain.log": "36da2a1e2f0c070e49e987d550edf83e148751684686d504edd0478f8b599a2b",
+    "svg-plain-inputs.json": "46d1f33579a8bc2fa2d724fdb811552c2019116af7fe0024f8e5b0e7dde0213f",
+    "commands/svg-plain-outline.log": "3a697c12e0eec0ef92ca7b168af20264e21ce7dbe2ce635db7acf6540e1fcbc3",
+    "plain-reference.svg": "9cfa2dfe76372cdf4179b584fab331c6d4fdb965916fb48213a20e106e2cf1da",
+    "commands/svg-probed-compile.log": "713458c569cb57e5ed50b7f415aa63d9b68afdcec6529c92a07e37f4ee533b2c",
+    "svg-probed.log": "3423dc2c677487bdcfb85e050583005b13627148c168da9f1dbfae7f18ee9db5",
+    "svg-probed-inputs.json": "46d1f33579a8bc2fa2d724fdb811552c2019116af7fe0024f8e5b0e7dde0213f",
+    "commands/svg-probed-outline.log": "3f4195ab54bdf38ad0535b657473ab1e4c32e3101211791e09597dc39110aa9f",
+    "probed-reference.svg": "9cfa2dfe76372cdf4179b584fab331c6d4fdb965916fb48213a20e106e2cf1da",
+    "commands/glyph-trace.log": "3e9505d624dde803c7b317c7d7f96322dc191ce5dd3485bcbaae78c6df613edf",
+    "native-positions.log": "3e9505d624dde803c7b317c7d7f96322dc191ce5dd3485bcbaae78c6df613edf",
+    "commands/pdf-plain-compile.log": "f56b97cb2c10d215da23d92ed238eaf899bb4de0e683c1f24949c8ccb619e9f6",
+    "pdf-plain.log": "528868271846fd839a3c1337c65c54d3323d3883b922ef7bb83e8f3212ade6b3",
+    "pdf-plain-inputs.json": "a5c239b0307a55bcc12bed68b59dedd1b6daf70e252251659e8d762c06c17553",
+    "plain-reference.pdf": "58cf53bc69e599f927b3726b3e828fdd5442d881344028c88c77f502bf70f709",
+    "commands/pdf-plain-1x.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "plain-pdf-page-1x.png": "bf0cdbe7ac0de8656f6952dc4e995a00e3f83615968b02b4feded74d808b8255",
+    "commands/pdf-plain-4x.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "plain-pdf-page-4x.png": "dc01a7f77785b0c4144989b3d9e2085f69e3b13b43f63974e367c748da48f46b",
+    "commands/pdf-probed-compile.log": "8879ad31de943981cc59882dab8ccab7f412db773759e820ce258c7082609c21",
+    "pdf-probed.log": "355c64840fe207079c3448f63decac13dcb6591ff633587a09e08804623b9ca8",
+    "pdf-probed-inputs.json": "a5c239b0307a55bcc12bed68b59dedd1b6daf70e252251659e8d762c06c17553",
+    "probed-reference.pdf": "58cf53bc69e599f927b3726b3e828fdd5442d881344028c88c77f502bf70f709",
+    "commands/pdf-probed-1x.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "probed-pdf-page-1x.png": "bf0cdbe7ac0de8656f6952dc4e995a00e3f83615968b02b4feded74d808b8255",
+    "commands/pdf-probed-4x.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "probed-pdf-page-4x.png": "dc01a7f77785b0c4144989b3d9e2085f69e3b13b43f63974e367c748da48f46b",
+    "metrics.json": "0f215a0cc0ef767e6adbf171966ea1eb9dc15dac132a89de42ea3fa12e0f220a"
+  },
+  "commands": [
+    {
+      "tag": "identity-latex",
+      "executable": "latex.exe",
+      "args": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "identity-pdflatex",
+      "executable": "pdflatex.exe",
+      "args": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "identity-dvisvgm",
+      "executable": "dvisvgm.exe",
+      "args": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "identity-dvitype",
+      "executable": "dvitype.exe",
+      "args": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "identity-pdftoppm",
+      "executable": "pdftoppm.exe",
+      "args": [
+        "-v"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "svg-plain-compile",
+      "executable": "latex.exe",
+      "args": [
+        "-disable-write18",
+        "-disable-installer",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "case.tex"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "svg-plain-outline",
+      "executable": "dvisvgm.exe",
+      "args": [
+        "--no-fonts",
+        "--exact-bbox",
+        "--bbox=min",
+        "--page=1",
+        "--output=reference.svg",
+        "case.dvi"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "svg-probed-compile",
+      "executable": "latex.exe",
+      "args": [
+        "-disable-write18",
+        "-disable-installer",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "case.tex"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "svg-probed-outline",
+      "executable": "dvisvgm.exe",
+      "args": [
+        "--no-fonts",
+        "--exact-bbox",
+        "--bbox=min",
+        "--page=1",
+        "--output=reference.svg",
+        "case.dvi"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "glyph-trace",
+      "executable": "dvitype.exe",
+      "args": [
+        "-disable-installer",
+        "-out-mode=4",
+        "case.dvi"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "pdf-plain-compile",
+      "executable": "pdflatex.exe",
+      "args": [
+        "-disable-write18",
+        "-disable-installer",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "case.tex"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "pdf-plain-1x",
+      "executable": "pdftoppm.exe",
+      "args": [
+        "-png",
+        "-r",
+        "96",
+        "-f",
+        "1",
+        "-singlefile",
+        "case.pdf",
+        "page-1x"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "pdf-plain-4x",
+      "executable": "pdftoppm.exe",
+      "args": [
+        "-png",
+        "-r",
+        "384",
+        "-f",
+        "1",
+        "-singlefile",
+        "case.pdf",
+        "page-4x"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "pdf-probed-compile",
+      "executable": "pdflatex.exe",
+      "args": [
+        "-disable-write18",
+        "-disable-installer",
+        "-interaction=nonstopmode",
+        "-halt-on-error",
+        "-recorder",
+        "case.tex"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "pdf-probed-1x",
+      "executable": "pdftoppm.exe",
+      "args": [
+        "-png",
+        "-r",
+        "96",
+        "-f",
+        "1",
+        "-singlefile",
+        "case.pdf",
+        "page-1x"
+      ],
+      "exitCode": 0,
+      "failure": null
+    },
+    {
+      "tag": "pdf-probed-4x",
+      "executable": "pdftoppm.exe",
+      "args": [
+        "-png",
+        "-r",
+        "384",
+        "-f",
+        "1",
+        "-singlefile",
+        "case.pdf",
+        "page-4x"
+      ],
+      "exitCode": 0,
+      "failure": null
+    }
+  ],
+  "sourceHashes": {
+    "tests/Fixtures/PathLabels/interactions.tikz": "1dd3861c5956a1c2629829d2b5370b06c274294452c94032e8587f7039a0e9a0",
+    "tools/TikzLabelledBorderReference/labelled-borders.tex": "d54d35fa6c9dddd143b6ebf9ca56c425f9b0f4d00e190ead2b74d32dd0b127b4",
+    "tools/TikzEdgeReference/edge-hooks.tex": "527c300a6d9b94a4dbb5efacf58c9495dc8964e899dea96b7f4d785ee965b4c7",
+    "tools/TikzVisual/path-label-reference.mjs": "0f2fed474be9118472fc0c24f075eaa888204c08e76433884e34b1a825a3231c",
+    "tools/TikzVisual/path-label-native.mjs": "bf922770354ce885a5aecb7fa7ea107fac3bae339f1ad2f7cf5fb4a8f5794b2f",
+    "tools/TikzVisual/qualification-process.mjs": "bf9cb0795e91d6998a6af4f56d5b5494988a214eb765ce683468350710f14727",
+    "tools/TikzVisual/edge-log.mjs": "da9ad234192ac7296362d7c9b76a9b75bf3ce19044cecd78b32d4a2f9ce8d6e2",
+    "tools/TikzVisual/edge-replay.mjs": "c51334cbe7803a872b0bed7ab0007005b20ab5248452fcc1a8d79bac86a5c067",
+    "tools/TikzVisual/edge-driver-state.mjs": "c4644552717e8bfc5791de6ba810bbed91d5ea3b13968beea30cb9db3c887e47",
+    "tools/TikzFontData/font-profile.json": "0f1fd5e433f78ca8e21ebbc12045ee96259316235aa25e4e3758b96561000fe9"
+  },
+  "tools": {
+    "latex": {
+      "version": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+      "sha256": "37659e30ba4537584b6418de22ce310247128edbc1481fc97fd9b24260f11caf"
+    },
+    "pdflatex": {
+      "version": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+      "sha256": "37659e30ba4537584b6418de22ce310247128edbc1481fc97fd9b24260f11caf"
+    },
+    "dvisvgm": {
+      "version": "dvisvgm 3.4.3",
+      "sha256": "74a03e974afc08f5b24417bbe08af792be6634eacfa16c1ce6f870cad95f53fa"
+    },
+    "dvitype": {
+      "version": "This is DVItype, Version 3.6 (MiKTeX 25.4)",
+      "sha256": "53da4ba9cfc7bcd84b820b5bd22a9177b9cae171f4224c001963661076d8cafb"
+    },
+    "pdftoppm": {
+      "version": "pdftoppm version 24.04.0",
+      "sha256": "339a5bbff0b0a1427253268043ab48bca3f677acc040f32435d171b6cefd8949"
+    }
+  },
+  "definition": {
+    "id": "interactions",
+    "nodes": [
+      {
+        "id": "seed",
+        "shape": "rectangle"
+      },
+      {
+        "id": "first",
+        "shape": "rectangle"
+      },
+      {
+        "id": "second",
+        "shape": "rectangle"
+      },
+      {
+        "id": "reuse",
+        "shape": "rectangle"
+      },
+      {
+        "id": "clipped",
+        "shape": "rectangle"
+      },
+      {
+        "id": "continued",
+        "shape": "rectangle"
+      },
+      {
+        "id": "nested",
+        "shape": "rectangle"
+      },
+      {
+        "id": "escaped",
+        "shape": "rectangle"
+      }
+    ],
+    "coordinates": []
+  },
+  "pdfPage": {
+    "boxXSp": 8799518,
+    "boxBaselineYSp": 35987785,
+    "widthSp": 39321600,
+    "heightSp": 52428800
+  },
+  "invariance": {
+    "svgDrawing": true,
+    "pdfBytes": true,
+    "pdfPixels": true
+  },
+  "counts": {
+    "nodes": 8,
+    "pathCalls": 15,
+    "paintedPaths": 11,
+    "anchors": 128
+  }
+}

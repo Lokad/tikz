@@ -41,7 +41,9 @@ try
     var fonts = r.GetProperty("artifacts").EnumerateObject().Where(a => a.Name.StartsWith("fonts/", StringComparison.Ordinal))
         .ToDictionary(a => Path.GetFileName(a.Name), a => Read(a.Name), StringComparer.Ordinal);
     var glyphs = NativeGlyphTrace.Read(Encoding.UTF8.GetString(Read("native-positions.log")), fontProfile, ids, svg, fonts);
-    const string sourceFile = "tests/Fixtures/PathLabels/placement.tikz";
+    var fixture = r.GetProperty("definition").GetProperty("id").GetString();
+    if (fixture is not ("placement" or "interactions")) throw new InvalidDataException("Only fixed trusted repository fixtures are accepted.");
+    var sourceFile = "tests/Fixtures/PathLabels/" + fixture + ".tikz";
     var sourceBytes = await File.ReadAllBytesAsync(Path.Combine(root, sourceFile));
     var source = Encoding.UTF8.GetString(sourceBytes);
     if (Hash(Encoding.UTF8.GetBytes(source.Replace("\r\n", "\n"))) != r.GetProperty("sourceHashes").GetProperty(sourceFile).GetString())

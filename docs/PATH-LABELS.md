@@ -38,10 +38,17 @@ and independently check glyph slots, positions, transformed baselines, effective
 paint and physical order. Original diagram sources also parse their attached labels.
 The three complete diagrams currently fail later at the `positioning` library.
 
+The [interaction fixture](../tests/Fixtures/PathLabels/interactions.tikz) adds
+continued segments, reuse of named-label anchors, bold `every node` styling,
+colored label backgrounds/text, and two nested existing clips. Its 8 nodes,
+128 anchors and 25 glyphs match independent native observations, including
+inherited clip chains and clip restoration after a scope. Cancellation tests
+cover public entry and the shared-token boundaries before resolution and SVG output.
+
 The [iteration workflow](../tools/TikzPathLabelComparison/README.md) reuses frozen
 native evidence and always compares fresh converter output. SVG/PDF observations
 agree, and probes leave the native SVG drawing, PDF and PDF pixels unchanged.
-Full path-label image qualification, continuation/style/clip interaction evidence,
-ordinary-PDF image gates and final-tree fresh-export acceptance remain open.
+Full path-label image qualification, ordinary-PDF image gates and final-tree
+fresh-export acceptance remain open.
 Focused numeric agreement and paired-image inspection establish no
 approved image tolerance or general pixel-identity claim.
