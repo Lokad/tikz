@@ -1,4 +1,4 @@
-# Attached path labels: prototype
+# Attached path labels
 
 The converter parses measured nodes before the target of straight `--` and
 straight or supported curved `to` segments:
@@ -53,7 +53,7 @@ intrinsic-image and explicit-viewport captures, natural/expanded frames, 1x/4x
 density and three backgrounds. Their
 [independent checking workflow](../tools/TikzPathLabelOracle/README.md) recomputes saved
 pixel metrics and recaptures original sources. Fresh converter images are checked
-against these prospective policies; limits never come from candidate pixels.
+against these native-only policies; limits never come from candidate pixels.
 Complete-label text controls independently check loss/displacement of every
 glyph, using the frozen primary limits. Visible controls must fail a local text
 region; fully clipped text and black-on-black samples remain explicit.
@@ -67,7 +67,7 @@ checks verdicts and intrinsic framing, verifies common numeric provenance, and
 recaptures them from a fresh public conversion. Its frame check allows one native
 scaled point plus six-decimal SVG serialization rounding; pixel limits remain
 unchanged. Pinned native archives preserve calibration and control artifacts for
-lossless restoration in fresh exports. Full image qualification and final-tree
-fresh-export acceptance remain open.
-Focused numeric agreement and paired-image inspection establish no
-approved image tolerance or general pixel-identity claim.
+lossless restoration in fresh exports. Final feature acceptance runs the ordinary
+suite, controls and fresh comparisons in a committed source export.
+The image evidence is a calibrated match for these two fixtures under the pinned
+font and renderer profiles. It establishes no general pixel-identity claim.

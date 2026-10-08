@@ -42,5 +42,6 @@ comparisons for original-SVG/PDF and converter-SVG/PDF. These commands establish
 focused iteration evidence. A separate current checker decodes metrics, verifies
 framing/provenance and recaptures all images from fresh public output. Pinned
 portable native archives restore the qualified inputs in fresh exports.
-Final-tree fresh-export acceptance remains open;
-the reports deliberately make no complete-feature conformance claim.
+Final feature acceptance combines ordinary tests, controls and fresh comparisons
+in a committed source export. Individual reports make no general feature or
+pixel-identity claim.

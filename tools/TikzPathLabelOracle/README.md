@@ -93,5 +93,7 @@ each fixture. Use those exact qualified inputs for new comparisons; archives
 contain historical native evidence rather than a current-conformance claim.
 
 The comparison commands use a fresh numeric receipt and produce paired current
-images. These are iteration checks. Final-tree fresh-export acceptance remains a release gate. No command here
-declares complete feature or image conformance.
+images. For final feature acceptance, run the ordinary suite, corruption controls
+and fresh comparisons/checks in a committed source export with the restored
+native inputs. Evidence remains scoped to these fixtures and pinned profiles;
+individual commands do not establish general feature or image conformance.
