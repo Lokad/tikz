@@ -48,6 +48,7 @@ jobs:
       - run: node tools/TikzVisual/arrow-source-primary-self-test.mjs
       - run: node tools/TikzVisual/arrow-source-pdf-self-test.mjs
       - run: node tools/TikzVisual/arrow-image-cache-self-test.mjs
+      - run: node --max-old-space-size=4096 tools/TikzVisual/arrow-admission-self-test.mjs
       - run: dotnet run --project tools/TikzArrowComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzCurvedEdgeOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore
@@ -101,6 +102,7 @@ jobs:
             artifacts/curved-edge-oracle/
             artifacts/arrow-reference/
             artifacts/arrow-native-controls/
+            artifacts/arrow-admission-controls/
             artifacts/arrow-numeric/
           if-no-files-found: error
 

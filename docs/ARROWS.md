@@ -580,3 +580,23 @@ Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, cust
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
 diagnostics. This prototype does not establish full PGF arrow or TeX compatibility.
+
+The immutable arrow profile binds the six fixtures, native policy/frame hashes,
+all required baseline and control views, sixteen aggregate gates and independent
+check counts. Historical reports retain their pending flags. The conformance
+command owns a new converter trial and independently compiled image checker;
+only a complete passing result carries an image conformance claim.
+
+```text
+node --max-old-space-size=4096 tools/TikzVisual/arrow-admission-self-test.mjs
+node --max-old-space-size=4096 tools/TikzVisual/compare-arrow-conformance.mjs
+node --max-old-space-size=4096 tools/TikzVisual/arrow-admission-self-test.mjs --report artifacts/arrow-conformance/run-<uuid>/report.json
+node --max-old-space-size=4096 tools/TikzVisual/check-arrow-conformance.mjs artifacts/arrow-conformance/run-<uuid>/report.json
+```
+
+The owned result includes the profile, raw child reports, numeric/source
+captures, every image/crop and an inspection index with direct source attribution.
+The saved-proof checker materializes the bound trial and repeats the full
+independent image/moment checks with another current compilation. Structural
+loading alone does not establish image bindings. The profile remains specific
+to its declared local renderer; hosted rendering needs separate qualification.
