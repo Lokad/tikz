@@ -447,12 +447,32 @@ prevent consistently rehashed replacement evidence from becoming an accepted
 profile. Cache qualification still grants no public converter image admission.
 
 Open the owned `index.html` or its paired PNGs to inspect native comparisons.
-These outputs remain unapproved research evidence. Independently qualifying
-the source/PDF routes, freezing the new policy, public image-only sensitivity,
-a new owned public combined trial and fresh exported-tree reproduction remain
-required before public arrow image admission. Earlier public baseline and
+The independent native source/PDF qualification and portable input freeze are
+complete. Public image-only sensitivity, a new owned public combined trial,
+independent checking and fresh exported-tree reproduction remain required
+before public arrow image admission. Earlier public baseline and
 aspect-ratio diagnostics describe their original captured sources; they are
 historical evidence when the current emitter differs.
+
+The separate meet baseline commands consume those frozen inputs and retain
+the earlier source trial. Six fixtures, two primary routes, natural/expanded
+framing, 1x/4x and transparent/white/black backgrounds produce 144 primary pairs.
+Both PDF raster routes retain original/public source and normalized scene
+comparisons, including exact agreement with the already qualified page rasters.
+No candidate pixels select a reference camera, region or allowance.
+
+```text
+node tools/TikzVisual/trial-arrow-meet-baselines.mjs
+node tools/TikzVisual/check-arrow-meet-baselines.mjs artifacts/arrow-public-meet-baselines/run-<uuid>/report.json
+```
+
+The independent checker reruns the public numeric command, validates source
+frames and frozen limits, and renders the expected SVGs again. Every saved
+primary/PDF PNG and paired crop must match that capture before independent
+decoding of regional metrics, RGB ink moments, outside-diagram exposure and
+presentation panels. Controls include consistently rehashed PNG substitutions
+through the actual SVG/image binding. A successful baseline check retains the
+pending public image-only controls and fixed-family admission gates.
 
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
