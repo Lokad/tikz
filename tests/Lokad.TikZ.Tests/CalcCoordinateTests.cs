@@ -38,6 +38,24 @@ public sealed class CalcCoordinateTests
         Assert.True(failures.Count == 0, string.Join(Environment.NewLine, failures));
     }
 
+    [Fact]
+    public void Public_picture_bounds_match_native_PGF_without_outer_TeX_glue()
+    {
+        var sourceBytes = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Fixtures", "calc-coordinates.tikz"));
+        using var native = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Reference", "CalcCoordinates", "points.json")));
+        Assert.Equal(native.RootElement.GetProperty("sourceSha256").GetString(), Convert.ToHexStringLower(SHA256.HashData(sourceBytes)));
+        var result = Assert.IsType<TikzSuccess>(TikzConverter.Convert(System.Text.Encoding.UTF8.GetString(sourceBytes), TikzOptions.Default, CancellationToken.None));
+        Assert.False(result.PictureBounds.IsEmpty);
+        const double pixelsToSp = 72.27 * 65536 / 96;
+        long Sp(double pixels) => (long)Math.Round(pixels * pixelsToSp);
+        Assert.Equal(native.RootElement.GetProperty("pictureBoundsSp").EnumerateArray().Select(v => v.GetInt64()),
+            new[] { Sp(result.PictureBounds.MinX), Sp(-result.PictureBounds.MaxY), Sp(result.PictureBounds.MaxX), Sp(-result.PictureBounds.MinY) });
+        Assert.Equal(native.RootElement.GetProperty("pictureBoxSp").EnumerateArray().Select(v => v.GetInt64()),
+            new[] { Sp(result.PictureBounds.Width), Sp(result.PictureBounds.Height), 0L });
+        var outerWidth = native.RootElement.GetProperty("boxSp")[0].GetInt64();
+        Assert.Equal(native.RootElement.GetProperty("leadingBoxGlueSp").GetInt64(), outerWidth - Sp(result.PictureBounds.Width));
+    }
+
     private static readonly TikzOptions Body = TikzOptions.Default with { InputKind = TikzInputKind.PictureBody };
     private static readonly TikzOptions Calculations = Body with { Libraries = ["calc"] };
 

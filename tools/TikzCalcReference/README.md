@@ -66,7 +66,40 @@ report. The agent index distinguishes recapturing unchanged evidence from
 exporting a changed candidate and links the ordinary follow-up test command.
 
 Completion means evidence generation finished. Image admission remains pending:
-ordinary PDF, independent calibration, the full defect matrix, independent
+independent primary/PDF calibration, the full defect matrix, independent
 saved-evidence verification and broader interactions remain required. A black
 stroke on an opaque black background has no visible contrast; exact samples
 there do not establish detection of a missing stroke.
+
+For independent PGF picture bounds and ordinary PDF page placement, run:
+
+```powershell
+node tools/TikzCalcReference/generate-layout.mjs
+node tools/TikzVisual/inspect-calc-pdf.mjs <candidate-export/report.json> <native-layout/report.json>
+```
+
+The first command compiles plain/probed SVG and ordinary PDF wrappers. It
+requires the cached SVG bytes, all 25 anchors, bounds and boxes to agree, plus
+identical plain/probed PDF bytes and 96/384-DPI rasters. It uses PGF 3.1.11a,
+MiKTeX 25.4, dvisvgm 3.4.3 and Poppler 24.04.0. Package installation and shell
+execution are disabled. All source, wrapper, logs, recorder and page artifacts
+remain in a fresh ignored research directory; the cache is never overwritten.
+
+The wrapper observes both the outer box baseline and the start of the actual
+picture. The fixed fixture produces 16.66664 pt of leading TeX glue in the
+outer box. Picture width excludes this glue, and the page origin uses the
+independently saved picture position. The cached `pictureBoundsSp` and
+`pictureBoxSp` make this distinction an ordinary public API regression.
+
+The inspector checks six public bounds/size quantities at zero-sp tolerance,
+then compares original SVG and candidate SVG separately against ordinary PDF
+in natural/expanded framing at 1x/4x. Eight views cover the full page, diagram
+and 24 native paint regions: 208 regional observations. The full-page expanded
+view preserves extra ink outside the diagram. Missing-mark and outside-ink
+controls bypass numeric checks; an outside mark is hidden by natural root
+clipping and detected by the expanded physical page capture.
+
+Open the PDF report's `agent-inspection.json` or static `index.html` for paired
+page/crop images and source records. `route-parity.json` compares the separately
+registered original/candidate SVG page captures. PDF/SVG raster differences
+remain raw observations with no borrowed policy or image-conformance pass.

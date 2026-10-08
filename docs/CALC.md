@@ -59,7 +59,11 @@ These numeric checks qualify the fixed fixture's anchors. Development tooling
 exports public/traced parity and paired primary images with native framing,
 source regions and initial image-only controls. The fixed 1x captures agree
 exactly; the retained 4x captures expose small serialization/raster differences.
-This is research evidence with no admitted image policy. Ordinary PDF,
-independent calibration/checking, full sensitivity and broader interactions
-remain open. The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
-records commands for reproducing the measurements and paired images.
+The public picture bounds also match independently measured PGF bounds exactly
+in scaled points. Native PDF tooling measures the picture's page position
+separately from the surrounding TeX box, including its leading glue, and
+captures both SVG routes against ordinary PDF with full-page overflow controls.
+This is research evidence with no admitted image policy. Independent image
+calibration/checking, full sensitivity and broader interactions remain open.
+The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
+records commands for reproducing measurements and paired images.

@@ -8,6 +8,10 @@
   "sourceSha256": "8792d5a16d94091de6529ab91b216d981ddb8905d7210764387a9ea637f2eb9d",
   "nativeReportSha256": "b5e0853fe16a619991ad7edee697392a1c5c72002a9e5b6dba9733c8b8f97213",
   "observerSvgSha256": "e0737b345bf8fe21e89fd6dfe57ca93d7a57d02c0512a200d89ca4518d8bb730",
+  "layoutReportSha256": "30599fc7a95d44e0bfc1773933b97c8083bde9d2c1d78f6eb39712785129cefb",
+  "pictureBoundsSp": [-4733076, -4674804, 9933743, 8986875],
+  "pictureBoxSp": [14666819, 13661679, 0],
+  "leadingBoxGlueSp": 1092265,
   "boxSp": [
     15759084,
     13661679,

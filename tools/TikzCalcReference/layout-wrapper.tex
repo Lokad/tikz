@@ -1,0 +1,48 @@
+% Native-only layout/page observations. Paint is unchanged by optional probes.
+\ifdefined\calcpdf
+  \pdfinfoomitdate=1 \pdftrailerid{} \pdfsuppressptexinfo=15
+\else
+  \def\pgfsysdriver{pgfsys-dvisvgm.def}
+\fi
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tikz}
+\pagestyle{empty}
+\paperwidth=500pt \paperheight=600pt
+\textwidth=400pt \textheight=500pt
+\ifdefined\calcpdf \pdfpagewidth=\paperwidth \pdfpageheight=\paperheight \fi
+\makeatletter
+\newif\ifcalcprobes
+\newbox\calcpicture
+\def\calcpoint#1{%
+  \pgfpointanchor{#1}{center}%
+  \typeout{CALC-POINT #1|\number\pgf@x|\number\pgf@y|END}%
+}
+\let\calcoriginalpicture\tikzpicture
+\def\tikzpicture{%
+  \ifdefined\calcpdf
+    \pdfsavepos\write16{CALC-PICTURE-POS \number\pdflastxpos|\number\pdflastypos|END}%
+  \fi
+  \calcoriginalpicture
+}
+\let\calcoriginalendpicture\endtikzpicture
+\def\endtikzpicture{%
+  \typeout{CALC-BOUNDS \number\pgf@picminx|\number\pgf@picminy|\number\pgf@picmaxx|\number\pgf@picmaxy|END}%
+  \ifcalcprobes
+    \begingroup\pgftransformreset\input{probes.tex}\endgroup
+  \fi
+  \calcoriginalendpicture
+}
+\begin{document}
+\typeout{CALC-PGF-VERSION \pgfversion}
+\typeout{CALC-DRIVER \pgfsysdriver|END}
+\setbox\calcpicture=\hbox{\input{case.tikz}\unskip}
+\typeout{CALC-BOX \number\wd\calcpicture|\number\ht\calcpicture|\number\dp\calcpicture|END}
+\hbox{%
+  \ifdefined\calcpdf
+    \pdfsavepos\write16{CALC-BOX-PAGE \number\pdflastxpos|\number\pdflastypos|\number\pdfpagewidth|\number\pdfpageheight|END}%
+  \fi
+  \box\calcpicture
+}
+\end{document}
