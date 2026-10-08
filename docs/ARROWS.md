@@ -559,6 +559,23 @@ The current trial keeps image admission pending. Immutable family admission and
 fresh-export qualification remain separate requirements. These development
 commands do not add any dependency to the production library.
 
+The portable combined archive retains the completed current-candidate trial,
+both independent checks and their numeric captures, the fresh-export receipt,
+commit audit and original interruption diagnostic. It shares exact bytes with
+the pinned public/native archives. Loading and replay need no historical
+experiment directory, npm package, browser or TeX/PDF executable.
+
+```text
+node --max-old-space-size=4096 tools/TikzVisual/prepare-arrow-current-image-cache.mjs --replay
+node --max-old-space-size=4096 tools/TikzVisual/arrow-current-image-cache-self-test.mjs
+```
+
+Captured production sources remain historical provenance. Current comparison
+code and fixtures stay guarded, so later compiler repairs can use this evidence
+without changing the fixed native qualification. The archive keeps raw admission
+flags pending and preserves declared assembly/command-directory differences;
+a new candidate still requires the full fresh compilation and image checks.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
