@@ -57,7 +57,12 @@ against these prospective policies; limits never come from candidate pixels.
 Complete-label text controls independently check loss/displacement of every
 glyph, using the frozen primary limits. Visible controls must fail a local text
 region; fully clipped text and black-on-black samples remain explicit.
-Full path-label image qualification, ordinary-PDF image gates and final-tree
-fresh-export acceptance remain open.
+Native-only ordinary-PDF policies separately register the original SVG and
+independent encodings against the unchanged PDF raster. Their natural frames
+use measured native picture bounds; the larger miter envelope remains an
+inspection camera. Registration includes measured wrapper glue and uses no fit.
+Fresh output is compared through both PDF gates.
+Full image qualification, independent current-output checking, portable
+calibration and final-tree fresh-export acceptance remain open.
 Focused numeric agreement and paired-image inspection establish no
 approved image tolerance or general pixel-identity claim.

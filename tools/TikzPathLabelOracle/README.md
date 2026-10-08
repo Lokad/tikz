@@ -44,8 +44,25 @@ border or other paint. The separate checker decodes whole/local pixels, checks
 the frozen policy verdicts and visibility, and recaptures every controlled SVG.
 It validates complete glyph and view coverage, including invisible samples.
 
-The comparison command uses a fresh numeric receipt and produces paired current
-images. These are primary iteration checks. Ordinary-PDF policies,
-independent current-output checking, portable calibration
+PDF calibration reuses the same checked native evidence, encodings and image
+helpers. Its natural viewport uses native picture bounds rather than the
+conservative inspection envelope. Page registration comes from PDF save-position,
+picture bounds and measured wrapper glue; no candidate fitting is permitted.
+Original-SVG/PDF and native-encoding/PDF policies stay separate. Rasterizer
+differences are measured calibrations rather than pixel identity.
+
+```sh
+node tools/TikzVisual/calibrate-path-label-pdf.mjs <exact-primary-calibration-report> <exact-independent-primary-check-report>
+node tools/TikzVisual/check-path-label-pdf.mjs <exact-PDF-calibration-report>
+node tools/TikzVisual/path-label-pdf-self-test.mjs <exact-PDF-calibration-report>
+node tools/TikzVisual/compare-path-label-pdf.mjs <exact-PDF-calibration-report> <fresh-numeric-report>
+```
+
+The PDF checker independently decodes full-page and local pixels, rederives both
+policies and registration, and recaptures every native source. Corruption controls
+cover missing/duplicate routes and consistently rehashed pixels and policies.
+
+The comparison commands use a fresh numeric receipt and produce paired current
+images. These are iteration checks. Independent current-output checking, portable calibration
 and final-tree fresh-export acceptance remain release gates. No command here
 declares complete feature or image conformance.

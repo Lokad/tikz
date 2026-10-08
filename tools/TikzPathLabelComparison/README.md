@@ -37,6 +37,8 @@ and Poppler tools. The portable native report is not automatically replaced.
 The [independent oracle workflow](../TikzPathLabelOracle/README.md) supplies native-only
 primary/local limits and independently checked first-glyph and complete-label
 text sensitivity without loading the converter.
-These commands establish focused iteration evidence. Ordinary-PDF policies
-and final-tree fresh-export acceptance remain open;
+The PDF workflow adds independently checked native policies and fresh iteration
+comparisons for original-SVG/PDF and converter-SVG/PDF. These commands establish
+focused iteration evidence. Independent current-output checking, portable
+calibration and final-tree fresh-export acceptance remain open;
 the reports deliberately make no complete-feature conformance claim.
