@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "role": "path-label-frozen-image-profile",
+  "fixtures": {
+    "placement": {
+      "file": "tests/Reference/PathLabels/placement.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "placement",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-80ad7f29-2837-4e59-ba34-14cc843f8a73/report.json",
+            "sha256": "77faa099ef57458f53b1601a6dd0e0704ae10bfb3dae2ff1e1c89f82aa1b6153"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-1436d9aa-2e3f-43c0-b8af-de13b3302791/report.json",
+            "sha256": "cf97b00c313f44f8b5cc7eb83afa7d253112cda54563326cbb6e21c94c5d10d0"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-d85bfec3-a2d3-4dff-aade-96596a4519c4/report.json",
+            "sha256": "e242e89483c86902a547fe86d83d698db4b1d844d5c6166db61daf16a8c32cce"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-a04c05f2-5894-459a-bd2a-66e9f0a5b268/report.json",
+            "sha256": "6a8662713610ba1b6c7867686622d2e99b6026b437e852d3190b9d95b97cbdba"
+          },
+          {
+            "role": "path-label-complete-text-sensitivity",
+            "file": "artifacts/path-label-text-sensitivity/run-f30d7f29-1864-4df7-98f4-a7466776d5b1/report.json",
+            "sha256": "dfd161436bab50ba3d530e8aa559a5cc1a5fa79b1dcfe467952d99ed61373197"
+          },
+          {
+            "role": "path-label-independent-text-check",
+            "file": "artifacts/path-label-text-check/run-879f7ee6-3952-4d12-889f-2b63eec267b5/report.json",
+            "sha256": "794a11546066c882a10a51982f8e9925433beac99b96d4d6b71dc064335f7a2a"
+          }
+        ],
+        "compressedSha256": "efa2d90042b45cf49c4f746ab96b1d1695892a648347a55c1433c43f27d2e7fa",
+        "decodedSha256": "02af33c104f8ecbb7944031bbdae3ae9a7c059cc5d659f763b048a8fb98eb30b",
+        "compressedBytes": 43424565,
+        "decodedBytes": 196863621,
+        "logicalFiles": 4532,
+        "uniqueBlobs": 2534,
+        "logicalBytes": 255440638,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "interactions": {
+      "file": "tests/Reference/PathLabels/interactions.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "interactions",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-b0dc0e49-4445-44df-8249-2e6277ac44bb/report.json",
+            "sha256": "a40ccf02e9d3a7a67a72e75b27c64f5a5ce6ba2643569c120a33e7c4742912b9"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-2f04ca94-63d8-432c-a319-99f139f04f66/report.json",
+            "sha256": "f3e29fd8d3587c16edfdaebd11c93b587e8f4efc417cbd4bae46f76dbb4d76a4"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-30e86508-c74d-4a9e-89ff-8a5924fe85f8/report.json",
+            "sha256": "e55f16810f69d0db915b35f1321f7e323d0138d42e1eccc726ea961eb1b49a41"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-de286bf6-b102-4dec-927e-e00bc4c08683/report.json",
+            "sha256": "c68c93590bf46ef724c47a51f312b4f4c6fe89f89cbed390ab9c6a2776a59750"
+          },
+          {
+            "role": "path-label-complete-text-sensitivity",
+            "file": "artifacts/path-label-text-sensitivity/run-2bc119d8-89ce-4360-992c-75da2e8ec883/report.json",
+            "sha256": "8214337f64017d1a03694be6fd15d01a05929ed0fced6b0ed212a209070cb2b4"
+          },
+          {
+            "role": "path-label-independent-text-check",
+            "file": "artifacts/path-label-text-check/run-1be8f3c8-0877-4267-820a-e6220a0772f2/report.json",
+            "sha256": "6bfb18645c71f598c726a94da2633d0d277c07844b5b6ca2135b36bab8588fe2"
+          }
+        ],
+        "compressedSha256": "3e83819b86f57f968962d905f16f7bd493052b06af347a2ab551fc8533e85598",
+        "decodedSha256": "0873deb273fb013a994c85972167c3834d46aa30b4408e0b30cedd9b5a40d9a5",
+        "compressedBytes": 17874934,
+        "decodedBytes": 84028687,
+        "logicalFiles": 3188,
+        "uniqueBlobs": 1788,
+        "logicalBytes": 109058288,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    }
+  },
+  "transportSources": {
+    "tools/TikzVisual/path-label-cache-codec.mjs": "1b3b445bbefa83a07d73420e78b7a3097398966b828d01d26b5f5fa679be4509",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/path-label-cache.mjs": "8be1c3050f8dd62843076a4da705a223443311f6d6fd5147cfbf1927b1882a8a"
+  }
+}

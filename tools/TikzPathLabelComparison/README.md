@@ -40,6 +40,7 @@ text sensitivity without loading the converter.
 The PDF workflow adds independently checked native policies and fresh iteration
 comparisons for original-SVG/PDF and converter-SVG/PDF. These commands establish
 focused iteration evidence. A separate current checker decodes metrics, verifies
-framing/provenance and recaptures all images from fresh public output. Portable
-calibration and final-tree fresh-export acceptance remain open;
+framing/provenance and recaptures all images from fresh public output. Pinned
+portable native archives restore the qualified inputs in fresh exports.
+Final-tree fresh-export acceptance remains open;
 the reports deliberately make no complete-feature conformance claim.

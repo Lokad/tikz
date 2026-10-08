@@ -76,7 +76,22 @@ validates source captures, performs fresh public conversion and recaptures all
 wrong framing and rehashed false metrics/verdicts. Frozen native calibration is
 validated through its qualified receipts and current dependency hashes.
 
+Frozen primary/PDF calibration, complete-text controls and their independent
+receipts are preserved byte for byte in two pinned native archives under
+`tests/Reference/PathLabels/`. The metadata adapter reuses the existing bounded,
+deduplicating archive codec. Restoration writes only historical artifact paths,
+rejects different existing evidence, and never runs TeX or the converter.
+
+```sh
+node tools/TikzVisual/materialize-path-label-cache.mjs placement
+node tools/TikzVisual/materialize-path-label-cache.mjs interactions
+node tools/TikzVisual/path-label-cache-self-test.mjs
+```
+
+`image-profile.json` identifies the six restored report paths and digests for
+each fixture. Use those exact qualified inputs for new comparisons; archives
+contain historical native evidence rather than a current-conformance claim.
+
 The comparison commands use a fresh numeric receipt and produce paired current
-images. These are iteration checks. Portable calibration
-and final-tree fresh-export acceptance remain release gates. No command here
+images. These are iteration checks. Final-tree fresh-export acceptance remains a release gate. No command here
 declares complete feature or image conformance.

@@ -66,7 +66,8 @@ The current-output checker independently decodes all required primary/PDF views,
 checks verdicts and intrinsic framing, verifies common numeric provenance, and
 recaptures them from a fresh public conversion. Its frame check allows one native
 scaled point plus six-decimal SVG serialization rounding; pixel limits remain
-unchanged. Full image qualification, portable calibration and final-tree
+unchanged. Pinned native archives preserve calibration and control artifacts for
+lossless restoration in fresh exports. Full image qualification and final-tree
 fresh-export acceptance remain open.
 Focused numeric agreement and paired-image inspection establish no
 approved image tolerance or general pixel-identity claim.

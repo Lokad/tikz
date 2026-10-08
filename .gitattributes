@@ -46,6 +46,7 @@ tests/Reference/PathLabels/native/commands/*.log text eol=lf -whitespace
 tests/Reference/PathLabels/interactions-native/*reference.svg -text whitespace=cr-at-eol
 tests/Reference/PathLabels/interactions-native/*.log text eol=lf -whitespace
 tests/Reference/PathLabels/interactions-native/commands/*.log text eol=lf -whitespace
+tests/Reference/PathLabels/*.images.cache.gz -text
 # Upstream license texts are retained byte for byte, including line endings.
 licenses/Fonts/GUST-FONT-LICENSE.txt -text -whitespace
 licenses/Fonts/LPPL-1.3c.txt -text -whitespace
