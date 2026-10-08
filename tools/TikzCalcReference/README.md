@@ -197,6 +197,53 @@ decodes every indexed and invisible-control pair, derives the policy again,
 reconstructs native page evidence and recaptures the complete calibration from
 owned inputs. The corruption tests use these actual verifiers, including a
 PNG substitution with recomputed metrics and policy that must fail source
-reconstruction. A completed native calibration is research evidence: ordinary
-PDF calibration, a fresh public-candidate trial and reviewed combined admission
+reconstruction. A completed native calibration is research evidence: PDF
+qualification, a fresh public-candidate trial and reviewed combined admission
 remain separate requirements.
+
+Native-only ordinary-PDF calibration has its own commands and policy:
+
+```powershell
+node tools/TikzVisual/calibrate-calc-pdf.mjs <native-layout/report.json>
+node tools/TikzVisual/check-calc-pdf.mjs <completed-pdf-calibration/report.json>
+node tools/TikzVisual/calc-pdf-self-test.mjs <completed-pdf-check/report.json>
+```
+
+The ordinary native PDF remains the reference. The original SVG driver and
+three independently selected native encodings each render natural/expanded
+views at 1x/4x on white, without converter input: sixteen calibration views.
+Registration comes from the native page-position logs. The fixed 27 regions
+cover the page, diagram, each of 24 native paints and a page corner outside
+the diagram. A further sixteen separately rendered views require unchanged
+PNG bytes and measurements for all four routes.
+
+Per-view and per-region limits take the native-only maxima of ordinary pixel,
+foreground and edge errors. Additional integer ranges cover each RGB channel's
+ink mass and horizontal/vertical first moments across the four native routes,
+with no candidate input or added margin. These retain low-contrast evidence
+below the edge-mask threshold. Eleven image-only defect families exercise all
+four PDF views; every visible defect must fail its intended region, and
+frame-hidden controls must preserve decoded samples. The page-corner control
+exposes extra ink in expanded views.
+
+Lost-half-clip and 1%/0.1% opacity controls use separately derived exact native-
+encoding ink profiles. They never loosen the opaque PDF pixel allowance and
+establish no new native clipping/opacity compatibility. Actual visibility is
+recorded, including losses hidden by raster quantization.
+
+The independent checker decodes all 100 pairs and 2,700 regional measurements,
+recomputes ink/moments and both policy types, verifies native registration and
+source pins, then recaptures the complete bundle from owned native inputs.
+Every PNG and presentation artifact must reproduce; only declared native input
+paths and the resulting agent digest are normalized. Actual-verifier controls
+include independently falsified ink mass and x/y moments, changed images,
+regions, cameras, coverage, policies and summaries. A PDF-for-SVG PNG
+substitution updates its replay, measurements, policy and defect verdicts;
+it must pass saved-pixel recomputation and fail source reconstruction.
+
+Bound per-view records, `agent-inspection.json` and `index.html` retain identical
+paired crops and 1x/4x defect sheets. The ordinary PDF and SVG edges remain
+visibly different; a completed calibration/check is reproducible research,
+not a pixel-perfect claim or an admitted image policy. Fresh public candidate
+qualification, combined admission, interactions and root integration remain
+open. None of these development tools becomes a production dependency.

@@ -72,8 +72,13 @@ PNG/metric substitutions that must fail the recapture check.
 This is research evidence with no admitted image policy. Independent image
 calibration tooling now measures three native-only primary encodings and
 twelve defect families under both capture routes. Renderer-only faint and
-clipping controls remain distinct from native TikZ compatibility. Ordinary
-PDF calibration, a public primary trial, combined admission and broader
-interactions remain open.
+clipping controls remain distinct from native TikZ compatibility. Separate
+native-only PDF calibration uses four native encodings on the independently
+measured page, with pixel/edge limits and regional RGB ink/moment ranges.
+Image-only defects include a fixed page-corner overflow region. The independent
+saved-PDF checker recomputes all measurements and recaptures the complete
+native-only calibration, requiring identical PNGs and presentation artifacts.
+A fresh public primary/PDF trial, combined admission and broader interactions
+remain separate requirements.
 The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
 records commands for reproducing measurements and paired images.
