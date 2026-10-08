@@ -522,6 +522,25 @@ Passing these controls leaves combined public image admission pending.
 The full bundle and corruption validation use a 2 GB Node heap in development;
 the package has no dependency on these tools or their memory settings.
 
+The portable public-control archive retains the complete historical public
+qualification, its independent readers, fresh-export proof, commit audit and
+focused first-moment evidence. It resolves shared bytes through the two pinned
+native archives already in the repository; no original experiment directories,
+TeX/PDF executables, browser or npm packages are needed to load it.
+
+```text
+node --max-old-space-size=2048 tools/TikzVisual/prepare-arrow-public-image-cache.mjs --replay
+node --max-old-space-size=2048 tools/TikzVisual/arrow-public-image-cache-self-test.mjs
+```
+
+Historical production sources are checked against their captured bytes.
+Comparison tools, numeric comparator sources, native fixtures and policy code
+remain guarded against current files. This lets a later compiler build consume
+the same qualification without replacing it. The archive is development
+evidence: a current candidate still needs fresh public conversion, numeric,
+frame, primary and PDF checks against the independently frozen native profile.
+Captured public SVGs do not become reference expectations for admission.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
