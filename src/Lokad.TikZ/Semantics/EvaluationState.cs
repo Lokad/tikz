@@ -22,6 +22,7 @@ internal sealed class EvaluationState
     // declarations inside a scope. Clones share this per-conversion registry.
     public HashSet<string> Libraries { get; set; } = new(StringComparer.Ordinal);
     public bool IsNodeContext { get; set; }
+    public bool IsPathLabel { get; set; }
     public List<Option> NodeTransforms { get; } = [];
     public Source? NodeLineWidth { get; set; }
     public List<int> Clips { get; set; } = [];

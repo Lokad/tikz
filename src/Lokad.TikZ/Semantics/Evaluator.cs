@@ -136,8 +136,12 @@ internal sealed partial class Evaluator(Budget budget)
         };
         if (state.Styles.TryGetValue("every path", out var every)) KeyRegistry.Apply(every, state, budget);
         KeyRegistry.Apply(statement.Options, state, budget);
+        var firstLabel = statement.Operations.SelectMany(operation => operation.Labels).FirstOrDefault();
+        if (firstLabel is not null && (statement.Command == "\\clip" || statement.Operations.Any(operation => operation is EdgeOperation)))
+            throw new CompileError("TIKZ002", "Path labels combined with a new clip or separate edges are unsupported.", firstLabel.Source);
         var path = new GraphicPath(budget, statement.Source);
         var edges = new List<(GraphicPath Path, EvaluationState State, Source Source)>();
+        var labels = new List<Action>();
         var reference = default(Point);
         var position = default(Point);
         ResolvedNode? pending = null;
@@ -169,8 +173,9 @@ internal sealed partial class Evaluator(Budget budget)
                     else
                     {
                         var border = targetNode is null ? end : NodeBorder(targetNode, position, state.Transform, line.Point.Source);
-                        FlushToward(border);
+                        var labelStart = FlushToward(border);
                         path.Line(Global(border));
+                        PathLabels(line, new(labelStart, default, default, border), false, state, labels);
                     }
                     position = end;
                     pending = targetNode; pendingSource = line.Point.Source;
@@ -203,6 +208,7 @@ internal sealed partial class Evaluator(Budget budget)
                         var curveTo = Curve(startPoint, toEnd, pending, toNode, state, to.Source);
                         if (pending is not null) { path.Move(Global(curveTo.Start)); pending = null; }
                         path.Cubic(Global(curveTo.A), Global(curveTo.B), Global(curveTo.End));
+                        PathLabels(to, curveTo, true, state, labels);
                         if (state.Connection.Relative)
                         {
                             // Relative curves expand their node borders to explicit
@@ -213,7 +219,8 @@ internal sealed partial class Evaluator(Budget budget)
                     else
                     {
                         var toBorder = toNode is null ? toEnd : NodeBorder(toNode, position, state.Transform, to.Target.Source);
-                        FlushToward(toBorder); path.Line(Global(toBorder));
+                        var labelStart = FlushToward(toBorder); path.Line(Global(toBorder));
+                        PathLabels(to, new(labelStart, default, default, toBorder), false, state, labels);
                     }
                     position = nextPosition; pending = toNode; pendingSource = to.Target.Source;
                     DashPattern.Resolve(state, budget);
@@ -307,6 +314,7 @@ internal sealed partial class Evaluator(Budget budget)
             }
             PaintEdge(edge.Path, edge.State, edge.Source);
         }
+        foreach (var paintLabel in labels) paintLabel();
         EvaluationState ConnectionState(List<Option> options, string style, Source origin, bool separate)
         {
             var child = state.Clone(budget, origin);

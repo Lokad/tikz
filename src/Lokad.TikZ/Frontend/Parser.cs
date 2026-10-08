@@ -71,7 +71,7 @@ internal sealed class Parser(Source source, Budget budget)
         return result;
     }
     private List<Option> ReadOptions() => _reader.Peek == '[' ? Options.Read(_reader.Group('[', ']'), budget) : [];
-    private NodeStatement ReadNode(Source command)
+    private NodeStatement ReadNode(Source command, bool pathLabel = false)
     {
         var options = new List<Option>();
         var name = "";
@@ -95,13 +95,14 @@ internal sealed class Parser(Source source, Budget budget)
             }
             else if (_reader.Word("at"))
             {
+                if (pathLabel) throw new CompileError("TIKZ002", "Path labels use segment placement; explicit 'at' is unsupported.", _reader.Here);
                 if (at is not null) throw new CompileError("TIKZ001", "Duplicate node position.", _reader.Here);
                 at = ReadCoordinate();
             }
             else throw new CompileError("TIKZ002", "Unsupported node syntax.", _reader.Here);
         }
         var label = _reader.Group('{', '}');
-        _reader.Require(";");
+        if (!pathLabel) _reader.Require(";");
         return new(name, at, options, label, new(command.Text, command.Offset, source.Offset + _reader.Position - command.Offset));
     }
     private PathStatement ReadPath(Source command)
@@ -114,7 +115,15 @@ internal sealed class Parser(Source source, Budget budget)
             budget.Charge(origin);
             if (_reader.End) throw new CompileError("TIKZ001", "Unterminated path; expected ';'.", origin);
             if (_reader.Peek is '(' or '+') operations.Add(new MoveOperation(ReadCoordinate(), origin));
-            else if (_reader.Take("--")) operations.Add(_reader.Word("cycle") ? new CloseOperation(origin) : new LineOperation(ReadCoordinate(), "line", origin));
+            else if (_reader.Take("--"))
+            {
+                if (_reader.Word("cycle")) operations.Add(new CloseOperation(origin));
+                else
+                {
+                    var labels = ReadPathLabels();
+                    operations.Add(new LineOperation(ReadCoordinate(), "line", origin) { Labels = labels });
+                }
+            }
             else if (_reader.Take("|-")) operations.Add(new LineOperation(ReadCoordinate(), "vh", origin));
             else if (_reader.Take("-|")) operations.Add(new LineOperation(ReadCoordinate(), "hv", origin));
             else if (_reader.Word("to")) operations.Add(ReadConnection(origin, false));
@@ -195,11 +204,25 @@ internal sealed class Parser(Source source, Budget budget)
     {
         var options = new List<Option>();
         while (_reader.Peek == '[') options.AddRange(ReadOptions());
+        var labels = ReadPathLabels();
+        if (separate && labels.Count > 0) throw new CompileError("TIKZ002", "Labels on separate edges are unsupported.", labels[0].Source.Slice(0, 1));
         if (_reader.Peek is not ('(' or '+'))
-            throw new CompileError("TIKZ002", "To/edge requires a coordinate target; path labels and custom to paths are unsupported.", _reader.Here);
+            throw new CompileError("TIKZ002", "To/edge requires a coordinate target; custom to paths are unsupported.", _reader.Here);
         var target = ReadCoordinate();
         var span = new Source(origin.Text, origin.Offset, source.Offset + _reader.Position - origin.Offset);
-        return separate ? new EdgeOperation(target, options, span) : new ToOperation(target, options, span);
+        return separate ? new EdgeOperation(target, options, span) { Labels = labels } : new ToOperation(target, options, span) { Labels = labels };
+    }
+    private List<NodeStatement> ReadPathLabels()
+    {
+        var labels = new List<NodeStatement>();
+        while (true)
+        {
+            var origin = _reader.Here;
+            if (!_reader.Word("node")) return labels;
+            budget.Charge(origin);
+            labels.Add(ReadNode(origin, true));
+            if (labels.Count > budget.Limits.MaxNodes) Budget.Fail(origin, "path labels");
+        }
     }
     private static void CheckShapeKeys(List<Option> options, params string[] keys)
     {

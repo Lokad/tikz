@@ -58,6 +58,25 @@ internal static class KeyRegistry
                 { state.NodeTransforms.Add(option with { Key = key }); continue; }
                 if (key is "x" or "y") throw Unsupported(option);
                 if (key == "line width") { state.NodeLineWidth = option.Value; continue; }
+                if (key is "above" or "below" or "left" or "right")
+                {
+                    state.Node = state.Node with { Anchor = key switch { "above" => "south", "below" => "north", "left" => "east", _ => "west" }, AnchorSource = option.Source };
+                    if (value.Length > 0) throw Unsupported(option);
+                    continue;
+                }
+                if (key is "pos" or "midway")
+                {
+                    if (!state.IsPathLabel) throw Unsupported(option);
+                    var time = key == "midway" ? .5 : state.Scalar(option.Value, budget);
+                    if (time is < 0 or > 1) throw new CompileError("TIKZ002", "Path label pos must be between zero and one.", option.Source);
+                    state.Node = state.Node with { PathTime = time }; continue;
+                }
+                if (key is "sloped" or "allow upside down")
+                {
+                    if (!state.IsPathLabel) throw Unsupported(option);
+                    var enabled = value switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) };
+                    state.Node = key == "sloped" ? state.Node with { Sloped = enabled } : state.Node with { AllowUpsideDown = enabled }; continue;
+                }
             }
             switch (key)
             {

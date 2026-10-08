@@ -19,6 +19,9 @@ internal sealed record NodeSettings
     internal Source? AnchorSource { get; init; }
     internal TextAlignment? Alignment { get; init; }
     internal bool TransformShape { get; init; }
+    internal double PathTime { get; init; } = .5;
+    internal bool Sloped { get; init; }
+    internal bool AllowUpsideDown { get; init; }
     internal Color TextColor { get; init; } = new(0, 0, 0);
     internal double? TextOpacity { get; init; }
 

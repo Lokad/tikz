@@ -1,0 +1,42 @@
+% Trusted focused iteration oracle; never accepts arbitrary input.
+\documentclass{article}
+\def\pgfsysdriver{pgfsys-dvisvgm.def}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tikz}
+\pagestyle{empty}
+\makeatletter
+\typeout{PATH-LABEL-PGF \pgfversion}
+\newif\iflabelprobes
+\newbox\labelpicture
+\def\labelanchor#1#2{%
+  \begingroup\pgftransformreset\pgf@process{\pgfpointanchor{#1}{#2}}%
+  \typeout{PATH-LABEL-ANCHOR #1|#2|\number\pgf@x|\number\pgf@y|END}%
+  \endgroup
+}
+\AtBeginDocument{%
+  \iflabelprobes
+    \let\labeloriginalnode\pgfmultipartnode
+    \def\pgfmultipartnode#1#2#3#4{%
+      \pgfgettransformentries\la\lb\lc\ld\le\lf
+      \typeout{PATH-LABEL-NODE #3|#2|\number\wd\pgfnodeparttextbox|\number\ht\pgfnodeparttextbox|\number\dp\pgfnodeparttextbox|\la|\lb|\lc|\ld|\le|\lf|END}%
+      \labeloriginalnode{#1}{#2}{#3}{#4}%
+    }%
+    \let\labeloriginalend\endtikzpicture
+    \def\endtikzpicture{%
+      \begingroup
+      \def\labelnames{straight,quarter,reverse,inverted,bend,absolute,from,target,border,reset,full,zero,one}%
+      \@for\labelname:=\labelnames\do{%
+        \labelanchor{\labelname}{text}\labelanchor{\labelname}{center}%
+        \labelanchor{\labelname}{north}\labelanchor{\labelname}{south}%
+        \labelanchor{\labelname}{east}\labelanchor{\labelname}{west}%
+      }%
+      \endgroup\labeloriginalend
+    }%
+  \fi
+}
+\begin{document}
+\setbox\labelpicture=\hbox{\input{case.tikz}\unskip}
+\typeout{PATH-LABEL-BOX \number\wd\labelpicture|\number\ht\labelpicture|\number\dp\labelpicture|END}
+\hbox{\box\labelpicture}
+\end{document}

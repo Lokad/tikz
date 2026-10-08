@@ -80,8 +80,9 @@ Node metrics, transformed border connections and sixteen original DVI glyph
 positions are included in the fixed corpus. Ellipse nodes require the
 `shapes.geometric` library as documented in [NODES.md](NODES.md).
 
-Unsupported bends, `in`/`out`, custom `to path`, path labels, arrows, edge loops
-and general TeX expansion fail with diagnostics. Generated edge segments and
+Custom `to path`, separate `edge` labels, edge loops and general TeX expansion
+fail with diagnostics. Attached `--`/`to` labels have a separately scoped
+[prototype](PATH-LABELS.md); its image qualification remains open. Generated edge segments and
 option expansion share the conversion budget and cancellation token. A resource
 failure during edge generation identifies the complete operation source span.
 Broader combinations still need independent fixtures.

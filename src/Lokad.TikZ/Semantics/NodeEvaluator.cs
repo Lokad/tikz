@@ -50,12 +50,14 @@ internal sealed partial class Evaluator
         return PgfCoordinates.ToLocal(global, queryFrame, source);
     }
 
-    private void Node(NodeStatement statement, EvaluationState parent)
+    private void Node(NodeStatement statement, EvaluationState parent, Func<NodeSettings, Affine>? placement = null, List<Action>? deferred = null)
     {
         var at = statement.At is null ? PgfTransform.Apply(parent.Transform, default, budget, statement.Source) : Resolve(statement.At, parent, default, out _);
         var state = parent.Clone(budget, statement.Source);
         state.Transform = Affine.Identity;
         state.IsNodeContext = true;
+        state.IsPathLabel = placement is not null;
+        if (state.IsPathLabel) state.Paint = state.Paint with { Stroke = false, Fill = false };
         if (state.Styles.TryGetValue("every node", out var every)) KeyRegistry.Apply(every, state, budget);
         KeyRegistry.Apply(statement.Options, state, budget);
         if (state.Styles.TryGetValue("every " + state.Node.Shape.ToString().ToLowerInvariant() + " node", out var shapeStyle)) KeyRegistry.Apply(shapeStyle, state, budget);
@@ -91,7 +93,7 @@ internal sealed partial class Evaluator
             ? RectangleNodeLayout.Resolve(text, dimensions, budget, statement.Source)
             : CurvedNodeLayout.Resolve(state.Node.Shape, text, dimensions, budget, statement.Source);
         var anchor = layout.Anchor(state.Node.Anchor, metrics, budget, state.Node.AnchorSource ?? statement.Source).Bp;
-        var frame = state.Node.TransformShape
+        var frame = placement is not null ? placement(state.Node) : state.Node.TransformShape
             ? new Affine(parent.Transform.A, parent.Transform.B, parent.Transform.C, parent.Transform.D, at.X, at.Y)
             : Affine.Translation(at.X, at.Y);
         frame = PgfTransform.Then(frame, state.Transform, budget, statement.Source);
@@ -101,6 +103,7 @@ internal sealed partial class Evaluator
         _scene.Nodes.Add(node);
         if (statement.Name.Length > 0) { _coordinates.Remove(statement.Name); _scene.Coordinates.Remove(statement.Name); _nodes[statement.Name] = node; }
         var background = layout.Background(frame, budget, statement.Source);
+        var drawables = new List<Drawable>();
         if (state.RelevantForPictureSize)
         {
             var box = Bounds.Empty;
@@ -119,7 +122,7 @@ internal sealed partial class Evaluator
                 : background.Bounds;
             ink = Clipped(ink);
             _scene.InkBounds = _scene.InkBounds.Union(ink);
-            _scene.Add(new(background, state.Paint, [.. state.Clips], statement.Source, ink));
+            drawables.Add(new PaintedPath(background, state.Paint, [.. state.Clips], statement.Source, ink));
         }
         var glyphs = new List<ResolvedGlyph>();
         var opacity = state.Node.TextOpacity ?? state.Paint.FillOpacity;
@@ -139,8 +142,18 @@ internal sealed partial class Evaluator
             glyphs.Add(new(outline, glyph, transform, ink));
             if (opacity > 0) _scene.InkBounds = _scene.InkBounds.Union(ink);
         }
-        _scene.Drawables.Add(new PaintedGlyphRun([.. glyphs], text.Readable, state.Node.TextColor, opacity,
+        drawables.Add(new PaintedGlyphRun([.. glyphs], text.Readable, state.Node.TextColor, opacity,
             [.. state.Clips], statement.Label, id));
+        if (deferred is null) PaintNode(); else deferred.Add(PaintNode);
+
+        void PaintNode()
+        {
+            foreach (var drawable in drawables)
+            {
+                budget.Charge(drawable.Source);
+                if (drawable is PaintedPath painted) _scene.Add(painted); else _scene.Drawables.Add(drawable);
+            }
+        }
 
         int Dimension(Source? source, int fallback) => source is { } value ? ToSp(state.Dimension(value, budget), value) : fallback;
         Bounds Clipped(Bounds ink)
