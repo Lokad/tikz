@@ -497,6 +497,31 @@ regional metrics and rechecks mutation deltas. Corruption controls exercise
 fully rehashed SVG, source-span, policy-binding and PNG substitutions. Passing
 primary controls leaves public PDF controls and combined admission pending.
 
+The public PDF control matrix retains 396 views through both raster routes:
+96 baselines, 124 defects, 32 visibility presentations, 96 outside-diagram
+marks and 48 padding presentations. Each view compares both original source
+framing and the normalized full-page scene against unchanged ordinary PDF
+pages. Numeric defect gates are bypassed. The report preserves native policy
+route identifiers; `publicSource` identifies views using captured public SVGs.
+
+```text
+node --max-old-space-size=2048 tools/TikzVisual/trial-arrow-pdf-controls.mjs
+node --max-old-space-size=2048 tools/TikzVisual/check-arrow-pdf-controls.mjs artifacts/arrow-public-pdf-controls/run-<uuid>/report.json
+node --max-old-space-size=2048 tools/TikzVisual/trial-arrow-pdf-controls.mjs --replay artifacts/arrow-public-pdf-controls/run-<uuid>/report.json
+```
+
+The bundle embeds the qualified primary controls and their independent,
+fresh-export and commit-audit proofs under fixed hashes. The checker rechecks
+all 306 bound primary views before the PDF views, binds every saved SVG/PNG and
+focus crop, independently decodes regional metrics and integer RGB moments,
+and verifies full-page/outside-diagram exposure and mutation deltas. Fixed
+target crops use the same rectangles on the ordinary PDF and saved SVG page;
+the gallery labels integer enlargement and raw difference amplification.
+Source framing, extra ink and padding remain separate required checks.
+Passing these controls leaves combined public image admission pending.
+The full bundle and corruption validation use a 2 GB Node heap in development;
+the package has no dependency on these tools or their memory settings.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
