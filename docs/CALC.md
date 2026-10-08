@@ -70,6 +70,10 @@ a separate source pin; hashes and recorded metrics alone cannot establish
 source-to-image correspondence. Corruption controls include fully rehashed
 PNG/metric substitutions that must fail the recapture check.
 This is research evidence with no admitted image policy. Independent image
-calibration, full sensitivity and broader interactions remain open.
+calibration tooling now measures three native-only primary encodings and
+twelve defect families under both capture routes. Renderer-only faint and
+clipping controls remain distinct from native TikZ compatibility. Ordinary
+PDF calibration, a public primary trial, combined admission and broader
+interactions remain open.
 The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
 records commands for reproducing measurements and paired images.

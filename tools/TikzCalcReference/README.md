@@ -150,5 +150,53 @@ for both RGB and RGBA with the pinned Chromium decoder and canvas encoder, and
 demonstrates canvas loss of hidden RGB at zero alpha. Both renderer and saved-
 image controls retain fresh hashed evidence under ignored `artifacts/`.
 Successful verification establishes the saved research evidence's integrity
-and reproducibility. Primary/PDF calibration, the full visible-defect matrix,
-broader interactions and integration remain pending.
+and reproducibility. Native-only primary calibration and sensitivity follow
+below; public/PDF qualification, broader interactions and integration remain
+pending.
+
+For native-only primary calibration and image sensitivity, without invoking the
+converter or native TeX executables:
+
+```powershell
+node tools/TikzVisual/calibrate-calc-primary.mjs <native-layout/report.json>
+node tools/TikzVisual/check-calc-primary.mjs <completed-primary-calibration/report.json>
+node tools/TikzVisual/calc-primary-self-test.mjs <completed-primary-check/report.json>
+```
+
+The calibrator builds three independent encodings from the original native
+paths: a local origin with the recorded driver scale, a local origin with the
+exact physical scale, and separate physically scaled paths inside rounded
+native picture bounds. It preserves the native paths, 0.4-pt black stroke,
+paint order and root proportions. Neither candidate SVG nor converter geometry
+supplies calibration data. The unchanged original driver remains the reference.
+
+Each encoding runs through both intrinsic-image and explicit-viewport capture
+routes over natural/expanded frames, 1x/4x and transparent/white/black: 72
+native-only views. Limits are the per-quantity maxima across the three native
+representations in each exact view and region. Only foreground means round
+upward to 1e-9; component changes remain forbidden. A further 24 independent
+captures repeat the last representation, requiring identical PNGs and metrics.
+
+Twelve defect families each run all 24 views: missing mark/circle, quarter-pixel
+movement, wrong width/opacity/color/cap/unit scale, altered curve control,
+lost clipping, cropped root and ink outside the diagram. Every prescribed
+visible defect must fail its intended region with numeric checks bypassed.
+Black-on-black changes and frame-hidden changes must preserve the unchanged
+PNG samples. Clipping and faint-opacity probes are explicitly renderer-only
+controls; they establish no new native TikZ paint/clip compatibility.
+
+Two exact-encoding visibility matrices remove a mark at 1% and 0.1% opacity.
+They preserve losses hidden by raster quantization rather than declaring them
+detected. These controls keep numeric agreement mandatory and do not supply
+an opacity allowance to the ordinary opaque policy.
+
+The main report contains bounded view indexes; complete metrics, evaluations
+and paired crops live in hash-bound per-view records. `agent-inspection.json`
+and `index.html` link white-backed 1x/4x defect sheets. The independent checker
+decodes every indexed and invisible-control pair, derives the policy again,
+reconstructs native page evidence and recaptures the complete calibration from
+owned inputs. The corruption tests use these actual verifiers, including a
+PNG substitution with recomputed metrics and policy that must fail source
+reconstruction. A completed native calibration is research evidence: ordinary
+PDF calibration, a fresh public-candidate trial and reviewed combined admission
+remain separate requirements.
