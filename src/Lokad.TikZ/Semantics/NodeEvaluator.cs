@@ -34,7 +34,7 @@ internal sealed partial class Evaluator
     }
 
     private ResolvedNode? ImplicitNode(Coordinate coordinate)
-        => coordinate.X is null && !coordinate.Name.Contains('.') && _nodes.TryGetValue(coordinate.Name, out var node) ? node : null;
+        => coordinate.Calculation is null && coordinate.X is null && !coordinate.Name.Contains('.') && _nodes.TryGetValue(coordinate.Name, out var node) ? node : null;
 
     private Point NodeBorder(ResolvedNode node, Point toward, Affine queryFrame, Source source)
     {

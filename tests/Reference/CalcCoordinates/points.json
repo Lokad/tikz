@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "role": "native-calc-coordinate-reference",
+  "pgfVersion": "3.1.11a",
+  "texEngine": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+  "svgTool": "dvisvgm 3.4.3",
+  "fontProfile": "T1 Latin Modern, default 10pt, glyph-free fixture",
+  "sourceSha256": "8792d5a16d94091de6529ab91b216d981ddb8905d7210764387a9ea637f2eb9d",
+  "nativeReportSha256": "b5e0853fe16a619991ad7edee697392a1c5c72002a9e5b6dba9733c8b8f97213",
+  "observerSvgSha256": "e0737b345bf8fe21e89fd6dfe57ca93d7a57d02c0512a200d89ca4518d8bb730",
+  "boxSp": [
+    15759084,
+    13661679,
+    0
+  ],
+  "points": [
+    {
+      "id": "a",
+      "xSp": 2330848,
+      "ySp": -932339
+    },
+    {
+      "id": "b",
+      "xSp": 5594037,
+      "ySp": 3729358
+    },
+    {
+      "id": "c",
+      "xSp": -1864679,
+      "ySp": 7458716
+    },
+    {
+      "id": "sum",
+      "xSp": 7924885,
+      "ySp": 2797019
+    },
+    {
+      "id": "subtract",
+      "xSp": -3263189,
+      "ySp": -4661697
+    },
+    {
+      "id": "scaled",
+      "xSp": -4719969,
+      "ySp": -4078985
+    },
+    {
+      "id": "math",
+      "xSp": 1648160,
+      "ySp": -659263
+    },
+    {
+      "id": "interpolation",
+      "xSp": 3146645,
+      "ySp": 233085
+    },
+    {
+      "id": "extrapolation",
+      "xSp": 7225631,
+      "ySp": 6060206
+    },
+    {
+      "id": "rotated",
+      "xSp": 2578430,
+      "ySp": 1902037
+    },
+    {
+      "id": "distance",
+      "xSp": 2865503,
+      "ySp": -168554
+    },
+    {
+      "id": "projection",
+      "xSp": 4893116,
+      "ySp": 2728006
+    },
+    {
+      "id": "transformed-sum",
+      "xSp": 7467625,
+      "ySp": 2994381
+    },
+    {
+      "id": "transformed-interpolation",
+      "xSp": 3147218,
+      "ySp": 233199
+    },
+    {
+      "id": "basis-and-unit",
+      "xSp": 1510535,
+      "ySp": 802201
+    },
+    {
+      "id": "shear-y",
+      "xSp": 7924885,
+      "ySp": 2797019
+    },
+    {
+      "id": "rotated-projection",
+      "xSp": 3459044,
+      "ySp": -142131
+    },
+    {
+      "id": "rotated-distance",
+      "xSp": 2410564,
+      "ySp": -1384105
+    },
+    {
+      "id": "chain",
+      "xSp": -3321458,
+      "ySp": 8973768
+    },
+    {
+      "id": "nested",
+      "xSp": 9789564,
+      "ySp": -4661697
+    },
+    {
+      "id": "polar",
+      "xSp": 2553367,
+      "ySp": 1332973
+    },
+    {
+      "id": "negative",
+      "xSp": 932341,
+      "ySp": 5594036
+    },
+    {
+      "id": "commented",
+      "xSp": 2461920,
+      "ySp": -735731
+    },
+    {
+      "id": "node-center-shift",
+      "xSp": 1995751,
+      "ySp": -3532750
+    },
+    {
+      "id": "node-anchor-interpolation",
+      "xSp": 2097763,
+      "ySp": -1996614
+    }
+  ]
+}

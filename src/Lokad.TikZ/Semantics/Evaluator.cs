@@ -20,7 +20,7 @@ internal sealed partial class Evaluator(Budget budget)
     private void LoadLibrary(string name, EvaluationState state, Source source)
     {
         budget.Charge(source);
-        if (name is not ("shapes.geometric" or "arrows.meta")) throw new CompileError("TIKZ002", $"Unsupported TikZ library '{name}'.", source);
+        if (name is not ("shapes.geometric" or "arrows.meta" or "calc")) throw new CompileError("TIKZ002", $"Unsupported TikZ library '{name}'.", source);
         state.Libraries.Add(name);
     }
     private void Statements(List<Statement> statements, EvaluationState state, int depth)
@@ -58,7 +58,12 @@ internal sealed partial class Evaluator(Budget budget)
         budget.Charge(coordinate.Source);
         updateReference = coordinate.Relative != 1;
         Point point;
-        if (coordinate.X is null || coordinate.Y is null)
+        if (coordinate.Calculation is not null)
+        {
+            point = PgfTransform.Apply(state.Transform, Calculate(coordinate.Calculation, state), budget, coordinate.Source);
+            if (coordinate.Relative != 0) point -= PgfTransform.Apply(state.Transform, default, budget, coordinate.Source);
+        }
+        else if (coordinate.X is null || coordinate.Y is null)
         {
             if (!_coordinates.TryGetValue(coordinate.Name, out point)) point = NodeAnchor(coordinate.Name, coordinate.Source);
             point = PgfCoordinates.RoundTrip(point, state.Transform, coordinate.Source);
@@ -86,7 +91,8 @@ internal sealed partial class Evaluator(Budget budget)
         budget.Charge(coordinate.Source);
         updateReference = coordinate.Relative != 1;
         Point point;
-        if (coordinate.X is null || coordinate.Y is null)
+        if (coordinate.Calculation is not null) point = Calculate(coordinate.Calculation, state);
+        else if (coordinate.X is null || coordinate.Y is null)
         {
             if (!_coordinates.TryGetValue(coordinate.Name, out point)) point = NodeAnchor(coordinate.Name, coordinate.Source);
             point = PgfCoordinates.ToLocal(point, state.Transform, coordinate.Source);

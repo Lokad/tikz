@@ -208,18 +208,5 @@ internal sealed class Parser(Source source, Budget budget)
     private static Source RequiredValue(List<Option> options, string key, Source origin)
         => options.LastOrDefault(o => o.Key == key)?.Value ?? throw new CompileError("TIKZ001", $"Missing '{key}'.", origin);
     private Source ReadDimensionGroup() => _reader.Group('(', ')');
-    private Coordinate ReadCoordinate()
-    {
-        var origin = _reader.Here;
-        var relative = _reader.Take("++") ? 2 : _reader.Take("+") ? 1 : 0;
-        var group = _reader.Group('(', ')');
-        origin = new Source(origin.Text, origin.Offset, source.Offset + _reader.Position - origin.Offset);
-        var cartesian = Options.Split(group, ',', budget);
-        if (cartesian.Count == 2) return new(Expression.Parse(cartesian[0], budget), Expression.Parse(cartesian[1], budget), "", false, relative, origin);
-        if (cartesian.Count != 1) throw new CompileError("TIKZ001", "Expected a two-dimensional coordinate.", group);
-        var polar = Options.Split(group, ':', budget);
-        if (polar.Count == 2) return new(Expression.Parse(polar[0], budget), Expression.Parse(polar[1], budget), "", true, relative, origin);
-        if (polar.Count != 1) throw new CompileError("TIKZ001", "Invalid polar coordinate.", group);
-        return new(null, null, Options.Clean(group), false, relative, origin);
-    }
+    private Coordinate ReadCoordinate() => CoordinateReader.Read(_reader, budget);
 }

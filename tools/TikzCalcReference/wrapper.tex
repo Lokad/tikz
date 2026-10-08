@@ -1,0 +1,27 @@
+% Trusted native wrapper. The optional probe emits log entries only.
+\documentclass{article}
+\def\pgfsysdriver{pgfsys-dvisvgm.def}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tikz}
+\pagestyle{empty}
+\makeatletter
+\newif\ifcalcprobes
+\newbox\calcpicture
+\def\calcpoint#1{%
+  \pgfpointanchor{#1}{center}%
+  \typeout{CALC-POINT #1|\number\pgf@x|\number\pgf@y|END}%
+}
+\let\calcoriginalendpicture\endtikzpicture
+\def\endtikzpicture{%
+  \ifcalcprobes
+    \begingroup\pgftransformreset\input{probes.tex}\endgroup
+  \fi
+  \calcoriginalendpicture
+}
+\begin{document}
+\typeout{CALC-PGF-VERSION \pgfversion}
+\setbox\calcpicture=\hbox{\input{case.tikz}\unskip}
+\typeout{CALC-BOX \number\wd\calcpicture|\number\ht\calcpicture|\number\dp\calcpicture|END}
+\hbox{\box\calcpicture}
+\end{document}

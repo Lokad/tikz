@@ -18,4 +18,14 @@ internal sealed record EllipseOperation(Expression X, Expression Y, Source Origi
 internal sealed record ArcOperation(Expression Start, Expression End, Expression X, Expression Y, Source Origin) : PathOperation(Origin);
 internal sealed record CloseOperation(Source Origin) : PathOperation(Origin);
 internal sealed record PathOptionsOperation(List<Option> Options, Source Origin) : PathOperation(Origin);
-internal sealed record Coordinate(Expression? X, Expression? Y, string Name, bool Polar, int Relative, Source Source);
+internal sealed record Coordinate(Expression? X, Expression? Y, string Name, bool Polar, int Relative, Source Source)
+{
+    public CoordinateCalculation? Calculation { get; init; }
+}
+internal sealed record CoordinateCalculation(List<CalculationTerm> Terms, Source Source);
+internal sealed record CalculationTerm(int Sign, Expression? Factor, Coordinate Point, List<CalculationModifier> Modifiers, Source Source);
+internal abstract record CalculationModifier(Coordinate Target, Expression? Angle, Source Source);
+internal sealed record InterpolationModifier(Expression Amount, Coordinate End, Expression? Rotation, Source Origin)
+    : CalculationModifier(End, Rotation, Origin);
+internal sealed record ProjectionModifier(Coordinate Projected, Coordinate End, Expression? Rotation, Source Origin)
+    : CalculationModifier(End, Rotation, Origin);

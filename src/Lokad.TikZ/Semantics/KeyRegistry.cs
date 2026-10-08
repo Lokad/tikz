@@ -54,7 +54,7 @@ internal static class KeyRegistry
             };
             if (state.IsNodeContext)
             {
-                if (key is "scale" or "xscale" or "yscale" or "rotate" or "shift" or "xshift" or "yshift" or "cm")
+                if (key is "scale" or "xscale" or "yscale" or "xslant" or "yslant" or "rotate" or "shift" or "xshift" or "yshift" or "cm")
                 { state.NodeTransforms.Add(option with { Key = key }); continue; }
                 if (key is "x" or "y") throw Unsupported(option);
                 if (key == "line width") { state.NodeLineWidth = option.Value; continue; }
@@ -137,6 +137,8 @@ internal static class KeyRegistry
                 case "scale": var scale = state.Scalar(option.Value, budget); Transform(Affine.Scale(scale, scale)); break;
                 case "xscale": Transform(Affine.Scale(state.Scalar(option.Value, budget), 1)); break;
                 case "yscale": Transform(Affine.Scale(1, state.Scalar(option.Value, budget))); break;
+                case "xslant": Transform(new(1, 0, state.Scalar(option.Value, budget), 1, 0, 0)); break;
+                case "yslant": Transform(new(1, state.Scalar(option.Value, budget), 0, 1, 0, 0)); break;
                 case "rotate": Transform(PgfTransform.Rotation(state.Scalar(option.Value, budget), budget, option.Source)); break;
                 case "xshift": Transform(Affine.Translation(state.Dimension(option.Value, budget), 0)); break;
                 case "yshift": Transform(Affine.Translation(0, state.Dimension(option.Value, budget))); break;

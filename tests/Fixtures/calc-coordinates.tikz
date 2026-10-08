@@ -1,0 +1,61 @@
+% Independently authored calc research; no converter output supplies a reference.
+\usetikzlibrary{calc}
+\begin{tikzpicture}
+  \coordinate (a) at (1.25,-.5);
+  \coordinate (b) at (3,2);
+  \coordinate (c) at (-1,4);
+  \coordinate (sum) at ($(a)+(b)$);
+  \coordinate (subtract) at ($(a)-(b)$);
+  \coordinate (scaled) at ($.375*(a)-(b)$);
+  \coordinate (math) at (${sqrt(2)/2}*(a)$);
+  \coordinate (interpolation) at ($(a)!.25!(b)$);
+  \coordinate (extrapolation) at ($(a)!1.5!(b)$);
+  \coordinate (rotated) at ($(a)!.5!30:(b)$);
+  \coordinate (distance) at ($(a)!5mm!(b)$);
+  \coordinate (projection) at ($(a)!(c)!(b)$);
+  \begin{scope}[xshift=7pt,yshift=-3pt,rotate=23,xscale=1.5,yscale=.75,xslant=.2]
+    \coordinate (transformed-sum) at ($(a)+(b)$);
+    \coordinate (transformed-interpolation) at ($(a)!.25!(b)$);
+  \end{scope}
+  \begin{scope}[x=3mm,y=5mm,cm={1,.2,-.1,1,(4pt,-2pt)}]
+    \coordinate (basis-and-unit) at ($(2,1)+(3pt,-4pt)$);
+  \end{scope}
+  \draw (a)--(b)--(c);
+  \draw (sum)--+(2pt,0);
+  \draw (subtract)--+(2pt,0);
+  \draw (scaled)--+(2pt,0);
+  \draw (math)--+(2pt,0);
+  \draw (interpolation)--+(2pt,0);
+  \draw (extrapolation)--+(2pt,0);
+  \draw (rotated)--+(2pt,0);
+  \draw (distance)--+(2pt,0);
+  \draw (projection)--+(2pt,0);
+  \draw (transformed-sum)--+(2pt,0);
+  \draw (transformed-interpolation)--+(2pt,0);
+  \draw (basis-and-unit)--+(2pt,0);
+  \begin{scope}[yslant=-.375]
+    \coordinate (shear-y) at ($(a)+(b)$);
+  \end{scope}
+  \coordinate (rotated-projection) at ($(a)!(c)!-20:(b)$);
+  \coordinate (rotated-distance) at ($(a)!-7pt!45:(b)$);
+  \coordinate (chain) at ($(a)!.5!(b)!1.25!(c)$);
+  \coordinate (nested) at ($( $(a)+(b)$ )-(c)$);
+  \coordinate (polar) at ($(30:1.5)+(2pt,-1pt)$);
+  \coordinate (negative) at ($-2*(a)+(b)$);
+  \coordinate (commented) at ($% first term
+    (a)+% second term
+    (2pt,3pt)$);
+  \node[circle,draw,minimum size=20pt] (n) at (1,-2) {};
+  \coordinate (node-center-shift) at ($(n)+(2pt,3pt)$);
+  \coordinate (node-anchor-interpolation) at ($(n.north)!.5!(a)$);
+  \draw (shear-y)--+(2pt,0);
+  \draw (rotated-projection)--+(2pt,0);
+  \draw (rotated-distance)--+(2pt,0);
+  \draw (chain)--+(2pt,0);
+  \draw (nested)--+(2pt,0);
+  \draw (polar)--+(2pt,0);
+  \draw (negative)--+(2pt,0);
+  \draw (commented)--+(2pt,0);
+  \draw (node-center-shift)--+(2pt,0);
+  \draw (node-anchor-interpolation)--+(2pt,0);
+\end{tikzpicture}

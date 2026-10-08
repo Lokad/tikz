@@ -24,6 +24,10 @@ path/label/node interactions remain pending.
 The declared [RGB color profile](docs/COLORS.md) has independent path/glyph
 checks for all nineteen supported names and selected mixtures.
 
+The experimental [calculated-coordinate subset](docs/CALC.md) adds arithmetic,
+interpolation, distance and projection. All 25 cached native anchors match in
+integer scaled points; primary/PDF and broader interaction qualification remain open.
+
 ```csharp
 using Lokad.TikZ;
 
