@@ -63,7 +63,13 @@ The public picture bounds also match independently measured PGF bounds exactly
 in scaled points. Native PDF tooling measures the picture's page position
 separately from the surrounding TeX box, including its leading glue, and
 captures both SVG routes against ordinary PDF with full-page overflow controls.
+An independent saved-image checker recomputes the PNG measurements without a
+browser, checks a fresh public conversion and recaptures both research bundles
+with the pinned development renderer. Native PDF bytes and raster pages have
+a separate source pin; hashes and recorded metrics alone cannot establish
+source-to-image correspondence. Corruption controls include fully rehashed
+PNG/metric substitutions that must fail the recapture check.
 This is research evidence with no admitted image policy. Independent image
-calibration/checking, full sensitivity and broader interactions remain open.
+calibration, full sensitivity and broader interactions remain open.
 The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
 records commands for reproducing measurements and paired images.

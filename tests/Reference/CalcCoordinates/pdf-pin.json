@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "role": "native-calc-pdf-source-pin",
+  "sourceSha256": "8792d5a16d94091de6529ab91b216d981ddb8905d7210764387a9ea637f2eb9d",
+  "nativeReportSha256": "dfb055291733f349d95cda5ba25991e761086e6e28ea8122393f9aab323d9984",
+  "pdfSha256": "35cee8c52803777555618681cea4358efb7adce2ebbc40bf28448b10c2c761fc",
+  "rasterSha256": {
+    "1x": "a40cf89d7e1b73443614a7e55bfbec9291521858d577c97b035344362ab95163",
+    "4x": "5e8d2affd9d007b397e9822cf84f0ad8d2ca4d33dc799c357d935e3a118548f1"
+  },
+  "scope": "Fixed glyph-free calc fixture, PGF 3.1.11a, deterministic ordinary PDF and Poppler 24.04.0 captures; source identity only, no image allowance."
+}

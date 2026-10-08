@@ -66,8 +66,9 @@ report. The agent index distinguishes recapturing unchanged evidence from
 exporting a changed candidate and links the ordinary follow-up test command.
 
 Completion means evidence generation finished. Image admission remains pending:
-independent primary/PDF calibration, the full defect matrix, independent
-saved-evidence verification and broader interactions remain required. A black
+independent primary/PDF calibration, the full defect matrix and broader
+interactions remain required. Independent saved-evidence verification is
+documented below. A black
 stroke on an opaque black background has no visible contrast; exact samples
 there do not establish detection of a missing stroke.
 
@@ -103,3 +104,51 @@ Open the PDF report's `agent-inspection.json` or static `index.html` for paired
 page/crop images and source records. `route-parity.json` compares the separately
 registered original/candidate SVG page captures. PDF/SVG raster differences
 remain raw observations with no borrowed policy or image-conformance pass.
+
+For independent verification of the exact completed primary and PDF bundles:
+
+```powershell
+node tools/TikzVisual/check-calc-images.mjs <primary-inspection/report.json> <pdf-inspection/report.json>
+node tools/TikzVisual/calc-saved-image-self-test.mjs <completed-image-check/report.json>
+```
+
+The checker validates every artifact hash and required view/region identity,
+then decodes saved PNG samples in Node and recomputes the measurements. The
+bounded decoder supports the pinned renderers' 8-bit noninterlaced RGB/RGBA
+PNGs, checks chunk CRCs and all five row filters, and preserves RGB samples
+even at zero alpha. Browser canvas readback can discard those samples.
+`pdf-pin.json` binds the fixed native report, ordinary PDF and both native page
+rasters to their original source; it supplies no pixel-error allowance.
+
+The checker invokes a fresh public converter export and matches its source,
+SVG, scene, numeric evidence and compiler source guards to both saved bundles.
+It independently reads the native page-layout logs, materializes the bound
+inputs in its own run directory, and reruns both guarded image producers. All
+saved PNGs and presentation artifacts must reproduce; only the explicitly
+declared rerun input paths and the resulting provenance digests are normalized.
+This cached check needs .NET and the pinned Node/Playwright/Chromium tooling,
+and does not invoke native TeX or PDF executables.
+
+The corruption command uses the checker's actual saved-image and source-binding
+verifiers. Its controls cover missing/duplicate coverage, false measurements,
+hidden transparent RGB, changed cameras/SVGs and invalid report metadata. It
+also substitutes primary and PDF PNGs and recomputes their hashes, regional
+metrics and affected report summaries. These internally consistent pixel
+forgeries pass decoded-metric recomputation and must fail source recapture.
+Mutation artifacts are overlays on the hash-bound baseline named by each
+control, rather than complete copies of the original bundle.
+
+The PNG implementation has separate ordinary and independent-renderer checks:
+
+```powershell
+node tools/TikzVisual/calc-png-self-test.mjs
+node tools/TikzVisual/calc-png-renderer-self-test.mjs
+```
+
+The first uses Node built-ins only. The second cross-checks all five filters
+for both RGB and RGBA with the pinned Chromium decoder and canvas encoder, and
+demonstrates canvas loss of hidden RGB at zero alpha. Both renderer and saved-
+image controls retain fresh hashed evidence under ignored `artifacts/`.
+Successful verification establishes the saved research evidence's integrity
+and reproducibility. Primary/PDF calibration, the full visible-defect matrix,
+broader interactions and integration remain pending.
