@@ -20,29 +20,10 @@ Directory.CreateDirectory(output);
 await Publish(false);
 try
 {
-    using var report = JsonDocument.Parse(await File.ReadAllBytesAsync(reference));
-    var r = report.RootElement;
-    if (r.GetProperty("role").GetString() != "path-label-native-reference" || !r.GetProperty("completed").GetBoolean()
-        || r.GetProperty("converterInvoked").GetBoolean() || r.GetProperty("imageConformanceClaim").GetBoolean())
-        throw new InvalidDataException("Expected completed independent native observations.");
-    var folder = Path.GetDirectoryName(reference)!;
-    byte[] Read(string file)
-    {
-        if (Path.IsPathRooted(file) || file.Split('/', '\\').Any(p => p is ".." or "." or "")) throw new InvalidDataException("Invalid native artifact path.");
-        var bytes = File.ReadAllBytes(Path.Combine(folder, file));
-        if (bytes.Length > 100000000 || Hash(bytes) != r.GetProperty("artifacts").GetProperty(file).GetString()) throw new InvalidDataException("Native artifact changed: " + file);
-        return bytes;
-    }
-    using var metrics = JsonDocument.Parse(Read("metrics.json"));
-    var native = metrics.RootElement;
-    var ids = native.GetProperty("nodes").EnumerateArray().Select(n => n.GetProperty("id").GetString()!).ToArray();
-    var svg = Encoding.UTF8.GetString(Read("probed-reference.svg"));
-    var fontProfile = Encoding.UTF8.GetString(Read("source-captures/tools/TikzFontData/font-profile.json"));
-    var fonts = r.GetProperty("artifacts").EnumerateObject().Where(a => a.Name.StartsWith("fonts/", StringComparison.Ordinal))
-        .ToDictionary(a => Path.GetFileName(a.Name), a => Read(a.Name), StringComparer.Ordinal);
-    var glyphs = NativeGlyphTrace.Read(Encoding.UTF8.GetString(Read("native-positions.log")), fontProfile, ids, svg, fonts);
-    var fixture = r.GetProperty("definition").GetProperty("id").GetString();
-    if (fixture is not ("placement" or "interactions")) throw new InvalidDataException("Only fixed trusted repository fixtures are accepted.");
+    using var input = new NativeInput(reference);
+    var r = input.Report.RootElement;
+    var native = input.Metrics.RootElement;
+    var ids = input.Ids; var svg = input.Svg; var glyphs = input.Glyphs; var fixture = input.Fixture;
     var sourceFile = "tests/Fixtures/PathLabels/" + fixture + ".tikz";
     var sourceBytes = await File.ReadAllBytesAsync(Path.Combine(root, sourceFile));
     var source = Encoding.UTF8.GetString(sourceBytes);
@@ -66,7 +47,7 @@ try
     foreach (var file in Directory.EnumerateFiles(Path.Combine(root, "src/Lokad.TikZ"), "*", SearchOption.AllDirectories)
         .Where(f => !Path.GetRelativePath(root, f).Split(Path.DirectorySeparatorChar).Any(p => p is "bin" or "obj")).Order(StringComparer.Ordinal))
         await Save("source-captures/" + Path.GetRelativePath(root, file).Replace('\\', '/'), await File.ReadAllBytesAsync(file));
-    foreach (var file in new[] { "tools/TikzPathLabelComparison/Program.cs", "tools/TikzPathLabelComparison/NativeLabels.cs",
+    foreach (var file in new[] { "tools/TikzPathLabelComparison/Program.cs", "tools/TikzPathLabelComparison/NativeLabels.cs", "tools/TikzPathLabelComparison/NativeInput.cs",
         "tools/TikzPathLabelComparison/TikzPathLabelComparison.csproj", "tools/TikzShapeComparison/NativeGlyphTrace.cs",
         "Directory.Build.props", "Directory.Packages.props" })
         await Save("source-captures/" + file, await File.ReadAllBytesAsync(Path.Combine(root, file)));

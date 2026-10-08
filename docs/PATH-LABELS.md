@@ -48,7 +48,13 @@ cover public entry and the shared-token boundaries before resolution and SVG out
 The [iteration workflow](../tools/TikzPathLabelComparison/README.md) reuses frozen
 native evidence and always compares fresh converter output. SVG/PDF observations
 agree, and probes leave the native SVG drawing, PDF and PDF pixels unchanged.
-Full path-label image qualification, ordinary-PDF image gates and final-tree
-fresh-export acceptance remain open.
+Native-only primary/local policies now cover both fixed fixtures, with separate
+intrinsic-image and explicit-viewport captures, natural/expanded frames, 1x/4x
+density and three backgrounds. Their
+[independent checking workflow](../tools/TikzPathLabelOracle/README.md) recomputes saved
+pixel metrics and recaptures original sources. Fresh converter images are checked
+against these prospective policies; limits never come from candidate pixels.
+Full path-label image qualification, complete-label image sensitivity,
+ordinary-PDF image gates and final-tree fresh-export acceptance remain open.
 Focused numeric agreement and paired-image inspection establish no
 approved image tolerance or general pixel-identity claim.
