@@ -1,0 +1,16 @@
+\usetikzlibrary{positioning,arrows.meta,calc,shapes.geometric}
+\begin{tikzpicture}[node distance=12mm,
+  server/.style={draw,circle,minimum size=14mm,inner sep=2pt},
+  worker/.style={draw,ellipse,minimum width=17mm,inner sep=3pt}]
+  \node[server] (queue) {Queue};
+  \node[worker,right=18mm of queue] (primary) {Worker};
+  \node[worker,below right=10mm and 18mm of queue] (replica) {Replica};
+  \draw[-{Stealth},bend left=20] (queue) to
+    node[pos=0.45,sloped,above] {send} (primary);
+  \draw[-{Stealth},bend right=20] (primary) to
+    node[pos=0.55,sloped,below] {ack} (queue);
+  \draw[-{Stealth}] (queue) -- node[midway,sloped,below] {copy} (replica);
+  \coordinate (projection) at ($(queue)!(replica)!(primary)$);
+  \coordinate (relay) at ($(queue)!0.5!(primary)+(0,8mm)$);
+  \draw[-{Stealth}] (replica.north) -- (projection) -- (relay);
+\end{tikzpicture}

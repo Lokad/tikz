@@ -1,0 +1,13 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=9mm,
+  box/.style={draw,rectangle,minimum width=14mm,inner sep=3pt}]
+  \node[box] (input) {Input};
+  \node[box,right=of input] (check) {Check};
+  \node[box,right=of check] (output) {Output};
+  \node[box,below=of check] (retry) {Retry};
+  \draw[-{Stealth}] (input) -- node[midway,above] {read} (check);
+  \draw[-{Stealth}] (check) -- node[midway,above] {ok} (output);
+  \draw[-{Stealth}] (check) -- node[midway,right] {again} (retry);
+  \coordinate (return) at ($(input.south)+(0,-12mm)$);
+  \draw[-{Stealth}] (retry.west) -| (return) -- (input.south);
+\end{tikzpicture}

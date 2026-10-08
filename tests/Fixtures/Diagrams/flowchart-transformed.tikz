@@ -1,0 +1,13 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[xscale=1.2,yscale=0.8,rotate=12,node distance=10mm,
+  box/.style={draw,rectangle,minimum width=15mm,inner sep=3pt}]
+  \begin{scope}[shift={(4mm,-3mm)},transform shape]
+    \node[box] (start) {Start};
+    \node[box,right=of start] (finish) {Finish};
+    \draw[-{Stealth}] (start) -- node[midway,sloped,above] {next} (finish);
+    \coordinate (waypoint) at ($(start.south)!0.5!(finish.south)+(0,-10mm)$);
+    \draw[-{Stealth}] (start.south) -- (waypoint) --
+      ++($(2mm,0)$) to[out=30,in=-90]
+      node[pos=0.5,sloped,below] {route} (finish.south);
+  \end{scope}
+\end{tikzpicture}
