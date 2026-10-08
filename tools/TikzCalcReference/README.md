@@ -299,8 +299,8 @@ overlay on its bound baseline.
 `agent-inspection.json` links native agreement, declared frames, every selected
 paired image, 1x/4x crops, differences and verified path-to-source identities.
 The static `index.html` gallery focuses on defect crops. A `trial-pass` is
-fixed-fixture research evidence. Reviewed combined admission,
-broader interactions, root integration and release qualification remain open.
+fixed-fixture research evidence. The separate current-conformance profile below
+supplies admission; broader interactions and release qualification remain open.
 
 ## Portable public-trial evidence
 
@@ -330,7 +330,7 @@ Historical production hashes remain evidence of the qualified snapshot. Loader
 guards check the current evidence tools separately; checking this cache cannot
 prove that a changed production compiler conforms. Structural-only loading is
 explicitly labeled and supplies no pixel qualification. Current image admission
-still requires a separately reviewed combined profile and a new public trial
+uses the separately reviewed combined profile below and a new public trial
 with the pinned renderer. The compact native projection preserves selected
 native calibration records and complete source manifests; it does not contain
 the original full calibration PNG bundles or claim to replay them.
@@ -376,3 +376,57 @@ archive supply separate native and candidate evidence; a reviewed combined
 profile must bind both before accepting a fresh public result. Renderer-only
 faint/clipping controls qualify comparator visibility and grant no additional
 TikZ paint compatibility. Broader interactions and release scope remain open.
+
+## Fixed profile and current converter conformance
+
+The combined profile binds both portable archives, their original proof hashes,
+the exact renderer, native frames/regions/limits and required gate counts. Its
+external pin is separate from the captured source graph. The archived research
+reports retain their pending flags; the profile is a distinct admission record.
+Its scope is only the fixed glyph-free fixture with opaque black 0.4-pt strokes.
+
+```powershell
+node tools/TikzVisual/prepare-calc-admission.mjs
+node tools/TikzVisual/calc-admission-self-test.mjs
+node tools/TikzVisual/compare-calc-conformance.mjs
+node tools/TikzVisual/check-calc-conformance.mjs artifacts/calc-conformance/run-<id>/report.json
+node tools/TikzVisual/calc-admission-self-test.mjs --report artifacts/calc-conformance/run-<id>/report.json
+```
+
+Preparation independently checks all 636 native and 540 historical public image
+pairs and replays the forty saved negative controls through the original
+verifiers. It emits a proposed profile and a hashed receipt, without changing
+the tracked profile or pin. Profile changes require explicit evidence review;
+ordinary comparison cannot replace native references or widen their limits.
+
+Comparison performs a fresh ordinary/traced public export, runs the complete
+primary/PDF and comparator matrix, then executes the independent checker. The
+owned result includes both archives, the profile/pin, the full trial and full
+recapture, current compiler/tool sources, metrics and compact inspection JSON.
+All twelve required gates must pass before a completed conformance result is
+published. Use the exact report path and SHA-256 from its final output receipt.
+No prior successful run supplies missing current evidence.
+
+The separate conformance checker validates the saved result and performs another
+fresh public export and complete source recapture. It owns that entire recapture
+and checks current production sources. A changed production build may run a new
+comparison under the fixed profile; it cannot reuse a stale saved result. The
+profile freezes development tools and native evidence rather than historical
+production code. All current-result commands need .NET, Node and the pinned
+development browser, with no native TeX/PDF executable.
+
+Open `agent-inspection.json` first. Its two selected views link the expanded
+white-background original/public PNG pairs at 1x and 4x, their measured errors,
+the native agreement, scene and source attribution. `trial/index.html` is the
+existing static defect-crop gallery. Paired PNGs and JSON can be inspected
+without the viewer. This fixed-family adapter does not implement the planned
+common interactive viewer or common failure-outcome adapter. Failed child
+receipts, partial artifacts and logs are retained without an admission claim.
+
+Profile controls exercise approval/scope/renderer/native bindings, lost views
+and gates, gate failure/count reconciliation, current tool changes and external
+pin rejection. Report-specific controls additionally exercise missing owned
+proofs, changed claim flags, stale production and consistently rehashed agent
+image links. These augment the independently qualified native/public comparator
+controls; they do not extend the supported TikZ scope. Hosted execution,
+broader interactions, root integration and release qualification remain open.

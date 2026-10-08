@@ -69,7 +69,7 @@ with the pinned development renderer. Native PDF bytes and raster pages have
 a separate source pin; hashes and recorded metrics alone cannot establish
 source-to-image correspondence. Corruption controls include fully rehashed
 PNG/metric substitutions that must fail the recapture check.
-This is research evidence with no admitted image policy. Independent image
+These research reports retain pending image policies. Independent image
 calibration tooling now measures three native-only primary encodings and
 twelve defect families under both capture routes. Renderer-only faint and
 clipping controls remain distinct from native TikZ compatibility. Separate
@@ -83,8 +83,9 @@ anchor/path and declared frame, and captures both primary routes and the
 original/public SVG against ordinary PDF. Full image-only defect and controlled
 visibility matrices run with numeric gates bypassed. An independent checker
 recomputes saved pixels and gates, requires fresh public-output agreement,
-and recaptures the complete trial from owned inputs. This remains fixed-fixture
-research; reviewed combined admission and broader interactions remain required.
+and recaptures the complete trial from owned inputs. The trial remains
+fixed-fixture research; the separate combined consumer below supplies admission.
+Broader interactions remain required.
 The completed public trial and its independent recapture, fresh export and
 corruption overlays also have a pinned portable development archive. Its loader
 recomputes the saved image evidence, and its controls replay the saved mutations
@@ -95,5 +96,14 @@ corruption overlays have their own portable archive. Its verification derives
 the native limits again from decoded evidence and preserves renderer-only
 visibility controls separately. Combined admission must bind both archives
 and still require a fresh public result.
+The fixed combined profile now binds both archives and their independently
+qualified native limits. Current conformance performs fresh public conversion,
+the complete primary/PDF matrix and a full independent source recapture; a
+separate checker validates the owned result and reconstructs it again from
+current public sources. A changed compiler can produce a new result under the
+same profile, while stale saved production hashes are rejected. Admission
+remains limited to the fixed glyph-free, opaque-black 0.4-pt fixture. The
+compact adapter links paired 1x/4x images and source attribution; common failure
+adapters and the interactive viewer remain separate work.
 The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
 records commands for reproducing measurements and paired images.

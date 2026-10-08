@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-pgf-calc-coordinates-v1",
+  "scope": "Only the fixed glyph-free calc-coordinates fixture, with black opaque 0.4-pt strokes and the recorded native coordinate/transform encodings. Original-driver primary and ordinary-PDF agreement use independently calibrated native limits. Other labels, paint options, libraries and interactions require separate evidence. Hosted execution is unverified.",
+  "approvedImagePolicy": true,
+  "qualification": {
+    "native": {
+      "file": "tests/Reference/CalcCoordinates/native-calibration.bin.gz",
+      "sha256": "f0ea6c23933938519fa8cf7a44cc6949fb0fefc1deca8b718bc1d029e221b3c5",
+      "decodedSha256": "895a32fa9d127f48fecddd36235fd225a7937e7443dce609684dc785e74e5535",
+      "proofHashes": {
+        "primary": "625d7361a487be42eb61ff4ae8e7188f6bbb7bcc8761202cafaa87cd615d2885",
+        "primaryRecaptured": "358032f713e5fec800e9f3a0a55916392da13c666250b8c972278a11b741ca78",
+        "primaryCheck": "10b6f62eff01ad5c1c30892af92b74a3477b23562c1f99fe4f9c6c452b8aa0b8",
+        "primaryControls": "0fdd704ceb1db5a46d2b8bee53a8e661cb88f1db0723bc70236bd875365af80e",
+        "pdf": "56fbfeb02a5ba9c9e048242eae96331a91c99f311509c5e57464c6a13c2fae9b",
+        "pdfRecaptured": "823d7ac56310fb79d66deb7c7711bd92e5ecdd9530282842737c4d545c62a50f",
+        "pdfCheck": "d1f033b748356fce2d67598deec2cb9ae9df72fe6f45bce887bef584cfa4e8d4",
+        "pdfControls": "13dfbc031218c6db253e6a8e201c54c65356a995b8e78090d3caa89908647979"
+      }
+    },
+    "publicTrial": {
+      "file": "tests/Reference/CalcCoordinates/public-trial.bin.gz",
+      "sha256": "71eedc409c5066ce7d6b90e318c4fff26ff5c11be8cdfeb9a636c512fd7955e4",
+      "decodedSha256": "26092ea7e15b9de9fced1ae8533268f68692f37fb63b1538b84ae84225af397a",
+      "proofHashes": {
+        "trial": "10e95c9bdc8632b5de727a4479ea3a371a9b033c1c855c65ea7d614fccb03d6d",
+        "checker": "efb606f040e47a260d9652dc413e26938799937ae508bd2dbc8027841e21f314",
+        "recaptured": "09ffec2f279c58f50d57b7094b488446f7133030888c11f5e377799ccea78d4e",
+        "fresh": "d047f923dab7972dd369633111c873bd2cdd4963cf683a54b24caa4480481509",
+        "controls": "abde6121552e4fc5e4f0e39f9b2e60d52fdacbea56ec498cf7c4f2647bdd4c26"
+      }
+    }
+  },
+  "renderer": {
+    "profile": "chromium-153-geometry-v3",
+    "playwright": "1.63.0",
+    "browser": "153.0.8010.12",
+    "browserSha256": "9b07943f834485b43c9d54caea2951c78715f9f07070a80ab6658465ebd3e711",
+    "os": "win32",
+    "osRelease": "10.0.19045",
+    "architecture": "x64",
+    "node": "v24.12.0",
+    "headless": true,
+    "deviceScaleFactor": 1,
+    "viewport": {
+      "width": 1200,
+      "height": 900
+    },
+    "launchArguments": [
+      "--disable-gpu",
+      "--force-color-profile=srgb"
+    ],
+    "profileSha256": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f"
+  },
+  "requiredGates": [
+    "nativeQualification",
+    "qualificationControls",
+    "publicTraceParity",
+    "numeric",
+    "frame",
+    "primary",
+    "originalPdf",
+    "candidatePdf",
+    "comparator",
+    "savedPixels",
+    "sourceBinding",
+    "currentBuild"
+  ],
+  "gateCounts": {
+    "nativeQualification": {
+      "pairs": 636,
+      "regions": 15564
+    },
+    "qualificationControls": {
+      "controls": 47,
+      "negativeReplays": 40
+    },
+    "publicTraceParity": {
+      "conversions": 1
+    },
+    "numeric": {
+      "checks": 466
+    },
+    "frame": {
+      "checks": 10
+    },
+    "primary": {
+      "views": 24
+    },
+    "originalPdf": {
+      "views": 4
+    },
+    "candidatePdf": {
+      "views": 4
+    },
+    "comparator": {
+      "opaquePrimaryViews": 264,
+      "opaquePdfViews": 44,
+      "controlledViews": 168
+    },
+    "savedPixels": {
+      "pairs": 540,
+      "regions": 13212
+    },
+    "sourceBinding": {
+      "artifacts": 3022,
+      "pngs": 2196
+    },
+    "currentBuild": {
+      "exports": 2
+    }
+  },
+  "views": {
+    "primary": [
+      {
+        "capture": "intrinsic-image",
+        "frame": "natural",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "natural",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "natural",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "natural",
+        "scale": 4,
+        "background": "black"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "expanded",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "expanded",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "expanded",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "capture": "intrinsic-image",
+        "frame": "expanded",
+        "scale": 4,
+        "background": "black"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "natural",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "natural",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "natural",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "natural",
+        "scale": 4,
+        "background": "black"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "expanded",
+        "scale": 1,
+        "background": "transparent"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "expanded",
+        "scale": 1,
+        "background": "black"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "expanded",
+        "scale": 4,
+        "background": "transparent"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "capture": "explicit-viewport",
+        "frame": "expanded",
+        "scale": 4,
+        "background": "black"
+      }
+    ],
+    "pdf": [
+      {
+        "route": "original-svg",
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "route": "original-svg",
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "route": "original-svg",
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "route": "original-svg",
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "route": "candidate-svg",
+        "frame": "natural",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "route": "candidate-svg",
+        "frame": "natural",
+        "scale": 4,
+        "background": "white"
+      },
+      {
+        "route": "candidate-svg",
+        "frame": "expanded",
+        "scale": 1,
+        "background": "white"
+      },
+      {
+        "route": "candidate-svg",
+        "frame": "expanded",
+        "scale": 4,
+        "background": "white"
+      }
+    ]
+  },
+  "nativeBindings": {
+    "sourceSha256": "8792d5a16d94091de6529ab91b216d981ddb8905d7210764387a9ea637f2eb9d",
+    "originalSvgSha256": "e0737b345bf8fe21e89fd6dfe57ca93d7a57d02c0512a200d89ca4518d8bb730",
+    "pdfSha256": "35cee8c52803777555618681cea4358efb7adce2ebbc40bf28448b10c2c761fc",
+    "primaryFrameSha256": "f7c1f19b667dd8ea683fa9396e7bc155a76bb0badd3ab5ff3b93ce7cec2a6e5a",
+    "pdfRegistrationSha256": "80b078ae8a2c362ec30362ca99248126f96e3c34f121dc273f926fe2c2ec8cdd",
+    "primaryPolicySha256": "ee015be4477d26d19eebfdf0072be9a87c6bbfcffc3a35a8c1a99bfaf37553a9",
+    "pdfPolicySha256": "6c9a197c689961d45116b67bc2e8f6c398f697b2ab78329c8a2d864090ebc158"
+  },
+  "controls": {
+    "native": {
+      "primary": [
+        "unchanged-source-recapture",
+        "policy-json-and-compact-gates",
+        "missing-native-view",
+        "duplicate-native-view",
+        "candidate-fed-calibration",
+        "changed-native-region",
+        "false-native-pixel-metric",
+        "rehashed-changed-native-png",
+        "rehashed-weakened-policy",
+        "rehashed-changed-camera",
+        "rehashed-native-png-metrics-policy"
+      ],
+      "pdf": [
+        "unchanged-source-recapture",
+        "equal-mass-axis-shifts-below-edge-threshold",
+        "policy-json-and-compact-gates",
+        "missing-native-view",
+        "duplicate-native-view",
+        "candidate-fed-calibration",
+        "changed-native-region",
+        "false-native-pixel-metric",
+        "false-native-ink-mass",
+        "false-native-ink-x",
+        "false-native-ink-y",
+        "rehashed-changed-native-png",
+        "rehashed-weakened-ink-policy",
+        "rehashed-changed-camera",
+        "false-defect-summary",
+        "rehashed-native-png-metrics-policy"
+      ]
+    },
+    "public": [
+      "unchanged-owned-source-recapture",
+      "frozen-policy-json-and-compact-gates",
+      "missing-artifact-manifest",
+      "incomplete-trial",
+      "missing-primary-view",
+      "duplicate-primary-view",
+      "missing-pdf-view",
+      "rehashed-candidate-anchor",
+      "rehashed-native-policy",
+      "rehashed-native-camera",
+      "false-primary-pixel-count",
+      "contradictory-primary-repeat",
+      "rehashed-changed-primary-png",
+      "false-pdf-ink-mass",
+      "false-pdf-ink-x",
+      "false-pdf-ink-y",
+      "missing-defect-family",
+      "false-combined-gate-summary",
+      "false-agent-source-attribution",
+      "rehashed-primary-png-metrics-verdicts"
+    ]
+  },
+  "claims": {
+    "primary": "exact only when every required decoded primary view is identical; otherwise calibrated native match",
+    "pdf": "separately calibrated original/public SVG versus ordinary PDF",
+    "hostedExecution": "unverified"
+  },
+  "guardToolHashes": {
+    "Directory.Build.props": "98e3d5ccc9e3bb57654b334f141886b192aea9e534cfb3328d88f1e0c52229f6",
+    "global.json": "f8895c3e857eaa25f38be5e57a7581cc624727b527c94f2701fa1ba57e64f100",
+    "tools/TikzReference/CalcCoordinates.cs": "b295b6ac0c0e2c2242ad9b46c4bb5cb5601b7c83736a4db64fd4a1921dad11fe",
+    "tools/TikzReference/Program.cs": "b479bbfaf21f000d36179d39fe3dc5d80e2f976e1cbfd9a0c13aedaa83dd191e",
+    "tools/TikzReference/TikzReference.csproj": "ae97f409e920a84deaeab8e1d73ae9e02b88741fbbb7d503c6378f20aed7f979",
+    "tools/TikzVisual/arrow-image-cache-codec.mjs": "771518873ae0a861f9a8955ef236d935739a6d411f86d034aa21ad5b06501c5d",
+    "tools/TikzVisual/arrow-pdf-ink.mjs": "75672eb688327567dcf2796fbc0642e93da46647d3137ef1bb002efe0bfbdf47",
+    "tools/TikzVisual/arrow-vector-pair.mjs": "0c81b0c8bcccac19f1f6c0da2075666e4fad80f48bea425cd485e28b1e45f3c8",
+    "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
+    "tools/TikzVisual/calc-admission-agent.mjs": "42271a346ab1d36e1aec435363ac46e66514a243e336faf492a2f8dea194a70e",
+    "tools/TikzVisual/calc-admission-child.mjs": "ac2fc155787ede560d4aa7fe843193c0b8f9452bf5f2fd3162a9aff14b38b2c3",
+    "tools/TikzVisual/calc-admission-policy.mjs": "c7c2b960fb4534d8a95bd906ef2dcfbbf9e4de199e2c1ac2caf116f93d0356e8",
+    "tools/TikzVisual/calc-admission-reader.mjs": "15f87cd193be26b4a17f5df2631e417c0c3fccbc4339cd2d137c7e6cf0a63242",
+    "tools/TikzVisual/calc-admission-self-test.mjs": "5fd69a5f75707e0d6bdbb62c1d92b3b056215e06ba39132aceed4985a5479c1e",
+    "tools/TikzVisual/calc-layout-evidence.mjs": "8342d5737e5a85aa6994eabeec15c7a2a963297a6625c2e3bf7734aee2fed2a2",
+    "tools/TikzVisual/calc-native-cache-codec.mjs": "06dce3abbd6376d7ce1bf7856f1b53d7bc6109b0c4dd32606614961b8b5d601a",
+    "tools/TikzVisual/calc-native-cache-pin.mjs": "adab81a26431503e572c9c057b414237d088237e4267fdd158058d76c5c1522c",
+    "tools/TikzVisual/calc-native-cache-self-test.mjs": "5455700287902ef3da73f5c76d375e131de8857427b169e54156fbad0ba3b043",
+    "tools/TikzVisual/calc-native-cache.mjs": "0623b189d398f79188dc48baef48c8afcea80b301ef5cf3889bdfc1619ebea91",
+    "tools/TikzVisual/calc-native-path-checks.mjs": "49e560dedc4610c7e7502d148fdacd3fdcd0b134e17c2c8388bc5dd7d09139a4",
+    "tools/TikzVisual/calc-pdf-policy.mjs": "97d3358c4cfed4c636b68308c58926429810862fb4f669003ee6c20c59826557",
+    "tools/TikzVisual/calc-pdf-reference.mjs": "2e7c27b1d0e024f6affcd33cc9b41aa080366910409c0bfe054555c60d115e9e",
+    "tools/TikzVisual/calc-pdf-saved.mjs": "7a30f668e0cc8afc7b6841bd800b6456f53fd77c1024eae5d191433a772a1e6d",
+    "tools/TikzVisual/calc-pdf-self-test.mjs": "e38d114d0f65090b241230c5db6c249bb0f8915b420cfe8e10564ea629928ff2",
+    "tools/TikzVisual/calc-png.mjs": "389752c8094887f5f6278fb3e206fd51c2b0c852d975b11051af29bc0f0b3a96",
+    "tools/TikzVisual/calc-primary-policy.mjs": "a725f9621627e2036cfccbb694f38cac82b497aa9e8781eef3d5e5f6e80ca1aa",
+    "tools/TikzVisual/calc-primary-reference.mjs": "9fae485f6e0dfa0faa44a764fe782c4997aa6d5377b5f468a21d6644338c5d83",
+    "tools/TikzVisual/calc-primary-saved.mjs": "ba1a96103104b2bf8d4349d2c27dbb64719aba22ab133f9cf665e77b4ef8cff4",
+    "tools/TikzVisual/calc-primary-self-test.mjs": "858ceb7da4cc1380cd2b249a18c52b83a71de8be1bae83fd9c8d05a7c45e6221",
+    "tools/TikzVisual/calc-saved-images.mjs": "2fb2d423cca9edf733211b57f99a97b47c6d0fd6572dd7035c16b1f2756267dd",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/calc-trial-cache-pin.mjs": "8a739328f1fb4e062d4e46f5e516d55bc1ff555033e355f575a2409d8c3c48fa",
+    "tools/TikzVisual/calc-trial-cache-self-test.mjs": "340412a836390d25376d62fad59555a09a08ed5562440956e1aa01cdb796ebab",
+    "tools/TikzVisual/calc-trial-cache.mjs": "6bb7dfdecc4bd11e8e22c1ffab9c928a4ebea1f7af7fe3ba4a0118b707fc8cfc",
+    "tools/TikzVisual/calc-trial-candidate.mjs": "886264382589ffa4f59ad83f750e8fb93b7cb476a10275373e78971a98b2734f",
+    "tools/TikzVisual/calc-trial-reference.mjs": "a94f03a04694ddd1f7639a96ab54b0db4edc4513b07bffea2dac7e37118c9b6e",
+    "tools/TikzVisual/calc-trial-saved.mjs": "4715fc6410394a45a84b4959b00b9f58f7837c6ab5f8a033181a49f141252a0b",
+    "tools/TikzVisual/calibrate-calc-pdf.mjs": "3e205d0dd20456349aab8cd8ddba3d53e29d2cb7b8707b9924461ebc739aa68a",
+    "tools/TikzVisual/calibrate-calc-primary.mjs": "997a1d4fb3e10b93f895185ea4a9eefa4630d843fa82f5bbb3359e03aebc4911",
+    "tools/TikzVisual/check-calc-conformance.mjs": "e086e12df7251d75e0f992f8a7ebf806a9618f586fdfbfe3cb1d1c76216a45ea",
+    "tools/TikzVisual/check-calc-pdf.mjs": "6ed1a684187436c6decf3918473038ab521630dc6e5766c9cbdfcaadc1b8b3e3",
+    "tools/TikzVisual/check-calc-primary.mjs": "880b9e1cdf7585e3026d264c053c7d133791794221d263456bd80a28b5eba2fa",
+    "tools/TikzVisual/check-calc-trial.mjs": "8145cfce9e4af01f3812b67ea5e5b485637e04446b11bfa1c8a682f67fa752cd",
+    "tools/TikzVisual/compare-calc-conformance.mjs": "af6a7a5a7521ecd834713f7de994c92334b958c61a333cdb964d19cc8a193ce8",
+    "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+    "tools/TikzVisual/edge-oracle-pair.mjs": "20df641b0a7f6ffdb3e0795991ad2f3f709ab63e633e83087e47078c432b01d6",
+    "tools/TikzVisual/edge-pdf-image-pair.mjs": "75e5c4fe967b280eeb1e5ab47dde1085292f021a8da455bba917736dedd14693",
+    "tools/TikzVisual/edge-trial-images.mjs": "29a0efbe4a0f9c235436bbada725619d0e88135e9233ae92c8d824457273d320",
+    "tools/TikzVisual/node-profile.json": "0b60e056b2643c13d04baa7388dc1293b55081c06cd1707be23901a9245015dd",
+    "tools/TikzVisual/package-lock.json": "1493ab1a08080e8e7434844c2ff7feff20da79de3ea2c13df399d426b82316f1",
+    "tools/TikzVisual/package.json": "a7562ff94fff07cf54821025a58dec5b9bf9e3c2cae836d6d9516eae90072b9f",
+    "tools/TikzVisual/prepare-calc-admission.mjs": "45991102322b1afd4b6d942f983a6fbc6307d2b4dd7140f969de9e22b9e6bc20",
+    "tools/TikzVisual/prepare-calc-native-cache.mjs": "0e2c1c5f36720ebba986921d3ad1635267a39a5bed2bd642426febc542190282",
+    "tools/TikzVisual/prepare-calc-trial-cache.mjs": "28da6b947faa8e4ef95db4f5e17b67622abd0374616152b675d7e808f1fe687c",
+    "tools/TikzVisual/prepare-calc-trial-reference.mjs": "1ddc75ad652f537e00117b3571d1e7d9f9610e2f68a314b7fcff789453bb1eb0",
+    "tools/TikzVisual/shape-frame-math.mjs": "a58534df72c79553763108078400f2010b69c125d394ea6f2628d0d77545fb44",
+    "tools/TikzVisual/shape-oracle-bundle.mjs": "bc0e2657627ff5caf8405cb6005da2f645b4fe3f398655c58cb867e5d38d8125",
+    "tools/TikzVisual/shape-pdf-camera.mjs": "9941c14fb2783d41a82c29c4899cac9f0d4a137008d00ffefc22c89a30613658",
+    "tools/TikzVisual/shape-pdf-trial-policy.mjs": "fcd52ca4f9caa1512bed5b68760b541ee5be29f3a91286ef892cef42a854b4e4",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "7cbbce06ba3175ecfc4289f6019ca1571355fd70e78e280892adf00877f689c2",
+    "tools/TikzVisual/shape-raster-metrics.mjs": "bb4becb5e6025fe3d296b7536214536e486c127ffd46a4adf62fc11778861936",
+    "tools/TikzVisual/text-profile.json": "5d51a7482e3cec8896b02ebe8f9a872f8cb0bc535ddced6312bbad10f87231e1",
+    "tools/TikzVisual/trial-calc.mjs": "375807c0db32aa8695ba0416c35e42a324e1a98d6a6f75f2f11dbdccb799cad7"
+  }
+}
