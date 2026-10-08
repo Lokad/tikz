@@ -90,5 +90,10 @@ corruption overlays also have a pinned portable development archive. Its loader
 recomputes the saved image evidence, and its controls replay the saved mutations
 through the actual verifiers. This archive records a historical snapshot;
 current production changes need a fresh trial before claiming conformance.
+Complete native primary/PDF calibration images, independent recaptures and
+corruption overlays have their own portable archive. Its verification derives
+the native limits again from decoded evidence and preserves renderer-only
+visibility controls separately. Combined admission must bind both archives
+and still require a fresh public result.
 The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
 records commands for reproducing measurements and paired images.

@@ -334,3 +334,45 @@ still requires a separately reviewed combined profile and a new public trial
 with the pinned renderer. The compact native projection preserves selected
 native calibration records and complete source manifests; it does not contain
 the original full calibration PNG bundles or claim to replay them.
+
+## Complete native calibration evidence
+
+`tests/Reference/CalcCoordinates/native-calibration.bin.gz` separately preserves
+the complete primary/PDF calibration bundles, independently recaptured copies,
+checker artifacts, saved corruption overlays and captured development sources.
+It uses the existing lossless development archive format with a strict native
+envelope, resource bounds and separate compressed/decoded pins. Preparation
+does not update tracked pins. No production sources or candidate drawing enter
+native policy derivation.
+
+```powershell
+node tools/TikzVisual/calc-native-cache-self-test.mjs
+node tools/TikzVisual/prepare-calc-native-cache.mjs --replay
+```
+
+Native verification independently decodes all 536 primary pairs/12,864 regional
+observations and all 100 PDF pairs/2,700 regional observations, derives both
+policies again and checks complete view/defect/visibility coverage. The primary
+policy comes from three independently prescribed native encodings; the PDF
+policy comes from four native encodings in the measured page frame and includes
+regional RGB ink mass and first moments. Full original/recaptured artifacts
+must agree under the previously declared native-input path normalization.
+
+The controls replay all twenty-two native corruption overlays through the
+actual pixel or source-binding verifier. Both consistently rewritten image/
+metric/policy forgeries must pass saved-pixel verification and fail source
+binding. Envelope, evidence-pin, missing/extra-artifact and current tool/fixture
+controls provide separate integrity checks. Loading without pixel verification
+is explicitly structural and cannot qualify an image policy.
+
+Current native JSON fixtures are checked after the CRLF-to-LF normalization
+declared by `.gitattributes`. Archived evidence retains its original exact
+bytes and pins. No other byte normalization or numerical tolerance is added.
+
+Both commands consume tracked evidence without TeX, PDF tools, a browser or
+the converter. Initial preparation without `--replay` accepts only the exact
+previously completed proof paths/digests. This archive and the public-trial
+archive supply separate native and candidate evidence; a reviewed combined
+profile must bind both before accepting a fresh public result. Renderer-only
+faint/clipping controls qualify comparator visibility and grant no additional
+TikZ paint compatibility. Broader interactions and release scope remain open.
