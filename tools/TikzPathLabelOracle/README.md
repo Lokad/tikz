@@ -31,8 +31,21 @@ every native encoding and controlled source. Every path label has missing and
 quarter-pixel-shift controls on its first glyph. Invisible samples, such as black
 text on black or text outside its clip, remain explicit.
 
+Complete-text sensitivity reuses the already checked primary policies:
+
+```sh
+node tools/TikzVisual/compare-path-label-text-sensitivity.mjs <exact-calibration-report> <exact-independent-check-report>
+node tools/TikzVisual/check-path-label-text-sensitivity.mjs <exact-sensitivity-report>
+node tools/TikzVisual/path-label-text-self-test.mjs <exact-sensitivity-report>
+```
+
+These controls remove or shift every glyph in each label without changing its
+border or other paint. The separate checker decodes whole/local pixels, checks
+the frozen policy verdicts and visibility, and recaptures every controlled SVG.
+It validates complete glyph and view coverage, including invisible samples.
+
 The comparison command uses a fresh numeric receipt and produces paired current
-images. These are primary iteration checks. Full label-text sensitivity,
-ordinary-PDF policies, independent current-output checking, portable calibration
+images. These are primary iteration checks. Ordinary-PDF policies,
+independent current-output checking, portable calibration
 and final-tree fresh-export acceptance remain release gates. No command here
 declares complete feature or image conformance.

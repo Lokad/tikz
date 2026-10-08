@@ -54,7 +54,10 @@ density and three backgrounds. Their
 [independent checking workflow](../tools/TikzPathLabelOracle/README.md) recomputes saved
 pixel metrics and recaptures original sources. Fresh converter images are checked
 against these prospective policies; limits never come from candidate pixels.
-Full path-label image qualification, complete-label image sensitivity,
-ordinary-PDF image gates and final-tree fresh-export acceptance remain open.
+Complete-label text controls independently check loss/displacement of every
+glyph, using the frozen primary limits. Visible controls must fail a local text
+region; fully clipped text and black-on-black samples remain explicit.
+Full path-label image qualification, ordinary-PDF image gates and final-tree
+fresh-export acceptance remain open.
 Focused numeric agreement and paired-image inspection establish no
 approved image tolerance or general pixel-identity claim.
