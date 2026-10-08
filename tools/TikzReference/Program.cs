@@ -24,6 +24,8 @@ internal static partial class ReferenceTool
         {
             Root = FindRoot();
             Profile = Read<OracleProfile>(At("tests/Reference/oracle-profile.json"));
+            if (args.Length > 0 && args[0] == "export-calc-coordinates")
+                return await ExportCalcCoordinates(args);
             if (args.Length > 0 && args[0] == "measure-border-framing")
                 return await BorderFraming(args);
             if (args.Length > 0 && args[0] == "compare-border-framed")

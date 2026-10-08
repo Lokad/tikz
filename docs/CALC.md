@@ -55,7 +55,11 @@ limits, caller cancellation and concurrent conversions across four cultures.
 The reference uses PGF 3.1.11a and the T1 Latin Modern default font profile;
 measurement probes preserve the exact native SVG and TeX box.
 
-These numeric checks qualify the fixed fixture's anchors. Primary SVG/PDF
-comparison, image-only sensitivity controls and broader interaction coverage
-remain open. The [native reference workflow](../tools/TikzCalcReference/README.md)
-records how to reproduce the cached measurements.
+These numeric checks qualify the fixed fixture's anchors. Development tooling
+exports public/traced parity and paired primary images with native framing,
+source regions and initial image-only controls. The fixed 1x captures agree
+exactly; the retained 4x captures expose small serialization/raster differences.
+This is research evidence with no admitted image policy. Ordinary PDF,
+independent calibration/checking, full sensitivity and broader interactions
+remain open. The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
+records commands for reproducing the measurements and paired images.
