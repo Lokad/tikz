@@ -541,6 +541,24 @@ evidence: a current candidate still needs fresh public conversion, numeric,
 frame, primary and PDF checks against the independently frozen native profile.
 Captured public SVGs do not become reference expectations for admission.
 
+The owned current-candidate harness compiles the current converter and captures
+every baseline and both complete image-only control matrices against the frozen
+native profile. Its independent checker compiles again, binds saved SVGs to
+images and crops, decodes regional quantities and RGB moments, and checks
+fully rehashed substitutions. Separate x-only and y-only moment forgeries retain
+unchanged ink mass and coverage. The complete agent inspection index links every
+view, fixed focus crop and source attribution; the HTML gallery provides an
+initial selection without reducing required coverage.
+
+```text
+node --max-old-space-size=4096 tools/TikzVisual/trial-arrow-current.mjs
+node --max-old-space-size=4096 tools/TikzVisual/check-arrow-current.mjs artifacts/arrow-current-trials/run-<uuid>/report.json
+```
+
+The current trial keeps image admission pending. Immutable family admission and
+fresh-export qualification remain separate requirements. These development
+commands do not add any dependency to the production library.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
