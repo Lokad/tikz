@@ -32,12 +32,16 @@ edges fail explicitly. These forms require additional native interaction
 evidence before extending the contract.
 
 The [focused native corpus](../tests/Fixtures/PathLabels/placement.tikz) has
-13 measured nodes and 78 anchors under Latin Modern T1 10pt. Ordinary tests
-compare text boxes, four matrix coefficients and every retained anchor exactly
-in scaled points. Original diagram sources also parse their attached labels.
+13 measured nodes, 208 anchors and 42 glyphs under Latin Modern T1 10pt.
+Ordinary tests compare text boxes and retained anchors exactly in scaled points,
+and independently check glyph slots, positions, transformed baselines, effective
+paint and physical order. Original diagram sources also parse their attached labels.
 The three complete diagrams currently fail later at the `positioning` library.
 
-Full path-label image qualification, ordinary-PDF comparison, independent
-glyph/paint-order observations and final-tree fresh-export acceptance remain
-open. Focused numeric agreement and paired-image inspection establish no
+The [iteration workflow](../tools/TikzPathLabelComparison/README.md) reuses frozen
+native evidence and always compares fresh converter output. SVG/PDF observations
+agree, and probes leave the native SVG drawing, PDF and PDF pixels unchanged.
+Full path-label image qualification, continuation/style/clip interaction evidence,
+ordinary-PDF image gates and final-tree fresh-export acceptance remain open.
+Focused numeric agreement and paired-image inspection establish no
 approved image tolerance or general pixel-identity claim.

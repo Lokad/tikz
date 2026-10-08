@@ -1,0 +1,104 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex.fmt)
+entering extended mode
+(case.tex
+LaTeX2e <2025-06-01> patch level 1
+L3 programming layer <2025-09-02>
+
+(<local>/article.clsDocument Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(<local>/size10.clo))
+(<local>/fontenc.sty)
+(<local>/lmodern.sty)
+(<local>/tikz.sty
+(<local>/pgf.sty
+(<local>/pgfrcs.sty
+(<local>/pgfutil-common.tex)
+(<local>/pgfutil-latex.def)
+(<local>/pgfrcs.code.tex
+(<local>/pgf.revision.tex)))
+(<local>/pgfcore.sty
+(<local>/graphicx.sty
+(<local>/keyval.sty)
+(<local>/graphics.sty
+(<local>/trig.sty)
+(<local>/graphics.cfg)
+(<local>/pdftex.def)))
+(<local>/pgfsys.sty
+(<local>/pgfsys.code.tex
+(<local>/pgfkeys.code.tex
+(<local>/pgfkeyslibraryfiltered.code.tex))
+(<local>/pgf.cfg)
+(<local>/pgfsys-pdftex.def
+(<local>/pgfsys-common-pdf.def)))
+(<local>/pgfsyssoftpath.code.tex)
+(<local>/pgfsysprotocol.code.tex))
+(<local>/xcolor.sty
+(<local>/color.cfg)
+(<local>/mathcolor.ltx))
+(<local>/pgfcore.code.tex
+(<local>/pgfmath.code.tex
+(<local>/pgfmathutil.code.tex)
+(<local>/pgfmathparser.code.tex)
+(<local>/pgfmathfunctions.code.tex)
+(<local>/pgfmathfunctions.basic.code.tex)
+(<local>/pgfmathfunctions.trigonometric.code.tex)
+(<local>/pgfmathfunctions.random.code.tex)
+(<local>/pgfmathfunctions.comparison.code.tex)
+(<local>/pgfmathfunctions.base.code.tex)
+(<local>/pgfmathfunctions.round.code.tex)
+(<local>/pgfmathfunctions.misc.code.tex)
+(<local>/pgfmathfunctions.integerarithmetics.code.tex)
+(<local>/pgfmathcalc.code.tex)
+(<local>/pgfmathfloat.code.tex))
+(<local>/pgfint.code.tex)
+(<local>/pgfcorepoints.code.tex)
+(<local>/pgfcorepathconstruct.code.tex)
+(<local>/pgfcorepathusage.code.tex)
+(<local>/pgfcorescopes.code.tex)
+(<local>/pgfcoregraphicstate.code.tex)
+(<local>/pgfcoretransformations.code.tex)
+(<local>/pgfcorequick.code.tex)
+(<local>/pgfcoreobjects.code.tex)
+(<local>/pgfcorepathprocessing.code.tex)
+(<local>/pgfcorearrows.code.tex)
+(<local>/pgfcoreshade.code.tex)
+(<local>/pgfcoreimage.code.tex)
+(<local>/pgfcoreexternal.code.tex)
+(<local>/pgfcorelayers.code.tex)
+(<local>/pgfcoretransparency.code.tex)
+(<local>/pgfcorepatterns.code.tex)
+(<local>/pgfcorerdf.code.tex)))
+(<local>/pgfmoduleshapes.code.tex)
+(<local>/pgfmoduleplot.code.tex)
+(<local>/pgfcomp-version-0-65.sty)
+(<local>/pgfcomp-version-1-18.sty))
+(<local>/pgffor.sty
+(<local>/pgfkeys.sty
+(<local>/pgfkeys.code.tex))
+(<local>/pgfmath.sty
+(<local>/pgfmath.code.tex))
+(<local>/pgffor.code.tex))
+(<local>/tikz.code.tex
+(<local>/pgflibraryplothandlers.code.tex)
+(<local>/pgfmodulematrix.code.tex)
+(<local>/tikzlibrarytopaths.code.tex)))
+(<local>/tikzlibraryshapes.geometric.code.tex
+(<local>/pgflibraryshapes.geometric.code.tex))
+LOKAD-PGF-VERSION 3.1.11a
+(edge-hooks.tex)
+(<local>/t1lmr.fd)
+(<local>/l3backend-pdftex.def)
+No file case.aux.
+
+(<local>/supp-pdf.mkii[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(<local>/epstopdf-base.sty
+(<local>/epstopdf-sys.cfg)) (case.tikz
+(<local>/pgflibraryarrows.meta.code.tex))
+LOKAD-BOX 11604567|19695667|0|END
+
+[1
+LOKAD-PDF-PAGE 8799518|24523439|39321600|52428800|END
+{<local>/pdftex.map}{<local>/lm-ec.enc}] (case.aux) )<<local>/lmr10.pfb>
+Output written on case.pdf (1 page, 28469 bytes).
+Transcript written on case.log.

@@ -1,0 +1,17 @@
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}
+  \draw (0pt,0pt) -- node[midway,above] (straight) {read} (80pt,0pt);
+  \draw (0pt,-30pt) -- node[pos=.25,below] (quarter) {ok} (80pt,-10pt);
+  \draw (80pt,-50pt) -- node[pos=.55,sloped,above] (reverse) {ack} (0pt,-30pt);
+  \draw (80pt,-80pt) -- node[midway,sloped,allow upside down,below] (inverted) {back} (0pt,-60pt);
+  \draw[bend left=20] (0pt,-100pt) to node[pos=.45,sloped,above] (bend) {send} (80pt,-100pt);
+  \draw[out=30,in=-90] (0pt,-140pt) to node[pos=.5,sloped,below] (absolute) {route} (80pt,-120pt);
+  \node[draw] (from) at (0pt,-175pt) {A};
+  \node[draw] (target) at (80pt,-175pt) {B};
+  \draw[-{Stealth}] (from) -- node[midway,above] (border) {go} (target);
+  \begin{scope}[xscale=1.2,yscale=.8,rotate=12]
+    \draw (0pt,-250pt) -- node[midway,sloped,above] (reset) {next} (80pt,-250pt);
+    \draw (0pt,-290pt) -- node[midway,sloped,above,transform shape] (full) {next} (80pt,-290pt);
+  \end{scope}
+  \draw (0pt,-280pt) -- node[pos=0,right] (zero) {start} node[pos=1,left] (one) {end} (80pt,-280pt);
+\end{tikzpicture}
