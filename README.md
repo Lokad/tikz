@@ -39,6 +39,9 @@ else if (result is TikzFailure failure)
         Console.WriteLine($"{diagnostic.Code}: {diagnostic.Message}");
 ```
 
+The [diagnostics guide](docs/diagnostics.md) lists failure codes, explains
+original UTF-16 source positions and distinguishes cancellation from conversion failures.
+
 Build and run the ordinary tests with `dotnet test Lokad.TikZ.slnx`. These tests
 do not require a TeX installation. Release packages are produced explicitly with
 `dotnet pack src/Lokad.TikZ -c Release`.
