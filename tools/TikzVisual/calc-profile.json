@@ -394,7 +394,7 @@
     "tools/TikzVisual/calc-admission-child.mjs": "ac2fc155787ede560d4aa7fe843193c0b8f9452bf5f2fd3162a9aff14b38b2c3",
     "tools/TikzVisual/calc-admission-policy.mjs": "c7c2b960fb4534d8a95bd906ef2dcfbbf9e4de199e2c1ac2caf116f93d0356e8",
     "tools/TikzVisual/calc-admission-reader.mjs": "15f87cd193be26b4a17f5df2631e417c0c3fccbc4339cd2d137c7e6cf0a63242",
-    "tools/TikzVisual/calc-admission-self-test.mjs": "5fd69a5f75707e0d6bdbb62c1d92b3b056215e06ba39132aceed4985a5479c1e",
+    "tools/TikzVisual/calc-admission-self-test.mjs": "e9dc0c3c79cb8cdb344f2ccec05282784f557fd96821d24efe694485fc147dae",
     "tools/TikzVisual/calc-layout-evidence.mjs": "8342d5737e5a85aa6994eabeec15c7a2a963297a6625c2e3bf7734aee2fed2a2",
     "tools/TikzVisual/calc-native-cache-codec.mjs": "06dce3abbd6376d7ce1bf7856f1b53d7bc6109b0c4dd32606614961b8b5d601a",
     "tools/TikzVisual/calc-native-cache-pin.mjs": "adab81a26431503e572c9c057b414237d088237e4267fdd158058d76c5c1522c",
