@@ -474,6 +474,29 @@ presentation panels. Controls include consistently rehashed PNG substitutions
 through the actual SVG/image binding. A successful baseline check retains the
 pending public image-only controls and fixed-family admission gates.
 
+The public primary control commands apply sixteen defect families and two
+visibility probes to the captured public SVGs. The 306-view matrix uses the
+native cameras, regions and already qualified limits. It bypasses numeric
+defect gates and does not invoke the converter or native tools. Each mutation
+records the public path ID, native target region and exact TikZ source span.
+No-raster-change, declared-invisible and source-frame outcomes remain explicit.
+
+```text
+node tools/TikzVisual/trial-arrow-primary-controls.mjs
+node tools/TikzVisual/check-arrow-primary-controls.mjs artifacts/arrow-public-primary-controls/run-<uuid>/report.json
+node tools/TikzVisual/trial-arrow-primary-controls.mjs --replay artifacts/arrow-public-primary-controls/run-<uuid>/report.json
+```
+
+An owned control bundle embeds the completed baseline and its independent,
+fresh-export and commit-audit proofs with fixed external hashes. Replay needs
+that bundle and tracked native caches; historical experiment directories are
+not inputs. Its `index.html` links paired images, target crops and source
+attribution. The independent checker reconstructs the expected mutations,
+renders every saved SVG again, checks every PNG/crop byte, independently decodes
+regional metrics and rechecks mutation deltas. Corruption controls exercise
+fully rehashed SVG, source-span, policy-binding and PNG substitutions. Passing
+primary controls leaves public PDF controls and combined admission pending.
+
 Multiple tips per side, bending/flex, reversed/harpoon/open/round variants, custom
 arrow declarations and other arrow libraries remain unsupported. Unknown tips,
 missing libraries, unsupported options and invalid dimensions produce source
