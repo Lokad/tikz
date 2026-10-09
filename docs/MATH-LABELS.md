@@ -43,11 +43,15 @@ Fractions and scripts select smaller styles; radicals and appropriate nested
 operands retain the native cramped-style distinction.
 
 The profile uses OT1 Latin Modern roman (`rm-lmr`), OML math italic (`lmmi`),
-OMS symbols (`lmsy`) and OMX extension (`lmex10`). Optical font faces and their
-TFM parameters are required at each declared size. The extension font remains
-at its native fixed 10pt size, including inside surrounding 12pt math. EC prose
-faces retain their existing separate profile. Bold math, arbitrary fonts and
-math-alphabet changes other than `\mathrm` are outside this first profile.
+OMS symbols (`lmsy`) and OMX extension (`lmex10`). Roman and italic select their
+native optical 5/6/7/8/10/12pt faces. Symbols select optical 5/6/7/8/10pt faces;
+12pt symbols use `lmsy10` scaled to 12pt, as declared by the native font package.
+The extension font remains at its native fixed 10pt size, including inside
+surrounding 12pt math. These nineteen font/size combinations use eighteen
+distinct native TFM files. Metrics and outline scaling must retain both design
+and selected sizes. EC prose faces retain their existing separate profile.
+Bold math, arbitrary fonts and math-alphabet changes other than `\mathrm` are
+outside this first profile.
 
 Layout must account for italic correction, math kerns, axis height, script
 shifts/clearances, fraction bars, and radical glyph selection/assembly and
