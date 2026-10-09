@@ -50,6 +50,15 @@ The focused loop grammar/scope fixture uses the node measurements under
 `tests/Reference/Positioning/Foreach`; numeric iteration evidence remains separate
 from image-policy and final clean-source acceptance.
 
+`flowchart-math-macros` and `math-macro-contract` use the same fixed diagram
+producer and independent comparison. The flowchart uses the arrow supplement;
+the focused arithmetic fixture uses measured rectangle backgrounds. They check
+1,768 and 1,459 quantities respectively. Scalar printed values are additionally
+checked by the ordinary tests against `tests/Reference/MathMacros`. The DVI
+glyph reader accepts mixed-case declared node identities while retaining its
+exact identity whitelist and repeated-origin checks. Numeric/image iteration
+does not imply calibrated image/PDF admission or final source qualification.
+
 ```sh
 node tools/TikzVisual/path-label-reference.mjs flowchart-basic
 dotnet run --project tools/TikzPathLabelComparison -c Release -- <exact-native-report-path>

@@ -72,7 +72,7 @@ internal static class NativeGlyphTrace
             var selection = Regex.Match(line, @"^\d+: (?:fntnum(\d+)|fnt[1-4] (\d+)) current font is ");
             if (selection.Success && !fonts.TryGetValue(Integer(selection.Groups[1].Success ? selection.Groups[1].Value : selection.Groups[2].Value), out font))
                 throw Invalid("Selection of an undeclared native font.");
-            var marker = Regex.Match(line, @"^\d+: xxx 'lokad-node-origin ([a-z][a-z0-9-]*)'");
+            var marker = Regex.Match(line, @"^\d+: xxx 'lokad-node-origin ([A-Za-z0-9_-]+)'");
             if (marker.Success)
             {
                 active = marker.Groups[1].Value;

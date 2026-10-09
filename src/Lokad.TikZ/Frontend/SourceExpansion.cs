@@ -91,8 +91,10 @@ internal static class SourceExpansion
     }
 
     internal static Source Integer(int value, Source marker, Source[] related, Budget budget)
+        => Generated(value.ToString(System.Globalization.CultureInfo.InvariantCulture), marker, related, budget);
+
+    internal static Source Generated(string text, Source marker, Source[] related, Budget budget)
     {
-        var text = value.ToString(System.Globalization.CultureInfo.InvariantCulture);
         budget.Expand(marker, text.Length);
         return new(text, 0, text.Length) { Mapping = new(marker, [new(0, text.Length, marker, false)]), RelatedSources = related };
     }

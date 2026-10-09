@@ -42,6 +42,17 @@ internal sealed partial class Evaluator(Budget budget)
                     Statements(scope.Body, child, depth + 1, bindings, loopDepth);
                     break;
                 case SetStatement set: KeyRegistry.Apply(set.Options, state, budget); break;
+                case MathAssignmentStatement assignment:
+                    if (bindings?.ContainsKey(assignment.Variable.Value) == true)
+                        throw new CompileError("TIKZ002", "Numeric assignment to an active foreach variable is unsupported.", assignment.Variable);
+                    var expression = SourceExpansion.Bind(assignment.Expression, state.NumericBindings, budget, removeComments: true);
+                    var printed = PgfScalarArithmetic.Evaluate(expression, budget);
+                    var assigned = SourceExpansion.Generated(printed, assignment.Expression, [assignment.Variable, expression], budget);
+                    state.NumericBindings[assignment.Variable.Value] = assigned;
+                    state.Variables[assignment.Variable.Value] = new(double.Parse(printed, System.Globalization.CultureInfo.InvariantCulture), false) { Origin = assigned };
+                    budget.Charge(assignment.Source);
+                    _scene.NumericAssignments.Add(new(assignment.Variable.Value, printed, assigned));
+                    break;
                 case LibraryStatement libraries:
                     foreach (var name in Options.Split(libraries.Names, ',', budget)) LoadLibrary(Options.Clean(name), state, name);
                     break;
@@ -67,14 +78,15 @@ internal sealed partial class Evaluator(Budget budget)
                     _coordinates[coordinate.Name] = point;
                     _scene.Coordinates[coordinate.Name] = point;
                     break;
-                case NodeStatement node: Node(node, state); break;
-                case PathStatement path: Path(path, state); break;
+                case NodeStatement node: Node(node with { Source = state.Relate(node.Source, budget) }, state); break;
+                case PathStatement path: Path(path with { Source = state.Relate(path.Source, budget) }, state); break;
                 default: throw new InvalidOperationException("Unknown semantic statement.");
             }
         }
     }
     private Point Resolve(Coordinate coordinate, EvaluationState state, Point reference, out bool updateReference)
     {
+        coordinate = coordinate with { Source = state.Relate(coordinate.Source, budget) };
         budget.Charge(coordinate.Source);
         updateReference = coordinate.Relative != 1;
         Point point;
@@ -108,6 +120,7 @@ internal sealed partial class Evaluator(Budget budget)
 
     private Point PathCoordinate(Coordinate coordinate, EvaluationState state, Point reference, out bool updateReference)
     {
+        coordinate = coordinate with { Source = state.Relate(coordinate.Source, budget) };
         budget.Charge(coordinate.Source);
         updateReference = coordinate.Relative != 1;
         Point point;

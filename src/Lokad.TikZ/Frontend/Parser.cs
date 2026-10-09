@@ -17,6 +17,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             {
                 case "\\usetikzlibrary": result.Add(new LibraryStatement(_reader.Group('{', '}'), command)); break;
                 case "\\tikzset": result.Add(new SetStatement(Options.Read(_reader.Group('{', '}'), budget), command)); break;
+                case "\\pgfmathsetmacro": result.Add(ReadMathAssignment(command)); break;
                 case "\\begin":
                     var environment = Options.Clean(_reader.Group('{', '}'));
                     if (environment != "tikzpicture") throw new CompileError("TIKZ002", "Expected a tikzpicture environment.", command);
@@ -73,6 +74,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
                 case "\\tikzset": result.Add(new SetStatement(Options.Read(Bind(_reader.Group('{', '}')), budget), command)); break;
                 case "\\usetikzlibrary": result.Add(new LibraryStatement(Bind(_reader.Group('{', '}')), command)); break;
                 case "\\foreach": result.Add(ReadForeach(command)); break;
+                case "\\pgfmathsetmacro": result.Add(ReadMathAssignment(command)); break;
                 case "\\node": result.Add(ReadNode(command)); break;
                 case "\\coordinate":
                     var name = Options.Clean(_reader.Group('(', ')'));
@@ -94,13 +96,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
     private List<Option> ReadOptions() => _reader.Peek == '[' ? Options.Read(Bind(_reader.Group('[', ']')), budget) : [];
     private ForeachStatement ReadForeach(Source command)
     {
-        var variable = _reader.Command();
-        if (variable.Length < 2 || variable.Span[1..].ContainsAnyExcept("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"))
-            throw new CompileError("TIKZ002", "Foreach requires one ASCII-letter control-sequence variable.", variable);
-        if (variable.Value is "\\begin" or "\\end" or "\\foreach" or "\\tikzset" or "\\usetikzlibrary" or "\\node" or "\\coordinate"
-            or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip" or "\\shade"
-            || variable.Span[1..].StartsWith("pgf", StringComparison.Ordinal) || variable.Span[1..].StartsWith("tikz", StringComparison.Ordinal))
-            throw new CompileError("TIKZ002", "Foreach cannot bind a reserved TikZ control sequence.", variable);
+        var variable = ReadVariable("Foreach");
         if (_reader.Peek is '[' or '/' or '\\') throw new CompileError("TIKZ002", "Foreach options and multiple variables are unsupported.", _reader.Here);
         if (!_reader.Word("in")) throw new CompileError("TIKZ001", "Expected 'in' after the foreach variable.", _reader.Here);
         if (_reader.Peek != '{') throw new CompileError("TIKZ002", "Foreach requires a literal braced list.", _reader.Here);
@@ -108,6 +104,25 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         if (_reader.Peek != '{') throw new CompileError("TIKZ002", "Foreach requires a braced statement body.", _reader.Here);
         var body = _reader.Group('{', '}');
         return new(variable, values, body, command with { Length = source.Offset + _reader.Position - command.Offset });
+    }
+    private MathAssignmentStatement ReadMathAssignment(Source command)
+    {
+        if (_reader.Peek != '\\') throw new CompileError("TIKZ002", "Numeric assignments require one unbraced control-sequence target.", _reader.Here);
+        var variable = ReadVariable("Numeric assignment");
+        if (_reader.Peek != '{') throw new CompileError("TIKZ001", "Expected a braced numeric expression.", _reader.Here);
+        var expression = Bind(_reader.Group('{', '}'));
+        return new(variable, expression, command with { Length = source.Offset + _reader.Position - command.Offset });
+    }
+    private Source ReadVariable(string feature)
+    {
+        var variable = _reader.Command();
+        if (variable.Length < 2 || variable.Span[1..].ContainsAnyExcept("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"))
+            throw new CompileError("TIKZ002", $"{feature} requires one ASCII-letter control-sequence variable.", variable);
+        if (variable.Value is "\\begin" or "\\end" or "\\foreach" or "\\tikzset" or "\\usetikzlibrary" or "\\node" or "\\coordinate"
+            or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip" or "\\shade"
+            || variable.Span[1..].StartsWith("pgf", StringComparison.Ordinal) || variable.Span[1..].StartsWith("tikz", StringComparison.Ordinal))
+            throw new CompileError("TIKZ002", $"{feature} cannot bind a reserved TikZ control sequence.", variable);
+        return variable;
     }
     private NodeStatement ReadNode(Source command, bool pathLabel = false)
     {

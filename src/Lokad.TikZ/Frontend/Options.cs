@@ -59,8 +59,9 @@ internal static class Options
         if (source.Length == 0 || source.Span[0] != '{') return source;
         var reader = new Cursor(source, budget);
         var group = reader.Group('{', '}');
-        reader.Complete();
-        return group;
+        // A leading group may be one part of a positioning value, such as
+        // '{distance} of target'. Strip braces only around the entire value.
+        return reader.End ? group : source;
     }
     public static string Clean(Source source)
     {

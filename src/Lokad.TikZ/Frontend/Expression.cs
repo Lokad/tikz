@@ -5,6 +5,13 @@ namespace Lokad.TikZ.Frontend;
 
 internal readonly record struct Number(double Value, bool HasUnit)
 {
+    internal Source? Origin { get; init; }
+    internal Source Relate(Source use, Budget budget)
+    {
+        if (Origin is not { } origin) return use;
+        budget.Charge(use, (use.RelatedSources?.Length ?? 0) + 1);
+        return use with { RelatedSources = [.. use.RelatedSources ?? [], origin] };
+    }
     public double Bp => HasUnit ? Value * 72 / 72.27 : Value;
 }
 
@@ -65,7 +72,8 @@ internal sealed record Variable(string Name, Source Origin) : Expression(Origin)
     public override Number Evaluate(IReadOnlyDictionary<string, Number> variables, Budget budget)
     {
         budget.Charge(Source);
-        if (variables.TryGetValue(Name, out var value)) return value;
+        if (variables.TryGetValue(Name, out var value))
+            return value.Origin is null ? value : value with { Origin = value.Relate(Source, budget) };
         throw new CompileError("TIKZ003", $"Unknown numeric variable '{Name}'.", Source);
     }
 }
@@ -91,8 +99,13 @@ internal sealed record Binary(char Operator, Expression Left, Expression Right, 
             '/' => a.Value / b.Value, '^' => Math.Pow(a.Value, b.Value),
             _ => throw new InvalidOperationException()
         };
-        if (!double.IsFinite(value)) throw new CompileError("TIKZ004", "Undefined or non-finite arithmetic.", Source);
-        return new(value, a.HasUnit || b.HasUnit);
+        var origin = b.Relate(a.Relate(Source, budget), budget);
+        if (!double.IsFinite(value)) throw new CompileError("TIKZ004", "Undefined or non-finite arithmetic.", origin);
+        // PGF multiplies physical expression values in scaled-point registers.
+        // Rounding a continuous negative half-product instead moves it one sp.
+        if (Operator == '*' && (a.HasUnit || b.HasUnit))
+            value = PgfScalarArithmetic.MultiplyDimensions(a.Value, b.Value, origin, budget);
+        return new(value, a.HasUnit || b.HasUnit) { Origin = a.Origin is null && b.Origin is null ? null : origin };
     }
 }
 internal sealed record Function(string Name, IReadOnlyList<Expression> Arguments, Source Origin) : Expression(Origin)
@@ -101,8 +114,10 @@ internal sealed record Function(string Name, IReadOnlyList<Expression> Arguments
     {
         budget.Charge(Source);
         var values = Arguments.Select(a => a.Evaluate(variables, budget)).ToArray();
+        var origin = Source;
+        foreach (var number in values) origin = number.Relate(origin, budget);
         var expected = Name is "min" or "max" or "pow" or "mod" or "atan2" or "veclen" ? 2 : 1;
-        if (values.Length != expected) throw new CompileError("TIKZ001", $"'{Name}' requires {expected} argument(s).", Source);
+        if (values.Length != expected) throw new CompileError("TIKZ001", $"'{Name}' requires {expected} argument(s).", origin);
         var a = values[0].Value;
         var b = values.Length > 1 ? values[1].Value : 0;
         var value = Name switch
@@ -118,8 +133,8 @@ internal sealed record Function(string Name, IReadOnlyList<Expression> Arguments
             "deg" => a * 180 / Math.PI, "rad" => a * Math.PI / 180,
             _ => throw new CompileError("TIKZ002", $"Unsupported math function '{Name}'.", Source)
         };
-        if (!double.IsFinite(value)) throw new CompileError("TIKZ004", "Undefined or non-finite arithmetic.", Source);
-        return new(value, values.Any(v => v.HasUnit));
+        if (!double.IsFinite(value)) throw new CompileError("TIKZ004", "Undefined or non-finite arithmetic.", origin);
+        return new(value, values.Any(v => v.HasUnit)) { Origin = values.Any(v => v.Origin is not null) ? origin : null };
     }
 }
 

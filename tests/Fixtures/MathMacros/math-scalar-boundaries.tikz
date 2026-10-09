@@ -1,0 +1,35 @@
+\begin{tikzpicture}
+  \pgfmathsetmacro\value{.5}
+  \pgfmathsetmacro\value{1.230000}
+  \pgfmathsetmacro\value{+1.23456789}
+  \pgfmathsetmacro\value{(1.23456789)}
+  \pgfmathsetmacro\value{-1.23456789}
+  \pgfmathsetmacro\value{-0}
+  \pgfmathsetmacro\value{-.00001}
+  \pgfmathsetmacro\value{+.00001}
+  \pgfmathsetmacro\value{0.00002+0.00002}
+  \pgfmathsetmacro\value{0.00003-0.00001}
+  \pgfmathsetmacro\value{16383.99998+0}
+  \pgfmathsetmacro\value{-16383.99998}
+  \pgfmathsetmacro\value{1.23456*0.1}
+  \pgfmathsetmacro\value{0.1*1.23456}
+  \pgfmathsetmacro\value{-0.1*1.23456}
+  \pgfmathsetmacro\value{-7/1.5}
+  \pgfmathsetmacro\value{7/-1.5}
+  \pgfmathsetmacro\value{-7/-1.5}
+  \pgfmathsetmacro\value{1/-0.3}
+  \pgfmathsetmacro\value{-1/-0.3}
+  \pgfmathsetmacro\value{0/1.5}
+  \pgfmathsetmacro\value{0/0.0001}
+  \pgfmathsetmacro\value{1/1.00003}
+  \pgfmathsetmacro\value{1/1.99999}
+  \pgfmathsetmacro\value{1/2.00001}
+  \pgfmathsetmacro\value{0.00003/1.5}
+  \pgfmathsetmacro\value{16383/2.5}
+  \pgfmathsetmacro\value{3.14159/2.71828}
+  \pgfmathsetmacro\value{1/0.99999}
+  \pgfmathsetmacro\value{1/0.0001}
+  \pgfmathsetmacro\value{1/0.00007}
+  \pgfmathsetmacro\value{(1/7)*7}
+  \node (sentinel) {A};
+\end{tikzpicture}

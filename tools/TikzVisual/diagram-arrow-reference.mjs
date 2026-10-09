@@ -14,12 +14,14 @@ import {arrowHooks,parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/diagram-arrow-reference.mjs <exact-original-diagram-report>');
 const expected={
+ 'flowchart-math-macros':'a9a0389cf48da3f7036092e2ee00203ed517ee6668452c1352b7acd35d70deef',
  'flowchart-foreach':'64ee9c160bb1a8c652bc0cdd38c6396abccc1bde6c686d8f109169e3a72803ad',
  'flowchart-parameterized':'9783a9f385b8bcc1ad4cb5a4fe589c85ae179f7e5eb15a7cf68d5450bd7105c6',
  'flowchart-basic':'16ef26c526d0892f2fa643240cf0e9c4a74ea52a62252d4aff8c8ee792762b54',
  'network-bent':'da163c256834b3c94477f4e368cbe69cc700a867b93a0b73a210d3e7a4aa0e54',
  'flowchart-transformed':'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa'};
 const probeHashes={
+ 'flowchart-math-macros':'443475fd0abd007c5cecd424ddbd3c59fa476983963d1076e578ab794db6ce78',
  'flowchart-foreach':'d66b7327ab7df75a213fde20221eab43d9a1b017846090867fac363b63f4f647',
  'flowchart-parameterized':'5f4be2e8497e1659a9af51daf4bfa02dbc11b18ee58a250d8dc47ef5c4308076',
  'flowchart-basic':'7db0d9c2af22c608401bb2049e2f0cbee66739f36ff8a6062d73b2a8d5cc4437',

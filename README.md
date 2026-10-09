@@ -46,6 +46,12 @@ flowchart using lists/ranges, scoped bindings, positioning, labels, arrows and
 calculated coordinates. Both loop fixtures pass independent numeric/image/PDF
 policies and fresh-output acceptance in a clean source export.
 
+[Bounded numeric assignments](docs/MATH-MACROS.md) now convert a computed-spacing
+flowchart using scoped arithmetic, positioning, path labels, arrows and calc.
+Fresh numeric comparisons and paired iteration images pass for its two fixed
+supported fixtures. Image/PDF policy admission and final clean-source acceptance
+remain pending.
+
 ```csharp
 using Lokad.TikZ;
 

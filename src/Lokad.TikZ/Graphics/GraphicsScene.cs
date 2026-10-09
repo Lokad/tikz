@@ -18,6 +18,7 @@ internal sealed record PaintedGlyphRun(ResolvedGlyph[] Glyphs, string Readable, 
 internal sealed record ResolvedNode(string Name, INodeLayout Layout, Affine Transform,
     TextFont Font, TextFont NodeFont, Source Source);
 internal sealed record ClipPath(GraphicPath Path, string FillRule, Source Source);
+internal sealed record NumericAssignment(string Name, string Printed, Source Source);
 internal sealed class GraphicsScene
 {
     public List<PaintedPath> Paths { get; } = [];
@@ -26,6 +27,7 @@ internal sealed class GraphicsScene
     public List<ResolvedNode> Nodes { get; } = [];
     public List<ClipPath> Clips { get; } = [];
     public Dictionary<string, Point> Coordinates { get; } = new(StringComparer.Ordinal);
+    public List<NumericAssignment> NumericAssignments { get; } = [];
     public Bounds PictureBounds { get; set; } = Bounds.Empty;
     public Bounds InkBounds { get; set; } = Bounds.Empty;
     public void Add(PaintedPath path) { Paths.Add(path); Drawables.Add(path); }

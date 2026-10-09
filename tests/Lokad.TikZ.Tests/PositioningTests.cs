@@ -27,10 +27,10 @@ public sealed class PositioningTests
     public void Declared_positioning_contract_matches_independent_native_measurements(string id, int count)
         => CompareNative("Positioning", "Focused", id, count);
 
-    internal static void CompareNative(string fixtureFolder, string referenceFolder, string id, int count)
+    internal static GraphicsScene CompareNative(string fixtureFolder, string referenceFolder, string id, int count, string referenceRoot = "Positioning")
     {
         var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/" + fixtureFolder + "/" + id + ".tikz"));
-        using var reference = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference/Positioning/" + referenceFolder + "/" + id + ".json")));
+        using var reference = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference/" + referenceRoot + "/" + referenceFolder + "/" + id + ".json")));
         var expected = reference.RootElement;
         Assert.Equal(expected.GetProperty("sourceSha256").GetString(),
             Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(source.Replace("\r\n", "\n")))));
@@ -67,6 +67,7 @@ public sealed class PositioningTests
             Assert.True(item.GetProperty("xSp").GetInt32() == Sp(point.X), $"{id}: {name}.{anchor}.x expected {item.GetProperty("xSp")}, got {Sp(point.X)}");
             Assert.True(item.GetProperty("ySp").GetInt32() == Sp(point.Y), $"{id}: {name}.{anchor}.y expected {item.GetProperty("ySp")}, got {Sp(point.Y)}");
         }
+        return trace!;
     }
 
     private static int Sp(double bp) => checked((int)Math.Round(bp * (72.27 * 65536 / 72), MidpointRounding.AwayFromZero));

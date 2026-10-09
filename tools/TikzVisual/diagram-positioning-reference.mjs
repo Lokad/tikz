@@ -8,6 +8,8 @@ import {captureProcess} from './qualification-process.mjs';
 import {edgeAnchors,edgeSanitize} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 const cases={
+ 'math-scalar-boundaries':{folder:'MathMacros',names:['sentinel'],hash:'9fd0ed39f9eeeafd7cffb2e6c174ef821e4d08382345a87336a3ef5c364f3391',scalarCalls:Array(32).fill('\\value')},
+ 'math-macro-reciprocal-overflow':{folder:'MathMacros',names:[],hash:'1c93ab11cc23fea46905e7f0ef85875d23dbfa12022f5b067bde2c0682bdd215',nativeError:'! Dimension too large.'},
  'flowchart-math-macros':{names:['input','stage1','stage2','stage3','output'],hash:'a9a0389cf48da3f7036092e2ee00203ed517ee6668452c1352b7acd35d70deef',scalarCalls:['\\step','\\dy','\\offset','\\offset','\\offset','\\factor','\\returny']},
  'math-macro-contract':{folder:'MathMacros',names:['literal','add','subtract','multiply','negativeMultiply','third','negativeThird','fractionalDivide','smallDivide','chain','unary','precedence','reassign','before','inside','restored','loop1','loop2','loopRestored','grouped','groupRestored','tinyAdd','tinySubtract','nearOneDivide','roundedChain'],hash:'fdf31eeab83ed8c8377fc0c2951e2864d9191f73d621ed00d27797168430c0b8',scalarCalls:[...Array(14).fill('\\value'),'\\base','\\base','\\probe','\\value','\\value','\\probe','\\base','\\probe',...Array(4).fill('\\value')]},
  'math-macro-zero-divisor':{folder:'MathMacros',names:[],hash:'c502d571ca4c7a6c1e17bc568e1e80a85072c7611fe34a0da09f05e9bcb79cd6',nativeError:"! Package PGF Math Error: You've asked me to divide"},
