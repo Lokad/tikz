@@ -3,6 +3,10 @@ using System.Text;
 using System.Text.Json;
 using Lokad.TikZ;
 using Lokad.TikZ.Graphics;
+using Lokad.TikZ.Frontend;
+using Lokad.TikZ.Geometry;
+using Lokad.TikZ.Nodes;
+using Lokad.TikZ.Semantics;
 
 internal static partial class ReferenceTool
 {
@@ -57,6 +61,17 @@ internal static partial class ReferenceTool
                     || !success.Diagnostics.SequenceEqual(publicSuccess.Diagnostics))
                     throw new InvalidOperationException("Math public/traced conversion parity failed.");
                 var trace = JsonSerializer.SerializeToNode(NodeScene(scene, success), Json)!.AsObject();
+                // Math path labels can rotate. Record the same integer PGF
+                // transform used by native anchor checking, rather than the
+                // generic trace's unconstrained floating-point projection.
+                var anchorBudget = new Budget(TikzLimits.Default, CancellationToken.None);
+                foreach (var (node, index) in scene.Nodes.Select((node, index) => (node, index)))
+                {
+                    var metrics = NodeFontMetrics.Resolve(node.NodeFont, anchorBudget, node.Source);
+                    trace["nodes"]![index]!["anchorsBp"] = JsonSerializer.SerializeToNode(NodeAnchorNames.ToDictionary(name => name,
+                        name => PgfTransform.Apply(node.Transform, node.Layout.Anchor(name, metrics, anchorBudget, node.Source).Bp,
+                            anchorBudget, node.Source)), Json);
+                }
                 // Geometry boxes remain local for arrow templates; their
                 // placements are required to check them against global ink.
                 trace["pathTransforms"] = JsonSerializer.SerializeToNode(scene.Paths.Select(p => p.Transform), Json);
