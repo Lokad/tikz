@@ -36,6 +36,11 @@ and Poppler tools. The portable native report is not automatically replaced.
 
 The same producer and comparison tool also accept the three authored complete
 diagrams: `flowchart-basic`, `network-bent` and `flowchart-transformed`.
+The parameterized-style iteration adds `flowchart-parameterized` and the
+rectangle-only `style-contract` under `tests/Fixtures/Styles`. Both reuse the
+existing native producer, glyph reader and numeric comparison. The flowchart
+also accepts the arrow supplement below; the rectangle-only contract retains
+its node/glyph/paint observations without an arrow-template calibration claim.
 
 ```sh
 node tools/TikzVisual/path-label-reference.mjs flowchart-basic

@@ -14,7 +14,7 @@ internal sealed class NativeInput : IDisposable
     internal string Svg { get; }
     internal string Fixture { get; }
     internal bool IsDiagram { get; }
-    internal string SourceFile => "tests/Fixtures/" + (IsDiagram ? "Diagrams" : "PathLabels") + "/" + Fixture + ".tikz";
+    internal string SourceFile => "tests/Fixtures/" + (Fixture == "style-contract" ? "Styles" : IsDiagram ? "Diagrams" : "PathLabels") + "/" + Fixture + ".tikz";
     internal string[] Ids { get; }
     internal NativeGlyphTrace.Evidence Glyphs { get; }
     private readonly string folder;
@@ -31,7 +31,7 @@ internal sealed class NativeInput : IDisposable
             || r.GetProperty("converterInvoked").GetBoolean() || r.GetProperty("imageConformanceClaim").GetBoolean())
             throw new InvalidDataException("Expected completed independent native observations.");
         Fixture = r.GetProperty("definition").GetProperty("id").GetString()!;
-        if (IsDiagram ? Fixture is not ("flowchart-basic" or "network-bent" or "flowchart-transformed") : Fixture is not ("placement" or "interactions"))
+        if (IsDiagram ? Fixture is not ("flowchart-basic" or "network-bent" or "flowchart-transformed" or "flowchart-parameterized" or "style-contract") : Fixture is not ("placement" or "interactions"))
             throw new InvalidDataException("Only fixed trusted fixtures are accepted.");
         Metrics = JsonDocument.Parse(Read("metrics.json"));
         if (r.GetProperty("role").GetString() == "diagram-arrow-native-reference") Arrows = JsonDocument.Parse(Read("arrow-metrics.json"));

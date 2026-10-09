@@ -9,18 +9,20 @@ import {edgeAnchors,edgeWrapper,edgeHooks,edgeCanonical,edgeSanitize,edgePdfPage
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 import {parsePathLabelNative,parseDiagramNative,pathLabelPhysicalCalls,pathLabelDriverState} from './path-label-native.mjs';
 
-assert.ok(process.argv.length===2||process.argv.length===3,'Usage: node tools/TikzVisual/path-label-reference.mjs [placement|interactions|flowchart-basic|network-bent|flowchart-transformed]');
+assert.ok(process.argv.length===2||process.argv.length===3,'Usage: node tools/TikzVisual/path-label-reference.mjs [fixed fixture name]');
 const cases={
  placement:['straight','quarter','reverse','inverted','bend','absolute','from','target','border','reset','full','zero','one'],
  interactions:['seed','first','second','reuse','clipped','continued','nested','escaped']
 };
 const diagrams={
+ 'flowchart-parameterized':{hash:'9783a9f385b8bcc1ad4cb5a4fe589c85ae179f7e5eb15a7cf68d5450bd7105c6',nodes:[['input','rectangle'],['check','rectangle'],['retry','rectangle'],['output','rectangle']],labels:3,coordinates:['return'],constructionOrder:['input','check','retry','output','diagram-label-1','diagram-label-2','diagram-label-3','return']},
+ 'style-contract':{folder:'Styles',hash:'082e7ac3084bf8b4a3c6bdd36e190578f2d9039278657f00ea38df245f6c200d',nodes:['single','braced','nested','scoped','restored','ignored','appended'].map(id=>[id,'rectangle']),labels:0,coordinates:[],constructionOrder:['single','braced','nested','scoped','restored','ignored','appended']},
  'flowchart-basic':{hash:'16ef26c526d0892f2fa643240cf0e9c4a74ea52a62252d4aff8c8ee792762b54',nodes:[['input','rectangle'],['check','rectangle'],['output','rectangle'],['retry','rectangle']],labels:3,coordinates:['return'],constructionOrder:['input','check','output','retry','diagram-label-1','diagram-label-2','diagram-label-3','return']},
  'network-bent':{hash:'da163c256834b3c94477f4e368cbe69cc700a867b93a0b73a210d3e7a4aa0e54',nodes:[['queue','circle'],['primary','ellipse'],['replica','ellipse']],labels:3,coordinates:['projection','relay'],constructionOrder:['queue','primary','replica','diagram-label-1','diagram-label-2','diagram-label-3','projection','relay']},
  'flowchart-transformed':{hash:'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa',nodes:[['start','rectangle'],['finish','rectangle']],labels:2,coordinates:['waypoint'],constructionOrder:['start','finish','diagram-label-1','waypoint','diagram-label-2']}
 };
 const id=process.argv[2]??'placement',diagram=Object.hasOwn(diagrams,id);assert.ok(diagram||Object.hasOwn(cases,id),'Only fixed trusted repository fixtures are accepted.');
-const source='tests/Fixtures/'+(diagram?'Diagrams':'PathLabels')+'/'+id+'.tikz';
+const source='tests/Fixtures/'+(diagram?(diagrams[id].folder??'Diagrams'):'PathLabels')+'/'+id+'.tikz';
 const definition=diagram?{id,nodes:[...diagrams[id].nodes.map(([id,shape])=>({id,shape})),...Array.from({length:diagrams[id].labels},(_,i)=>({id:'diagram-label-'+(i+1),shape:'rectangle',sourceName:''}))],coordinates:diagrams[id].coordinates,constructionOrder:diagrams[id].constructionOrder}:{id,nodes:cases[id].map(id=>({id,shape:'rectangle'})),coordinates:[]};
 const ids=definition.nodes.map(n=>n.id);
 const output=path.join(root,'artifacts/'+(diagram?'diagram-reference':'path-label-reference')+'/run-'+randomUUID()),artifacts={},commands=[];

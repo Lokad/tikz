@@ -44,6 +44,10 @@ named nodes and 176 independently measured native anchors, with text boxes and
 placement matrices. They cover forwarding, append order, overriding options and
 scope restoration. Ordinary tests compare these exact observations and public/
 trace parity, and cover source provenance, explicit rejection and shared limits.
-Affected paired SVG images at 1x/4x are iteration evidence. Complete glyph/path/
-paint observations, native-only image policies, both PDF gates and final clean
-export acceptance remain separate requirements for this feature.
+The existing semantic comparer also checks fourteen text nodes and 65 glyphs
+against independent SVG/PDF observations. All 2,053 numeric checks pass, including
+the flowchart's paths, four arrow tips, shortening and calculated waypoint.
+The standalone glyph oracle has only .NET references and loads no converter.
+Affected paired SVG images at 1x/4x are iteration evidence. Native-only image
+policies, both PDF gates and final clean export acceptance remain separate
+requirements for this feature.
