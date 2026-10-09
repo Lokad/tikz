@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "role": "foreach-frozen-image-profile",
+  "fixtures": {
+    "flowchart-foreach": {
+      "file": "tests/Reference/Foreach/flowchart-foreach.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "flowchart-foreach",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-ec3529d6-3474-4f8b-8bc6-1c004c55fc74/report.json",
+            "sha256": "67c0e8469f61b1b2712ad74a372c17e4993dbd9b086bc65d74e9af36d83a392f"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-004fa2ec-9b8e-44e2-b256-b881b4412e0d/report.json",
+            "sha256": "375ef1d0a711249f8f8cdae960225abb09b2b8d2586093f9de92c061c4b8c16b"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-ec19fe58-35e7-4149-b280-0e054359137f/report.json",
+            "sha256": "3096112b506b37216a723933cf07c407f534d0421c3767f09e70108b5aee9967"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-7089bbef-7452-43c0-8ceb-1ec2f5c1a57d/report.json",
+            "sha256": "024fdb24847aeb216f6c562f270a9535f0197515a4eb96f7f6e020d899a220fe"
+          }
+        ],
+        "compressedSha256": "1c2a6a3639cc9a64273fd1c0ade7dceb62ecaaec3b3a9db7fcefd138dd1a023b",
+        "decodedSha256": "ebab4638ba994e3c5b2ca76d80589a16ac21638cc4f8453993b99e24108e6428",
+        "compressedBytes": 11658096,
+        "decodedBytes": 46459814,
+        "logicalFiles": 2382,
+        "uniqueBlobs": 963,
+        "logicalBytes": 72217414,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "foreach-contract": {
+      "file": "tests/Reference/Foreach/foreach-contract.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "foreach-contract",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-e80dd4e1-2ba6-4632-b2c1-23f73c364ff7/report.json",
+            "sha256": "1c527183e8a5e16cc2e90dcdcbd83708f6b56339895aa3388fc4aca5444d7568"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-cfc7cfc7-442c-422b-8f50-37e5b2ef4253/report.json",
+            "sha256": "b6fc74e61eeefb6d056cef46032e3ecad9178127d43d76c9592c61d034bd4f62"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-4329cd43-351f-411c-8bd6-b0b27654b3b3/report.json",
+            "sha256": "22a3c04867dcbafc88880b155df36dcac3137a366e4da0e88f9ffb221b410930"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-558f535f-bf0f-4c1a-9b65-1e388c357a9f/report.json",
+            "sha256": "dc1478ad25ba9bcbecb2c707d5e8de8bd4b09841d1943ed8eaf740f9a7e378f3"
+          }
+        ],
+        "compressedSha256": "7865d5a3611b9606306c1d1a611bd4698fcdcf1109c39b69e6ec2599694da879",
+        "decodedSha256": "3084bbd9ba519679a50e226961aca8e8c46d008b268932b1c6d9923cd4eba9c5",
+        "compressedBytes": 27889988,
+        "decodedBytes": 128191071,
+        "logicalFiles": 4050,
+        "uniqueBlobs": 1776,
+        "logicalBytes": 200698722,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    }
+  },
+  "transportSources": {
+    "tools/TikzVisual/path-label-cache-codec.mjs": "bb1fa7ee87ebf8b5bb6f212a2c1453dfc00e4eb8a0bb5362e9a81386eab1a886",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/path-label-cache.mjs": "c0b64dcdb88999ea41feda1beda3f75cef972489dcb35c84813dc22a179ae0ee"
+  }
+}

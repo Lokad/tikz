@@ -101,6 +101,16 @@ The two style bundles are retained losslessly under `tests/Reference/Styles`.
 `materialize-path-label-cache.mjs <fixture-id>` restores them with the existing
 bounded transport, ownership and corruption checks, without running native tools.
 
+`flowchart-foreach` uses the same arrow route. `foreach-contract` uses measured
+rectangle backgrounds, including nodes that construct a background without
+painting it. The primitive adapter maps shipped paint ordinals to observed
+construction IDs and checks glyph order for every node. Its first-glyph and
+whole-label controls remain visible in both captures at 1x/4x. The two qualified
+native bundles are retained under
+[`tests/Reference/Foreach`](../../tests/Reference/Foreach/README.md), using the
+same lossless materializer and corruption controls. Fresh converter output and
+final clean-source acceptance remain separate from archive restoration.
+
 When a root changes or an independent encoding is added, the existing calibrator
 can preserve unchanged samples from an exact prior report:
 
