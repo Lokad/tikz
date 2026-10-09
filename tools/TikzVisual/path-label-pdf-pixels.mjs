@@ -6,8 +6,9 @@ import {calcEqual} from './calc-saved-images.mjs';
 
 export function pathLabelPdfPixelReader(bundle,pdf,nativePrefix='native'){
  const compare=createShapeRasterMetrics().compare;
+ const pagePrefix=bundle.json(nativePrefix+'/report.json').role==='diagram-arrow-native-reference'?nativePrefix+'/original':nativePrefix;
  return file=>{
-  const row=bundle.json(file),a=decodeCalcPng(bundle.files.get(nativePrefix+'/probed-pdf-page-'+row.scale+'x.png')),
+  const row=bundle.json(file),a=decodeCalcPng(bundle.files.get(pagePrefix+'/probed-pdf-page-'+row.scale+'x.png')),
    b=decodeCalcPng(bundle.files.get(row.images['svg-page']));
   calcEqual([a.width,a.height],[b.width,b.height]);calcEqual(row.pageSize,{width:a.width,height:a.height});calcEqual(row.pageSize,pdf.camera.rasterSizes[row.scale+'x']);
   let changed=0,maximum=0;for(let i=0;i<a.rgba.length;i+=4){let error=0;for(let c=0;c<4;c++)error=Math.max(error,Math.abs(a.rgba[i+c]-b.rgba[i+c]));changed+=error!==0;maximum=Math.max(maximum,error);}

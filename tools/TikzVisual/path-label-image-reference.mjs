@@ -10,6 +10,10 @@ const spToCss=96/(72.27*65536),ptToCss=96/72.27;
 const fixed=(v,n)=>{assert.ok(Number.isFinite(v));return(Math.abs(v)<10**(-n)/2?0:v).toFixed(n).replace(/\.?0+$/,'');};
 export const pathLabelImageEncodings=['native-dimensions-12','native-dimensions-6'];
 export const pathLabelDiagramImageEncodings=[...pathLabelImageEncodings,'native-paths-pt-short'];
+export function pathLabelImageEncodingIds(frame){
+ const ids=frame.nativePathEncoding?pathLabelDiagramImageEncodings:pathLabelImageEncodings;
+ assert.deepEqual(frame.encodings.map(e=>e.id),ids,'Native encoding coverage differs.');return ids;
+}
 export const pathLabelPrimaryCaptures=['intrinsic-image','explicit-viewport'];
 
 export async function buildPathLabelImageReference(renderer,bundle,glyphs,nativePaths=!!bundle.arrowMetrics){
@@ -132,7 +136,7 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
 }
 
 export function pathLabelPdfFrame(bundle,frame){
- const page=bundle.report.pdfPage,b=bundle.metrics.pictureBounds,box=bundle.metrics.pictureBox,glue=bundle.metrics.wrapperExtraWidthSp;
+ const page=bundle.pdfPage??bundle.report.pdfPage,b=bundle.metrics.pictureBounds,box=bundle.metrics.pictureBox,glue=bundle.metrics.wrapperExtraWidthSp;
  assert.equal(box.widthSp,b.maxXSp-b.minXSp+glue);assert.equal(box.heightSp+box.depthSp,b.maxYSp-b.minYSp);
  const origin={x:(page.boxXSp+glue-b.minXSp)*spToCss,y:(page.heightSp-page.boxBaselineYSp+b.minYSp+box.depthSp)*spToCss};
  const physicalPage={width:page.widthSp*spToCss,height:page.heightSp*spToCss},rasterSizes={};

@@ -7,7 +7,7 @@ import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {calcEqual} from './calc-saved-images.mjs';
 import {ownCalcBundle} from './calc-admission-child.mjs';
 import {loadQualifiedPathLabelPrimary} from './path-label-qualified-primary.mjs';
-import {pathLabelPdfFrame,pathLabelImageEncodings} from './path-label-image-reference.mjs';
+import {pathLabelPdfFrame,pathLabelImageEncodingIds} from './path-label-image-reference.mjs';
 import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {measureEdgePdfPair} from './edge-pdf-image-pair.mjs';
@@ -27,18 +27,18 @@ try{
  const {calibration,checked,native}=await loadQualifiedPathLabelPrimary(...process.argv.slice(2));fixture=calibration.report.fixture;
  inputs={primary:process.argv[2],primarySha256:calibration.sha256,checked:process.argv[3],checkedSha256:checked.sha256,nativeInputSha256:native.sha256};
  await save('inputs/primary-report.json',calibration.bytes);await save('inputs/primary-check-report.json',checked.bytes);await ownCalcBundle(native,'native',save);
- const frame=calibration.json('frame.json'),pdf=pathLabelPdfFrame(native,frame);await json('frame.json',frame);await json('pdf-frame.json',pdf);
+ const frame=calibration.json('frame.json'),pdf=pathLabelPdfFrame(native,frame),encodingIds=pathLabelImageEncodingIds(frame);await json('frame.json',frame);await json('pdf-frame.json',pdf);
  for(const file of['calibrate-path-label-pdf.mjs','path-label-pdf-policy.mjs','path-label-qualified-primary.mjs','path-label-image-reference.mjs',
   'path-label-pdf-encoding.mjs','edge-pdf-image-pair.mjs','shape-pdf-trial-policy.mjs','shape-pdf-camera.mjs','shape-raster-metrics.mjs','compare.mjs','browser-profile.json','package-lock.json'])
   await save('source-captures/tools/TikzVisual/'+file,await readFile(path.join(root,'tools/TikzVisual/'+file)));
  renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer,'Changed native renderer.');
  await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');phase='native-pdf';
- const encodings=new Map();for(const id of pathLabelImageEncodings){
+ const encodings=new Map();for(const id of encodingIds){
   const svg=await pathLabelPdfEncoding(renderer,calibration.files.get('encodings/'+id+'.svg').toString('utf8'),frame);
   encodings.set(id,svg);await save('encodings/'+id+'.svg',svg);
  }
  const rows=[];
- for(const encoding of['original',...pathLabelImageEncodings])for(const view of shapePdfViews){
+ for(const encoding of['original',...encodingIds])for(const view of shapePdfViews){
   const pair=await measureEdgePdfPair(renderer,{svg:encoding==='original'?native.files.get('probed-reference.svg').toString('utf8'):encodings.get(encoding),
    pdfPage:'data:image/png;base64,'+native.files.get('probed-pdf-page-'+view.scale+'x.png').toString('base64'),...view,...pdf,
    units:encoding==='original'?'bp':'cssPixels',svgOriginBp:encoding==='original'?frame.origin:{x:0,y:0},cropLimit:2,
@@ -49,7 +49,7 @@ try{
   const {images:ignored,crops,...result}=pair,row={encoding,...result,images},file=prefix+'/record.json';await json(file,row);rows.push(row);records.push({encoding,...view,file});
   console.log(JSON.stringify({phase,encoding,...view,outside:row.outsideWholeChangedPixels,changed:row.whole.rawChangedPixels}));
  }
- await json('policies.json',pathLabelPdfPolicies(rows,pdf));await publish(true,{coverage:{encodings:3,views:12,regions:pdf.regions.length},
+ await json('policies.json',pathLabelPdfPolicies(rows,pdf,encodingIds));await publish(true,{coverage:{encodings:encodingIds.length+1,views:records.length,regions:pdf.regions.length},
   scope:'Frozen native-only original-SVG/PDF and native-encoding/PDF policies. Independent PDF checking, current output and feature acceptance separate.'});
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,{error:error.message});process.exitCode=1;}
 finally{await renderer?.browser.close();}

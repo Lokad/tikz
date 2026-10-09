@@ -65,6 +65,9 @@ bounds and shipped path/glyph ink, separate from the conservative inspection
 camera. The existing native arrow encoder also supplies a short TeX-point path
 representation, whose decimals recover each original scaled-point dimension.
 Adding that missing calibration variant closes the retained 4x path failures:
-all 72 complete-diagram primary views pass their native-only limits. Original/
-encoded-PDF gates and final feature admission remain open. Iteration images
+all 72 complete-diagram primary views pass their native-only limits. Both
+original-SVG/PDF and public-SVG/PDF gates also pass all 24 required diagram views.
+Independent checking recreates fresh public output and replays the complete
+primary/PDF images. Final export qualification and feature integration remain
+open. Iteration images
 do not establish a general pixel-perfect or image-conformance claim.

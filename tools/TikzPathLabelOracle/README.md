@@ -46,8 +46,10 @@ limit can reflect an independently observed native-only difference in that
 exact view and region. The network fixture has such a one-component difference
 at a tip crop in natural 1x intrinsic captures; no candidate error contributes
 to that limit. Existing glyph-only family policies retain their strict behavior.
-Current diagram primary comparisons still have unresolved failures, so these
-calibrations do not establish complete-diagram conformance or close PDF gates.
+Diagram calibration additionally retains the existing native arrow encoder's
+short TeX-point representation. All 72 current primary and 24 current PDF views
+now pass their native-only limits. These iteration results precede final export
+qualification and integration; they make no general pixel-identity claim.
 
 Complete-text sensitivity for the original path-label fixtures reuses their
 already checked primary policies:
@@ -65,7 +67,8 @@ It validates complete glyph and view coverage, including invisible samples.
 
 PDF calibration reuses the same checked native evidence, encodings and image
 helpers. Its natural viewport uses native picture bounds rather than the
-conservative inspection envelope. Page registration comes from PDF save-position,
+conservative inspection envelope. Complete diagrams use their independently
+derived picture-plus-ink root. Page registration comes from PDF save-position,
 picture bounds and measured wrapper glue; no candidate fitting is permitted.
 Original-SVG/PDF and native-encoding/PDF policies stay separate. Rasterizer
 differences are measured calibrations rather than pixel identity.
@@ -89,7 +92,7 @@ node tools/TikzVisual/path-label-current-self-test.mjs <current-primary-report> 
 ```
 
 It independently decodes required whole/local PNG metrics and recomputes each
-verdict and gate. It checks intrinsic framing against native picture bounds,
+verdict and gate. It checks intrinsic framing against independently derived native bounds,
 validates source captures, performs fresh public conversion and recaptures all
 32 primary/PDF views exactly. It rejects omitted views, split numeric provenance,
 wrong framing and rehashed false metrics/verdicts. Frozen native calibration is

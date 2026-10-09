@@ -6,7 +6,7 @@ import {randomUUID} from 'node:crypto';
 import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {ownCalcBundle} from './calc-admission-child.mjs';
-import {loadPathLabelEvidence} from './path-label-evidence.mjs';
+import {loadLabelImageEvidence} from './diagram-image-evidence.mjs';
 import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {measureEdgePdfPair} from './edge-pdf-image-pair.mjs';
@@ -22,18 +22,20 @@ async function publish(completed,extra={}){const bytes=Buffer.from(JSON.stringif
 await publish(false);
 try{
  const calibration=await loadCalcSavedReport(path.resolve(root,process.argv[2]),'path-label-native-pdf-calibration');
- const numeric=await loadCalcSavedReport(path.resolve(root,process.argv[3]),'path-label-numeric-iteration');fixture=calibration.report.fixture;
- const native=await loadPathLabelEvidence(fixture);assert.equal(calibration.report.inputs.nativeInputSha256,native.sha256);
- assert.equal(numeric.report.result.fixture,fixture);assert.equal(numeric.report.result.numericPassed,true);assert.equal(numeric.report.result.publicTraceParity,true);assert.equal(numeric.report.result.nativeInputSha256,native.sha256);
- assert.ok(numeric.files.get('current/actual.svg').equals(numeric.files.get('current/public.svg')));
- for(const [file,bytes]of calibration.files)if(file.startsWith('source-captures/'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice(16)))),'Changed native PDF dependency.');
- for(const [file,bytes]of numeric.files)if(file.startsWith('current/source-captures/'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice(24)))),'Changed converter dependency.');
+ const role=JSON.parse(await readFile(path.resolve(root,process.argv[3]))).role;assert.ok(['path-label-numeric-iteration','diagram-current-numeric'].includes(role));
+ const numeric=await loadCalcSavedReport(path.resolve(root,process.argv[3]),role),diagram=role==='diagram-current-numeric',numericPrefix=diagram?'':'current/';fixture=calibration.report.fixture;
+ const native=await loadLabelImageEvidence(diagram?path.relative(root,path.join(path.dirname(calibration.file),'native/report.json')):fixture);assert.equal(calibration.report.inputs.nativeInputSha256,native.sha256);
+ if(diagram)assert.ok(numeric.files.get('source.tikz').equals(native.files.get('source-captures/tests/Fixtures/Diagrams/'+fixture+'.tikz')));else assert.equal(numeric.report.result.fixture,fixture);
+ assert.equal(numeric.report.result.numericPassed,true);assert.equal(numeric.report.result.publicTraceParity,true);assert.equal(numeric.report.result.nativeInputSha256,native.sha256);
+ assert.ok(numeric.files.get(numericPrefix+'actual.svg').equals(numeric.files.get(numericPrefix+'public.svg')));
+ for(const [file,bytes]of calibration.files)if(file.startsWith('source-captures/')&&!file.endsWith('.mjs'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice(16)))),'Changed native PDF dependency.');
+ for(const [file,bytes]of numeric.files)if(file.startsWith(numericPrefix+'source-captures/'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice((numericPrefix+'source-captures/').length)))),'Changed converter dependency.');
  inputs={calibration:process.argv[2],calibrationSha256:calibration.sha256,numeric:process.argv[3],numericSha256:numeric.sha256};
  await ownCalcBundle(calibration,'calibration',save);await ownCalcBundle(numeric,'numeric',save);await save('source-captures/tools/TikzVisual/compare-path-label-pdf.mjs',await readFile(path.join(root,'tools/TikzVisual/compare-path-label-pdf.mjs')));
  const frame=calibration.json('frame.json'),pdf=calibration.json('pdf-frame.json'),policies=calibration.json('policies.json');
  renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');phase='current-pdf';
  for(const mode of['original','candidate'])for(const view of shapePdfViews){
-  const pair=await measureEdgePdfPair(renderer,{svg:mode==='original'?native.files.get('probed-reference.svg').toString('utf8'):numeric.files.get('current/public.svg').toString('utf8'),
+  const pair=await measureEdgePdfPair(renderer,{svg:mode==='original'?native.files.get('probed-reference.svg').toString('utf8'):numeric.files.get(numericPrefix+'public.svg').toString('utf8'),
    pdfPage:'data:image/png;base64,'+native.files.get('probed-pdf-page-'+view.scale+'x.png').toString('base64'),...view,...pdf,
    units:mode==='original'?'bp':'cssPixels',svgOriginBp:mode==='original'?frame.origin:{x:0,y:0},cropLimit:2,rightLabel:mode==='original'?'Original native SVG':'Fresh public converter'});
   const prefix='views/'+mode+'/'+view.frame+'/'+view.scale+'x',images={};

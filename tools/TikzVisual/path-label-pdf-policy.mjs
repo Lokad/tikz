@@ -2,13 +2,14 @@
 import assert from 'node:assert/strict';
 import {calcEqual} from './calc-saved-images.mjs';
 import {shapePdfViews,deriveShapePdfTrialPolicy} from './shape-pdf-trial-policy.mjs';
-import {pathLabelImageEncodings} from './path-label-image-reference.mjs';
+import {pathLabelImageEncodings,pathLabelDiagramImageEncodings} from './path-label-image-reference.mjs';
 
-export function pathLabelPdfPolicies(records,pdf){
- const expected=['original',...pathLabelImageEncodings].flatMap(e=>shapePdfViews.map(v=>e+'/'+v.frame+'/'+v.scale));
+export function pathLabelPdfPolicies(records,pdf,encodingIds=pathLabelImageEncodings){
+ calcEqual(encodingIds,encodingIds.includes('native-paths-pt-short')?pathLabelDiagramImageEncodings:pathLabelImageEncodings,'Changed native encoding set.');
+ const expected=['original',...encodingIds].flatMap(e=>shapePdfViews.map(v=>e+'/'+v.frame+'/'+v.scale));
  calcEqual(records.map(r=>r.encoding+'/'+r.frame+'/'+r.scale).sort(),expected.sort(),'Changed native PDF coverage.');
  const derive=(encoding,mode)=>deriveShapePdfTrialPolicy(records.filter(r=>r.encoding===encoding).map(r=>({...r,mode})),pdf.camera,pdf.regions,mode);
- const original=derive('original','original'),candidates=pathLabelImageEncodings.map(e=>derive(e,'candidate')),candidate=structuredClone(candidates[0]);
+ const original=derive('original','original'),candidates=encodingIds.map(e=>derive(e,'candidate')),candidate=structuredClone(candidates[0]);
  for(const policy of candidates.slice(1)){
   calcEqual(policy.camera,candidate.camera);calcEqual(policy.regions,candidate.regions);
   for(let i=0;i<policy.rows.length;i++)for(let j=0;j<policy.rows[i].regions.length;j++){

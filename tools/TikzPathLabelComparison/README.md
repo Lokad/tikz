@@ -75,7 +75,8 @@ The three diagram encodings retain the two native decimal matrix variants and
 add the existing arrow encoder's short TeX-point path representation. Its finite
 decimals recover the original scaled-point coordinates, widths and translations.
 This closes the retained path calibration gap: all 72 current diagram primary
-views now pass. PDF/final admission remains separate.
+views now pass. Both diagram PDF gates now pass their 24 required current views;
+final export qualification and integration remain separate.
 
 When a root changes or an independent encoding is added, the existing calibrator
 can preserve unchanged samples from an exact prior report:
@@ -105,6 +106,13 @@ comparisons for original-SVG/PDF and converter-SVG/PDF. These commands establish
 focused iteration evidence. A separate current checker decodes metrics, verifies
 framing/provenance and recaptures all images from fresh public output. Pinned
 portable native archives restore the qualified inputs in fresh exports.
+For complete diagrams, the same PDF commands use the checked primary frame's
+three native encodings and the owned original PDF pages. Registration still
+uses native save-position, measured wrapper glue and physical page/raster sizes.
+The diagram's independently computed picture-plus-ink root supplies natural
+clipping; the conservative camera supplies expanded inspection. Legacy families
+keep their two encodings and picture-only root. Every diagram's current checker
+recreates public output and replays 24 primary plus eight PDF views.
 Final feature acceptance combines ordinary tests, controls and fresh comparisons
 in a committed source export. Individual reports make no general feature or
 pixel-identity claim.

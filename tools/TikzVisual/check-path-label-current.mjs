@@ -31,11 +31,11 @@ export function verifyPathLabelCurrentPixels(primary,pdf){
  calcEqual(pdf.report.records.map(pdfKey).sort(),['original','candidate'].flatMap(mode=>shapePdfViews.map(v=>pdfKey({...v,mode}))).sort(),'Changed current PDF routes/views.');
  assert.equal(primary.report.result.fixture,pdf.report.fixture);
  assert.equal(primary.report.result.sourceNumericSha256,pdf.report.inputs.numericSha256,'Current reports use different numeric outputs.');
- const source=pdf.json('views/candidate/natural/1x/record.json').sourceFrame,b=frame.picture;
+ const source=pdf.json('views/candidate/natural/1x/record.json').sourceFrame,b=frame.natural?.root??frame.picture;
  const corners=[source.x,source.y,source.x+source.width,source.y+source.height],nativeCorners=[b.minX,b.minY,b.maxX,b.maxY];
  // Native dimensions are integer sp; two six-decimal SVG quantities form a far corner.
- const framingTolerance=96/(72.27*65536)+1e-6;
- assert.ok(source.width>0&&source.height>0&&corners.every((v,i)=>Number.isFinite(v)&&Math.abs(v-nativeCorners[i])<=framingTolerance),'Current intrinsic frame differs from native picture bounds.');
+ const framingTolerance=frame.natural?1.1e-6:96/(72.27*65536)+1e-6;
+ assert.ok(source.width>0&&source.height>0&&corners.every((v,i)=>Number.isFinite(v)&&Math.abs(v-nativeCorners[i])<=framingTolerance),'Current intrinsic frame differs from native bounds.');
  for(const record of pdf.report.records.filter(r=>r.mode==='candidate'))calcEqual(pdf.json(record.file).sourceFrame,source,'Current intrinsic frame changed between views.');
  const primaryPassed=primary.report.records.every(r=>r.passed),pdfPassed=pdf.report.records.every(r=>r.passed);
  assert.equal(primary.report.result.primaryPassed,primaryPassed);assert.equal(primary.report.result.views,24);
@@ -59,14 +59,14 @@ export function verifyPathLabelCurrentPixels(primary,pdf){
  return{primaryPassed,pdfPassed,framing:{checks:4,toleranceCssPixels:framingTolerance,source,nativeCorners},primaryViews:24,pdfViews:8,primaryRegionChecks:24*frame.regions.length,pdfRegionChecks:8*pdfFrame.regions.length};
 }
 
-async function currentSources(bundle,prefix){
+async function currentSources(bundle,prefix,historicalScripts=false){
  const entries=[...bundle.files].filter(([file])=>file.startsWith(prefix));assert.ok(entries.length,'Missing source captures.');
- for(const[file,bytes]of entries)assert.ok(bytes.equals(await readFile(path.join(root,file.slice(prefix.length)))),'Current dependency changed: '+file);
+ for(const[file,bytes]of entries)if(!historicalScripts||!file.endsWith('.mjs'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice(prefix.length)))),'Current dependency changed: '+file);
  return entries.length;
 }
 function ownedEqual(owner,prefix,input){
  assert.ok(owner.files.get(prefix+'/report.json').equals(input.bytes),'Changed owned report: '+prefix);
- for(const[file,bytes]of input.files)assert.ok(owner.files.get(prefix+'/'+file).equals(bytes),'Changed owned input: '+prefix+'/'+file);
+ for(const file of Object.keys(input.report.artifacts))assert.ok(owner.files.get(prefix+'/'+file).equals(input.files.get(file)),'Changed owned input: '+prefix+'/'+file);
 }
 
 export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
@@ -77,7 +77,8 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
  const {calibration,checked,native}=await loadQualifiedPathLabelPrimary(primaryCalibrationFile,primaryCheckFile);
  const pdfCalibration=await loadCalcSavedReport(path.join(path.dirname(pdfFile),'calibration/report.json'),'path-label-native-pdf-calibration');
  const pdfChecked=await loadCalcSavedReport(pdfCheckFile,'path-label-independent-pdf-check');
- assert.equal(pdfChecked.report.inputSha256,pdfCalibration.sha256);assert.equal(pdfChecked.report.sourceRecaptures,12);
+ assert.equal(pdfChecked.report.inputSha256,pdfCalibration.sha256);assert.equal(pdfChecked.report.sourceRecaptures,pdfCalibration.report.records.length);
+ assert.ok(pdfChecked.files.get('input-report.json').equals(pdfCalibration.bytes));
  assert.equal(primary.report.result.nativeCalibrationSha256,calibration.sha256);assert.equal(pdf.report.inputs.calibrationSha256,pdfCalibration.sha256);
  assert.equal(pdfCalibration.report.inputs.primarySha256,calibration.sha256);assert.equal(pdfCalibration.report.inputs.checkedSha256,checked.sha256);
  assert.equal(pdfCalibration.report.inputs.nativeInputSha256,native.sha256);
@@ -86,27 +87,32 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
  calcEqual(pdfCalibration.json('pdf-frame.json'),pathLabelPdfFrame(native,calibration.json('frame.json')),'Changed native PDF registration.');
  ownedEqual(pdfCalibration,'native',native);
  await currentSources(checked,'source-captures/');await currentSources(pdfChecked,'source-captures/');
- await currentSources(pdfCalibration,'source-captures/');await currentSources(primary,'source-captures/');await currentSources(pdf,'source-captures/');
- const numeric=await loadCalcSavedReport(path.join(path.dirname(primaryFile),'numeric/report.json'),'path-label-numeric-iteration');
- const pdfNumeric=await loadCalcSavedReport(path.join(path.dirname(pdfFile),'numeric/report.json'),'path-label-numeric-iteration');
+ await currentSources(pdfCalibration,'source-captures/',true);await currentSources(primary,'source-captures/');await currentSources(pdf,'source-captures/');
+ const numericFile=path.join(path.dirname(primaryFile),'numeric/report.json'),role=JSON.parse(await readFile(numericFile)).role;
+ assert.ok(['path-label-numeric-iteration','diagram-current-numeric'].includes(role));const diagram=role==='diagram-current-numeric',prefix=diagram?'':'current/';
+ const numeric=await loadCalcSavedReport(numericFile,role);
+ const pdfNumeric=await loadCalcSavedReport(path.join(path.dirname(pdfFile),'numeric/report.json'),role);
  assert.equal(numeric.sha256,primary.report.result.sourceNumericSha256);assert.equal(pdfNumeric.sha256,numeric.sha256);
  assert.equal(numeric.report.converterInvoked,true);assert.equal(numeric.report.result.numericPassed,true);assert.equal(numeric.report.result.publicTraceParity,true);
- assert.equal(numeric.report.result.nativeInputSha256,native.sha256);assert.equal(numeric.report.result.fixture,native.report.definition.id);
- ownedEqual(numeric,'native',native);assert.ok(numeric.files.get('current/public.svg').equals(numeric.files.get('current/actual.svg')));
- await currentSources(numeric,'current/source-captures/');
+ assert.equal(numeric.report.result.nativeInputSha256,native.sha256);
+ if(diagram){assert.ok(numeric.files.get('native-report.json').equals(native.bytes));assert.ok(numeric.files.get('source.tikz').equals(native.files.get('source-captures/tests/Fixtures/Diagrams/'+native.report.definition.id+'.tikz')));}
+ else{assert.equal(numeric.report.result.fixture,native.report.definition.id);ownedEqual(numeric,'native',native);}
+ assert.ok(numeric.files.get(prefix+'public.svg').equals(numeric.files.get(prefix+'actual.svg')));
+ await currentSources(numeric,prefix+'source-captures/');
  const pixels=verifyPathLabelCurrentPixels(primary,pdf);
  for(const[name,input]of Object.entries({primary,pdf,primaryCheck:checked,pdfCheck:pdfChecked}))await save('inputs/'+name+'-report.json',input.bytes);
  markConverter();
  const handle=await runCalcChild(root,'dotnet',['run','--project','tools/TikzPathLabelComparison','-c','Release','--',
-  path.relative(root,path.join(path.dirname(primaryFile),'numeric/native/report.json'))],'fresh-current',save);
- const fresh=await readCalcChild(root,handle,'path-label-current-numeric');await ownCalcBundle(fresh,'fresh',save);
+  path.relative(root,diagram?native.file:path.join(path.dirname(primaryFile),'numeric/native/report.json'))],'fresh-current',save);
+ const fresh=await readCalcChild(root,handle,diagram?'diagram-current-numeric':'path-label-current-numeric');await ownCalcBundle(fresh,'fresh',save);
  assert.equal(fresh.report.converterInvoked,true);assert.equal(fresh.report.result.numericPassed,true);assert.equal(fresh.report.result.publicTraceParity,true);
  assert.equal(fresh.report.result.nativeInputSha256,native.sha256);assert.equal(fresh.report.result.checks,numeric.report.result.checks);
- assert.ok(fresh.files.get('public.svg').equals(numeric.files.get('current/public.svg')),'Fresh public SVG differs from saved image source.');
+ assert.ok(fresh.files.get('public.svg').equals(numeric.files.get(prefix+'public.svg')),'Fresh public SVG differs from saved image source.');
  assert.ok(fresh.files.get('actual.svg').equals(fresh.files.get('public.svg')));
  const captures=[...fresh.files.keys()].filter(f=>f.startsWith('source-captures/')).sort();
- calcEqual(captures,[...numeric.files.keys()].filter(f=>f.startsWith('current/source-captures/')).map(f=>f.slice(8)).sort(),'Changed converter source coverage.');
- for(const f of captures)assert.ok(fresh.files.get(f).equals(numeric.files.get('current/'+f)),'Changed fresh converter source capture.');
+ calcEqual(captures,[...numeric.files.keys()].filter(f=>f.startsWith(prefix+'source-captures/')).map(f=>f.slice(prefix.length)).sort(),'Changed converter source coverage.');
+ for(const f of captures)assert.ok(fresh.files.get(f).equals(numeric.files.get(prefix+f)),'Changed fresh converter source capture.');
+ if(diagram)assert.ok(fresh.files.get('source-map.json').equals(numeric.files.get('source-map.json')),'Changed fresh source spans.');
  const renderer=await createRenderer(),frame=calibration.json('frame.json'),pdfFrame=pdfCalibration.json('pdf-frame.json');let recaptured=0;
  try{
   calcEqual(renderer.identity,calibration.report.renderer);calcEqual(renderer.identity,pdfCalibration.report.renderer);

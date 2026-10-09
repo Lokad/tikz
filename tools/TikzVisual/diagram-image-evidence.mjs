@@ -30,5 +30,5 @@ export async function loadLabelImageEvidence(input){
  // Supply the original backend files to existing image/PDF readers. Ownership
  // still covers the outer frozen bundle, including every original artifact.
  for(const[f,bytes]of files)if(!b.files.has(f))b.files.set(f,bytes);
- calcEqual(b.json('metrics.json'),original.metrics);return{...b,metrics:original.metrics,arrowMetrics:arrows};
+ calcEqual(b.json('metrics.json'),original.metrics);return{...b,metrics:original.metrics,arrowMetrics:arrows,pdfPage:original.report.pdfPage};
 }
