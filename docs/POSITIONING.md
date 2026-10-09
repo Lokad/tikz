@@ -51,5 +51,12 @@ library availability. The complete diagrams also pass independent text/anchor,
 DVI/TFM glyph, coordinate, picture-bounds and effective paint-order/state checks.
 Supplemental native arrow observations ground complete background/shaft/tip
 geometry, template dimensions and shortening through the same comparison tool.
+In the focused contract fixture, a final-glyph raster difference is independently
+reproduced by native-only encodings. Integer DVI glyph positions, measured PGF
+text anchors and original glyph outlines reconstruct the public output exactly
+at 1x and 4x when serialized to six decimals. Original native SVG coordinate
+serialization changes three pixels at the final `r` of `Anchor` at 4x, despite
+matching glyph identities, outlines and TeX layout. This diagnostic establishes
+the cause for that fixture; native-only calibration must still set image limits.
 Framing and primary/local/PDF image admission remain open. Iteration images
 do not establish a general pixel-perfect or image-conformance claim.
