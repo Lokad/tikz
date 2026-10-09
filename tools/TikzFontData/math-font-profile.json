@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 1,
+  "id": "latin-modern-math-10-12-v1",
+  "latexVersion": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+  "dvisvgmVersion": "dvisvgm 3.4.3",
+  "dviTypeVersion": "MiKTeX-DVITYPE 2.9.6300 (MiKTeX 25.4)",
+  "kpseVersion": "MiKTeX 25.4",
+  "toolHashes": {
+    "latex": "37659e30ba4537584b6418de22ce310247128edbc1481fc97fd9b24260f11caf",
+    "dvisvgm": "74a03e974afc08f5b24417bbe08af792be6634eacfa16c1ce6f870cad95f53fa",
+    "dvitype": "53da4ba9cfc7bcd84b820b5bd22a9177b9cae171f4224c001963661076d8cafb",
+    "kpsewhich": "46e5f6537d84512bd5f2dcd21e960fc740f09f622c3c3a11fba2504f52bf2213"
+  },
+  "encodings": [
+    "OT1",
+    "OML",
+    "OMS",
+    "OMX"
+  ],
+  "source": "https://ctan.org/pkg/lm",
+  "styleSizes": {
+    "10": [
+      10,
+      7,
+      5
+    ],
+    "12": [
+      12,
+      8,
+      6
+    ]
+  },
+  "symbolTwelve": "lmsy10 at 12pt; design size 10pt",
+  "extensionSizePt": 10,
+  "inputs": [
+    {
+      "name": "GUST-FONT-LICENSE.txt",
+      "sha256": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050"
+    },
+    {
+      "name": "lm-mathex.enc",
+      "sha256": "7ecd3eb53329d24551d4e125c741037a4bf94872bf545492b6fb4c7d21f381c4"
+    },
+    {
+      "name": "lm-mathit.enc",
+      "sha256": "0d7b9e82ad6274470876761c22573c28db1f1b32d647b688230b3a366f0e373b"
+    },
+    {
+      "name": "lm-mathsy.enc",
+      "sha256": "a2980b38288ef4024b8a3e170c19c9d4e2ee8b7dde97a59e8148291ffd3443db"
+    },
+    {
+      "name": "lm-rm.enc",
+      "sha256": "8bf8f9bd48d49aa3f3c597716908854e4d9207b009c109e6d9c5887feb856844"
+    },
+    {
+      "name": "lm.map",
+      "sha256": "d40c55f3e00607c98ae0d99112dcb56e18e9b9ea8febac443cfd6533469ac90d"
+    },
+    {
+      "name": "lmex10.pfb",
+      "sha256": "8e12eda1d29f55271bcef9a5022b42c8c10f8e65060dd6a8880556aa5484c052"
+    },
+    {
+      "name": "lmex10.tfm",
+      "sha256": "9547b25fd525782610200d794a82de33037887422751fcc29c5768cfa650e626"
+    },
+    {
+      "name": "lmmi10.pfb",
+      "sha256": "c24662506b402f3e0033cc75eb746eb490a1b7477e6b3ef52053f5025ec0fc57"
+    },
+    {
+      "name": "lmmi10.tfm",
+      "sha256": "d9fce8963e8cb075bf31a5715a8f4a54688f7026b3a06e882ff2eb9c0d110320"
+    },
+    {
+      "name": "lmmi12.pfb",
+      "sha256": "19579dda4280cea64aacdd0f80b53b7f1e7930e98fe9858ab38aab33c8623836"
+    },
+    {
+      "name": "lmmi12.tfm",
+      "sha256": "06870b7e003008214eefcf9bc4215006faff9edf5d99bee75211de57620d1818"
+    },
+    {
+      "name": "lmmi5.pfb",
+      "sha256": "b1f4adc7d712c838c9de8f13182e587eea9fd1ad2b3652c39e5d8d23022ad228"
+    },
+    {
+      "name": "lmmi5.tfm",
+      "sha256": "7bc98c12006eb1d784ce276f5dc008e0d631ee6bc659efadec24801c00d2a462"
+    },
+    {
+      "name": "lmmi6.pfb",
+      "sha256": "84b90db59b216d7f25f89a45c7565d7cccccc6c32961fe972b1a53558fa2035e"
+    },
+    {
+      "name": "lmmi6.tfm",
+      "sha256": "e7305bead3f6b2c8313e1234cb52376219d4283227c23295fe2f654e3ba3b551"
+    },
+    {
+      "name": "lmmi7.pfb",
+      "sha256": "7c646a6a841c2e99909f7d5673d778fc104e43efad281ea0b5687636c544c639"
+    },
+    {
+      "name": "lmmi7.tfm",
+      "sha256": "8548d4d19fc2b3671a5e11526f9013df8828b5b9b0f8277dc0ae7148bd1d33f5"
+    },
+    {
+      "name": "lmmi8.pfb",
+      "sha256": "ec3aa1701ea2dbbd9ea2b7316ffe81726a3a2ecb31442fbaf719800f2625e68d"
+    },
+    {
+      "name": "lmmi8.tfm",
+      "sha256": "8d8514f9b0d11e443d9a3cdc059622b06797c1dbcb3cee994f6ac3329c462a82"
+    },
+    {
+      "name": "lmr10.pfb",
+      "sha256": "84eb01245abb17c0530ca3909427256d73df8bed2d7243b9f2717ca08c010ac8"
+    },
+    {
+      "name": "lmr12.pfb",
+      "sha256": "d5fd4fdecfdbc8f97e955964aa2574927182303df178fe0c2e568fe9056e326c"
+    },
+    {
+      "name": "lmr5.pfb",
+      "sha256": "584815958b6e66cf4ec2b590f93bd853117f862f4f0fa8b06f4ee6eb6035e845"
+    },
+    {
+      "name": "lmr6.pfb",
+      "sha256": "0169c3fcc2685ba53356a09c1b96c8f71c250ba5177da7b23e7a819e583ccf88"
+    },
+    {
+      "name": "lmr7.pfb",
+      "sha256": "cf94a1a79a32c446f11e585164463234a515721d509d2f2cfb0ab61f6f744ddc"
+    },
+    {
+      "name": "lmr8.pfb",
+      "sha256": "4a117a1dd9cf4f8b7eea4587eaa4f612be7ca329cb1d8255a2c6bb20febbfa69"
+    },
+    {
+      "name": "lmsy10.pfb",
+      "sha256": "9969fd5ae5281ad40cdf6d8caf50084636a43ed7b7647e0e9e1195e859cec7cc"
+    },
+    {
+      "name": "lmsy10.tfm",
+      "sha256": "11f429b2c08f944627faa5942277297d7f8fef40edae2bae46cb238b838400ba"
+    },
+    {
+      "name": "lmsy5.pfb",
+      "sha256": "bab25ed3e0f79c2781052d4725d26c584d1be19b8e7ad0d8b8b10fa0d89e49c6"
+    },
+    {
+      "name": "lmsy5.tfm",
+      "sha256": "cac282b076edc89a2bbc8cdd1bd899117cd1af05612bca2b203e8b5ebe715431"
+    },
+    {
+      "name": "lmsy6.pfb",
+      "sha256": "882b12a92a65c7b5929a782ef99c9b2fca2235b70c8a3f772950a8e343259f82"
+    },
+    {
+      "name": "lmsy6.tfm",
+      "sha256": "8548e4b09655eb2b166bf95df4be4f2a7ae54d5df2069bc04ef233bfd941167b"
+    },
+    {
+      "name": "lmsy7.pfb",
+      "sha256": "c434f5fb70bc41978ac63c673556a2d913211f297947aa1f0d18b93da25ebe4b"
+    },
+    {
+      "name": "lmsy7.tfm",
+      "sha256": "3e92767469b4df54c985a533b8064789df60f21ab69d381dbf01bb608e3fbff8"
+    },
+    {
+      "name": "lmsy8.pfb",
+      "sha256": "e23c98a5dadbaf4f156082cfcfa7b3366f849ee86b0410db53a9c6fe4e67920b"
+    },
+    {
+      "name": "lmsy8.tfm",
+      "sha256": "b6b96268d56481a5bc7cbb34b140ca1fa5017d2767acc4e11a94b30eabd114f7"
+    },
+    {
+      "name": "lppl.txt",
+      "sha256": "5f05fcf6ef25a6c31bccd2df7c0c46b23107bbeb2ce5cdba74efb5cc357f4dbb"
+    },
+    {
+      "name": "MANIFEST-Latin-Modern.txt",
+      "sha256": "402c79f4ede8548a6fe6f82f42f0288cb0243ba2403dfdeeaadf55d189a46fae"
+    },
+    {
+      "name": "README-Latin-Modern.txt",
+      "sha256": "7cac4a4a78985ccb1ed429bb2eddf32eeb2e413c94493c7b268385bb7b525250"
+    },
+    {
+      "name": "rm-lmr10.tfm",
+      "sha256": "50dc8240a67003c1ec5bcd55f703c87189aeab0d199c42b4dc3e141a02488998"
+    },
+    {
+      "name": "rm-lmr12.tfm",
+      "sha256": "9d4e3d8e39a41b93d91f79c1c47d2297efb7b1af220b94860693c08361f227aa"
+    },
+    {
+      "name": "rm-lmr5.tfm",
+      "sha256": "420a4fc1563b171e5a791bb71211d85e6bf62fd2f2ed2a7f34f742049d6e5071"
+    },
+    {
+      "name": "rm-lmr6.tfm",
+      "sha256": "eb0bfdf8db3ae1409639fac9c88f84923872500d882d9ff8dc37aff445c723fe"
+    },
+    {
+      "name": "rm-lmr7.tfm",
+      "sha256": "373a4f72b5a088f9caee2cfd75adb2b25116e0cba3ad2bfa99b5f8a7e902a482"
+    },
+    {
+      "name": "rm-lmr8.tfm",
+      "sha256": "80bcbfd844d2310ac1d3bead45aee25e91b1a4a0a60ff1771959b9a1e90ec1a2"
+    }
+  ],
+  "fonts": [
+    {
+      "id": "math-roman-5",
+      "sizePt": 5,
+      "designSizePt": 5,
+      "tfm": "rm-lmr5.tfm",
+      "pfb": "lmr5.pfb",
+      "encoding": "lm-rm.enc",
+      "expectedGlyphs": 256,
+      "expectedLastSlot": 255,
+      "expectedParameters": 21
+    },
+    {
+      "id": "math-roman-6",
+      "sizePt": 6,
+      "designSizePt": 6,
+      "tfm": "rm-lmr6.tfm",
+      "pfb": "lmr6.pfb",
+      "encoding": "lm-rm.enc",
+      "expectedGlyphs": 256,
+      "expectedLastSlot": 255,
+      "expectedParameters": 21
+    },
+    {
+      "id": "math-roman-7",
+      "sizePt": 7,
+      "designSizePt": 7,
+      "tfm": "rm-lmr7.tfm",
+      "pfb": "lmr7.pfb",
+      "encoding": "lm-rm.enc",
+      "expectedGlyphs": 256,
+      "expectedLastSlot": 255,
+      "expectedParameters": 21
+    },
+    {
+      "id": "math-roman-8",
+      "sizePt": 8,
+      "designSizePt": 8,
+      "tfm": "rm-lmr8.tfm",
+      "pfb": "lmr8.pfb",
+      "encoding": "lm-rm.enc",
+      "expectedGlyphs": 256,
+      "expectedLastSlot": 255,
+      "expectedParameters": 21
+    },
+    {
+      "id": "math-roman-10",
+      "sizePt": 10,
+      "designSizePt": 10,
+      "tfm": "rm-lmr10.tfm",
+      "pfb": "lmr10.pfb",
+      "encoding": "lm-rm.enc",
+      "expectedGlyphs": 256,
+      "expectedLastSlot": 255,
+      "expectedParameters": 21
+    },
+    {
+      "id": "math-roman-12",
+      "sizePt": 12,
+      "designSizePt": 12,
+      "tfm": "rm-lmr12.tfm",
+      "pfb": "lmr12.pfb",
+      "encoding": "lm-rm.enc",
+      "expectedGlyphs": 256,
+      "expectedLastSlot": 255,
+      "expectedParameters": 21
+    },
+    {
+      "id": "math-italic-5",
+      "sizePt": 5,
+      "designSizePt": 5,
+      "tfm": "lmmi5.tfm",
+      "pfb": "lmmi5.pfb",
+      "encoding": "lm-mathit.enc",
+      "expectedGlyphs": 128,
+      "expectedLastSlot": 127,
+      "expectedParameters": 6
+    },
+    {
+      "id": "math-italic-6",
+      "sizePt": 6,
+      "designSizePt": 6,
+      "tfm": "lmmi6.tfm",
+      "pfb": "lmmi6.pfb",
+      "encoding": "lm-mathit.enc",
+      "expectedGlyphs": 128,
+      "expectedLastSlot": 127,
+      "expectedParameters": 6
+    },
+    {
+      "id": "math-italic-7",
+      "sizePt": 7,
+      "designSizePt": 7,
+      "tfm": "lmmi7.tfm",
+      "pfb": "lmmi7.pfb",
+      "encoding": "lm-mathit.enc",
+      "expectedGlyphs": 128,
+      "expectedLastSlot": 127,
+      "expectedParameters": 6
+    },
+    {
+      "id": "math-italic-8",
+      "sizePt": 8,
+      "designSizePt": 8,
+      "tfm": "lmmi8.tfm",
+      "pfb": "lmmi8.pfb",
+      "encoding": "lm-mathit.enc",
+      "expectedGlyphs": 128,
+      "expectedLastSlot": 127,
+      "expectedParameters": 6
+    },
+    {
+      "id": "math-italic-10",
+      "sizePt": 10,
+      "designSizePt": 10,
+      "tfm": "lmmi10.tfm",
+      "pfb": "lmmi10.pfb",
+      "encoding": "lm-mathit.enc",
+      "expectedGlyphs": 128,
+      "expectedLastSlot": 127,
+      "expectedParameters": 6
+    },
+    {
+      "id": "math-italic-12",
+      "sizePt": 12,
+      "designSizePt": 12,
+      "tfm": "lmmi12.tfm",
+      "pfb": "lmmi12.pfb",
+      "encoding": "lm-mathit.enc",
+      "expectedGlyphs": 128,
+      "expectedLastSlot": 127,
+      "expectedParameters": 6
+    },
+    {
+      "id": "math-symbol-5",
+      "sizePt": 5,
+      "designSizePt": 5,
+      "tfm": "lmsy5.tfm",
+      "pfb": "lmsy5.pfb",
+      "encoding": "lm-mathsy.enc",
+      "expectedGlyphs": 130,
+      "expectedLastSlot": 173,
+      "expectedParameters": 22
+    },
+    {
+      "id": "math-symbol-6",
+      "sizePt": 6,
+      "designSizePt": 6,
+      "tfm": "lmsy6.tfm",
+      "pfb": "lmsy6.pfb",
+      "encoding": "lm-mathsy.enc",
+      "expectedGlyphs": 130,
+      "expectedLastSlot": 173,
+      "expectedParameters": 22
+    },
+    {
+      "id": "math-symbol-7",
+      "sizePt": 7,
+      "designSizePt": 7,
+      "tfm": "lmsy7.tfm",
+      "pfb": "lmsy7.pfb",
+      "encoding": "lm-mathsy.enc",
+      "expectedGlyphs": 130,
+      "expectedLastSlot": 173,
+      "expectedParameters": 22
+    },
+    {
+      "id": "math-symbol-8",
+      "sizePt": 8,
+      "designSizePt": 8,
+      "tfm": "lmsy8.tfm",
+      "pfb": "lmsy8.pfb",
+      "encoding": "lm-mathsy.enc",
+      "expectedGlyphs": 130,
+      "expectedLastSlot": 173,
+      "expectedParameters": 22
+    },
+    {
+      "id": "math-symbol-10",
+      "sizePt": 10,
+      "designSizePt": 10,
+      "tfm": "lmsy10.tfm",
+      "pfb": "lmsy10.pfb",
+      "encoding": "lm-mathsy.enc",
+      "expectedGlyphs": 130,
+      "expectedLastSlot": 173,
+      "expectedParameters": 22
+    },
+    {
+      "id": "math-symbol-12",
+      "sizePt": 12,
+      "designSizePt": 10,
+      "tfm": "lmsy10.tfm",
+      "pfb": "lmsy10.pfb",
+      "encoding": "lm-mathsy.enc",
+      "expectedGlyphs": 130,
+      "expectedLastSlot": 173,
+      "expectedParameters": 22
+    },
+    {
+      "id": "math-extension-10",
+      "sizePt": 10,
+      "designSizePt": 10,
+      "tfm": "lmex10.tfm",
+      "pfb": "lmex10.pfb",
+      "encoding": "lm-mathex.enc",
+      "expectedGlyphs": 128,
+      "expectedLastSlot": 127,
+      "expectedParameters": 13
+    }
+  ]
+}

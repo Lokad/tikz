@@ -49,6 +49,7 @@ tests/Reference/PathLabels/interactions-native/commands/*.log text eol=lf -white
 tests/Reference/PathLabels/*.images.cache.gz -text
 tests/Reference/MathLabels/native-layout/*/oracle.svg -text whitespace=cr-at-eol
 tests/Reference/MathLabels/native-layout/*/native-positions.log text eol=lf -whitespace
+tests/Reference/MathFonts/native-radicals.log text eol=lf -whitespace
 # Upstream license texts are retained byte for byte, including line endings.
 licenses/Fonts/GUST-FONT-LICENSE.txt -text -whitespace
 licenses/Fonts/LPPL-1.3c.txt -text -whitespace

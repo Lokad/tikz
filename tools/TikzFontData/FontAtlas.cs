@@ -14,65 +14,74 @@ internal static partial class FontGenerator
     // Both atlases get the same declared frame; no fitting, origin inference,
     // or baseline adjustment is allowed. This experiment validates glyph
     // reconstruction and atlas baselines, not automatic TikZ picture bounds.
-    private static string FramedOracle(XDocument svg)
+    private static string FramedOracle(XDocument svg, bool math = false)
     {
         var result = new XDocument(svg);
         var root = result.Root!;
-        root.SetAttributeValue("width", "390pt");
-        root.SetAttributeValue("height", "540pt");
-        root.SetAttributeValue("viewBox", "-3 -3 390 540");
+        if (math)
+        {
+            var box = ((string)root.Attribute("viewBox")!).Split(' ').Select(v => double.Parse(v, Invariant)).ToArray();
+            if (box.Length != 4 || box.Any(v => !double.IsFinite(v)) || box[0] < -3 || box[1] < -3
+                || box[0] + box[2] > 427 || box[1] + box[3] > 497)
+                throw new InvalidOperationException("Native math atlas ink exceeds its declared frame.");
+        }
+        root.SetAttributeValue("width", math ? "430pt" : "390pt");
+        root.SetAttributeValue("height", math ? "500pt" : "540pt");
+        root.SetAttributeValue("viewBox", math ? "-3 -3 430 500" : "-3 -3 390 540");
         return result.ToString(SaveOptions.DisableFormatting) + "\n";
     }
 
-    private static AtlasPosition[] Positions(FontData font)
+    private static AtlasPosition[] Positions(AtlasFont font)
     {
-        var sizeSp = font.DesignSizeFix / 16;
+        var sizeSp = font.SizeSp;
         var result = new List<AtlasPosition>();
         var topSp = 0;
-        for (var row = 0; row < 16; row++)
+        for (var row = 0; row <= font.LastSlot / 16; row++)
         {
-            var glyphs = font.Glyphs.Skip(row * 16).Take(16).ToArray();
-            var height = glyphs.Max(g => Math.Max(0, FontData.ScaleFix(g.HeightFix, sizeSp)));
-            var depth = glyphs.Max(g => Math.Max(0, FontData.ScaleFix(g.DepthFix, sizeSp)));
+            var glyphs = font.Glyphs.Where(g => g.Slot / 16 == row).ToArray();
+            var height = glyphs.Select(g => Math.Max(0, FontData.ScaleFix(g.HeightFix, sizeSp))).DefaultIfEmpty(0).Max();
+            var depth = glyphs.Select(g => Math.Max(0, FontData.ScaleFix(g.DepthFix, sizeSp))).DefaultIfEmpty(0).Max();
             var baseline = topSp + height;
-            for (var column = 0; column < 16; column++)
-                result.Add(new(row * 16 + column, column * 24 * 65536, baseline));
+            foreach (var glyph in glyphs)
+                result.Add(new(glyph.Slot, glyph.Slot % 16 * 24 * 65536, baseline));
             topSp = baseline + depth + 16 * 65536;
         }
         return result.ToArray();
     }
 
-    private static async Task<int> CompareAtlases(string root, FontManifest manifest)
+    private static async Task<int> CompareAtlases(string root, FontManifest manifest, bool math = false)
     {
         var suite = new List<object>();
         var failed = false;
-        var provenance = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "src/Lokad.TikZ/Resources/Fonts/provenance.json")));
+        var comparisonFolder = math ? "math-font-comparisons" : "font-comparisons";
+        var provenance = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "src/Lokad.TikZ/Resources/Fonts", math ? "math-provenance.json" : "provenance.json")));
         using (provenance)
         {
             var wrapper = File.ReadAllText(Path.Combine(root, "tools/TikzFontData/atlas.tex")).Replace("\r\n", "\n", StringComparison.Ordinal);
-            if (provenance.RootElement.GetProperty("manifestSha256").GetString() != Hash(File.ReadAllBytes(Path.Combine(root, "tools/TikzFontData/font-profile.json")))
+            if (provenance.RootElement.GetProperty("manifestSha256").GetString() != Hash(File.ReadAllBytes(Path.Combine(root, "tools/TikzFontData", math ? "math-font-profile.json" : "font-profile.json")))
                 || provenance.RootElement.GetProperty("wrapperSha256").GetString() != Hash(Encoding.UTF8.GetBytes(wrapper)))
                 throw new InvalidOperationException("The cached font manifest changed; regenerate explicitly.");
             var records = provenance.RootElement.GetProperty("fonts").EnumerateArray().ToDictionary(r => r.GetProperty("font").GetString()!);
             foreach (var face in manifest.Fonts)
             {
-                var font = FontData.Load(face.Id);
-                var referenceDir = Path.Combine(root, "tests/Reference/Fonts");
+                var font = math ? AtlasFont.From(MathFontData.Load(face.Id)) : AtlasFont.From(FontData.Load(face.Id));
+                var glyphs = font.Glyphs.ToDictionary(g => g.Slot);
+                var referenceDir = Path.Combine(root, "tests/Reference", math ? "MathFonts" : "Fonts");
                 var referencePath = Path.Combine(referenceDir, face.Id + ".svg");
                 var metricPath = Path.Combine(referenceDir, face.Id + ".json");
-                var resourcePath = Path.Combine(root, $"src/Lokad.TikZ/Resources/Fonts/LokadTikzText-{face.Id}.json");
+                var resourcePath = Path.Combine(root, $"src/Lokad.TikZ/Resources/Fonts/LokadTikz{(math ? "Math" : "Text")}-{face.Id}.json");
                 var record = records[face.Id];
                 if (Hash(File.ReadAllBytes(resourcePath)) != record.GetProperty("resourceSha256").GetString()
                     || Hash(File.ReadAllBytes(metricPath)) != record.GetProperty("metricsSha256").GetString()
                     || Hash(File.ReadAllBytes(referencePath)) != record.GetProperty("atlasSha256").GetString()
-                    || Hash(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(font, CompactJson) + "\n")) != record.GetProperty("resourceSha256").GetString())
+                    || Hash(Encoding.UTF8.GetBytes(JsonSerializer.Serialize(font.Resource, CompactJson) + "\n")) != record.GetProperty("resourceSha256").GetString())
                     throw new InvalidOperationException("Cached font data or oracle changed; regenerate explicitly.");
                 var reference = XDocument.Load(referencePath);
                 var group = reference.Root!.Elements(Svg + "g").Single();
                 if (group.Attributes().Any(a => a.Name.LocalName != "id") || group.Elements().Any(e => e.Name != Svg + "use"))
                     throw new InvalidOperationException("Unexpected oracle atlas transform.");
-                var uses = group.Elements(Svg + "use").ToArray();
-                if (uses.Length != 256) throw new InvalidOperationException("Incomplete oracle glyph atlas.");
+                var uses = group.Elements(Svg + "use").ToDictionary(u => int.Parse(((string)u.Attribute(Link + "href")!)[4..], Invariant));
+                if (!uses.Keys.Order().SequenceEqual(glyphs.Keys.Order())) throw new InvalidOperationException("Incomplete oracle glyph atlas.");
                 var positions = Positions(font);
                 var checks = new List<object>();
                 var passed = true;
@@ -84,19 +93,18 @@ internal static partial class FontGenerator
                     checks.Add(new { name, expected, actual, absoluteError = error, tolerance, units, passed = ok });
                 }
                 using var metricsDocument = JsonDocument.Parse(File.ReadAllText(metricPath));
-                var sizeSp = font.DesignSizeFix / 16;
+                var sizeSp = font.SizeSp;
                 var glyphRecords = metricsDocument.RootElement.GetProperty("glyphs");
                 var pairRecords = metricsDocument.RootElement.GetProperty("pairs");
-                Check("glyphMetricCount", 256, glyphRecords.GetArrayLength(), 0, "count");
+                Check("glyphMetricCount", font.LastSlot + 1, glyphRecords.GetArrayLength(), 0, "count");
                 Check("pairMetricCount", font.Pairs.Length, pairRecords.GetArrayLength(), 0, "count");
                 Check("fontParameterCount", font.ParametersFix.Length, metricsDocument.RootElement.GetProperty("parameters").GetArrayLength(), 0, "count");
                 foreach (var row in glyphRecords.EnumerateArray())
                 {
                     var slot = row[0].GetInt32();
-                    var glyph = font.Glyphs[slot];
-                    var values = new[] { FontData.ScaleFix(glyph.AdvanceFix, sizeSp), Math.Max(0, FontData.ScaleFix(glyph.HeightFix, sizeSp)),
+                    var values = glyphs.TryGetValue(slot, out var glyph) ? new[] { FontData.ScaleFix(glyph.AdvanceFix, sizeSp), Math.Max(0, FontData.ScaleFix(glyph.HeightFix, sizeSp)),
                         Math.Max(0, FontData.ScaleFix(glyph.DepthFix, sizeSp)), FontData.ScaleFix(glyph.AdvanceFix, sizeSp),
-                        FontData.ScaleFix(glyph.HeightFix, sizeSp), FontData.ScaleFix(glyph.DepthFix, sizeSp), FontData.ScaleFix(glyph.ItalicFix, sizeSp) };
+                        FontData.ScaleFix(glyph.HeightFix, sizeSp), FontData.ScaleFix(glyph.DepthFix, sizeSp), FontData.ScaleFix(glyph.ItalicFix, sizeSp) } : new int[7];
                     for (var column = 0; column < values.Length; column++)
                         Check($"glyph.{slot}.metric.{column}", row[column + 1].GetInt32(), values[column], 0, "TeX sp");
                 }
@@ -104,8 +112,8 @@ internal static partial class FontGenerator
                 foreach (var p in font.Pairs)
                 {
                     var row = pairRecords[index++];
-                    var left = font.Glyphs[p.Ligature ?? p.Left];
-                    var right = p.Ligature.HasValue ? left : font.Glyphs[p.Right];
+                    var left = glyphs[p.Ligature ?? p.Left];
+                    var right = p.Ligature.HasValue ? left : glyphs[p.Right];
                     var width = p.Ligature.HasValue ? FontData.ScaleFix(left.AdvanceFix, sizeSp)
                         : FontData.ScaleFix(left.AdvanceFix, sizeSp) + FontData.ScaleFix(right.AdvanceFix, sizeSp) + FontData.ScaleFix(p.KernFix!.Value, sizeSp);
                     var height = Math.Max(0, Math.Max(FontData.ScaleFix(left.HeightFix, sizeSp), FontData.ScaleFix(right.HeightFix, sizeSp)));
@@ -137,18 +145,19 @@ internal static partial class FontGenerator
                     actualGroup.Add(new XElement(Svg + "use", new XAttribute("id", $"glyph-{p.Slot}"), new XAttribute("href", $"#font-{p.Slot}"),
                         new XAttribute("x", (p.XSp * SpToBp).ToString("0.######", Invariant)), new XAttribute("y", (p.YSp * SpToBp).ToString("0.######", Invariant))));
                 }
-                var actual = new XDocument(new XElement(Svg + "svg", new XAttribute("width", "390pt"), new XAttribute("height", "540pt"),
-                    new XAttribute("viewBox", "-3 -3 390 540"), definitions, actualGroup));
-                var bundle = Path.Combine(root, "artifacts/font-comparisons", face.Id);
+                var actual = new XDocument(new XElement(Svg + "svg", new XAttribute("width", math ? "430pt" : "390pt"), new XAttribute("height", math ? "500pt" : "540pt"),
+                    new XAttribute("viewBox", math ? "-3 -3 430 500" : "-3 -3 390 540"), definitions, actualGroup));
+                var bundle = Path.Combine(root, "artifacts", comparisonFolder, face.Id);
                 Directory.CreateDirectory(bundle);
                 File.Copy(referencePath, Path.Combine(bundle, "reference.svg"), true);
                 File.WriteAllText(Path.Combine(bundle, "actual.svg"), actual.ToString(SaveOptions.DisableFormatting));
                 File.Copy(Path.Combine(root, "tools/TikzFontData/atlas.tex"), Path.Combine(bundle, "source.tikz"), true);
                 File.WriteAllText(Path.Combine(bundle, "actual-scene.json"), JsonSerializer.Serialize(new { units = "CSS pixels; y down; atlas origin (0,0)",
                     paths = positions.Select(p => new { semanticId = "font-slot-" + p.Slot, svgElementId = "glyph-" + p.Slot,
-                        source = new { font = face.Id, slot = p.Slot, name = font.Glyphs[p.Slot].Name },
+                        source = new { font = face.Id, slot = p.Slot, name = glyphs[p.Slot].Name },
                         inkBounds = new { minX = (p.XSp - 4 * 65536) * SpToBp * 4 / 3, maxX = (p.XSp + 24 * 65536) * SpToBp * 4 / 3,
-                            minY = (p.YSp - 16 * 65536) * SpToBp * 4 / 3, maxY = (p.YSp + 8 * 65536) * SpToBp * 4 / 3 } }) }, Json));
+                            minY = (p.YSp - Math.Max(16 * 65536, FontData.ScaleFix(glyphs[p.Slot].HeightFix, sizeSp) + 4 * 65536)) * SpToBp * 4 / 3,
+                            maxY = (p.YSp + Math.Max(8 * 65536, FontData.ScaleFix(glyphs[p.Slot].DepthFix, sizeSp) + 4 * 65536)) * SpToBp * 4 / 3 } }) }, Json));
                 File.WriteAllText(Path.Combine(bundle, "comparison-input.json"), JsonSerializer.Serialize(new { schemaVersion = 1,
                     caseId = "font-atlas-" + face.Id, referenceMode = "cached", actualLabel = "Bundled font atlas prototype",
                     actualUnits = "bp", referenceOriginBp = new { x = 0, y = 0 }, numericTolerancePixels = 0.000001, numeric = new { passed, checks } }, Json));
@@ -157,7 +166,7 @@ internal static partial class FontGenerator
                     schemaVersion = 1, fontDataAssemblySha256 = Hash(File.ReadAllBytes(typeof(FontData).Assembly.Location)),
                     generatorAssemblySha256 = Hash(File.ReadAllBytes(typeof(FontGenerator).Assembly.Location)),
                     fontDataAssemblyVersion = typeof(FontData).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion,
-                    generatorSources = new[] { "tools/TikzFontData/Program.cs", "tools/TikzFontData/FontAtlas.cs" }
+                    generatorSources = new[] { "tools/TikzFontData/Program.cs", "tools/TikzFontData/FontAtlas.cs", "tools/TikzFontData/MathFonts.cs", "tools/TikzFontData/TfmReader.cs" }
                         .ToDictionary(p => p, p => Hash(File.ReadAllBytes(Path.Combine(root, p)))),
                     resourceSha256 = record.GetProperty("resourceSha256").GetString(),
                     coordinateUnits = "bp; baseline-relative glyph outlines", frame = "fixed physical atlas; no fitting",
@@ -170,10 +179,15 @@ internal static partial class FontGenerator
                 suite.Add(new { caseId = "font-atlas-" + face.Id, verdict, report = face.Id + "/report.json" });
             }
         }
-        File.WriteAllText(Path.Combine(root, "artifacts/font-comparisons/suite.json"), JsonSerializer.Serialize(new { schemaVersion = 1,
+        File.WriteAllText(Path.Combine(root, "artifacts", comparisonFolder, "suite.json"), JsonSerializer.Serialize(new { schemaVersion = 1,
             expectedCases = manifest.Fonts.Select(f => "font-atlas-" + f.Id), executedCases = suite, passed = !failed }, Json));
         return failed ? 1 : 0;
     }
 
     private sealed record AtlasPosition(int Slot, int XSp, int YSp);
+    private sealed record AtlasFont(int SizeSp, int LastSlot, int[] ParametersFix, FontGlyph[] Glyphs, FontPair[] Pairs, object Resource)
+    {
+        internal static AtlasFont From(FontData d) => new(d.DesignSizeFix / 16, 255, d.ParametersFix, d.Glyphs, d.Pairs, d);
+        internal static AtlasFont From(MathFontData d) => new(d.SizeSp, d.LastSlot, d.ParametersFix, d.Glyphs, d.Pairs, d);
+    }
 }

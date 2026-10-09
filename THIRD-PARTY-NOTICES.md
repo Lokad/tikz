@@ -19,6 +19,18 @@ outlines into baseline-relative SVG path data with six decimal places.
 The same font-derived data appears in the independent metric and atlas
 fixtures under `tests/Reference/Fonts/`.
 
+**LokadTikzMath** is a separate maintained derived work, also maintained by
+Lokad under the same GUST/LPPL license. `LokadTikzMath-*.json` contains OT1
+roman, OML italic, OMS symbol and OMX extension data for nineteen fixed
+font/size combinations. It preserves missing glyph slots, all math font
+dimensions, pair rules, larger-glyph links and extensible recipes. Outlines
+use each selected size, including the 10pt symbol design selected at 12pt;
+the extension face remains at 10pt. Its independent font/radical fixtures are
+under `tests/Reference/MathFonts/`. See its
+[derived-work manifest](licenses/Fonts/MANIFEST-LokadTikzMath.txt) and pinned
+`tools/TikzFontData/math-font-profile.json`. These data do not replace an
+installed font and do not by themselves establish supported math typesetting.
+
 `tests/Reference/NodeShapes/fonts/` also retains two unmodified Latin Modern
 TFM files, and `tests/Reference/LabelledBorders/fonts/` retains six, as
 development reference inputs under the same GUST/LPPL license.

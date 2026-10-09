@@ -1,0 +1,713 @@
+{
+  "schemaVersion": 1,
+  "profile": "latin-modern-math-10-12-v1",
+  "manifestSha256": "22f80b89cff99291624b64be056128938f77caf174aee0a3c93eca40f6eef8f2",
+  "wrapperSha256": "934347fc5e4a82dc4b12e39870d4a996371a9bc56e7bf89dcce218778970eb6a",
+  "tools": [
+    {
+      "name": "latex",
+      "version": "MiKTeX-pdfTeX 4.21 (MiKTeX 25.4)",
+      "sha256": "37659e30ba4537584b6418de22ce310247128edbc1481fc97fd9b24260f11caf"
+    },
+    {
+      "name": "dvisvgm",
+      "version": "dvisvgm 3.4.3",
+      "sha256": "74a03e974afc08f5b24417bbe08af792be6634eacfa16c1ce6f870cad95f53fa"
+    },
+    {
+      "name": "dvitype",
+      "version": "MiKTeX-DVITYPE 2.9.6300 (MiKTeX 25.4)",
+      "sha256": "53da4ba9cfc7bcd84b820b5bd22a9177b9cae171f4224c001963661076d8cafb"
+    },
+    {
+      "name": "kpsewhich",
+      "version": "MiKTeX 25.4",
+      "sha256": "46e5f6537d84512bd5f2dcd21e960fc740f09f622c3c3a11fba2504f52bf2213"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "GUST-FONT-LICENSE.txt",
+      "sha256": "49ea6cb9257bbee0a3979c48a774cd221550ac1c20c95549efe45fc99cc18050"
+    },
+    {
+      "name": "lm-mathex.enc",
+      "sha256": "7ecd3eb53329d24551d4e125c741037a4bf94872bf545492b6fb4c7d21f381c4"
+    },
+    {
+      "name": "lm-mathit.enc",
+      "sha256": "0d7b9e82ad6274470876761c22573c28db1f1b32d647b688230b3a366f0e373b"
+    },
+    {
+      "name": "lm-mathsy.enc",
+      "sha256": "a2980b38288ef4024b8a3e170c19c9d4e2ee8b7dde97a59e8148291ffd3443db"
+    },
+    {
+      "name": "lm-rm.enc",
+      "sha256": "8bf8f9bd48d49aa3f3c597716908854e4d9207b009c109e6d9c5887feb856844"
+    },
+    {
+      "name": "lm.map",
+      "sha256": "d40c55f3e00607c98ae0d99112dcb56e18e9b9ea8febac443cfd6533469ac90d"
+    },
+    {
+      "name": "lmex10.pfb",
+      "sha256": "8e12eda1d29f55271bcef9a5022b42c8c10f8e65060dd6a8880556aa5484c052"
+    },
+    {
+      "name": "lmex10.tfm",
+      "sha256": "9547b25fd525782610200d794a82de33037887422751fcc29c5768cfa650e626"
+    },
+    {
+      "name": "lmmi10.pfb",
+      "sha256": "c24662506b402f3e0033cc75eb746eb490a1b7477e6b3ef52053f5025ec0fc57"
+    },
+    {
+      "name": "lmmi10.tfm",
+      "sha256": "d9fce8963e8cb075bf31a5715a8f4a54688f7026b3a06e882ff2eb9c0d110320"
+    },
+    {
+      "name": "lmmi12.pfb",
+      "sha256": "19579dda4280cea64aacdd0f80b53b7f1e7930e98fe9858ab38aab33c8623836"
+    },
+    {
+      "name": "lmmi12.tfm",
+      "sha256": "06870b7e003008214eefcf9bc4215006faff9edf5d99bee75211de57620d1818"
+    },
+    {
+      "name": "lmmi5.pfb",
+      "sha256": "b1f4adc7d712c838c9de8f13182e587eea9fd1ad2b3652c39e5d8d23022ad228"
+    },
+    {
+      "name": "lmmi5.tfm",
+      "sha256": "7bc98c12006eb1d784ce276f5dc008e0d631ee6bc659efadec24801c00d2a462"
+    },
+    {
+      "name": "lmmi6.pfb",
+      "sha256": "84b90db59b216d7f25f89a45c7565d7cccccc6c32961fe972b1a53558fa2035e"
+    },
+    {
+      "name": "lmmi6.tfm",
+      "sha256": "e7305bead3f6b2c8313e1234cb52376219d4283227c23295fe2f654e3ba3b551"
+    },
+    {
+      "name": "lmmi7.pfb",
+      "sha256": "7c646a6a841c2e99909f7d5673d778fc104e43efad281ea0b5687636c544c639"
+    },
+    {
+      "name": "lmmi7.tfm",
+      "sha256": "8548d4d19fc2b3671a5e11526f9013df8828b5b9b0f8277dc0ae7148bd1d33f5"
+    },
+    {
+      "name": "lmmi8.pfb",
+      "sha256": "ec3aa1701ea2dbbd9ea2b7316ffe81726a3a2ecb31442fbaf719800f2625e68d"
+    },
+    {
+      "name": "lmmi8.tfm",
+      "sha256": "8d8514f9b0d11e443d9a3cdc059622b06797c1dbcb3cee994f6ac3329c462a82"
+    },
+    {
+      "name": "lmr10.pfb",
+      "sha256": "84eb01245abb17c0530ca3909427256d73df8bed2d7243b9f2717ca08c010ac8"
+    },
+    {
+      "name": "lmr12.pfb",
+      "sha256": "d5fd4fdecfdbc8f97e955964aa2574927182303df178fe0c2e568fe9056e326c"
+    },
+    {
+      "name": "lmr5.pfb",
+      "sha256": "584815958b6e66cf4ec2b590f93bd853117f862f4f0fa8b06f4ee6eb6035e845"
+    },
+    {
+      "name": "lmr6.pfb",
+      "sha256": "0169c3fcc2685ba53356a09c1b96c8f71c250ba5177da7b23e7a819e583ccf88"
+    },
+    {
+      "name": "lmr7.pfb",
+      "sha256": "cf94a1a79a32c446f11e585164463234a515721d509d2f2cfb0ab61f6f744ddc"
+    },
+    {
+      "name": "lmr8.pfb",
+      "sha256": "4a117a1dd9cf4f8b7eea4587eaa4f612be7ca329cb1d8255a2c6bb20febbfa69"
+    },
+    {
+      "name": "lmsy10.pfb",
+      "sha256": "9969fd5ae5281ad40cdf6d8caf50084636a43ed7b7647e0e9e1195e859cec7cc"
+    },
+    {
+      "name": "lmsy10.tfm",
+      "sha256": "11f429b2c08f944627faa5942277297d7f8fef40edae2bae46cb238b838400ba"
+    },
+    {
+      "name": "lmsy5.pfb",
+      "sha256": "bab25ed3e0f79c2781052d4725d26c584d1be19b8e7ad0d8b8b10fa0d89e49c6"
+    },
+    {
+      "name": "lmsy5.tfm",
+      "sha256": "cac282b076edc89a2bbc8cdd1bd899117cd1af05612bca2b203e8b5ebe715431"
+    },
+    {
+      "name": "lmsy6.pfb",
+      "sha256": "882b12a92a65c7b5929a782ef99c9b2fca2235b70c8a3f772950a8e343259f82"
+    },
+    {
+      "name": "lmsy6.tfm",
+      "sha256": "8548e4b09655eb2b166bf95df4be4f2a7ae54d5df2069bc04ef233bfd941167b"
+    },
+    {
+      "name": "lmsy7.pfb",
+      "sha256": "c434f5fb70bc41978ac63c673556a2d913211f297947aa1f0d18b93da25ebe4b"
+    },
+    {
+      "name": "lmsy7.tfm",
+      "sha256": "3e92767469b4df54c985a533b8064789df60f21ab69d381dbf01bb608e3fbff8"
+    },
+    {
+      "name": "lmsy8.pfb",
+      "sha256": "e23c98a5dadbaf4f156082cfcfa7b3366f849ee86b0410db53a9c6fe4e67920b"
+    },
+    {
+      "name": "lmsy8.tfm",
+      "sha256": "b6b96268d56481a5bc7cbb34b140ca1fa5017d2767acc4e11a94b30eabd114f7"
+    },
+    {
+      "name": "lppl.txt",
+      "sha256": "5f05fcf6ef25a6c31bccd2df7c0c46b23107bbeb2ce5cdba74efb5cc357f4dbb"
+    },
+    {
+      "name": "MANIFEST-Latin-Modern.txt",
+      "sha256": "402c79f4ede8548a6fe6f82f42f0288cb0243ba2403dfdeeaadf55d189a46fae"
+    },
+    {
+      "name": "README-Latin-Modern.txt",
+      "sha256": "7cac4a4a78985ccb1ed429bb2eddf32eeb2e413c94493c7b268385bb7b525250"
+    },
+    {
+      "name": "rm-lmr10.tfm",
+      "sha256": "50dc8240a67003c1ec5bcd55f703c87189aeab0d199c42b4dc3e141a02488998"
+    },
+    {
+      "name": "rm-lmr12.tfm",
+      "sha256": "9d4e3d8e39a41b93d91f79c1c47d2297efb7b1af220b94860693c08361f227aa"
+    },
+    {
+      "name": "rm-lmr5.tfm",
+      "sha256": "420a4fc1563b171e5a791bb71211d85e6bf62fd2f2ed2a7f34f742049d6e5071"
+    },
+    {
+      "name": "rm-lmr6.tfm",
+      "sha256": "eb0bfdf8db3ae1409639fac9c88f84923872500d882d9ff8dc37aff445c723fe"
+    },
+    {
+      "name": "rm-lmr7.tfm",
+      "sha256": "373a4f72b5a088f9caee2cfd75adb2b25116e0cba3ad2bfa99b5f8a7e902a482"
+    },
+    {
+      "name": "rm-lmr8.tfm",
+      "sha256": "80bcbfd844d2310ac1d3bead45aee25e91b1a4a0a60ff1771959b9a1e90ec1a2"
+    }
+  ],
+  "fonts": [
+    {
+      "font": "math-roman-5",
+      "selectedSizeSp": 327680,
+      "designSizeFix": 5242880,
+      "glyphs": 256,
+      "missingSlots": 0,
+      "parameters": 21,
+      "pairs": 2455,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "242cfaa28213b1622291ba17087ba69135f6958346457c1d28fbcee372d10d83",
+      "metricsSha256": "ea733a87d5352ef3e5fbeb0e79b202f812e81090ec4e3aea99e0fc797e1ced57",
+      "atlasSha256": "d86a5cfe735ce0d493d8db6fb66c15bd14afdceaa3ff49dd2068d1f221de7fb6",
+      "wrapperSha256": "b1267bff2c9faf73f0a83db2ece57a57529bbf897507662ab9aeb2694477f499",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "b1267bff2c9faf73f0a83db2ece57a57529bbf897507662ab9aeb2694477f499",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "rm-lmr5.tfm": "420a4fc1563b171e5a791bb71211d85e6bf62fd2f2ed2a7f34f742049d6e5071",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-roman-6",
+      "selectedSizeSp": 393216,
+      "designSizeFix": 6291456,
+      "glyphs": 256,
+      "missingSlots": 0,
+      "parameters": 21,
+      "pairs": 2455,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "f06ed861d049bc055492f0cdf52f02c9705434bc03ad03fa8873bceb36e83f3d",
+      "metricsSha256": "be95a116a6493e861a4b89aabbb5f54e9fd5e15691cd43a9aad1f93d86830492",
+      "atlasSha256": "90309bdaf87ceb3f3a480d8a2c0501ba3b44b18e06813ece35edd1b176576b7f",
+      "wrapperSha256": "b9b76971b134250d1ba94dbb2886aa8ce914ce03a21723f7c9b6d3f8deae482c",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "b9b76971b134250d1ba94dbb2886aa8ce914ce03a21723f7c9b6d3f8deae482c",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "rm-lmr6.tfm": "eb0bfdf8db3ae1409639fac9c88f84923872500d882d9ff8dc37aff445c723fe",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-roman-7",
+      "selectedSizeSp": 458752,
+      "designSizeFix": 7340032,
+      "glyphs": 256,
+      "missingSlots": 0,
+      "parameters": 21,
+      "pairs": 2455,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "1edf2e033f603426ba62a8fa0e05318493c5434ccabf4dcc2f2ed3d07cc9cc68",
+      "metricsSha256": "277058a459731a6bb6ea42431f5a073b1ceb2ce4d7b1dceb05c07685f08e0248",
+      "atlasSha256": "53db174393d71a4e50f6b5656896a12ba0ddee2cec9c25b62b5282b07454e7df",
+      "wrapperSha256": "4932e20c4e0eab606ea5c7287c250b212aaf6c62d338b7548be2fb6f9bb18444",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "4932e20c4e0eab606ea5c7287c250b212aaf6c62d338b7548be2fb6f9bb18444",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "rm-lmr7.tfm": "373a4f72b5a088f9caee2cfd75adb2b25116e0cba3ad2bfa99b5f8a7e902a482",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-roman-8",
+      "selectedSizeSp": 524288,
+      "designSizeFix": 8388608,
+      "glyphs": 256,
+      "missingSlots": 0,
+      "parameters": 21,
+      "pairs": 2455,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "01a6c12d72392edd80ab4c411e6ef6f5612d743cab487b05719c7360ced0a5d7",
+      "metricsSha256": "e9c238ddf9eb933595e8df618b3000941378f956679c320da6b72002795bc761",
+      "atlasSha256": "a633aa2d29080ee0cae036b281eb00d7613b19ab7aa89b9349f21691d56d9dc3",
+      "wrapperSha256": "a51535fc01c34e7c5c75e9c8d1189043bf3661b494ffeab9ca69eadb5278328d",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "a51535fc01c34e7c5c75e9c8d1189043bf3661b494ffeab9ca69eadb5278328d",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "rm-lmr8.tfm": "80bcbfd844d2310ac1d3bead45aee25e91b1a4a0a60ff1771959b9a1e90ec1a2",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-roman-10",
+      "selectedSizeSp": 655360,
+      "designSizeFix": 10485760,
+      "glyphs": 256,
+      "missingSlots": 0,
+      "parameters": 21,
+      "pairs": 2455,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "4efee7536efd2c59c0d9c8bcde3bcbaa56d2456a34adeb98b5ac195960a6d1b4",
+      "metricsSha256": "9a6b23be63be93dcf7d709fdd407e15008b9493fdc3993f8b96c12bdd53d1e02",
+      "atlasSha256": "fcf3876316231281c9ba12198e0da8e51b280dffba1b9839ed29b421fac17040",
+      "wrapperSha256": "eaa8428329d1596793092e717d28f545156111d7557476a4b38edddbabf84a3e",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "eaa8428329d1596793092e717d28f545156111d7557476a4b38edddbabf84a3e",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "rm-lmr10.tfm": "50dc8240a67003c1ec5bcd55f703c87189aeab0d199c42b4dc3e141a02488998",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-roman-12",
+      "selectedSizeSp": 786432,
+      "designSizeFix": 12582912,
+      "glyphs": 256,
+      "missingSlots": 0,
+      "parameters": 21,
+      "pairs": 2455,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "7b49e00a5c85caab1c17781773b8bc07844867bbf0ee93bfbc3016400eda49a3",
+      "metricsSha256": "f7bbbfcd5986859efa0e760af9ccf9aa6a8be3978ee6566b581788ec6fbe67c2",
+      "atlasSha256": "b54050a944c1828d7254118e3ae87ce34085dbefd69606bf0ecdead0b2fb8837",
+      "wrapperSha256": "085de5776470a3e41225d8a04300f8842b5ee440f498994ca501f8f35520ed59",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "085de5776470a3e41225d8a04300f8842b5ee440f498994ca501f8f35520ed59",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "rm-lmr12.tfm": "9d4e3d8e39a41b93d91f79c1c47d2297efb7b1af220b94860693c08361f227aa",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-italic-5",
+      "selectedSizeSp": 327680,
+      "designSizeFix": 5242880,
+      "glyphs": 128,
+      "missingSlots": 0,
+      "parameters": 6,
+      "pairs": 164,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "a8c558949c6ce6f6aefdc5982f00f93713356ca8366a05d50684abc677eff8ee",
+      "metricsSha256": "b86f4033b73e8304909eae23a1c2808d3036d0f45a2cfebef8ce2a30dd3f994a",
+      "atlasSha256": "1e7e57bc1d1402e4c16838f71e925644a4120a72d20db5a2046103e47f4d6062",
+      "wrapperSha256": "3dfbe4fb6b64cc47bc5163a0c5e4b8fabcfcb34e63cc7c8c8944742a180ac0bf",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "3dfbe4fb6b64cc47bc5163a0c5e4b8fabcfcb34e63cc7c8c8944742a180ac0bf",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmmi5.tfm": "7bc98c12006eb1d784ce276f5dc008e0d631ee6bc659efadec24801c00d2a462",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-italic-6",
+      "selectedSizeSp": 393216,
+      "designSizeFix": 6291456,
+      "glyphs": 128,
+      "missingSlots": 0,
+      "parameters": 6,
+      "pairs": 164,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "35fdcd16170c722e6ffba7967fb7567d8d2b4965b9ec11e32053006b799780e0",
+      "metricsSha256": "c5a821997b5d5628ab44443d2e1ed3032ed4f69750a36441f23fff07034eabfe",
+      "atlasSha256": "efff83ffd93f6edfc1ce94f82cea53b0619138d5026846b13a68ddd8606d44c1",
+      "wrapperSha256": "c2f23487ee0fda17744390c2c1c26e7dafe341d87dc60866d3092f7cc296daf4",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "c2f23487ee0fda17744390c2c1c26e7dafe341d87dc60866d3092f7cc296daf4",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmmi6.tfm": "e7305bead3f6b2c8313e1234cb52376219d4283227c23295fe2f654e3ba3b551",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-italic-7",
+      "selectedSizeSp": 458752,
+      "designSizeFix": 7340032,
+      "glyphs": 128,
+      "missingSlots": 0,
+      "parameters": 6,
+      "pairs": 164,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "7fe32cd8a5b42956e17fe2044d6cdc106e71b2d488348bccefd1364a0c149aa3",
+      "metricsSha256": "98e6d2128879e602cab83b7071cd4e4b3e7662f604dd3d416c095d9236fb3528",
+      "atlasSha256": "eaed190c9ddab65b4dd67f93055ebcaab2cb42722b3cbda070a768c501384af7",
+      "wrapperSha256": "71cf3a87ae88108a8e694ccc644ae0328d0287201390be2ec3f1de3d7a945b55",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "71cf3a87ae88108a8e694ccc644ae0328d0287201390be2ec3f1de3d7a945b55",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmmi7.tfm": "8548d4d19fc2b3671a5e11526f9013df8828b5b9b0f8277dc0ae7148bd1d33f5",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-italic-8",
+      "selectedSizeSp": 524288,
+      "designSizeFix": 8388608,
+      "glyphs": 128,
+      "missingSlots": 0,
+      "parameters": 6,
+      "pairs": 164,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "a5c52695eebef33aae2fdf6ec7a0dafae97e792c284113ade528d845bc338615",
+      "metricsSha256": "42d961908ad7714b4a20ca153c5c07b16a2e0b994dd281ee926e952de8e6f1fa",
+      "atlasSha256": "6dac8965b25cbbf3390294fb310243ef2a01eb1636c0b9298c3d375544f0f9b7",
+      "wrapperSha256": "9cd12e371a04ded2f5e2616c43e6d9fb639ac02c6bb4a9cbb93bcc1d327a8653",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "9cd12e371a04ded2f5e2616c43e6d9fb639ac02c6bb4a9cbb93bcc1d327a8653",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmmi8.tfm": "8d8514f9b0d11e443d9a3cdc059622b06797c1dbcb3cee994f6ac3329c462a82",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-italic-10",
+      "selectedSizeSp": 655360,
+      "designSizeFix": 10485760,
+      "glyphs": 128,
+      "missingSlots": 0,
+      "parameters": 6,
+      "pairs": 164,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "c07a2146e5ffc505a8813fa45b616b085ed8b1d5d94126cc2ba7942a2eb5d7e6",
+      "metricsSha256": "5303b7a69f942bdc575b7c686c79da08faccb414e54124cf5520b528f1a1d81d",
+      "atlasSha256": "f852099b010fe41dc54c57b1081fb34213e221ef6859c1e48b91b29dd202ec8d",
+      "wrapperSha256": "438fc74285df7876c7fd8645f054d396516d9f3346549593890ae540636cd259",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "438fc74285df7876c7fd8645f054d396516d9f3346549593890ae540636cd259",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmmi10.tfm": "d9fce8963e8cb075bf31a5715a8f4a54688f7026b3a06e882ff2eb9c0d110320",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-italic-12",
+      "selectedSizeSp": 786432,
+      "designSizeFix": 12582912,
+      "glyphs": 128,
+      "missingSlots": 0,
+      "parameters": 6,
+      "pairs": 164,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "817e1bc36642623254864b00ace97df030a92b66b1b026923cccfd3c4d9f873b",
+      "metricsSha256": "670bed7fba6aa6c5ed07ffc878cd752b22a3a8790b4b0f68f86d770b72692165",
+      "atlasSha256": "d946987c8394b115e86e19a57a31ace385ea44f9b0260bddb012b573607174ab",
+      "wrapperSha256": "d3d474c3bcebf6cf47c1de100f67599ecf0ee8c35bd3628c6f810165d537da3e",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "d3d474c3bcebf6cf47c1de100f67599ecf0ee8c35bd3628c6f810165d537da3e",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmmi12.tfm": "06870b7e003008214eefcf9bc4215006faff9edf5d99bee75211de57620d1818",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-symbol-5",
+      "selectedSizeSp": 327680,
+      "designSizeFix": 5242880,
+      "glyphs": 130,
+      "missingSlots": 44,
+      "parameters": 22,
+      "pairs": 26,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "90119747e7556d2ea6dd2341ee3fe5c6e8e4d304a8e89b1fb9936eaed5a44e34",
+      "metricsSha256": "c551051701b32844de64d7628924075ba9224804fbbd5b4951e0e3baa12f7de4",
+      "atlasSha256": "21abf27cfd741f4caa9d2833755b783e27dca895baa37a6ccbcd66bf750f5b4c",
+      "wrapperSha256": "4f8d441a6173fb764ffb5c27e6af7e546bc039171178e304b08c94995e972166",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "4f8d441a6173fb764ffb5c27e6af7e546bc039171178e304b08c94995e972166",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmsy5.tfm": "cac282b076edc89a2bbc8cdd1bd899117cd1af05612bca2b203e8b5ebe715431",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-symbol-6",
+      "selectedSizeSp": 393216,
+      "designSizeFix": 6291456,
+      "glyphs": 130,
+      "missingSlots": 44,
+      "parameters": 22,
+      "pairs": 26,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "ae6c313b13ac652e359deaf91ba2b5e5a905ef64ee695da62a99cf681530b70c",
+      "metricsSha256": "3d4db645234ba80677e38b2569588180253140eb3de644a9cdf3bfc2594dfb6b",
+      "atlasSha256": "6706b8ad09356a3b129b6dfb46cf34463915dac311ec705a34a2acfa60f749b5",
+      "wrapperSha256": "61b0f9c6deb18c3e9f938d6abf7738d12713aa2a7986cf7f6687b3809f27c3ef",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "61b0f9c6deb18c3e9f938d6abf7738d12713aa2a7986cf7f6687b3809f27c3ef",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmsy6.tfm": "8548e4b09655eb2b166bf95df4be4f2a7ae54d5df2069bc04ef233bfd941167b",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-symbol-7",
+      "selectedSizeSp": 458752,
+      "designSizeFix": 7340032,
+      "glyphs": 130,
+      "missingSlots": 44,
+      "parameters": 22,
+      "pairs": 26,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "dd7e658f8c79e7400600818229e1a163ed55dd92c9205f13d23019c686d1d0d3",
+      "metricsSha256": "6acef3c38cab7691be13890139d03c502f16a5a586850c98a6a2b9f36c2296d8",
+      "atlasSha256": "4e54f13b5b6d4a6ea80dda5c524867474b8ffd65e1bc3e4c1d949f684cc7dd0c",
+      "wrapperSha256": "01b2567f90b925f496eddf7d2fdf4e2cd2ad3c762255dbde650cd9717a022a21",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "01b2567f90b925f496eddf7d2fdf4e2cd2ad3c762255dbde650cd9717a022a21",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmsy7.tfm": "3e92767469b4df54c985a533b8064789df60f21ab69d381dbf01bb608e3fbff8",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-symbol-8",
+      "selectedSizeSp": 524288,
+      "designSizeFix": 8388608,
+      "glyphs": 130,
+      "missingSlots": 44,
+      "parameters": 22,
+      "pairs": 26,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "4243bd29ed9479e25e988c6a1050acba78558567ca29b73f6dda9026e4abf006",
+      "metricsSha256": "e3d4b31c058f6447dbc6b81741c797ba5694022d198db4600f2a7978ef1e1bed",
+      "atlasSha256": "9c8513abee7f45a590ed25dfffbd506fa267564d6fd36bbec6329a8321ba053c",
+      "wrapperSha256": "d59e3f11e2d0de9f7e95b7ab4a067fd3aa063e983d7d103fea54faa9cb4fb206",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "d59e3f11e2d0de9f7e95b7ab4a067fd3aa063e983d7d103fea54faa9cb4fb206",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmsy8.tfm": "b6b96268d56481a5bc7cbb34b140ca1fa5017d2767acc4e11a94b30eabd114f7",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-symbol-10",
+      "selectedSizeSp": 655360,
+      "designSizeFix": 10485760,
+      "glyphs": 130,
+      "missingSlots": 44,
+      "parameters": 22,
+      "pairs": 26,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "a6ed9877b1e498b3fae32d9f6ec30d09731316a14b1442652267b509f66777a7",
+      "metricsSha256": "e88223a19fefccbb29161a8a8b255ef26f6ed08f7b38302bb53cba429e501021",
+      "atlasSha256": "252535fdba4cf0b7407d0e077521b3525bcc599eb36828af0c2bf882d972b65d",
+      "wrapperSha256": "5be2c299bff152abd350434987b6a74e77e8138967a0a9feb590e8216c912b2b",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "5be2c299bff152abd350434987b6a74e77e8138967a0a9feb590e8216c912b2b",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmsy10.tfm": "11f429b2c08f944627faa5942277297d7f8fef40edae2bae46cb238b838400ba",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-symbol-12",
+      "selectedSizeSp": 786432,
+      "designSizeFix": 10485760,
+      "glyphs": 130,
+      "missingSlots": 44,
+      "parameters": 22,
+      "pairs": 26,
+      "largerGlyphs": 0,
+      "extensions": 0,
+      "recipes": 0,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "353bab723259de541049ee12dc6a8e09f8fdfb34459aa13b1a25a0168b75ef30",
+      "metricsSha256": "957e550664014ee2297635122b74d9a9bc65f659f17bb8fb042ae2a5a411beaa",
+      "atlasSha256": "33c96404ee0bc086ecd0b1fc23dfaca50abb888da0a72f6f1d8c22a62d582daf",
+      "wrapperSha256": "902e2ff95c6be56797e98f4678a92f80387cccb7b0b582ce3f0e83a97ec13c2b",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "902e2ff95c6be56797e98f4678a92f80387cccb7b0b582ce3f0e83a97ec13c2b",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmsy10.tfm": "11f429b2c08f944627faa5942277297d7f8fef40edae2bae46cb238b838400ba",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    },
+    {
+      "font": "math-extension-10",
+      "selectedSizeSp": 655360,
+      "designSizeFix": 10485760,
+      "glyphs": 128,
+      "missingSlots": 0,
+      "parameters": 13,
+      "pairs": 0,
+      "largerGlyphs": 74,
+      "extensions": 28,
+      "recipes": 28,
+      "exactIndependentMetrics": true,
+      "resourceSha256": "8adde345b03802d5fcd2dfe11ef7c89542f72ca8507304ab940b3bcc27a70cff",
+      "metricsSha256": "385b3deeb01e955822d6e76bfe5436abb5dfc9f521ff7dbd90bc1be32b8f1f2e",
+      "atlasSha256": "2e5f870c25f20ad79bae8f582d1ec2884d5429be7c2b0632d940bca28ec6b742",
+      "wrapperSha256": "50527f3748336587302337e587cd9520a2f2a983ebebe1748dd1698ea9e44287",
+      "nativeInputs": {
+        "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+        "atlas.aux": "fbabe80c887f95a1ede6847f22dd91b380bda9d17ae8bfaa72e1741b16aa41e9",
+        "atlas.tex": "50527f3748336587302337e587cd9520a2f2a983ebebe1748dd1698ea9e44287",
+        "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+        "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+        "lmex10.tfm": "9547b25fd525782610200d794a82de33037887422751fcc29c5768cfa650e626",
+        "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f"
+      }
+    }
+  ],
+  "radicals": {
+    "cases": 66,
+    "templateSha256": "9370e65b7987df34036240fc282e9af30c0f8b4004f038a8a101445ea83a3925",
+    "sourceSha256": "1d2fdcf6d8e757e2b0aeb94c74e41692d5d3c53299fefddf0b2a44853624b897",
+    "metricsSha256": "fc006b2ce81bb94605b6842ba859581aca964b916bf1e1c85b530f9e4c291320",
+    "traceSha256": "4b10f71b091ea3e1b4f620bcc4b624a3cc57a09ae17a1d4f13d376f46205e68b"
+  }
+}

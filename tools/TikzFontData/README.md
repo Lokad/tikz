@@ -1,5 +1,50 @@
 # Bundled font data prototype
 
+## Math font data
+
+The separate `latin-modern-math-10-12-v1` profile pins nineteen font/size
+combinations: OT1 roman, OML italic and OMS symbols at 5/6/7/8/10/12pt, plus
+fixed 10pt OMX extension. The 12pt symbols use the 10pt design scaled to 12pt.
+These resources support the pending [math-label target](../../docs/MATH-LABELS.md);
+font extraction alone does not implement or qualify math labels.
+
+```text
+dotnet run --project tools/TikzFontData -c Release -- generate-math
+dotnet run --project tools/TikzFontData -c Release -- verify-math
+dotnet run --project tools/TikzFontData -c Release -- compare-math
+node tools/TikzVisual/font-self-test.mjs --math
+```
+
+Generation explicitly writes embedded data, independent metrics/atlases,
+radical observations and provenance. Verification recomputes them without
+writing expected files. Both check exact tool/input hashes and use the existing
+bounded process runner, disabled shell escape/installation, pinned font map
+and disabled outline cache. Only fixed repository-authored wrappers enter TeX.
+Every present glyph and missing slot, all font dimensions and accepted pair
+rules have native integer measurements. Larger-glyph chains and extensible
+recipes remain in the generated data, with the required radical size chain
+and assembly pieces checked against actual native math glyph/rule observations.
+
+When only the trusted radical probe changes, use `generate-math --radicals-only`
+for iteration. It verifies the unchanged profile/tools/inputs and every cached
+font resource/metric/atlas hash before preserving those measurements. Full
+non-writing verification is required for final font-unit acceptance.
+
+Comparison uses the existing browser/atlas machinery and exact primary policy.
+Math has a fixed 430x500bp frame; native ink must fit that frame. Outputs under
+`artifacts/math-font-comparisons/<face>/` include paired PNGs, raw/amplified
+differences, source/slot attribution and the HTML inspection viewer. The six
+generic font controls are reused with missing relation/operator/radical,
+baseline-shift and substitution probes for the scaled symbol face. Text
+resources, frames and policies retain their separate profile.
+
+The [native reference](../../tests/Reference/MathFonts/README.md) describes
+3,212 glyphs, 307 font dimensions, 15,870 pairs, 74 larger-glyph links,
+28 recipes and 66 radical cases. Production loads renamed embedded JSON with
+only .NET; the source/font tools and native files are development dependencies.
+
+## Text font data
+
 This development tool pins six Latin Modern EC/Cork fonts: regular, bold,
 and italic, each at its own 10pt or 12pt design size. It reads TFM metrics
 with managed code and extracts Type 1 outlines with dvisvgm. Production

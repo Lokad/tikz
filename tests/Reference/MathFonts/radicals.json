@@ -1,0 +1,2442 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "1d2fdcf6d8e757e2b0aeb94c74e41692d5d3c53299fefddf0b2a44853624b897",
+  "fonts": {
+    "61": {
+      "name": "lmsy6",
+      "sizeSp": 393216
+    },
+    "60": {
+      "name": "lmsy8",
+      "sizeSp": 524288
+    },
+    "59": {
+      "name": "lmsy10",
+      "sizeSp": 786432
+    },
+    "58": {
+      "name": "lmmi6",
+      "sizeSp": 393216
+    },
+    "57": {
+      "name": "lmmi8",
+      "sizeSp": 524288
+    },
+    "56": {
+      "name": "lmmi12",
+      "sizeSp": 786432
+    },
+    "51": {
+      "name": "lmex10",
+      "sizeSp": 655360
+    },
+    "50": {
+      "name": "lmsy5",
+      "sizeSp": 327680
+    },
+    "49": {
+      "name": "lmsy7",
+      "sizeSp": 458752
+    },
+    "48": {
+      "name": "lmsy10",
+      "sizeSp": 655360
+    },
+    "47": {
+      "name": "lmmi5",
+      "sizeSp": 327680
+    },
+    "46": {
+      "name": "lmmi7",
+      "sizeSp": 458752
+    },
+    "45": {
+      "name": "lmmi10",
+      "sizeSp": 655360
+    }
+  },
+  "cases": [
+    {
+      "id": "root-10-text-0",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 0,
+      "widthSp": 920691,
+      "heightSp": 524466,
+      "depthSp": 157106,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 655360,
+          "slot": 112
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-4",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 4,
+      "widthSp": 920691,
+      "heightSp": 524466,
+      "depthSp": 157106,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 655360,
+          "slot": 112
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-6",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 6,
+      "widthSp": 920691,
+      "heightSp": 579990,
+      "depthSp": 101582,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 655360,
+          "slot": 112
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-8",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 8,
+      "widthSp": 920691,
+      "heightSp": 645526,
+      "depthSp": 36046,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 655360,
+          "slot": 112
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-10",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 10,
+      "widthSp": 1029917,
+      "heightSp": 776602,
+      "depthSp": 36050,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 112
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-12",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 12,
+      "widthSp": 1029917,
+      "heightSp": 1038748,
+      "depthSp": 167124,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 113
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-18",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 18,
+      "widthSp": 1029917,
+      "heightSp": 1431966,
+      "depthSp": 167126,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 114
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-24",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 24,
+      "widthSp": 1029917,
+      "heightSp": 1825184,
+      "depthSp": 167128,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 115
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-32",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 32,
+      "widthSp": 1066327,
+      "heightSp": 2283938,
+      "depthSp": 101594,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-48",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 48,
+      "widthSp": 1066327,
+      "heightSp": 3398056,
+      "depthSp": 167136,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-text-80",
+      "surroundingSizePt": 10,
+      "style": "text",
+      "phantomHeightPt": 80,
+      "widthSp": 1066327,
+      "heightSp": 5429682,
+      "depthSp": 101610,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi10",
+          "sizeSp": 655360,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 374556
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-0",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 0,
+      "widthSp": 727725,
+      "heightSp": 377939,
+      "depthSp": 103093,
+      "glyphs": [
+        {
+          "font": "lmsy7",
+          "sizeSp": 458752,
+          "slot": 112
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 22281,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-4",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 4,
+      "widthSp": 727725,
+      "heightSp": 410252,
+      "depthSp": 70780,
+      "glyphs": [
+        {
+          "font": "lmsy7",
+          "sizeSp": 458752,
+          "slot": 112
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 22281,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-6",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 6,
+      "widthSp": 727725,
+      "heightSp": 475788,
+      "depthSp": 5244,
+      "glyphs": [
+        {
+          "font": "lmsy7",
+          "sizeSp": 458752,
+          "slot": 112
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 22281,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-8",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 8,
+      "widthSp": 843323,
+      "heightSp": 645526,
+      "depthSp": 36046,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 655360,
+          "slot": 112
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-10",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 10,
+      "widthSp": 952549,
+      "heightSp": 776602,
+      "depthSp": 36050,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 112
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-12",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 12,
+      "widthSp": 952549,
+      "heightSp": 1038748,
+      "depthSp": 167124,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 113
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-18",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 18,
+      "widthSp": 952549,
+      "heightSp": 1431966,
+      "depthSp": 167126,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 114
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-24",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 24,
+      "widthSp": 952549,
+      "heightSp": 1825184,
+      "depthSp": 167128,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 115
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-32",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 32,
+      "widthSp": 988959,
+      "heightSp": 2283938,
+      "depthSp": 101594,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-48",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 48,
+      "widthSp": 988959,
+      "heightSp": 3398056,
+      "depthSp": 167136,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-script-80",
+      "surroundingSizePt": 10,
+      "style": "script",
+      "phantomHeightPt": 80,
+      "widthSp": 988959,
+      "heightSp": 5429682,
+      "depthSp": 101610,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi7",
+          "sizeSp": 458752,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 297188
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-0",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 0,
+      "widthSp": 618959,
+      "heightSp": 278290,
+      "depthSp": 67740,
+      "glyphs": [
+        {
+          "font": "lmsy5",
+          "sizeSp": 327680,
+          "slot": 112
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 18350,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-4",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 4,
+      "widthSp": 618959,
+      "heightSp": 338820,
+      "depthSp": 7210,
+      "glyphs": [
+        {
+          "font": "lmsy5",
+          "sizeSp": 327680,
+          "slot": 112
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 18350,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-6",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 6,
+      "widthSp": 689952,
+      "heightSp": 475788,
+      "depthSp": 5244,
+      "glyphs": [
+        {
+          "font": "lmsy7",
+          "sizeSp": 458752,
+          "slot": 112
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 22281,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-8",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 8,
+      "widthSp": 805550,
+      "heightSp": 645526,
+      "depthSp": 36046,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 655360,
+          "slot": 112
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-10",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 10,
+      "widthSp": 914776,
+      "heightSp": 776602,
+      "depthSp": 36050,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 112
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-12",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 12,
+      "widthSp": 914776,
+      "heightSp": 1038748,
+      "depthSp": 167124,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 113
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-18",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 18,
+      "widthSp": 914776,
+      "heightSp": 1431966,
+      "depthSp": 167126,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 114
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-24",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 24,
+      "widthSp": 914776,
+      "heightSp": 1825184,
+      "depthSp": 167128,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 115
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-32",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 32,
+      "widthSp": 951186,
+      "heightSp": 2283938,
+      "depthSp": 101594,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-48",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 48,
+      "widthSp": 951186,
+      "heightSp": 3398056,
+      "depthSp": 167136,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-10-scriptscript-80",
+      "surroundingSizePt": 10,
+      "style": "scriptscript",
+      "phantomHeightPt": 80,
+      "widthSp": 951186,
+      "heightSp": 5429682,
+      "depthSp": 101610,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi5",
+          "sizeSp": 327680,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 259415
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-0",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 0,
+      "widthSp": 1092948,
+      "heightSp": 626084,
+      "depthSp": 191803,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 786432,
+          "slot": 112
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 31456,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-4",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 4,
+      "widthSp": 1092948,
+      "heightSp": 626084,
+      "depthSp": 191803,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 786432,
+          "slot": 112
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 31456,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-6",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 6,
+      "widthSp": 1092948,
+      "heightSp": 653391,
+      "depthSp": 164496,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 786432,
+          "slot": 112
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 31456,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-8",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 8,
+      "widthSp": 1092948,
+      "heightSp": 718927,
+      "depthSp": 98960,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 786432,
+          "slot": 112
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 31456,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-10",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 10,
+      "widthSp": 1092948,
+      "heightSp": 784463,
+      "depthSp": 33424,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 786432,
+          "slot": 112
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 31456,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-12",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 12,
+      "widthSp": 1092947,
+      "heightSp": 1038748,
+      "depthSp": 167124,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 113
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-18",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 18,
+      "widthSp": 1092947,
+      "heightSp": 1431966,
+      "depthSp": 167126,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 114
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-24",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 24,
+      "widthSp": 1092947,
+      "heightSp": 1825184,
+      "depthSp": 167128,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 115
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-32",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 32,
+      "widthSp": 1129357,
+      "heightSp": 2283938,
+      "depthSp": 101594,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-48",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 48,
+      "widthSp": 1129357,
+      "heightSp": 3398056,
+      "depthSp": 167136,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-text-80",
+      "surroundingSizePt": 12,
+      "style": "text",
+      "phantomHeightPt": 80,
+      "widthSp": 1129357,
+      "heightSp": 5429682,
+      "depthSp": 101610,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi12",
+          "sizeSp": 786432,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 437586
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-0",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 0,
+      "widthSp": 777795,
+      "heightSp": 426784,
+      "depthSp": 121097,
+      "glyphs": [
+        {
+          "font": "lmsy8",
+          "sizeSp": 524288,
+          "slot": 112
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 23593,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-4",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 4,
+      "widthSp": 777795,
+      "heightSp": 444989,
+      "depthSp": 102892,
+      "glyphs": [
+        {
+          "font": "lmsy8",
+          "sizeSp": 524288,
+          "slot": 112
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 23593,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-6",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 6,
+      "widthSp": 777795,
+      "heightSp": 510525,
+      "depthSp": 37356,
+      "glyphs": [
+        {
+          "font": "lmsy8",
+          "sizeSp": 524288,
+          "slot": 112
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 23593,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-8",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 8,
+      "widthSp": 968937,
+      "heightSp": 718927,
+      "depthSp": 98960,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 786432,
+          "slot": 112
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 31456,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-10",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 10,
+      "widthSp": 968937,
+      "heightSp": 784463,
+      "depthSp": 33424,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 786432,
+          "slot": 112
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 31456,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-12",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 12,
+      "widthSp": 968936,
+      "heightSp": 1038748,
+      "depthSp": 167124,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 113
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-18",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 18,
+      "widthSp": 968936,
+      "heightSp": 1431966,
+      "depthSp": 167126,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 114
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-24",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 24,
+      "widthSp": 968936,
+      "heightSp": 1825184,
+      "depthSp": 167128,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 115
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-32",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 32,
+      "widthSp": 1005346,
+      "heightSp": 2283938,
+      "depthSp": 101594,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-48",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 48,
+      "widthSp": 1005346,
+      "heightSp": 3398056,
+      "depthSp": 167136,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-script-80",
+      "surroundingSizePt": 12,
+      "style": "script",
+      "phantomHeightPt": 80,
+      "widthSp": 1005346,
+      "heightSp": 5429682,
+      "depthSp": 101610,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi8",
+          "sizeSp": 524288,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 313575
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-0",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 0,
+      "widthSp": 667644,
+      "heightSp": 328115,
+      "depthSp": 85417,
+      "glyphs": [
+        {
+          "font": "lmsy6",
+          "sizeSp": 393216,
+          "slot": 112
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 20316,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-4",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 4,
+      "widthSp": 667644,
+      "heightSp": 374537,
+      "depthSp": 38995,
+      "glyphs": [
+        {
+          "font": "lmsy6",
+          "sizeSp": 393216,
+          "slot": 112
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 20316,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-6",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 6,
+      "widthSp": 738651,
+      "heightSp": 510525,
+      "depthSp": 37356,
+      "glyphs": [
+        {
+          "font": "lmsy8",
+          "sizeSp": 524288,
+          "slot": 112
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 23593,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-8",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 8,
+      "widthSp": 929793,
+      "heightSp": 718927,
+      "depthSp": 98960,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 786432,
+          "slot": 112
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 31456,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-10",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 10,
+      "widthSp": 929793,
+      "heightSp": 784463,
+      "depthSp": 33424,
+      "glyphs": [
+        {
+          "font": "lmsy10",
+          "sizeSp": 786432,
+          "slot": 112
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 31456,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-12",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 12,
+      "widthSp": 929792,
+      "heightSp": 1038748,
+      "depthSp": 167124,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 113
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-18",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 18,
+      "widthSp": 929792,
+      "heightSp": 1431966,
+      "depthSp": 167126,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 114
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-24",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 24,
+      "widthSp": 929792,
+      "heightSp": 1825184,
+      "depthSp": 167128,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 115
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-32",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 32,
+      "widthSp": 966202,
+      "heightSp": 2283938,
+      "depthSp": 101594,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-48",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 48,
+      "widthSp": 966202,
+      "heightSp": 3398056,
+      "depthSp": 167136,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 274431
+        }
+      ]
+    },
+    {
+      "id": "root-12-scriptscript-80",
+      "surroundingSizePt": 12,
+      "style": "scriptscript",
+      "phantomHeightPt": 80,
+      "widthSp": 966202,
+      "heightSp": 5429682,
+      "depthSp": 101610,
+      "glyphs": [
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 118
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 117
+        },
+        {
+          "font": "lmex10",
+          "sizeSp": 655360,
+          "slot": 116
+        },
+        {
+          "font": "lmmi6",
+          "sizeSp": 393216,
+          "slot": 120
+        }
+      ],
+      "rules": [
+        {
+          "heightSp": 26213,
+          "widthSp": 274431
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+% Trusted native font probe. Cases are generated only from fixed repository data.
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\pagestyle{empty}
+\newbox\mathrootbox
+\newbox\mathrootpage
+\begin{document}
+\setbox\mathrootpage=\vbox{\offinterlineskip
+@@CASES@@
+}
+\shipout\box\mathrootpage
+\end{document}

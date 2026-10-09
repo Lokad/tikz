@@ -4,12 +4,14 @@ import { fileURLToPath } from 'node:url';
 import { createRenderer, compareBundle } from './compare.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const baseline = path.join(root, 'artifacts/font-comparisons/regular-10');
-const output = path.join(root, 'artifacts/font-comparator-mutations');
+if (process.argv.length > 3 || process.argv.length === 3 && process.argv[2] !== '--math') throw new Error('Only the fixed text or --math controls may run.');
+const math = process.argv[2] === '--math';
+const baseline = path.join(root, math ? 'artifacts/math-font-comparisons/math-symbol-12' : 'artifacts/font-comparisons/regular-10');
+const output = path.join(root, math ? 'artifacts/math-font-comparator-mutations' : 'artifacts/font-comparator-mutations');
 const original = await readFile(path.join(baseline, 'actual.svg'), 'utf8');
 const sourceReport = JSON.parse(await readFile(path.join(baseline, 'report.json'), 'utf8'));
 if (sourceReport.verdict !== 'pass' || !sourceReport.primary.checks.every(c => c.exactMatch))
-  throw new Error('A passing exact regular-10 atlas is required.');
+  throw new Error('A passing exact selected atlas is required.');
 const renderer = await createRenderer();
 const results = [];
 
@@ -39,11 +41,11 @@ async function check(name, candidate, expected, slot = undefined) {
 const use = slot => new RegExp(`<use id="glyph-${slot}"[^>]+/>`);
 try {
   await check('font-unchanged-repeat', original, 'pass');
-  await check('font-missing-period', original.replace(use(46), ''), 'mismatch', 46);
-  await check('font-missing-ligature', original.replace(use(30), ''), 'mismatch', 30);
-  await check('font-missing-accent', original.replace(use(233), ''), 'mismatch', 233);
-  await check('font-displaced-baseline', original.replace(use(65), tag => tag.replace('<use ', '<use transform="translate(0 .1875)" ')), 'mismatch', 65);
-  await check('font-wrong-glyph', original.replace(use(65), tag => tag.replace('href="#font-65"', 'href="#font-66"')), 'mismatch', 65);
+  for (const [name, slot] of math ? [['relation', 20], ['operator', 0], ['radical', 112]] : [['period', 46], ['ligature', 30], ['accent', 233]])
+    await check('font-missing-' + name, original.replace(use(slot), ''), 'mismatch', slot);
+  const slot = math ? 20 : 65;
+  await check('font-displaced-baseline', original.replace(use(slot), tag => tag.replace('<use ', '<use transform="translate(0 .1875)" ')), 'mismatch', slot);
+  await check('font-wrong-glyph', original.replace(use(slot), tag => tag.replace(`href="#font-${slot}"`, `href="#font-${slot + 1}"`)), 'mismatch', slot);
   await writeFile(path.join(output, 'suite.json'), JSON.stringify({ schemaVersion: 1, passed: true, expectedChecks: 6, results }, null, 2) + '\n');
 } finally {
   await renderer.browser.close();

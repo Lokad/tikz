@@ -1,0 +1,47 @@
+LokadTikzMath derived font data, 2026-10-09
+
+Original font copyright: 2003--2021 B. Jackowski and J.M. Nowacki,
+on behalf of TeX Users Groups.
+Derived data copyright: 2026 Lokad.
+License: GUST Font License 1.0, applying LPPL 1.3c or later.
+Maintenance status: maintained. Current maintainer: Lokad.
+
+This derived work consists of the nineteen resources:
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzMath-math-roman-{5,6,7,8,10,12}.json
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzMath-math-italic-{5,6,7,8,10,12}.json
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzMath-math-symbol-{5,6,7,8,10,12}.json
+  src/Lokad.TikZ/Resources/Fonts/LokadTikzMath-math-extension-10.json
+and their provenance and notices:
+  src/Lokad.TikZ/Resources/Fonts/math-provenance.json
+  tools/TikzFontData/math-font-profile.json
+  THIRD-PARTY-NOTICES.md (font notice)
+  licenses/Fonts/MANIFEST-LokadTikzMath.txt
+
+Braced size lists above enumerate individual filenames. Resources are embedded
+in the assembly and distributed as JSON under font-data/ in the NuGet package.
+The provenance and profile are distributed there too. Independent metric,
+atlas and radical fixtures under tests/Reference/MathFonts/ are further
+font-derived development data with the same license; they are not components
+of the shipped font-data work.
+
+Changes from Latin Modern: fixed font/size subset, JSON metrics and math font
+parameters, flattened pair rules, preservation of larger-glyph links and
+extensible recipes, and baseline-relative SVG outline extraction rounded to
+six decimal places. Missing TFM characters stay missing. The 12pt symbols use
+the 10pt design scaled to 12pt; the extension face stays fixed at 10pt.
+Font faces and resource filenames use the distinct LokadTikzMath name.
+No installed font is replaced; no original author's support is implied.
+
+The complete original work, including Type 1 sources and metrics, is available:
+  https://ctan.org/tex-archive/fonts/lm
+  https://mirrors.ctan.org/fonts/lm.zip
+  https://www.gust.org.pl/projects/e-foundry/latin-modern
+
+Input names/hashes: tools/TikzFontData/math-font-profile.json
+Resource hashes/evidence: src/Lokad.TikZ/Resources/Fonts/math-provenance.json
+
+Upstream notices and licenses are included verbatim in this directory:
+  GUST-FONT-LICENSE.txt
+  LPPL-1.3c.txt
+  README-Latin-Modern.txt
+  MANIFEST-Latin-Modern.txt

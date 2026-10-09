@@ -19,6 +19,7 @@
     <None Include="../../THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="/" />
     <None Include="../../licenses/Fonts/*.txt" Pack="true" PackagePath="licenses/Fonts/" />
     <None Include="../../tools/TikzFontData/font-profile.json" Pack="true" PackagePath="font-data/" />
+    <None Include="../../tools/TikzFontData/math-font-profile.json" Pack="true" PackagePath="font-data/" />
     <None Update="Resources/Fonts/*.json" Pack="true" PackagePath="font-data/%(Filename)%(Extension)" />
     <InternalsVisibleTo Include="Lokad.TikZ.Tests" />
     <InternalsVisibleTo Include="TikzReference" />
@@ -28,6 +29,7 @@
     <InternalsVisibleTo Include="TikzLabelledBorderComparison" />
     <InternalsVisibleTo Include="TikzEdgeComparison" />
     <EmbeddedResource Include="Resources/Fonts/LokadTikzText-*.json" />
+    <EmbeddedResource Include="Resources/Fonts/LokadTikzMath-*.json" />
   </ItemGroup>
   <Target Name="EnforceReleasePack" BeforeTargets="GenerateNuspec" Condition="'$(Configuration)' != 'Release'">
     <Error Text="Pack Lokad.TikZ explicitly with -c Release." />

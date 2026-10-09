@@ -20,9 +20,13 @@ internal static partial class FontGenerator
     {
         try
         {
-            if (args.Length != 1 || args[0] is not ("generate" or "verify" or "compare" or "generate-text-reference" or "verify-text-reference" or "compare-text" or "calibrate-text-reference"))
-                throw new InvalidOperationException("Usage: TikzFontData <generate|verify|compare|generate-text-reference|verify-text-reference|compare-text|calibrate-text-reference>. Only explicit generation commands update baselines.");
+            if (args is ["generate-math", "--radicals-only"])
+                return await MathFonts(FindRoot(), "generate-math", radicalsOnly: true);
+            if (args.Length != 1 || args[0] is not ("generate" or "verify" or "compare" or "generate-text-reference" or "verify-text-reference" or "compare-text" or "calibrate-text-reference" or "generate-math" or "verify-math" or "compare-math"))
+                throw new InvalidOperationException("Usage: TikzFontData <generate|verify|compare|generate-text-reference|verify-text-reference|compare-text|calibrate-text-reference|generate-math|verify-math|compare-math>. Only explicit generation commands update baselines.");
             var root = FindRoot();
+            if (args[0] is "generate-math" or "verify-math" or "compare-math")
+                return await MathFonts(root, args[0]);
             var manifestPath = Path.Combine(root, "tools/TikzFontData/font-profile.json");
             var manifest = JsonSerializer.Deserialize<FontManifest>(File.ReadAllText(manifestPath), Json)!;
             if (manifest.SchemaVersion != 1 || manifest.Id != "latin-modern-ec-10-12-v1" || manifest.Fonts.Length != 6)
@@ -69,13 +73,11 @@ internal static partial class FontGenerator
                 var sizeSp = font.SizePt * 65536;
                 var work = Path.Combine(root, "artifacts/font-data", font.Id);
                 Directory.CreateDirectory(work);
-                var pairs = new StringBuilder();
-                foreach (var pair in tfm.Pairs)
-                    pairs.Append(CultureInfo.InvariantCulture, $"\\setbox0=\\hbox{{\\char{pair.Left}\\char{pair.Right}}}\\typeout{{LOKAD-PAIR {pair.Left};{pair.Right};\\number\\wd0;\\number\\ht0;\\number\\dp0}}\n");
+                var pairs = PairSource(tfm);
                 var source = wrapper.Replace("@@FONT@@", Path.GetFileNameWithoutExtension(font.Tfm), StringComparison.Ordinal)
                     .Replace("@@SIZE@@", font.SizePt.ToString(Invariant), StringComparison.Ordinal)
                     .Replace("@@PARAMETERS@@", (tfm.ParametersFix.Length + 1).ToString(Invariant), StringComparison.Ordinal)
-                    .Replace("@@PAIRS@@", pairs.ToString(), StringComparison.Ordinal);
+                    .Replace("@@PAIRS@@", pairs, StringComparison.Ordinal);
                 File.WriteAllText(Path.Combine(work, "atlas.tex"), source, new UTF8Encoding(false));
                 await RunProcess("latex", ["-disable-write18", "-disable-installer", "-interaction=nonstopmode", "-halt-on-error", "-recorder", "atlas.tex"], work);
                 await RunProcess("dvisvgm", ["--no-fonts", "--exact-bbox", "--bbox=min", "--precision=6", "--fontmap=" + inputs["lm.map"], "--cache=none", "--output=atlas.svg", "atlas.dvi"], work);
@@ -85,34 +87,7 @@ internal static partial class FontGenerator
                 var glyphBoxes = Records(log, "GLYPH", 8);
                 var parameterValues = Records(log, "PARAM", 2);
                 var pairBoxes = Records(log, "PAIR", 5);
-                if (glyphBoxes.Length != 256 || parameterValues.Length != tfm.ParametersFix.Length || pairBoxes.Length != tfm.Pairs.Length)
-                    throw new InvalidOperationException("Incomplete independent font measurements.");
-                for (var slot = 0; slot < 256; slot++)
-                {
-                    var g = tfm.Glyphs[slot];
-                    var expected = new[] { slot, FontData.ScaleFix(g.AdvanceFix, sizeSp), Math.Max(0, FontData.ScaleFix(g.HeightFix, sizeSp)),
-                        Math.Max(0, FontData.ScaleFix(g.DepthFix, sizeSp)), FontData.ScaleFix(g.AdvanceFix, sizeSp),
-                        FontData.ScaleFix(g.HeightFix, sizeSp), FontData.ScaleFix(g.DepthFix, sizeSp), FontData.ScaleFix(g.ItalicFix, sizeSp) };
-                    if (!expected.SequenceEqual(glyphBoxes[slot])) throw new InvalidOperationException($"Independent glyph metric mismatch: {font.Id}, slot {slot}.");
-                }
-                for (var index = 0; index < tfm.ParametersFix.Length; index++)
-                {
-                    var expected = index == 0 ? tfm.ParametersFix[index] >> 4 : FontData.ScaleFix(tfm.ParametersFix[index], sizeSp);
-                    if (!parameterValues[index].SequenceEqual(new[] { index + 1, expected }))
-                        throw new InvalidOperationException($"Independent font parameter mismatch: {font.Id}, parameter {index + 1}.");
-                }
-                for (var index = 0; index < tfm.Pairs.Length; index++)
-                {
-                    var p = tfm.Pairs[index];
-                    var left = tfm.Glyphs[p.Ligature ?? p.Left];
-                    var right = p.Ligature.HasValue ? left : tfm.Glyphs[p.Right];
-                    var width = p.Ligature.HasValue ? FontData.ScaleFix(left.AdvanceFix, sizeSp)
-                        : FontData.ScaleFix(left.AdvanceFix, sizeSp) + FontData.ScaleFix(right.AdvanceFix, sizeSp) + FontData.ScaleFix(p.KernFix!.Value, sizeSp);
-                    var height = Math.Max(0, Math.Max(FontData.ScaleFix(left.HeightFix, sizeSp), FontData.ScaleFix(right.HeightFix, sizeSp)));
-                    var depth = Math.Max(0, Math.Max(FontData.ScaleFix(left.DepthFix, sizeSp), FontData.ScaleFix(right.DepthFix, sizeSp)));
-                    if (!pairBoxes[index].SequenceEqual(new[] { p.Left, p.Right, width, height, depth }))
-                        throw new InvalidOperationException($"Independent kerning/ligature mismatch: {font.Id}, slots {p.Left}/{p.Right}.");
-                }
+                ValidateFontMetrics(tfm, sizeSp, font.Id, glyphBoxes, parameterValues, pairBoxes);
                 var svg = XDocument.Load(Path.Combine(work, "atlas.svg"));
                 XNamespace ns = "http://www.w3.org/2000/svg";
                 var definitions = svg.Descendants(ns + "defs").Single().Elements(ns + "path").ToArray();
