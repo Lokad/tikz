@@ -8,25 +8,34 @@ import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {loadLabelImageEvidence} from './diagram-image-evidence.mjs';
 import {runCalcChild,readCalcChild,ownCalcBundle} from './calc-admission-child.mjs';
-import {calcEqual} from './calc-saved-images.mjs';
+import {calcEqual,loadCalcSavedReport} from './calc-saved-images.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
 import {shapeViews,deriveShapeTrialPolicy,evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
 import {buildPathLabelImageReference,pathLabelPrimaryCaptures,mutatePathLabelImage,pathLabelImageControls,pathLabelControlViews} from './path-label-image-reference.mjs';
 
-assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/calibrate-path-label-primary.mjs <placement|interactions|frozen-diagram-arrow-report>');
+assert.ok(process.argv.length===3||(process.argv.length===5&&process.argv[3]==='--reuse'),'Usage: node tools/TikzVisual/calibrate-path-label-primary.mjs <placement|interactions|frozen-diagram-arrow-report> [--reuse <prior-calibration>]');
 const input=process.argv[2],output=path.join(root,'artifacts/path-label-primary-calibration/run-'+randomUUID()),artifacts={};let id=input;
 const save=(p,b)=>writeArtifact(output,p,b,artifacts),json=(p,v)=>save(p,JSON.stringify(v,null,2)+'\n');
-let phase='native-input',renderer,native,frame;const records=[],controls=[];
+let phase='native-input',renderer,native,frame,reuse,reusedViews=0;const records=[],controls=[];
 const key=v=>v.frame+'/'+v.scale+'x-'+v.background;
 async function publish(completed,extra={}){
  const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'path-label-native-primary-calibration',completed,
   phase:completed?'complete':phase,converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,
   imageConformanceClaim:false,imageAdmission:'pending',fixture:id,nativeInputSha256:native?.sha256,renderer:renderer?.identity,
-  artifacts,records,controls,...extra},null,2)+'\n');
+  artifacts,records,controls,...(reuse?{reuse:{inputSha256:reuse.sha256,reusedExpandedViews:reusedViews}}:{}),...extra},null,2)+'\n');
  await writeArtifact(output,'report.json',bytes);console.log(JSON.stringify({completed,phase,report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(bytes)}));
 }
 async function observe(prefix,svg,view,target){
+ if(reuse&&view.frame==='expanded'){
+  const old=structuredClone(reuse.json(prefix+'/record.json'));
+  // Root-only changes preserve expanded pixels. The independent checker still
+  // recaptures every reused source; update its declared intrinsic metadata.
+  const v=/viewBox="([^"]+)"/.exec(svg)[1].split(' ').map(Number);
+  old.naturalFrames.actual={x:v[0],y:v[1],width:v[2],height:v[3]};
+  for(const[f,b]of reuse.files)if(f.startsWith(prefix+'/')&&f!==prefix+'/record.json')await save(f,b);
+  await json(prefix+'/record.json',old);reusedViews++;return{file:prefix+'/record.json',...old};
+ }
  const measure=view.capture==='intrinsic-image'?measureEdgeTrialPrimary:measureArrowVectorPair;
  const pair=await measure(renderer,{reference:native.files.get('probed-reference.svg').toString('utf8'),actual:svg,leftIsDriver:true,
   origin:frame.origin,camera:frame.camera,regions:frame.regions,...view,cropLimit:target&&view.background==='white'?1:0,cropRegionIds:target?[target]:[],
@@ -55,9 +64,16 @@ try{
  assert.ok(oracle.report.assemblyReferences.every(n=>n==='System'||n.startsWith('System.')));
  renderer=await createRenderer();await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
  frame=await buildPathLabelImageReference(renderer,native,oracle.json('native-glyphs.json'));
+ if(process.argv.length===5){
+  reuse=await loadCalcSavedReport(path.resolve(root,process.argv[4]),'path-label-native-primary-calibration');
+  assert.equal(reuse.report.nativeInputSha256,native.sha256);calcEqual(reuse.report.renderer,renderer.identity);
+  calcEqual(reuse.json('frame.json').camera,frame.camera);calcEqual(reuse.json('frame.json').regions,frame.regions);
+  for(const e of frame.encodings)assert.equal(e.svg.replace(/^<svg[^>]*>/,''),reuse.files.get('encodings/'+e.id+'.svg').toString().replace(/^<svg[^>]*>/,''),'Expanded drawing changed.');
+  calcEqual(pathLabelImageControls(frame,oracle.json('native-glyphs.json')),reuse.report.controls.map(({comparisons,numericChecksBypassed,...c})=>c),'Controlled targets changed.');
+ }
  await json('frame.json',{...frame,encodings:frame.encodings.map(({svg,...e})=>e)});
  for(const e of frame.encodings)await save('encodings/'+e.id+'.svg',e.svg);
- for(const file of['calibrate-path-label-primary.mjs','path-label-image-reference.mjs','path-label-evidence.mjs','diagram-image-evidence.mjs','shape-frame-math.mjs','shape-pdf-camera.mjs',
+ for(const file of['calibrate-path-label-primary.mjs','path-label-image-reference.mjs','path-label-evidence.mjs','diagram-image-evidence.mjs','diagram-native-root.mjs','shape-frame-math.mjs','shape-pdf-camera.mjs',
   'calc-png.mjs','shape-raster-metrics.mjs','shape-primary-trial-policy.mjs','edge-trial-images.mjs','edge-oracle-pair.mjs','arrow-vector-pair.mjs',
   'compare.mjs','shape-oracle-bundle.mjs','calc-admission-child.mjs','calc-saved-images.mjs','browser-profile.json','text-profile.json','node-profile.json','package.json','package-lock.json'])
   await save('source-captures/tools/TikzVisual/'+file,await readFile(path.join(root,'tools/TikzVisual/'+file)));
@@ -79,6 +95,7 @@ try{
  const controlViews=pathLabelControlViews(frame)??shapeViews;
  for(const label of pathLabelImageControls(frame,oracle.json('native-glyphs.json'))){
   const kind=label.kind,original=frame.encodings[0].svg,altered=await mutatePathLabelImage(renderer,original,label),name=label.nodeId+'/'+kind;
+  if(reuse)assert.equal(altered.replace(/^<svg[^>]*>/,''),reuse.files.get('controls/'+name+'/altered.svg').toString().replace(/^<svg[^>]*>/,''),'Expanded controlled drawing changed.');
   await save('controls/'+name+'/altered.svg',altered);
   const control={...label,kind,numericChecksBypassed:true,comparisons:[]};controls.push(control);
   for(const capture of pathLabelPrimaryCaptures)for(const view of controlViews){

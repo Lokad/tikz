@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {multiply,parseTransform,parsePath,pathData,pathBounds,transformSegments,unionBounds} from './shape-frame-math.mjs';
 import {shapePdfRasterRectangle} from './shape-pdf-camera.mjs';
 import {decodeCalcPng} from './calc-png.mjs';
+import {diagramNativeNaturalRoot} from './diagram-native-root.mjs';
 
 const spToCss=96/(72.27*65536),ptToCss=96/72.27;
 const fixed=(v,n)=>{assert.ok(Number.isFinite(v));return(Math.abs(v)<10**(-n)/2?0:v).toFixed(n).replace(/\.?0+$/,'');};
@@ -80,9 +81,10 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs){
  const regions=contributions.map(c=>{const b=c.bound,x=Math.floor(b.minX)-2-camera.x,y=Math.floor(b.minY)-2-camera.y;
   return{...c,rectangle:{x,y,width:Math.ceil(b.maxX)+2-camera.x-x,height:Math.ceil(b.maxY)+2-camera.y-y}};
  });
+ const natural=bundle.arrowMetrics?diagramNativeNaturalRoot(bundle.arrowMetrics,picture,contributions.filter(c=>c.kind==='glyph')):null;
  const encodings=[];
  for(const id of pathLabelImageEncodings){
-  const places=id.endsWith('12')?12:6,root=[bounds.minX,bounds.minY,bounds.maxX-bounds.minX,bounds.maxY-bounds.minY].map(v=>fixed(v,6));
+  const box=natural?.root??bounds,places=id.endsWith('12')?12:6,root=[box.minX,box.minY,box.maxX-box.minX,box.maxY-box.minY].map(v=>fixed(v,6));
   const instructions={paths:paths.map(p=>({...p,matrix:p.matrix.map(v=>fixed(v,places))})),uses:uses.map(p=>({...p,matrix:p.matrix.map(v=>fixed(v,places))})),
    clips:clips.map(p=>({...p,d:pathData(p.segments),matrix:p.matrix.map(v=>fixed(v,places))}))};
   const svg=await renderer.page.evaluate(({metadata,instructions,root})=>{
@@ -100,6 +102,7 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs){
   encodings.push({id,svg,converterInvoked:false});
  }
  return{caseId:bundle.report.definition.id,origin:metadata.origin,camera,regions,picture,driverRoot,bounds,encodings,
+  ...(natural?{natural}:{}),
   nativePaths:paths.length,nativeGlyphs:uses.length,nativeClips:clips.length,converterInvoked:false,
   contract:'Original native paths/outlines/paint/order/clips; PGF dimensions recovered as sp, exact physical scale, independent DVI glyph advances and observed native frames. Decimal variants are fixed before candidate measurement.'};
 }

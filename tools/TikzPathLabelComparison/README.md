@@ -69,8 +69,24 @@ Diagram numeric exports retain path/glyph source spans. The existing primary
 calibrator accepts the frozen supplemental report, and the current primary
 comparison links failed native regions back to those spans. Native-only cameras,
 per-region limits, whole-label and tip sensitivity now have independent image
-recapture. Fresh diagram primary comparisons still fail some views; those
-receipts drive the next implementation work before PDF/final admission.
+recapture. Natural roots use independently measured picture bounds union shipped
+path/glyph ink; the expanded inspection camera retains its conservative padding.
+All transformed-diagram primary views now pass. Ten basic/network 4x path views
+still fail; those receipts drive the next work before PDF/final admission.
+
+When only this independently justified root changes, the existing calibrator
+can preserve expanded-view pixels from an exact prior report:
+
+```sh
+node tools/TikzVisual/calibrate-path-label-primary.mjs <exact-supplemental-report> --reuse <exact-prior-calibration-report>
+node tools/TikzVisual/check-path-label-primary.mjs <exact-new-calibration-report>
+node tools/TikzVisual/compare-path-label-primary.mjs <exact-new-calibration-report> <fresh-numeric-report>
+```
+
+Reuse requires unchanged native input, renderer, camera, regions, drawing and
+control targets/drawings. Natural views are rendered again. The independent
+checker still decodes and recaptures every source, including reused expanded
+views. Limits derive only from native encodings, before current output is read.
 
 Frozen references retain their original generator/checker source hashes as
 provenance. Changes to the fixture, TeX wrappers or font profile require new

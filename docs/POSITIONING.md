@@ -60,6 +60,10 @@ matching glyph identities, outlines and TeX layout. This diagnostic establishes
 the cause for that fixture; native-only calibration must still set image limits.
 Native-only primary/local calibration and glyph/whole-label/tip sensitivity now
 have independent decoded-image checking and source recapture. Fresh diagram
-primary comparisons retain source-linked viewport and path differences for
-resolution. Framing and primary/local/PDF image admission remain open. Iteration images
+primary comparisons now use natural roots independently derived from PGF picture
+bounds and shipped path/glyph ink, separate from the conservative inspection
+camera. This closes all transformed-diagram primary views and the earlier glyph
+failures. Ten 4x path views still fail in the basic flowchart and network; their
+source-linked receipts drive the next work. Complete primary/local/PDF image
+admission remains open. Iteration images
 do not establish a general pixel-perfect or image-conformance claim.
