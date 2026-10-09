@@ -148,6 +148,8 @@ internal sealed class TextLayout : ITextLayout
                         Flush(); _font = previous;
                         if (correct && !StartsWithPunctuation(items.ElementAtOrDefault(index + 1))) Correction(group.Source, true);
                         break;
+                    case LabelMath math:
+                        throw new CompileError("TIKZ002", "Math label layout is not implemented yet.", math.Source.Slice(0, 1));
                     case LabelBreak lineBreak:
                         Flush(); FinishLine(); _readable.Append('\n');
                         _font = _initialFont; _spaceFactor = 1000; _ignoreLeading = true;

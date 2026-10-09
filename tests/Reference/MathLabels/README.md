@@ -3,7 +3,10 @@
 These repository-authored fixtures ground the
 [bounded math-label target](../../../docs/MATH-LABELS.md). The public converter
 currently rejects both at their opening `$` with TIKZ002 and emits no SVG.
-Production math fonts, layout and image qualification remain pending.
+The nineteen math font/size resources are now bundled and independently checked
+through the [font tooling](../../../tools/TikzFontData/README.md). The internal
+source-aware parser represents these labels; production math layout and actual
+label image qualification remain pending.
 
 | Fixed source | Measured labels | Anchors | DVI glyphs | DVI rules | User scalar results |
 | --- | --- | --- | --- | --- | --- |

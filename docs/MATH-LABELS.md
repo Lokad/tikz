@@ -1,9 +1,11 @@
 # Bounded math labels: implementation target
 
-Math labels are not implemented yet. The public converter reports TIKZ002 at
-the opening `$` and emits no partial SVG. This document declares the bounded
-target; the [native observations](../tests/Reference/MathLabels/README.md) are
-grounding evidence, not current converter conformance.
+Math label layout is not implemented yet. The internal label parser represents
+the bounded grammar below, and the nineteen math font/size resources are bundled.
+Valid math still reports TIKZ002 at the opening `$` and emits no partial SVG;
+malformed or unsupported math reports its offending source span. This document
+declares the layout target; the [native observations](../tests/Reference/MathLabels/README.md)
+are grounding evidence, not current converter conformance.
 
 The first profile supports inline `$...$` runs within existing node and path
 labels, including mixed prose and math. It uses a small source-aware math AST,
@@ -22,7 +24,7 @@ through the resolved graphics scene before SVG serialization.
 | Relations | `=`, `<`, `>`, `:`, `\le`/`\leq`, `\ge`/`\geq`, `\ne`/`\neq`, `\to`/`\rightarrow`, `\leftarrow`, `\leftrightarrow`. Negated equality needs the native overlapping glyph composition. |
 | Delimiters and punctuation | Fixed-size `(`, `)`, `[`, `]`; comma is a punctuation atom. Braces group a math list without printing braces. |
 | Upright words | `\mathrm{...}` selects the upright roman math alphabet within a group. It does not invoke prose layout. |
-| Scripts | `_` and `^` each take one atom or braced group and attach to the preceding atom. Either order is accepted; each script kind occurs at most once per base. Grouped bases and nested scripts are supported. |
+| Scripts | `_` and `^` each take one atom or braced group and attach to the preceding atom. Either order is accepted; each script kind occurs at most once per base. Grouped bases and nested scripts are supported. Explicit spacing cannot serve as a script base or argument. |
 | Fractions | `\frac{numerator}{denominator}`, including nested fractions and fractions in scripts. Both arguments must be braced. |
 | Square roots | `\sqrt{radicand}`, including nested roots, fractions and scripts. The argument must be braced; indexed roots are outside this profile. |
 | Explicit spacing | `\,`, `\!`, `\;` use the native signed math spacing. Ordinary input whitespace inside math does not print a space. |

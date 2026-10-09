@@ -10,6 +10,7 @@ internal sealed record LabelBreak(Source Origin) : LabelItem(Origin);
 internal sealed record LabelCorrection(Source Origin) : LabelItem(Origin);
 internal sealed record LabelFont(FontChange Change, Source Origin) : LabelItem(Origin);
 internal sealed record LabelGroup(List<LabelItem> Items, FontChange? Change, bool AutoCorrection, Source Origin) : LabelItem(Origin);
+internal sealed record LabelMath(MathList Body, Source Origin) : LabelItem(Origin);
 internal enum FontChange { Bold, Medium, Italic, Upright, Normal, RegularFamily, NormalSize, Large }
 internal enum TextAlignment { Left, Center, Right }
 

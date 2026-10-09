@@ -69,8 +69,14 @@ internal sealed class LabelParser(Source source, Budget budget)
                 result.Add(new LabelSpace(false, "\u00a0", source.Slice(start, 1)));
                 continue;
             }
-            if (ch is '$' or '^' or '_' or '#' or '&')
-                throw new CompileError("TIKZ002", ch == '$' ? "Math labels are not implemented in this text profile." : $"Escape '{ch}' in text.", Here);
+            if (ch == '$')
+            {
+                result.Add(new MathParser(source, budget, _position, depth).Parse(out _position));
+                _state = LexicalState.MidLine;
+                continue;
+            }
+            if (ch is '^' or '_' or '#' or '&')
+                throw new CompileError("TIKZ002", $"Escape '{ch}' in text.", Here);
             while (_position < source.Length && Current is not (' ' or '\t' or '\r' or '\n' or '%' or '{' or '}' or '\\' or '~' or '$' or '^' or '_' or '#' or '&')) Advance();
             _state = LexicalState.MidLine;
             result.Add(new LabelLiteral(source.Slice(start, _position - start)));
