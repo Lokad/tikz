@@ -16,12 +16,14 @@ const frozen={
  'flowchart-parameterized':'bbf4b6e43e01ad3071aa554b726153721f81fe83d33d9218b24cf39e88fadd92',
  'style-contract':'aafa2cf36b1f07e935fb4b0adf3958ed4e4f4ff803d05bad2bbf3d587f4af7a4',
  'flowchart-foreach':'f336b86e533d4e47ba39ca3c5d77a85ad19ce1972e76bb16245d9774cbee2e12',
- 'foreach-contract':'6f0f5f8e16cb007c98fd4dcaf6ad4a4e3098c1a1bada0037403f5560ecbcc426'
+ 'foreach-contract':'6f0f5f8e16cb007c98fd4dcaf6ad4a4e3098c1a1bada0037403f5560ecbcc426',
+ 'flowchart-math-macros':'b1ba14b15f66caf36f5f45fb314a22502c1234e06da2cb21317eb3925cc41684',
+ 'math-macro-contract':'0f007f9f878fd179f44205e6d1cf0806d2a33e72e86461ed1f7b77944d18b006'
 };
 // Shared fixed-case classification; rectangle and arrow measurements stay separate.
-export const rectangleImageCounts=Object.freeze({'style-contract':7,'foreach-contract':29});
+export const rectangleImageCounts=Object.freeze({'style-contract':7,'foreach-contract':29,'math-macro-contract':25});
 export const isRectangleImageCase=id=>Object.hasOwn(rectangleImageCounts,id);
-export const labelImageSourceFile=id=>'tests/Fixtures/'+(id==='style-contract'?'Styles':id==='foreach-contract'?'Foreach':'Diagrams')+'/'+id+'.tikz';
+export const labelImageSourceFile=id=>'tests/Fixtures/'+(id==='style-contract'?'Styles':id==='foreach-contract'?'Foreach':id==='math-macro-contract'?'MathMacros':'Diagrams')+'/'+id+'.tikz';
 export async function loadLabelImageEvidence(input){
  if(['placement','interactions'].includes(input))return loadPathLabelEvidence(input);
  const file=path.resolve(root,input),role=JSON.parse(await readFile(file)).role;
