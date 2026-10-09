@@ -55,10 +55,10 @@ Broader PGF math remains release scope.
 [Selected scalar functions](docs/MATH-FUNCTIONS.md) now convert a trigonometric
 worker network. Three fixed native corpora match 1,490 printed results and 688
 named-node anchors; the network and focused comparison pass 5,866 numeric checks.
-Paired 1x/4x images retain raw differences. Both function fixtures pass 48 primary
-and 16 PDF iteration views under independently checked native limits. Their
-portable reference archives restore all original evidence bytes. Final clean-source
-qualification remains open.
+Paired 1x/4x images retain raw differences. Both function fixtures pass 48 primary,
+16 PDF and 64 independent fresh-source views in final clean-export acceptance.
+The full thirteen-case matrix passes in the clean export; all 651 tests pass
+in the export and integrated tree. Portable archives preserve checked native evidence.
 
 ```csharp
 using Lokad.TikZ;

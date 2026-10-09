@@ -14,8 +14,12 @@ anchors. The network and focused corpus also pass 5,866 independent numeric
 checks against fresh conversion, with paired 1x/4x raw image differences retained.
 Both fixtures also pass 48 primary and 16 PDF iteration views under independently
 checked native-only policies. The two portable archives retain their four checked
-native reports and every owned asset. Final clean-source acceptance remains open.
-Raw image differences alone do not establish conformance.
+native reports and every owned asset. Final clean-export acceptance and integration
+pass both fixtures, including all 64 independent fresh-source views. The required
+diagram, loop, style, path-label and calc regressions pass with frozen native
+calibration. All 651 ordinary tests pass in both source trees. These results
+qualify the declared functions and fixed fixtures under their checked policies;
+broader PGF math remains release scope.
 
 Restore the checked evidence without invoking native tools or the converter:
 

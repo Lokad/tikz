@@ -75,9 +75,13 @@ total. Fresh output also has paired whole/local 1x/4x iteration images and passe
 48 primary/16 PDF views under checked native-only policies. The independent
 native checkers reproduce 788 sources, including 612 visible defect views that
 are all rejected. Both portable reference archives now restore every original
-asset byte; final clean-source acceptance remains open. Control captures retain
-full image pairs, local metrics and paired crop sheets within the unchanged
-shared artifact bound.
+asset byte. Final clean-export acceptance and integration pass both fixtures,
+including all 64 independent fresh-source views. The full thirteen-case matrix
+passes 20,194 numeric checks, 312 primary/104 PDF views and 416 fresh sources.
+All 316 family/shared controls, calc's twelve gates/83 controls and both 651-test
+suites pass with frozen native calibration. Control captures retain full image
+pairs, local metrics and paired crop sheets within the unchanged shared artifact
+bound.
 Separate scalar snapshots include the complete-turn boundary fixture under
 [`tests/Reference/MathFunctions`](../../tests/Reference/MathFunctions/README.md).
 The focused archive's versioned record packing uses bounded gzip inflation;

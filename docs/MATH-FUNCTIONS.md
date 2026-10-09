@@ -49,5 +49,12 @@ Both fixtures now pass 48 primary and 16 PDF iteration views under independent
 native-only policies. The native checkers reproduce all 788 reference/control
 sources; all 28 primary/PDF corruption controls pass. The portable archives restore
 all original evidence bytes, including the focused corpus's packed control JSON.
-Final committed clean-source qualification remains open. Broader PGF functions,
-math labels and plotting remain release scope.
+Final committed clean-export acceptance and integration pass both fixtures:
+5,866 numeric checks, 48 primary/16 PDF views and 64 independent fresh-source
+recaptures. The required thirteen-case matrix passes 20,194 numeric checks,
+312 primary/104 PDF views, 416 fresh sources and 52 framing checks. All 316
+family/shared corruption controls and calc's twelve gates/83 controls pass
+against preserved native calibration. All 651 tests pass in the clean export
+and integrated tree. This qualifies the declared functions and fixed fixtures
+under their checked native policies. Broader PGF functions, math labels and
+plotting remain release scope.
