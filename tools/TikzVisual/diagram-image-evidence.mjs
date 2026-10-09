@@ -10,6 +10,8 @@ import {parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 import {edgePdfPage,edgeCanonical} from './edge-log.mjs';
 const frozen={
+ 'network-math-functions':'91279df9a386bbb605bed4f3814b59062af5c28520caf0bb339ef6e5a9c55adb',
+ 'math-functions-contract':'da694557502934660cb8b4b5e43eaa770a4130975fe52e7f1e314879b12ad674',
  'flowchart-basic':'32f4efb3172f5da86c1d9436e9868773389c351d4ac0dbccafd86813b4810634',
  'network-bent':'6a64406360a4c079bedb1f5392741893b0969909f146f47fed5defc173939753',
  'flowchart-transformed':'3c6fae434443c59204a653e6656c4e581644d6eb693c139d6d565ddfb008f43a',
@@ -21,9 +23,9 @@ const frozen={
  'math-macro-contract':'0f007f9f878fd179f44205e6d1cf0806d2a33e72e86461ed1f7b77944d18b006'
 };
 // Shared fixed-case classification; rectangle and arrow measurements stay separate.
-export const rectangleImageCounts=Object.freeze({'style-contract':7,'foreach-contract':29,'math-macro-contract':25});
+export const rectangleImageCounts=Object.freeze({'style-contract':7,'foreach-contract':29,'math-macro-contract':25,'math-functions-contract':37});
 export const isRectangleImageCase=id=>Object.hasOwn(rectangleImageCounts,id);
-export const labelImageSourceFile=id=>'tests/Fixtures/'+(id==='style-contract'?'Styles':id==='foreach-contract'?'Foreach':id==='math-macro-contract'?'MathMacros':'Diagrams')+'/'+id+'.tikz';
+export const labelImageSourceFile=id=>'tests/Fixtures/'+(id==='style-contract'?'Styles':id==='foreach-contract'?'Foreach':id==='math-macro-contract'?'MathMacros':id==='math-functions-contract'?'MathFunctions':'Diagrams')+'/'+id+'.tikz';
 export async function loadLabelImageEvidence(input){
  if(['placement','interactions'].includes(input))return loadPathLabelEvidence(input);
  const file=path.resolve(root,input),role=JSON.parse(await readFile(file)).role;
