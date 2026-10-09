@@ -57,7 +57,8 @@ internal sealed partial class Evaluator
         state.Transform = Affine.Identity;
         state.IsNodeContext = true;
         state.IsPathLabel = placement is not null;
-        if (state.IsPathLabel) state.Paint = state.Paint with { Stroke = false, Fill = false };
+        // TikZ clears path modes before every node, retaining the inherited pen.
+        state.Paint = state.Paint with { Stroke = false, Fill = false };
         KeyRegistry.ApplyStyle("every node", state, budget, statement.Source);
         KeyRegistry.Apply(statement.Options, state, budget);
         KeyRegistry.ApplyStyle("every " + state.Node.Shape.ToString().ToLowerInvariant() + " node", state, budget, statement.Source);

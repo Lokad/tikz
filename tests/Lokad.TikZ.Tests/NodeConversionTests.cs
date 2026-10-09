@@ -12,6 +12,49 @@ namespace Lokad.TikZ.Tests;
 
 public sealed class NodeConversionTests
 {
+    [Theory]
+    [InlineData(@"\begin{tikzpicture}[draw,fill]\node{A};\path[draw,fill](0,0)--(1,0);\end{tikzpicture}")]
+    [InlineData(@"\begin{tikzpicture}\begin{scope}[draw,fill]\node{A};\path[draw,fill](0,0)--(1,0);\end{scope}\end{tikzpicture}")]
+    public void Nodes_clear_inherited_path_modes_and_explicit_path_modes_still_apply(string source)
+    {
+        var (_, scene) = Convert(source);
+        var path = Assert.Single(scene.Paths);
+        Assert.StartsWith(@"\path", path.Source.Value);
+        Assert.True(path.Paint.Stroke);
+        Assert.True(path.Paint.Fill);
+        Assert.Single(scene.Drawables.OfType<PaintedGlyphRun>());
+    }
+
+    [Theory]
+    [InlineData("draw", true, false)]
+    [InlineData("fill", false, true)]
+    [InlineData("draw,fill", true, true)]
+    public void Node_styles_reenable_modes_and_retain_the_inherited_pen(string modes, bool stroke, bool fill)
+    {
+        var source = @"\begin{tikzpicture}[draw=red,fill=blue,line width=2pt,draw opacity=.4,fill opacity=.6,every node/.style={"
+            + modes + @"}]\node{A};\end{tikzpicture}";
+        var (_, scene) = Convert(source);
+        var paint = Assert.Single(scene.Paths).Paint;
+        Assert.Equal(stroke, paint.Stroke);
+        Assert.Equal(fill, paint.Fill);
+        Assert.Equal(new Color(1, 0, 0), paint.StrokeColor);
+        Assert.Equal(new Color(0, 0, 1), paint.FillColor);
+        Assert.Equal(2 * 72 / 72.27, paint.Width, 10);
+        Assert.Equal(.4, paint.StrokeOpacity);
+        Assert.Equal(.6, paint.FillOpacity);
+    }
+
+    [Fact]
+    public void Local_node_modes_apply_after_the_reset_and_every_node_style()
+    {
+        const string source = @"\begin{tikzpicture}[draw=red,fill=blue,every node/.style={draw}]\node[draw=none,fill]{A};\end{tikzpicture}";
+        var (_, scene) = Convert(source);
+        var paint = Assert.Single(scene.Paths).Paint;
+        Assert.False(paint.Stroke);
+        Assert.True(paint.Fill);
+        Assert.Equal(new Color(0, 0, 1), paint.FillColor);
+    }
+
     [Fact]
     public void Actual_rectangle_fixture_runs_through_public_conversion_with_native_boxes_and_anchors()
     {
