@@ -1,0 +1,78 @@
+\begin{tikzpicture}[every node/.style={draw,inner sep=2pt}]
+  \pgfmathsetmacro\value{abs(1.23456)}
+  \node (absLiteral) at (\value*1mm,0mm) {abs};
+  \pgfmathsetmacro\value{abs(-1.23456)}
+  \node (absNegative) at (\value*1mm+25mm,0mm) {-abs};
+  \pgfmathsetmacro\value{abs(-0.00001)}
+  \node (absTiny) at (\value*1mm+50mm,0mm) {tiny};
+  \pgfmathsetmacro\value{min(1.23456,1.23457)}
+  \node (minimum) at (\value*1mm+75mm,0mm) {min};
+  \pgfmathsetmacro\value{max(-1.23456,-1.23457)}
+  \node (maximum) at (\value*1mm,-12mm) {max};
+  \pgfmathsetmacro\value{min(0.00001,0.00002)}
+  \node (minimumTie) at (\value*1mm+25mm,-12mm) {tie};
+  \pgfmathsetmacro\value{sin(0)}
+  \node (sinZero) at (\value*1mm+50mm,-12mm) {sin0};
+  \pgfmathsetmacro\value{sin(30)}
+  \node (sinThirty) at (\value*1mm+75mm,-12mm) {sin30};
+  \pgfmathsetmacro\value{cos(30)}
+  \node (cosThirty) at (\value*1mm,-24mm) {cos30};
+  \pgfmathsetmacro\value{sin(45)}
+  \node (sinFortyFive) at (\value*1mm+25mm,-24mm) {sin45};
+  \pgfmathsetmacro\value{cos(45)}
+  \node (cosFortyFive) at (\value*1mm+50mm,-24mm) {cos45};
+  \pgfmathsetmacro\value{sin(90)}
+  \node (sinNinety) at (\value*1mm+75mm,-24mm) {sin90};
+  \pgfmathsetmacro\value{cos(90)}
+  \node (cosNinety) at (\value*1mm,-36mm) {cos90};
+  \pgfmathsetmacro\value{sin(180)}
+  \node (sinHalfTurn) at (\value*1mm+25mm,-36mm) {sin180};
+  \pgfmathsetmacro\value{sin(270)}
+  \node (sinThreeQuarters) at (\value*1mm+50mm,-36mm) {sin270};
+  \pgfmathsetmacro\value{sin(-30)}
+  \node (sinNegative) at (\value*1mm+75mm,-36mm) {-sin30};
+  \pgfmathsetmacro\value{cos(-30)}
+  \node (cosNegative) at (\value*1mm,-48mm) {-cos30};
+  \pgfmathsetmacro\value{sin(390)}
+  \node (sinPeriod) at (\value*1mm+25mm,-48mm) {sin390};
+  \pgfmathsetmacro\value{cos(16383)}
+  \node (cosLarge) at (\value*1mm+50mm,-48mm) {large};
+  \pgfmathsetmacro\value{sin(0.5)}
+  \node (sinHalf) at (\value*1mm+75mm,-48mm) {sin.5};
+  \pgfmathsetmacro\value{cos(0.5)}
+  \node (cosHalf) at (\value*1mm,-60mm) {cos.5};
+  \pgfmathsetmacro\value{sin(-0.5)}
+  \node (sinNegativeHalf) at (\value*1mm+25mm,-60mm) {-sin.5};
+  \pgfmathsetmacro\value{cos(-0.5)}
+  \node (cosNegativeHalf) at (\value*1mm+50mm,-60mm) {-cos.5};
+  \pgfmathsetmacro\value{sin(359.99999)}
+  \node (sinNearPeriod) at (\value*1mm+75mm,-60mm) {turn};
+  \pgfmathsetmacro\value{cos(179.99999)}
+  \node (cosNearHalfTurn) at (\value*1mm,-72mm) {half};
+  \pgfmathsetmacro\value{sin(-16293)}
+  \node (sinSafeMinimum) at (\value*1mm+25mm,-72mm) {safe};
+  \pgfmathsetmacro\value{max(-sin(30),min(2*cos(45),1))}
+  \node (nested) at (\value*1mm+50mm,-72mm) {nest};
+  \pgfmathsetmacro\value{30}
+  \node (before) at (\value*1mm+75mm,-72mm) {before};
+  \begin{scope}
+    \pgfmathsetmacro\value{sin(\value)}
+    \node (inside) at (\value*1mm,-84mm) {inside};
+  \end{scope}
+  \pgfmathsetmacro\probe{cos(\value)}
+  \node (restored) at (\probe*1mm+25mm,-84mm) {after};
+  \foreach \i in {1,2} {
+    \pgfmathsetmacro\value{sin(\i*30)}
+    \node (loop\i) at (\value*1mm+\i*25mm,-96mm) {loop \i};
+  }
+  \pgfmathsetmacro\probe{cos(\value)}
+  \node (loopRestored) at (\probe*1mm+75mm,-96mm) {last};
+  \pgfmathsetmacro\value{sin(-16294)}
+  \node (sinShiftBoundary) at (\value*1mm,-108mm) {shift};
+  \pgfmathsetmacro\value{sin(-16383)}
+  \node (sinLargeNegative) at (\value*1mm+25mm,-108mm) {large};
+  \pgfmathsetmacro\value{min(16383.9,16383.99)}
+  \node (minimumRegister) at (50mm,-108mm) {mincap};
+  \pgfmathsetmacro\value{max(-16383.9,-16383.99)}
+  \node (maximumRegister) at (75mm,-108mm) {maxcap};
+\end{tikzpicture}

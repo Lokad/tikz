@@ -1,0 +1,1162 @@
+{
+  "sourceSha256": "2263a4ae32200cfcc435655c3447d4eed0f5b7584f0d88584d9b1b17da579bbf",
+  "nodes": [
+    {
+      "name": "hub",
+      "anchor": "center",
+      "widthSp": 1219690,
+      "heightSp": 451461,
+      "depthSp": 0,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "0.0pt",
+        "0.0pt"
+      ]
+    },
+    {
+      "name": "worker1",
+      "anchor": "center",
+      "widthSp": 2625111,
+      "heightSp": 451461,
+      "depthSp": 0,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "73.92259pt",
+        "-42.67911pt"
+      ]
+    },
+    {
+      "name": "worker2",
+      "anchor": "center",
+      "widthSp": 2625111,
+      "heightSp": 451461,
+      "depthSp": 0,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "85.35823pt",
+        "0.0pt"
+      ]
+    },
+    {
+      "name": "worker3",
+      "anchor": "center",
+      "widthSp": 2625111,
+      "heightSp": 451461,
+      "depthSp": 0,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "73.92259pt",
+        "42.67911pt"
+      ]
+    },
+    {
+      "name": "output",
+      "anchor": "west",
+      "widthSp": 2111733,
+      "heightSp": 451461,
+      "depthSp": 127430,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "129.65996pt",
+        "0.0pt"
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "name": "hub",
+      "anchor": "text",
+      "xSp": -609845,
+      "ySp": -225730
+    },
+    {
+      "name": "hub",
+      "anchor": "center",
+      "xSp": 0,
+      "ySp": 0
+    },
+    {
+      "name": "hub",
+      "anchor": "north",
+      "xSp": 0,
+      "ySp": 435445
+    },
+    {
+      "name": "hub",
+      "anchor": "south",
+      "xSp": 0,
+      "ySp": -435445
+    },
+    {
+      "name": "hub",
+      "anchor": "west",
+      "xSp": -1318382,
+      "ySp": 0
+    },
+    {
+      "name": "hub",
+      "anchor": "east",
+      "xSp": 1318382,
+      "ySp": 0
+    },
+    {
+      "name": "hub",
+      "anchor": "north west",
+      "xSp": -1318382,
+      "ySp": 435445
+    },
+    {
+      "name": "hub",
+      "anchor": "north east",
+      "xSp": 1318382,
+      "ySp": 435445
+    },
+    {
+      "name": "hub",
+      "anchor": "south west",
+      "xSp": -1318382,
+      "ySp": -435445
+    },
+    {
+      "name": "hub",
+      "anchor": "south east",
+      "xSp": 1318382,
+      "ySp": -435445
+    },
+    {
+      "name": "hub",
+      "anchor": "base",
+      "xSp": 0,
+      "ySp": -225730
+    },
+    {
+      "name": "hub",
+      "anchor": "base west",
+      "xSp": -1318382,
+      "ySp": -225730
+    },
+    {
+      "name": "hub",
+      "anchor": "base east",
+      "xSp": 1318382,
+      "ySp": -225730
+    },
+    {
+      "name": "hub",
+      "anchor": "mid",
+      "xSp": 0,
+      "ySp": -84648
+    },
+    {
+      "name": "hub",
+      "anchor": "mid west",
+      "xSp": -1318382,
+      "ySp": -84648
+    },
+    {
+      "name": "hub",
+      "anchor": "mid east",
+      "xSp": 1318382,
+      "ySp": -84648
+    },
+    {
+      "name": "worker1",
+      "anchor": "text",
+      "xSp": 3532036,
+      "ySp": -3022748
+    },
+    {
+      "name": "worker1",
+      "anchor": "center",
+      "xSp": 4844591,
+      "ySp": -2797018
+    },
+    {
+      "name": "worker1",
+      "anchor": "north",
+      "xSp": 4844591,
+      "ySp": -2427109
+    },
+    {
+      "name": "worker1",
+      "anchor": "south",
+      "xSp": 4844591,
+      "ySp": -3166927
+    },
+    {
+      "name": "worker1",
+      "anchor": "west",
+      "xSp": 3339741,
+      "ySp": -2797018
+    },
+    {
+      "name": "worker1",
+      "anchor": "east",
+      "xSp": 6349441,
+      "ySp": -2797018
+    },
+    {
+      "name": "worker1",
+      "anchor": "north west",
+      "xSp": 3339741,
+      "ySp": -2427109
+    },
+    {
+      "name": "worker1",
+      "anchor": "north east",
+      "xSp": 6349441,
+      "ySp": -2427109
+    },
+    {
+      "name": "worker1",
+      "anchor": "south west",
+      "xSp": 3339741,
+      "ySp": -3166927
+    },
+    {
+      "name": "worker1",
+      "anchor": "south east",
+      "xSp": 6349441,
+      "ySp": -3166927
+    },
+    {
+      "name": "worker1",
+      "anchor": "base",
+      "xSp": 4844591,
+      "ySp": -3022748
+    },
+    {
+      "name": "worker1",
+      "anchor": "base west",
+      "xSp": 3339741,
+      "ySp": -3022748
+    },
+    {
+      "name": "worker1",
+      "anchor": "base east",
+      "xSp": 6349441,
+      "ySp": -3022748
+    },
+    {
+      "name": "worker1",
+      "anchor": "mid",
+      "xSp": 4844591,
+      "ySp": -2881666
+    },
+    {
+      "name": "worker1",
+      "anchor": "mid west",
+      "xSp": 3339741,
+      "ySp": -2881666
+    },
+    {
+      "name": "worker1",
+      "anchor": "mid east",
+      "xSp": 6349441,
+      "ySp": -2881666
+    },
+    {
+      "name": "worker2",
+      "anchor": "text",
+      "xSp": 4281482,
+      "ySp": -225730
+    },
+    {
+      "name": "worker2",
+      "anchor": "center",
+      "xSp": 5594037,
+      "ySp": 0
+    },
+    {
+      "name": "worker2",
+      "anchor": "north",
+      "xSp": 5594037,
+      "ySp": 369909
+    },
+    {
+      "name": "worker2",
+      "anchor": "south",
+      "xSp": 5594037,
+      "ySp": -369909
+    },
+    {
+      "name": "worker2",
+      "anchor": "west",
+      "xSp": 4089187,
+      "ySp": 0
+    },
+    {
+      "name": "worker2",
+      "anchor": "east",
+      "xSp": 7098887,
+      "ySp": 0
+    },
+    {
+      "name": "worker2",
+      "anchor": "north west",
+      "xSp": 4089187,
+      "ySp": 369909
+    },
+    {
+      "name": "worker2",
+      "anchor": "north east",
+      "xSp": 7098887,
+      "ySp": 369909
+    },
+    {
+      "name": "worker2",
+      "anchor": "south west",
+      "xSp": 4089187,
+      "ySp": -369909
+    },
+    {
+      "name": "worker2",
+      "anchor": "south east",
+      "xSp": 7098887,
+      "ySp": -369909
+    },
+    {
+      "name": "worker2",
+      "anchor": "base",
+      "xSp": 5594037,
+      "ySp": -225730
+    },
+    {
+      "name": "worker2",
+      "anchor": "base west",
+      "xSp": 4089187,
+      "ySp": -225730
+    },
+    {
+      "name": "worker2",
+      "anchor": "base east",
+      "xSp": 7098887,
+      "ySp": -225730
+    },
+    {
+      "name": "worker2",
+      "anchor": "mid",
+      "xSp": 5594037,
+      "ySp": -84648
+    },
+    {
+      "name": "worker2",
+      "anchor": "mid west",
+      "xSp": 4089187,
+      "ySp": -84648
+    },
+    {
+      "name": "worker2",
+      "anchor": "mid east",
+      "xSp": 7098887,
+      "ySp": -84648
+    },
+    {
+      "name": "worker3",
+      "anchor": "text",
+      "xSp": 3532036,
+      "ySp": 2571288
+    },
+    {
+      "name": "worker3",
+      "anchor": "center",
+      "xSp": 4844591,
+      "ySp": 2797018
+    },
+    {
+      "name": "worker3",
+      "anchor": "north",
+      "xSp": 4844591,
+      "ySp": 3166927
+    },
+    {
+      "name": "worker3",
+      "anchor": "south",
+      "xSp": 4844591,
+      "ySp": 2427109
+    },
+    {
+      "name": "worker3",
+      "anchor": "west",
+      "xSp": 3339741,
+      "ySp": 2797018
+    },
+    {
+      "name": "worker3",
+      "anchor": "east",
+      "xSp": 6349441,
+      "ySp": 2797018
+    },
+    {
+      "name": "worker3",
+      "anchor": "north west",
+      "xSp": 3339741,
+      "ySp": 3166927
+    },
+    {
+      "name": "worker3",
+      "anchor": "north east",
+      "xSp": 6349441,
+      "ySp": 3166927
+    },
+    {
+      "name": "worker3",
+      "anchor": "south west",
+      "xSp": 3339741,
+      "ySp": 2427109
+    },
+    {
+      "name": "worker3",
+      "anchor": "south east",
+      "xSp": 6349441,
+      "ySp": 2427109
+    },
+    {
+      "name": "worker3",
+      "anchor": "base",
+      "xSp": 4844591,
+      "ySp": 2571288
+    },
+    {
+      "name": "worker3",
+      "anchor": "base west",
+      "xSp": 3339741,
+      "ySp": 2571288
+    },
+    {
+      "name": "worker3",
+      "anchor": "base east",
+      "xSp": 6349441,
+      "ySp": 2571288
+    },
+    {
+      "name": "worker3",
+      "anchor": "mid",
+      "xSp": 4844591,
+      "ySp": 2712370
+    },
+    {
+      "name": "worker3",
+      "anchor": "mid west",
+      "xSp": 3339741,
+      "ySp": 2712370
+    },
+    {
+      "name": "worker3",
+      "anchor": "mid east",
+      "xSp": 6349441,
+      "ySp": 2712370
+    },
+    {
+      "name": "output",
+      "anchor": "text",
+      "xSp": 9132847,
+      "ySp": -162015
+    },
+    {
+      "name": "output",
+      "anchor": "center",
+      "xSp": 10188713,
+      "ySp": 0
+    },
+    {
+      "name": "output",
+      "anchor": "north",
+      "xSp": 10188713,
+      "ySp": 499160
+    },
+    {
+      "name": "output",
+      "anchor": "south",
+      "xSp": 10188713,
+      "ySp": -499160
+    },
+    {
+      "name": "output",
+      "anchor": "west",
+      "xSp": 8497395,
+      "ySp": 0
+    },
+    {
+      "name": "output",
+      "anchor": "east",
+      "xSp": 11880031,
+      "ySp": 0
+    },
+    {
+      "name": "output",
+      "anchor": "north west",
+      "xSp": 8497395,
+      "ySp": 499160
+    },
+    {
+      "name": "output",
+      "anchor": "north east",
+      "xSp": 11880031,
+      "ySp": 499160
+    },
+    {
+      "name": "output",
+      "anchor": "south west",
+      "xSp": 8497395,
+      "ySp": -499160
+    },
+    {
+      "name": "output",
+      "anchor": "south east",
+      "xSp": 11880031,
+      "ySp": -499160
+    },
+    {
+      "name": "output",
+      "anchor": "base",
+      "xSp": 10188713,
+      "ySp": -162015
+    },
+    {
+      "name": "output",
+      "anchor": "base west",
+      "xSp": 8497395,
+      "ySp": -162015
+    },
+    {
+      "name": "output",
+      "anchor": "base east",
+      "xSp": 11880031,
+      "ySp": -162015
+    },
+    {
+      "name": "output",
+      "anchor": "mid",
+      "xSp": 10188713,
+      "ySp": -20933
+    },
+    {
+      "name": "output",
+      "anchor": "mid west",
+      "xSp": 8497395,
+      "ySp": -20933
+    },
+    {
+      "name": "output",
+      "anchor": "mid east",
+      "xSp": 11880031,
+      "ySp": -20933
+    }
+  ],
+  "pictureBox": [
+    [
+      "14290678",
+      "8277178",
+      "0"
+    ]
+  ],
+  "scalarCalls": [
+    {
+      "ordinal": 1,
+      "name": "\\angle",
+      "printed": "-30.0"
+    },
+    {
+      "ordinal": 2,
+      "name": "\\xoffset",
+      "printed": "2.59808"
+    },
+    {
+      "ordinal": 3,
+      "name": "\\yoffset",
+      "printed": "-1.5"
+    },
+    {
+      "ordinal": 4,
+      "name": "\\padding",
+      "printed": "2.0"
+    },
+    {
+      "ordinal": 5,
+      "name": "\\angle",
+      "printed": "0.0"
+    },
+    {
+      "ordinal": 6,
+      "name": "\\xoffset",
+      "printed": "3.0"
+    },
+    {
+      "ordinal": 7,
+      "name": "\\yoffset",
+      "printed": "0.0"
+    },
+    {
+      "ordinal": 8,
+      "name": "\\padding",
+      "printed": "2.0"
+    },
+    {
+      "ordinal": 9,
+      "name": "\\angle",
+      "printed": "30.0"
+    },
+    {
+      "ordinal": 10,
+      "name": "\\xoffset",
+      "printed": "2.59808"
+    },
+    {
+      "ordinal": 11,
+      "name": "\\yoffset",
+      "printed": "1.5"
+    },
+    {
+      "ordinal": 12,
+      "name": "\\padding",
+      "printed": "2.0"
+    },
+    {
+      "ordinal": 13,
+      "name": "\\gap",
+      "printed": "1.5"
+    }
+  ],
+  "internalScalarCalls": [
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1.25"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "-1.0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1.925"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1.9237"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.8"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2.2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2.096774"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": ".8"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".75"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": ".8"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".75"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.325"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "5.4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.25"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2.828427"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "3.191538"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@z",
+      "printed": "60"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "3.6"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4.95"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2.3"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.4"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.4"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.5"
+    }
+  ]
+}

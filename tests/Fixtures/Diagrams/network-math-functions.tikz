@@ -1,0 +1,23 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=9mm,
+  box/.style={draw,rectangle,minimum width=#1,inner sep=3pt}]
+  \node[box=14mm] (hub) {Hub};
+  \foreach \i in {1,2,3} {
+    \pgfmathsetmacro\angle{(\i-2)*30}
+    \pgfmathsetmacro\xoffset{3*cos(\angle)}
+    \pgfmathsetmacro\yoffset{3*sin(\angle)}
+    \coordinate (slot\i) at ($(hub)+(\xoffset*1cm,\yoffset*1cm)$);
+    \pgfmathsetmacro\padding{max(2,abs(\i-2)+1)}
+    \node[box=16mm,inner sep=\padding*1pt] (worker\i) at (slot\i) {Worker \i};
+  }
+  \pgfmathsetmacro\gap{min(2,abs(-1.5))}
+  \node[box=18mm,right={\gap*5mm} of worker2] (output) {Output};
+  \draw[-{Stealth}] (hub.east) -- node[pos=0.4,above] {send} (worker2.west);
+  \foreach \i in {1,3} {
+    \draw[-{Stealth}] (hub) -- node[midway,sloped,above] {copy \i} (worker\i);
+    \draw[-{Stealth}] (worker\i.east) -- node[midway,sloped,above] {done \i} (output);
+  }
+  \coordinate (relay) at ($(worker1)!0.5!(worker3)$);
+  \coordinate (return) at ($(hub.south)+(0,-25mm)$);
+  \draw[-{Stealth}] (output.south) |- (return) -- (hub.south);
+\end{tikzpicture}
