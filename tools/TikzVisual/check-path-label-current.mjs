@@ -74,7 +74,8 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
  const primary=await loadCalcSavedReport(primaryFile,'path-label-current-primary-iteration');
  const pdf=await loadCalcSavedReport(pdfFile,'path-label-current-pdf-iteration');
  const primaryCalibrationFile=path.join(path.dirname(primaryFile),'calibration/report.json');
- const {calibration,checked,native}=await loadQualifiedPathLabelPrimary(primaryCalibrationFile,primaryCheckFile);
+ const {calibration,checked,native,readerReplay}=await loadQualifiedPathLabelPrimary(primaryCalibrationFile,primaryCheckFile);
+ if(readerReplay)await ownCalcBundle(readerReplay,'native-reader-replay',save);
  const pdfCalibration=await loadCalcSavedReport(path.join(path.dirname(pdfFile),'calibration/report.json'),'path-label-native-pdf-calibration');
  const pdfChecked=await loadCalcSavedReport(pdfCheckFile,'path-label-independent-pdf-check');
  assert.equal(pdfChecked.report.inputSha256,pdfCalibration.sha256);assert.equal(pdfChecked.report.sourceRecaptures,pdfCalibration.report.records.length);
@@ -86,7 +87,7 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
  calcEqual(pdfCalibration.json('frame.json'),calibration.json('frame.json'));
  calcEqual(pdfCalibration.json('pdf-frame.json'),pathLabelPdfFrame(native,calibration.json('frame.json')),'Changed native PDF registration.');
  ownedEqual(pdfCalibration,'native',native);
- await currentSources(checked,'source-captures/');await currentSources(pdfChecked,'source-captures/');
+ await currentSources(checked,'source-captures/',true);await currentSources(pdfChecked,'source-captures/',true);
  await currentSources(pdfCalibration,'source-captures/',true);await currentSources(primary,'source-captures/');await currentSources(pdf,'source-captures/');
  const numericFile=path.join(path.dirname(primaryFile),'numeric/report.json'),role=JSON.parse(await readFile(numericFile)).role;
  assert.ok(['path-label-numeric-iteration','diagram-current-numeric'].includes(role));const diagram=role==='diagram-current-numeric',prefix=diagram?'':'current/';

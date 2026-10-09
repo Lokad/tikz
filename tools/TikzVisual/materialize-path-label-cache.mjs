@@ -7,7 +7,7 @@ import {root,writeArtifact,outputPath,sha256} from './shape-oracle-bundle.mjs';
 import {loadPathLabelCache} from './path-label-cache.mjs';
 import {loadCalcSavedReport} from './calc-saved-images.mjs';
 
-assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/materialize-path-label-cache.mjs <placement|interactions>');
+assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/materialize-path-label-cache.mjs <placement|interactions|flowchart-basic|network-bent|flowchart-transformed>');
 const fixture=process.argv[2],output=path.join(root,'artifacts/path-label-cache-materialization/run-'+randomUUID()),artifacts={},save=(p,b)=>writeArtifact(output,p,b,artifacts);let phase='archive';
 async function publish(completed,extra={}){const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'path-label-portable-cache-materialization',completed,phase:completed?'complete':phase,
  converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',fixture,artifacts,...extra},null,2)+'\n');

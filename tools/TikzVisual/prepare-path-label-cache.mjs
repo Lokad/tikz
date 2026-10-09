@@ -1,4 +1,4 @@
-// Acceptance gap: portable, lossless ownership of the six already-qualified native bundles.
+// Acceptance gap: clean exports need the already-qualified diagram bundles.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
@@ -8,10 +8,11 @@ import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {loadQualifiedPathLabelPrimary} from './path-label-qualified-primary.mjs';
 import {encodePathLabelCache,decodePathLabelCache,pathLabelCacheBounds} from './path-label-cache-codec.mjs';
+import {pathLabelCacheDefinition} from './path-label-cache.mjs';
+import {verifyPathLabelPdfPixels} from './check-path-label-pdf.mjs';
 
-assert.equal(process.argv.length,9,'Usage: node tools/TikzVisual/prepare-path-label-cache.mjs <placement|interactions> <primary-calibration> <primary-check> <PDF-calibration> <PDF-check> <text-sensitivity> <text-check>');
-const fixture=process.argv[2],roles=['path-label-native-primary-calibration','path-label-independent-primary-check','path-label-native-pdf-calibration',
- 'path-label-independent-pdf-check','path-label-complete-text-sensitivity','path-label-independent-text-check'];
+const fixture=process.argv[2],{roles,diagram}=pathLabelCacheDefinition(fixture);
+assert.equal(process.argv.length,roles.length+3,'Usage: node tools/TikzVisual/prepare-path-label-cache.mjs <fixture> <primary-calibration> <primary-check> <PDF-calibration> <PDF-check> [<text-sensitivity> <text-check>]');
 const output=path.join(root,'artifacts/path-label-cache/run-'+randomUUID()),artifacts={},save=(p,b)=>writeArtifact(output,p,b,artifacts);let phase='inputs';
 async function publish(completed,extra={}){const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'path-label-portable-cache-preparation',completed,phase:completed?'complete':phase,
  converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',fixture,artifacts,...extra},null,2)+'\n');
@@ -21,11 +22,16 @@ try{
  const args=process.argv.slice(3),bundles=[];for(let i=0;i<roles.length;i++)bundles.push(await loadCalcSavedReport(path.resolve(root,args[i]),roles[i]));
  const [primary,primaryCheck,pdf,pdfCheck,text,textCheck]=bundles;
  const qualified=await loadQualifiedPathLabelPrimary(args[0],args[1]);assert.equal(qualified.calibration.sha256,primary.sha256);assert.equal(primary.report.fixture,fixture);
- assert.equal(pdf.report.fixture,fixture);assert.equal(text.report.fixture,fixture);
- assert.equal(pdf.report.inputs.primarySha256,primary.sha256);assert.equal(pdf.report.inputs.checkedSha256,primaryCheck.sha256);assert.equal(pdfCheck.report.inputSha256,pdf.sha256);assert.equal(pdfCheck.report.sourceRecaptures,12);
- assert.equal(text.report.inputs.calibrationSha256,primary.sha256);assert.equal(text.report.inputs.checkedSha256,primaryCheck.sha256);assert.equal(textCheck.report.inputSha256,text.sha256);assert.equal(textCheck.report.sourceRecaptures,text.report.coverage.views);
+ assert.equal(pdf.report.fixture,fixture);
+ assert.equal(pdf.report.inputs.primarySha256,primary.sha256);assert.equal(pdf.report.inputs.checkedSha256,primaryCheck.sha256);assert.equal(pdfCheck.report.inputSha256,pdf.sha256);
+ calcEqual(verifyPathLabelPdfPixels(pdf),pdfCheck.report.pixels);assert.equal(pdfCheck.report.sourceRecaptures,diagram?16:12);
+ assert.ok(pdfCheck.files.get('input-report.json').equals(pdf.bytes));
+ if(!diagram){assert.equal(text.report.fixture,fixture);assert.equal(text.report.inputs.calibrationSha256,primary.sha256);assert.equal(text.report.inputs.checkedSha256,primaryCheck.sha256);
+  assert.equal(textCheck.report.inputSha256,text.sha256);assert.equal(textCheck.report.sourceRecaptures,text.report.coverage.views);}
  for(const bundle of bundles){assert.equal(bundle.report.converterInvoked,false);assert.equal(bundle.report.nativeToolInvoked,false);
-  for(const[f,b]of bundle.files)if(f.startsWith('source-captures/'))assert.ok(b.equals(await readFile(path.join(root,f.slice(16)))),'Changed frozen evidence dependency: '+f);}
+  // Script captures preserve historical provenance. Qualified readers check
+  // current native inputs; engine/renderer/C# dependencies remain pinned here.
+  for(const[f,b]of bundle.files)if(f.startsWith('source-captures/')&&!f.endsWith('.mjs'))assert.ok(b.equals(await readFile(path.join(root,f.slice(16)))),'Changed frozen evidence dependency: '+f);}
  const files=new Map(),reports=[];
  for(let i=0;i<bundles.length;i++){
   const file=path.relative(root,path.resolve(root,args[i])).split(path.sep).join('/');assert.match(file,/^artifacts\/path-label-[a-z-]+\/run-[a-f0-9-]+\/report\.json$/,'Cache input must be a repository-owned artifact report.');

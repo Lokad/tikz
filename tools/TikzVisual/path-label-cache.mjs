@@ -6,21 +6,28 @@ import {gunzipSync} from 'node:zlib';
 import {calcHash,calcEqual} from './calc-saved-images.mjs';
 import {decodePathLabelCache,pathLabelCacheBounds} from './path-label-cache-codec.mjs';
 
+export function pathLabelCacheDefinition(fixture){
+ const diagram=['flowchart-basic','network-bent','flowchart-transformed'].includes(fixture);
+ const fixtures=diagram?['flowchart-basic','flowchart-transformed','network-bent']:['interactions','placement'];assert.ok(fixtures.includes(fixture));
+ const directory='tests/Reference/'+(diagram?'Diagrams':'PathLabels');
+ const roles=['path-label-native-primary-calibration','path-label-independent-primary-check','path-label-native-pdf-calibration','path-label-independent-pdf-check'];
+ if(!diagram)roles.push('path-label-complete-text-sensitivity','path-label-independent-text-check');
+ return{diagram,fixtures,directory,roles,profileRole:diagram?'diagram-frozen-image-profile':'path-label-frozen-image-profile'};
+}
+
 export async function loadPathLabelCache(repositoryRoot,fixture,read=readFile){
- assert.ok(['placement','interactions'].includes(fixture));
- const profile=JSON.parse(await read(path.join(repositoryRoot,'tests/Reference/PathLabels/image-profile.json')));
- assert.equal(profile.schemaVersion,1);assert.equal(profile.role,'path-label-frozen-image-profile');
- calcEqual(Object.keys(profile.fixtures).sort(),['interactions','placement']);
+ const {fixtures,directory,roles,profileRole}=pathLabelCacheDefinition(fixture);
+ const profile=JSON.parse(await read(path.join(repositoryRoot,directory+'/image-profile.json')));
+ assert.equal(profile.schemaVersion,1);assert.equal(profile.role,profileRole);
+ calcEqual(Object.keys(profile.fixtures).sort(),fixtures);
  const entry=profile.fixtures[fixture],manifest=entry.manifest;
- assert.equal(entry.file,'tests/Reference/PathLabels/'+fixture+'.images.cache.gz');assert.equal(manifest.fixture,fixture);
+ assert.equal(entry.file,directory+'/'+fixture+'.images.cache.gz');assert.equal(manifest.fixture,fixture);
  assert.equal(manifest.converterInvoked,false);assert.equal(manifest.imageConformanceClaim,false);
  for(const[file,digest]of Object.entries(profile.transportSources))assert.equal(calcHash(await read(path.join(repositoryRoot,file))),digest,'Changed archive transport dependency.');
  const compressed=await read(path.join(repositoryRoot,entry.file));assert.ok(compressed.length<=pathLabelCacheBounds.compressed);assert.equal(compressed.length,manifest.compressedBytes);
  assert.equal(calcHash(compressed),manifest.compressedSha256,'Unreviewed path-label archive bytes.');
  const bytes=gunzipSync(compressed,{maxOutputLength:pathLabelCacheBounds.decoded});assert.equal(bytes.length,manifest.decodedBytes);assert.equal(calcHash(bytes),manifest.decodedSha256);
  const cache=decodePathLabelCache(bytes,fixture);assert.equal(cache.files.size,manifest.logicalFiles);assert.equal(cache.blobs.size,manifest.uniqueBlobs);assert.equal(cache.logicalBytes,manifest.logicalBytes);
- const roles=['path-label-native-primary-calibration','path-label-independent-primary-check','path-label-native-pdf-calibration',
-  'path-label-independent-pdf-check','path-label-complete-text-sensitivity','path-label-independent-text-check'];
  calcEqual(manifest.reports.map(r=>r.role),roles);const expected=new Set();
  for(const descriptor of manifest.reports){
   assert.match(descriptor.file,/^artifacts\/path-label-[a-z-]+\/run-[a-f0-9-]+\/report\.json$/);const reportBytes=cache.files.get(descriptor.file);

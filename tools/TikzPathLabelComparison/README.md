@@ -75,8 +75,8 @@ The three diagram encodings retain the two native decimal matrix variants and
 add the existing arrow encoder's short TeX-point path representation. Its finite
 decimals recover the original scaled-point coordinates, widths and translations.
 This closes the retained path calibration gap: all 72 current diagram primary
-views now pass. Both diagram PDF gates now pass their 24 required current views;
-final export qualification and integration remain separate.
+views now pass. Both diagram PDF gates now pass their 24 required current views.
+Feature acceptance additionally requires a clean committed source export.
 
 When a root changes or an independent encoding is added, the existing calibrator
 can preserve unchanged samples from an exact prior report:
@@ -106,6 +106,12 @@ comparisons for original-SVG/PDF and converter-SVG/PDF. These commands establish
 focused iteration evidence. A separate current checker decodes metrics, verifies
 framing/provenance and recaptures all images from fresh public output. Pinned
 portable native archives restore the qualified inputs in fresh exports.
+The [three diagram archives](../../tests/Reference/Diagrams/README.md) use the same
+materializer and bounded codec, with four native reports per fixture; legacy
+families retain their six reports and unchanged archive bytes. When the C#
+native observation reader changes, the existing DVI/TFM oracle must reproduce
+the frozen glyph evidence exactly before qualified calibration can be reused.
+Fresh current checking retains that replay and its current source captures.
 For complete diagrams, the same PDF commands use the checked primary frame's
 three native encodings and the owned original PDF pages. Registration still
 uses native save-position, measured wrapper glue and physical page/raster sizes.

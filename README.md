@@ -26,13 +26,15 @@ checks for all nineteen supported names and selected mixtures.
 
 The experimental [calculated-coordinate subset](docs/CALC.md) adds arithmetic,
 interpolation, distance and projection. All 25 cached native anchors match in
-integer scaled points; primary/PDF and broader interaction qualification remain open.
+integer scaled points. Its fixed glyph-free fixture passes independently
+calibrated primary/PDF acceptance; broader calculated-coordinate coverage remains.
 
 The [attached path-label subset](docs/PATH-LABELS.md) and
 [bounded positioning](docs/POSITIONING.md) now make three complete authored
 flowchart/network diagrams convert. Their nine named nodes match all 144 native
-anchors, including transformed placement. Complete diagram image qualification
-and broader positioning coverage remain open.
+anchors, including transformed placement. Focused positioning adds 28 nodes and
+448 native anchors. All 72 complete-diagram primary views and 24 PDF views pass
+their native-only limits. Wider positioning and diagram coverage remains.
 
 ```csharp
 using Lokad.TikZ;

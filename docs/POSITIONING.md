@@ -68,6 +68,6 @@ Adding that missing calibration variant closes the retained 4x path failures:
 all 72 complete-diagram primary views pass their native-only limits. Both
 original-SVG/PDF and public-SVG/PDF gates also pass all 24 required diagram views.
 Independent checking recreates fresh public output and replays the complete
-primary/PDF images. Final export qualification and feature integration remain
-open. Iteration images
-do not establish a general pixel-perfect or image-conformance claim.
+primary/PDF images. Complete feature acceptance additionally requires clean
+source-export checks and ordinary integrated tests. These fixed fixtures do not
+establish a general pixel-perfect or image-conformance claim.

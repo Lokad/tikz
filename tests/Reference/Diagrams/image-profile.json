@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "role": "diagram-frozen-image-profile",
+  "fixtures": {
+    "flowchart-basic": {
+      "file": "tests/Reference/Diagrams/flowchart-basic.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "flowchart-basic",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-0a1388ec-78f0-400d-b140-f8e4ec1618e8/report.json",
+            "sha256": "7b6de98efbfdcceac6f81f2ff60872ac5caef93310f27e85bc7d9f74c5eef446"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-13f6c946-df36-4223-a0fc-3302df52b24c/report.json",
+            "sha256": "a4d6cf723555cef17b48544c1f48d002f28c7c82dc2482e21d63c1e7d72e8c9a"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-8b777510-ad25-4d43-bfb6-05a21130734b/report.json",
+            "sha256": "2c128f9827abad042b7e6be6ad144aff81721c09be253160cca1248719350674"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-ce195f5a-b16c-4653-a2ef-13df9cd23fda/report.json",
+            "sha256": "d186a8c600d975d991c8356550478c8b8c8dbc98574c7fd1ec432973308f7a6e"
+          }
+        ],
+        "compressedSha256": "c60effbbe02109e6dd34047ba81d7e05aee7e615a3f9ba1eca4f4884c4a95b27",
+        "decodedSha256": "2e9cb89c5b68c0c3e6b52cd5b1460497dc7f7a776dccec0151d74d020e128e53",
+        "compressedBytes": 7537215,
+        "decodedBytes": 29161288,
+        "logicalFiles": 2102,
+        "uniqueBlobs": 875,
+        "logicalBytes": 41275652,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "network-bent": {
+      "file": "tests/Reference/Diagrams/network-bent.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "network-bent",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-8b3d07d3-14c7-459f-8734-c04eefa4134a/report.json",
+            "sha256": "d059fe63c487752be38e7f40c3def85cbd51378d58319835a07f7f5271ca3e23"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-c9375572-1e72-45cb-9503-3f9b44189177/report.json",
+            "sha256": "1f818910f7adc8da3a0be2d2ce3d56e66b4cfa6b87f2ad6befccafcb5ab4287d"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-15376e02-e417-428b-acde-12b5b3b3ab9a/report.json",
+            "sha256": "8b7e338093c84e4aebe9d1fd8aefc65d5b2d36fd2e79154fe1268e4da47f7250"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-cf014c7d-a6e5-49a7-87d7-0ed9c4842b9e/report.json",
+            "sha256": "3e533722be6ed05f6764d17da79a5e74067401f9b0305a74606db105ac38461d"
+          }
+        ],
+        "compressedSha256": "632f1e294da833bb24ecbf44d0f0ee16f55fb79a10188dba243dd2f1ea774b22",
+        "decodedSha256": "38f285faac9c014f17f073e1018ff9a74789a02a2c1ad583dbbf0077c9d5aa3f",
+        "compressedBytes": 11686203,
+        "decodedBytes": 30916939,
+        "logicalFiles": 1997,
+        "uniqueBlobs": 841,
+        "logicalBytes": 47841941,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "flowchart-transformed": {
+      "file": "tests/Reference/Diagrams/flowchart-transformed.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "flowchart-transformed",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-a3cd049f-89e9-43f6-8c06-c981efb8242a/report.json",
+            "sha256": "d6c01eb8276daafdabe550d4cea0b18ddf5b7c59e9d90ecb03a63ba78313f21a"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-f55d0b97-ee9a-4410-9b5e-21d1c124d92d/report.json",
+            "sha256": "f51135ef2e65ad6871f0ce892d14896161a1da87e35e789192b0e0ef7fe27f4f"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-91250e09-b522-4295-8c61-9fb2225c64b8/report.json",
+            "sha256": "ccd3e50d95212e615e5bedfa5cbe53d1f230b4efa20c5dfd078731763c329df3"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-296d6cde-2fc5-439e-8fcf-d9bf1787c101/report.json",
+            "sha256": "5e8f436dd9fd1811ddec612c419738fae8f41cca843c029f97ea5d9efbb1e744"
+          }
+        ],
+        "compressedSha256": "a545e2e54431ba80b96583615d38e1a48856aaf46e0e00bd39b9c7bf923d4251",
+        "decodedSha256": "82e5d449e960175a1582b2491ff31ccbd67826f9013000103f9849e9f56778c4",
+        "compressedBytes": 6188462,
+        "decodedBytes": 16483881,
+        "logicalFiles": 1647,
+        "uniqueBlobs": 645,
+        "logicalBytes": 28310325,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    }
+  },
+  "transportSources": {
+    "tools/TikzVisual/path-label-cache-codec.mjs": "0d145fe205d85d404e7754c46d923342a7820e82871fd135ed7700de9cb7cff1",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/path-label-cache.mjs": "1fd9df4e4476567614e5b10d460b74cd16627104d3507593d5b9f8e714f0b1bc"
+  }
+}

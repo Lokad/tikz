@@ -81,7 +81,7 @@ export async function checkPathLabelPrimary(file,save=async()=>{}){
  for(const [file,bytes]of bundle.files)if(file.startsWith('source-captures/')&&!file.endsWith('.mjs'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice('source-captures/'.length)))),'Current calibration dependency changed: '+file);
  const oracle=bundle.json('oracle/report.json');assert.equal(oracle.converterInvoked,false);assert.equal(oracle.nativeInputSha256,native.sha256);
  assert.ok(oracle.assemblyReferences.every(n=>n==='System'||n.startsWith('System.')));
- for(const [file,bytes]of bundle.files)if(file.startsWith('oracle/source-captures/'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice('oracle/source-captures/'.length)))),'Native reader dependency changed.');
+ for(const [file,bytes]of bundle.files)if(file.startsWith('oracle/source-captures/')&&!file.endsWith('.cs'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice('oracle/source-captures/'.length)))),'Native reader environment changed.');
  const freshHandle=await runCalcChild(root,'dotnet',['run','--project','tools/TikzPathLabelOracle','-c','Release','--',
   path.relative(root,path.join(path.dirname(file),'native/report.json'))],'native-reparse',save);
  const fresh=await readCalcChild(root,freshHandle,'path-label-native-glyph-oracle');

@@ -119,3 +119,11 @@ images. For final feature acceptance, run the ordinary suite, corruption control
 and fresh comparisons/checks in a committed source export with the restored
 native inputs. Evidence remains scoped to these fixtures and pinned profiles;
 individual commands do not establish general feature or image conformance.
+
+The [complete-diagram archives](../../tests/Reference/Diagrams/README.md) restore
+through the same commands with `flowchart-basic`, `network-bent` or
+`flowchart-transformed`. They preserve four qualified native reports per fixture,
+including the third native path encoding and its existing label/tip controls.
+Historical reader sources remain immutable provenance. A changed C# glyph reader
+must reproduce the frozen DVI/TFM observations exactly before calibration reuse;
+fresh current checking retains that replay and validates its current sources.

@@ -5,7 +5,7 @@ import {encodeCalcTrialCache,decodeCalcTrialCache,calcTrialCacheBounds,calcTrial
 
 export const pathLabelCacheBounds=calcTrialCacheBounds;
 const nativeMagic=Buffer.from('LTZPL01\n'),calcMagic=Buffer.from('LTZCC01\n');
-const metadata=fixture=>{assert.ok(['placement','interactions'].includes(fixture));return{schemaVersion:1,role:'path-label-native-image-cache',fixture,
+const metadata=fixture=>{assert.ok(['placement','interactions','flowchart-basic','network-bent','flowchart-transformed'].includes(fixture));return{schemaVersion:1,role:'path-label-native-image-cache',fixture,
  scope:'Frozen native calibration and sensitivity evidence only; current conversion and final feature conformance remain separate.',
  converterInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending'};};
 
