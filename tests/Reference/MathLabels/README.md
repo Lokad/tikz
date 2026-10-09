@@ -63,7 +63,43 @@ transparent pairs; its eight-neighbor topology remains separate from the
 legacy renderer's four-neighbor observations. Native event label identities
 are retained in `native-frame.json`; these native-only crops do not assert
 converter source spans. These experiments explain encoding differences and
-leave primary/PDF policies, framing and final feature qualification pending.
+leave primary/PDF policies and final feature qualification pending.
+
+The additive `native-layout/<id>/framing.json` records bind four PGF picture
+bounds, observed native linewidths and the original SVG's ordered path/pen
+state. Supplemental observations preserve the frozen drawing, label boxes,
+anchors and fonts. The additive `paths.json` supplements reuse the arrow hooks
+and bounded path reader to bind shipped integer PGF paths, pens and tip
+placements to the original SVG's ordered paint. The two contracts without
+arrows explicitly opt into that observation; older arrow reader defaults remain.
+Natural roots combine exact PGF picture bounds with integer native path ink
+and selected native outlines at integer DVI positions;
+they stay separate from padded inspection cameras. Browser boxes check analytic
+geometry with a magnitude-derived binary32 bound, without choosing a raster
+allowance. All 64 labels, 459 glyphs, 37 rules and 71 paths have fixed inspection
+regions, including the empty spacing label and assembled radicals.
+
+Fresh public exports and affected framing/image diagnostics reuse the existing
+source trace, process/artifact handling, renderer and independent PNG reader:
+
+```sh
+dotnet run --project tools/TikzReference -c Release -- export-math-labels --out artifacts/math-public
+node tools/TikzVisual/math-label-framing-images.mjs <owned-native-image-report> artifacts/math-public/report.json --out artifacts/math-framing
+node tools/TikzVisual/check-math-label-framing.mjs artifacts/math-framing/report.json
+node tools/TikzVisual/math-label-framing-self-test.mjs artifacts/math-framing/report.json --out artifacts/math-framing-controls
+node tools/TikzVisual/math-label-native-paths-self-test.mjs artifacts/math-framing/report.json --out artifacts/math-path-controls
+```
+
+This iteration bundle keeps 24 affected pairs, 5,048 fixed-region checks,
+source-attributed numeric differences, paired inspection sheets and individual
+mark crops. The independent decoder identifies shared and distinct changed
+pixels between the original driver, native integer encoding and fresh converter.
+Natural-root serialization and conservative path metadata are checked separately:
+metadata must contain native ink and remain within cap/miter-limited native pen
+envelopes. Local arrow geometry carries its placement transform in the export.
+Raw exact-box differences remain diagnostics; these checks do not admit a primary or
+PDF policy. Math rectangles and scaled outline aliases explicitly opt into the
+existing comparison routine; older path/glyph/clip semantics stay separate.
 
 The existing node/scalar observer admits only fixed source hashes. It checks
 pinned MiKTeX/dvisvgm/DVItype versions and PGF 3.1.11a, retains executable and
@@ -78,9 +114,11 @@ Regeneration is a separate development operation on these trusted inputs:
 
 ```sh
 node tools/TikzVisual/diagram-positioning-reference.mjs network-math-labels math-label-contract math-atom-contract
+node tools/TikzVisual/diagram-positioning-reference.mjs --framing network-math-labels math-label-contract math-atom-contract
+node tools/TikzVisual/diagram-positioning-reference.mjs --paths network-math-labels math-label-contract math-atom-contract
 ```
 
-All 732 ordinary tests pass at this implementation stage. The eleven earlier
+All 734 ordinary tests pass at this implementation stage. The eleven earlier
 public diagram/contract SVGs remain byte-identical. Frozen-native image
 diagnostics use the existing pinned renderer, physical registration, paired
 images, overlay/blink viewer and source-attributed crops. Raw pixel differences,

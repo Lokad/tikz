@@ -20,7 +20,7 @@ export function arrowRecords(log){
  assert.ok(typeof log==='string'&&log.length<=1000000);const records=[...log.matchAll(/\b(ARROW-[A-Z-]+) ([\s\S]*?)\|END/g)].map(m=>({kind:m[1],fields:m[2].replace(/\r?\n/g,'').split('|')}));
  assert.ok(records.length>0&&records.length<20000);assert.equal((log.match(/\bARROW-/g)??[]).length,records.length,'Incomplete native arrow record.');return records;
 }
-export function parseArrowLog(log,{allowWrapperGlue=false}={}){
+export function parseArrowLog(log,{allowWrapperGlue=false,allowNoArrows=false}={}){
  const inputs=[],paths=[],templates=[],placements=[],shortening=[],paintEvents=[],clips=[],sizes=new Map();let pictureBounds,pictureBox,pgf;
  const lookup=(a,id)=>{const n=integer(id);assert.ok(n>0&&n<=a.length);const row=a[n-1];assert.equal(row.id,n);return row;};
  for(const {kind,fields:f}of arrowRecords(log)){
@@ -50,7 +50,8 @@ export function parseArrowLog(log,{allowWrapperGlue=false}={}){
   else if(kind==='ARROW-PAGE')count(4);
   else assert.fail('Unknown native arrow observation: '+kind);
  }
- assert.ok(pgf&&pictureBounds&&pictureBox&&inputs.length>0&&inputs.length<1000&&templates.length>0&&templates.length<100&&paths.length<2000);
+ assert.ok(pgf&&pictureBounds&&pictureBox&&inputs.length>0&&inputs.length<1000&&(allowNoArrows||templates.length>0)&&templates.length<100&&paths.length<2000);
+ if(templates.length===0)assert.equal(placements.length,0,'Tip placement without a native template.');
  const extraWidth=pictureBox.widthSp-(pictureBounds.maxXSp-pictureBounds.minXSp);
  if(allowWrapperGlue)assert.ok(extraWidth>=0,'Wrapper is narrower than its diagram.');
  else assert.equal(extraWidth,0,'TeX glue outside the measured arrow picture.');

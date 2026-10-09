@@ -111,8 +111,25 @@ function nativeSegments(path,convert){
  }
  return collapseMoves(result);
 }
+// Shared by the math supplement: path identity is independent of text/rules.
+// Keep native SVG serialization limits here; PDF checking remains separate.
+export function matchNativeArrowSvgOrder(metrics,svgPaths,svgPaints){
+ const paints=[];
+ for(const event of metrics.paintEvents){
+  if(event.kind==='path'){const p=metrics.paths[event.target-1];assert.equal(p.role,'shaft');assert.ok(p.paint);paints.push({eventId:event.id,pathId:p.id,role:'shaft',path:p,matrix:[...identity]});}
+  else{const place=metrics.placements[event.target-1],tip=metrics.templates[place.templateId-1];for(const id of tip.paths){const p=metrics.paths[id-1];paints.push({eventId:event.id,pathId:id,role:'tip',placementId:place.id,path:p,matrix:[...place.matrix,place.xSp/65536,place.ySp/65536]});}}
+ }
+ for(const a of [svgPaths,svgPaints])assert.equal(a.length,paints.length,'Native shipped paint count.');
+ const matches=(a,p)=>{const expected=nativeSegments(p,n=>n/65536),actual=collapseMoves(a.segments);return actual.length===expected.length&&expected.every((e,j)=>{
+  const r=actual[j];return r.kind===e.kind&&['point','a','b'].every(k=>!e[k]||['x','y'].every(axis=>Math.abs(r[k][axis]-e[k][axis])<=1/65536));});};
+ const remaining=[...paints],physical=[];
+ for(let i=0;i<svgPaths.length;i++){const s=svgPaints[i],operation=s.stroke===null?'fill':s.fill===null?'stroke':'fillstroke';
+  const matchesIndex=remaining.flatMap((e,j)=>e.path.paint===operation&&matches(svgPaths[i],e.path)&&e.matrix.every((n,k)=>Math.abs(n-svgPaths[i].matrix[k])<=(k<4?1e-6:1/65536))?[j]:[]);
+  assert.equal(matchesIndex.length,1,'Native SVG paint requires one geometry/placement identity: '+(i+1));physical.push(remaining.splice(matchesIndex[0],1)[0]);}
+ assert.equal(remaining.length,0);return physical;
+}
 export function verifyArrowDriverState(metrics,svg,pdf,page,{allowText=false,wrapperExtraWidthSp=0}={}){
- const sv=arrowSvgVectors(svg,{allowText}),pv=arrowPdfVectors(pdf,{allowText}),ss=edgeSvgPaints(svg),ps=edgePdfPaints(pdf),paints=[],checks=[];
+ const sv=arrowSvgVectors(svg,{allowText}),pv=arrowPdfVectors(pdf,{allowText}),ss=edgeSvgPaints(svg),ps=edgePdfPaints(pdf),checks=[];
  const scalar=(quantity,expected,actual,limit=0)=>{const delta=Math.abs(expected-actual);assert.ok(Number.isFinite(expected)&&Number.isFinite(actual)&&delta<=limit,quantity+': '+actual+' vs '+expected+' (limit '+limit+')');checks.push({quantity,expected,actual,delta,limit});};
  assert.ok(page&&Number.isSafeInteger(page.widthSp)&&Number.isSafeInteger(page.heightSp));const bpPerSp=72/(72.27*65536),bounds=metrics.pictureBounds,box=metrics.pictureBox;
  assert.deepEqual(pv.mediaBox.slice(0,2),[0,0]);scalar('pdf.page.width',page.widthSp*bpPerSp,pv.mediaBox[2],.000500000001);scalar('pdf.page.height',page.heightSp*bpPerSp,pv.mediaBox[3],.000500000001);
@@ -133,20 +150,11 @@ export function verifyArrowDriverState(metrics,svg,pdf,page,{allowText=false,wra
   for(const place of metrics.placements.filter(p=>p.inputId===input.id)){const tip=metrics.templates[place.templateId-1],additional=input.additionalShorteningSp[place.side],d=tip.ends.tipSp+additional,sign=place.side==='start'?1:-1,point=place.side==='start'?start:end;
    scalar('placement-'+place.id+'.axis.x',point.xSp+sign*ux*d,place.xSp);scalar('placement-'+place.id+'.axis.y',point.ySp+sign*uy*d,place.ySp);}
  }
- for(const event of metrics.paintEvents){
-  if(event.kind==='path'){const p=metrics.paths[event.target-1];assert.equal(p.role,'shaft');assert.ok(p.paint);paints.push({eventId:event.id,pathId:p.id,role:'shaft',path:p,matrix:[...identity]});}
-  else{const place=metrics.placements[event.target-1],tip=metrics.templates[place.templateId-1];for(const id of tip.paths){const p=metrics.paths[id-1];paints.push({eventId:event.id,pathId:id,role:'tip',placementId:place.id,path:p,matrix:[...place.matrix,place.xSp/65536,place.ySp/65536]});}}
- }
- for(const a of [sv.paths,pv.paths,ss.paints,ps.paints])assert.equal(a.length,paints.length,'Native shipped paint count.');
+ const physical=matchNativeArrowSvgOrder(metrics,sv.paths,ss.paints);
+ for(const a of [pv.paths,ps.paints])assert.equal(a.length,physical.length,'Native shipped paint count.');
  assert.equal(sv.clips.length,metrics.clips.length);assert.equal(pv.clips.length,metrics.clips.length);
  const geometry=(id,a,p,convert,limit)=>{const expected=nativeSegments(p,convert),actual=collapseMoves(a.segments);assert.equal(actual.length,expected.length,id+' segment count');for(let j=0;j<expected.length;j++){const e=expected[j],r=actual[j];assert.equal(r.kind,e.kind,id+'.'+j+' segment kind');for(const key of ['point','a','b'])if(e[key])for(const axis of ['x','y'])scalar(id+'.'+j+'.'+key+'.'+axis,e[key][axis],r[key][axis],limit*(convert===pgfPdfPoint?(e.rectangleOperands??1):1));}};
- const matches=(a,p)=>{const expected=nativeSegments(p,n=>n/65536),actual=collapseMoves(a.segments);return actual.length===expected.length&&expected.every((e,j)=>{
-  const r=actual[j];return r.kind===e.kind&&['point','a','b'].every(k=>!e[k]||['x','y'].every(axis=>Math.abs(r[k][axis]-e[k][axis])<=1/65536));});};
- const remaining=[...paints],physical=[];
- for(let i=0;i<sv.paths.length;i++){const s=ss.paints[i],operation=s.stroke===null?'fill':s.fill===null?'stroke':'fillstroke';
-  const matchesIndex=remaining.flatMap((e,j)=>e.path.paint===operation&&matches(sv.paths[i],e.path)&&e.matrix.every((n,k)=>Math.abs(n-sv.paths[i].matrix[k])<=(k<4?1e-6:1/65536))?[j]:[]);
-  assert.equal(matchesIndex.length,1,'Native SVG paint requires one geometry/placement identity: '+(i+1));physical.push(remaining.splice(matchesIndex[0],1)[0]);}
- assert.equal(remaining.length,0);const shipped=[];
+ const shipped=[];
  for(let i=0;i<physical.length;i++){const e=physical[i],s=ss.paints[i],p=ps.paints[i],id='paint-'+(i+1),stroke=e.path.paint!=='fill',fill=e.path.paint!=='stroke';
   assert.equal(p.operation,e.path.paint);assert.equal(pv.paths[i].operation,e.path.paint);assert.equal(s.stroke!==null,stroke);assert.equal(s.fill!==null,fill);
   geometry(id+'.svg',sv.paths[i],e.path,n=>n/65536,1/65536);geometry(id+'.pdf',pv.paths[i],e.path,pgfPdfPoint,.000007629396);

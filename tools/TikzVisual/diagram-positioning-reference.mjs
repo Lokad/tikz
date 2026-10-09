@@ -7,6 +7,7 @@ import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {captureProcess} from './qualification-process.mjs';
 import {edgeAnchors,edgeSanitize} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
+import {arrowHooks,parseArrowLog} from './arrow-log.mjs';
 const cases={
  'math-atom-contract':{folder:'MathLabels',mathEvidence:true,names:['greekOne','greekTwo','variants','capitals','binary','relations','arrows','negation','ordinary','punctuation','binStartEnd','binContext','lowerOne','lowerTwo','upperOne','upperTwo','digits','kernLigatures','upright','uprightGreek','glue','scriptSpacing','largeAtoms','largeScripts','multiline','negativeSpace','assembledRoot','largeAssembledRoot'],hash:'69c1ca3af3e8c1bdfbc61f90ca78f0ab08d66f02d10a1dd92246414b7921e182'},
  'network-math-labels':{mathEvidence:true,names:['hub','worker1','worker2','worker3','output',...Array.from({length:5},(_,i)=>'diagram-label-'+(i+1))],hash:'7b4faa43cb8f0fbb9338629b03d4fc7ce4cca6924c0b3f4fe927635ebfe83702',scalarCalls:Array.from({length:3},()=>['\\angle','\\xoffset','\\yoffset']).flat()},
@@ -36,17 +37,22 @@ const cases={
  'scoped-unavailable':{folder:'Positioning',names:['seed','inside'],hash:'d6640ba5aeaca12213eaa0ae1ff08c3c72730b1830fdb7b85d91030ff66fde82',nativeError:"! Package PGF Math Error: Unknown function `of'"},
  'scoped-reloaded':{folder:'Positioning',names:['seed','inside'],hash:'350aa9de1441cf2768c068ffb7af4de25d0fbe9b71709b32c9d4e0261301bb77',nativeError:"! Package PGF Math Error: Unknown function `of'"}
 };
-const selected=process.argv.length===2?Object.keys(cases):process.argv.slice(2);
+const nativePaths=process.argv[2]==='--paths',framing=nativePaths||process.argv[2]==='--framing',arguments_=process.argv.slice(framing?3:2);
+const noMaintenance=arguments_[0]==='--no-maintenance';if(noMaintenance)arguments_.shift();
+const selected=arguments_.length?arguments_:(framing?Object.keys(cases).filter(id=>cases[id].mathEvidence):Object.keys(cases));
 assert.ok(selected.length>0&&selected.every(id=>Object.hasOwn(cases,id))&&new Set(selected).size===selected.length,'Only fixed trusted fixtures may be selected.');
+assert.ok(!framing||selected.every(id=>cases[id].mathEvidence),'Supplemental framing admits only the three trusted math fixtures.');
 const output=path.join(root,'artifacts/positioning-native/run-'+randomUUID()),artifacts={},commands=[],results=[];
 const save=(f,b)=>writeArtifact(output,f,b,artifacts),bin=path.join(process.env.LOCALAPPDATA,'Programs/MiKTeX/miktex/bin/x64');
 const mathEvidence=selected.some(id=>cases[id].mathEvidence);
 const tools=Object.fromEntries(await Promise.all(['latex','dvisvgm',...(mathEvidence?['dvitype','kpsewhich']:[])].map(async name=>{const executable=path.join(bin,name+'.exe');return[name,{executable,sha256:sha256(await readFile(executable))}];})));
-async function execute(name,args,cwd,tag,expectedError){const p=await captureProcess(tools[name].executable,args,{cwd});await save('commands/'+tag+'.log',edgeSanitize(p.output));
+async function execute(name,args,cwd,tag,expectedError){
+ if(noMaintenance)args=['--miktex-disable-maintenance','--miktex-disable-diagnose',...args];
+ const p=await captureProcess(tools[name].executable,args,{cwd});await save('commands/'+tag+'.log',edgeSanitize(p.output));
  commands.push({name,args,tag,exitCode:p.exitCode,failure:p.failure});assert.equal(p.failure,null);
  if(expectedError){assert.equal(p.exitCode,1);assert.ok(p.output.includes(expectedError),'Unexpected native failure');}
  else assert.equal(p.exitCode,0,p.output.slice(-1000));return p.output;}
-async function publish(completed,error){const b=Buffer.from(JSON.stringify({schemaVersion:1,role:'diagram-positioning-native-iteration',completed,converterInvoked:false,nativeToolInvoked:true,
+async function publish(completed,error){const b=Buffer.from(JSON.stringify({schemaVersion:1,role:nativePaths?'math-label-path-native':framing?'math-label-framing-native':'diagram-positioning-native-iteration',phase:completed?'complete':'native-observation',completed,converterInvoked:false,nativeToolInvoked:true,
  approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',tools:Object.fromEntries(Object.entries(tools).map(([n,t])=>[n,{sha256:t.sha256}])),commands,results,artifacts,error},null,2)+'\n');
  await writeArtifact(output,'report.json',b);console.log(JSON.stringify({completed,report:path.relative(root,path.join(output,'report.json')).replaceAll('\\','/'),sha256:sha256(b)}));}
 function records(log,kind){assert.ok(log.length<=2000000);const flat=log.replace(/\r?\n/g,''),rows=[...flat.matchAll(new RegExp(kind+' ([^]*?)\\|END','g'))].map(m=>m[1].split('|'));
@@ -59,6 +65,10 @@ try{
   assert.ok(version.includes(name==='latex'?profile.latexVersion:name==='dvisvgm'?profile.dvisvgmVersion:name==='dvitype'?profile.dviTypeVersion:profile.kpseVersion),'Changed pinned native tool '+name);}
  const wrapperSource=await readFile(path.join(root,'tools/TikzPathLabelReference/placement.tex'),'utf8');
  await save('wrapper-source.tex',wrapperSource);await save('script.mjs',await readFile(new URL(import.meta.url)));
+ const framingSource=framing?await readFile(path.join(root,'tools/TikzPathLabelReference/math-framing.tex')):null;
+ if(framingSource)await save('math-framing.tex',framingSource);
+ const pathHooks=nativePaths?await readFile(path.join(root,arrowHooks)):null;
+ if(pathHooks)await save('arrow-hooks.tex',pathHooks);
  for(const id of selected){const c=cases[id];
   const source=await readFile(path.join(root,'tests/Fixtures/'+(c.folder??'Diagrams')+'/'+id+'.tikz'));assert.equal(sha256(Buffer.from(source.toString().replaceAll('\r\n','\n'))),c.hash);
   let wrapper=wrapperSource.replace('straight,quarter,reverse,inverted,bend,absolute,from,target,border,reset,full,zero,one',c.names.join(','));
@@ -81,9 +91,28 @@ try{
   }
   const mathMapFile=c.mathEvidence?(await execute('kpsewhich',['lm.map'],root,id+'-font-map')).trim():null;
   const mathMap=c.mathEvidence?await readFile(mathMapFile):null;if(mathMap)await save(id+'/fonts/lm.map',mathMap);
+  if(framing){
+   const golden=await readFile(path.join(root,'tests/Reference/MathLabels/native-layout',id,'font-observations.json'));
+   const observed=JSON.parse(golden);assert.equal(sha256(mathMap),observed.mapSha256,'Frozen math font map changed.');
+   await save(id+'/frozen-font-observations.json',golden);
+   wrapper=wrapper.replace('\\begin{document}','\\input{math-framing.tex}\n\\begin{document}');
+   if(nativePaths){
+    const hook=['\\AtBeginDocument{\\iflabelprobes',
+     '  \\input{arrow-hooks.tex}\\typeout{ARROW-PGF \\pgfversion|END}%',
+     '  \\let\\mathpathend\\endtikzpicture',
+     '  \\def\\endtikzpicture{\\typeout{ARROW-BOUNDS \\number\\pgf@picminx|\\number\\pgf@picminy|\\number\\pgf@picmaxx|\\number\\pgf@picmaxy|END}\\mathpathend}%',
+     '\\fi}'].join('\n')+'\n';
+    wrapper=wrapper.replace('\\begin{document}',hook+'\\begin{document}');
+    const box='\\typeout{PATH-LABEL-BOX \\number\\wd\\labelpicture|\\number\\ht\\labelpicture|\\number\\dp\\labelpicture|END}';
+    assert.ok(wrapper.includes(box));
+    wrapper=wrapper.replace(box,box+'\n\\iflabelprobes'+box.replace('PATH-LABEL-BOX','ARROW-BOX')+'\\fi');
+   }
+  }
   const svg={};let native;
   for(const state of ['plain','probed']){
    const folder=path.join(output,id,state);await mkdir(folder,{recursive:true});await save(id+'/'+state+'/case.tikz',source);
+   if(framingSource)await save(id+'/'+state+'/math-framing.tex',framingSource);
+   if(pathHooks)await save(id+'/'+state+'/arrow-hooks.tex',pathHooks);
    // Scalar observations close the numeric assignment rounding/scope gap.
    // Keep the hook out of the plain run and require drawing noninterference.
    const scalarProbe=String.raw`\let\nativeoriginalmathsetmacro\pgfmathsetmacro
@@ -127,6 +156,18 @@ try{
     for(const r of anchors)assert.equal(r.length,4);
     native={sourceSha256:c.hash,nodes:nodes.map(r=>({name:r[0],anchor:r[1],widthSp:integer(r[2]),heightSp:integer(r[3]),depthSp:integer(r[4]),frame:r.slice(5)})),
      anchors:anchors.map(r=>({name:r[0],anchor:r[1],xSp:integer(r[2]),ySp:integer(r[3])})),pictureBox:records(log,'PATH-LABEL-BOX')};
+    if(framing){
+     const b=records(log,'MATH-BOUNDS');assert.equal(b.length,1);assert.equal(b[0].length,4);
+     const widths=records(log,'MATH-LINEWIDTH');assert.ok(widths.length>0);assert.ok(widths.every(r=>r.length===1));
+     await save(id+'/framing.json',JSON.stringify({sourceSha256:c.hash,pictureBounds:Object.fromEntries(['minXSp','minYSp','maxXSp','maxYSp'].map((key,i)=>[key,integer(b[0][i])])),
+      pictureBox:native.pictureBox,lineWidthsSp:[...new Set(widths.map(r=>integer(r[0])))].sort((a,b)=>a-b)},null,2)+'\n');
+     if(nativePaths){
+      const paths=parseArrowLog(log,{allowWrapperGlue:true,allowNoArrows:id!=='network-math-labels'});
+      assert.deepEqual(paths.pictureBounds,Object.fromEntries(['minXSp','minYSp','maxXSp','maxYSp'].map((key,i)=>[key,integer(b[0][i])])));
+      assert.equal(paths.placements.length,id==='network-math-labels'?6:0);
+      await save(id+'/paths.json',JSON.stringify({sourceSha256:c.hash,...paths},null,2)+'\n');
+     }
+    }
     if(c.scalarCalls){const declared=new Set(c.scalarCalls),allCalls=records(log,'TIKZ-MATH-CALL');
      assert.deepEqual([...new Set([...source.toString().matchAll(/\\pgfmathsetmacro\s*(\\[A-Za-z]+)/g)].map(m=>m[1]))].sort(),[...declared].sort());
      const calls=allCalls.filter(r=>declared.has(r[0])),internal=allCalls.filter(r=>!declared.has(r[0]));
@@ -140,6 +181,14 @@ try{
   }
   if(c.nativeError)continue;
   assert.equal(canonicalEdgeSvg(svg.plain),canonicalEdgeSvg(svg.probed),'Probes changed diagram drawing');
+  if(framing){
+   const goldenSvg=await readFile(path.join(root,'tests/Reference/MathLabels/native-layout',id,'oracle.svg'));
+   assert.equal(sha256(Buffer.from(canonicalEdgeSvg(svg.plain))),sha256(Buffer.from(canonicalEdgeSvg(goldenSvg))),'Supplement changed frozen math drawing.');
+   const golden=JSON.parse(await readFile(path.join(root,'tests/Reference/MathLabels',(c.folder==='MathLabels'?'':'Diagrams/'),id+'.json')));
+   assert.deepEqual({nodes:native.nodes,anchors:native.anchors,pictureBox:native.pictureBox}, {nodes:golden.nodes,anchors:golden.anchors,pictureBox:golden.pictureBox});
+   const observed=JSON.parse(await readFile(path.join(output,id,'math-font-observations.json'))),frozen=JSON.parse(await readFile(path.join(output,id,'frozen-font-observations.json')));
+   assert.deepEqual(observed,frozen,'Supplement changed native fonts or label events.');
+  }
   results.push({id,nodes:native.nodes.length,anchors:native.anchors.length,...(native.scalarCalls?{scalarCalls:native.scalarCalls.length}:{}),probeSvgNoninterference:true,sourceSha256:c.hash});
  }
  for(const[f,h]of Object.entries(artifacts))assert.equal(sha256(await readFile(path.join(output,f))),h);

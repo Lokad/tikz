@@ -1,0 +1,1832 @@
+{
+  "schemaVersion": 1,
+  "role": "native-math-path-supplement",
+  "sourceSha256": "69c1ca3af3e8c1bdfbc61f90ca78f0ab08d66f02d10a1dd92246414b7921e182",
+  "originalSvgSha256": "5080199c196eba107341ab86a35a574482b29453b188958ac1a8dd97b7fe474f",
+  "metrics": {
+    "sourceSha256": "69c1ca3af3e8c1bdfbc61f90ca78f0ab08d66f02d10a1dd92246414b7921e182",
+    "schemaVersion": 1,
+    "pgf": "3.1.11a",
+    "inputs": [
+      {
+        "id": 1,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2309087,
+            "ySp": -509701
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4618174,
+            "ySp": 1019402
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 3,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 12580554,
+            "ySp": -509701
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4673756,
+            "ySp": 1019402
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 5,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -1374339,
+            "ySp": -2374380
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2748678,
+            "ySp": 1019402
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 7,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 12054807,
+            "ySp": -2317728
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 5725250,
+            "ySp": 906098
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 9,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -3600086,
+            "ySp": -4239059
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 7200172,
+            "ySp": 1019402
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 11,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 9923408,
+            "ySp": -4239059
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 9988048,
+            "ySp": 1019402
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 13,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -3036084,
+            "ySp": -6040022
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 6072168,
+            "ySp": 891970
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 15,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13369542,
+            "ySp": -6103737
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 3095780,
+            "ySp": 1019400
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 17,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -891996,
+            "ySp": -8004826
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 1783992,
+            "ySp": 1092220
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 19,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 11920654,
+            "ySp": -8004826
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 5993556,
+            "ySp": 1092220
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 21,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -1442500,
+            "ySp": -9796687
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2885000,
+            "ySp": 946584
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 23,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 9992567,
+            "ySp": -9869505
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 9849730,
+            "ySp": 1092220
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 25,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2389169,
+            "ySp": -11697775
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4778338,
+            "ySp": 1019402
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 27,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 12463644,
+            "ySp": -11671768
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4907576,
+            "ySp": 967388
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 29,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -3602202,
+            "ySp": -13495097
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 7204404,
+            "ySp": 884688
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 31,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 11232081,
+            "ySp": -13558812
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 7370702,
+            "ySp": 1012118
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 33,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2111692,
+            "ySp": -15342210
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4223384,
+            "ySp": 849556
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 35,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13142538,
+            "ySp": -15361592
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 3549788,
+            "ySp": 888320
+          }
+        ]
+      },
+      {
+        "id": 36,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 37,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2940867,
+            "ySp": -17226271
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 5881734,
+            "ySp": 888320
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 39,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13460657,
+            "ySp": -17235160
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2913550,
+            "ySp": 906098
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 41,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2084923,
+            "ySp": -19156491
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4169846,
+            "ySp": 1019402
+          }
+        ]
+      },
+      {
+        "id": 42,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 43,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13305795,
+            "ySp": -19325424
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 3223274,
+            "ySp": 1357268
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 45,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -3948817,
+            "ySp": -21058091
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 7897634,
+            "ySp": 1093244
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 47,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13732200,
+            "ySp": -21235891
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2370464,
+            "ySp": 1448844
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 49,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -1425023,
+            "ySp": -23326522
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2850046,
+            "ySp": 1900748
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 51,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 14884663,
+            "ySp": -22594578
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 65536,
+            "ySp": 436860
+          }
+        ]
+      },
+      {
+        "id": 52,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 53,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -1329046,
+            "ySp": -29577991
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2658092,
+            "ySp": 3215612
+          }
+        ]
+      },
+      {
+        "id": 54,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      },
+      {
+        "id": 55,
+        "modes": "draw,",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13581296,
+            "ySp": -29774601
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2672272,
+            "ySp": 3608832
+          }
+        ]
+      },
+      {
+        "id": 56,
+        "modes": "",
+        "lineWidthSp": 26214,
+        "additionalShorteningSp": {
+          "start": 0,
+          "end": 0
+        },
+        "segments": []
+      }
+    ],
+    "paths": [
+      {
+        "id": 1,
+        "role": "shaft",
+        "inputId": 1,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2309087,
+            "ySp": -509701
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4618174,
+            "ySp": 1019402
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 2,
+        "role": "shaft",
+        "inputId": 3,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 12580554,
+            "ySp": -509701
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4673756,
+            "ySp": 1019402
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 3,
+        "role": "shaft",
+        "inputId": 5,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -1374339,
+            "ySp": -2374380
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2748678,
+            "ySp": 1019402
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 4,
+        "role": "shaft",
+        "inputId": 7,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 12054807,
+            "ySp": -2317728
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 5725250,
+            "ySp": 906098
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 5,
+        "role": "shaft",
+        "inputId": 9,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -3600086,
+            "ySp": -4239059
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 7200172,
+            "ySp": 1019402
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 6,
+        "role": "shaft",
+        "inputId": 11,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 9923408,
+            "ySp": -4239059
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 9988048,
+            "ySp": 1019402
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 7,
+        "role": "shaft",
+        "inputId": 13,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -3036084,
+            "ySp": -6040022
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 6072168,
+            "ySp": 891970
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 8,
+        "role": "shaft",
+        "inputId": 15,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13369542,
+            "ySp": -6103737
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 3095780,
+            "ySp": 1019400
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 9,
+        "role": "shaft",
+        "inputId": 17,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -891996,
+            "ySp": -8004826
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 1783992,
+            "ySp": 1092220
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 10,
+        "role": "shaft",
+        "inputId": 19,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 11920654,
+            "ySp": -8004826
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 5993556,
+            "ySp": 1092220
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 11,
+        "role": "shaft",
+        "inputId": 21,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -1442500,
+            "ySp": -9796687
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2885000,
+            "ySp": 946584
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 12,
+        "role": "shaft",
+        "inputId": 23,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 9992567,
+            "ySp": -9869505
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 9849730,
+            "ySp": 1092220
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 13,
+        "role": "shaft",
+        "inputId": 25,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2389169,
+            "ySp": -11697775
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4778338,
+            "ySp": 1019402
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 14,
+        "role": "shaft",
+        "inputId": 27,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 12463644,
+            "ySp": -11671768
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4907576,
+            "ySp": 967388
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 15,
+        "role": "shaft",
+        "inputId": 29,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -3602202,
+            "ySp": -13495097
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 7204404,
+            "ySp": 884688
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 16,
+        "role": "shaft",
+        "inputId": 31,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 11232081,
+            "ySp": -13558812
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 7370702,
+            "ySp": 1012118
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 17,
+        "role": "shaft",
+        "inputId": 33,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2111692,
+            "ySp": -15342210
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4223384,
+            "ySp": 849556
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 18,
+        "role": "shaft",
+        "inputId": 35,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13142538,
+            "ySp": -15361592
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 3549788,
+            "ySp": 888320
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 19,
+        "role": "shaft",
+        "inputId": 37,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2940867,
+            "ySp": -17226271
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 5881734,
+            "ySp": 888320
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 20,
+        "role": "shaft",
+        "inputId": 39,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13460657,
+            "ySp": -17235160
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2913550,
+            "ySp": 906098
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 21,
+        "role": "shaft",
+        "inputId": 41,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -2084923,
+            "ySp": -19156491
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 4169846,
+            "ySp": 1019402
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 22,
+        "role": "shaft",
+        "inputId": 43,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13305795,
+            "ySp": -19325424
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 3223274,
+            "ySp": 1357268
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 23,
+        "role": "shaft",
+        "inputId": 45,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -3948817,
+            "ySp": -21058091
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 7897634,
+            "ySp": 1093244
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 24,
+        "role": "shaft",
+        "inputId": 47,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13732200,
+            "ySp": -21235891
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2370464,
+            "ySp": 1448844
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 25,
+        "role": "shaft",
+        "inputId": 49,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -1425023,
+            "ySp": -23326522
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2850046,
+            "ySp": 1900748
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 26,
+        "role": "shaft",
+        "inputId": 51,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 14884663,
+            "ySp": -22594578
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 65536,
+            "ySp": 436860
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 27,
+        "role": "shaft",
+        "inputId": 53,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": -1329046,
+            "ySp": -29577991
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2658092,
+            "ySp": 3215612
+          }
+        ],
+        "paint": "stroke"
+      },
+      {
+        "id": 28,
+        "role": "shaft",
+        "inputId": 55,
+        "templateId": null,
+        "lineWidthSp": 26214,
+        "segments": [
+          {
+            "kind": "rectcorner",
+            "xSp": 13581296,
+            "ySp": -29774601
+          },
+          {
+            "kind": "rectsize",
+            "xSp": 2672272,
+            "ySp": 3608832
+          }
+        ],
+        "paint": "stroke"
+      }
+    ],
+    "templates": [],
+    "placements": [],
+    "shortening": [],
+    "paintEvents": [
+      {
+        "id": 1,
+        "kind": "path",
+        "target": 1
+      },
+      {
+        "id": 2,
+        "kind": "path",
+        "target": 2
+      },
+      {
+        "id": 3,
+        "kind": "path",
+        "target": 3
+      },
+      {
+        "id": 4,
+        "kind": "path",
+        "target": 4
+      },
+      {
+        "id": 5,
+        "kind": "path",
+        "target": 5
+      },
+      {
+        "id": 6,
+        "kind": "path",
+        "target": 6
+      },
+      {
+        "id": 7,
+        "kind": "path",
+        "target": 7
+      },
+      {
+        "id": 8,
+        "kind": "path",
+        "target": 8
+      },
+      {
+        "id": 9,
+        "kind": "path",
+        "target": 9
+      },
+      {
+        "id": 10,
+        "kind": "path",
+        "target": 10
+      },
+      {
+        "id": 11,
+        "kind": "path",
+        "target": 11
+      },
+      {
+        "id": 12,
+        "kind": "path",
+        "target": 12
+      },
+      {
+        "id": 13,
+        "kind": "path",
+        "target": 13
+      },
+      {
+        "id": 14,
+        "kind": "path",
+        "target": 14
+      },
+      {
+        "id": 15,
+        "kind": "path",
+        "target": 15
+      },
+      {
+        "id": 16,
+        "kind": "path",
+        "target": 16
+      },
+      {
+        "id": 17,
+        "kind": "path",
+        "target": 17
+      },
+      {
+        "id": 18,
+        "kind": "path",
+        "target": 18
+      },
+      {
+        "id": 19,
+        "kind": "path",
+        "target": 19
+      },
+      {
+        "id": 20,
+        "kind": "path",
+        "target": 20
+      },
+      {
+        "id": 21,
+        "kind": "path",
+        "target": 21
+      },
+      {
+        "id": 22,
+        "kind": "path",
+        "target": 22
+      },
+      {
+        "id": 23,
+        "kind": "path",
+        "target": 23
+      },
+      {
+        "id": 24,
+        "kind": "path",
+        "target": 24
+      },
+      {
+        "id": 25,
+        "kind": "path",
+        "target": 25
+      },
+      {
+        "id": 26,
+        "kind": "path",
+        "target": 26
+      },
+      {
+        "id": 27,
+        "kind": "path",
+        "target": 27
+      },
+      {
+        "id": 28,
+        "kind": "path",
+        "target": 28
+      }
+    ],
+    "clips": [],
+    "pictureBounds": {
+      "minXSp": -3961924,
+      "minYSp": -29787708,
+      "maxXSp": 19924563,
+      "maxYSp": 522808
+    },
+    "pictureBox": {
+      "widthSp": 23886487,
+      "heightSp": 30310516,
+      "depthSp": 0
+    }
+  },
+  "observation": {
+    "reportSha256": "05c910aee989202da26444e4c8bbe0ed71a28192a2d37a1ec6076fd3d8a668be",
+    "hookSha256": "a604bf41feec4f0b83668ae1a4a28713da3ca9548ec9f21d776da8b5e35030a1",
+    "scriptSha256": "cd2ee26707b61bce84c7dfe7107a9e560818f07dfda9de56d5916e9caa1380ab",
+    "tools": {
+      "latex": {
+        "sha256": "37659e30ba4537584b6418de22ce310247128edbc1481fc97fd9b24260f11caf"
+      },
+      "dvisvgm": {
+        "sha256": "74a03e974afc08f5b24417bbe08af792be6634eacfa16c1ce6f870cad95f53fa"
+      },
+      "dvitype": {
+        "sha256": "53da4ba9cfc7bcd84b820b5bd22a9177b9cae171f4224c001963661076d8cafb"
+      },
+      "kpsewhich": {
+        "sha256": "46e5f6537d84512bd5f2dcd21e960fc740f09f622c3c3a11fba2504f52bf2213"
+      }
+    },
+    "plainInputs": {
+      "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+      "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+      "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f",
+      "fontenc.sty": "c8e5c14e796c785380298bb8b1e905234e9a49cfe450f1afa1b8340fe003348b",
+      "ecrm1000.tfm": "9257fdd8d4296c33d769720be09d0cf2bcdca251b15667ae6baea760355d8dfe",
+      "lmodern.sty": "d2877369dcb4bfe7b1b6bba1a3d96c46e93366459c9b46576f1b221009bbe359",
+      "tikz.sty": "6e39ff4fdf9f126aff28880a7dd59fccc0e6735409d92ca455cdd2a4f2b4db53",
+      "pgf.sty": "99e08946749446e0b9b7faa985f8202740a94476f9e99bab5286cca5ce4766e9",
+      "pgfrcs.sty": "9653b8fae6bba95bec40ffbedd7d6c2b8f3be4a85b8b39580ab3ee6c3590041a",
+      "pgfutil-common.tex": "ff576d97434040185004b8be9b40804b9e9f95ae225719583c4376d8718e9f06",
+      "pgfutil-latex.def": "72036598130f2477df66608d26ab7008eb87a18b09fbe0c7eed9c63188720c77",
+      "pgfrcs.code.tex": "6d28f51c1b4cb933969339982286f86bb1c9af70ed34535482321de4cd491664",
+      "pgf.revision.tex": "8c056cfd919cca2dc5e398c776865e1af6a8605ab9d715f452aa68327164b52d",
+      "pgfcore.sty": "3a52a05062a74a763ee604b4a3d20f0be4a4b99fe8182373e30ccea0abafc96e",
+      "graphicx.sty": "90ffc59f1718ff399539023d15a5a2b14ce7d227b101c35ed64abcc7186c9338",
+      "keyval.sty": "d3faa310a1e4485b8efb1ed3ae8b11f9552e70b630dc35290a7aabdcd064b09a",
+      "graphics.sty": "979abfd05c3f5453ebdc2683f2e2e1a24600255c7246e3708b5670168c7259c4",
+      "trig.sty": "3c1add9bf649d1bee7db64bae800afb3dfac21b793afbbe2263553e0de66c450",
+      "graphics.cfg": "feb91e48789a21e4acced98e952c77a2e2cf4a77e01bf147b59fa56a1b3f2008",
+      "dvips.def": "f5eeb986870191dcd150b5c3a66df9d9bc62eec145087ad721b4326dc9b789ab",
+      "pgfsys.sty": "cc7121c5706c5c52807aea879ca0a9083a8dc81b04d96303d0d398804d9d3d52",
+      "pgfsys.code.tex": "97d841d782de156f192fb9866c76ec65d28dabdf186cb4700094d0a5a13eadab",
+      "pgfkeys.code.tex": "212f64f8641fb944a006a3c0825e78d30b0a2c5e3b4c4d62ff59ef61214caeed",
+      "pgfkeyslibraryfiltered.code.tex": "68cd7046c23f0c5d5775e5f481d14577f1d62bfe1dce1605387d46490edf7e5c",
+      "pgf.cfg": "eb308ac3d665db8dd3c03b18328c551609346c659c2ce0e5029223fbcc339cb3",
+      "pgfsys-dvisvgm.def": "5d5ce36eb9534e7c79bd99fdfd71891537d476abb332a0625f0d694f5dbf8bd2",
+      "pgfsys-common-svg.def": "1a25e1bb28e23389db3010bed982a8403504cf8e6a4a0dbb105912e20433d13f",
+      "pgfsyssoftpath.code.tex": "6ea4caeea5bcb6cd60b80ef4607e8a79824ec0cdcebb47424c1bdbe0c2ea6671",
+      "pgfsysprotocol.code.tex": "818b8e3cd0606bdb8ac7fbaccc5f80033672fa817537536f76bc67bc3942928c",
+      "xcolor.sty": "478888f8e8f00345fd645b6cdd6fa7db1e9efdd6f585b25c89bb3665d9029295",
+      "color.cfg": "a3529ccdadc8248b4c5d7c34ceea53bdc1509b54f18a192ad51b924bd297d8df",
+      "mathcolor.ltx": "0804bb6e9e1eeeaeda861f29206d308194ea7cc846e38abaa344cdefa1d408cd",
+      "pgfcore.code.tex": "ec94fcfeeda3204c4e43d2008be50b6005da0e642deafaead137284d66e82926",
+      "pgfmath.code.tex": "7fa0ff434e9cdeb14c40f326d53e6ea0273ef2046daf28987992e2488d186c85",
+      "pgfmathutil.code.tex": "cda208d98bdc556a06f5915571c6ce4d98c18aa639c4782a56c6d32a6ba68055",
+      "pgfmathparser.code.tex": "317b4a8059ee9afd04b052dd2974c1c9a059d1b8e301f9578efa9ac0b9984990",
+      "pgfmathfunctions.code.tex": "9758185623cce6b2a8d4a504d10dfd0a01ef6d3480794fa4c466384f4c08540c",
+      "pgfmathfunctions.basic.code.tex": "c94abbd89ad0556546d9e5053af16b58ce7f38d19c379b27309e5fefd23908f8",
+      "pgfmathfunctions.trigonometric.code.tex": "1c8834abe00807467a52d31ef96032d5084b2560eea45995018084d13a3cde3c",
+      "pgfmathfunctions.random.code.tex": "968308d364b4f31f2a787adf32c3df7d87959a519c4eb5c8b47bedde4311ab95",
+      "pgfmathfunctions.comparison.code.tex": "ea5ff35778088d94d8d2f1a20075ec57cc4ecd22844f9c288625a6db59ba7818",
+      "pgfmathfunctions.base.code.tex": "f83601dd74e8c166162cb3daf926744c44ccf15a0122e17613658f82fa64c6a9",
+      "pgfmathfunctions.round.code.tex": "9b980e1373f9451da75cc6030a5b4c1671b88a1b14b45ed172cfb7cf2607fe1f",
+      "pgfmathfunctions.misc.code.tex": "51038be668b2083ac5e8ae38a1da6f75091ee9471d71f33749d01a8bff1a9aa6",
+      "pgfmathfunctions.integerarithmetics.code.tex": "6e9383c1e63a6dbcfd2d95369905df566bdb6e7374c06e28c15a25eb782dc46b",
+      "pgfmathcalc.code.tex": "58fcc94547646458470315a6d10953a9729e7962e3def5273633b06fb444a5aa",
+      "pgfmathfloat.code.tex": "ccd576f7cebab3a0c5d5cdef41fc44e638d7bb4a20e0a0465160eba1757795e5",
+      "pgfint.code.tex": "95f8053efeeb2267d543d8d1afb10195d6114765eea7b90755b4e0c359324d64",
+      "pgfcorepoints.code.tex": "7533dd80c95a5124726b0a617a5f458226d4a7490bcd209e3fd7e717e24dc127",
+      "pgfcorepathconstruct.code.tex": "64b0b4193616b937a2b4520c678f8863ae06ab38385bb58db437b39a8f27719b",
+      "pgfcorepathusage.code.tex": "165569c2ffb6a80272d2853c3d3c4373c386391e8cbb81ed9683ae2a810dd28c",
+      "pgfcorescopes.code.tex": "cd9bb9fbaac3f5bca5bedd77ca07a8c4457467869e2303fdf2b446a30dca9f9f",
+      "pgfcoregraphicstate.code.tex": "81862c3425e8aa2a82e605eb8fde07b1b7b47862b981922393d4f54ca9fa6250",
+      "pgfcoretransformations.code.tex": "bdea875774b4ad7a1e12debc67c46286245031f5c2e287c9e192f3ca4b6193b6",
+      "pgfcorequick.code.tex": "6143371709342ea83dcdb1744a229d18f4c1ee670e1e31b496046a708bfa3e66",
+      "pgfcoreobjects.code.tex": "541e41626d66e0e8bc8b5249805c9efbb134dfe0dc85c63102eea3c2d21da6f0",
+      "pgfcorepathprocessing.code.tex": "359d413e7bb9d37f0fddc6ea5827415f6c73db584e781f6b2e2521059b595285",
+      "pgfcorearrows.code.tex": "ffabc47530ac7058f6dff74bf3325ab114049dcedc51b2d8556f578b03311799",
+      "pgfcoreshade.code.tex": "42ff3f6524037f73b44d16fe0abeae93a72407950b6a9b176f4d6a2a3f6e9fdb",
+      "pgfcoreimage.code.tex": "758e504e9c194cf9bbed098700b1d7969420e9a87552222d3000084a9d095571",
+      "pgfcoreexternal.code.tex": "545c4616f93c5f5d25bc04090a0b7ef869bab84b3952fadfd539d71187c83fe0",
+      "pgfcorelayers.code.tex": "743e89ac1e529af45751fa85fde4b3438284a63dfd53ff52c94c2f229b20beff",
+      "pgfcoretransparency.code.tex": "ea5e14f7fade556cee79636a6824710e97db928542fc1b23dfa618ff6448688e",
+      "pgfcorepatterns.code.tex": "f91d37fcda30e70ae85fbd9030682bc64df4424fc1260704def57dc6c444a63a",
+      "pgfcorerdf.code.tex": "0bc32a855862a83b7ece27d2ebf6bfeace759d6b64fb776394eee13d62401350",
+      "pgfmoduleshapes.code.tex": "01dd81e3f2c56a8db7864916ada1a5036964aff2e8176aafd4773244e236bb27",
+      "pgfmoduleplot.code.tex": "58a2c1ff27de97cb32b19ce95a4182d85369304980da9f1b21e4a1fddf4d666d",
+      "pgfcomp-version-0-65.sty": "7df38d1bb03d0bf642b3f53c38d86641765d950f82d481ebd63c67838bc78ee7",
+      "pgfcomp-version-1-18.sty": "b5a95ba245bb51ce01e5ead16e818a0024f16cd208df3386b30ba0798a911344",
+      "pgffor.sty": "5ae03317ea221a6f68d807775bd06a10625aa9fb1f590dbe2114688f735c447d",
+      "pgfkeys.sty": "b90072b20d0590f23fd0ad273d059e3b7737319b3fb61e3bea6102fd77f24b3d",
+      "pgfmath.sty": "4abed7d8c88642201dd1a932a435ae05a1f2659f1f7e95c72d6b5347c83d232a",
+      "pgffor.code.tex": "5787859fab7c72cc3dfd7134e78bbb0e770a43e7da39f93732c24232249fdde8",
+      "tikz.code.tex": "5cf22e53ee27e044a06a4aebdd77924101a491915021428a61cd6ff3ff2c8e0e",
+      "pgflibraryplothandlers.code.tex": "b3db772dd8eb595d8a5c8ef8d232862f9cef97d4ac9dedee283ad7b6e83361dd",
+      "pgfmodulematrix.code.tex": "ceafd7c1de02bde3d5a7570489ed6a150db51aabd658c1c78acf1ee5b5f89c6e",
+      "tikzlibrarytopaths.code.tex": "992706da31e055cdbecf5b1bf1b9c267383e3b4d4385773448f868e1cabf17f2",
+      "t1lmr.fd": "6b61abc8a6796f1884f819afcfc4c33558564f7e5c1d47b720e50ee15dba829a",
+      "ec-lmr10.tfm": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5",
+      "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+      "ot1lmr.fd": "51291fc1c1086c51d64f914ecc8051fe0dbe3f7601e89f2a5e18a5df5c6da1ea",
+      "rm-lmr10.tfm": "50dc8240a67003c1ec5bcd55f703c87189aeab0d199c42b4dc3e141a02488998",
+      "rm-lmr7.tfm": "373a4f72b5a088f9caee2cfd75adb2b25116e0cba3ad2bfa99b5f8a7e902a482",
+      "rm-lmr5.tfm": "420a4fc1563b171e5a791bb71211d85e6bf62fd2f2ed2a7f34f742049d6e5071",
+      "omllmm.fd": "0713fd8996320f03e8085c8da713bdc3a238b32c7ef83f5729151450d4bebbb5",
+      "lmmi10.tfm": "d9fce8963e8cb075bf31a5715a8f4a54688f7026b3a06e882ff2eb9c0d110320",
+      "lmmi7.tfm": "8548d4d19fc2b3671a5e11526f9013df8828b5b9b0f8277dc0ae7148bd1d33f5",
+      "lmmi5.tfm": "7bc98c12006eb1d784ce276f5dc008e0d631ee6bc659efadec24801c00d2a462",
+      "omslmsy.fd": "e1df006d08c2a73bba6b1a1f804e96160f2f8aeb7d8518b07da455b7dd45d1ff",
+      "lmsy10.tfm": "11f429b2c08f944627faa5942277297d7f8fef40edae2bae46cb238b838400ba",
+      "lmsy7.tfm": "3e92767469b4df54c985a533b8064789df60f21ab69d381dbf01bb608e3fbff8",
+      "lmsy5.tfm": "cac282b076edc89a2bbc8cdd1bd899117cd1af05612bca2b203e8b5ebe715431",
+      "omxlmex.fd": "57ae2bb311d1126b02d61b9d26de8590d831f7f9a98ca1788cb62de920a495c1",
+      "lmex10.tfm": "9547b25fd525782610200d794a82de33037887422751fcc29c5768cfa650e626",
+      "ec-lmr12.tfm": "299021120f0a29ef61278a2363903bd8defbb8faaade458eb79067342aecb56f",
+      "rm-lmr12.tfm": "9d4e3d8e39a41b93d91f79c1c47d2297efb7b1af220b94860693c08361f227aa",
+      "rm-lmr8.tfm": "80bcbfd844d2310ac1d3bead45aee25e91b1a4a0a60ff1771959b9a1e90ec1a2",
+      "rm-lmr6.tfm": "eb0bfdf8db3ae1409639fac9c88f84923872500d882d9ff8dc37aff445c723fe",
+      "lmmi12.tfm": "06870b7e003008214eefcf9bc4215006faff9edf5d99bee75211de57620d1818",
+      "lmmi8.tfm": "8d8514f9b0d11e443d9a3cdc059622b06797c1dbcb3cee994f6ac3329c462a82",
+      "lmmi6.tfm": "e7305bead3f6b2c8313e1234cb52376219d4283227c23295fe2f654e3ba3b551",
+      "lmsy8.tfm": "b6b96268d56481a5bc7cbb34b140ca1fa5017d2767acc4e11a94b30eabd114f7",
+      "lmsy6.tfm": "8548e4b09655eb2b166bf95df4be4f2a7ae54d5df2069bc04ef233bfd941167b"
+    },
+    "probedInputs": {
+      "latex.fmt": "85738b7bde9aa080bdbc4b1251226f2fbe93358c99a988000833b8ba83c5ddac",
+      "article.cls": "f9c8770a909e5b6526eb72284e457cd379b9bedbf3b508a96bd7f922d4cb24ec",
+      "size10.clo": "2896162dd5ed894689ca1f336fe2e084007114dc07f8ab17203281911479548f",
+      "fontenc.sty": "c8e5c14e796c785380298bb8b1e905234e9a49cfe450f1afa1b8340fe003348b",
+      "ecrm1000.tfm": "9257fdd8d4296c33d769720be09d0cf2bcdca251b15667ae6baea760355d8dfe",
+      "lmodern.sty": "d2877369dcb4bfe7b1b6bba1a3d96c46e93366459c9b46576f1b221009bbe359",
+      "tikz.sty": "6e39ff4fdf9f126aff28880a7dd59fccc0e6735409d92ca455cdd2a4f2b4db53",
+      "pgf.sty": "99e08946749446e0b9b7faa985f8202740a94476f9e99bab5286cca5ce4766e9",
+      "pgfrcs.sty": "9653b8fae6bba95bec40ffbedd7d6c2b8f3be4a85b8b39580ab3ee6c3590041a",
+      "pgfutil-common.tex": "ff576d97434040185004b8be9b40804b9e9f95ae225719583c4376d8718e9f06",
+      "pgfutil-latex.def": "72036598130f2477df66608d26ab7008eb87a18b09fbe0c7eed9c63188720c77",
+      "pgfrcs.code.tex": "6d28f51c1b4cb933969339982286f86bb1c9af70ed34535482321de4cd491664",
+      "pgf.revision.tex": "8c056cfd919cca2dc5e398c776865e1af6a8605ab9d715f452aa68327164b52d",
+      "pgfcore.sty": "3a52a05062a74a763ee604b4a3d20f0be4a4b99fe8182373e30ccea0abafc96e",
+      "graphicx.sty": "90ffc59f1718ff399539023d15a5a2b14ce7d227b101c35ed64abcc7186c9338",
+      "keyval.sty": "d3faa310a1e4485b8efb1ed3ae8b11f9552e70b630dc35290a7aabdcd064b09a",
+      "graphics.sty": "979abfd05c3f5453ebdc2683f2e2e1a24600255c7246e3708b5670168c7259c4",
+      "trig.sty": "3c1add9bf649d1bee7db64bae800afb3dfac21b793afbbe2263553e0de66c450",
+      "graphics.cfg": "feb91e48789a21e4acced98e952c77a2e2cf4a77e01bf147b59fa56a1b3f2008",
+      "dvips.def": "f5eeb986870191dcd150b5c3a66df9d9bc62eec145087ad721b4326dc9b789ab",
+      "pgfsys.sty": "cc7121c5706c5c52807aea879ca0a9083a8dc81b04d96303d0d398804d9d3d52",
+      "pgfsys.code.tex": "97d841d782de156f192fb9866c76ec65d28dabdf186cb4700094d0a5a13eadab",
+      "pgfkeys.code.tex": "212f64f8641fb944a006a3c0825e78d30b0a2c5e3b4c4d62ff59ef61214caeed",
+      "pgfkeyslibraryfiltered.code.tex": "68cd7046c23f0c5d5775e5f481d14577f1d62bfe1dce1605387d46490edf7e5c",
+      "pgf.cfg": "eb308ac3d665db8dd3c03b18328c551609346c659c2ce0e5029223fbcc339cb3",
+      "pgfsys-dvisvgm.def": "5d5ce36eb9534e7c79bd99fdfd71891537d476abb332a0625f0d694f5dbf8bd2",
+      "pgfsys-common-svg.def": "1a25e1bb28e23389db3010bed982a8403504cf8e6a4a0dbb105912e20433d13f",
+      "pgfsyssoftpath.code.tex": "6ea4caeea5bcb6cd60b80ef4607e8a79824ec0cdcebb47424c1bdbe0c2ea6671",
+      "pgfsysprotocol.code.tex": "818b8e3cd0606bdb8ac7fbaccc5f80033672fa817537536f76bc67bc3942928c",
+      "xcolor.sty": "478888f8e8f00345fd645b6cdd6fa7db1e9efdd6f585b25c89bb3665d9029295",
+      "color.cfg": "a3529ccdadc8248b4c5d7c34ceea53bdc1509b54f18a192ad51b924bd297d8df",
+      "mathcolor.ltx": "0804bb6e9e1eeeaeda861f29206d308194ea7cc846e38abaa344cdefa1d408cd",
+      "pgfcore.code.tex": "ec94fcfeeda3204c4e43d2008be50b6005da0e642deafaead137284d66e82926",
+      "pgfmath.code.tex": "7fa0ff434e9cdeb14c40f326d53e6ea0273ef2046daf28987992e2488d186c85",
+      "pgfmathutil.code.tex": "cda208d98bdc556a06f5915571c6ce4d98c18aa639c4782a56c6d32a6ba68055",
+      "pgfmathparser.code.tex": "317b4a8059ee9afd04b052dd2974c1c9a059d1b8e301f9578efa9ac0b9984990",
+      "pgfmathfunctions.code.tex": "9758185623cce6b2a8d4a504d10dfd0a01ef6d3480794fa4c466384f4c08540c",
+      "pgfmathfunctions.basic.code.tex": "c94abbd89ad0556546d9e5053af16b58ce7f38d19c379b27309e5fefd23908f8",
+      "pgfmathfunctions.trigonometric.code.tex": "1c8834abe00807467a52d31ef96032d5084b2560eea45995018084d13a3cde3c",
+      "pgfmathfunctions.random.code.tex": "968308d364b4f31f2a787adf32c3df7d87959a519c4eb5c8b47bedde4311ab95",
+      "pgfmathfunctions.comparison.code.tex": "ea5ff35778088d94d8d2f1a20075ec57cc4ecd22844f9c288625a6db59ba7818",
+      "pgfmathfunctions.base.code.tex": "f83601dd74e8c166162cb3daf926744c44ccf15a0122e17613658f82fa64c6a9",
+      "pgfmathfunctions.round.code.tex": "9b980e1373f9451da75cc6030a5b4c1671b88a1b14b45ed172cfb7cf2607fe1f",
+      "pgfmathfunctions.misc.code.tex": "51038be668b2083ac5e8ae38a1da6f75091ee9471d71f33749d01a8bff1a9aa6",
+      "pgfmathfunctions.integerarithmetics.code.tex": "6e9383c1e63a6dbcfd2d95369905df566bdb6e7374c06e28c15a25eb782dc46b",
+      "pgfmathcalc.code.tex": "58fcc94547646458470315a6d10953a9729e7962e3def5273633b06fb444a5aa",
+      "pgfmathfloat.code.tex": "ccd576f7cebab3a0c5d5cdef41fc44e638d7bb4a20e0a0465160eba1757795e5",
+      "pgfint.code.tex": "95f8053efeeb2267d543d8d1afb10195d6114765eea7b90755b4e0c359324d64",
+      "pgfcorepoints.code.tex": "7533dd80c95a5124726b0a617a5f458226d4a7490bcd209e3fd7e717e24dc127",
+      "pgfcorepathconstruct.code.tex": "64b0b4193616b937a2b4520c678f8863ae06ab38385bb58db437b39a8f27719b",
+      "pgfcorepathusage.code.tex": "165569c2ffb6a80272d2853c3d3c4373c386391e8cbb81ed9683ae2a810dd28c",
+      "pgfcorescopes.code.tex": "cd9bb9fbaac3f5bca5bedd77ca07a8c4457467869e2303fdf2b446a30dca9f9f",
+      "pgfcoregraphicstate.code.tex": "81862c3425e8aa2a82e605eb8fde07b1b7b47862b981922393d4f54ca9fa6250",
+      "pgfcoretransformations.code.tex": "bdea875774b4ad7a1e12debc67c46286245031f5c2e287c9e192f3ca4b6193b6",
+      "pgfcorequick.code.tex": "6143371709342ea83dcdb1744a229d18f4c1ee670e1e31b496046a708bfa3e66",
+      "pgfcoreobjects.code.tex": "541e41626d66e0e8bc8b5249805c9efbb134dfe0dc85c63102eea3c2d21da6f0",
+      "pgfcorepathprocessing.code.tex": "359d413e7bb9d37f0fddc6ea5827415f6c73db584e781f6b2e2521059b595285",
+      "pgfcorearrows.code.tex": "ffabc47530ac7058f6dff74bf3325ab114049dcedc51b2d8556f578b03311799",
+      "pgfcoreshade.code.tex": "42ff3f6524037f73b44d16fe0abeae93a72407950b6a9b176f4d6a2a3f6e9fdb",
+      "pgfcoreimage.code.tex": "758e504e9c194cf9bbed098700b1d7969420e9a87552222d3000084a9d095571",
+      "pgfcoreexternal.code.tex": "545c4616f93c5f5d25bc04090a0b7ef869bab84b3952fadfd539d71187c83fe0",
+      "pgfcorelayers.code.tex": "743e89ac1e529af45751fa85fde4b3438284a63dfd53ff52c94c2f229b20beff",
+      "pgfcoretransparency.code.tex": "ea5e14f7fade556cee79636a6824710e97db928542fc1b23dfa618ff6448688e",
+      "pgfcorepatterns.code.tex": "f91d37fcda30e70ae85fbd9030682bc64df4424fc1260704def57dc6c444a63a",
+      "pgfcorerdf.code.tex": "0bc32a855862a83b7ece27d2ebf6bfeace759d6b64fb776394eee13d62401350",
+      "pgfmoduleshapes.code.tex": "01dd81e3f2c56a8db7864916ada1a5036964aff2e8176aafd4773244e236bb27",
+      "pgfmoduleplot.code.tex": "58a2c1ff27de97cb32b19ce95a4182d85369304980da9f1b21e4a1fddf4d666d",
+      "pgfcomp-version-0-65.sty": "7df38d1bb03d0bf642b3f53c38d86641765d950f82d481ebd63c67838bc78ee7",
+      "pgfcomp-version-1-18.sty": "b5a95ba245bb51ce01e5ead16e818a0024f16cd208df3386b30ba0798a911344",
+      "pgffor.sty": "5ae03317ea221a6f68d807775bd06a10625aa9fb1f590dbe2114688f735c447d",
+      "pgfkeys.sty": "b90072b20d0590f23fd0ad273d059e3b7737319b3fb61e3bea6102fd77f24b3d",
+      "pgfmath.sty": "4abed7d8c88642201dd1a932a435ae05a1f2659f1f7e95c72d6b5347c83d232a",
+      "pgffor.code.tex": "5787859fab7c72cc3dfd7134e78bbb0e770a43e7da39f93732c24232249fdde8",
+      "tikz.code.tex": "5cf22e53ee27e044a06a4aebdd77924101a491915021428a61cd6ff3ff2c8e0e",
+      "pgflibraryplothandlers.code.tex": "b3db772dd8eb595d8a5c8ef8d232862f9cef97d4ac9dedee283ad7b6e83361dd",
+      "pgfmodulematrix.code.tex": "ceafd7c1de02bde3d5a7570489ed6a150db51aabd658c1c78acf1ee5b5f89c6e",
+      "tikzlibrarytopaths.code.tex": "992706da31e055cdbecf5b1bf1b9c267383e3b4d4385773448f868e1cabf17f2",
+      "t1lmr.fd": "6b61abc8a6796f1884f819afcfc4c33558564f7e5c1d47b720e50ee15dba829a",
+      "ec-lmr10.tfm": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5",
+      "l3backend-dvips.def": "3e6355a8acbe157fcab25fc493cadbb7630d1d987ae649e9a95903fda4fea8ee",
+      "ot1lmr.fd": "51291fc1c1086c51d64f914ecc8051fe0dbe3f7601e89f2a5e18a5df5c6da1ea",
+      "rm-lmr10.tfm": "50dc8240a67003c1ec5bcd55f703c87189aeab0d199c42b4dc3e141a02488998",
+      "rm-lmr7.tfm": "373a4f72b5a088f9caee2cfd75adb2b25116e0cba3ad2bfa99b5f8a7e902a482",
+      "rm-lmr5.tfm": "420a4fc1563b171e5a791bb71211d85e6bf62fd2f2ed2a7f34f742049d6e5071",
+      "omllmm.fd": "0713fd8996320f03e8085c8da713bdc3a238b32c7ef83f5729151450d4bebbb5",
+      "lmmi10.tfm": "d9fce8963e8cb075bf31a5715a8f4a54688f7026b3a06e882ff2eb9c0d110320",
+      "lmmi7.tfm": "8548d4d19fc2b3671a5e11526f9013df8828b5b9b0f8277dc0ae7148bd1d33f5",
+      "lmmi5.tfm": "7bc98c12006eb1d784ce276f5dc008e0d631ee6bc659efadec24801c00d2a462",
+      "omslmsy.fd": "e1df006d08c2a73bba6b1a1f804e96160f2f8aeb7d8518b07da455b7dd45d1ff",
+      "lmsy10.tfm": "11f429b2c08f944627faa5942277297d7f8fef40edae2bae46cb238b838400ba",
+      "lmsy7.tfm": "3e92767469b4df54c985a533b8064789df60f21ab69d381dbf01bb608e3fbff8",
+      "lmsy5.tfm": "cac282b076edc89a2bbc8cdd1bd899117cd1af05612bca2b203e8b5ebe715431",
+      "omxlmex.fd": "57ae2bb311d1126b02d61b9d26de8590d831f7f9a98ca1788cb62de920a495c1",
+      "lmex10.tfm": "9547b25fd525782610200d794a82de33037887422751fcc29c5768cfa650e626",
+      "ec-lmr12.tfm": "299021120f0a29ef61278a2363903bd8defbb8faaade458eb79067342aecb56f",
+      "rm-lmr12.tfm": "9d4e3d8e39a41b93d91f79c1c47d2297efb7b1af220b94860693c08361f227aa",
+      "rm-lmr8.tfm": "80bcbfd844d2310ac1d3bead45aee25e91b1a4a0a60ff1771959b9a1e90ec1a2",
+      "rm-lmr6.tfm": "eb0bfdf8db3ae1409639fac9c88f84923872500d882d9ff8dc37aff445c723fe",
+      "lmmi12.tfm": "06870b7e003008214eefcf9bc4215006faff9edf5d99bee75211de57620d1818",
+      "lmmi8.tfm": "8d8514f9b0d11e443d9a3cdc059622b06797c1dbcb3cee994f6ac3329c462a82",
+      "lmmi6.tfm": "e7305bead3f6b2c8313e1234cb52376219d4283227c23295fe2f654e3ba3b551",
+      "lmsy8.tfm": "b6b96268d56481a5bc7cbb34b140ca1fa5017d2767acc4e11a94b30eabd114f7",
+      "lmsy6.tfm": "8548e4b09655eb2b166bf95df4be4f2a7ae54d5df2069bc04ef233bfd941167b"
+    },
+    "drawingNoninterference": true,
+    "frozenDrawingUnchanged": true,
+    "frozenLayoutAndFontsUnchanged": true
+  }
+}

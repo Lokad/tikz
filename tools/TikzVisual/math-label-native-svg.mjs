@@ -7,7 +7,7 @@ const tokens=text=>text.match(/[A-Za-z]|[-+]?(?:(?:\d+\.?\d*)|(?:\.\d+))(?:[eE][
 const fixed=(v,n)=>{assert.ok(Number.isFinite(v));return (Math.abs(v)<10**(-n)/2?0:v).toFixed(n).replace(/\.?0+$/,'');};
 export const mathNativeEncodingIds=['driver-css','driver-flat-12','driver-atlas-12','events-driver-12','events-integer-12','events-integer-6','atlas-integer-12','atlas-integer-6'];
 
-export async function buildMathNativeVariants(renderer,{reference,events,measurements,atlases}) {
+export async function buildMathNativeVariants(renderer,{reference,events,measurements,atlases,includeGeometry=false}) {
  const metadata=await renderer.page.evaluate(({reference,atlases})=>{
   const read=text=>{const doc=new DOMParser().parseFromString(text,'image/svg+xml');if(doc.querySelector('parsererror')||doc.doctype)throw Error('Invalid native XML.');return doc;};
   const doc=read(reference),root=doc.documentElement,global=doc.querySelector('#page1 > g');
@@ -147,6 +147,7 @@ export async function buildMathNativeVariants(renderer,{reference,events,measure
   variants.push({id,svg,serialization:{passed:true,checks}});
  }
  return{origin,root,variants,outlineChecks,placementChecks,contributions,
+  ...(includeGeometry?{geometry:{operations,definitions:metadata.definitions,atlasDefinitions:[...atlasDefinitions.values()]}}:{}),
   counts:{nodes:events.nodes.length,glyphs:events.marks.filter(m=>m.kind==='glyph').length,rules:events.marks.filter(m=>m.kind==='rule').length,paths:pathIndex},
   converterInvoked:false,contract:'Original driver registration and paint order. Native paths unchanged; label advances, selected-size outlines and matrix decimals varied independently. No candidate data or image policy.'};
 }

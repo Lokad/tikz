@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 export async function measureEdgeOraclePair(renderer, input) {
   assert.ok(['natural', 'expanded'].includes(input.frame)); assert.ok([1, 4].includes(input.scale));
   assert.ok(['transparent', 'white', 'black'].includes(input.background));
+  assert.ok(input.allowMathMarks===undefined||input.allowMathMarks===true);
   assert.ok(Number.isFinite(input.camera.x) && Number.isFinite(input.camera.y));
   assert.ok(Number.isSafeInteger(input.camera.width) && input.camera.width > 0 && Number.isSafeInteger(input.camera.height) && input.camera.height > 0);
   assert.ok(input.camera.width * input.camera.height * input.scale ** 2 <= 20000000);
@@ -11,7 +12,7 @@ export async function measureEdgeOraclePair(renderer, input) {
   assert.ok(input.regions.every(r => Object.values(r.rectangle).every(Number.isSafeInteger) && r.rectangle.x >= 0 && r.rectangle.y >= 0
     && r.rectangle.width > 0 && r.rectangle.height > 0 && r.rectangle.x + r.rectangle.width <= input.camera.width && r.rectangle.y + r.rectangle.height <= input.camera.height));
   assert.ok(Number.isSafeInteger(input.cropLimit ?? 4) && (input.cropLimit ?? 4) >= 0 && (input.cropLimit ?? 4) <= 16);
-  return renderer.page.evaluate(async ({ reference, actual, leftIsDriver, origin, camera, frame, scale, background, regions, rightLabel = 'Actual', cropLimit = 4, cropRegionIds = [] }) => {
+  return renderer.page.evaluate(async ({ reference, actual, leftIsDriver, origin, camera, frame, scale, background, regions, allowMathMarks=false, rightLabel = 'Actual', cropLimit = 4, cropRegionIds = [] }) => {
     const width = camera.width * scale, height = camera.height * scale, ns = 'http://www.w3.org/2000/svg';
     const make = (w = width, h = height) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
     const png = c => c.toDataURL('image/png').split(',')[1];
@@ -23,12 +24,25 @@ export async function measureEdgeOraclePair(renderer, input) {
       for (const e of doc.querySelectorAll('*')) {
         if (e.namespaceURI !== ns || (e.id && ids.has(e.id))) throw new Error('Invalid SVG namespace or repeated identity.');
         if (e.id) ids.set(e.id, e);
-        if (!['svg', 'g', 'defs', 'path', 'use', 'title', 'desc', 'clipPath'].includes(e.localName)) throw new Error('Out-of-scope SVG element.');
+        if (!['svg', 'g', 'defs', 'path', 'use', 'title', 'desc', 'clipPath', ...(allowMathMarks?['rect']:[])].includes(e.localName)) throw new Error('Out-of-scope SVG element.');
+        if(e.localName==='rect')for(const key of['x','y','width','height']){
+          const text=e.getAttribute(key)??(['x','y'].includes(key)?'0':null),n=Number(text);
+          if(text===null||!/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?$/.test(text)||!Number.isFinite(n)||Math.abs(n)>1000000||(['width','height'].includes(key)&&n<=0))throw new Error('Invalid math rule rectangle.');
+        }
         for (const a of e.attributes) if (a.name.toLowerCase().startsWith('on') || ['style', 'base'].includes(a.localName)
           || (a.localName === 'href' && !/^#[\w.-]+$/.test(a.value)) || (a.value.includes('url(') && !(a.localName === 'clip-path' && /^url\(#[\w.-]+\)$/.test(a.value)))) throw new Error('External or executable SVG reference.');
       }
       for (const e of doc.querySelectorAll('*')) for (const a of e.attributes) {
-        if (a.localName === 'href' && (e.localName !== 'use' || ids.get(a.value.slice(1))?.localName !== 'path')) throw new Error('Missing or invalid glyph reference.');
+        if (a.localName === 'href') {
+          if(e.localName!=='use')throw new Error('Missing or invalid glyph reference.');
+          let target=ids.get(a.value.slice(1)),chain=[];
+          while(allowMathMarks&&target?.localName==='use'){
+            const scaleText=/^scale\(([\d.]+)\)$/.exec(target.getAttribute('transform')??'')?.[1],aliasScale=Number(scaleText);
+            if(!target.closest('defs')||chain.includes(target.id)||chain.length>=4||!Number.isFinite(aliasScale)||aliasScale<=0||aliasScale>16)throw new Error('Invalid math outline alias.');
+            chain.push(target.id);target=ids.get([...target.attributes].find(a=>a.localName==='href')?.value.slice(1));
+          }
+          if(target?.localName!=='path')throw new Error('Missing or invalid glyph reference.');
+        }
         if (a.localName === 'clip-path' && ids.get(/^url\(#([\w.-]+)\)$/.exec(a.value)?.[1])?.localName !== 'clipPath') throw new Error('Missing or invalid clip reference.');
       }
       const view = (svg.getAttribute('viewBox') ?? '').split(/[ ,]+/).map(Number);

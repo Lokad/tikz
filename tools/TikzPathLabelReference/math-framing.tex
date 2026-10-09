@@ -1,0 +1,17 @@
+% Supplemental observations for the fixed math corpus. Drawing stays unchanged.
+\makeatletter
+\AtBeginDocument{%
+  \iflabelprobes
+    \let\mathframeend\endtikzpicture
+    \def\endtikzpicture{%
+      \typeout{MATH-BOUNDS \number\pgf@picminx|\number\pgf@picminy|\number\pgf@picmaxx|\number\pgf@picmaxy|END}%
+      \mathframeend
+    }%
+    \let\mathframewidth\pgfsys@setlinewidth
+    \def\pgfsys@setlinewidth#1{%
+      \begingroup\dimen0=#1\relax
+      \typeout{MATH-LINEWIDTH \number\dimen0|END}%
+      \endgroup\mathframewidth{#1}%
+    }%
+  \fi
+}
