@@ -79,6 +79,12 @@ quantities. A separate focused fixture measures 29 nodes and 464 anchors for
 lists, ranges, shadowing and scope restoration. Its full native comparison also
 checks 2,193 glyph/path/paint/order/bounds quantities and two named coordinates.
 Nodes clear inherited draw/fill modes before applying node styles and local
-options, retaining their inherited pen. These are iteration checks.
-Complete image/PDF policy and final clean-source qualification remain separate
-requirements; the converter does not promise general TeX compatibility.
+options, retaining their inherited pen.
+
+Both fixtures pass all 48 primary SVG views, 16 PDF views and 64 independent
+fresh-source recaptures under their separate native-only policies. Final
+qualification runs against a clean committed export and also passes the seven
+existing diagram/style/path-label cases and calc's required regression gates.
+The export and integrated ordinary suites each pass 588 tests. This calibrated
+evidence covers the two fixed fixtures and declared loop contract; wider TikZ
+coverage and general TeX compatibility remain outside the claim.

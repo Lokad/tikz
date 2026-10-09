@@ -43,8 +43,8 @@ acceptance in a clean source export.
 
 [Bounded statement loops](docs/FOREACH.md) now convert a repeated-stage
 flowchart using lists/ranges, scoped bindings, positioning, labels, arrows and
-calculated coordinates. Its native numeric checks pass; image/PDF and final
-clean-source acceptance remain pending.
+calculated coordinates. Both loop fixtures pass independent numeric/image/PDF
+policies and fresh-output acceptance in a clean source export.
 
 ```csharp
 using Lokad.TikZ;
