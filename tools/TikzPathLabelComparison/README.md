@@ -71,8 +71,12 @@ regressions. These completed checks remain separate from archive restoration.
 producer and independent numeric reader. The network uses the arrow supplement;
 the focused corpus uses measured rectangle backgrounds. They pass 1,995 and
 3,871 numeric checks respectively, including 47 text nodes and 234 glyphs in
-total. Fresh output also has paired whole/local 1x/4x iteration images. Their
-native-only image/PDF policies and final clean-source acceptance remain open.
+total. Fresh output also has paired whole/local 1x/4x iteration images and passes
+48 primary/16 PDF views under checked native-only policies. The independent
+native checkers reproduce 788 sources, including 612 visible defect views that
+are all rejected. Portable reference evidence and final clean-source acceptance
+remain open. Control captures retain full image pairs, local metrics and paired
+crop sheets within the unchanged shared artifact bound.
 Separate scalar snapshots include the complete-turn boundary fixture under
 [`tests/Reference/MathFunctions`](../../tests/Reference/MathFunctions/README.md).
 

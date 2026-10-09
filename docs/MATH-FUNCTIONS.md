@@ -44,6 +44,9 @@ whole and half degree in one complete turn. The complete network combines
 functions with styles, loops, positioning, five path labels, six arrows and
 calculated coordinates. Its comparison and the focused corpus pass 5,866 numeric
 checks for fresh public output, glyphs, geometry, paint and framing. All 651
-ordinary tests pass. Paired 1x/4x iteration images retain small raster differences;
-new native-only image/PDF policies and final clean-source qualification remain
-open. Broader PGF functions, math labels and plotting remain release scope.
+ordinary tests pass. Paired 1x/4x iteration images retain small raster differences.
+Both fixtures now pass 48 primary and 16 PDF iteration views under independent
+native-only policies. The native checkers reproduce all 788 reference/control
+sources; all 28 primary/PDF corruption controls pass. Portable reference evidence
+and final committed clean-source qualification remain open. Broader PGF functions,
+math labels and plotting remain release scope.

@@ -12,8 +12,9 @@ The current public converter implements the selected `abs`, `sin`, `cos` and
 two-argument `min`/`max` contract. Ordinary tests compare all printed results and
 anchors. The network and focused corpus also pass 5,866 independent numeric
 checks against fresh conversion, with paired 1x/4x raw image differences retained.
-These iteration checks leave image/PDF policies and final clean-source acceptance
-open; raw image differences do not establish calibrated conformance.
+Both fixtures also pass 48 primary and 16 PDF iteration views under independently
+checked native-only policies. Portable native archives and final clean-source
+acceptance remain open. Raw image differences alone do not establish conformance.
 
 Regenerate only the fixed repository-authored inputs through the existing
 scalar/node observer:
