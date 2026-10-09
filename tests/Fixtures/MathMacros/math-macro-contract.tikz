@@ -1,0 +1,56 @@
+\begin{tikzpicture}[x=5mm,y=8mm,
+  every node/.style={draw,rectangle,minimum width=6mm,inner sep=1pt}]
+  \pgfmathsetmacro\value{1.23456}
+  \node (literal) at (\value,0) {A};
+  \pgfmathsetmacro\value{0.1+0.2}
+  \node (add) at (\value,-1) {B};
+  \pgfmathsetmacro\value{2.75-4.25}
+  \node (subtract) at (\value,-2) {C};
+  \pgfmathsetmacro\value{0.1*0.2}
+  \node (multiply) at (\value,-3) {D};
+  \pgfmathsetmacro\value{-1.23456*2.5}
+  \node (negativeMultiply) at (\value,-4) {E};
+  \pgfmathsetmacro\value{1/3}
+  \node (third) at (\value,-5) {F};
+  \pgfmathsetmacro\value{-1/3}
+  \node (negativeThird) at (\value,-6) {G};
+  \pgfmathsetmacro\value{7/1.5}
+  \node (fractionalDivide) at (\value,-7) {H};
+  \pgfmathsetmacro\value{1/0.3}
+  \node (smallDivide) at (\value,-8) {I};
+  \pgfmathsetmacro\value{(0.1+0.2)*3}
+  \node (chain) at (\value,-9) {J};
+  \pgfmathsetmacro\value{-(-0.125)}
+  \node (unary) at (\value,-10) {K};
+  \pgfmathsetmacro\value{2+3*4}
+  \node (precedence) at (\value,-11) {L};
+  \pgfmathsetmacro\value{0.5}
+  \pgfmathsetmacro\value{\value+2}
+  \node (reassign) at (\value,-12) {M};
+  \pgfmathsetmacro\base{1.5}
+  \node (before) at (\base,-13) {N};
+  \begin{scope}
+    \pgfmathsetmacro\base{\base*2}
+    \node (inside) at (\base,-14) {O};
+  \end{scope}
+  \pgfmathsetmacro\probe{\base}
+  \node (restored) at (\probe,-15) {P};
+  \foreach \i in {1,2} {
+    \pgfmathsetmacro\value{\base+\i}
+    \node (loop\i) at (\value,-15-\i) {Q};
+  }
+  \pgfmathsetmacro\probe{\value}
+  \node (loopRestored) at (\probe,-18) {R};
+  {\pgfmathsetmacro\base{\base+1}
+    \node (grouped) at (\base,-19) {S};}
+  \pgfmathsetmacro\probe{\base}
+  \node (groupRestored) at (\probe,-20) {T};
+  \pgfmathsetmacro\value{0.00001+0.00001}
+  \node (tinyAdd) at (\value,-21) {U};
+  \pgfmathsetmacro\value{0.00001-0.00002}
+  \node (tinySubtract) at (\value,-22) {V};
+  \pgfmathsetmacro\value{1/1.00002}
+  \node (nearOneDivide) at (\value,-23) {W};
+  \pgfmathsetmacro\value{(1/3)*3}
+  \node (roundedChain) at (\value,-24) {X};
+\end{tikzpicture}

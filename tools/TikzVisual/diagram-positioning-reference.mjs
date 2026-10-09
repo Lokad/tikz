@@ -8,6 +8,10 @@ import {captureProcess} from './qualification-process.mjs';
 import {edgeAnchors,edgeSanitize} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 const cases={
+ 'flowchart-math-macros':{names:['input','stage1','stage2','stage3','output'],hash:'a9a0389cf48da3f7036092e2ee00203ed517ee6668452c1352b7acd35d70deef',scalarCalls:['\\step','\\dy','\\offset','\\offset','\\offset','\\factor','\\returny']},
+ 'math-macro-contract':{folder:'MathMacros',names:['literal','add','subtract','multiply','negativeMultiply','third','negativeThird','fractionalDivide','smallDivide','chain','unary','precedence','reassign','before','inside','restored','loop1','loop2','loopRestored','grouped','groupRestored','tinyAdd','tinySubtract','nearOneDivide','roundedChain'],hash:'fdf31eeab83ed8c8377fc0c2951e2864d9191f73d621ed00d27797168430c0b8',scalarCalls:[...Array(14).fill('\\value'),'\\base','\\base','\\probe','\\value','\\value','\\probe','\\base','\\probe',...Array(4).fill('\\value')]},
+ 'math-macro-zero-divisor':{folder:'MathMacros',names:[],hash:'c502d571ca4c7a6c1e17bc568e1e80a85072c7611fe34a0da09f05e9bcb79cd6',nativeError:"! Package PGF Math Error: You've asked me to divide"},
+ 'math-macro-overflow':{folder:'MathMacros',names:[],hash:'2490bfca392c3f905fd49ad6192e4d5346dd05de036768d13e1c19f94c6c0699',nativeError:'! Dimension too large.'},
  'foreach-overflow-positive':{folder:'Foreach',names:[],hash:'82da67c90c5aabf638c16229e15abca30e76820d8de11b0a4de01e8d02e34118',nativeError:'! Dimension too large.'},
  'foreach-overflow-negative':{folder:'Foreach',names:[],hash:'186455aa5ee7833331432de435568e400e93adfe0189b9068d4e56a7663e54a7',nativeError:'! Dimension too large.'},
  'flowchart-foreach':{names:['input','stage1','stage2','stage3','output'],hash:'64ee9c160bb1a8c652bc0cdd38c6396abccc1bde6c686d8f109169e3a72803ad'},
@@ -54,7 +58,15 @@ try{
   const svg={};let native;
   for(const state of ['plain','probed']){
    const folder=path.join(output,id,state);await mkdir(folder,{recursive:true});await save(id+'/'+state+'/case.tikz',source);
-   await save(id+'/'+state+'/case.tex',(state==='probed'?'\\AtBeginDocument{\\labelprobestrue}\n':'')+wrapper);
+   // Scalar observations close the numeric assignment rounding/scope gap.
+   // Keep the hook out of the plain run and require drawing noninterference.
+   const scalarProbe=String.raw`\let\nativeoriginalmathsetmacro\pgfmathsetmacro
+\def\pgfmathsetmacro#1#2{%
+  \nativeoriginalmathsetmacro#1{#2}%
+  \immediate\write16{TIKZ-MATH-CALL \string#1|#1|END}%
+}`;
+   const observedWrapper=state==='probed'&&c.scalarCalls?wrapper.replace('\\begin{document}','\\begin{document}\n'+scalarProbe):wrapper;
+   await save(id+'/'+state+'/case.tex',(state==='probed'?'\\AtBeginDocument{\\labelprobestrue}\n':'')+observedWrapper);
    await execute('latex',['-disable-write18','-disable-installer','-interaction=nonstopmode','-halt-on-error','-recorder','case.tex'],folder,id+'-'+state+'-compile',c.nativeError);
    const log=edgeSanitize(await readFile(path.join(folder,'case.log'),'utf8'));await save(id+'/'+state+'/case.log',log);
    if(c.nativeError){await save(id+'/'+state+'/case.fls',await readFile(path.join(folder,'case.fls')));
@@ -75,12 +87,20 @@ try{
     for(const r of anchors)assert.equal(r.length,4);
     native={sourceSha256:c.hash,nodes:nodes.map(r=>({name:r[0],anchor:r[1],widthSp:integer(r[2]),heightSp:integer(r[3]),depthSp:integer(r[4]),frame:r.slice(5)})),
      anchors:anchors.map(r=>({name:r[0],anchor:r[1],xSp:integer(r[2]),ySp:integer(r[3])})),pictureBox:records(log,'PATH-LABEL-BOX')};
+    if(c.scalarCalls){const declared=new Set(c.scalarCalls),allCalls=records(log,'TIKZ-MATH-CALL');
+     assert.deepEqual([...new Set([...source.toString().matchAll(/\\pgfmathsetmacro\s*(\\[A-Za-z]+)/g)].map(m=>m[1]))].sort(),[...declared].sort());
+     const calls=allCalls.filter(r=>declared.has(r[0])),internal=allCalls.filter(r=>!declared.has(r[0]));
+     for(const r of internal){assert.equal(r.length,2);assert.match(r[0],/^\\(?:pgf|tikz)[A-Za-z@]+$/);}
+     assert.deepEqual(calls.map(r=>r[0]),c.scalarCalls);
+     for(const r of calls){assert.equal(r.length,2);assert.match(r[1],/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/);assert.ok(Number.isFinite(Number(r[1])));}
+     native.scalarCalls=calls.map((r,i)=>({ordinal:i+1,name:r[0],printed:r[1]}));
+     native.internalScalarCalls=internal.map(r=>({name:r[0],printed:r[1]}));}
     await save(id+'/measurements.json',JSON.stringify(native,null,2)+'\n');
    }
   }
   if(c.nativeError)continue;
   assert.equal(canonicalEdgeSvg(svg.plain),canonicalEdgeSvg(svg.probed),'Probes changed diagram drawing');
-  results.push({id,nodes:native.nodes.length,anchors:native.anchors.length,probeSvgNoninterference:true,sourceSha256:c.hash});
+  results.push({id,nodes:native.nodes.length,anchors:native.anchors.length,...(native.scalarCalls?{scalarCalls:native.scalarCalls.length}:{}),probeSvgNoninterference:true,sourceSha256:c.hash});
  }
  for(const[f,h]of Object.entries(artifacts))assert.equal(sha256(await readFile(path.join(output,f))),h);
  await publish(true);
