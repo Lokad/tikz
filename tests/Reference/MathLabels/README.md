@@ -6,7 +6,9 @@ now renders all three sources and matches their measured geometry exactly.
 The nineteen math font/size resources are now bundled and independently checked
 through the [font tooling](../../../tools/TikzFontData/README.md). The internal
 source-aware parser and integer math layout preserve selected optical styles,
-glyph/rule provenance and paint order. Label image qualification remains pending.
+glyph/rule provenance and paint order. The fixed primary/local and both PDF
+image matrices pass their native-derived policies; final clean-source feature
+qualification remains separate.
 
 | Fixed source | Measured labels | Anchors | DVI glyphs | DVI rules | User scalar results |
 | --- | --- | --- | --- | --- | --- |
@@ -62,8 +64,9 @@ HTML viewers. An independent reader checks raw sample metrics in all 48
 transparent pairs; its eight-neighbor topology remains separate from the
 legacy renderer's four-neighbor observations. Native event label identities
 are retained in `native-frame.json`; these native-only crops do not assert
-converter source spans. These experiments explain encoding differences and
-leave primary/PDF policies and final feature qualification pending.
+converter source spans. These experiments explain encoding differences. The
+policy checks below and final clean-source feature qualification are separate
+from these diagnostics.
 
 The additive `native-layout/<id>/framing.json` records bind four PGF picture
 bounds, observed native linewidths and the original SVG's ordered path/pen
@@ -163,6 +166,8 @@ node tools/TikzVisual/check-math-label-pdf.mjs <exact-pdf-image-calibration>
 node tools/TikzVisual/math-label-pdf-self-test.mjs <exact-pdf-image-calibration>
 dotnet run --project tools/TikzReference -c Release -- export-math-labels --out artifacts/math-public-current
 node tools/TikzVisual/compare-math-label-pdf.mjs <exact-pdf-image-calibration> <exact-pdf-image-check> <current-public-export>
+node tools/TikzVisual/check-math-label-current.mjs <current-primary> <current-PDF> <native-primary-calibration> <native-PDF-calibration>
+node tools/TikzVisual/math-label-current-self-test.mjs <current-primary> <current-PDF> <native-primary-calibration> <native-PDF-calibration>
 ```
 
 Native checking independently decodes every required region and recaptures all
@@ -174,6 +179,31 @@ recaptures all 24 views, and checks converter source hashes before and after.
 Saved contact sheets and enlarged fault crops support direct image inspection.
 Preserve unchanged calibration during iteration. Full clean-source feature
 qualification remains a separate requirement.
+
+## Portable frozen evidence
+
+The image profile pins eight accepted reports in three lossless archives:
+native wrappers/SVG inputs, primary calibration/checking, and PDF
+reference/calibration/checking. They use the shared bounded codec and
+materializer, retaining every report and owned artifact byte. The historical
+native-engine claims describe the original reports; restoring the archives
+invokes neither MiKTeX nor the converter. The three authored diagrams remain
+the fixture scope across all phases.
+
+```sh
+node tools/TikzVisual/materialize-path-label-cache.mjs math-labels-native
+node tools/TikzVisual/materialize-path-label-cache.mjs math-labels-primary
+node tools/TikzVisual/materialize-path-label-cache.mjs math-labels-pdf
+node tools/TikzVisual/path-label-cache-self-test.mjs
+```
+
+Use the exact report paths and digests in `image-profile.json`. Fresh public
+exports and the full current primary/PDF matrices are required for a new
+conformance claim. The current checker independently decodes all 96 paired
+views, reconciles regions/verdicts, and binds the two routes to the same public
+export. Source recaptures occur in the current comparison commands. Shared
+corruption overlays exercise omitted gates, split source identity and rehashed
+false pixel metrics or verdicts; native policies remain frozen.
 
 Regeneration is a separate development operation on these trusted inputs:
 
@@ -187,5 +217,5 @@ All 734 ordinary tests pass at this implementation stage. The eleven earlier
 public diagram/contract SVGs remain byte-identical. Frozen-native image
 diagnostics use the existing pinned renderer, physical registration, paired
 images, overlay/blink viewer and source-attributed crops. Raw pixel differences,
-math-specific PDF qualification and final clean-source acceptance remain open;
+broader math image coverage and final clean-source acceptance remain open;
 the existing EC text policy cannot stand in for math font or rule semantics.

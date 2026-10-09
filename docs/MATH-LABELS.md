@@ -6,7 +6,8 @@ anchors, glyph positions, rules and paint order exactly in scaled points: 64
 labels, 1,024 anchors, 459 glyphs and 37 rules. Unsupported or malformed math
 reports its offending source span and emits no partial SVG. The
 [native observations](../tests/Reference/MathLabels/README.md) ground this fixed
-profile; image/PDF policies and final feature qualification remain open.
+profile. The fixed primary/local and both PDF matrices pass native-derived
+policies; final clean-source feature qualification remains open.
 
 The first profile supports inline `$...$` runs within existing node and path
 labels, including mixed prose and math. It uses a small source-aware math AST,

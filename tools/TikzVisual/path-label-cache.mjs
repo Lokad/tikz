@@ -5,8 +5,10 @@ import path from 'node:path';
 import {gunzipSync} from 'node:zlib';
 import {calcHash,calcEqual} from './calc-saved-images.mjs';
 import {decodePathLabelCache,pathLabelCacheBounds,pathLabelCompressedLimit} from './path-label-cache-codec.mjs';
+import {mathLabelCacheGroups,verifyMathPortablePart} from './math-label-cache-inputs.mjs';
 
 export function pathLabelCacheDefinition(fixture){
+ if(Object.hasOwn(mathLabelCacheGroups,fixture))return{mathLabels:mathLabelCacheGroups[fixture],fixtures:Object.keys(mathLabelCacheGroups).sort(),directory:'tests/Reference/MathLabels',roles:mathLabelCacheGroups[fixture].map(r=>r.role),profileRole:'math-label-frozen-image-profile'};
  const functions=['math-functions-contract','network-math-functions'].includes(fixture);
  const math=['flowchart-math-macros','math-macro-contract'].includes(fixture),loops=['flowchart-foreach','foreach-contract'].includes(fixture),styles=['flowchart-parameterized','style-contract'].includes(fixture),diagram=functions||math||loops||styles||['flowchart-basic','network-bent','flowchart-transformed'].includes(fixture);
  const fixtures=functions?['math-functions-contract','network-math-functions']:math?['flowchart-math-macros','math-macro-contract']:loops?['flowchart-foreach','foreach-contract']:styles?['flowchart-parameterized','style-contract']:diagram?['flowchart-basic','flowchart-transformed','network-bent']:['interactions','placement'];assert.ok(fixtures.includes(fixture));
@@ -17,7 +19,7 @@ export function pathLabelCacheDefinition(fixture){
 }
 
 export async function loadPathLabelCache(repositoryRoot,fixture,read=readFile){
- const {fixtures,directory,roles,profileRole}=pathLabelCacheDefinition(fixture);
+ const {fixtures,directory,roles,profileRole,mathLabels}=pathLabelCacheDefinition(fixture);
  const profile=JSON.parse(await read(path.join(repositoryRoot,directory+'/image-profile.json')));
  assert.equal(profile.schemaVersion,1);assert.equal(profile.role,profileRole);
  calcEqual(Object.keys(profile.fixtures).sort(),fixtures);
@@ -30,14 +32,18 @@ export async function loadPathLabelCache(repositoryRoot,fixture,read=readFile){
  const bytes=gunzipSync(compressed,{maxOutputLength:pathLabelCacheBounds.decoded});assert.equal(bytes.length,manifest.decodedBytes);assert.equal(calcHash(bytes),manifest.decodedSha256);
  const cache=decodePathLabelCache(bytes,fixture);assert.equal(cache.files.size,manifest.logicalFiles);assert.equal(cache.blobs.size,manifest.uniqueBlobs);assert.equal(cache.logicalBytes,manifest.logicalBytes);
  calcEqual(manifest.reports.map(r=>r.role),roles);const expected=new Set();
- for(const descriptor of manifest.reports){
-  assert.match(descriptor.file,/^artifacts\/path-label-[a-z-]+\/run-[a-f0-9-]+\/report\.json$/);const reportBytes=cache.files.get(descriptor.file);
+ const bundles=[];for(const [i,descriptor]of manifest.reports.entries()){
+  if(mathLabels)calcEqual(descriptor,Object.fromEntries(['role','file','sha256'].map(k=>[k,mathLabels[i][k]])));
+  else assert.match(descriptor.file,/^artifacts\/path-label-[a-z-]+\/run-[a-f0-9-]+\/report\.json$/);
+  const reportBytes=cache.files.get(descriptor.file);
   assert.ok(reportBytes);assert.equal(calcHash(reportBytes),descriptor.sha256);const report=JSON.parse(reportBytes);
   assert.equal(report.schemaVersion,1);assert.equal(report.role,descriptor.role);assert.equal(report.completed,true);assert.equal(report.phase,'complete');
-  assert.equal(report.converterInvoked,false);assert.equal(report.nativeToolInvoked,false);assert.equal(report.approvedImagePolicy,false);assert.equal(report.imageConformanceClaim,false);assert.equal(report.imageAdmission,'pending');
-  const entries=Object.entries(report.artifacts);assert.ok(entries.length>0&&entries.length<=4096);expected.add(descriptor.file);let total=0;
+  assert.equal(report.converterInvoked,false);assert.equal(report.nativeToolInvoked,mathLabels?mathLabels[i].nativeToolInvoked:false);assert.equal(report.approvedImagePolicy,false);assert.equal(report.imageConformanceClaim,false);assert.equal(report.imageAdmission,'pending');
+  const entries=Object.entries(report.artifacts),files=new Map();assert.ok(entries.length>0&&entries.length<=4096);expected.add(descriptor.file);let total=0;
   for(const[file,digest]of entries){const target=path.posix.dirname(descriptor.file)+'/'+file,item=cache.files.get(target);assert.ok(item,'Missing owned native archive artifact.');
-   assert.equal(calcHash(item),digest);total+=item.length;assert.ok(item.length<=100000000&&total<=1000000000);expected.add(target);}
+   assert.equal(calcHash(item),digest);total+=item.length;assert.ok(item.length<=100000000&&total<=1000000000);expected.add(target);files.set(file,item);}
+  bundles.push({bytes:reportBytes,sha256:descriptor.sha256,report,files,json:file=>JSON.parse(files.get(file))});
  }
+ if(mathLabels)verifyMathPortablePart(fixture,bundles);
  calcEqual([...expected].sort(),[...cache.files.keys()].sort(),'Archive contains missing or unowned assets.');return{cache,manifest};
 }

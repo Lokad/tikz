@@ -8,6 +8,7 @@ import {calcHash} from './calc-saved-images.mjs';
 import {loadPathLabelCache,pathLabelCacheDefinition} from './path-label-cache.mjs';
 import {encodePathLabelCache,decodePathLabelCache,pathLabelCacheBounds} from './path-label-cache-codec.mjs';
 import {encodeCalcTrialCache} from './calc-trial-cache-codec.mjs';
+import {mathLabelCacheGroups,mathLabelCacheReports,verifyMathPortableInputs,verifyMathPortablePart} from './math-label-cache-inputs.mjs';
 
 assert.equal(process.argv.length,2,'Usage: node tools/TikzVisual/path-label-cache-self-test.mjs');
 const small=encodePathLabelCache(new Map([['a',Buffer.from('same')],['b',Buffer.from('same')],['empty',Buffer.alloc(0)]]),'placement'),decoded=decodePathLabelCache(small,'placement');
@@ -36,8 +37,8 @@ controls.push(
  ['packed-record-inflation-bound',()=>decodePathLabelCache(packedCarrier(gzipSync(Buffer.alloc(pathLabelCacheBounds.file+1),{level:9})),packedFixture)]
 );
 for(const[name,run]of controls)assert.throws(run,undefined,'Accepted '+name);
-const fixtures=[];
-for(const fixture of['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract','flowchart-math-macros','math-macro-contract','network-math-functions','math-functions-contract']){
+const fixtures=[],mathReports=new Map();
+for(const fixture of['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract','flowchart-math-macros','math-macro-contract','network-math-functions','math-functions-contract',...Object.keys(mathLabelCacheGroups)]){
  const loaded=await loadPathLabelCache(root,fixture);assert.equal(calcHash(encodePathLabelCache(loaded.cache.files,fixture)),loaded.manifest.decodedSha256);
  const archive=path.resolve(root,pathLabelCacheDefinition(fixture).directory+'/'+fixture+'.images.cache.gz');
  const original=await readFile(archive),corrupt=Buffer.from(original);corrupt[corrupt.length-1]^=1;
@@ -46,5 +47,18 @@ for(const fixture of['placement','interactions','flowchart-basic','network-bent'
  const rehashed=gzipSync(encodePathLabelCache(changed,fixture),{level:9});
  await assert.rejects(loadPathLabelCache(root,fixture,f=>path.resolve(f)===archive?Promise.resolve(rehashed):readFile(f)));
  const raw=gunzipSync(original,{maxOutputLength:pathLabelCacheBounds.decoded});assert.equal(calcHash(raw),loaded.manifest.decodedSha256);
+ if(Object.hasOwn(mathLabelCacheGroups,fixture))for(const d of loaded.manifest.reports){
+  const bytes=loaded.cache.files.get(d.file),report=JSON.parse(bytes),files=new Map(Object.keys(report.artifacts).map(f=>[f,loaded.cache.files.get(path.posix.dirname(d.file)+'/'+f)]));
+  mathReports.set(d.role,{bytes,sha256:d.sha256,report,files,json:f=>JSON.parse(files.get(f))});
+ }
  fixtures.push({fixture,logicalFiles:loaded.cache.files.size,uniqueBlobs:loaded.cache.blobs.size});
-}console.log(JSON.stringify({validated:true,controls:[...controls.map(([name])=>name),'corrupt-pinned-archive','rehashed-unreviewed-archive'],fixtures}));
+}
+const mathInputs=mathLabelCacheReports.map(d=>mathReports.get(d.role)),mathQualification=verifyMathPortableInputs(mathInputs);
+const mathControls=[
+ ['math-evidence-phase-exchanged',()=>verifyMathPortablePart('math-labels-primary',mathInputs.slice(0,2))],
+ ['math-historical-native-claim-erased',()=>verifyMathPortablePart('math-labels-native',[{...mathInputs[0],report:{...mathInputs[0].report,nativeToolInvoked:false}},mathInputs[1]])],
+ ['math-restored-owner-changed',()=>{const owner=mathInputs[3],files=new Map(owner.files);files.set('input-report.json',Buffer.from('{}\n'));
+  verifyMathPortablePart('math-labels-primary',[mathInputs[2],{...owner,files}]);}]
+];
+for(const[name,run]of mathControls)assert.throws(run,undefined,'Accepted '+name);
+console.log(JSON.stringify({validated:true,controls:[...controls.map(([name])=>name),'corrupt-pinned-archive','rehashed-unreviewed-archive',...mathControls.map(([name])=>name)],fixtures,mathQualification}));
