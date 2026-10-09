@@ -82,14 +82,21 @@ export async function readEdgeOriginal(renderer,reference,metrics,glyphs){
   assert.equal(metadata.paths.length,paints.length);assert.equal(metadata.clips.length,clipCalls.length);assert.equal(glyphs.nodes.length,metrics.nodes.length);
   const clipMap=new Map(metadata.clips.map((c,i)=>[c.id,i]));assert.ok(metadata.clips.every(c=>c.rule==='nonzero'),'This fixed corpus uses nonzero clipping.');
   const expected=[];let use=0;
-  for(let i=0;i<paints.length;i++){
-    const native=paths.get(paints[i].pathId);assert.ok(native);expected.push({kind:'path',index:i});
-    assert.deepEqual(metadata.paths[i].clips.map(c=>clipMap.get(c)),paints[i].clips);
+  const backgrounds=metrics.physicalOrder.nodeBackgroundCalls;
+  if(backgrounds){assert.deepEqual(backgrounds,metrics.physicalOrder.allPathCalls);assert.equal(clipCalls.length,0);}
+  const paintIndices=new Map(paints.map((p,i)=>[p.pathId,i]));
+  if(backgrounds)assert.equal(paintIndices.size,paints.length);
+  const events=backgrounds?backgrounds.map(id=>({id,i:paintIndices.get(id)})):paints.map((p,i)=>({id:p.pathId,i}));
+  for(const {id,i}of events){
+    const native=paths.get(id);assert.ok(native);
+    const clips=i===undefined?[]:paints[i].clips;
+    if(i!==undefined){expected.push({kind:'path',index:i});assert.deepEqual(metadata.paths[i].clips.map(c=>clipMap.get(c)),clips);}
+    else assert.ok(backgrounds&&native.owner.startsWith('node-')&&native.modes.length===0,'Only unpainted node backgrounds may omit a paint.');
     if(native.owner.startsWith('node-')){
       const j=metrics.nodes.findIndex(n=>'node-'+n.id===native.owner);assert.ok(j>=0);assert.equal(glyphs.nodes[j].id,metrics.nodes[j].id);
       for(const g of glyphs.nodes[j].glyphs){const u=metadata.uses[use],match=/^#(g\d+)-(\d+)$/.exec(u?.href??'');assert.ok(match);
         assert.equal(Number(match[2]),g.slot);assert.equal(glyphs.svgFontDefinitions[match[1]],g.font);assert.ok(metadata.definitions.some(d=>d.id===match[0].slice(1)));
-        assert.deepEqual(u.clips.map(c=>clipMap.get(c)),paints[i].clips);expected.push({kind:'glyph',index:use++});}
+        assert.deepEqual(u.clips.map(c=>clipMap.get(c)),clips);expected.push({kind:'glyph',index:use++});}
     }
   }
   assert.equal(use,metadata.uses.length);assert.deepEqual(metadata.operations,expected);

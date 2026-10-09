@@ -14,9 +14,14 @@ const frozen={
  'network-bent':'6a64406360a4c079bedb1f5392741893b0969909f146f47fed5defc173939753',
  'flowchart-transformed':'3c6fae434443c59204a653e6656c4e581644d6eb693c139d6d565ddfb008f43a',
  'flowchart-parameterized':'bbf4b6e43e01ad3071aa554b726153721f81fe83d33d9218b24cf39e88fadd92',
- 'style-contract':'aafa2cf36b1f07e935fb4b0adf3958ed4e4f4ff803d05bad2bbf3d587f4af7a4'
+ 'style-contract':'aafa2cf36b1f07e935fb4b0adf3958ed4e4f4ff803d05bad2bbf3d587f4af7a4',
+ 'flowchart-foreach':'f336b86e533d4e47ba39ca3c5d77a85ad19ce1972e76bb16245d9774cbee2e12',
+ 'foreach-contract':'6f0f5f8e16cb007c98fd4dcaf6ad4a4e3098c1a1bada0037403f5560ecbcc426'
 };
-export const labelImageSourceFile=id=>'tests/Fixtures/'+(id==='style-contract'?'Styles':'Diagrams')+'/'+id+'.tikz';
+// Shared fixed-case classification; rectangle and arrow measurements stay separate.
+export const rectangleImageCounts=Object.freeze({'style-contract':7,'foreach-contract':29});
+export const isRectangleImageCase=id=>Object.hasOwn(rectangleImageCounts,id);
+export const labelImageSourceFile=id=>'tests/Fixtures/'+(id==='style-contract'?'Styles':id==='foreach-contract'?'Foreach':'Diagrams')+'/'+id+'.tikz';
 export async function loadLabelImageEvidence(input){
  if(['placement','interactions'].includes(input))return loadPathLabelEvidence(input);
  const file=path.resolve(root,input),role=JSON.parse(await readFile(file)).role;
@@ -24,7 +29,8 @@ export async function loadLabelImageEvidence(input){
  const b=await loadCalcSavedReport(file,role),id=b.report.definition.id;
  assert.equal(b.sha256,frozen[id],'Expected the frozen trusted diagram arrow bundle.');
  if(role==='diagram-native-reference'){
-  assert.equal(id,'style-contract','Only the frozen rectangle contract uses this route.');
+  assert.ok(isRectangleImageCase(id),'Only fixed frozen rectangle contracts use this route.');
+  assert.equal(b.report.counts.nodes,rectangleImageCounts[id]);
   for(const[f,h]of Object.entries(b.report.sourceHashes)){
    assert.equal(calcHash(b.files.get('source-captures/'+f)),h);
    if(f.startsWith('tests/Fixtures/')||f.endsWith('.tex')||f==='tools/TikzFontData/font-profile.json')

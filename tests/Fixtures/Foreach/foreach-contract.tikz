@@ -8,11 +8,13 @@
   \foreach \i in {1,3,...,6} {
     \node (step\i) at (\i,-2) {S\i};
   }
+  \coordinate (red) at (0,-3);
+  \coordinate (blue) at (2,-3);
   \foreach \colour in {red,blue} {
-    \node[fill=\colour] (literal\colour) at (0,-3) {\colour};
+    \node[fill=\colour] (literal\colour) at (\colour) {\colour};
   }
   \foreach \word in {{Stage one}} {
-    \node (spaced) at (2,-3) {\word};
+    \node (spaced) at (4,-3) {\word};
   }
   \foreach \i in {1} {
     \node (outerbefore) at (\i,-4) {Outer \i};

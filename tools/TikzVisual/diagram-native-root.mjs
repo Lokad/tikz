@@ -25,18 +25,39 @@ export function diagramNativeNaturalRoot(metrics,picture,glyphs){
   contract:'Observed PGF picture bounds union shipped native path/glyph ink; existing line caps/miter intersections, cubic pen envelopes and similarity tip pens. Conservative inspection padding is excluded.'};
 }
 
-// The style contract has measured global rectangle paths, not arrow templates.
-export function rectangleNativeNaturalRoot(metrics,picture,glyphs){
+// These fixed contracts have measured global rectangle paths, not arrow templates.
+export function rectangleNativePrimitives(metrics,expectedNodes){
  assert.equal(metrics.driverState.passed,true);
- assert.equal(metrics.nodes.length,7);assert.equal(metrics.constructionPaths.length,7);
+ assert.ok(Number.isInteger(expectedNodes)&&expectedNodes>0);
+ assert.equal(metrics.nodes.length,expectedNodes);assert.equal(metrics.constructionPaths.length,expectedNodes);
  assert.ok(metrics.nodes.every(n=>n.shape==='rectangle'&&n.frame.slice(0,4).join(',')==='1.0,0.0,0.0,1.0'));
- const paths=new Map(metrics.constructionPaths.map(p=>[p.index,p])),contributions=[];
- for(const [i,paint]of metrics.driverState.paints.entries()){
-  const path=paths.get(paint.pathId);assert.ok(path.owner.startsWith('node-'));
+ assert.equal(metrics.driverState.clipPaths,0);
+ const paths=metrics.constructionPaths,calls=metrics.physicalOrder.allPathCalls;
+ assert.deepEqual(calls,paths.map(p=>p.index));
+ for(const [i,path]of paths.entries()){
+  assert.equal(path.owner,'node-'+metrics.nodes[i].id);
   assert.deepEqual(path.segments.map(s=>s.kind),['rectcorner','rectsize']);
-  assert.equal(paint.operation,'stroke');assert.equal(paint.clips.length,0);
-  const segments=edgeCssSegments(path),bounds=edgeStrokeEnvelope(segments,paint.widthSp*edgeSpToCss,paint.cap,paint.join,paint.miter).stroke;
-  contributions.push({id:'native-paint-'+i,role:'node-background',bound:bounds});
+  assert.ok(path.modes.every(m=>['draw','fill'].includes(m)));assert.equal(new Set(path.modes).size,path.modes.length);
+ }
+ // Driver path IDs are shipped ordinals. Background construction calls also
+ // include unpainted nodes, which still emit their labels in physical order.
+ const shipped=paths.filter(p=>p.modes.length>0);assert.equal(shipped.length,metrics.driverState.paints.length);
+ const paints=metrics.driverState.paints.map((paint,i)=>{
+  const path=shipped[i];assert.equal(paint.pathId,i+1);assert.equal(paint.clips.length,0);
+  assert.equal(paint.operation,path.modes.includes('draw')?(path.modes.includes('fill')?'fillstroke':'stroke'):'fill');
+  assert.equal(paint.widthSp,path.widthSp);return{...paint,pathId:path.index};
+ });
+ return{...metrics,paths,driverState:{...metrics.driverState,paints},physicalOrder:{...metrics.physicalOrder,nodeBackgroundCalls:calls}};
+}
+
+export function rectangleNativeNaturalRoot(metrics,picture,glyphs,expectedNodes){
+ const primitive=rectangleNativePrimitives(metrics,expectedNodes),paths=new Map(primitive.paths.map(p=>[p.index,p])),contributions=[];
+ for(const [i,paint]of primitive.driverState.paints.entries()){
+  const path=paths.get(paint.pathId);
+  const segments=edgeCssSegments(path),stroke=paint.operation!=='fill'&&paint.strokeOpacity>0
+   ?edgeStrokeEnvelope(segments,paint.widthSp*edgeSpToCss,paint.cap,paint.join,paint.miter).stroke:null;
+  const fill=paint.operation!=='stroke'&&paint.fillOpacity>0?pathBounds(segments):null,bounds=[stroke,fill].filter(Boolean);
+  if(bounds.length)contributions.push({id:'native-paint-'+i,role:'node-background',bound:unionBounds(bounds)});
  }
  contributions.push(...glyphs.map(g=>({id:g.id,nodeId:g.nodeId,bound:g.bound})));
  const ink=unionBounds(contributions.map(c=>c.bound)),root=unionBounds([picture,ink]);

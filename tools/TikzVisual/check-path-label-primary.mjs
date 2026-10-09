@@ -9,7 +9,7 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {decodeCalcPng} from './calc-png.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {createRenderer} from './compare.mjs';
-import {loadLabelImageEvidence} from './diagram-image-evidence.mjs';
+import {loadLabelImageEvidence,isRectangleImageCase} from './diagram-image-evidence.mjs';
 import {buildPathLabelImageReference,pathLabelPrimaryCaptures,pathLabelImageEncodings,pathLabelDiagramImageEncodings,mutatePathLabelImage,pathLabelImageControls,pathLabelControlViews} from './path-label-image-reference.mjs';
 import {shapeViews,deriveShapeTrialPolicy,evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
@@ -23,7 +23,7 @@ export function verifyPathLabelPrimaryPixels(bundle){
  const frame=bundle.json('frame.json'),compare=createShapeRasterMetrics().compare;
  const encodings=frame.nativePathEncoding?pathLabelDiagramImageEncodings:pathLabelImageEncodings;
  if(frame.nativePathEncoding)assert.ok(frame.regions.some(r=>r.role==='tip')||
-  (frame.caseId==='style-contract'&&frame.nativePathEncoding.kind==='rectangle-background'));
+  (isRectangleImageCase(frame.caseId)&&frame.nativePathEncoding.kind==='rectangle-background'));
  calcEqual(frame.encodings.map(e=>e.id),encodings,'Native representation coverage differs.');
  const expected=encodings.flatMap(encoding=>pathLabelPrimaryCaptures.flatMap(capture=>shapeViews.map(v=>'encodings/'+encoding+'/'+capture+'/'+key(v)+'/record.json')));
  calcEqual(r.records.map(r=>r.file).sort(),expected.sort(),'Native encoding/view coverage differs.');

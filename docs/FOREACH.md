@@ -76,6 +76,9 @@ The trusted flowchart combines loop-created nodes/coordinates with positioning,
 parameterized styles, path labels, five arrows and calc. Its independent native
 SVG/PDF measurements check all 1,765 text/anchor/glyph/path/arrow/paint/bounds
 quantities. A separate focused fixture measures 29 nodes and 464 anchors for
-lists, ranges, shadowing and scope restoration. These are iteration checks.
+lists, ranges, shadowing and scope restoration. Its full native comparison also
+checks 2,193 glyph/path/paint/order/bounds quantities and two named coordinates.
+Nodes clear inherited draw/fill modes before applying node styles and local
+options, retaining their inherited pen. These are iteration checks.
 Complete image/PDF policy and final clean-source qualification remain separate
 requirements; the converter does not promise general TeX compatibility.
