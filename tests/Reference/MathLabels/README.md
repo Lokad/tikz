@@ -134,6 +134,26 @@ source. The current-output matrix verifies public source hashes, decodes all
 72 view pairs and recaptures the public SVGs. Retain unchanged calibration
 between iterations; PDF and final feature qualification are separate gates.
 
+Ordinary math PDF references reuse the accepted native path run's owned
+wrappers for these three fixed sources. The PDF route switches the native
+driver, records the shipped box position on a fixed physical page, binds font
+inputs to the frozen native files, and requires identical plain/probed PDF and
+1x/4x raster bytes. Library declarations can leave measured leading wrapper
+spaces; registration uses that observed width separately from picture geometry.
+The independent checker replays the six compilations and twelve rasters,
+checks all native label/anchor/box/pen measurements, and reuses the existing
+page/crop arithmetic for every whole-picture and individual inspection region.
+
+```sh
+node tools/TikzVisual/math-label-pdf-reference.mjs <accepted-native-path-report>
+node tools/TikzVisual/check-math-label-pdf-native.mjs <exact-native-pdf-report> <accepted-native-path-report> <exact-primary-report> <exact-primary-check-report>
+node tools/TikzVisual/math-label-pdf-native-self-test.mjs <exact-native-pdf-report> <accepted-native-path-report> <exact-primary-report> <exact-native-pdf-check-report>
+```
+
+These references and source/page/font/crop checks preserve existing SVG/DVI
+calibration. Both original-SVG/PDF and converter-SVG/PDF image policies and
+current feature conformance remain separate requirements.
+
 Regeneration is a separate development operation on these trusted inputs:
 
 ```sh
