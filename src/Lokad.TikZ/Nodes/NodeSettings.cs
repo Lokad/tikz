@@ -19,6 +19,7 @@ internal sealed record NodeSettings
     internal Source? AnchorSource { get; init; }
     internal TextAlignment? Alignment { get; init; }
     internal bool TransformShape { get; init; }
+    internal NodePositioning? Positioning { get; init; }
     internal double PathTime { get; init; } = .5;
     internal bool Sloped { get; init; }
     internal bool AllowUpsideDown { get; init; }
@@ -38,3 +39,5 @@ internal sealed record NodeSettings
         return font;
     }
 }
+
+internal sealed record NodePositioning(Source Target, Source Distance, int XSign, int YSign, string TargetAnchor);

@@ -92,10 +92,23 @@ internal sealed partial class Evaluator
         INodeLayout layout = state.Node.Shape == NodeShape.Rectangle
             ? RectangleNodeLayout.Resolve(text, dimensions, budget, statement.Source)
             : CurvedNodeLayout.Resolve(state.Node.Shape, text, dimensions, budget, statement.Source);
+        if (state.Node.Positioning is { } positioned)
+        {
+            if (statement.At is not null)
+                throw new CompileError("TIKZ002", "Combining positioned nodes with explicit at coordinates is not supported.", statement.At.Source);
+            at = PositionedAt(positioned, parent);
+        }
         var anchor = layout.Anchor(state.Node.Anchor, metrics, budget, state.Node.AnchorSource ?? statement.Source).Bp;
         var frame = placement is not null ? placement(state.Node) : state.Node.TransformShape
             ? new Affine(parent.Transform.A, parent.Transform.B, parent.Transform.C, parent.Transform.D, at.X, at.Y)
             : Affine.Translation(at.X, at.Y);
+        if (state.Node.Positioning is { } placementSettings)
+        {
+            // PGF's saved positioning shift precedes local node transforms,
+            // after the ordinary transform-shape/reset policy has been applied.
+            var gap = PositioningShift(placementSettings, state);
+            frame = PgfTransform.Then(frame, Affine.Translation(gap.X, gap.Y), budget, placementSettings.Distance);
+        }
         frame = PgfTransform.Then(frame, state.Transform, budget, statement.Source);
         frame = PgfTransform.Then(frame, Affine.Translation(-anchor.X, -anchor.Y), budget, statement.Source);
         var node = new ResolvedNode(statement.Name, layout, frame, textFont, nodeFont, statement.Source);

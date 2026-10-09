@@ -18,6 +18,7 @@ internal sealed class EvaluationState
     public DashLength ConfiguredDashPhase { get; set; }
     public PendingDash? PendingDash { get; set; }
     public NodeSettings Node { get; set; } = new();
+    public Source NodeDistance { get; set; } = new("1cm", 0, 3);
     // TeX library definitions are global within this conversion, including
     // declarations inside a scope. Clones share this per-conversion registry.
     public HashSet<string> Libraries { get; set; } = new(StringComparer.Ordinal);
@@ -34,7 +35,7 @@ internal sealed class EvaluationState
         budget.Charge(source, Styles.Count + Variables.Count + Clips.Count + 1);
         return new()
         {
-            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Arrows = Arrows, Node = Node, Libraries = Libraries, RelevantForPictureSize = RelevantForPictureSize,
+            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Arrows = Arrows, Node = Node, NodeDistance = NodeDistance, Libraries = Libraries, RelevantForPictureSize = RelevantForPictureSize,
             ConfiguredDash = ConfiguredDash, ConfiguredDashPhase = ConfiguredDashPhase, PendingDash = PendingDash,
             Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal)
         };

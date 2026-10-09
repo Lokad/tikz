@@ -58,10 +58,12 @@ internal static class KeyRegistry
                 { state.NodeTransforms.Add(option with { Key = key }); continue; }
                 if (key is "x" or "y") throw Unsupported(option);
                 if (key == "line width") { state.NodeLineWidth = option.Value; continue; }
-                if (key is "above" or "below" or "left" or "right")
+                if (key is "above" or "below" or "left" or "right" or "above left" or "above right" or "below left" or "below right")
                 {
-                    state.Node = state.Node with { Anchor = key switch { "above" => "south", "below" => "north", "left" => "east", _ => "west" }, AnchorSource = option.Source };
-                    if (value.Length > 0) throw Unsupported(option);
+                    if (value.Length == 0 && (key is "above" or "below" or "left" or "right"))
+                        state.Node = state.Node with { Anchor = key switch { "above" => "south", "below" => "north", "left" => "east", _ => "west" }, AnchorSource = option.Source };
+                    else if (!state.IsPathLabel && state.Libraries.Contains("positioning")) PositioningOptions.Apply(option with { Key = key }, state, budget);
+                    else throw Unsupported(option);
                     continue;
                 }
                 if (key is "pos" or "midway")
@@ -102,6 +104,9 @@ internal static class KeyRegistry
                 case "minimum width": state.Node = state.Node with { MinimumWidth = option.Value }; break;
                 case "minimum height": state.Node = state.Node with { MinimumHeight = option.Value }; break;
                 case "transform shape": state.Node = state.Node with { TransformShape = value switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) } }; break;
+                case "node distance":
+                    if (!state.Libraries.Contains("positioning")) throw Unsupported(option);
+                    state.NodeDistance = option.Value; break;
                 case "line width": var width = state.Dimension(option.Value, budget); if (width < 0) Invalid(option); state.Paint = paint with { Width = width }; break;
                 case "ultra thin": Width(.1); break;
                 case "very thin": Width(.2); break;
