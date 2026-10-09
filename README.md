@@ -48,9 +48,9 @@ policies and fresh-output acceptance in a clean source export.
 
 [Bounded numeric assignments](docs/MATH-MACROS.md) now convert a computed-spacing
 flowchart using scoped arithmetic, positioning, path labels, arrows and calc.
-Fresh numeric comparisons and paired iteration images pass for its two fixed
-supported fixtures. Image/PDF policy admission and final clean-source acceptance
-remain pending.
+Both fixed supported fixtures pass independent numeric, primary and PDF
+policies, fresh-output acceptance in a clean source export, and integration.
+Broader PGF math remains release scope.
 
 ```csharp
 using Lokad.TikZ;

@@ -3,7 +3,9 @@
 These snapshots retain independent PGF 3.1.11a scalar results and named-node
 anchors for three fixed trusted fixtures. Ordinary tests compare fresh
 conversion against these observations for the [declared numeric grammar](../../../docs/MATH-MACROS.md).
-Image/PDF admission and final clean-source qualification remain pending.
+Both supported image fixtures pass independently checked primary/PDF policies
+and final clean-source qualification. Boundary snapshots retain scalar evidence
+without an image-conformance claim.
 
 Regenerate only these repository-authored inputs with the existing observer:
 
@@ -42,8 +44,9 @@ node tools/TikzVisual/path-label-reference.mjs math-macro-contract
 
 Snapshots preserve source hashes, text boxes, matrices, anchors and each printed
 scalar result. Implementations must check fresh converter output against these
-observations. Image/PDF policies and final clean-source qualification are later
-feature exits. Broader PGF math and general TeX remain outside this first scope.
+observations. Both image fixtures also pass their separate current-source,
+primary/PDF and final clean-export checks. Broader PGF math and general TeX
+remain outside this first scope.
 
 ## Frozen image evidence
 

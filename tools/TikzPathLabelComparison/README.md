@@ -63,7 +63,9 @@ The numeric-macro fixtures now retain independently checked native primary/PDF
 bundles under [`tests/Reference/MathMacros`](../../tests/Reference/MathMacros/README.md).
 Their 48 current primary and 16 PDF views pass the separate native-only policies.
 The existing materializer restores both archives without native execution.
-Final clean-source comparisons and integration remain separate feature exits.
+Final clean-source comparisons and integration pass both fixtures, including
+64 independent fresh-output image views and the required existing-family
+regressions. These completed checks remain separate from archive restoration.
 
 ```sh
 node tools/TikzVisual/path-label-reference.mjs flowchart-basic
