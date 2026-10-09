@@ -4,13 +4,15 @@ import {multiply,parseTransform,parsePath,pathData,pathBounds,transformSegments,
 import {shapePdfRasterRectangle} from './shape-pdf-camera.mjs';
 import {decodeCalcPng} from './calc-png.mjs';
 import {diagramNativeNaturalRoot} from './diagram-native-root.mjs';
+import {makeArrowNativeSvg,arrowNativeRepresentations} from './arrow-native-svg.mjs';
 
 const spToCss=96/(72.27*65536),ptToCss=96/72.27;
 const fixed=(v,n)=>{assert.ok(Number.isFinite(v));return(Math.abs(v)<10**(-n)/2?0:v).toFixed(n).replace(/\.?0+$/,'');};
 export const pathLabelImageEncodings=['native-dimensions-12','native-dimensions-6'];
+export const pathLabelDiagramImageEncodings=[...pathLabelImageEncodings,'native-paths-pt-short'];
 export const pathLabelPrimaryCaptures=['intrinsic-image','explicit-viewport'];
 
-export async function buildPathLabelImageReference(renderer,bundle,glyphs){
+export async function buildPathLabelImageReference(renderer,bundle,glyphs,nativePaths=!!bundle.arrowMetrics){
  const reference=bundle.files.get('probed-reference.svg').toString('utf8'),metrics=bundle.metrics;
  const metadata=await renderer.page.evaluate(source=>{
   const doc=new DOMParser().parseFromString(source,'image/svg+xml'),root=doc.documentElement;
@@ -101,8 +103,30 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs){
   },{metadata,instructions,root});
   encodings.push({id,svg,converterInvoked:false});
  }
+ let nativePathEncoding;
+ if(nativePaths){
+  assert.ok(bundle.arrowMetrics&&natural);
+  const native=makeArrowNativeSvg(bundle.arrowMetrics,{picture,inkRoot:natural.root},arrowNativeRepresentations.find(v=>v.name==='pt-short'),'ink');
+  assert.equal(native.instructions.clips.length,0,'These fixed diagrams have no native clips.');
+  const svg=await renderer.page.evaluate(({source,paints})=>{
+   const doc=new DOMParser().parseFromString(source,'image/svg+xml'),s=doc.documentElement;
+   const glyphs=()=>[...doc.querySelectorAll('use')].map(e=>e.outerHTML),before=glyphs(),defs=doc.querySelector('defs').outerHTML,box=s.getAttribute('viewBox');
+   for(const[i,p]of paints.entries()){
+    const e=doc.getElementById('native-paint-'+i);if(!e||e.localName!=='path')throw Error('Missing native paint.');
+    for(const a of [...e.attributes])if(a.name!=='id')e.removeAttribute(a.name);
+    for(const[k,v]of Object.entries(p.attributes))if(k!=='id')e.setAttribute(k,v);
+    e.setAttribute('d',p.d);if(p.transform)e.setAttribute('transform',p.transform);
+   }
+   if(JSON.stringify(before)!==JSON.stringify(glyphs())||defs!==doc.querySelector('defs').outerHTML||box!==s.getAttribute('viewBox'))throw Error('Native glyphs, outlines or root changed.');
+   return new XMLSerializer().serializeToString(s);
+  },{source:encodings[1].svg,paints:native.instructions.paints});
+  // Saved JSON has no negative zero; normalize instruction metadata before
+  // independent in-memory versus saved-frame comparison. SVGs stay unchanged.
+  nativePathEncoding=JSON.parse(JSON.stringify(native.instructions));encodings.push({id:pathLabelDiagramImageEncodings[2],svg,converterInvoked:false});
+ }
  return{caseId:bundle.report.definition.id,origin:metadata.origin,camera,regions,picture,driverRoot,bounds,encodings,
   ...(natural?{natural}:{}),
+  ...(nativePathEncoding?{nativePathEncoding}:{}),
   nativePaths:paths.length,nativeGlyphs:uses.length,nativeClips:clips.length,converterInvoked:false,
   contract:'Original native paths/outlines/paint/order/clips; PGF dimensions recovered as sp, exact physical scale, independent DVI glyph advances and observed native frames. Decimal variants are fixed before candidate measurement.'};
 }

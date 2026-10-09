@@ -71,11 +71,14 @@ comparison links failed native regions back to those spans. Native-only cameras,
 per-region limits, whole-label and tip sensitivity now have independent image
 recapture. Natural roots use independently measured picture bounds union shipped
 path/glyph ink; the expanded inspection camera retains its conservative padding.
-All transformed-diagram primary views now pass. Ten basic/network 4x path views
-still fail; those receipts drive the next work before PDF/final admission.
+The three diagram encodings retain the two native decimal matrix variants and
+add the existing arrow encoder's short TeX-point path representation. Its finite
+decimals recover the original scaled-point coordinates, widths and translations.
+This closes the retained path calibration gap: all 72 current diagram primary
+views now pass. PDF/final admission remains separate.
 
-When only this independently justified root changes, the existing calibrator
-can preserve expanded-view pixels from an exact prior report:
+When a root changes or an independent encoding is added, the existing calibrator
+can preserve unchanged samples from an exact prior report:
 
 ```sh
 node tools/TikzVisual/calibrate-path-label-primary.mjs <exact-supplemental-report> --reuse <exact-prior-calibration-report>
@@ -84,7 +87,8 @@ node tools/TikzVisual/compare-path-label-primary.mjs <exact-new-calibration-repo
 ```
 
 Reuse requires unchanged native input, renderer, camera, regions, drawing and
-control targets/drawings. Natural views are rendered again. The independent
+control targets/drawings. An unchanged source can reuse all its views; a root
+change can reuse expanded views only. New encodings are rendered. The independent
 checker still decodes and recaptures every source, including reused expanded
 views. Limits derive only from native encodings, before current output is read.
 

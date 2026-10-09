@@ -21,6 +21,9 @@ const defects=[
 if(original.report.controls.some(c=>c.kind==='missing-label'))defects.push(
  ['missing-whole-label-control',r=>r.controls.splice(r.controls.findIndex(c=>c.kind==='missing-label'),1)]
 );
+if(original.json('frame.json').nativePathEncoding)defects.push(
+ ['missing-native-path-encoding',r=>r.records=r.records.filter(v=>v.encoding!=='native-paths-pt-short')]
+);
 for(const [name,edit]of defects){const changed=mutation(edit);
  assert.notEqual(JSON.stringify(changed.report),JSON.stringify(original.report),'Control did not change its declared report/artifact: '+name);
  assert.throws(()=>verifyPathLabelPrimaryPixels(changed),undefined,'Corruption accepted: '+name);}

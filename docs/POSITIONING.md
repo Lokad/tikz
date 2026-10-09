@@ -62,8 +62,9 @@ Native-only primary/local calibration and glyph/whole-label/tip sensitivity now
 have independent decoded-image checking and source recapture. Fresh diagram
 primary comparisons now use natural roots independently derived from PGF picture
 bounds and shipped path/glyph ink, separate from the conservative inspection
-camera. This closes all transformed-diagram primary views and the earlier glyph
-failures. Ten 4x path views still fail in the basic flowchart and network; their
-source-linked receipts drive the next work. Complete primary/local/PDF image
-admission remains open. Iteration images
+camera. The existing native arrow encoder also supplies a short TeX-point path
+representation, whose decimals recover each original scaled-point dimension.
+Adding that missing calibration variant closes the retained 4x path failures:
+all 72 complete-diagram primary views pass their native-only limits. Original/
+encoded-PDF gates and final feature admission remain open. Iteration images
 do not establish a general pixel-perfect or image-conformance claim.
