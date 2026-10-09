@@ -48,6 +48,10 @@ The existing semantic comparer also checks fourteen text nodes and 65 glyphs
 against independent SVG/PDF observations. All 2,053 numeric checks pass, including
 the flowchart's paths, four arrow tips, shortening and calculated waypoint.
 The standalone glyph oracle has only .NET references and loads no converter.
-Affected paired SVG images at 1x/4x are iteration evidence. Native-only image
-policies, both PDF gates and final clean export acceptance remain separate
-requirements for this feature.
+The two fixtures also pass 48 current primary/local views and 16 views through
+both PDF routes, using policies derived only from native encodings. Independent
+checking exports fresh converter output, repeats all 2,053 numeric checks and
+recaptures all 64 current views. Native sensitivity includes first-glyph and
+whole-label controls for both fixtures and arrow-tip controls for the flowchart.
+These calibrated fixtures leave final clean export acceptance and broader TikZ
+compatibility as separate requirements.

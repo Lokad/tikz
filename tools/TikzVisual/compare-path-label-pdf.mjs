@@ -6,7 +6,7 @@ import {randomUUID} from 'node:crypto';
 import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {ownCalcBundle} from './calc-admission-child.mjs';
-import {loadLabelImageEvidence} from './diagram-image-evidence.mjs';
+import {loadLabelImageEvidence,labelImageSourceFile} from './diagram-image-evidence.mjs';
 import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {measureEdgePdfPair} from './edge-pdf-image-pair.mjs';
@@ -25,7 +25,7 @@ try{
  const role=JSON.parse(await readFile(path.resolve(root,process.argv[3]))).role;assert.ok(['path-label-numeric-iteration','diagram-current-numeric'].includes(role));
  const numeric=await loadCalcSavedReport(path.resolve(root,process.argv[3]),role),diagram=role==='diagram-current-numeric',numericPrefix=diagram?'':'current/';fixture=calibration.report.fixture;
  const native=await loadLabelImageEvidence(diagram?path.relative(root,path.join(path.dirname(calibration.file),'native/report.json')):fixture);assert.equal(calibration.report.inputs.nativeInputSha256,native.sha256);
- if(diagram)assert.ok(numeric.files.get('source.tikz').equals(native.files.get('source-captures/tests/Fixtures/Diagrams/'+fixture+'.tikz')));else assert.equal(numeric.report.result.fixture,fixture);
+ if(diagram)assert.ok(numeric.files.get('source.tikz').equals(native.files.get('source-captures/'+labelImageSourceFile(fixture))));else assert.equal(numeric.report.result.fixture,fixture);
  assert.equal(numeric.report.result.numericPassed,true);assert.equal(numeric.report.result.publicTraceParity,true);assert.equal(numeric.report.result.nativeInputSha256,native.sha256);
  assert.ok(numeric.files.get(numericPrefix+'actual.svg').equals(numeric.files.get(numericPrefix+'public.svg')));
  for(const [file,bytes]of calibration.files)if(file.startsWith('source-captures/')&&!file.endsWith('.mjs'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice(16)))),'Changed native PDF dependency.');

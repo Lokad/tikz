@@ -83,6 +83,13 @@ This closes the retained path calibration gap: all 72 current diagram primary
 views now pass. Both diagram PDF gates now pass their 24 required current views.
 Feature acceptance additionally requires a clean committed source export.
 
+`flowchart-parameterized` uses the same arrow route. `style-contract` instead
+uses its seven measured global rectangle paths and the existing primitive
+path/paint/order reader and scaled-point serialization guards. Its natural
+root contains measured picture bounds and native rectangle/glyph ink; no arrow
+template is fabricated. Both cases have first-glyph and whole-label sensitivity,
+native-only primary/local and separate PDF policies, and fresh-output replay.
+
 When a root changes or an independent encoding is added, the existing calibrator
 can preserve unchanged samples from an exact prior report:
 

@@ -12,7 +12,7 @@ import {shapeViews,evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
 import {pathLabelPrimaryCaptures} from './path-label-image-reference.mjs';
-import {loadLabelImageEvidence} from './diagram-image-evidence.mjs';
+import {loadLabelImageEvidence,labelImageSourceFile} from './diagram-image-evidence.mjs';
 import {readPathLabelPrimaryPolicies} from './path-label-primary-policy.mjs';
 
 assert.equal(process.argv.length,4,'Usage: node tools/TikzVisual/compare-path-label-primary.mjs <native-calibration-report> <fresh-numeric-iteration-report>');
@@ -29,7 +29,7 @@ try{
  const numeric=await loadCalcSavedReport(path.resolve(root,process.argv[3]),numericRole),diagram=numericRole==='diagram-current-numeric';
  const id=calibration.report.fixture,native=await loadLabelImageEvidence(diagram?path.relative(root,path.join(path.dirname(calibration.file),'native/report.json')):id);
  assert.equal(calibration.report.converterInvoked,false);assert.equal(calibration.report.nativeInputSha256,native.sha256);
- if(diagram)assert.ok(numeric.files.get('source.tikz').equals(native.files.get('source-captures/tests/Fixtures/Diagrams/'+id+'.tikz')));
+ if(diagram)assert.ok(numeric.files.get('source.tikz').equals(native.files.get('source-captures/'+labelImageSourceFile(id))));
  else assert.equal(numeric.report.result.fixture,id);
  assert.equal(numeric.report.result.numericPassed,true);assert.equal(numeric.report.result.publicTraceParity,true);
  assert.equal(numeric.report.result.nativeInputSha256,native.sha256);

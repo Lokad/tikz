@@ -22,7 +22,8 @@ export function verifyPathLabelPrimaryPixels(bundle){
  const r=bundle.report;assert.equal(r.converterInvoked,false);assert.equal(r.nativeToolInvoked,false);
  const frame=bundle.json('frame.json'),compare=createShapeRasterMetrics().compare;
  const encodings=frame.nativePathEncoding?pathLabelDiagramImageEncodings:pathLabelImageEncodings;
- if(frame.nativePathEncoding)assert.ok(frame.regions.some(r=>r.role==='tip'));
+ if(frame.nativePathEncoding)assert.ok(frame.regions.some(r=>r.role==='tip')||
+  (frame.caseId==='style-contract'&&frame.nativePathEncoding.kind==='rectangle-background'));
  calcEqual(frame.encodings.map(e=>e.id),encodings,'Native representation coverage differs.');
  const expected=encodings.flatMap(encoding=>pathLabelPrimaryCaptures.flatMap(capture=>shapeViews.map(v=>'encodings/'+encoding+'/'+capture+'/'+key(v)+'/record.json')));
  calcEqual(r.records.map(r=>r.file).sort(),expected.sort(),'Native encoding/view coverage differs.');

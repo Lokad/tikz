@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import {multiply,parseTransform,parsePath,pathData,pathBounds,transformSegments,unionBounds} from './shape-frame-math.mjs';
 import {shapePdfRasterRectangle} from './shape-pdf-camera.mjs';
 import {decodeCalcPng} from './calc-png.mjs';
-import {diagramNativeNaturalRoot} from './diagram-native-root.mjs';
+import {diagramNativeNaturalRoot,rectangleNativeNaturalRoot} from './diagram-native-root.mjs';
 import {makeArrowNativeSvg,arrowNativeRepresentations} from './arrow-native-svg.mjs';
+import {readEdgeOriginal,edgeOracleInstructions,edgeOracleVariants} from './edge-oracle.mjs';
 
 const spToCss=96/(72.27*65536),ptToCss=96/72.27;
 const fixed=(v,n)=>{assert.ok(Number.isFinite(v));return(Math.abs(v)<10**(-n)/2?0:v).toFixed(n).replace(/\.?0+$/,'');};
@@ -16,7 +17,7 @@ export function pathLabelImageEncodingIds(frame){
 }
 export const pathLabelPrimaryCaptures=['intrinsic-image','explicit-viewport'];
 
-export async function buildPathLabelImageReference(renderer,bundle,glyphs,nativePaths=!!bundle.arrowMetrics){
+export async function buildPathLabelImageReference(renderer,bundle,glyphs,nativePaths=!!bundle.arrowMetrics||bundle.report.definition.id==='style-contract'){
  const reference=bundle.files.get('probed-reference.svg').toString('utf8'),metrics=bundle.metrics;
  const metadata=await renderer.page.evaluate(source=>{
   const doc=new DOMParser().parseFromString(source,'image/svg+xml'),root=doc.documentElement;
@@ -87,7 +88,8 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
  const regions=contributions.map(c=>{const b=c.bound,x=Math.floor(b.minX)-2-camera.x,y=Math.floor(b.minY)-2-camera.y;
   return{...c,rectangle:{x,y,width:Math.ceil(b.maxX)+2-camera.x-x,height:Math.ceil(b.maxY)+2-camera.y-y}};
  });
- const natural=bundle.arrowMetrics?diagramNativeNaturalRoot(bundle.arrowMetrics,picture,contributions.filter(c=>c.kind==='glyph')):null;
+ const glyphContributions=contributions.filter(c=>c.kind==='glyph'),rectangle=bundle.report.definition.id==='style-contract';
+ const natural=bundle.arrowMetrics?diagramNativeNaturalRoot(bundle.arrowMetrics,picture,glyphContributions):rectangle?rectangleNativeNaturalRoot(metrics,picture,glyphContributions):null;
  const encodings=[];
  for(const id of pathLabelImageEncodings){
   const box=natural?.root??bounds,places=id.endsWith('12')?12:6,root=[box.minX,box.minY,box.maxX-box.minX,box.maxY-box.minY].map(v=>fixed(v,6));
@@ -109,8 +111,16 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
  }
  let nativePathEncoding;
  if(nativePaths){
-  assert.ok(bundle.arrowMetrics&&natural);
-  const native=makeArrowNativeSvg(bundle.arrowMetrics,{picture,inkRoot:natural.root},arrowNativeRepresentations.find(v=>v.name==='pt-short'),'ink');
+  assert.ok((bundle.arrowMetrics||rectangle)&&natural);
+  let native;
+  if(rectangle){
+   // Reuse the primitive reader's path/paint/order and integer serialization
+   // guards; the alias names the observed construction paths, never arrow data.
+   const primitive={...metrics,paths:metrics.constructionPaths},original=await readEdgeOriginal(renderer,reference,primitive,glyphs);
+   const instructions=edgeOracleInstructions(primitive,glyphs,original,edgeOracleVariants.find(v=>v.name==='native-pt-short-glyph-twelve'));
+   native={instructions:{kind:'rectangle-background',converterInvoked:false,checks:instructions.checks,clips:instructions.clips,
+    paints:instructions.paths.map(p=>({...p,attributes:p.paint}))}};
+  }else native=makeArrowNativeSvg(bundle.arrowMetrics,{picture,inkRoot:natural.root},arrowNativeRepresentations.find(v=>v.name==='pt-short'),'ink');
   assert.equal(native.instructions.clips.length,0,'These fixed diagrams have no native clips.');
   const svg=await renderer.page.evaluate(({source,paints})=>{
    const doc=new DOMParser().parseFromString(source,'image/svg+xml'),s=doc.documentElement;
@@ -149,7 +159,7 @@ export function pathLabelPdfFrame(bundle,frame){
 }
 
 export function pathLabelImageControls(frame,glyphs){
- const diagram=frame.regions.some(r=>r.role==='tip'),controls=[];let offset=0;
+ const diagram=frame.regions.some(r=>r.role==='tip')||frame.caseId==='style-contract',controls=[];let offset=0;
  for(const node of glyphs.nodes){
   const targets=node.glyphs.map((_,i)=>'native-glyph-'+(offset+i)),target=targets[0];
   if(!['from','target','seed'].includes(node.id)){
@@ -161,7 +171,7 @@ export function pathLabelImageControls(frame,glyphs){
  return controls;
 }
 export function pathLabelControlViews(frame){
- return frame.regions.some(r=>r.role==='tip')?[1,4].map(scale=>({frame:'expanded',scale,background:'white'})):null;
+ return frame.regions.some(r=>r.role==='tip')||frame.caseId==='style-contract'?[1,4].map(scale=>({frame:'expanded',scale,background:'white'})):null;
 }
 export async function mutatePathLabelImage(renderer,svg,{target,kind,targets}){
  assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label'].includes(kind));

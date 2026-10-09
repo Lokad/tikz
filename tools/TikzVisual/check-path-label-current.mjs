@@ -8,6 +8,7 @@ import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {runCalcChild,readCalcChild,ownCalcBundle} from './calc-admission-child.mjs';
 import {loadQualifiedPathLabelPrimary} from './path-label-qualified-primary.mjs';
+import {labelImageSourceFile} from './diagram-image-evidence.mjs';
 import {pathLabelPrimaryPixelReader} from './path-label-primary-pixels.mjs';
 import {pathLabelPdfPixelReader} from './path-label-pdf-pixels.mjs';
 import {readPathLabelPrimaryPolicies} from './path-label-primary-policy.mjs';
@@ -96,7 +97,7 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
  assert.equal(numeric.sha256,primary.report.result.sourceNumericSha256);assert.equal(pdfNumeric.sha256,numeric.sha256);
  assert.equal(numeric.report.converterInvoked,true);assert.equal(numeric.report.result.numericPassed,true);assert.equal(numeric.report.result.publicTraceParity,true);
  assert.equal(numeric.report.result.nativeInputSha256,native.sha256);
- if(diagram){assert.ok(numeric.files.get('native-report.json').equals(native.bytes));assert.ok(numeric.files.get('source.tikz').equals(native.files.get('source-captures/tests/Fixtures/Diagrams/'+native.report.definition.id+'.tikz')));}
+ if(diagram){assert.ok(numeric.files.get('native-report.json').equals(native.bytes));assert.ok(numeric.files.get('source.tikz').equals(native.files.get('source-captures/'+labelImageSourceFile(native.report.definition.id))));}
  else{assert.equal(numeric.report.result.fixture,native.report.definition.id);ownedEqual(numeric,'native',native);}
  assert.ok(numeric.files.get(prefix+'public.svg').equals(numeric.files.get(prefix+'actual.svg')));
  await currentSources(numeric,prefix+'source-captures/');
