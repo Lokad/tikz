@@ -1,0 +1,10 @@
+\begin{tikzpicture}[every node/.style={draw,minimum width=10mm,minimum height=7mm,inner sep=2pt}]
+  \node (seed) {A};
+  \begin{scope}
+    \usetikzlibrary{positioning}
+    \node[above right=of seed] (inside) {Inside};
+  \end{scope}
+  \node[anchor=north] (outside) at (seed.south) {Outside};
+  \usetikzlibrary{positioning}
+  \node[right] (reloaded) at (inside.east) {Reload};
+\end{tikzpicture}

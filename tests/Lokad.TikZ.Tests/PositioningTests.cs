@@ -19,9 +19,18 @@ public sealed class PositioningTests
     [InlineData("network-bent", 3)]
     [InlineData("flowchart-transformed", 2)]
     public void Complete_diagram_node_placements_match_independent_native_measurements(string id, int count)
+        => CompareNative("Diagrams", "Diagrams", id, count);
+
+    [Theory]
+    [InlineData("contract", 24)]
+    [InlineData("registration", 4)]
+    public void Declared_positioning_contract_matches_independent_native_measurements(string id, int count)
+        => CompareNative("Positioning", "Focused", id, count);
+
+    private static void CompareNative(string fixtureFolder, string referenceFolder, string id, int count)
     {
-        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/Diagrams/" + id + ".tikz"));
-        using var reference = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference/Positioning/Diagrams/" + id + ".json")));
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/" + fixtureFolder + "/" + id + ".tikz"));
+        using var reference = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference/Positioning/" + referenceFolder + "/" + id + ".json")));
         var expected = reference.RootElement;
         Assert.Equal(expected.GetProperty("sourceSha256").GetString(),
             Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(source.Replace("\r\n", "\n")))));
@@ -61,6 +70,18 @@ public sealed class PositioningTests
     }
 
     private static int Sp(double bp) => checked((int)Math.Round(bp * (72.27 * 65536 / 72), MidpointRounding.AwayFromZero));
+
+    [Theory]
+    [InlineData("scoped-unavailable")]
+    [InlineData("scoped-reloaded")]
+    public void Scoped_positioning_definitions_do_not_leak_or_reappear_on_reload(string id)
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/Positioning/" + id + ".tikz"));
+        var result = Assert.IsType<TikzFailure>(TikzConverter.Convert(source, TikzOptions.Default, CancellationToken.None));
+        var diagnostic = Assert.Single(result.Diagnostics);
+        Assert.Equal("TIKZ002", diagnostic.Code);
+        Assert.Equal(0, result.Statistics.OutputBytes);
+    }
 
     private static readonly TikzOptions Body = TikzOptions.Default with { InputKind = TikzInputKind.PictureBody, Libraries = ["positioning"], IdPrefix = "position" };
 

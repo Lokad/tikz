@@ -19,9 +19,10 @@ internal sealed class EvaluationState
     public PendingDash? PendingDash { get; set; }
     public NodeSettings Node { get; set; } = new();
     public Source NodeDistance { get; set; } = new("1cm", 0, 3);
-    // TeX library definitions are global within this conversion, including
-    // declarations inside a scope. Clones share this per-conversion registry.
+    // Load registration is per conversion. Positioning key definitions are
+    // local to their loading scope, even though the library remains registered.
     public HashSet<string> Libraries { get; set; } = new(StringComparer.Ordinal);
+    public bool PositioningAvailable { get; set; }
     public bool IsNodeContext { get; set; }
     public bool IsPathLabel { get; set; }
     public List<Option> NodeTransforms { get; } = [];
@@ -35,7 +36,7 @@ internal sealed class EvaluationState
         budget.Charge(source, Styles.Count + Variables.Count + Clips.Count + 1);
         return new()
         {
-            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Arrows = Arrows, Node = Node, NodeDistance = NodeDistance, Libraries = Libraries, RelevantForPictureSize = RelevantForPictureSize,
+            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Arrows = Arrows, Node = Node, NodeDistance = NodeDistance, Libraries = Libraries, PositioningAvailable = PositioningAvailable, RelevantForPictureSize = RelevantForPictureSize,
             ConfiguredDash = ConfiguredDash, ConfiguredDashPhase = ConfiguredDashPhase, PendingDash = PendingDash,
             Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal)
         };

@@ -62,7 +62,7 @@ internal static class KeyRegistry
                 {
                     if (value.Length == 0 && (key is "above" or "below" or "left" or "right"))
                         state.Node = state.Node with { Anchor = key switch { "above" => "south", "below" => "north", "left" => "east", _ => "west" }, AnchorSource = option.Source };
-                    else if (!state.IsPathLabel && state.Libraries.Contains("positioning")) PositioningOptions.Apply(option with { Key = key }, state, budget);
+                    else if (!state.IsPathLabel && state.PositioningAvailable) PositioningOptions.Apply(option with { Key = key }, state, budget);
                     else throw Unsupported(option);
                     continue;
                 }
@@ -105,7 +105,7 @@ internal static class KeyRegistry
                 case "minimum height": state.Node = state.Node with { MinimumHeight = option.Value }; break;
                 case "transform shape": state.Node = state.Node with { TransformShape = value switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) } }; break;
                 case "node distance":
-                    if (!state.Libraries.Contains("positioning")) throw Unsupported(option);
+                    if (!state.PositioningAvailable) throw Unsupported(option);
                     state.NodeDistance = option.Value; break;
                 case "line width": var width = state.Dimension(option.Value, budget); if (width < 0) Invalid(option); state.Paint = paint with { Width = width }; break;
                 case "ultra thin": Width(.1); break;

@@ -21,7 +21,11 @@ internal sealed partial class Evaluator(Budget budget)
     {
         budget.Charge(source);
         if (name is not ("shapes.geometric" or "arrows.meta" or "calc" or "positioning")) throw new CompileError("TIKZ002", $"Unsupported TikZ library '{name}'.", source);
-        if (state.Libraries.Add(name) && name == "positioning") state.NodeDistance = new("1cm and 1cm", 0, 11);
+        if (state.Libraries.Add(name) && name == "positioning")
+        {
+            state.PositioningAvailable = true;
+            state.NodeDistance = new("1cm and 1cm", 0, 11);
+        }
     }
     private void Statements(List<Statement> statements, EvaluationState state, int depth)
     {

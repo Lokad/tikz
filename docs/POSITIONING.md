@@ -1,6 +1,11 @@
 # Bounded positioning
 
 Load `positioning` through `\usetikzlibrary{positioning}` or `TikzOptions.Libraries`.
+Load it before the picture when its keys are needed throughout the picture.
+PGF registers a library once per conversion, while positioning keys declared
+inside a scope remain local to that scope. Repeating the library declaration
+after the scope ends does not restore those keys; valued placement then fails
+explicitly. `TikzOptions.Libraries` loads the keys before picture evaluation.
 The initial implementation supports measured node placement in these forms:
 
 ```tex
@@ -39,6 +44,9 @@ other conversion phases.
 The first implementation work unit makes all three authored complete diagrams
 under `tests/Fixtures/Diagrams` convert. Independent PGF measurements cover
 nine named nodes and 144 anchors, including scoped transformed placement.
-Broader focused positioning coverage and complete diagram glyph/paint/path,
-framing, primary/local and PDF image acceptance remain open. Iteration images
+Focused fixtures additionally ground all directions, default/single/two
+distances, named targets, skew coordinate bases, scope restoration and node
+transform reset/full/local ordering. Native rejection controls cover scoped
+library availability. Complete diagram glyph/paint/path, framing, primary/local
+and PDF image acceptance remain open. Iteration images
 do not establish a general pixel-perfect or image-conformance claim.

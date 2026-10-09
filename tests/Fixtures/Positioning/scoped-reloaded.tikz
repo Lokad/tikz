@@ -1,0 +1,9 @@
+\begin{tikzpicture}[every node/.style={draw,minimum width=10mm,minimum height=7mm,inner sep=2pt}]
+  \node (seed) {A};
+  \begin{scope}
+    \usetikzlibrary{positioning}
+    \node[above right=of seed] (inside) {Inside};
+  \end{scope}
+  \usetikzlibrary{positioning}
+  \node[below right=of seed] (outside) {Outside};
+\end{tikzpicture}
