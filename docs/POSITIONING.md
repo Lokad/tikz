@@ -47,6 +47,8 @@ nine named nodes and 144 anchors, including scoped transformed placement.
 Focused fixtures additionally ground all directions, default/single/two
 distances, named targets, skew coordinate bases, scope restoration and node
 transform reset/full/local ordering. Native rejection controls cover scoped
-library availability. Complete diagram glyph/paint/path, framing, primary/local
-and PDF image acceptance remain open. Iteration images
+library availability. The complete diagrams also pass independent text/anchor,
+DVI/TFM glyph, coordinate, picture-bounds and effective paint-order/state checks.
+Complete path/arrow geometry, framing and primary/local/PDF image admission
+remain open. Iteration images
 do not establish a general pixel-perfect or image-conformance claim.

@@ -25,6 +25,7 @@ internal static class NativeLabels
         var nativeUses = doc.Descendants().Where(e => e.Name.LocalName == "use").ToArray();
         var nativeClips = doc.Descendants().Where(e => e.Name.LocalName == "clipPath").Select(e => e.Attribute("id")!.Value).ToArray();
         var firstGlyph = 0;
+        var diagram = native.GetProperty("profile").GetString() == "pgf-3.1.11a-complete-diagrams-v1";
         Equal("nodes", nodes.Length, scene.Nodes.Count);
         Equal("glyphs", glyphs.Nodes.Sum(n => n.Glyphs.Length), result.Statistics.Glyphs);
         Equal("paintedPaths", paints.Length, scene.Paths.Count);
@@ -33,7 +34,7 @@ internal static class NativeLabels
         {
             var actual = scene.Nodes[i]; var n = nodes[i]; var id = n.GetProperty("id").GetString()!;
             var origin = actual.Source; var metrics = NodeFontMetrics.Resolve(actual.NodeFont, budget, origin);
-            Equal(id + ".name", id, actual.Name, origin.Location);
+            Equal(id + ".name", n.TryGetProperty("sourceName", out var sourceName) ? sourceName.GetString()! : id, actual.Name, origin.Location);
             var values = n.GetProperty("values");
             Equal(id + ".width", values.GetProperty("width").GetInt32(), actual.Layout.Text.WidthSp, origin.Location);
             Equal(id + ".height", values.GetProperty("height").GetInt32(), actual.Layout.Text.HeightSp, origin.Location);
@@ -98,6 +99,12 @@ internal static class NativeLabels
             }
             var clips = expected.GetProperty("clips").EnumerateArray().Select(v => v.GetInt32()).ToArray();
             Equal(prefix + ".clips", string.Join(",", clips), string.Join(",", p.Clips), p.Source.Location);
+            if (diagram && p.Paint.Stroke)
+            {
+                Equal(prefix + ".cap", expected.GetProperty("cap").GetInt32(), p.Paint.Cap switch { "butt" => 0, "round" => 1, "square" => 2, _ => -1 }, p.Source.Location);
+                Equal(prefix + ".join", expected.GetProperty("join").GetInt32(), p.Paint.Join switch { "miter" => 0, "round" => 1, "bevel" => 2, _ => -1 }, p.Source.Location);
+                Near(prefix + ".miter", expected.GetProperty("miter").GetDouble(), p.Paint.Miter, p.Source.Location);
+            }
         }
         var expectedOrder = new List<string>();
         var nodeIndex = 0; var glyphIndex = 0;
@@ -110,8 +117,24 @@ internal static class NativeLabels
             if (++glyphIndex == glyphs.Nodes[nodeIndex].Glyphs.Length) { glyphIndex = 0; nodeIndex++; }
         }
         if (nodeIndex != glyphs.Nodes.Length || glyphIndex != 0) throw new InvalidDataException("Native SVG glyph coverage differs.");
-        var actualOrder = scene.Drawables.Select(d => d is PaintedGlyphRun r ? "node:" + scene.Nodes[r.NodeId].Name : "path");
+        var actualOrder = scene.Drawables.Select(d => d is PaintedGlyphRun r ? "node:" + nodes[r.NodeId].GetProperty("id").GetString() : "path");
         Equal("physicalPaintOrder", string.Join("|", expectedOrder), string.Join("|", actualOrder));
+        if (native.TryGetProperty("coordinates", out var coordinates))
+            foreach (var coordinate in coordinates.EnumerateArray())
+            {
+                var id = coordinate.GetProperty("id").GetString()!;
+                Equal(id + ".present", true, scene.Coordinates.ContainsKey(id));
+                if (!scene.Coordinates.TryGetValue(id, out var point)) continue;
+                Equal(id + ".x", coordinate.GetProperty("center").GetProperty("xSp").GetInt32(), Sp(point.X));
+                Equal(id + ".y", coordinate.GetProperty("center").GetProperty("ySp").GetInt32(), Sp(point.Y));
+            }
+        if (diagram)
+        {
+            var bounds = native.GetProperty("pictureBounds");
+            foreach (var (key, actual) in new[] { ("minXSp", scene.PictureBounds.MinX), ("minYSp", scene.PictureBounds.MinY),
+                ("maxXSp", scene.PictureBounds.MaxX), ("maxYSp", scene.PictureBounds.MaxY) })
+                Equal("pictureBounds." + key, bounds.GetProperty(key).GetInt32(), Sp(actual));
+        }
         return [.. checks];
 
         void Equal(string key, object wanted, object actual, TikzSourceSpan? source = null)

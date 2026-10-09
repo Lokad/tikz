@@ -16,15 +16,17 @@ var artifacts = new SortedDictionary<string, string>(StringComparer.Ordinal);
 var json = new JsonSerializerOptions(JsonSerializerDefaults.Web) { WriteIndented = true, NewLine = "\n" };
 var phase = "native-input";
 var converterInvoked = false;
+var isDiagram = false;
 Directory.CreateDirectory(output);
 await Publish(false);
 try
 {
     using var input = new NativeInput(reference);
+    isDiagram = input.IsDiagram;
     var r = input.Report.RootElement;
     var native = input.Metrics.RootElement;
     var ids = input.Ids; var svg = input.Svg; var glyphs = input.Glyphs; var fixture = input.Fixture;
-    var sourceFile = "tests/Fixtures/PathLabels/" + fixture + ".tikz";
+    var sourceFile = input.SourceFile;
     var sourceBytes = await File.ReadAllBytesAsync(Path.Combine(root, sourceFile));
     var source = Encoding.UTF8.GetString(sourceBytes);
     if (Hash(Encoding.UTF8.GetBytes(source.Replace("\r\n", "\n"))) != r.GetProperty("sourceHashes").GetProperty(sourceFile).GetString())
@@ -69,7 +71,7 @@ async Task Save(string name, byte[] bytes)
 }
 async Task Publish(bool completed, object? result = null)
 {
-    var bytes = JsonSerializer.SerializeToUtf8Bytes(new { schemaVersion = 1, role = "path-label-current-numeric", completed,
+    var bytes = JsonSerializer.SerializeToUtf8Bytes(new { schemaVersion = 1, role = isDiagram ? "diagram-current-numeric" : "path-label-current-numeric", completed,
         phase = completed ? "complete" : phase, converterInvoked, nativeToolInvoked = false,
         approvedImagePolicy = false, imageConformanceClaim = false, imageAdmission = "pending", artifacts, result }, json);
     await File.WriteAllBytesAsync(Path.Combine(output, "report.json"), bytes);

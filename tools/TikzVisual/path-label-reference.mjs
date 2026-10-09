@@ -7,21 +7,27 @@ import {root,sha256,outputPath,writeArtifact} from './shape-oracle-bundle.mjs';
 import {captureProcess} from './qualification-process.mjs';
 import {edgeAnchors,edgeWrapper,edgeHooks,edgeCanonical,edgeSanitize,edgePdfPage} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
-import {parsePathLabelNative,pathLabelPhysicalCalls,pathLabelDriverState} from './path-label-native.mjs';
+import {parsePathLabelNative,parseDiagramNative,pathLabelPhysicalCalls,pathLabelDriverState} from './path-label-native.mjs';
 
-assert.ok(process.argv.length===2||process.argv.length===3,'Usage: node tools/TikzVisual/path-label-reference.mjs [placement|interactions]');
+assert.ok(process.argv.length===2||process.argv.length===3,'Usage: node tools/TikzVisual/path-label-reference.mjs [placement|interactions|flowchart-basic|network-bent|flowchart-transformed]');
 const cases={
  placement:['straight','quarter','reverse','inverted','bend','absolute','from','target','border','reset','full','zero','one'],
  interactions:['seed','first','second','reuse','clipped','continued','nested','escaped']
 };
-const id=process.argv[2]??'placement';assert.ok(Object.hasOwn(cases,id),'Only fixed trusted repository fixtures are accepted.');
-const source='tests/Fixtures/PathLabels/'+id+'.tikz',ids=cases[id];
-const definition={id,nodes:ids.map(id=>({id,shape:'rectangle'})),coordinates:[]};
-const output=path.join(root,'artifacts/path-label-reference/run-'+randomUUID()),artifacts={},commands=[];
+const diagrams={
+ 'flowchart-basic':{hash:'16ef26c526d0892f2fa643240cf0e9c4a74ea52a62252d4aff8c8ee792762b54',nodes:[['input','rectangle'],['check','rectangle'],['output','rectangle'],['retry','rectangle']],labels:3,coordinates:['return'],constructionOrder:['input','check','output','retry','diagram-label-1','diagram-label-2','diagram-label-3','return']},
+ 'network-bent':{hash:'da163c256834b3c94477f4e368cbe69cc700a867b93a0b73a210d3e7a4aa0e54',nodes:[['queue','circle'],['primary','ellipse'],['replica','ellipse']],labels:3,coordinates:['projection','relay'],constructionOrder:['queue','primary','replica','diagram-label-1','diagram-label-2','diagram-label-3','projection','relay']},
+ 'flowchart-transformed':{hash:'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa',nodes:[['start','rectangle'],['finish','rectangle']],labels:2,coordinates:['waypoint'],constructionOrder:['start','finish','diagram-label-1','waypoint','diagram-label-2']}
+};
+const id=process.argv[2]??'placement',diagram=Object.hasOwn(diagrams,id);assert.ok(diagram||Object.hasOwn(cases,id),'Only fixed trusted repository fixtures are accepted.');
+const source='tests/Fixtures/'+(diagram?'Diagrams':'PathLabels')+'/'+id+'.tikz';
+const definition=diagram?{id,nodes:[...diagrams[id].nodes.map(([id,shape])=>({id,shape})),...Array.from({length:diagrams[id].labels},(_,i)=>({id:'diagram-label-'+(i+1),shape:'rectangle',sourceName:''}))],coordinates:diagrams[id].coordinates,constructionOrder:diagrams[id].constructionOrder}:{id,nodes:cases[id].map(id=>({id,shape:'rectangle'})),coordinates:[]};
+const ids=definition.nodes.map(n=>n.id);
+const output=path.join(root,'artifacts/'+(diagram?'diagram-reference':'path-label-reference')+'/run-'+randomUUID()),artifacts={},commands=[];
 const save=(p,b)=>writeArtifact(output,p,b,artifacts),json=(p,v)=>save(p,JSON.stringify(v,null,2)+'\n');
 let phase='inputs';
 async function publish(completed,details={}){
- const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'path-label-native-reference',completed,phase:completed?'complete':phase,
+ const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:diagram?'diagram-native-reference':'path-label-native-reference',completed,phase:completed?'complete':phase,
   converterInvoked:false,nativeToolInvoked:true,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',artifacts,commands,...details},null,2)+'\n');
  await writeArtifact(output,'report.json',bytes);console.log(JSON.stringify({completed,report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(bytes)}));
 }
@@ -45,15 +51,30 @@ try{
  const tools={};for(const[n,v]of Object.entries({latex:native.latexVersion,pdflatex:pdf.pdfLatexVersion,dvisvgm:native.dvisvgmVersion,dvitype:native.dviTypeVersion,pdftoppm:pdf.pdfRasterizerVersion}))tools[n]=await identify(n,v);
  const sources=[source,edgeWrapper,edgeHooks,'tools/TikzVisual/path-label-reference.mjs','tools/TikzVisual/path-label-native.mjs','tools/TikzVisual/qualification-process.mjs','tools/TikzVisual/edge-log.mjs','tools/TikzVisual/edge-replay.mjs','tools/TikzVisual/edge-driver-state.mjs','tools/TikzFontData/font-profile.json'];
  const sourceHashes={};for(const file of sources){const b=edgeCanonical(await readFile(path.join(root,file)));sourceHashes[file]=sha256(b);await save('source-captures/'+file,b);}
+ if(diagram)assert.equal(sourceHashes[source],diagrams[id].hash,'Changed trusted diagram source.');
  const profile=JSON.parse(await readFile(path.join(root,'tools/TikzFontData/font-profile.json')));
  for(const input of profile.inputs.filter(i=>i.name.endsWith('.tfm'))){const b=await readFile(path.join(root,'tests/Reference/Edges/fonts/'+input.name));assert.equal(sha256(b),input.sha256);await save('fonts/'+input.name,b);}
  let wrapper=(await readFile(path.join(root,edgeWrapper),'utf8')).replaceAll('\r\n','\n').replace('\\begin{document}','\\selectcolormodel{rgb}\n\\input{edge-hooks.tex}\n\\begin{document}');
+ if(diagram){
+  // Give anonymous labels probe identities without changing the trusted source.
+  // These names exist only in probed runs; drawing/PDF invariance is required.
+  wrapper=wrapper.replace('\\newcount\\lokadpathcounter','\\newcount\\lokadpathcounter\n\\newcount\\diagramlabelcounter');
+  const start=wrapper.indexOf('    \\def\\pgfmultipartnode'),end=wrapper.indexOf('    \\let\\lokadoriginalellipse',start);assert.ok(start>=0&&end>start);
+  let hook=wrapper.slice(start,end).replace('      \\edef\\lokadnodeid{#3}%',
+   '      \\edef\\lokadnodeid{#3}%\n      \\ifx\\lokadnodeid\\pgfutil@empty\n        \\global\\advance\\diagramlabelcounter by 1\n        \\edef\\lokadnodeid{diagram-label-\\the\\diagramlabelcounter}%\n      \\fi');
+  hook=hook.replaceAll('node-#3','node-\\lokadnodeid').replaceAll('#3|','\\lokadnodeid|')
+   .replace('\\special{lokad-node-origin #3}', '\\special{lokad-node-origin \\lokadnodeid}')
+   .replace('      \\setbox\\pgfnodeparttextbox=\\hbox{\\special{lokad-node-origin \\lokadnodeid}\\box\\pgfnodeparttextbox}%',
+    '      \\def\\diagramshape{#1}\\def\\diagramcoordinate{coordinate}%\n      \\ifx\\diagramshape\\diagramcoordinate\\else\n        \\setbox\\pgfnodeparttextbox=\\hbox{\\special{lokad-node-origin \\lokadnodeid}\\box\\pgfnodeparttextbox}%\n      \\fi')
+   .replace('\\lokadoriginalnode{#1}{#2}{#3}{#4}', '\\lokadoriginalnode{#1}{#2}{\\lokadnodeid}{#4}');
+  wrapper=wrapper.slice(0,start)+hook+wrapper.slice(end);
+ }
  const pdfWrapper='\\pdfinfoomitdate=1\n\\pdftrailerid{}\n\\pdfsuppressptexinfo=15\n\\AtBeginDocument{\\edgepdftrue}\n'+wrapper.replace('\\def\\pgfsysdriver{pgfsys-dvisvgm.def}\n','')
   .replace('\\paperwidth=600pt \\paperheight=800pt','\\paperwidth=600pt \\paperheight=800pt\n\\pdfpagewidth=\\paperwidth \\pdfpageheight=\\paperheight')
-  .replace('      \\setbox\\pgfnodeparttextbox=\\hbox{\\special{lokad-node-origin #3}\\box\\pgfnodeparttextbox}%\n','')
+  .replace(/^[ \t]*\\setbox\\pgfnodeparttextbox=\\hbox\{\\special\{lokad-node-origin [^}]+\}\\box\\pgfnodeparttextbox\}%\n/m,'')
   .replace('\\hbox{\\box\\lokadpicture}','\\hbox{\\pdfsavepos\\write16{LOKAD-PDF-PAGE \\number\\pdflastxpos|\\number\\pdflastypos|\\number\\pdfpagewidth|\\number\\pdfpageheight|END}\\box\\lokadpicture}');
  assert.ok(!pdfWrapper.includes('\\special{'));
- const probes=ids.flatMap(id=>edgeAnchors.map(a=>'\\lokadanchor{'+id+'}{'+a+'}')).join('\n')+'\n';
+ const probes=[...ids.flatMap(id=>edgeAnchors.map(a=>'\\lokadanchor{'+id+'}{'+a+'}')),...definition.coordinates.map(id=>'\\lokadanchor{'+id+'}{center}')].join('\n')+'\n';
  await save('probes.tex',probes);await save('svg-wrapper.tex',wrapper);await save('pdf-wrapper.tex',pdfWrapper);
  const observations={};
  for(const route of ['svg','pdf'])for(const state of ['plain','probed']){
@@ -78,7 +99,8 @@ try{
  phase='native-checking';const svg=observations['svg-probed'],pdfObserved=observations['pdf-probed'];
  assert.equal(canonicalEdgeSvg(svg.bytes),canonicalEdgeSvg(observations['svg-plain'].bytes),'Probes changed native SVG drawing.');
  assert.ok(pdfObserved.bytes.equals(observations['pdf-plain'].bytes),'Probes changed native PDF bytes.');assert.deepEqual(pdfObserved.pages,observations['pdf-plain'].pages);
- const metrics=parsePathLabelNative(svg.log,ids),pdfMetrics=parsePathLabelNative(pdfObserved.log,ids);
+ const parse=diagram?log=>parseDiagramNative(log,definition):log=>parsePathLabelNative(log,ids);
+ const metrics=parse(svg.log),pdfMetrics=parse(pdfObserved.log);
  assert.deepEqual(metrics,pdfMetrics,'Native SVG/PDF semantic observations differ.');
  metrics.physicalOrder=pathLabelPhysicalCalls(metrics,svg.trace,pdfObserved.log);
  metrics.driverState=pathLabelDriverState(svg.bytes,pdfObserved.bytes);

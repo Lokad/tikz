@@ -15,22 +15,42 @@ function integer(text){assert.match(text,/^-?\d+$/);const n=Number(text);assert.
 function real(text){const n=Number(text);assert.ok(text.length>0&&Number.isFinite(n)&&Math.abs(n)<=10000);return n;}
 
 export function parsePathLabelNative(log,ids){
+  return parseNodesAndPaths(log,{nodes:ids.map(id=>({id,shape:'rectangle'})),coordinates:[],constructionOrder:ids},'pgf-3.1.11a-path-labels-v1');
+}
+
+// Complete diagrams reuse transport and primitive observations; their declared
+// shapes, coordinates and anonymous-label identities remain explicit inputs.
+export function parseDiagramNative(log,definition){
+  return parseNodesAndPaths(log,definition,'pgf-3.1.11a-complete-diagrams-v1');
+}
+
+function parseNodesAndPaths(log,definition,profile){
+  const ids=definition.nodes.map(n=>n.id),coordinates=definition.coordinates;
   assert.ok(log.includes('LOKAD-PGF-VERSION 3.1.11a'));
   assert.ok(ids.length>0&&ids.length<=128&&new Set(ids).size===ids.length);
-  const shapes=records(log,'LOKAD-SHAPE');assert.deepEqual(shapes,ids.map(id=>[id,'rectangle']));
+  const declared=[...definition.nodes,...coordinates.map(id=>({id,shape:'coordinate'}))];
+  assert.ok(declared.every(n=>['rectangle','circle','ellipse','coordinate'].includes(n.shape)));
+  assert.equal(new Set(declared.map(n=>n.id)).size,declared.length);
+  const shapes=records(log,'LOKAD-SHAPE');assert.deepEqual(shapes,definition.constructionOrder.map(id=>[id,declared.find(n=>n.id===id).shape]));
   const values=records(log,'LOKAD-VALUE'),anchors=records(log,'LOKAD-ANCHOR'),frames=records(log,'LOKAD-FRAME'),points=records(log,'LOKAD-POINT');
   const quantities=['width','height','depth','linewidth','quad','xheight','innerx','innery','outerx','outery','minimumwidth','minimumheight'];
-  assert.equal(values.length,ids.length*quantities.length);assert.equal(anchors.length,ids.length*edgeAnchors.length);
-  assert.equal(frames.length,ids.length);assert.equal(points.length,ids.length*2);
-  const nodes=ids.map(id=>{
+  assert.equal(values.length,declared.length*quantities.length);assert.equal(anchors.length,ids.length*edgeAnchors.length+coordinates.length);
+  assert.equal(frames.length,ids.length);assert.equal(points.length,definition.nodes.reduce((total,n)=>total+(n.shape==='rectangle'?2:3),0));
+  const nodes=definition.nodes.map(n=>{const {id,shape}=n;
     const vs=values.filter(r=>r[0]===id),as=anchors.filter(r=>r[0]===id),fs=frames.filter(r=>r[0]===id),ps=points.filter(r=>r[0]===id);
     assert.deepEqual(vs.map(r=>r[1]),quantities);assert.deepEqual(as.map(r=>r[1]),edgeAnchors);
-    assert.deepEqual(ps.map(r=>r[1]),['southwest','northeast']);assert.equal(fs.length,1);assert.equal(fs[0].length,7);
+    assert.deepEqual(ps.map(r=>r[1]),shape==='rectangle'?['southwest','northeast']:['center','xaxis','yaxis']);assert.equal(fs.length,1);assert.equal(fs[0].length,7);
     fs[0].slice(1,5).forEach(real);for(const d of fs[0].slice(5)){assert.match(d,/^-?\d+(?:\.\d+)?pt$/);real(d.slice(0,-2));}
     for(const r of vs)assert.equal(r.length,3);for(const r of [...as,...ps])assert.equal(r.length,4);
-    return{id,shape:'rectangle',values:Object.fromEntries(vs.map(r=>[r[1],integer(r[2])])),frame:fs[0].slice(1),
+    return{...n,values:Object.fromEntries(vs.map(r=>[r[1],integer(r[2])])),frame:fs[0].slice(1),
       anchors:Object.fromEntries(as.map(r=>[r[1],{xSp:integer(r[2]),ySp:integer(r[3])}])),
       points:Object.fromEntries(ps.map(r=>[r[1],{xSp:integer(r[2]),ySp:integer(r[3])}]))};
+  });
+  const coordinateValues=coordinates.map(id=>{
+    const vs=values.filter(r=>r[0]===id),as=anchors.filter(r=>r[0]===id);
+    assert.deepEqual(vs.map(r=>r[1]),quantities);assert.deepEqual(as.map(r=>r[1]),['center']);
+    for(const r of vs)assert.equal(r.length,3);assert.equal(as[0].length,4);
+    return{id,values:Object.fromEntries(vs.map(r=>[r[1],integer(r[2])])),center:{xSp:integer(as[0][2]),ySp:integer(as[0][3])}};
   });
   const paths=records(log,'LOKAD-PATH'),segments=records(log,'LOKAD-SEG');
   assert.ok(paths.length>0&&paths.length<=1024);assert.deepEqual(paths.map(r=>integer(r[0])),paths.map((_,i)=>i+1));
@@ -49,7 +69,7 @@ export function parsePathLabelNative(log,ids){
   // Retain duplicate paint identifiers: they are template construction events,
   // not a one-to-one list of shipped paths.
   const constructionPaintEvents=records(log,'EDGE-PAINT');assert.ok(constructionPaintEvents.every(r=>r.length===10));
-  return{schemaVersion:1,profile:'pgf-3.1.11a-path-labels-v1',nodes,constructionPaths,constructionPaintEvents,
+  return{schemaVersion:1,profile,nodes,...(coordinates.length?{coordinates:coordinateValues}:{}),constructionPaths,constructionPaintEvents,
     pictureBounds:Object.fromEntries(['minXSp','minYSp','maxXSp','maxYSp'].map((k,i)=>[k,b[i]])),
     pictureBox:{widthSp:size[0],heightSp:size[1],depthSp:size[2]},wrapperExtraWidthSp:size[0]-(b[2]-b[0])};
 }

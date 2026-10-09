@@ -31,8 +31,30 @@ measured wrapper glue separate from picture geometry.
 
 Only regenerate changed native inputs with
 `node tools/TikzVisual/path-label-reference.mjs [placement|interactions]`. This producer accepts
-only these two fixed repository-authored fixtures and requires the pinned local MiKTeX, dvisvgm
+these fixed repository-authored fixtures and requires the pinned local MiKTeX, dvisvgm
 and Poppler tools. The portable native report is not automatically replaced.
+
+The same producer and comparison tool also accept the three authored complete
+diagrams: `flowchart-basic`, `network-bent` and `flowchart-transformed`.
+
+```sh
+node tools/TikzVisual/path-label-reference.mjs flowchart-basic
+dotnet run --project tools/TikzPathLabelComparison -c Release -- <exact-native-report-path>
+```
+
+Diagram sources are fixed by their hashes. The producer adds identities to
+anonymous labels only in probed runs and requires unchanged SVG drawings, PDF
+bytes and 1x/4x PDF pages. Coordinates are recorded separately from text nodes.
+The comparison checks their measured text/anchors, DVI/TFM glyph placements,
+calculated coordinates, picture bounds, paint state and physical ordering.
+Construction paths and original PDF frames/pages are retained for subsequent
+path/arrow geometry and image qualification. These numeric checks alone do not
+admit complete diagrams or establish pixel identity.
+
+Frozen references retain their original generator/checker source hashes as
+provenance. Changes to the fixture, TeX wrappers or font profile require new
+native evidence. A reader extension rechecks retained observations and fresh
+converter output without regenerating unchanged native calibration.
 
 The [independent oracle workflow](../TikzPathLabelOracle/README.md) supplies native-only
 primary/local limits and independently checked first-glyph and complete-label
