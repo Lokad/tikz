@@ -67,6 +67,15 @@ Final clean-source comparisons and integration pass both fixtures, including
 64 independent fresh-output image views and the required existing-family
 regressions. These completed checks remain separate from archive restoration.
 
+`network-math-functions` and `math-functions-contract` reuse the same fixed
+producer and independent numeric reader. The network uses the arrow supplement;
+the focused corpus uses measured rectangle backgrounds. They pass 1,995 and
+3,871 numeric checks respectively, including 47 text nodes and 234 glyphs in
+total. Fresh output also has paired whole/local 1x/4x iteration images. Their
+native-only image/PDF policies and final clean-source acceptance remain open.
+Separate scalar snapshots include the complete-turn boundary fixture under
+[`tests/Reference/MathFunctions`](../../tests/Reference/MathFunctions/README.md).
+
 ```sh
 node tools/TikzVisual/path-label-reference.mjs flowchart-basic
 dotnet run --project tools/TikzPathLabelComparison -c Release -- <exact-native-report-path>

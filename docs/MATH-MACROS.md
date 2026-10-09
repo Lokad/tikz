@@ -18,8 +18,9 @@ sequence containing ASCII letters. Drawing commands, `\begin`, `\end`,
 ```
 
 Assignment expressions accept ordinary decimal literals, parentheses, unary
-`+`/`-`, and binary `+`, `-`, `*`, `/`. They can read earlier numeric definitions
-and integer foreach bindings. Assignments execute sequentially, including an
+`+`/`-`, binary `+`, `-`, `*`, `/`, and the separately documented
+[selected scalar functions](MATH-FUNCTIONS.md). They can read earlier numeric
+definitions and integer foreach bindings. Assignments execute sequentially, including an
 update that reads its previous value. Explicit groups, scopes and individual
 foreach iterations inherit numeric values and restore enclosing values on exit.
 Values defined before the picture are available in its numeric options.
@@ -27,15 +28,15 @@ Values defined before the picture are available in its numeric options.
 The result is dimensionless. Numeric definitions can be read by supported
 coordinate, calc and option expressions. The following forms are unsupported:
 
-- Unit-bearing assignment literals, scientific notation, functions, powers,
-  constants and arbitrary TeX definitions or expansion.
+- Unit-bearing assignment literals, scientific notation, undeclared functions,
+  powers, constants and arbitrary TeX definitions or expansion.
 - Using a numeric definition to expand label text, node names or foreach lists.
 - Assigning to an active foreach variable.
 
 These forms fail explicitly with no partial SVG. Unknown or out-of-scope
 numeric definitions produce TIKZ003. Division by zero and finite-register
 overflow produce TIKZ004. Existing coordinate functions have their own
-documented grammar; this assignment grammar does not add function support.
+documented grammar; the selected assignment functions use finite scalar behavior.
 
 Arithmetic follows the observed PGF 3.1.11a finite scalar routes. Unsigned
 literal decimal text is preserved. Each operation reads operands at TeX
@@ -54,8 +55,8 @@ share cancellation and the conversion's work, expansion and depth budgets.
 Definitions use the existing scoped semantic program and resolved graphics
 pipeline, with no runtime TeX or package dependency.
 
-Ordinary tests compare 65 independently observed printed assignment results and
-496 named-node anchors across a complete flowchart, a focused scope/arithmetic
+The original arithmetic fixtures compare 65 independently observed printed
+assignment results and 496 named-node anchors across a complete flowchart, a focused scope/arithmetic
 corpus and boundary controls. The complete diagram also exercises positioning,
 styles, loops, path labels, five arrows and calculated coordinates. Its numeric
 comparison and the focused comparison check fresh public output, glyphs,

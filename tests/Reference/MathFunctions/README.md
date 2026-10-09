@@ -1,21 +1,25 @@
 # Selected function observations
 
-These independent PGF 3.1.11a snapshots retain 50 printed scalar results and
-672 named-node anchors for two fixed trusted sources. The small network combines
+These independent PGF 3.1.11a snapshots retain 1,490 printed scalar results and
+688 named-node anchors for three fixed trusted sources. The small network combines
 degree-based worker placement with styles, loops, positioning, five path labels,
 six arrows and calculated coordinates. The compact focused corpus covers signs,
 periods, fractional angles, nested calls, comparison limits and scope restoration.
+The boundary fixture adds 1,440 results: sine and cosine at every whole and half
+degree in a complete turn, plus a sentinel node with 16 anchors.
 
-The current public converter explicitly rejects these function calls in numeric
-assignments. These snapshots prepare the selected `abs`, `sin`, `cos` and
-two-argument `min`/`max` contract. They do not establish implementation, image/PDF
-admission or final clean-source acceptance for those functions.
+The current public converter implements the selected `abs`, `sin`, `cos` and
+two-argument `min`/`max` contract. Ordinary tests compare all printed results and
+anchors. The network and focused corpus also pass 5,866 independent numeric
+checks against fresh conversion, with paired 1x/4x raw image differences retained.
+These iteration checks leave image/PDF policies and final clean-source acceptance
+open; raw image differences do not establish calibrated conformance.
 
 Regenerate only the fixed repository-authored inputs through the existing
 scalar/node observer:
 
 ```sh
-node tools/TikzVisual/diagram-positioning-reference.mjs network-math-functions math-functions-contract
+node tools/TikzVisual/diagram-positioning-reference.mjs network-math-functions math-functions-contract math-function-boundaries
 ```
 
 The observer verifies source hashes, pinned tool versions and PGF version,

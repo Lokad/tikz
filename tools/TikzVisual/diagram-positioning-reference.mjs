@@ -8,6 +8,7 @@ import {captureProcess} from './qualification-process.mjs';
 import {edgeAnchors,edgeSanitize} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 const cases={
+ 'math-function-boundaries':{folder:'MathFunctions',names:['sentinel'],hash:'0c60e598e8d440ba4215f9cf6b958f4d0b136b9a2f4d17c861354dba5a95994e',scalarCalls:Array(1440).fill('\\value')},
  'network-math-functions':{names:['hub','worker1','worker2','worker3','output'],hash:'2263a4ae32200cfcc435655c3447d4eed0f5b7584f0d88584d9b1b17da579bbf',scalarCalls:[...Array.from({length:3},()=>['\\angle','\\xoffset','\\yoffset','\\padding']).flat(),'\\gap']},
  'math-functions-contract':{folder:'MathFunctions',names:['absLiteral','absNegative','absTiny','minimum','maximum','minimumTie','sinZero','sinThirty','cosThirty','sinFortyFive','cosFortyFive','sinNinety','cosNinety','sinHalfTurn','sinThreeQuarters','sinNegative','cosNegative','sinPeriod','cosLarge','sinHalf','cosHalf','sinNegativeHalf','cosNegativeHalf','sinNearPeriod','cosNearHalfTurn','sinSafeMinimum','nested','before','inside','restored','loop1','loop2','loopRestored','sinShiftBoundary','sinLargeNegative','minimumRegister','maximumRegister'],hash:'48927b1ad0cbcf7b139e0eccf4c8daee8358a82362dc46f91dce623232ff6d2e',scalarCalls:[...Array(29).fill('\\value'),'\\probe','\\value','\\value','\\probe','\\value','\\value','\\value','\\value']},
  'math-scalar-boundaries':{folder:'MathMacros',names:['sentinel'],hash:'9fd0ed39f9eeeafd7cffb2e6c174ef821e4d08382345a87336a3ef5c364f3391',scalarCalls:Array(32).fill('\\value')},

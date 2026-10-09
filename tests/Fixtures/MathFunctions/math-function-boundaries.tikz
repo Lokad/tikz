@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+  \foreach \i in {0,...,359} {
+    \pgfmathsetmacro\value{cos(\i)}
+    \pgfmathsetmacro\value{sin(\i)}
+    \pgfmathsetmacro\value{cos(\i+0.5)}
+    \pgfmathsetmacro\value{sin(\i+0.5)}
+  }
+  \node[draw] (sentinel) {Angles};
+\end{tikzpicture}

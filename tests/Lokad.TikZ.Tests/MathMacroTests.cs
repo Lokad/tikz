@@ -73,7 +73,7 @@ public sealed class MathMacroTests
     [InlineData(@"\pgfmathsetmacro\a{1cm}")]
     [InlineData(@"\pgfmathsetmacro\a{1em}")]
     [InlineData(@"\pgfmathsetmacro\a{2^3}")]
-    [InlineData(@"\pgfmathsetmacro\a{sin(30)}")]
+    [InlineData(@"\pgfmathsetmacro\a{tan(30)}")]
     [InlineData(@"\pgfmathsetmacro\a{pi}")]
     [InlineData(@"\pgfmathsetmacro\a{1e-3}")]
     [InlineData(@"\foreach \i in {1}{\pgfmathsetmacro\i{2}}")]

@@ -52,10 +52,67 @@ internal static class PgfScalarArithmetic
                     _ => throw new InvalidOperationException()
                 };
                 return new(Print(value, origin, budget), origin);
+            case Function function:
+                return EvaluateFunction(function, budget, depth);
             case Variable variable when variable.Name.StartsWith('\\'):
                 throw new CompileError("TIKZ003", $"Unknown numeric variable '{variable.Name}'.", variable.Source);
             default:
-                throw new CompileError("TIKZ002", "Unsupported numeric assignment expression; only decimal literals and '+', '-', '*', '/' are supported.", expression.Source);
+                throw new CompileError("TIKZ002", "Unsupported numeric assignment expression; expected decimal arithmetic or a declared scalar function.", expression.Source);
+        }
+    }
+
+    private static Scalar EvaluateFunction(Function function, Budget budget, int depth)
+    {
+        var source = function.Source;
+        foreach (var argument in function.Arguments) source = Related(source, argument.Source, budget);
+        var arity = function.Name switch { "abs" or "sin" or "cos" => 1, "min" or "max" => 2, _ => 0 };
+        if (arity == 0) throw new CompileError("TIKZ002", $"Unsupported numeric assignment function '{function.Name}'.", source);
+        if (function.Arguments.Count != arity)
+            throw new CompileError("TIKZ001", $"'{function.Name}' requires {arity} argument(s).", source);
+        var first = Evaluate(function.Arguments[0], budget, depth + 1);
+        source = Related(source, first.Source, budget);
+        var x = ReadDimension(first.Printed, source, budget);
+        long y = 0;
+        if (arity == 2)
+        {
+            var second = Evaluate(function.Arguments[1], budget, depth + 1);
+            source = Related(source, second.Source, budget);
+            y = ReadDimension(second.Printed, source, budget);
+        }
+        budget.Charge(source);
+        var value = function.Name switch
+        {
+            "abs" => Math.Abs(x),
+            // PGF's extrema start from these finite registers, even when both
+            // arguments lie beyond them but still fit a dimension literal.
+            "min" => Math.Min(16383 * Unity, Math.Min(x, y)),
+            "max" => Math.Max(-16383 * Unity, Math.Max(x, y)),
+            "cos" => Cosine(x, source, budget),
+            // The temporary angle shift can exceed the literal-input bound;
+            // normalization brings it back before any table product or result.
+            "sin" => Cosine(x - 90 * Unity, source, budget),
+            _ => throw new InvalidOperationException()
+        };
+        return new(Print(value, source, budget), source);
+    }
+
+    private static long Cosine(long angle, Source source, Budget budget)
+    {
+        budget.Charge(source, 8);
+        angle = Math.Abs(angle % (360 * Unity));
+        if (angle > 180 * Unity) angle = 360 * Unity - angle;
+        var whole = (int)(angle / Unity);
+        var fraction = angle % Unity;
+        var first = Table(whole);
+        return fraction == 0 ? first
+            : Checked(Product(first, Unity - fraction, source) + Product(Table(whole + 1), fraction, source), source);
+
+        long Table(int degree)
+        {
+            budget.Charge(source);
+            // Derive the five-decimal whole-degree constants independently.
+            var value = Math.Round(Math.Cos(degree * Math.PI / 180), 5, MidpointRounding.AwayFromZero);
+            return ReadDimension(value.ToString("0.00000", CultureInfo.InvariantCulture), source, budget);
         }
     }
 

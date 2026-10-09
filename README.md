@@ -52,6 +52,12 @@ Both fixed supported fixtures pass independent numeric, primary and PDF
 policies, fresh-output acceptance in a clean source export, and integration.
 Broader PGF math remains release scope.
 
+[Selected scalar functions](docs/MATH-FUNCTIONS.md) now convert a trigonometric
+worker network. Three fixed native corpora match 1,490 printed results and 688
+named-node anchors; the network and focused comparison pass 5,866 numeric checks.
+Paired 1x/4x images retain raw differences. New image/PDF policies and final
+clean-source qualification remain open for these function fixtures.
+
 ```csharp
 using Lokad.TikZ;
 
