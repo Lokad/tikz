@@ -9,7 +9,7 @@ using System.Xml.Linq;
 using TikzShapeComparison;
 
 // Oracle-only reconstruction. This project neither references nor invokes Lokad.TikZ.
-internal static class Program
+internal static partial class Program
 {
     private const string Baseline = "tests/Reference/NodeShapes/native";
     private const double SpToCss = 96 / (72.27 * 65536);
@@ -21,15 +21,22 @@ internal static class Program
     {
         try
         {
-            if ((args.Length != 1 && (args.Length != 3 || args[1] != "--out")) || args[0] != "derive-svg")
-                throw new InvalidOperationException("Usage: dotnet run --project tools/TikzShapeCalibration -c Release -- derive-svg [--out artifacts/...]");
+            if ((args.Length != 1 && (args.Length != 3 || args[1] != "--out")) || args[0] is not ("derive-svg" or "derive-math-events"))
+                throw new InvalidOperationException("Usage: dotnet run --project tools/TikzShapeCalibration -c Release -- derive-svg|derive-math-events [--out artifacts/...]");
             root = FindRoot();
-            var output = (args.Length == 1 ? At("artifacts/node-shape-calibration") : Path.GetFullPath(args[2], root)).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+            var output = (args.Length == 1 ? At(args[0] == "derive-svg" ? "artifacts/node-shape-calibration" : "artifacts/math-label-native-events")
+                : Path.GetFullPath(args[2], root)).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
             Require(output.StartsWith(At("artifacts") + Path.DirectorySeparatorChar, OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal), "Calibration output must be a directory inside artifacts/.");
             for (var current = new DirectoryInfo(output); current is not null && current.FullName != root; current = current.Parent)
                 if (current.Exists && (current.Attributes & FileAttributes.ReparsePoint) != 0) throw new InvalidOperationException("Calibration output must not cross a symlink or junction.");
             Directory.CreateDirectory(output);
+            var artifacts = new List<string>();
             File.Delete(Out("derivation.json"));
+            if (args[0] == "derive-math-events")
+            {
+                DeriveMathEvents(output, artifacts, Copy, Write);
+                return 0;
+            }
             var configuration = Directory.GetParent(AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar))!.Name;
             var verifierAssembly = At($"tools/TikzShapeReference/bin/{configuration}/net10.0/TikzShapeReference.dll");
             var verifierHash = Hash(verifierAssembly);
@@ -64,7 +71,6 @@ internal static class Program
             var expectedOrder = new List<XElement>(); var used = 0;
             for (var i = 0; i < nodes.Length; i++) { expectedOrder.Add(paths[i]); expectedOrder.AddRange(uses.Skip(used).Take(glyphs.Nodes[i].Glyphs.Length)); used += glyphs.Nodes[i].Glyphs.Length; }
             Require(original.Descendants().Where(e => paths.Contains(e) || uses.Contains(e)).SequenceEqual(expectedOrder), "Unexpected native paint order.");
-            var artifacts = new List<string>();
             foreach (var file in new[] { "reference.svg", "plain-reference.svg", "metrics.json", "native-positions.log", "oracle.log", "plain-oracle.log", "probes.tex", "provenance.json" }) Copy(Baseline + "/" + file, file);
             Copy("tests/Reference/NodeShapes/cases.json", "cases.json"); Copy("tests/Reference/NodeShapes/oracle-profile.json", "oracle-profile.json");
             Copy("tools/TikzFontData/font-profile.json", "font-profile.json"); Copy(cases.RootElement.GetProperty("source").GetString()!, "source.tikz");
@@ -145,7 +151,7 @@ internal static class Program
             Console.WriteLine("Independent shape reconstruction: 28 nodes, 420 path tokens, 70 glyphs, five SVG variants; image policy remains pending.");
             return 0;
             void Copy(string input, string file) { var target = Out(file); Directory.CreateDirectory(Path.GetDirectoryName(target)!); File.Copy(At(input), target, true); artifacts.Add(file); }
-            void Save(string file, string content) { File.WriteAllText(Out(file), content); artifacts.Add(file); }
+            void Save(string file, string content) { var target = Out(file); Directory.CreateDirectory(Path.GetDirectoryName(target)!); File.WriteAllText(target, content); artifacts.Add(file); }
             void Write(string file, object value) => Save(file, JsonSerializer.Serialize(value, Json) + "\n");
             string Out(string file)
             {

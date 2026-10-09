@@ -146,7 +146,7 @@ internal static class NativeGlyphTrace
         if (before != Integer(movement.Groups[1].Value) || before + delta != Integer(movement.Groups[4].Value)) throw Invalid("Inconsistent native movement arithmetic.");
         return delta;
     }
-    private static double[] Widths(byte[] bytes, int sizeSp)
+    internal static double[] Widths(byte[] bytes, int sizeSp)
     {
         if (bytes.Length < 24) throw Invalid("Truncated TFM header.");
         int Half(int offset) => BinaryPrimitives.ReadUInt16BigEndian(bytes.AsSpan(offset, 2));

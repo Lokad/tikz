@@ -9,16 +9,35 @@ namespace TikzShapeComparison;
 // never converter fonts or layout results. No process or reference regeneration.
 internal static class NativeMathLabelTrace
 {
-    internal sealed record Face(string Id, string NativeName, int SizeSp, IReadOnlyDictionary<int, int> Widths);
-    internal sealed record Glyph(string Font, int Slot, int XSp, int YSp);
-    internal sealed record Rule(int XSp, int YSp, int WidthSp, int HeightSp);
-    internal sealed record Node(string Id, Glyph[] Glyphs, Rule[] Rules, int[] PaintOrder);
+    internal sealed record Face(string Id, string NativeName, int SizeSp, IReadOnlyDictionary<int, int> Widths)
+    {
+        // Optional original-TFM fractions are for binding the SVG driver only.
+        // Integer observations remain authoritative for TeX math layout.
+        internal IReadOnlyDictionary<int, double>? DriverWidths { get; init; }
+    }
+    internal sealed record Glyph(string Font, int Slot, int XSp, int YSp)
+    {
+        public double DriverXSp { get; init; }
+        public int AbsoluteYSp { get; init; }
+    }
+    internal sealed record Rule(int XSp, int YSp, int WidthSp, int HeightSp)
+    {
+        public double DriverXSp { get; init; }
+        public int AbsoluteYSp { get; init; }
+    }
+    internal sealed record Node(string Id, Glyph[] Glyphs, Rule[] Rules, int[] PaintOrder)
+    {
+        public int OriginXSp { get; init; }
+        public double DriverOriginXSp { get; init; }
+        public int OriginYSp { get; init; }
+    }
 
     internal static Node[] Read(string trace, Face[] faces, string[] ids)
     {
         if (trace.Length > 4_000_000 || ids.Length is 0 or > 1024 || ids.Distinct(StringComparer.Ordinal).Count() != ids.Length
             || faces.Length is 0 or > 25 || faces.Select(f => (f.NativeName, f.SizeSp)).Distinct().Count() != faces.Length
             || faces.Any(f => f.SizeSp is < 327680 or > 786432 || f.Widths.Count is 0 or > 256 || f.Widths.Keys.Any(s => s is < 0 or > 255))
+            || faces.Any(f => f.DriverWidths is { } widths && (f.Widths.Keys.Any(s => !widths.ContainsKey(s)) || widths.Values.Any(w => !double.IsFinite(w))))
             || !trace.Contains("numerator/denominator=25400000/473628672", StringComparison.Ordinal)
             || !trace.Contains("magnification=1000;", StringComparison.Ordinal)
             || !Regex.IsMatch(trace, @"totalpages=1(?:\s|$)")
@@ -34,18 +53,19 @@ internal static class NativeMathLabelTrace
         var glyphs = ids.ToDictionary(id => id, _ => new List<Glyph>(), StringComparer.Ordinal);
         var rules = ids.ToDictionary(id => id, _ => new List<Rule>(), StringComparer.Ordinal);
         var paint = ids.ToDictionary(id => id, _ => new List<int>(), StringComparer.Ordinal);
-        var origins = new Dictionary<string, (int X, int Y)>(StringComparer.Ordinal);
+        var origins = new Dictionary<string, (int X, int Y, double DriverX)>(StringComparer.Ordinal);
         var order = new List<string>();
-        var stack = new Stack<(int H, int V)>();
+        var stack = new Stack<(int H, int V, double DriverH)>();
         var h = 0; var v = 0; var level = -1; var originLevel = -1; var popped = false;
+        double driverH = 0;
         string? active = null; Face? font = null;
         foreach (var line in trace.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n'))
         {
-            if (Regex.IsMatch(line, @"^\d+: push(?:\s|$)")) stack.Push((h, v));
+            if (Regex.IsMatch(line, @"^\d+: push(?:\s|$)")) stack.Push((h, v, driverH));
             if (Regex.IsMatch(line, @"^\d+: pop(?:\s|$)"))
             {
                 if (!stack.TryPop(out var saved)) throw Invalid("Unbalanced native stack.");
-                (h, v) = saved; popped = true;
+                (h, v, driverH) = saved; popped = true;
             }
             var state = Regex.Match(line, @"^level (\d+):\(h=(-?\d+),v=(-?\d+),");
             if (state.Success)
@@ -62,7 +82,7 @@ internal static class NativeMathLabelTrace
             if (marker.Success)
             {
                 active = marker.Groups[1].Value;
-                if (level < 0 || !glyphs.ContainsKey(active) || !origins.TryAdd(active, (h, v))) throw Invalid("Unexpected or repeated native origin.");
+                if (level < 0 || !glyphs.ContainsKey(active) || !origins.TryAdd(active, (h, v, driverH))) throw Invalid("Unexpected or repeated native origin.");
                 originLevel = level; order.Add(active);
             }
             var character = Regex.Match(line, @"^\d+: (?:setchar|set[1-4] )(\d+) h:=(-?\d+)[+-]\d+=(-?\d+),");
@@ -74,7 +94,8 @@ internal static class NativeMathLabelTrace
                     || (long)h + advance != Integer(character.Groups[3].Value)) throw Invalid("Native glyph identity, position or advance differs from independent font measurements.");
                 var origin = origins[active];
                 paint[active].Add(glyphs[active].Count);
-                glyphs[active].Add(new(font.Id, slot, checked(h - origin.X), checked(v - origin.Y)));
+                glyphs[active].Add(new(font.Id, slot, checked(h - origin.X), checked(v - origin.Y)) { DriverXSp = driverH, AbsoluteYSp = v });
+                driverH += font.DriverWidths is { } widths ? widths[slot] : advance;
             }
             else if (Regex.IsMatch(line, @"^\d+: (?:setchar|set[1-4] |put[1-4] )")) throw Invalid("Unsupported native character record.");
             var rule = Regex.Match(line, @"^\d+: (?:putrule|setrule) height (-?\d+), width (-?\d+)");
@@ -84,16 +105,21 @@ internal static class NativeMathLabelTrace
                 var height = Integer(rule.Groups[1].Value); var width = Integer(rule.Groups[2].Value); var origin = origins[active];
                 if (height <= 0 || width <= 0) throw Invalid("Nonvisible DVI rule in the native event stream.");
                 paint[active].Add(-rules[active].Count - 1);
-                rules[active].Add(new(checked(h - origin.X), checked(v - origin.Y - height), width, height));
+                rules[active].Add(new(checked(h - origin.X), checked(v - origin.Y - height), width, height)
+                    { DriverXSp = driverH, AbsoluteYSp = checked(v - height) });
             }
             else if (Regex.IsMatch(line, @"^\d+: (?:putrule|setrule) ")) throw Invalid("Unsupported native rule record.");
             var horizontal = Regex.Match(line, @" h:=(-?\d+)([+-])(\d+)=(-?\d+),");
-            if (horizontal.Success) { NativeGlyphTrace.Movement(horizontal, h); h = Integer(horizontal.Groups[4].Value); }
+            if (horizontal.Success) {
+                var delta = NativeGlyphTrace.Movement(horizontal, h); h = Integer(horizontal.Groups[4].Value);
+                if (!character.Success) driverH += delta;
+            }
             var vertical = Regex.Match(line, @" v:=(-?\d+)([+-])(\d+)=(-?\d+),");
             if (vertical.Success) { NativeGlyphTrace.Movement(vertical, v); v = Integer(vertical.Groups[4].Value); }
         }
         if (stack.Count != 0 || !order.SequenceEqual(ids)) throw Invalid("Native stack or origin coverage/order differs.");
-        return ids.Select(id => new Node(id, glyphs[id].ToArray(), rules[id].ToArray(), paint[id].ToArray())).ToArray();
+        return ids.Select(id => new Node(id, glyphs[id].ToArray(), rules[id].ToArray(), paint[id].ToArray())
+            { OriginXSp = origins[id].X, DriverOriginXSp = origins[id].DriverX, OriginYSp = origins[id].Y }).ToArray();
     }
     private static int Integer(string value) => int.Parse(value, CultureInfo.InvariantCulture);
     private static InvalidDataException Invalid(string message) => new("Native math label trace: " + message);

@@ -24,6 +24,9 @@
     <None Include="../Reference/NodeShapes/fonts/*.tfm" Link="Reference/NodeShapes/fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="../../tools/TikzShapeComparison/NativeGlyphTrace.cs" Link="Harness/NativeGlyphTrace.cs" />
     <Compile Include="../../tools/TikzShapeComparison/NativeMathLabelTrace.cs" Link="Harness/NativeMathLabelTrace.cs" />
+    <Compile Include="../../tools/TikzShapeComparison/NativeMathFaces.cs" Link="Harness/NativeMathFaces.cs" />
+    <Compile Include="../../tools/TikzShapeComparison/NativeMathSvg.cs" Link="Harness/NativeMathSvg.cs" />
+    <None Include="../Reference/MathLabels/fonts/*.tfm" Link="Reference/MathLabels/fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../Reference/MathLabels/**/*.log" Link="Reference/MathLabels/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../tools/TikzFontData/math-font-profile.json" Link="Reference/MathLabels/font-profile.json" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="../../tools/TikzLabelledBorderComparison/NativeComparison.cs" Link="Harness/LabelledBorderNativeComparison.cs" />

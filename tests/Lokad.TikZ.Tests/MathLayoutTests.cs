@@ -2,6 +2,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using System.Security.Cryptography;
+using System.Xml.Linq;
 using Lokad.TikZ.Graphics;
 using Lokad.TikZ.Geometry;
 using Lokad.TikZ.Frontend;
@@ -41,6 +42,10 @@ public sealed class MathLayoutTests
         var events = NativeMathLabelTrace.Read(trace, NativeFaces(observations.RootElement), native.Select(n => n.GetProperty("name").GetString()!).ToArray());
         Assert.Equal(observations.RootElement.GetProperty("glyphs").GetInt32(), events.Sum(e => e.Glyphs.Length));
         Assert.Equal(observations.RootElement.GetProperty("rules").GetInt32(), events.Sum(e => e.Rules.Length));
+        var bound = NativeMathSvg.Read(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "MathLabels", "native-layout", id, "oracle.svg")), events);
+        Assert.Equal(events.Sum(e => e.PaintOrder.Length), bound.Marks.Length);
+        Assert.Equal(events.Length * 2 + events.Sum(e => e.Glyphs.Length * 2 + e.Rules.Length * 4), bound.Checks.Length);
+        Assert.All(bound.Checks, q => Assert.InRange(q.ErrorBp, 0, .00000051));
         var failures = new List<string>();
         for (var i = 0; i < native.Length; i++)
         {
@@ -200,28 +205,73 @@ public sealed class MathLayoutTests
     }
 
     private static NativeMathLabelTrace.Face[] NativeFaces(JsonElement observations)
+        => NativeMathFaces.Read(
+            File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "MathLabels", "font-profile.json")),
+            File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "Nodes", "font-profile.json")), observations,
+            (id, math) => File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", math ? "MathFonts" : "Fonts", id + ".json")),
+            tfm => File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Reference", "MathLabels", "fonts", tfm)));
+
+    [Fact]
+    public void Native_math_svg_binding_rejects_changed_coordinates_paint_order_rules_slots_and_aliases()
     {
-        var faces = new List<NativeMathLabelTrace.Face>();
-        foreach (var (profileFile, directory) in new[] { ("MathLabels/font-profile.json", "MathFonts"), ("Nodes/font-profile.json", "Fonts") })
+        var directory = Path.Combine(AppContext.BaseDirectory, "Reference", "MathLabels");
+        const string id = "math-atom-contract";
+        using var observations = JsonDocument.Parse(File.ReadAllText(Path.Combine(directory, "native-layout", id, "font-observations.json")));
+        using var measurements = JsonDocument.Parse(File.ReadAllText(Path.Combine(directory, id + ".json")));
+        var ids = measurements.RootElement.GetProperty("nodes").EnumerateArray().Select(n => n.GetProperty("name").GetString()!).ToArray();
+        var nodes = NativeMathLabelTrace.Read(File.ReadAllText(Path.Combine(directory, "native-layout", id, "native-positions.log")), NativeFaces(observations.RootElement), ids);
+        var original = File.ReadAllText(Path.Combine(directory, "native-layout", id, "oracle.svg"));
+        Assert.Equal(326, NativeMathSvg.Read(original, nodes).Marks.Length);
+        XNamespace ns = "http://www.w3.org/2000/svg";
+        var mutations = new Action<XDocument>[] {
+            d => Painted(d).First().SetAttributeValue("x", "0"),
+            d => Painted(d).First().SetAttributeValue("fill", "white"),
+            d => Painted(d).First().SetAttributeValue("opacity", "0"),
+            d => Painted(d).First().Remove(),
+            d => Painted(d).First().SetAttributeValue(XName.Get("href", "http://www.w3.org/1999/xlink"), "#g1-255"),
+            d => d.Descendants(ns + "rect").First().SetAttributeValue("width", "1"),
+            d => d.Descendants(ns + "rect").First().SetAttributeValue("height", "-1"),
+            d => d.Descendants(ns + "rect").First().Name = ns + "use",
+            d => d.Descendants(ns + "defs").Single().Add(new XElement(d.Descendants(ns + "defs").Single().Elements().First())),
+            d => d.Descendants(ns + "defs").Single().Elements(ns + "use").First().SetAttributeValue("transform", "scale(3)"),
+            d => d.Descendants(ns + "defs").Single().Elements(ns + "path").First().SetAttributeValue("fill", "none"),
+            d => d.Descendants(ns + "defs").Single().Elements(ns + "use").First().SetAttributeValue("opacity", "0"),
+            d => { var alias = d.Descendants(ns + "defs").Single().Elements(ns + "use").First();
+                alias.SetAttributeValue(XName.Get("href", "http://www.w3.org/1999/xlink"), "#" + alias.Attribute("id")!.Value); },
+            d => Painted(d).First().SetAttributeValue("transform", "translate(1 0)"),
+            d => d.Descendants(ns + "g").First(g => (g.Attribute("transform")?.Value ?? "").StartsWith("scale(-1.00375", StringComparison.Ordinal))
+                .SetAttributeValue("transform", "scale(-1.00375,1.00375)translate(0,0)scale(-1,-1)")
+        };
+        foreach (var mutate in mutations)
         {
-            using var profile = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", profileFile)));
-            var inputs = profile.RootElement.GetProperty("inputs").EnumerateArray().ToDictionary(i => i.GetProperty("name").GetString()!, i => i.GetProperty("sha256").GetString());
-            foreach (var f in profile.RootElement.GetProperty("fonts").EnumerateArray())
-            {
-                var id = f.GetProperty("id").GetString()!;
-                var tfm = f.GetProperty("tfm").GetString()!;
-                if (observations.GetProperty("nativeFiles").TryGetProperty(tfm, out var observed)) Assert.Equal(inputs[tfm], observed.GetString());
-                using var metrics = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", directory, id + ".json")));
-                var widths = metrics.RootElement.GetProperty("glyphs").EnumerateArray().Select(g => g.EnumerateArray().Select(v => v.GetInt32()).ToArray())
-                    .Where(row => row.Skip(1).Any(v => v != 0)).ToDictionary(row => row[0], row => row[1]);
-                faces.Add(new(id, Path.GetFileNameWithoutExtension(tfm), f.GetProperty("sizePt").GetInt32() * 65536, widths));
-            }
+            var altered = XDocument.Parse(original); mutate(altered);
+            var text = altered.ToString(SaveOptions.DisableFormatting); Assert.NotEqual(original, text);
+            Assert.Throws<InvalidDataException>(() => NativeMathSvg.Read(text, nodes));
         }
-        foreach (var f in observations.GetProperty("fonts").EnumerateArray())
+        IEnumerable<XElement> Painted(XDocument doc) => doc.Descendants(ns + "use").Where(e => !e.Ancestors(ns + "defs").Any());
+    }
+
+    [Fact]
+    public void Fractional_native_driver_positions_preserve_integer_measurements_and_require_original_TFM_bytes()
+    {
+        var directory = Path.Combine(AppContext.BaseDirectory, "Reference");
+        using var observations = JsonDocument.Parse(File.ReadAllText(Path.Combine(directory, "MathLabels", "native-layout", "math-label-contract", "font-observations.json")));
+        using var measurements = JsonDocument.Parse(File.ReadAllText(Path.Combine(directory, "MathLabels", "math-label-contract.json")));
+        var ids = measurements.RootElement.GetProperty("nodes").EnumerateArray().Select(n => n.GetProperty("name").GetString()!).ToArray();
+        var faces = NativeFaces(observations.RootElement);
+        var trace = File.ReadAllText(Path.Combine(directory, "MathLabels", "native-layout", "math-label-contract", "native-positions.log"));
+        var driver = NativeMathLabelTrace.Read(trace, faces, ids);
+        var integer = NativeMathLabelTrace.Read(trace, faces.Select(f => f with { DriverWidths = null }).ToArray(), ids);
+        for (var i = 0; i < driver.Length; i++)
         {
-            var face = Assert.Single(faces, face => face.NativeName == f.GetProperty("name").GetString() && face.SizeSp == f.GetProperty("sizeSp").GetInt32());
-            Assert.True(observations.GetProperty("nativeFiles").TryGetProperty(face.NativeName + ".tfm", out _));
+            Assert.Equal(integer[i].PaintOrder, driver[i].PaintOrder);
+            Assert.Equal(integer[i].Glyphs.Select(g => (g.Font, g.Slot, g.XSp, g.YSp)), driver[i].Glyphs.Select(g => (g.Font, g.Slot, g.XSp, g.YSp)));
+            Assert.Equal(integer[i].Rules.Select(r => (r.XSp, r.YSp, r.WidthSp, r.HeightSp)), driver[i].Rules.Select(r => (r.XSp, r.YSp, r.WidthSp, r.HeightSp)));
         }
-        return faces.ToArray();
+        Assert.Contains(driver.SelectMany(n => n.Glyphs), g => Math.Abs(g.DriverXSp - Math.Round(g.DriverXSp)) > .01);
+        Assert.Throws<InvalidDataException>(() => NativeMathFaces.Read(
+            File.ReadAllText(Path.Combine(directory, "MathLabels", "font-profile.json")), File.ReadAllText(Path.Combine(directory, "Nodes", "font-profile.json")),
+            observations.RootElement, (id, math) => File.ReadAllText(Path.Combine(directory, math ? "MathFonts" : "Fonts", id + ".json")),
+            tfm => { var bytes = File.ReadAllBytes(Path.Combine(directory, "MathLabels", "fonts", tfm)); bytes[^1] ^= 1; return bytes; }));
     }
 }

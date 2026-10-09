@@ -1,5 +1,23 @@
 # Independent circle and ellipse SVG calibration
 
+The existing executable also has a native math-event route:
+
+```text
+dotnet run --project tools/TikzShapeCalibration -c Release -- derive-math-events --out artifacts/math-label-native-events
+node tools/TikzVisual/math-label-native-images.mjs
+```
+
+It binds the three fixed [math-label fixtures](../../tests/Reference/MathLabels/README.md)
+to their retained DVI/SVG, independent integer metrics and original TFM inputs.
+Math-specific rules, selected faces and scaled glyph aliases use separate
+readers; TFM decoding, checked movements, safe outputs and artifact hashing are
+shared with shape calibration. This route runs no reference engine and has no
+converter assembly dependency. Its default output is
+`artifacts/math-label-native-events/`. The image command reuses the pinned
+renderer and produces native-only diagnostic pairs; it admits no image policy.
+
+The circle/ellipse route and its five representations remain as described below.
+
 ```text
 dotnet run --project tools/TikzShapeCalibration -c Release -- derive-svg
 node tools/TikzVisual/calibrate-shapes.mjs

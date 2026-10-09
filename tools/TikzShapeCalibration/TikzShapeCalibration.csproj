@@ -3,5 +3,8 @@
   <ItemGroup>
     <ProjectReference Include="../TikzShapeReference/TikzShapeReference.csproj" ReferenceOutputAssembly="false" />
     <Compile Include="../TikzShapeComparison/NativeGlyphTrace.cs" Link="NativeGlyphTrace.cs" />
+    <Compile Include="../TikzShapeComparison/NativeMathLabelTrace.cs" Link="NativeMathLabelTrace.cs" />
+    <Compile Include="../TikzShapeComparison/NativeMathFaces.cs" Link="NativeMathFaces.cs" />
+    <Compile Include="../TikzShapeComparison/NativeMathSvg.cs" Link="NativeMathSvg.cs" />
   </ItemGroup>
 </Project>

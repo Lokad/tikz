@@ -35,6 +35,36 @@ DVI movements, units, origins, font selections, glyph advances and rules are
 validated before comparing every box, anchor, glyph and rule. Native corruption
 controls exercise this reader. An approved math image policy remains separate.
 
+The `fonts/` directory retains sixteen original TFM inputs from the existing
+native runs. Their bytes must match both the selected font profiles and the
+observations above. The shared native width decoder also recovers fractional
+driver advances, while the integer math measurements remain unchanged. The
+original SVG is bound to 1,194 origin/glyph/rule quantities, including rule
+dimensions, paint order, selected slots and local scaled-outline aliases.
+Native atlas contours and global label registration are checked separately.
+Corruption controls reject changed outlines, aliases, rule paint and placement.
+
+Native-only image experiments reuse the existing artifact handling, process
+runner, renderer, pixel decoder and saved-report reader:
+
+```sh
+node tools/TikzVisual/math-label-native-images.mjs
+node tools/TikzVisual/check-math-label-native-images.mjs <exact-report-path>
+node tools/TikzVisual/math-label-native-self-test.mjs <owned-event-directory> --out artifacts/math-native-controls
+```
+
+These commands consume frozen references without running MiKTeX or the
+converter. Eight fixed SVG encodings isolate root-unit conversion, flattening,
+fractional versus integer advances, native selected-size atlases and 6/12-digit
+matrices. They preserve the original path/paint order and physical registration.
+The bundle contains 144 paired views, PNG differences, overlays, crops and
+HTML viewers. An independent reader checks raw sample metrics in all 48
+transparent pairs; its eight-neighbor topology remains separate from the
+legacy renderer's four-neighbor observations. Native event label identities
+are retained in `native-frame.json`; these native-only crops do not assert
+converter source spans. These experiments explain encoding differences and
+leave primary/PDF policies, framing and final feature qualification pending.
+
 The existing node/scalar observer admits only fixed source hashes. It checks
 pinned MiKTeX/dvisvgm/DVItype versions and PGF 3.1.11a, retains executable and
 native input hashes, selects `lm.map` explicitly with caching disabled for
