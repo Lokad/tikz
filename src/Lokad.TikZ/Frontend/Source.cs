@@ -2,9 +2,10 @@ namespace Lokad.TikZ.Frontend;
 
 internal readonly record struct Source(string Text, int Offset, int Length)
 {
+    public Source[]? RelatedSources { get; init; }
     public ReadOnlySpan<char> Span => Text.AsSpan(Offset, Length);
     public string Value => Text.Substring(Offset, Length);
-    public Source Slice(int start, int length) => new(Text, Offset + start, length);
+    public Source Slice(int start, int length) => this with { Offset = Offset + start, Length = length };
     public Source Trim()
     {
         var start = 0;
@@ -33,5 +34,8 @@ internal sealed class CompileError : Exception
 {
     public TikzDiagnostic Diagnostic { get; }
     public CompileError(string code, string message, Source source) : base(message)
-        => Diagnostic = new(code, message, source.Location);
+        => Diagnostic = new(code, message, source.Location)
+        {
+            RelatedLocations = Array.AsReadOnly((source.RelatedSources ?? []).Select(s => s.Location).ToArray())
+        };
 }

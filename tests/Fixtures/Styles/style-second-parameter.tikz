@@ -1,0 +1,3 @@
+\begin{tikzpicture}[box/.style={draw,minimum width=#2}]
+  \node[box=12mm] {A};
+\end{tikzpicture}

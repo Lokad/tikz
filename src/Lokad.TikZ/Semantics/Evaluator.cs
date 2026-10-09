@@ -138,7 +138,7 @@ internal sealed partial class Evaluator(Budget budget)
             Stroke = state.Paint.Stroke || statement.Command is "\\draw" or "\\filldraw",
             Fill = state.Paint.Fill || statement.Command is "\\fill" or "\\filldraw"
         };
-        if (state.Styles.TryGetValue("every path", out var every)) KeyRegistry.Apply(every, state, budget);
+        KeyRegistry.ApplyStyle("every path", state, budget, statement.Source);
         KeyRegistry.Apply(statement.Options, state, budget);
         var firstLabel = statement.Operations.SelectMany(operation => operation.Labels).FirstOrDefault();
         if (firstLabel is not null && (statement.Command == "\\clip" || statement.Operations.Any(operation => operation is EdgeOperation)))
@@ -327,16 +327,15 @@ internal sealed partial class Evaluator(Budget budget)
                 child.Paint = child.Paint with { Stroke = false, Fill = false };
                 child.PaintChanges = PaintChanges.None;
                 child.PendingDash = null;
-                if (child.Styles.TryGetValue("every path", out var everyPath)) KeyRegistry.Apply(everyPath, child, budget);
+                KeyRegistry.ApplyStyle("every path", child, budget, origin);
             }
-            if (child.Styles.TryGetValue(style, out var everyConnection)) KeyRegistry.Apply(everyConnection, child, budget);
+            KeyRegistry.ApplyStyle(style, child, budget, origin);
             KeyRegistry.Apply(options, child, budget);
             return child;
         }
         void CurveStyle(EvaluationState child)
         {
-            if (child.Connection.Curved && child.Styles.TryGetValue("every curve to", out var everyCurve))
-                KeyRegistry.Apply(everyCurve, child, budget);
+            if (child.Connection.Curved) KeyRegistry.ApplyStyle("every curve to", child, budget, statement.Source);
         }
         Point Point(Coordinate coordinate)
         {

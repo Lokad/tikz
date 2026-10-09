@@ -58,9 +58,9 @@ internal sealed partial class Evaluator
         state.IsNodeContext = true;
         state.IsPathLabel = placement is not null;
         if (state.IsPathLabel) state.Paint = state.Paint with { Stroke = false, Fill = false };
-        if (state.Styles.TryGetValue("every node", out var every)) KeyRegistry.Apply(every, state, budget);
+        KeyRegistry.ApplyStyle("every node", state, budget, statement.Source);
         KeyRegistry.Apply(statement.Options, state, budget);
-        if (state.Styles.TryGetValue("every " + state.Node.Shape.ToString().ToLowerInvariant() + " node", out var shapeStyle)) KeyRegistry.Apply(shapeStyle, state, budget);
+        KeyRegistry.ApplyStyle("every " + state.Node.Shape.ToString().ToLowerInvariant() + " node", state, budget, statement.Source);
         var nodeFont = NodeSettings.ApplyFont(state.Node.NodeFont, TextFont.Default, budget);
         var textFont = NodeSettings.ApplyFont(state.Node.Font, nodeFont, budget);
         var metrics = Metrics(nodeFont, statement.Source);

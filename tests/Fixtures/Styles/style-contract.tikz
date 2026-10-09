@@ -1,0 +1,16 @@
+\begin{tikzpicture}[
+  base/.style={draw,rectangle,minimum width=#1,inner sep=2pt},
+  nested/.style={base=#1,minimum height=9mm},
+  plain/.style={draw,rectangle,minimum width=14mm},
+  appended/.style={draw,rectangle,minimum width=#1},
+  appended/.append style={minimum height=#1}]
+  \node[base=10mm] (single) {One};
+  \node[base={14mm}] (braced) at (25mm,0) {Two};
+  \node[nested=16mm,minimum width=18mm] (nested) at (50mm,0) {Three};
+  \begin{scope}[base/.append style={inner sep=4pt}]
+    \node[base=15mm] (scoped) at (0,-20mm) {Inside};
+  \end{scope}
+  \node[base=15mm] (restored) at (25mm,-20mm) {After};
+  \node[plain=ignored] (ignored) at (50mm,-20mm) {Plain};
+  \node[appended=12mm] (appended) at (0,-40mm) {Append};
+\end{tikzpicture}

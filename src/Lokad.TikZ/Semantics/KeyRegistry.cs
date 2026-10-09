@@ -7,6 +7,11 @@ namespace Lokad.TikZ.Semantics;
 
 internal static class KeyRegistry
 {
+    public static void ApplyStyle(string name, EvaluationState state, Budget budget, Source source)
+    {
+        if (state.Styles.TryGetValue(name, out var style))
+            Apply(StyleExpansion.Instantiate(style, new(name, source.Slice(0, 0), source), budget), state, budget, 1);
+    }
     public static void Apply(IEnumerable<Option> options, EvaluationState state, Budget budget, int depth = 0)
     {
         foreach (var option in options)
@@ -15,18 +20,17 @@ internal static class KeyRegistry
             var key = option.Key;
             if (key.StartsWith("/tikz/", StringComparison.Ordinal)) key = key[6..];
             if (key.StartsWith("/pgf/", StringComparison.Ordinal)) key = key[5..];
-            if (key.EndsWith("/.style", StringComparison.Ordinal)) { state.Styles[key[..^7]] = Options.Read(option.Value, budget); continue; }
+            if (key.EndsWith("/.style", StringComparison.Ordinal)) { state.Styles[key[..^7]] = StyleExpansion.Read(option.Value, budget); continue; }
             if (key.EndsWith("/.append style", StringComparison.Ordinal))
             {
                 var name = key[..^14];
-                var additions = Options.Read(option.Value, budget);
+                var additions = StyleExpansion.Read(option.Value, budget);
                 state.Styles[name] = state.Styles.TryGetValue(name, out var old) ? [.. old, .. additions] : additions;
                 continue;
             }
             if (state.Styles.TryGetValue(key, out var style))
             {
-                if (option.Value.Length != 0) throw new CompileError("TIKZ002", "Parameterized styles are not supported yet.", option.Source);
-                Apply(style, state, budget, depth + 1);
+                Apply(StyleExpansion.Instantiate(style, option, budget), state, budget, depth + 1);
                 continue;
             }
             var value = Options.Clean(option.Value);

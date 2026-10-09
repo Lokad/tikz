@@ -36,6 +36,10 @@ anchors, including transformed placement. Focused positioning adds 28 nodes and
 448 native anchors. All 72 complete-diagram primary views and 24 PDF views pass
 their native-only limits. Wider positioning and diagram coverage remains.
 
+[Single-argument styles](docs/STYLES.md) now convert an additional complete
+flowchart. Eleven new named nodes match 176 independently measured native
+anchors. This feature's image/PDF and final-export qualification remain pending.
+
 ```csharp
 using Lokad.TikZ;
 

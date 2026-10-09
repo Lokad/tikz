@@ -1,0 +1,16 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=9mm,
+  box/.style={draw,rectangle,minimum width=#1,inner sep=3pt},
+  stage/.style={box=#1},stage/.append style={minimum height=8mm}]
+  \node[box=12mm] (input) {Input};
+  \node[stage=16mm,right=of input] (check) {Check};
+  \begin{scope}[box/.append style={inner sep=4pt}]
+    \node[stage=12mm,below=of check] (retry) {Retry};
+  \end{scope}
+  \node[stage=14mm,right=of check,minimum width=18mm] (output) {Output};
+  \draw[-{Stealth}] (input) -- node[midway,above] {read} (check);
+  \draw[-{Stealth}] (check) -- node[midway,above] {ok} (output);
+  \draw[-{Stealth}] (check) -- node[midway,right] {again} (retry);
+  \coordinate (return) at ($(input.south)+(0,-12mm)$);
+  \draw[-{Stealth}] (retry.west) -| (return) -- (input.south);
+\end{tikzpicture}

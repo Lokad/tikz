@@ -1,0 +1,3 @@
+\begin{tikzpicture}[box/.style={draw,minimum width=#1}]
+  \node[box] (missing) {A};
+\end{tikzpicture}

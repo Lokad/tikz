@@ -10,6 +10,7 @@ internal sealed class Budget(TikzLimits limits, CancellationToken cancellationTo
     public int Nodes { get; private set; }
     public int Glyphs { get; private set; }
     public int Iterations { get; private set; }
+    private int _expandedTokens;
     public void Charge(Source source, long amount = 1)
     {
         cancellationToken.ThrowIfCancellationRequested();
@@ -39,6 +40,12 @@ internal sealed class Budget(TikzLimits limits, CancellationToken cancellationTo
         Charge(source);
         if (Iterations >= Limits.MaxLoopIterations) Fail(source, "loop iterations");
         Iterations++;
+    }
+    public void Expand(Source source, int amount)
+    {
+        Charge(source, amount);
+        if (amount < 0 || amount > Limits.MaxExpandedTokens - _expandedTokens) Fail(source, "expanded tokens");
+        _expandedTokens += amount;
     }
     public void Depth(Source source, int depth, int limit)
     {

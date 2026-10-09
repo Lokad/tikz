@@ -24,6 +24,9 @@ allow an empty feature and an empty list of related locations.
 converter. `Offset` is zero-based and `Length` counts UTF-16 code units, as
 used by .NET string indexing. The range is `[Offset, Offset + Length)`.
 Positions are retained through comment handling and label parsing.
+Parameterized style arguments retain their original invocation positions through
+forwarding. `RelatedLocations` can identify the contributing style definitions
+and call sites; template-key failures keep the definition as the primary span.
 
 `Line` and `Column` are one-based. LF starts a new line; CRLF starts a new
 line at its LF. Columns count UTF-16 code units, including a tab as one unit.

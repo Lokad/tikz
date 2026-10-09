@@ -27,7 +27,7 @@ public sealed class PositioningTests
     public void Declared_positioning_contract_matches_independent_native_measurements(string id, int count)
         => CompareNative("Positioning", "Focused", id, count);
 
-    private static void CompareNative(string fixtureFolder, string referenceFolder, string id, int count)
+    internal static void CompareNative(string fixtureFolder, string referenceFolder, string id, int count)
     {
         var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/" + fixtureFolder + "/" + id + ".tikz"));
         using var reference = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference/Positioning/" + referenceFolder + "/" + id + ".json")));
