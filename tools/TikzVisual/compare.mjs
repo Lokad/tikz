@@ -105,7 +105,7 @@ export async function compareBundle(bundle, renderer) {
       const doc = new DOMParser().parseFromString(text, 'image/svg+xml');
       if (doc.querySelector('parsererror') || doc.doctype || doc.documentElement.localName !== 'svg') throw new Error('Invalid SVG artifact.');
       for (const element of doc.querySelectorAll('*')) {
-        if (!['svg', 'g', 'defs', 'path', 'clipPath', 'use', 'title', 'desc'].includes(element.localName)) throw new Error('Unsupported reference SVG vocabulary.');
+        if (!['svg', 'g', 'defs', 'path', 'rect', 'clipPath', 'use', 'title', 'desc'].includes(element.localName)) throw new Error('Unsupported reference SVG vocabulary.');
         for (const a of element.attributes) {
           if (a.name.startsWith('on') || (a.localName === 'href' && !a.value.startsWith('#'))
             || (a.value.includes('url(') && !/^url\(#[\w.-]+\)$/.test(a.value))) throw new Error('SVG contains an external or executable reference.');

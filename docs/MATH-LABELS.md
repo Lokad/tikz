@@ -1,11 +1,12 @@
-# Bounded math labels: implementation target
+# Bounded math labels
 
-Math label layout is not implemented yet. The internal label parser represents
-the bounded grammar below, and the nineteen math font/size resources are bundled.
-Valid math still reports TIKZ002 at the opening `$` and emits no partial SVG;
-malformed or unsupported math reports its offending source span. This document
-declares the layout target; the [native observations](../tests/Reference/MathLabels/README.md)
-are grounding evidence, not current converter conformance.
+The converter now measures and renders the bounded grammar below using nineteen
+bundled math font/size resources. Three authored sources match native boxes,
+anchors, glyph positions, rules and paint order exactly in scaled points: 64
+labels, 1,024 anchors, 459 glyphs and 37 rules. Unsupported or malformed math
+reports its offending source span and emits no partial SVG. The
+[native observations](../tests/Reference/MathLabels/README.md) ground this fixed
+profile; image/PDF policies and final feature qualification remain open.
 
 The first profile supports inline `$...$` runs within existing node and path
 labels, including mixed prose and math. It uses a small source-aware math AST,
@@ -33,8 +34,8 @@ The parser preserves atom classes and groups. Layout applies native math
 spacing by neighboring classes and style, including binary-operator correction
 and script-style suppression of implicit spacing. Fractions are inner atoms;
 radicals and grouped bases are ordinary atoms. The full declared symbol list
-requires focused coverage before feature completion; the initial corpus alone
-does not qualify every entry.
+has additive native coverage in `math-atom-contract.tikz`, including both
+negated-equality aliases, binary spacing contexts and upright ligatures.
 
 ## Fonts and layout
 
@@ -55,7 +56,7 @@ and selected sizes. EC prose faces retain their existing separate profile.
 Bold math, arbitrary fonts and math-alphabet changes other than `\mathrm` are
 outside this first profile.
 
-Layout must account for italic correction, math kerns, axis height, script
+Layout accounts for italic correction, math kerns, axis height, script
 shifts/clearances, fraction bars, and radical glyph selection/assembly and
 overbars. Advance, height and depth are measured independently of outline ink.
 Every glyph and rule retains its source location. Native DVI movements and

@@ -13,8 +13,13 @@ internal sealed record PaintedPath(GraphicPath Path, Paint Paint, int[] ClipIds,
     public ArrowPlacement? Arrow { get; init; }
 }
 internal sealed record ResolvedGlyph(int Outline, PlacedGlyph Placement, Affine Transform, Bounds InkBounds);
+internal sealed record ResolvedRule(PlacedRule Placement, Affine Transform, Bounds InkBounds);
 internal sealed record PaintedGlyphRun(ResolvedGlyph[] Glyphs, string Readable, Color Color, double Opacity,
-    int[] ClipIds, Source Origin, int NodeId) : Drawable(ClipIds, Origin);
+    int[] ClipIds, Source Origin, int NodeId) : Drawable(ClipIds, Origin)
+{
+    internal ResolvedRule[] Rules { get; init; } = [];
+    internal int[] PaintOrder { get; init; } = [];
+}
 internal sealed record ResolvedNode(string Name, INodeLayout Layout, Affine Transform,
     TextFont Font, TextFont NodeFont, Source Source);
 internal sealed record ClipPath(GraphicPath Path, string FillRule, Source Source);

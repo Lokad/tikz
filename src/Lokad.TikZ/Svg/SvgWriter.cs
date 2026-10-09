@@ -123,8 +123,22 @@ internal static class SvgWriter
                     writer.WriteAttributeString("fill-opacity", Number(run.Opacity));
                     writer.WriteAttributeString("stroke", "none");
                     writer.WriteStartElement("title"); writer.WriteString(run.Readable); writer.WriteEndElement();
-                    foreach (var glyph in run.Glyphs)
+                    foreach (var mark in run.PaintOrder.Length == 0 ? Enumerable.Range(0, run.Glyphs.Length) : run.PaintOrder)
                     {
+                        if (mark < 0)
+                        {
+                            var rule = run.Rules[-mark - 1];
+                            budget.Charge(rule.Placement.Source);
+                            if (rule.Placement.WidthSp <= 0 || rule.Placement.HeightSp <= 0) continue;
+                            var rt = rule.Transform;
+                            writer.WriteStartElement("rect");
+                            writer.WriteAttributeString("width", Number(rule.Placement.WidthSp * (72.0 / (72.27 * 65536))));
+                            writer.WriteAttributeString("height", Number(rule.Placement.HeightSp * (72.0 / (72.27 * 65536))));
+                            writer.WriteAttributeString("transform", $"matrix({Number(rt.A * 4 / 3)} {Number(-rt.B * 4 / 3)} {Number(rt.C * 4 / 3)} {Number(-rt.D * 4 / 3)} {Number(rt.E * 4 / 3)} {Number(-rt.F * 4 / 3)})");
+                            writer.WriteEndElement();
+                            continue;
+                        }
+                        var glyph = run.Glyphs[mark];
                         budget.Charge(glyph.Placement.Source);
                         var t = glyph.Transform;
                         writer.WriteStartElement("use");

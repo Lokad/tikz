@@ -140,7 +140,7 @@ internal static class NativeGlyphTrace
                 || Math.Abs(value - sp * BpPerSp) > DriverPrecisionBp) throw Invalid(FormattableString.Invariant($"Original SVG and DVI coordinates differ for {quantity}: SVG {text}bp, DVI {sp}sp ({sp * BpPerSp:R}bp)."));
         }
     }
-    private static long Movement(Match movement, int before)
+    internal static long Movement(Match movement, int before)
     {
         var delta = long.Parse(movement.Groups[3].Value, CultureInfo.InvariantCulture) * (movement.Groups[2].Value == "-" ? -1 : 1);
         if (before != Integer(movement.Groups[1].Value) || before + delta != Integer(movement.Groups[4].Value)) throw Invalid("Inconsistent native movement arithmetic.");

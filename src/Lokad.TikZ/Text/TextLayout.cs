@@ -6,10 +6,17 @@ using Lokad.TikZ.Semantics;
 
 namespace Lokad.TikZ.Text;
 
-internal sealed record PlacedGlyph(string FontId, int Slot, int XSp, int YSp, Source Source);
+internal abstract record TextMark(Source Source);
+internal sealed record PlacedGlyph(string FontId, int Slot, int XSp, int YSp, Source Source) : TextMark(Source);
+internal sealed record PlacedRule(int XSp, int YSp, int WidthSp, int HeightSp, Source Source) : TextMark(Source);
 internal sealed record TextLine(int WidthSp, int HeightSp, int DepthSp, int BaselineSp);
 internal sealed record MeasuredText(int WidthSp, int HeightSp, int DepthSp, string Readable,
-    PlacedGlyph[] Glyphs, TextLine[] Lines);
+    PlacedGlyph[] Glyphs, TextLine[] Lines)
+{
+    internal PlacedRule[] Rules { get; init; } = [];
+    // Nonnegative entries index glyphs; negative entries encode -ruleIndex-1.
+    internal int[] PaintOrder { get; init; } = [];
+}
 
 internal interface ITextLayout
 {
@@ -39,18 +46,19 @@ internal sealed class TextLayout : ITextLayout
 
     private sealed class Builder(Source source, TextFont initialFont, TextAlignment alignment, Budget budget)
     {
-        private enum PieceKind { Glyph, Glue, Kern }
+        private enum PieceKind { Glyph, Glue, Kern, Math }
         private sealed record Piece(PieceKind Kind, int Amount, Face? Face, int Slot, Source Source);
         private sealed record Pending(Face Face, int Slot, Source Source);
-        private sealed record Line(List<PlacedGlyph> Glyphs, int Width, int Height, int Depth);
+        private sealed record Line(List<TextMark> Paint, int Width, int Height, int Depth);
         private readonly Dictionary<string, Face> _faces = new(StringComparer.Ordinal);
         private readonly List<Piece> _pieces = [];
-        private readonly List<PlacedGlyph> _glyphs = [];
+        private readonly List<TextMark> _paint = [];
         private readonly List<Line> _lines = [];
         private readonly StringBuilder _readable = new();
         private readonly TextFont _initialFont = initialFont;
         private TextFont _font = initialFont;
         private Pending? _pending;
+        private MathLayout? _math;
         private int _width, _height, _depth;
         private int _spaceFactor = 1000;
         private bool _ignoreLeading = true;
@@ -72,6 +80,8 @@ internal sealed class TextLayout : ITextLayout
             }
             var lastBaseline = baselines[^1];
             var glyphs = new List<PlacedGlyph>();
+            var rules = new List<PlacedRule>();
+            var order = new List<int>();
             var lines = new List<TextLine>();
             for (var index = 0; index < _lines.Count; index++)
             {
@@ -83,16 +93,28 @@ internal sealed class TextLayout : ITextLayout
                     TextAlignment.Right => width - line.Width,
                     _ => throw new InvalidOperationException()
                 };
-                foreach (var glyph in line.Glyphs)
+                foreach (var mark in line.Paint)
                 {
-                    budget.Charge(glyph.Source);
-                    glyphs.Add(glyph with { XSp = checked(glyph.XSp + offset), YSp = baselines[index] - lastBaseline });
+                    budget.Charge(mark.Source);
+                    var baseline = baselines[index] - lastBaseline;
+                    if (mark is PlacedGlyph glyph)
+                    {
+                        order.Add(glyphs.Count);
+                        glyphs.Add(glyph with { XSp = Dimension((long)glyph.XSp + offset), YSp = Dimension((long)glyph.YSp + baseline) });
+                    }
+                    else if (mark is PlacedRule rule)
+                    {
+                        order.Add(-rules.Count - 1);
+                        rules.Add(rule with { XSp = Dimension((long)rule.XSp + offset), YSp = Dimension((long)rule.YSp + baseline) });
+                    }
+                    else throw new InvalidOperationException();
                 }
                 lines.Add(new(line.Width, line.Height, line.Depth, baselines[index] - lastBaseline));
             }
             var height = Dimension((long)_lines[0].Height + lastBaseline);
             CheckDimension(width); CheckDimension(height); CheckDimension(_lines[^1].Depth);
-            return new(width, height, _lines[^1].Depth, _readable.ToString(), glyphs.ToArray(), lines.ToArray());
+            return new(width, height, _lines[^1].Depth, _readable.ToString(), glyphs.ToArray(), lines.ToArray())
+                { Rules = rules.ToArray(), PaintOrder = order.ToArray() };
         }
 
         private Face GetFace(Source origin)
@@ -149,7 +171,21 @@ internal sealed class TextLayout : ITextLayout
                         if (correct && !StartsWithPunctuation(items.ElementAtOrDefault(index + 1))) Correction(group.Source, true);
                         break;
                     case LabelMath math:
-                        throw new CompileError("TIKZ002", "Math label layout is not implemented yet.", math.Source.Slice(0, 1));
+                        Flush();
+                        var box = (_math ??= new MathLayout(budget)).Layout(math, _font.SizePt, depth);
+                        foreach (var mark in box.Paint)
+                        {
+                            budget.Charge(mark.Source);
+                            _paint.Add(mark switch {
+                                PlacedGlyph g => g with { XSp = Dimension((long)_width + g.XSp) },
+                                PlacedRule r => r with { XSp = Dimension((long)_width + r.XSp) },
+                                _ => throw new InvalidOperationException()
+                            });
+                        }
+                        _height = Math.Max(_height, box.Height); _depth = Math.Max(_depth, box.Depth);
+                        AddPiece(new(PieceKind.Math, box.Width, null, 0, math.Source));
+                        _spaceFactor = 1000; _readable.Append(math.Source.Value);
+                        break;
                     case LabelBreak lineBreak:
                         Flush(); FinishLine(); _readable.Append('\n');
                         _font = _initialFont; _spaceFactor = 1000; _ignoreLeading = true;
@@ -195,7 +231,7 @@ internal sealed class TextLayout : ITextLayout
             var glyph = pending.Face.Data.Glyphs[pending.Slot];
             var sizeSp = pending.Face.Data.DesignSizeFix / 16;
             budget.Glyph(pending.Source);
-            _glyphs.Add(new(pending.Face.Data.Id, pending.Slot, _width, 0, pending.Source));
+            _paint.Add(new PlacedGlyph(pending.Face.Data.Id, pending.Slot, _width, 0, pending.Source));
             _height = Math.Max(_height, FontData.ScaleFix(glyph.HeightFix, sizeSp));
             _depth = Math.Max(_depth, FontData.ScaleFix(glyph.DepthFix, sizeSp));
             AddPiece(new(PieceKind.Glyph, FontData.ScaleFix(glyph.AdvanceFix, sizeSp), pending.Face, pending.Slot, pending.Source));
@@ -247,8 +283,8 @@ internal sealed class TextLayout : ITextLayout
                 _width -= _pieces[^1].Amount;
                 if (_readable.Length > 0 && _readable[^1] is ' ' or '\u00a0') _readable.Length--;
             }
-            _lines.Add(new([.. _glyphs], _width, _height, _depth));
-            _pieces.Clear(); _glyphs.Clear(); _width = _height = _depth = 0;
+            _lines.Add(new([.. _paint], _width, _height, _depth));
+            _pieces.Clear(); _paint.Clear(); _width = _height = _depth = 0;
         }
 
         private void CheckDimension(int sp) => budget.Check(sp * 72.0 / (72.27 * 65536), source);

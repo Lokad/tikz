@@ -1,11 +1,12 @@
 // Explicit live-replay normalization. Preserve original SVG bytes. Only the
 // order of uniquely named glyph definitions and dependent metadata may vary.
+// Scaled native math faces can share outlines through local use definitions.
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 const hash=b=>createHash('sha256').update(b).digest('hex');
 export function canonicalEdgeSvg(bytes){return bytes.toString('utf8').replace(/<defs>([\s\S]*?)<\/defs>/g,(_,body)=>{
-  const paths=[...body.matchAll(/<path\b[^>]*\/>/g)].map(m=>m[0]),id=s=>/\bid='([^']+)'/.exec(s)?.[1];
-  assert.equal(body.replace(/<path\b[^>]*\/>/g,'').trim(),'');assert.ok(paths.every(id));assert.equal(new Set(paths.map(id)).size,paths.length);
+  const definition=/<(?:path|use)\b[^>]*\/>/g,paths=[...body.matchAll(definition)].map(m=>m[0]),id=s=>/\bid='([^']+)'/.exec(s)?.[1];
+  assert.equal(body.replace(definition,'').trim(),'');assert.ok(paths.every(id));assert.equal(new Set(paths.map(id)).size,paths.length);
   return'<defs>'+paths.sort((a,b)=>id(a)<id(b)?-1:id(a)>id(b)?1:0).join('')+'</defs>';
 });}
 export async function verifyEdgeReplay(expected,readExpected,actual,readActual){

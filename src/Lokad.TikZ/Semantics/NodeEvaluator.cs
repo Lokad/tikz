@@ -145,7 +145,8 @@ internal sealed partial class Evaluator
             budget.Charge(glyph.Source);
             if (!_outlines.TryGetValue((glyph.FontId, glyph.Slot), out var outline))
             {
-                var resource = TextLayout.Font(glyph.FontId).Glyphs[glyph.Slot];
+                var resource = glyph.FontId.StartsWith("math-", StringComparison.Ordinal) ? MathLayout.Glyph(glyph.FontId, glyph.Slot)
+                    : TextLayout.Font(glyph.FontId).Glyphs[glyph.Slot];
                 outline = _scene.Outlines.Count;
                 _scene.Outlines.Add(GlyphOutline.Parse(glyph.FontId, glyph.Slot, resource.PathBp, budget, glyph.Source));
                 _outlines.Add((glyph.FontId, glyph.Slot), outline);
@@ -156,8 +157,28 @@ internal sealed partial class Evaluator
             glyphs.Add(new(outline, glyph, transform, ink));
             if (opacity > 0) _scene.InkBounds = _scene.InkBounds.Union(ink);
         }
+        var rules = new List<ResolvedRule>();
+        foreach (var rule in text.Rules)
+        {
+            budget.Charge(rule.Source);
+            var local = new NodePoint(rule.XSp, -rule.YSp).Bp;
+            var transform = frame.Then(Affine.Translation(local.X, local.Y)).Then(Affine.Scale(1, -1));
+            var ink = Bounds.Empty;
+            if (rule.WidthSp > 0 && rule.HeightSp > 0)
+            {
+                var width = new NodePoint(rule.WidthSp, rule.HeightSp).Bp;
+                foreach (var corner in new[] { default(Point), new Point(width.X, 0), width, new Point(0, width.Y) })
+                {
+                    budget.Segment(rule.Source);
+                    ink = ink.Add(PgfTransform.Apply(transform, corner, budget, rule.Source));
+                }
+                ink = Clipped(ink);
+                if (opacity > 0) _scene.InkBounds = _scene.InkBounds.Union(ink);
+            }
+            rules.Add(new(rule, transform, ink));
+        }
         drawables.Add(new PaintedGlyphRun([.. glyphs], text.Readable, state.Node.TextColor, opacity,
-            [.. state.Clips], statement.Label, id));
+            [.. state.Clips], statement.Label, id) { Rules = [.. rules], PaintOrder = text.PaintOrder });
         if (deferred is null) PaintNode(); else deferred.Add(PaintNode);
 
         void PaintNode()

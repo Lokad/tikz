@@ -252,22 +252,19 @@ public sealed class MathParserTests
         var references = folder == "Diagrams" ? Path.Combine("Diagrams", id + ".json") : id + ".json";
         using var native = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "MathLabels", references)));
         Assert.Equal(count, native.RootElement.GetProperty("nodes").GetArrayLength());
-        var pending = Assert.IsType<TikzFailure>(TikzConverter.Convert(text, TikzOptions.Default, CancellationToken.None));
-        Assert.Equal("TIKZ002", Assert.Single(pending.Diagnostics).Code);
-        Assert.Equal(text.IndexOf('$'), pending.Diagnostics[0].Span.Offset);
-        Assert.Equal(1, pending.Diagnostics[0].Span.Length);
-        Assert.Equal(0, pending.Statistics.OutputBytes);
+        var converted = Assert.IsType<TikzSuccess>(TikzConverter.Convert(text, TikzOptions.Default, CancellationToken.None));
+        Assert.Empty(converted.Diagnostics);
+        Assert.True(converted.Statistics.OutputBytes > 0);
     }
 
     [Fact]
-    public void Valid_math_remains_explicitly_pending_at_layout_and_font_options_stay_strict()
+    public void Valid_math_converts_and_font_options_stay_strict()
     {
         foreach (var label in new[] { "$x$", @"Before $\sqrt{\frac{a}{b}}$ after", @"\textbf{$x_i^2$}" })
         {
-            var result = Assert.IsType<TikzFailure>(TikzConverter.Convert(@"\node{" + label + "};", Body, CancellationToken.None));
-            Assert.Equal("TIKZ002", Assert.Single(result.Diagnostics).Code);
-            Assert.Equal((@"\node{" + label).IndexOf('$'), result.Diagnostics[0].Span.Offset);
-            Assert.Equal(0, result.Statistics.OutputBytes);
+            var result = Assert.IsType<TikzSuccess>(TikzConverter.Convert(@"\node{" + label + "};", Body, CancellationToken.None));
+            Assert.Empty(result.Diagnostics);
+            Assert.True(result.Statistics.OutputBytes > 0);
         }
         var source = new Source("$x$", 0, 3);
         Assert.Equal("TIKZ002", Assert.Throws<CompileError>(() => NodeSettings.ApplyFont(source, TextFont.Default,

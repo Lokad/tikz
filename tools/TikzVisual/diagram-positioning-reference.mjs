@@ -8,6 +8,7 @@ import {captureProcess} from './qualification-process.mjs';
 import {edgeAnchors,edgeSanitize} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 const cases={
+ 'math-atom-contract':{folder:'MathLabels',mathEvidence:true,names:['greekOne','greekTwo','variants','capitals','binary','relations','arrows','negation','ordinary','punctuation','binStartEnd','binContext','lowerOne','lowerTwo','upperOne','upperTwo','digits','kernLigatures','upright','uprightGreek','glue','scriptSpacing','largeAtoms','largeScripts','multiline','negativeSpace','assembledRoot','largeAssembledRoot'],hash:'69c1ca3af3e8c1bdfbc61f90ca78f0ab08d66f02d10a1dd92246414b7921e182'},
  'network-math-labels':{mathEvidence:true,names:['hub','worker1','worker2','worker3','output',...Array.from({length:5},(_,i)=>'diagram-label-'+(i+1))],hash:'7b4faa43cb8f0fbb9338629b03d4fc7ce4cca6924c0b3f4fe927635ebfe83702',scalarCalls:Array.from({length:3},()=>['\\angle','\\xoffset','\\yoffset']).flat()},
  'math-label-contract':{folder:'MathLabels',mathEvidence:true,names:['identifier','number','greek','operators','grouping','upright','superscript','subscript','paired','reversePaired','nestedScripts','groupedBase','fraction','nestedFraction','fractionScript','root','rootFraction','nestedRoot','mixed','spacing','uppercaseGreek','tallCombined','large','largeFraction','largeNestedScripts','largeTallRoot'],hash:'aa272e4de214b9582ea75ac3ed88b86b7a1ae05de5072d0f7a9d0ee565997aec'},
  'math-function-boundaries':{folder:'MathFunctions',names:['sentinel'],hash:'0c60e598e8d440ba4215f9cf6b958f4d0b136b9a2f4d17c861354dba5a95994e',scalarCalls:Array(1440).fill('\\value')},
@@ -106,7 +107,7 @@ try{
    if(state==='probed'){
     if(c.mathEvidence){
      const trace=edgeSanitize(await execute('dvitype',['-disable-installer','-out-mode=4','case.dvi'],folder,id+'-glyph-trace'));await save(id+'/native-positions.log',trace);
-     const fonts=[...trace.matchAll(/^Font (\d+): ([A-Za-z0-9-]+)---loaded at size (\d+) DVI units/gm)].map(m=>({number:Number(m[1]),name:m[2],sizeSp:integer(m[3])}));
+     const fonts=[...trace.matchAll(/^Font (\d+): ([A-Za-z0-9-]+)(?: scaled \d+)?---loaded at size (\d+) DVI units/gm)].map(m=>({number:Number(m[1]),name:m[2],sizeSp:integer(m[3])}));
      assert.ok(fonts.length>0&&fonts.length<=32);assert.equal(new Set(fonts.map(f=>f.number)).size,fonts.length);
      const origins=[...trace.matchAll(/xxx 'lokad-node-origin ([A-Za-z0-9_-]+)'/g)].map(m=>m[1]);assert.deepEqual(origins,c.names);
      const map=mathMap;

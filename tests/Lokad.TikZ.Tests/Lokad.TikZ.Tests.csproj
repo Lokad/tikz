@@ -23,6 +23,9 @@
     <None Include="../Reference/LabelledBorders/fonts/*.tfm" Link="Reference/LabelledBorders/fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../Reference/NodeShapes/fonts/*.tfm" Link="Reference/NodeShapes/fonts/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="../../tools/TikzShapeComparison/NativeGlyphTrace.cs" Link="Harness/NativeGlyphTrace.cs" />
+    <Compile Include="../../tools/TikzShapeComparison/NativeMathLabelTrace.cs" Link="Harness/NativeMathLabelTrace.cs" />
+    <None Include="../Reference/MathLabels/**/*.log" Link="Reference/MathLabels/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../tools/TikzFontData/math-font-profile.json" Link="Reference/MathLabels/font-profile.json" CopyToOutputDirectory="PreserveNewest" />
     <Compile Include="../../tools/TikzLabelledBorderComparison/NativeComparison.cs" Link="Harness/LabelledBorderNativeComparison.cs" />
     <Compile Include="../../tools/TikzEdgeComparison/NativeComparison.cs" Link="Harness/EdgeNativeComparison.cs" />
     <Compile Include="../../tools/TikzArrowComparison/NativeArrowComparison.cs" Link="Harness/NativeArrowComparison.cs" />

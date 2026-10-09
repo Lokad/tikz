@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "role": "bounded-math-atoms-native-grounding",
+  "converterInvoked": false,
+  "approvedImagePolicy": false,
+  "imageConformanceClaim": false,
+  "source": "tests/Fixtures/MathLabels/math-atom-contract.tikz",
+  "sourceSha256": "69c1ca3af3e8c1bdfbc61f90ca78f0ab08d66f02d10a1dd92246414b7921e182",
+  "generator": "tools/TikzVisual/diagram-positioning-reference.mjs",
+  "generatorSha256": "54bd9fec04eecb7bc9a17f1a294cf7e5bef29c165f4fa19addab47f9d6b55c43",
+  "wrapper": "tools/TikzPathLabelReference/placement.tex",
+  "wrapperSha256": "2fbfac19f4fe43407e0972e8ccd159d1a29931eaf78211950c56850777bb6443",
+  "nativeTools": {
+    "latex": {
+      "sha256": "37659e30ba4537584b6418de22ce310247128edbc1481fc97fd9b24260f11caf"
+    },
+    "dvisvgm": {
+      "sha256": "74a03e974afc08f5b24417bbe08af792be6634eacfa16c1ce6f870cad95f53fa"
+    },
+    "dvitype": {
+      "sha256": "53da4ba9cfc7bcd84b820b5bd22a9177b9cae171f4224c001963661076d8cafb"
+    },
+    "kpsewhich": {
+      "sha256": "46e5f6537d84512bd5f2dcd21e960fc740f09f622c3c3a11fba2504f52bf2213"
+    }
+  },
+  "nativeReportSha256": "6d386fe4cca67281a651e74039d4d38202b07cc79053a2aa1931e13023ebcf2d",
+  "labels": 28,
+  "anchors": 448,
+  "glyphs": 306,
+  "rules": 20,
+  "probeSvgNoninterference": true,
+  "normalization": "Unique local path/use definition order only; exact contents and drawing.",
+  "artifactHashes": {
+    "tests/Reference/MathLabels/math-atom-contract.json": "d21fc70414a543675b63b99aba790e3803d4ef340e5d2d5d003cca15e9241c29",
+    "tests/Reference/MathLabels/native-layout/math-atom-contract/oracle.svg": "5080199c196eba107341ab86a35a574482b29453b188958ac1a8dd97b7fe474f",
+    "tests/Reference/MathLabels/native-layout/math-atom-contract/native-positions.log": "6beeece3cbcae6fcd14bea9a16a63e2b611d0aec9d6131864198faa31c62b670",
+    "tests/Reference/MathLabels/native-layout/math-atom-contract/font-observations.json": "67b6e83519c4ddb59f6160acb3d7262dd05810a25c692f33b991188c6a5bcc47"
+  }
+}

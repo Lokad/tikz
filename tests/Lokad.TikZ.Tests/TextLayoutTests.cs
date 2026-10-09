@@ -54,7 +54,7 @@ public sealed class TextLayoutTests
     [InlineData("😀", "TIKZ002", 0)]
     [InlineData("e\u0301", "TIKZ002", 1)]
     [InlineData("\ud800", "TIKZ002", 0)]
-    [InlineData("$x$", "TIKZ002", 0)]
+    [InlineData("$$x$$", "TIKZ002", 0)]
     [InlineData(@"\tiny x", "TIKZ002", 0)]
     [InlineData(@"\input{x}", "TIKZ002", 0)]
     [InlineData(@"\textbf{\textit{x}}", "TIKZ002", 8)]

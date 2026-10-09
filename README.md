@@ -60,6 +60,12 @@ Paired 1x/4x images retain raw differences. Both function fixtures pass 48 prima
 The full thirteen-case matrix passes in the clean export; all 651 tests pass
 in the export and integrated tree. Portable archives preserve checked native evidence.
 
+[Bounded math labels](docs/MATH-LABELS.md) now render inline scripts, Greek
+symbols, fractions, roots and mixed prose in node and path labels. Three fixed
+sources match all 64 native text boxes, 1,024 anchors, 459 glyph placements and
+37 rules. Paired images retain raw differences; math image/PDF policies and
+final clean-export feature qualification remain pending.
+
 ```csharp
 using Lokad.TikZ;
 

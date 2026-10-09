@@ -1,48 +1,58 @@
 # Native math-label grounding
 
 These repository-authored fixtures ground the
-[bounded math-label target](../../../docs/MATH-LABELS.md). The public converter
-currently rejects both at their opening `$` with TIKZ002 and emits no SVG.
+[bounded math-label profile](../../../docs/MATH-LABELS.md). The public converter
+now renders all three sources and matches their measured geometry exactly.
 The nineteen math font/size resources are now bundled and independently checked
 through the [font tooling](../../../tools/TikzFontData/README.md). The internal
-source-aware parser represents these labels; production math layout and actual
-label image qualification remain pending.
+source-aware parser and integer math layout preserve selected optical styles,
+glyph/rule provenance and paint order. Label image qualification remains pending.
 
 | Fixed source | Measured labels | Anchors | DVI glyphs | DVI rules | User scalar results |
 | --- | --- | --- | --- | --- | --- |
 | `network-math-labels` | 10 | 160 | 44 | 2 | 9 |
 | `math-label-contract` | 26 | 416 | 109 | 15 | 0 |
+| `math-atom-contract` | 28 | 448 | 306 | 20 | 0 |
 
 The small network combines five node labels and five path labels with
 positioning, calculated coordinates, degree functions, loops, styles and six
 arrows. The focused corpus exercises atom spacing, paired scripts in either
 order, grouped/nested scripts, fractions and roots with nesting, mixed prose,
 and 10/12pt math. The large nested cases also observe the 6pt script style.
+The additive atom corpus covers every declared named and ASCII atom, both
+negated-equality aliases, binary spacing contexts, upright font selection and
+ligatures, script spacing, multiline labels, signed glue and actual assembled
+radicals around tall nested fractions.
 
-The two measurement JSON files retain source digests, text-box dimensions,
+The measurement JSON files retain source digests, text-box dimensions,
 frames and sixteen anchors per label. Each `native-layout/<id>/` directory
 retains the plain outlined SVG, sanitized DVItype trace and font observations.
 The latter records selected native font names/sizes, ordered node-origin
 markers, raw glyph/rule counts and hashes of the native TFM/encoding/Type 1
-inputs. These are raw observations; they do not constitute an independent
-math-layout checker or an approved image policy.
+inputs. The ordinary tests compare these independently of production math
+arithmetic and font resources: native widths come from separate TFM observations;
+DVI movements, units, origins, font selections, glyph advances and rules are
+validated before comparing every box, anchor, glyph and rule. Native corruption
+controls exercise this reader. An approved math image policy remains separate.
 
 The existing node/scalar observer admits only fixed source hashes. It checks
 pinned MiKTeX/dvisvgm/DVItype versions and PGF 3.1.11a, retains executable and
 native input hashes, selects `lm.map` explicitly with caching disabled for
-these math cases, and requires identical plain/probed SVG drawing. Full raw
+these math cases, and requires identical plain/probed SVG drawing.
+Definition order is normalized for uniquely named paths and scaled local glyph
+aliases; all definition contents and painted drawing remain exact. Full raw
 SVG/DVI, process receipts and captured font inputs remain in ignored artifacts.
 Existing non-math native routes and calibration are preserved.
 
 Regeneration is a separate development operation on these trusted inputs:
 
 ```sh
-node tools/TikzVisual/diagram-positioning-reference.mjs network-math-labels math-label-contract
+node tools/TikzVisual/diagram-positioning-reference.mjs network-math-labels math-label-contract math-atom-contract
 ```
 
-All 651 ordinary tests and the eleven earlier public diagram/contract probes
-pass at this grounding stage. The new complete diagram and focused corpus
-still demonstrate the missing math-label requirement. Future qualification
-must check every declared symbol/style, measured layout and fresh converter
-output, including fraction/radical rules; the existing EC text profile cannot
-stand in for math font or rule semantics.
+All 732 ordinary tests pass at this implementation stage. The eleven earlier
+public diagram/contract SVGs remain byte-identical. Frozen-native image
+diagnostics use the existing pinned renderer, physical registration, paired
+images, overlay/blink viewer and source-attributed crops. Raw pixel differences,
+math-specific image/PDF qualification and final clean-source acceptance remain
+open; the existing EC text policy cannot stand in for math font or rule semantics.

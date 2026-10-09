@@ -3,6 +3,8 @@ import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRenderer, compareBundle, profile } from './compare.mjs';
+import assert from 'node:assert/strict';
+import { canonicalEdgeSvg } from './edge-replay.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const baseline = path.join(root, 'artifacts/comparisons/line-units');
@@ -67,6 +69,19 @@ async function check(name, svg, expected, synthetic = false, toleranceProfile = 
 }
 
 try {
+  // Native scaled math faces introduce local outline aliases. The shared
+  // normalization changes definition order only, preserving every byte of a
+  // definition and rejecting unexpected or ambiguous definition vocabulary.
+  const outline = "<path id='g1-0' d='M0 0L1 1'/>", alias = "<use id='g9-0' xlink:href='#g1-0' transform='scale(.833333)'/>";
+  const definitions = body => '<svg><defs>' + body + '</defs><use xlink:href="#g9-0"/></svg>';
+  const normal = canonicalEdgeSvg(Buffer.from(definitions(outline + alias)));
+  assert.equal(normal, canonicalEdgeSvg(Buffer.from(definitions(alias + outline))));
+  assert.notEqual(normal, canonicalEdgeSvg(Buffer.from(definitions(outline + alias.replace('.833333', '.833334')))));
+  assert.notEqual(normal, canonicalEdgeSvg(Buffer.from(definitions(outline))));
+  for (const body of [outline + outline, outline + '<rect/>', '<path d="M0 0"/>'])
+    assert.throws(() => canonicalEdgeSvg(Buffer.from(definitions(body))));
+  for (const name of ['definition-order', 'changed-alias-scale', 'missing-alias', 'duplicate-definition', 'unexpected-definition', 'unnamed-definition'])
+    results.push({ name, verdict: 'control-passed', expected: true });
   await check('unchanged', original, 'pass');
   const repeat = await check('unchanged-repeat', original, 'pass');
   if (!repeat.primary.checks.every(c => c.exactMatch)) throw new Error('Unchanged elementary pair must be pixel identical.');
@@ -95,6 +110,12 @@ try {
   await check('synthetic-identical', [reference, reference], 'pass', true);
   await check('missing-glyph', [reference, svg(minus + arrow + line)], 'mismatch', true);
   await check('missing-minus', [reference, svg(glyph + arrow + line)], 'mismatch', true);
+  // DVI fraction/radical rules and converter rules use SVG rectangles. Exercise
+  // the existing comparison machinery without changing any image allowances.
+  const rule = '<rect x="25" y="9" width="6" height=".4" fill="#000"/>';
+  await check('rule-identical', [svg(glyph + rule), svg(glyph + rule)], 'pass', true);
+  await check('missing-rule', [svg(glyph + rule), svg(glyph)], 'mismatch', true);
+  await check('displaced-rule', [svg(glyph + rule), svg(glyph + rule.replace('y="9"', 'y="9.5"'))], 'mismatch', true);
   await check('missing-arrowhead', [reference, svg(glyph + minus + line)], 'mismatch', true);
   await check('displaced-baseline', [reference, svg(`<g transform="translate(0 .5)">${glyph}</g>` + minus + arrow + line)], 'mismatch', true);
   const blankReference = svg('<path d="M5 10H20" stroke="#000" stroke-width="1"/>', 1000, 200);

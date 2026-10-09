@@ -155,7 +155,7 @@ public sealed class NodeConversionTests
     }
 
     [Theory]
-    [InlineData(@"\node{$x$};", "TIKZ002")]
+    [InlineData(@"\node{$$x$$};", "TIKZ002")]
     [InlineData(@"\node[text width=2cm]{x};", "TIKZ002")]
     [InlineData(@"\node[diamond]{x};", "TIKZ002")]
     [InlineData(@"\node[outer sep=auto]{x};", "TIKZ002")]

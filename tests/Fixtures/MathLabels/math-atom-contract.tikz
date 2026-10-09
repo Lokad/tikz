@@ -1,0 +1,31 @@
+% Additive bounded-profile grounding: complete named/ASCII atoms, context and assembly.
+\begin{tikzpicture}
+  \node[draw] (greekOne) at (0,0) {$\alpha\beta\gamma\delta\epsilon\zeta\eta\theta\iota\kappa\lambda\mu$};
+  \node[draw] (greekTwo) at (8,0) {$\nu\xi\pi\rho\sigma\tau\upsilon\phi\chi\psi\omega$};
+  \node[draw] (variants) at (0,-1) {$\varepsilon\vartheta\varpi\varrho\varsigma\varphi$};
+  \node[draw] (capitals) at (8,-1) {$\Gamma\Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega$};
+  \node[draw] (binary) at (0,-2) {$a+b-c\cdot d\times e\pm f\mp g$};
+  \node[draw] (relations) at (8,-2) {$a=b<c>d:e\le f\leq g\ge h\geq i$};
+  \node[draw] (arrows) at (0,-3) {$a\to b\rightarrow c\leftarrow d\leftrightarrow e$};
+  \node[draw] (negation) at (8,-3) {$a\ne b\neq c$};
+  \node[draw] (ordinary) at (0,-4) {$/ . |\infty$};
+  \node[draw] (punctuation) at (8,-4) {$(a+b),[c-d],e:f$};
+  \node[draw] (binStartEnd) at (0,-5) {$+a-b+$};
+  \node[draw] (binContext) at (8,-5) {$a+-b=(-c),+d+,+e+)=+f$};
+  \node[draw] (lowerOne) at (0,-6) {$abcdefghijklm$};
+  \node[draw] (lowerTwo) at (8,-6) {$nopqrstuvwxyz$};
+  \node[draw] (upperOne) at (0,-7) {$ABCDEFGHIJKLM$};
+  \node[draw] (upperTwo) at (8,-7) {$NOPQRSTUVWXYZ$};
+  \node[draw] (digits) at (0,-8) {$0123456789.5$};
+  \node[draw] (kernLigatures) at (8,-8) {$\mathrm{officeAVTo}$};
+  \node[draw] (upright) at (0,-9) {$\mathrm{AVofficeffi flffifflrate}$};
+  \node[draw] (uprightGreek) at (8,-9) {$\mathrm{a\alpha\Gamma\Delta\Omega z}$};
+  \node[draw] (glue) at (0,-10) {$a\,b\!c\;d+\,e+\!f$};
+  \node[draw] (scriptSpacing) at (8,-10) {$x^{a+b=c,d:e}_{\mathrm{ffi}\ne y}$};
+  \node[draw] (largeAtoms) at (0,-11) {\large $\alpha\vartheta\Gamma+a\times b\ge c\to\infty$};
+  \node[draw] (largeScripts) at (8,-11) {\large $x^{\alpha_i+\mathrm{ffi}}_{\beta\neq 0}$};
+  \node[draw,align=left] (multiline) at (0,-12) {Value $x_i$\\$\frac{a}{b}+\sqrt{x}$};
+  \node[draw] (negativeSpace) at (8,-12) {$\!\!\!\!\!\!$};
+  \node[draw] (assembledRoot) at (0,-15) {$\sqrt{\frac{a}{\frac{b}{\frac{c}{\frac{d}{\frac{e}{\frac{f}{\frac{g}{\frac{h}{i}}}}}}}}}$};
+  \node[draw] (largeAssembledRoot) at (8,-15) {\large $\sqrt{\frac{a}{\frac{b}{\frac{c}{\frac{d}{\frac{e}{\frac{f}{\frac{g}{\frac{h}{i}}}}}}}}}$};
+\end{tikzpicture}
