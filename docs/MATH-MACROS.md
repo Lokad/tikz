@@ -59,7 +59,9 @@ Ordinary tests compare 65 independently observed printed assignment results and
 corpus and boundary controls. The complete diagram also exercises positioning,
 styles, loops, path labels, five arrows and calculated coordinates. Its numeric
 comparison and the focused comparison check fresh public output, glyphs,
-paths, paint order and framing. Paired 1x/4x iteration images retain raw
-differences. Native-only image/PDF policy admission, final clean-source
-qualification and integration remain pending. This evidence covers the declared
-grammar and fixed fixtures; broader PGF math remains release scope.
+paths, paint order and framing. Both fixtures pass 48 current primary and 16
+PDF views under independently checked native-only policies. Paired 1x/4x
+iteration images retain raw differences; the [portable reference archives](../tests/Reference/MathMacros/README.md)
+preserve exact native evidence. Final clean-source qualification and integration
+remain pending. This evidence covers the declared grammar and fixed fixtures;
+broader PGF math remains release scope.

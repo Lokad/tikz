@@ -59,6 +59,12 @@ glyph reader accepts mixed-case declared node identities while retaining its
 exact identity whitelist and repeated-origin checks. Numeric/image iteration
 does not imply calibrated image/PDF admission or final source qualification.
 
+The numeric-macro fixtures now retain independently checked native primary/PDF
+bundles under [`tests/Reference/MathMacros`](../../tests/Reference/MathMacros/README.md).
+Their 48 current primary and 16 PDF views pass the separate native-only policies.
+The existing materializer restores both archives without native execution.
+Final clean-source comparisons and integration remain separate feature exits.
+
 ```sh
 node tools/TikzVisual/path-label-reference.mjs flowchart-basic
 dotnet run --project tools/TikzPathLabelComparison -c Release -- <exact-native-report-path>

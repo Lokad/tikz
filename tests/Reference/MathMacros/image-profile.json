@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "role": "math-macro-frozen-image-profile",
+  "fixtures": {
+    "flowchart-math-macros": {
+      "file": "tests/Reference/MathMacros/flowchart-math-macros.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "flowchart-math-macros",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-9efc0439-150f-4262-af6b-01c61ab2bed1/report.json",
+            "sha256": "aebbee2f385a84168a98c4d1c4e57b61e04b9effbe45693cf5adce83706c2caf"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-4398a2a5-4746-4746-ac9f-d6ccf72a54ca/report.json",
+            "sha256": "0f58157f32149dba03bbf45dcddd45fd62e636558a651536f5b90b1670bbdaad"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-a9ce4971-378c-47d1-b35a-09cbea9f20c2/report.json",
+            "sha256": "63237e32ac575c170d197e57487569940ac59f1c0219b055ef6c5c3e9ad1020b"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-346bdc01-58b1-48b0-9ebc-daaa4e6ca3fe/report.json",
+            "sha256": "5abb048905281d6fc4bf50e881226e79b9a7c810fdfd6c66bc1f0aa06d32695c"
+          }
+        ],
+        "compressedSha256": "6a30a3090ed875103cab0f1d6f6f6d0044caecc659111241aef799c5602e9262",
+        "decodedSha256": "da6931f5cfaa09aeadc89b88a5c3775beced95b89088683e6fee10dba7e66571",
+        "compressedBytes": 13951673,
+        "decodedBytes": 49802791,
+        "logicalFiles": 2382,
+        "uniqueBlobs": 1001,
+        "logicalBytes": 74902373,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "math-macro-contract": {
+      "file": "tests/Reference/MathMacros/math-macro-contract.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "math-macro-contract",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-73e13a6c-2f5d-4269-b994-69694c70c187/report.json",
+            "sha256": "99836bafb8c7386041a21a85d3731333b7a9cc2c4e2cd3fa380df3ad245b4bfd"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-1a5634dc-a97f-4536-927b-da1d94f3274e/report.json",
+            "sha256": "8858fee592c58f87678a1c72243ddc1709c126de17c7af2eda8745c67c7b534e"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-b64ddb42-f46a-4a2e-981b-9015ee085a69/report.json",
+            "sha256": "5f05ca8436d06d78b6fa31bbe76bc64050216c6634317d2d2d3ae72a10155076"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-84f680e6-414a-46c2-84e5-8d07f8d11eca/report.json",
+            "sha256": "9c20b0a1876f612e4d9616aa7b4354d9f0fb6329363361b6b5e3c5b738cee70d"
+          }
+        ],
+        "compressedSha256": "12c9665e8c6bad53c46a96d30851b996b155f859d046c131f4163e021232a639",
+        "decodedSha256": "c2281763070b2ea0be8a1437c3f863c3337d0acfcbcc3a662814a2999dfce1d9",
+        "compressedBytes": 17850255,
+        "decodedBytes": 71457100,
+        "logicalFiles": 3630,
+        "uniqueBlobs": 1284,
+        "logicalBytes": 143835698,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    }
+  },
+  "transportSources": {
+    "tools/TikzVisual/path-label-cache-codec.mjs": "0efbc13976e130ceba7f14ef4eb566f38337b823d263463bcb22b638c58dc346",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/path-label-cache.mjs": "138e2bc643aa17e7b3a0bd20c1b73ad0972e185281e3e6ea294dbf0ad985fbad"
+  }
+}

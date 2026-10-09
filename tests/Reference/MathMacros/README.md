@@ -44,3 +44,27 @@ Snapshots preserve source hashes, text boxes, matrices, anchors and each printed
 scalar result. Implementations must check fresh converter output against these
 observations. Image/PDF policies and final clean-source qualification are later
 feature exits. Broader PGF math and general TeX remain outside this first scope.
+
+## Frozen image evidence
+
+The two `.images.cache.gz` archives retain the independently checked primary
+and PDF policy bundles for the flowchart and focused arithmetic fixture.
+`image-profile.json` pins every report, owned artifact, archive and transport
+source. They contain original SVG/PDF/font observations, three native encodings,
+visible first-glyph/whole-label controls and the flowchart's arrow controls.
+They contain no current converter conformance result.
+
+Restore the frozen evidence with the established bounded adapter:
+
+```sh
+node tools/TikzVisual/materialize-path-label-cache.mjs flowchart-math-macros
+node tools/TikzVisual/materialize-path-label-cache.mjs math-macro-contract
+node tools/TikzVisual/path-label-cache-self-test.mjs
+```
+
+The codec rejects unsafe paths, changed scope, altered/unowned assets and
+unreviewed archive bytes. Materialization restores exact historical bytes
+without TeX or conversion and refuses to replace different evidence. Existing
+families retain their archive bytes and report manifests. Fresh public numeric
+output, current primary/PDF checking and final clean-source acceptance remain
+separate operations in the [comparison workflow](../../../tools/TikzPathLabelComparison/README.md).

@@ -20,7 +20,7 @@ const controls=[
   const index=Buffer.from(JSON.stringify(h)+'\n'),prefix=Buffer.from(small.subarray(0,12));prefix.writeUInt32LE(index.length,8);decodePathLabelCache(Buffer.concat([prefix,index,small.subarray(12+size)]),'placement');}]
 ];for(const[name,run]of controls)assert.throws(run,undefined,'Accepted '+name);
 const fixtures=[];
-for(const fixture of['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract']){
+for(const fixture of['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract','flowchart-math-macros','math-macro-contract']){
  const loaded=await loadPathLabelCache(root,fixture);assert.equal(calcHash(encodePathLabelCache(loaded.cache.files,fixture)),loaded.manifest.decodedSha256);
  const archive=path.resolve(root,pathLabelCacheDefinition(fixture).directory+'/'+fixture+'.images.cache.gz');
  const original=await readFile(archive),corrupt=Buffer.from(original);corrupt[corrupt.length-1]^=1;
