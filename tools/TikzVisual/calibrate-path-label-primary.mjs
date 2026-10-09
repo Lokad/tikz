@@ -20,6 +20,7 @@ const save=(p,b)=>writeArtifact(output,p,b,artifacts),json=(p,v)=>save(p,JSON.st
 let phase='native-input',renderer,native,frame,reuse,reusedViews=0,reusedExpandedViews=0;const records=[],controls=[],reusableSources=new Map();
 const key=v=>v.frame+'/'+v.scale+'x-'+v.background;
 async function publish(completed,extra={}){
+ if(completed)assert.ok(Object.keys(artifacts).length<=4096,'Primary report exceeds shared artifact bounds.');
  const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'path-label-native-primary-calibration',completed,
   phase:completed?'complete':phase,converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,
   imageConformanceClaim:false,imageAdmission:'pending',fixture:id,nativeInputSha256:native?.sha256,renderer:renderer?.identity,
@@ -43,7 +44,9 @@ async function observe(prefix,svg,view,target){
  assert.equal(pair.repeat.rawChangedPixels,0);assert.equal(pair.actualRepeat.rawChangedPixels,0);
  const images={};for(const [name,b64]of Object.entries(pair.images))if(!target||['reference','actual','comparison'].includes(name)){
   const file=prefix+'/'+name+'.png';await save(file,Buffer.from(b64,'base64'));images[name]=file;}
- for(const crop of pair.crops)for(const[name,b64]of Object.entries({...crop.paired,sheet:crop.sheet}))await save(prefix+'/crops/'+crop.id+'/'+name+'.png',Buffer.from(b64,'base64'));
+ // Control pairs already own full reference/actual PNGs. Keep their paired crop
+ // sheet for inspection without four redundant derivatives per control view.
+ for(const crop of pair.crops)for(const[name,b64]of Object.entries(target?{sheet:crop.sheet}:{...crop.paired,sheet:crop.sheet}))await save(prefix+'/crops/'+crop.id+'/'+name+'.png',Buffer.from(b64,'base64'));
  const row={...view,metrics:pair.metrics,regions:pair.regions,repeat:pair.repeat,actualRepeat:pair.actualRepeat,naturalFrames:pair.naturalFrames,images};
  await json(prefix+'/record.json',row);return{file:prefix+'/record.json',...row};
 }
