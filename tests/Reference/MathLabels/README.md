@@ -151,8 +151,29 @@ node tools/TikzVisual/math-label-pdf-native-self-test.mjs <exact-native-pdf-repo
 ```
 
 These references and source/page/font/crop checks preserve existing SVG/DVI
-calibration. Both original-SVG/PDF and converter-SVG/PDF image policies and
-current feature conformance remain separate requirements.
+calibration. PDF image policies use the original SVG and the two frozen native
+atlas encodings, through natural/expanded 1x/4x white views. Shared PDF capture
+admits bounded rule rectangles only with an explicit math opt-in. Policy
+envelopes, PNG decoding and generic corruption overlays reuse existing tools;
+math fixture, font, page and mark ownership remain separate.
+
+```sh
+node tools/TikzVisual/calibrate-math-label-pdf.mjs <native-pdf-report> <native-pdf-check> <primary-report> <primary-check>
+node tools/TikzVisual/check-math-label-pdf.mjs <exact-pdf-image-calibration>
+node tools/TikzVisual/math-label-pdf-self-test.mjs <exact-pdf-image-calibration>
+dotnet run --project tools/TikzReference -c Release -- export-math-labels --out artifacts/math-public-current
+node tools/TikzVisual/compare-math-label-pdf.mjs <exact-pdf-image-calibration> <exact-pdf-image-check> <current-public-export>
+```
+
+Native checking independently decodes every required region and recaptures all
+native and controlled SVG pages. The nineteen representative faults cover
+scripts, fraction bars, radicals, a complete path label and empty-label ink,
+with numeric checks bypassed. Each visible fault must fail its target region.
+Current checking runs both original/candidate routes, independently decodes and
+recaptures all 24 views, and checks converter source hashes before and after.
+Saved contact sheets and enlarged fault crops support direct image inspection.
+Preserve unchanged calibration during iteration. Full clean-source feature
+qualification remains a separate requirement.
 
 Regeneration is a separate development operation on these trusted inputs:
 

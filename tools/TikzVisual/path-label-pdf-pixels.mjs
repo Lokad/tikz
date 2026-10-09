@@ -5,8 +5,12 @@ import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {calcEqual} from './calc-saved-images.mjs';
 
 export function pathLabelPdfPixelReader(bundle,pdf,nativePrefix='native'){
- const compare=createShapeRasterMetrics().compare;
  const pagePrefix=bundle.json(nativePrefix+'/report.json').role==='diagram-arrow-native-reference'?nativePrefix+'/original':nativePrefix;
+ return pdfPagePixelReader(bundle,pdf,pagePrefix);
+}
+// Family readers choose owned page paths; decoding and metric checks are identical.
+export function pdfPagePixelReader(bundle,pdf,pagePrefix){
+ const compare=createShapeRasterMetrics().compare;
  return file=>{
   const row=bundle.json(file),a=decodeCalcPng(bundle.files.get(pagePrefix+'/probed-pdf-page-'+row.scale+'x.png')),
    b=decodeCalcPng(bundle.files.get(row.images['svg-page']));

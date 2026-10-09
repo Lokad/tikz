@@ -4,7 +4,8 @@
 export async function measureEdgePdfPair(renderer, input) {
   return renderer.page.evaluate(async input => {
     const require = (value, message) => { if (!value) throw new Error(message); };
-    const { scale, camera, regions, frame, units, svgOriginBp, capture = true, cropLimit = 4 } = input;
+    const { scale, camera, regions, frame, units, svgOriginBp, capture = true, cropLimit = 4, allowMathMarks = false } = input;
+    require(typeof allowMathMarks === 'boolean', 'Invalid math mark opt-in.');
     require([1, 4].includes(scale) && ['natural', 'expanded'].includes(frame), 'Invalid PDF scale/frame.');
     require(['cssPixels', 'bp'].includes(units), 'Unknown physical SVG units.');
     require(Number.isInteger(cropLimit) && cropLimit >= 0 && cropLimit <= 16, 'Invalid PDF crop limit.');
@@ -23,7 +24,12 @@ export async function measureEdgePdfPair(renderer, input) {
     require(!sourceDoc.querySelector('parsererror') && !sourceDoc.doctype && source.localName === 'svg'
       && sourceDoc.querySelectorAll('svg').length === 1, 'Invalid outlined SVG.');
     for (const e of sourceDoc.querySelectorAll('*')) {
-      require(['svg', 'g', 'defs', 'path', 'use', 'clipPath', 'title', 'desc'].includes(e.localName), 'Unsupported PDF comparison element.');
+      require(['svg', 'g', 'defs', 'path', 'use', 'clipPath', 'title', 'desc', ...(allowMathMarks ? ['rect'] : [])].includes(e.localName), 'Unsupported PDF comparison element.');
+      if (e.localName === 'rect') for (const key of ['x', 'y', 'width', 'height']) {
+        const text = e.getAttribute(key) ?? (['x', 'y'].includes(key) ? '0' : null), n = Number(text);
+        require(text !== null && /^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?$/.test(text) && Number.isFinite(n)
+          && Math.abs(n) <= 1000000 && (!['width', 'height'].includes(key) || n > 0), 'Invalid math rule rectangle.');
+      }
       for (const a of e.attributes) require(!a.name.toLowerCase().startsWith('on') && !['style', 'base'].includes(a.localName)
         && (a.localName !== 'href' || /^#[\w.-]+$/.test(a.value))
         && (!a.value.includes('url(') || /^url\(#[\w.-]+\)$/.test(a.value)), 'External or executable SVG reference.');

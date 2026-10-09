@@ -6,6 +6,11 @@ import {pathLabelImageEncodings,pathLabelDiagramImageEncodings} from './path-lab
 
 export function pathLabelPdfPolicies(records,pdf,encodingIds=pathLabelImageEncodings){
  calcEqual(encodingIds,encodingIds.includes('native-paths-pt-short')?pathLabelDiagramImageEncodings:pathLabelImageEncodings,'Changed native encoding set.');
+ return nativePdfPolicies(records,pdf,encodingIds);
+}
+// Coverage is family-owned; native envelopes and unchanged PDF reference semantics are shared.
+export function nativePdfPolicies(records,pdf,encodingIds){
+ assert.ok(encodingIds.length>0&&new Set(encodingIds).size===encodingIds.length&&!encodingIds.includes('original'));
  const expected=['original',...encodingIds].flatMap(e=>shapePdfViews.map(v=>e+'/'+v.frame+'/'+v.scale));
  calcEqual(records.map(r=>r.encoding+'/'+r.frame+'/'+r.scale).sort(),expected.sort(),'Changed native PDF coverage.');
  const derive=(encoding,mode)=>deriveShapePdfTrialPolicy(records.filter(r=>r.encoding===encoding).map(r=>({...r,mode})),pdf.camera,pdf.regions,mode);
