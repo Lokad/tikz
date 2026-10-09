@@ -7,12 +7,12 @@ import {calcHash,calcEqual} from './calc-saved-images.mjs';
 import {decodePathLabelCache,pathLabelCacheBounds} from './path-label-cache-codec.mjs';
 
 export function pathLabelCacheDefinition(fixture){
- const diagram=['flowchart-basic','network-bent','flowchart-transformed'].includes(fixture);
- const fixtures=diagram?['flowchart-basic','flowchart-transformed','network-bent']:['interactions','placement'];assert.ok(fixtures.includes(fixture));
- const directory='tests/Reference/'+(diagram?'Diagrams':'PathLabels');
+ const styles=['flowchart-parameterized','style-contract'].includes(fixture),diagram=styles||['flowchart-basic','network-bent','flowchart-transformed'].includes(fixture);
+ const fixtures=styles?['flowchart-parameterized','style-contract']:diagram?['flowchart-basic','flowchart-transformed','network-bent']:['interactions','placement'];assert.ok(fixtures.includes(fixture));
+ const directory='tests/Reference/'+(styles?'Styles':diagram?'Diagrams':'PathLabels');
  const roles=['path-label-native-primary-calibration','path-label-independent-primary-check','path-label-native-pdf-calibration','path-label-independent-pdf-check'];
  if(!diagram)roles.push('path-label-complete-text-sensitivity','path-label-independent-text-check');
- return{diagram,fixtures,directory,roles,profileRole:diagram?'diagram-frozen-image-profile':'path-label-frozen-image-profile'};
+ return{diagram,fixtures,directory,roles,profileRole:styles?'style-frozen-image-profile':diagram?'diagram-frozen-image-profile':'path-label-frozen-image-profile'};
 }
 
 export async function loadPathLabelCache(repositoryRoot,fixture,read=readFile){

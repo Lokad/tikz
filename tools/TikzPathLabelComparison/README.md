@@ -89,6 +89,9 @@ path/paint/order reader and scaled-point serialization guards. Its natural
 root contains measured picture bounds and native rectangle/glyph ink; no arrow
 template is fabricated. Both cases have first-glyph and whole-label sensitivity,
 native-only primary/local and separate PDF policies, and fresh-output replay.
+The two style bundles are retained losslessly under `tests/Reference/Styles`.
+`materialize-path-label-cache.mjs <fixture-id>` restores them with the existing
+bounded transport, ownership and corruption checks, without running native tools.
 
 When a root changes or an independent encoding is added, the existing calibrator
 can preserve unchanged samples from an exact prior report:

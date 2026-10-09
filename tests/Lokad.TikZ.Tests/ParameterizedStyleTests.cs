@@ -20,6 +20,10 @@ public sealed class ParameterizedStyleTests
     [InlineData(@"\tikzset{s/.style={draw,minimum width=#1},t/.style={s=#1}}\node[t=14mm,minimum width=18mm]{A};", @"\node[draw,minimum width=18mm]{A};")]
     [InlineData(@"\tikzset{s/.style={draw}}\node[s=ignored]{A};", @"\node[draw]{A};")]
     [InlineData(@"\tikzset{/tikz/s/.style={draw,/pgf/minimum width=#1}}\node[/tikz/s=14mm]{A};", @"\node[draw,minimum width=14mm]{A};")]
+    [InlineData(@"\tikzset{s/.style={draw,fill=#1}}\node[s={red!25!blue}]{A};", @"\node[draw,fill={red!25!blue}]{A};")]
+    [InlineData(@"\tikzset{s/.style={draw,anchor=#1}}\node[s=west]at(2,1){A};", @"\node[draw,anchor=west]at(2,1){A};")]
+    [InlineData(@"\tikzset{s/.style={draw,font=#1}}\node[s={\large\bfseries}]{A};", @"\node[draw,font={\large\bfseries}]{A};")]
+    [InlineData(@"\tikzset{s/.style={draw=#1}}\draw[s=blue](0,0)--(1,0);", @"\draw[draw=blue](0,0)--(1,0);")]
     [InlineData("\\tikzset{s/.style={draw,minimum width=#1 % #2 is a comment\n}}\\node[s={14mm}]{A};", @"\node[draw,minimum width=14mm]{A};")]
     [InlineData(@"\tikzset{s/.style={draw,minimum width=#1}}\begin{scope}[s/.append style={minimum height=#1}]\node[s=14mm]{A};\end{scope}\node[s=14mm]at(30mm,0){B};", @"\node[draw,minimum width=14mm,minimum height=14mm]{A};\node[draw,minimum width=14mm]at(30mm,0){B};")]
     public void Whole_value_arguments_preserve_explicit_option_equivalents(string styled, string equivalent)
