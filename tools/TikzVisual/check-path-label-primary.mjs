@@ -44,13 +44,13 @@ export function verifyPathLabelPrimaryPixels(bundle){
  const policies=readPathLabelPrimaryPolicies(bundle);
  for(const capture of pathLabelPrimaryCaptures){const aggregate=shapeViews.map(view=>{
   const rows=nativeRows.filter(v=>v.capture===capture&&key(v)===key(view)),base=rows[0];assert.equal(rows.length,encodings.length);
-  function maxima(items,local=false){const value=structuredClone(items[0]);for(const item of items){if(!local||!frame.regions.some(r=>r.role==='tip'))assert.equal(item.topology.componentDifference,0);
+  function maxima(items){const value=structuredClone(items[0]);for(const item of items){assert.equal(item.topology.componentDifference,0);
    for(const k of['rawChangedPixels','maxRawChannelError','premultipliedChangedPixels','maxPremultipliedChannelError','meanForegroundChannelError'])value[k]=Math.max(value[k],item[k]);
    value.topology.maxEdgeDisplacementRasterPixels=Math.max(value.topology.maxEdgeDisplacementRasterPixels,item.topology.maxEdgeDisplacementRasterPixels);
    value.topology.componentDifference=Math.max(value.topology.componentDifference,item.topology.componentDifference);}return value;}
-  return{...base,...maxima(rows.map(r=>r.metrics)),regions:base.regions.map((region,i)=>({...region,...maxima(rows.map(r=>r.regions[i]),true)}))};
+  return{...base,...maxima(rows.map(r=>r.metrics)),regions:base.regions.map((region,i)=>({...region,...maxima(rows.map(r=>r.regions[i]))}))};
  });
-  calcEqual(deriveShapeTrialPolicy(aggregate,'Fixed trusted path-label '+r.fixture+' native-only decimal encodings; '+capture,shapeViews,frame.regions.some(r=>r.role==='tip')),policies[capture],'Native-only policy derivation differs.');
+  calcEqual(deriveShapeTrialPolicy(aggregate,'Fixed trusted path-label '+r.fixture+' native-only decimal encodings; '+capture,shapeViews),policies[capture],'Native-only policy derivation differs.');
  }
  const labels=pathLabelImageControls(frame,bundle.json('oracle/native-glyphs.json')),controlViews=pathLabelControlViews(frame)??shapeViews;
  calcEqual(r.controls.map(({comparisons,numericChecksBypassed,...control})=>control),labels,'Image sensitivity coverage differs.');

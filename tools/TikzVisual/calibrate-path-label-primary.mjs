@@ -47,9 +47,9 @@ async function observe(prefix,svg,view,target){
  const row={...view,metrics:pair.metrics,regions:pair.regions,repeat:pair.repeat,actualRepeat:pair.actualRepeat,naturalFrames:pair.naturalFrames,images};
  await json(prefix+'/record.json',row);return{file:prefix+'/record.json',...row};
 }
-function envelope(rows,local=false){
+function envelope(rows){
  const result=structuredClone(rows[0]);
- for(const r of rows){if(!local||!native.arrowMetrics)assert.equal(r.topology.componentDifference,0,'Native encoding changes topology.');
+ for(const r of rows){assert.equal(r.topology.componentDifference,0,'Native encoding changes topology.');
   for(const k of['rawChangedPixels','maxRawChannelError','premultipliedChangedPixels','maxPremultipliedChannelError','meanForegroundChannelError'])result[k]=Math.max(result[k],r[k]);
   result.topology.maxEdgeDisplacementRasterPixels=Math.max(result.topology.maxEdgeDisplacementRasterPixels,r.topology.maxEdgeDisplacementRasterPixels);
   result.topology.componentDifference=Math.max(result.topology.componentDifference,r.topology.componentDifference);
@@ -88,8 +88,8 @@ try{
  for(const capture of pathLabelPrimaryCaptures){const rows=[];
   for(const view of shapeViews){const matches=records.filter(r=>r.capture===capture&&r.file.endsWith('/'+key(view)+'/record.json'));
    const measured=await Promise.all(matches.map(async r=>JSON.parse(await readFile(path.join(output,r.file))))),base=measured[0];
-   rows.push({...base,...envelope(measured.map(r=>r.metrics)),regions:base.regions.map((r,i)=>({...r,...envelope(measured.map(row=>row.regions[i]),true)}))});
-  }policies[capture]=deriveShapeTrialPolicy(rows,'Fixed trusted path-label '+id+' native-only decimal encodings; '+capture,shapeViews,!!native.arrowMetrics);
+   rows.push({...base,...envelope(measured.map(r=>r.metrics)),regions:base.regions.map((r,i)=>({...r,...envelope(measured.map(row=>row.regions[i]))}))});
+  }policies[capture]=deriveShapeTrialPolicy(rows,'Fixed trusted path-label '+id+' native-only decimal encodings; '+capture,shapeViews);
  }
  await json('policies.json',policies);
  phase='label-sensitivity';
