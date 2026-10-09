@@ -28,6 +28,12 @@ Parameterized style arguments retain their original invocation positions through
 forwarding. `RelatedLocations` can identify the contributing style definitions
 and call sites; template-key failures keep the definition as the primary span.
 
+Bounded `foreach` expansion maps generated parser input back to original list
+values and body tokens. Substituted errors can include variable uses/declarations
+in `RelatedLocations`; generated integer values point to their original ellipsis
+and retain the range seeds and endpoint. Preserve the original input when
+displaying these locations.
+
 `Line` and `Column` are one-based. LF starts a new line; CRLF starts a new
 line at its LF. Columns count UTF-16 code units, including a tab as one unit.
 A supplementary character occupies two units. A lone surrogate retains its

@@ -11,7 +11,7 @@ internal static class CoordinateReader
         budget.Depth(origin, depth, budget.Limits.MaxExpressionDepth);
         var relative = reader.Take("++") ? 2 : reader.Take("+") ? 1 : 0;
         var group = reader.Group('(', ')');
-        origin = new(origin.Text, origin.Offset, reader.Source.Offset + reader.Position - origin.Offset);
+        origin = origin with { Length = reader.Source.Offset + reader.Position - origin.Offset };
         var calculationReader = new Cursor(group, budget);
         if (calculationReader.Take("$"))
             return new(null, null, "", false, relative, origin)
@@ -70,7 +70,7 @@ internal sealed class CalculationReader(Cursor reader, Budget budget, int depth)
                     reader.Require(":");
                 }
                 var target = CoordinateReader.Read(reader, budget, depth);
-                var span = new Source(origin.Text, modifierOrigin.Offset, reader.Source.Offset + reader.Position - modifierOrigin.Offset);
+                var span = modifierOrigin with { Length = reader.Source.Offset + reader.Position - modifierOrigin.Offset };
                 modifiers.Add(projected is null ? new InterpolationModifier(amount!, target, angle, span)
                     : new ProjectionModifier(projected, target, angle, span));
             }

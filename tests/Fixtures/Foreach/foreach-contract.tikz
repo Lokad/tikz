@@ -1,0 +1,42 @@
+\begin{tikzpicture}[draw,rectangle,inner sep=3pt]
+  \foreach \i in {1,...,3} {
+    \node (asc\i) at (\i,0) {A\i};
+  }
+  \foreach \i in {3,...,1} {
+    \node (down\i) at (\i,-1) {D\i};
+  }
+  \foreach \i in {1,3,...,6} {
+    \node (step\i) at (\i,-2) {S\i};
+  }
+  \foreach \colour in {red,blue} {
+    \node[fill=\colour] (literal\colour) at (0,-3) {\colour};
+  }
+  \foreach \word in {{Stage one}} {
+    \node (spaced) at (2,-3) {\word};
+  }
+  \foreach \i in {1} {
+    \node (outerbefore) at (\i,-4) {Outer \i};
+    \foreach \i in {3,4} {
+      \node (inner\i) at (\i,-4) {Inner \i};
+    }
+    \node (outerafter) at (\i,-5) {Outer \i};
+  }
+  \foreach \i in {1,2} {
+    \node (before\i) at (\i,-6) {B\i};
+    \tikzset{minimum width=18mm}
+    \node (after\i) at (\i,-7) {B\i};
+  }
+  \node (restored) at (3,-6) {B3};
+  \foreach \i in {-1,-3,...,-6} {
+    \node (negative\i) at (\i,-8) {N\i};
+  }
+  \foreach \i in {2,...,2} {
+    \node (equal) at (\i,-9) {E\i};
+  }
+  \foreach \i in {1,3,...,0} {
+    \node (away\i) at (\i,-10) {W\i};
+  }
+  \foreach \width in {8mm,12mm} {
+    \node[minimum width=\width] (width\width) at (\width,-11) {\width};
+  }
+\end{tikzpicture}

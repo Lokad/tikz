@@ -1,0 +1,3 @@
+\begin{tikzpicture}
+  \foreach \i in {0,10000,...,12000} {}
+\end{tikzpicture}

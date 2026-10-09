@@ -1,0 +1,569 @@
+{
+  "sourceSha256": "64ee9c160bb1a8c652bc0cdd38c6396abccc1bde6c686d8f109169e3a72803ad",
+  "nodes": [
+    {
+      "name": "input",
+      "anchor": "center",
+      "widthSp": 1583775,
+      "heightSp": 451461,
+      "depthSp": 127430,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "0.0pt",
+        "0.0pt"
+      ]
+    },
+    {
+      "name": "stage1",
+      "anchor": "center",
+      "widthSp": 2111723,
+      "heightSp": 451461,
+      "depthSp": 127430,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "51.21495pt",
+        "-39.83385pt"
+      ]
+    },
+    {
+      "name": "stage2",
+      "anchor": "center",
+      "widthSp": 2111723,
+      "heightSp": 451461,
+      "depthSp": 127430,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "51.21495pt",
+        "-79.6677pt"
+      ]
+    },
+    {
+      "name": "stage3",
+      "anchor": "center",
+      "widthSp": 2111723,
+      "heightSp": 451461,
+      "depthSp": 127430,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "51.21495pt",
+        "-119.50154pt"
+      ]
+    },
+    {
+      "name": "output",
+      "anchor": "west",
+      "widthSp": 2111733,
+      "heightSp": 451461,
+      "depthSp": 127430,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "96.93933pt",
+        "-79.6677pt"
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "name": "input",
+      "anchor": "text",
+      "xSp": -791887,
+      "ySp": -162015
+    },
+    {
+      "name": "input",
+      "anchor": "center",
+      "xSp": 0,
+      "ySp": 0
+    },
+    {
+      "name": "input",
+      "anchor": "north",
+      "xSp": 0,
+      "ySp": 499160
+    },
+    {
+      "name": "input",
+      "anchor": "south",
+      "xSp": 0,
+      "ySp": -499160
+    },
+    {
+      "name": "input",
+      "anchor": "west",
+      "xSp": -1131914,
+      "ySp": 0
+    },
+    {
+      "name": "input",
+      "anchor": "east",
+      "xSp": 1131914,
+      "ySp": 0
+    },
+    {
+      "name": "input",
+      "anchor": "north west",
+      "xSp": -1131914,
+      "ySp": 499160
+    },
+    {
+      "name": "input",
+      "anchor": "north east",
+      "xSp": 1131914,
+      "ySp": 499160
+    },
+    {
+      "name": "input",
+      "anchor": "south west",
+      "xSp": -1131914,
+      "ySp": -499160
+    },
+    {
+      "name": "input",
+      "anchor": "south east",
+      "xSp": 1131914,
+      "ySp": -499160
+    },
+    {
+      "name": "input",
+      "anchor": "base",
+      "xSp": 0,
+      "ySp": -162015
+    },
+    {
+      "name": "input",
+      "anchor": "base west",
+      "xSp": -1131914,
+      "ySp": -162015
+    },
+    {
+      "name": "input",
+      "anchor": "base east",
+      "xSp": 1131914,
+      "ySp": -162015
+    },
+    {
+      "name": "input",
+      "anchor": "mid",
+      "xSp": 0,
+      "ySp": -20933
+    },
+    {
+      "name": "input",
+      "anchor": "mid west",
+      "xSp": -1131914,
+      "ySp": -20933
+    },
+    {
+      "name": "input",
+      "anchor": "mid east",
+      "xSp": 1131914,
+      "ySp": -20933
+    },
+    {
+      "name": "stage1",
+      "anchor": "text",
+      "xSp": 2300562,
+      "ySp": -2772566
+    },
+    {
+      "name": "stage1",
+      "anchor": "center",
+      "xSp": 3356423,
+      "ySp": -2610551
+    },
+    {
+      "name": "stage1",
+      "anchor": "north",
+      "xSp": 3356423,
+      "ySp": -1851573
+    },
+    {
+      "name": "stage1",
+      "anchor": "south",
+      "xSp": 3356423,
+      "ySp": -3369529
+    },
+    {
+      "name": "stage1",
+      "anchor": "west",
+      "xSp": 2038041,
+      "ySp": -2610551
+    },
+    {
+      "name": "stage1",
+      "anchor": "east",
+      "xSp": 4674805,
+      "ySp": -2610551
+    },
+    {
+      "name": "stage1",
+      "anchor": "north west",
+      "xSp": 2038041,
+      "ySp": -1851573
+    },
+    {
+      "name": "stage1",
+      "anchor": "north east",
+      "xSp": 4674805,
+      "ySp": -1851573
+    },
+    {
+      "name": "stage1",
+      "anchor": "south west",
+      "xSp": 2038041,
+      "ySp": -3369529
+    },
+    {
+      "name": "stage1",
+      "anchor": "south east",
+      "xSp": 4674805,
+      "ySp": -3369529
+    },
+    {
+      "name": "stage1",
+      "anchor": "base",
+      "xSp": 3356423,
+      "ySp": -2772566
+    },
+    {
+      "name": "stage1",
+      "anchor": "base west",
+      "xSp": 2038041,
+      "ySp": -2772566
+    },
+    {
+      "name": "stage1",
+      "anchor": "base east",
+      "xSp": 4674805,
+      "ySp": -2772566
+    },
+    {
+      "name": "stage1",
+      "anchor": "mid",
+      "xSp": 3356423,
+      "ySp": -2631484
+    },
+    {
+      "name": "stage1",
+      "anchor": "mid west",
+      "xSp": 2038041,
+      "ySp": -2631484
+    },
+    {
+      "name": "stage1",
+      "anchor": "mid east",
+      "xSp": 4674805,
+      "ySp": -2631484
+    },
+    {
+      "name": "stage2",
+      "anchor": "text",
+      "xSp": 2300562,
+      "ySp": -5383117
+    },
+    {
+      "name": "stage2",
+      "anchor": "center",
+      "xSp": 3356423,
+      "ySp": -5221102
+    },
+    {
+      "name": "stage2",
+      "anchor": "north",
+      "xSp": 3356423,
+      "ySp": -4462124
+    },
+    {
+      "name": "stage2",
+      "anchor": "south",
+      "xSp": 3356423,
+      "ySp": -5980080
+    },
+    {
+      "name": "stage2",
+      "anchor": "west",
+      "xSp": 2038041,
+      "ySp": -5221102
+    },
+    {
+      "name": "stage2",
+      "anchor": "east",
+      "xSp": 4674805,
+      "ySp": -5221102
+    },
+    {
+      "name": "stage2",
+      "anchor": "north west",
+      "xSp": 2038041,
+      "ySp": -4462124
+    },
+    {
+      "name": "stage2",
+      "anchor": "north east",
+      "xSp": 4674805,
+      "ySp": -4462124
+    },
+    {
+      "name": "stage2",
+      "anchor": "south west",
+      "xSp": 2038041,
+      "ySp": -5980080
+    },
+    {
+      "name": "stage2",
+      "anchor": "south east",
+      "xSp": 4674805,
+      "ySp": -5980080
+    },
+    {
+      "name": "stage2",
+      "anchor": "base",
+      "xSp": 3356423,
+      "ySp": -5383117
+    },
+    {
+      "name": "stage2",
+      "anchor": "base west",
+      "xSp": 2038041,
+      "ySp": -5383117
+    },
+    {
+      "name": "stage2",
+      "anchor": "base east",
+      "xSp": 4674805,
+      "ySp": -5383117
+    },
+    {
+      "name": "stage2",
+      "anchor": "mid",
+      "xSp": 3356423,
+      "ySp": -5242035
+    },
+    {
+      "name": "stage2",
+      "anchor": "mid west",
+      "xSp": 2038041,
+      "ySp": -5242035
+    },
+    {
+      "name": "stage2",
+      "anchor": "mid east",
+      "xSp": 4674805,
+      "ySp": -5242035
+    },
+    {
+      "name": "stage3",
+      "anchor": "text",
+      "xSp": 2300562,
+      "ySp": -7993668
+    },
+    {
+      "name": "stage3",
+      "anchor": "center",
+      "xSp": 3356423,
+      "ySp": -7831653
+    },
+    {
+      "name": "stage3",
+      "anchor": "north",
+      "xSp": 3356423,
+      "ySp": -7072675
+    },
+    {
+      "name": "stage3",
+      "anchor": "south",
+      "xSp": 3356423,
+      "ySp": -8590631
+    },
+    {
+      "name": "stage3",
+      "anchor": "west",
+      "xSp": 2038041,
+      "ySp": -7831653
+    },
+    {
+      "name": "stage3",
+      "anchor": "east",
+      "xSp": 4674805,
+      "ySp": -7831653
+    },
+    {
+      "name": "stage3",
+      "anchor": "north west",
+      "xSp": 2038041,
+      "ySp": -7072675
+    },
+    {
+      "name": "stage3",
+      "anchor": "north east",
+      "xSp": 4674805,
+      "ySp": -7072675
+    },
+    {
+      "name": "stage3",
+      "anchor": "south west",
+      "xSp": 2038041,
+      "ySp": -8590631
+    },
+    {
+      "name": "stage3",
+      "anchor": "south east",
+      "xSp": 4674805,
+      "ySp": -8590631
+    },
+    {
+      "name": "stage3",
+      "anchor": "base",
+      "xSp": 3356423,
+      "ySp": -7993668
+    },
+    {
+      "name": "stage3",
+      "anchor": "base west",
+      "xSp": 2038041,
+      "ySp": -7993668
+    },
+    {
+      "name": "stage3",
+      "anchor": "base east",
+      "xSp": 4674805,
+      "ySp": -7993668
+    },
+    {
+      "name": "stage3",
+      "anchor": "mid",
+      "xSp": 3356423,
+      "ySp": -7852586
+    },
+    {
+      "name": "stage3",
+      "anchor": "mid west",
+      "xSp": 2038041,
+      "ySp": -7852586
+    },
+    {
+      "name": "stage3",
+      "anchor": "mid east",
+      "xSp": 4674805,
+      "ySp": -7852586
+    },
+    {
+      "name": "output",
+      "anchor": "text",
+      "xSp": 6988468,
+      "ySp": -5383117
+    },
+    {
+      "name": "output",
+      "anchor": "center",
+      "xSp": 8044334,
+      "ySp": -5221102
+    },
+    {
+      "name": "output",
+      "anchor": "north",
+      "xSp": 8044334,
+      "ySp": -4721942
+    },
+    {
+      "name": "output",
+      "anchor": "south",
+      "xSp": 8044334,
+      "ySp": -5720262
+    },
+    {
+      "name": "output",
+      "anchor": "west",
+      "xSp": 6353016,
+      "ySp": -5221102
+    },
+    {
+      "name": "output",
+      "anchor": "east",
+      "xSp": 9735652,
+      "ySp": -5221102
+    },
+    {
+      "name": "output",
+      "anchor": "north west",
+      "xSp": 6353016,
+      "ySp": -4721942
+    },
+    {
+      "name": "output",
+      "anchor": "north east",
+      "xSp": 9735652,
+      "ySp": -4721942
+    },
+    {
+      "name": "output",
+      "anchor": "south west",
+      "xSp": 6353016,
+      "ySp": -5720262
+    },
+    {
+      "name": "output",
+      "anchor": "south east",
+      "xSp": 9735652,
+      "ySp": -5720262
+    },
+    {
+      "name": "output",
+      "anchor": "base",
+      "xSp": 8044334,
+      "ySp": -5383117
+    },
+    {
+      "name": "output",
+      "anchor": "base west",
+      "xSp": 6353016,
+      "ySp": -5383117
+    },
+    {
+      "name": "output",
+      "anchor": "base east",
+      "xSp": 9735652,
+      "ySp": -5383117
+    },
+    {
+      "name": "output",
+      "anchor": "mid",
+      "xSp": 8044334,
+      "ySp": -5242035
+    },
+    {
+      "name": "output",
+      "anchor": "mid west",
+      "xSp": 6353016,
+      "ySp": -5242035
+    },
+    {
+      "name": "output",
+      "anchor": "mid east",
+      "xSp": 9735652,
+      "ySp": -5242035
+    }
+  ],
+  "pictureBox": [
+    [
+      "11959831",
+      "10334826",
+      "0"
+    ]
+  ]
+}

@@ -27,7 +27,8 @@ internal sealed partial class Evaluator(Budget budget)
             state.NodeDistance = new("1cm and 1cm", 0, 11);
         }
     }
-    private void Statements(List<Statement> statements, EvaluationState state, int depth)
+    private void Statements(List<Statement> statements, EvaluationState state, int depth,
+        IReadOnlyDictionary<string, Source>? bindings = null, int loopDepth = 0)
     {
         foreach (var statement in statements)
         {
@@ -38,11 +39,26 @@ internal sealed partial class Evaluator(Budget budget)
                     var child = state.Clone(budget, scope.Source);
                     KeyRegistry.Apply(scope.Options, child, budget);
                     DashPattern.Resolve(child, budget);
-                    Statements(scope.Body, child, depth + 1);
+                    Statements(scope.Body, child, depth + 1, bindings, loopDepth);
                     break;
                 case SetStatement set: KeyRegistry.Apply(set.Options, state, budget); break;
                 case LibraryStatement libraries:
                     foreach (var name in Options.Split(libraries.Names, ',', budget)) LoadLibrary(Options.Clean(name), state, name);
+                    break;
+                case ForeachStatement loop:
+                    budget.Depth(loop.Source, loopDepth + 1, budget.Limits.MaxExpansionDepth);
+                    budget.Charge(loop.Source, (bindings?.Count ?? 0) + 1);
+                    var local = bindings is null ? new Dictionary<string, Source>(StringComparer.Ordinal)
+                        : bindings.ToDictionary(p => p.Key, p => p.Value, StringComparer.Ordinal);
+                    foreach (var value in ForeachValues.Read(loop.Values, bindings, budget))
+                    {
+                        budget.Iteration(value);
+                        budget.Charge(value, (value.RelatedSources?.Length ?? 0) + 1);
+                        local[loop.Variable.Value] = value with { RelatedSources = [.. value.RelatedSources ?? [], loop.Variable] };
+                        var iterationState = state.Clone(budget, loop.Source);
+                        var body = new Parser(loop.Body, budget, local).Body(depth + 1);
+                        Statements(body, iterationState, depth + 1, local, loopDepth + 1);
+                    }
                     break;
                 case CoordinateStatement coordinate:
                     budget.Node(coordinate.Source);

@@ -2,9 +2,10 @@ using Lokad.TikZ.Semantics;
 
 namespace Lokad.TikZ.Frontend;
 
-internal sealed class Parser(Source source, Budget budget)
+internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<string, Source>? bindings = null)
 {
     private readonly Cursor _reader = new(source, budget);
+    internal List<Statement> Body(int depth) => Statements("", depth);
     public List<Statement> Parse(TikzInputKind kind)
     {
         if (kind == TikzInputKind.PictureBody) return Statements("", 0);
@@ -36,10 +37,28 @@ internal sealed class Parser(Source source, Budget budget)
             if (_reader.Peek == '{')
             {
                 var group = _reader.Group('{', '}');
-                result.Add(new ScopeStatement([], new Parser(group, budget).Statements("", depth + 1), group));
+                result.Add(new ScopeStatement([], new Parser(group, budget, bindings).Statements("", depth + 1), group));
                 continue;
             }
             var command = _reader.Command();
+            if (bindings is not null && command.Value is "\\node" or "\\coordinate" or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip")
+            {
+                // Parse one bound statement at a time. Nested foreach headers and
+                // bodies remain templates until their own scoped binding exists.
+                while (!_reader.Take(";"))
+                {
+                    if (_reader.End) throw new CompileError("TIKZ001", "Unterminated loop statement; expected ';'.", command);
+                    if (_reader.Peek is '{' or '[' or '(')
+                    {
+                        var open = _reader.Peek;
+                        _reader.Group(open, open == '{' ? '}' : open == '[' ? ']' : ')');
+                    }
+                    else _reader.Advance();
+                }
+                var template = command with { Length = source.Offset + _reader.Position - command.Offset };
+                result.AddRange(new Parser(Bind(template), budget).Body(depth));
+                continue;
+            }
             switch (command.Value)
             {
                 case "\\end":
@@ -51,8 +70,9 @@ internal sealed class Parser(Source source, Budget budget)
                     if (begin != "scope") throw new CompileError("TIKZ002", $"Unsupported environment '{begin}'.", command);
                     result.Add(new ScopeStatement(ReadOptions(), Statements("scope", depth + 1), command));
                     break;
-                case "\\tikzset": result.Add(new SetStatement(Options.Read(_reader.Group('{', '}'), budget), command)); break;
-                case "\\usetikzlibrary": result.Add(new LibraryStatement(_reader.Group('{', '}'), command)); break;
+                case "\\tikzset": result.Add(new SetStatement(Options.Read(Bind(_reader.Group('{', '}')), budget), command)); break;
+                case "\\usetikzlibrary": result.Add(new LibraryStatement(Bind(_reader.Group('{', '}')), command)); break;
+                case "\\foreach": result.Add(ReadForeach(command)); break;
                 case "\\node": result.Add(ReadNode(command)); break;
                 case "\\coordinate":
                     var name = Options.Clean(_reader.Group('(', ')'));
@@ -70,7 +90,25 @@ internal sealed class Parser(Source source, Budget budget)
         if (environment.Length > 0) throw new CompileError("TIKZ001", $"Missing end of '{environment}'.", source.Slice(source.Length, 0));
         return result;
     }
-    private List<Option> ReadOptions() => _reader.Peek == '[' ? Options.Read(_reader.Group('[', ']'), budget) : [];
+    private Source Bind(Source value) => bindings is null ? value : SourceExpansion.Bind(value, bindings, budget);
+    private List<Option> ReadOptions() => _reader.Peek == '[' ? Options.Read(Bind(_reader.Group('[', ']')), budget) : [];
+    private ForeachStatement ReadForeach(Source command)
+    {
+        var variable = _reader.Command();
+        if (variable.Length < 2 || variable.Span[1..].ContainsAnyExcept("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"))
+            throw new CompileError("TIKZ002", "Foreach requires one ASCII-letter control-sequence variable.", variable);
+        if (variable.Value is "\\begin" or "\\end" or "\\foreach" or "\\tikzset" or "\\usetikzlibrary" or "\\node" or "\\coordinate"
+            or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip" or "\\shade"
+            || variable.Span[1..].StartsWith("pgf", StringComparison.Ordinal) || variable.Span[1..].StartsWith("tikz", StringComparison.Ordinal))
+            throw new CompileError("TIKZ002", "Foreach cannot bind a reserved TikZ control sequence.", variable);
+        if (_reader.Peek is '[' or '/' or '\\') throw new CompileError("TIKZ002", "Foreach options and multiple variables are unsupported.", _reader.Here);
+        if (!_reader.Word("in")) throw new CompileError("TIKZ001", "Expected 'in' after the foreach variable.", _reader.Here);
+        if (_reader.Peek != '{') throw new CompileError("TIKZ002", "Foreach requires a literal braced list.", _reader.Here);
+        var values = _reader.Group('{', '}');
+        if (_reader.Peek != '{') throw new CompileError("TIKZ002", "Foreach requires a braced statement body.", _reader.Here);
+        var body = _reader.Group('{', '}');
+        return new(variable, values, body, command with { Length = source.Offset + _reader.Position - command.Offset });
+    }
     private NodeStatement ReadNode(Source command, bool pathLabel = false)
     {
         var options = new List<Option>();
@@ -103,7 +141,7 @@ internal sealed class Parser(Source source, Budget budget)
         }
         var label = _reader.Group('{', '}');
         if (!pathLabel) _reader.Require(";");
-        return new(name, at, options, label, new(command.Text, command.Offset, source.Offset + _reader.Position - command.Offset));
+        return new(name, at, options, label, command with { Length = source.Offset + _reader.Position - command.Offset });
     }
     private PathStatement ReadPath(Source command)
     {
@@ -192,7 +230,7 @@ internal sealed class Parser(Source source, Budget budget)
             else throw new CompileError("TIKZ002", "Unsupported path operation.", origin);
             if (operations.Count > budget.Limits.MaxSegments) Budget.Fail(origin, "path operations");
         }
-        return new(command.Value, options, operations, new Source(command.Text, command.Offset, source.Offset + _reader.Position - command.Offset));
+        return new(command.Value, options, operations, command with { Length = source.Offset + _reader.Position - command.Offset });
     }
     private Source ShapeOptions(string key)
     {
@@ -209,7 +247,7 @@ internal sealed class Parser(Source source, Budget budget)
         if (_reader.Peek is not ('(' or '+'))
             throw new CompileError("TIKZ002", "To/edge requires a coordinate target; custom to paths are unsupported.", _reader.Here);
         var target = ReadCoordinate();
-        var span = new Source(origin.Text, origin.Offset, source.Offset + _reader.Position - origin.Offset);
+        var span = origin with { Length = source.Offset + _reader.Position - origin.Offset };
         return separate ? new EdgeOperation(target, options, span) { Labels = labels } : new ToOperation(target, options, span) { Labels = labels };
     }
     private List<NodeStatement> ReadPathLabels()

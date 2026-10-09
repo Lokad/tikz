@@ -1,0 +1,17 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=9mm,
+  box/.style={draw,rectangle,minimum width=#1,inner sep=3pt},
+  stage/.style={box=#1},stage/.append style={minimum height=8mm}]
+  \node[box=12mm] (input) {Input};
+  \foreach \i in {1,...,3} {
+    \coordinate (row\i) at ($(input)+(18mm,-14mm*\i)$);
+    \node[stage=14mm] (stage\i) at (row\i) {Stage \i};
+  }
+  \node[box=18mm,right=of stage2] (output) {Output};
+  \draw[-{Stealth}] (input) -- node[midway,above] {read} (stage2);
+  \foreach \i in {1,2,3} {
+    \draw[-{Stealth}] (stage\i.east) -- node[midway,above] {send \i} (output);
+  }
+  \coordinate (return) at ($(input.south)+(0,-50mm)$);
+  \draw[-{Stealth}] (stage3.west) -| (return) -- (input.south);
+\end{tikzpicture}

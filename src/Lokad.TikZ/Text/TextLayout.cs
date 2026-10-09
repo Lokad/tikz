@@ -175,7 +175,7 @@ internal sealed class TextLayout : ITextLayout
                     if (pair.Ligature.HasValue)
                     {
                         var left = _pending.Source;
-                        _pending = new(face, pair.Ligature.Value, new(left.Text, left.Offset, origin.Offset + origin.Length - left.Offset));
+                        _pending = new(face, pair.Ligature.Value, left with { Length = origin.Offset + origin.Length - left.Offset });
                         return;
                     }
                     Flush();
