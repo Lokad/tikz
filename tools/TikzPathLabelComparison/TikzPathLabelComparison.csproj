@@ -3,5 +3,6 @@
   <ItemGroup>
     <ProjectReference Include="../../src/Lokad.TikZ/Lokad.TikZ.csproj" />
     <Compile Include="../TikzShapeComparison/NativeGlyphTrace.cs" Link="NativeGlyphTrace.cs" />
+    <Compile Include="../TikzArrowComparison/NativeArrowComparison.cs" Link="NativeArrowComparison.cs" />
   </ItemGroup>
 </Project>

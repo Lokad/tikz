@@ -6,7 +6,7 @@ import {randomUUID} from 'node:crypto';
 import {root,sha256,writeArtifact} from './shape-oracle-bundle.mjs';
 import {loadArrowEvidence} from './arrow-evidence.mjs';
 import {parseArrowLog} from './arrow-log.mjs';
-import {verifyArrowDriverState,arrowSvgSegments} from './arrow-driver-state.mjs';
+import {verifyArrowDriverState,arrowSvgSegments,arrowSvgVectors} from './arrow-driver-state.mjs';
 assert.equal(process.argv.length,2);
 const output=path.join(root,'artifacts/arrow-native-controls/run-'+randomUUID()),artifacts={},controls=[];
 const save=(p,b)=>writeArtifact(output,p,b,artifacts);let phase='frozen-native-inputs';
@@ -19,7 +19,7 @@ try{
  const read=p=>{const b=files.get(p);assert.ok(b,'Missing virtual native input: '+p);return b;};
  const override=(file,value)=>loadArrowEvidence(async p=>p===file?value:read(p));
  await reject('changed immutable snapshot',()=>override('tests/Reference/Arrows/snapshot.json',Buffer.from('{}')),/Frozen native arrow snapshot/);
- await reject('changed hook source',()=>override('tools/TikzArrowReference/arrow-hooks.tex',Buffer.from('% changed')),/Changed native arrow source/);
+ await reject('changed hook source',()=>override('tools/TikzArrowReference/arrow-hooks.tex',Buffer.from('% changed')),/Changed native arrow engine input/);
  const artifact='tests/Reference/Arrows/meta-defaults/plain-reference.svg';
  await reject('substituted native drawing',()=>override(artifact,read(artifact).subarray(0,100)),/Changed native arrow artifact/);
  await reject('missing native PDF',()=>loadArrowEvidence(async p=>{if(p==='tests/Reference/Arrows/meta-defaults/plain-reference.pdf')throw Error('missing native PDF');return read(p);}),/missing native PDF/);
@@ -55,6 +55,10 @@ try{
  await reject('unknown observer record',()=>parseArrowLog(log+'\nARROW-UNKNOWN 1|END\n'),/Unknown native arrow observation/);
  assert.deepEqual(arrowSvgSegments('M0 0C1 2 3 4 5 6S7 8 9 10')[2],{kind:'cubic',a:{x:7,y:8},b:{x:7,y:8},point:{x:9,y:10}});
  controls.push({id:'smooth cubic reflected support decoded',passed:true,rejected:false});
+ const mixed=Buffer.from("<svg><defs><path id='glyph' d='M0 0L1 1'/></defs><g transform='translate(1,2)scale(0.996264,-0.996264)'><path d='M0 0L2 0'/><use xlink:href='#glyph' x='1' y='0'/></g></svg>");
+ await reject('glyph-free geometry reader rejects text',()=>arrowSvgVectors(mixed),/Unexpected arrow SVG element|strictly equal/);
+ const observed=arrowSvgVectors(mixed,{allowText:true});assert.equal(observed.paths.length,1);assert.deepEqual(observed.paths[0].segments,arrowSvgSegments('M0 0L2 0'));
+ controls.push({id:'mixed diagram geometry excludes glyph definitions and uses',passed:true,rejected:false});
  const curves=row('curves-nodes').metrics.driverState.paints.map(p=>p.eventId);assert.deepEqual(curves.slice(-3),[22,20,21]);
  controls.push({id:'deferred edge physical order differs from callback order',passed:true,rejected:false});
  for(const c of evidence.cases){for(const p of c.metrics.driverState.paints.filter(p=>p.role==='tip')){assert.deepEqual(p.dashSp,[]);assert.equal(p.phaseSp,0);}

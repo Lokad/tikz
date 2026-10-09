@@ -10,6 +10,7 @@ internal sealed class NativeInput : IDisposable
 {
     internal JsonDocument Report { get; }
     internal JsonDocument Metrics { get; }
+    internal JsonDocument? Arrows { get; }
     internal string Svg { get; }
     internal string Fixture { get; }
     internal bool IsDiagram { get; }
@@ -25,14 +26,15 @@ internal sealed class NativeInput : IDisposable
         if (bytes.Length > 16000000) throw new InvalidDataException("Native report exceeds its bound.");
         Report = JsonDocument.Parse(bytes);
         var r = Report.RootElement;
-        IsDiagram = r.GetProperty("role").GetString() == "diagram-native-reference";
-        if (r.GetProperty("role").GetString() is not ("path-label-native-reference" or "diagram-native-reference") || !r.GetProperty("completed").GetBoolean()
+        IsDiagram = r.GetProperty("role").GetString() is "diagram-native-reference" or "diagram-arrow-native-reference";
+        if (r.GetProperty("role").GetString() is not ("path-label-native-reference" or "diagram-native-reference" or "diagram-arrow-native-reference") || !r.GetProperty("completed").GetBoolean()
             || r.GetProperty("converterInvoked").GetBoolean() || r.GetProperty("imageConformanceClaim").GetBoolean())
             throw new InvalidDataException("Expected completed independent native observations.");
         Fixture = r.GetProperty("definition").GetProperty("id").GetString()!;
         if (IsDiagram ? Fixture is not ("flowchart-basic" or "network-bent" or "flowchart-transformed") : Fixture is not ("placement" or "interactions"))
             throw new InvalidDataException("Only fixed trusted fixtures are accepted.");
         Metrics = JsonDocument.Parse(Read("metrics.json"));
+        if (r.GetProperty("role").GetString() == "diagram-arrow-native-reference") Arrows = JsonDocument.Parse(Read("arrow-metrics.json"));
         Ids = Metrics.RootElement.GetProperty("nodes").EnumerateArray().Select(n => n.GetProperty("id").GetString()!).ToArray();
         Svg = Encoding.UTF8.GetString(Read("probed-reference.svg"));
         var fonts = r.GetProperty("artifacts").EnumerateObject().Where(a => a.Name.StartsWith("fonts/", StringComparison.Ordinal))
@@ -49,5 +51,5 @@ internal sealed class NativeInput : IDisposable
             throw new InvalidDataException("Native artifact changed: " + file);
         return bytes;
     }
-    public void Dispose() { Metrics.Dispose(); Report.Dispose(); }
+    public void Dispose() { Arrows?.Dispose(); Metrics.Dispose(); Report.Dispose(); }
 }

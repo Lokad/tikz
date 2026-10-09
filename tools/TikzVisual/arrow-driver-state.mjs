@@ -36,12 +36,12 @@ export function arrowSvgSegments(text){
  }
  return segments;
 }
-export function arrowSvgVectors(bytes){
+export function arrowSvgVectors(bytes,{allowText=false}={}){
  assert.ok(bytes.length<=1000000);const text=bytes.toString('utf8').replace(/<\?xml[^>]+\?>|<!--[\s\S]*?-->/g,''),stack=[],paths=[],clips=[];
  let state={matrix:[...identity],clipId:null,defs:false},rootMatrix;
  for(const token of text.match(/<[^>]+>|[^<]+/g)??[]){
   if(!token.startsWith('<')){assert.equal(token.trim(),'');continue;}
-  const name=/^<\/?([a-zA-Z]+)/.exec(token)?.[1];assert.ok(['svg','g','path','defs','clipPath'].includes(name),'Unexpected arrow SVG element: '+name);
+  const name=/^<\/?([a-zA-Z]+)/.exec(token)?.[1];assert.ok(['svg','g','path','defs','clipPath',...(allowText?['use']:[])].includes(name),'Unexpected arrow SVG element: '+name);
   if(token.startsWith('</')){const old=stack.pop();assert.equal(old?.name,name);state=old.state;continue;}
   const attrs={},body=token.slice(name.length+1).replace(/\/?\s*>$/,'');
   assert.equal(body.replace(/([a-zA-Z][a-zA-Z0-9:_-]*)='([^']*)'/g,(_,k,v)=>{assert.ok(!Object.hasOwn(attrs,k));attrs[k]=v;return'';}).trim(),'');
@@ -50,12 +50,12 @@ export function arrowSvgVectors(bytes){
    else next.matrix=multiply(next.matrix,m);}
   if(name==='defs')next.defs=true;
   if(name==='clipPath'){assert.ok(attrs.id);next.clipId=attrs.id;}
-  if(name==='path'){assert.ok(attrs.d);const row={segments:arrowSvgSegments(attrs.d),matrix:next.matrix};if(next.clipId)clips.push({...row,id:next.clipId});else{assert.equal(next.defs,false);paths.push(row);}}
+  if(name==='path'&&!(allowText&&next.defs&&!next.clipId)){assert.ok(attrs.d);const row={segments:arrowSvgSegments(attrs.d),matrix:next.matrix};if(next.clipId)clips.push({...row,id:next.clipId});else{assert.equal(next.defs,false);paths.push(row);}}
   if(!token.endsWith('/>')){assert.ok(stack.length<64);stack.push({name,state});state=next;}
  }
  assert.ok(rootMatrix);assert.equal(stack.length,0);return{rootMatrix,paths,clips};
 }
-export function arrowPdfVectors(bytes){
+export function arrowPdfVectors(bytes,{allowText=false}={}){
  assert.ok(bytes.length<=1000000);const text=bytes.toString('latin1'),objects=new Map();assert.ok(text.startsWith('%PDF-1.5'));let cursor=0;const header=/(\d+) 0 obj\s*/g;
  while(cursor<text.length){header.lastIndex=cursor;const m=header.exec(text);if(!m)break;const start=header.lastIndex,end=text.indexOf('endobj',start),stream=text.indexOf('stream\n',start),id=Number(m[1]);assert.ok(end>start&&!objects.has(id)&&objects.size<256);
   if(stream>=0&&stream<end){const body=text.slice(start,stream).trim(),length=Number(/\/Length\s+(\d+)\b/.exec(body)?.[1]);assert.ok(length>0&&length<=1000000&&/\/Filter\s*\/FlateDecode/.test(body));
@@ -64,27 +64,34 @@ export function arrowPdfVectors(bytes){
  }
  assert.ok([...objects.values()].every(o=>!o.body.includes('/ObjStm')));const pages=[...objects.values()].filter(o=>/\/Type\s*\/Page\b/.test(o.body));assert.equal(pages.length,1);
  const contentId=Number(/\/Contents\s+(\d+) 0 R/.exec(pages[0].body)?.[1]),content=objects.get(contentId)?.stream?.toString('latin1');assert.ok(content);
- const paths=[],clips=[],stack=[];let matrix=[...identity],rootMatrix,segments=[],pendingClip=false,args=[];
+ const paths=[],clips=[],stack=[];let matrix=[...identity],rootMatrix,segments=[],pendingClip=false,args=[],textActive=false;
  const nums=n=>{assert.equal(args.length,n);assert.ok(args.every(Number.isFinite));return args;};
- const idle=()=>assert.equal(segments.length,0);
+ const idle=()=>{assert.equal(segments.length,0);assert.equal(textActive,false);};
  const point=(x,y)=>({x,y});
  for(const t of labelledPdfTokens(content)){
   if(t?.type!=='operator'){assert.ok(args.length<16);args.push(t);continue;}const op=t.name;let a;
   if(op==='q'){nums(0);idle();assert.ok(stack.length<64);stack.push([...matrix]);}
   else if(op==='Q'){nums(0);idle();assert.ok(stack.length>0);matrix=stack.pop();}
   else if(op==='cm'){idle();a=nums(6);if(rootMatrix===undefined){assert.equal(stack.length,0);assert.deepEqual(a.slice(0,4),[1,0,0,1]);rootMatrix=[...a];}else matrix=multiply(matrix,a);}
-  else if(op==='m'||op==='l'){a=nums(2);segments.push({kind:op==='m'?'move':'line',point:point(...a)});}
-  else if(op==='c'){a=nums(6);segments.push({kind:'cubic',a:point(a[0],a[1]),b:point(a[2],a[3]),point:point(a[4],a[5])});}
-  else if(op==='re'){a=nums(4);const [x,y,w,h]=a;segments.push({kind:'move',point:point(x,y)},{kind:'line',point:point(x+w,y)},{kind:'line',point:point(x+w,y+h)},{kind:'line',point:point(x,y+h)},{kind:'close'});}
-  else if(op==='h'){nums(0);assert.ok(segments.length);segments.push({kind:'close'});}
-  else if(['S','f','f*','B','B*'].includes(op)){nums(0);assert.ok(rootMatrix&&segments.length&&!pendingClip);paths.push({segments,matrix:[...matrix],operation:op==='S'?'stroke':op.startsWith('f')?'fill':'fillstroke'});segments=[];}
-  else if(op==='W'||op==='W*'){nums(0);assert.ok(segments.length&&!pendingClip);pendingClip=true;}
-  else if(op==='n'){nums(0);if(pendingClip)clips.push({segments,matrix:[...matrix]});segments=[];pendingClip=false;}
+  else if(op==='m'||op==='l'){assert.equal(textActive,false);a=nums(2);segments.push({kind:op==='m'?'move':'line',point:point(...a)});}
+  else if(op==='c'){assert.equal(textActive,false);a=nums(6);segments.push({kind:'cubic',a:point(a[0],a[1]),b:point(a[2],a[3]),point:point(a[4],a[5])});}
+  else if(op==='re'){assert.equal(textActive,false);a=nums(4);const [x,y,w,h]=a;segments.push({kind:'move',point:point(x,y)},{kind:'line',point:point(x+w,y)},{kind:'line',point:point(x+w,y+h)},{kind:'line',point:point(x,y+h)},{kind:'close'});}
+  else if(op==='h'){assert.equal(textActive,false);nums(0);assert.ok(segments.length);segments.push({kind:'close'});}
+  else if(['S','f','f*','B','B*'].includes(op)){assert.equal(textActive,false);nums(0);assert.ok(rootMatrix&&segments.length&&!pendingClip);paths.push({segments,matrix:[...matrix],operation:op==='S'?'stroke':op.startsWith('f')?'fill':'fillstroke'});segments=[];}
+  else if(op==='W'||op==='W*'){assert.equal(textActive,false);nums(0);assert.ok(segments.length&&!pendingClip);pendingClip=true;}
+  else if(op==='n'){assert.equal(textActive,false);nums(0);if(pendingClip)clips.push({segments,matrix:[...matrix]});segments=[];pendingClip=false;}
   else if(['w','M','J','j','g','G'].includes(op)){idle();nums(1);}
   else if(op==='rg'||op==='RG'){idle();nums(3);}
   else if(op==='d'){idle();assert.equal(args.length,2);assert.ok(Array.isArray(args[0])&&Number.isFinite(args[1]));}
   else if(op==='gs'){idle();assert.equal(args.length,1);assert.equal(args[0]?.type,'name');}
-  else assert.fail('Unexpected glyph-free arrow PDF operator: '+op);
+  // Text is grounded by the separate DVI/TFM reader. Admit only this native
+  // text grammar while preserving all surrounding path/graphics state.
+  else if(allowText&&op==='BT'){idle();nums(0);textActive=true;}
+  else if(allowText&&op==='ET'){assert.equal(textActive,true);nums(0);textActive=false;}
+  else if(allowText&&op==='Tf'){assert.equal(textActive,true);assert.equal(args.length,2);assert.match(args[0]?.name??'',/^F\d+$/);assert.ok(Number.isFinite(args[1])&&args[1]>0&&args[1]<=100);}
+  else if(allowText&&op==='Td'){assert.equal(textActive,true);nums(2);}
+  else if(allowText&&op==='TJ'){assert.equal(textActive,true);assert.equal(args.length,1);assert.ok(Array.isArray(args[0])&&args[0].every(v=>Number.isFinite(v)||v?.type==='string'));}
+  else assert.fail('Unexpected arrow PDF operator: '+op);
   args=[];
  }
  assert.equal(args.length,0);assert.equal(stack.length,0);idle();assert.equal(pendingClip,false);assert.ok(rootMatrix);
@@ -96,17 +103,21 @@ function nativeSegments(path,convert){
  for(let i=0;i<all.length;i++){const s=all[i];
   if(s.kind==='control1'){assert.equal(all[i+1]?.kind,'control2');assert.equal(all[i+2]?.kind,'curve');result.push({kind:'cubic',a:p(s),b:p(all[++i]),point:p(all[++i])});}
   else if(s.kind==='rectcorner'){assert.equal(all[i+1]?.kind,'rectsize');const size=all[++i],x=s.xSp,y=s.ySp,w=size.xSp,h=size.ySp;
-   result.push(...[[x,y],[x+w,y],[x+w,y+h],[x,y+h]].map(([xSp,ySp],j)=>({kind:j?'line':'move',point:p({xSp,ySp})})),{kind:'close'});}
+   // PGF converts each PDF `re` operand separately; conversion truncates, so
+   // converting a corner after adding its size is a different operation.
+   const cx=convert(x),cy=convert(y),cw=convert(w),ch=convert(h);
+   result.push(...[[cx,cy],[cx+cw,cy],[cx+cw,cy+ch],[cx,cy+ch]].map(([x,y],j)=>({kind:j?'line':'move',point:{x,y},rectangleOperands:j===0?1:2})),{kind:'close'});}
   else{assert.ok(['move','line','close'].includes(s.kind));result.push(s.kind==='close'?{kind:'close'}:{kind:s.kind,point:p(s)});}
  }
  return collapseMoves(result);
 }
-export function verifyArrowDriverState(metrics,svg,pdf,page){
- const sv=arrowSvgVectors(svg),pv=arrowPdfVectors(pdf),ss=edgeSvgPaints(svg),ps=edgePdfPaints(pdf),paints=[],checks=[];
+export function verifyArrowDriverState(metrics,svg,pdf,page,{allowText=false,wrapperExtraWidthSp=0}={}){
+ const sv=arrowSvgVectors(svg,{allowText}),pv=arrowPdfVectors(pdf,{allowText}),ss=edgeSvgPaints(svg),ps=edgePdfPaints(pdf),paints=[],checks=[];
  const scalar=(quantity,expected,actual,limit=0)=>{const delta=Math.abs(expected-actual);assert.ok(Number.isFinite(expected)&&Number.isFinite(actual)&&delta<=limit,quantity+': '+actual+' vs '+expected+' (limit '+limit+')');checks.push({quantity,expected,actual,delta,limit});};
  assert.ok(page&&Number.isSafeInteger(page.widthSp)&&Number.isSafeInteger(page.heightSp));const bpPerSp=72/(72.27*65536),bounds=metrics.pictureBounds,box=metrics.pictureBox;
  assert.deepEqual(pv.mediaBox.slice(0,2),[0,0]);scalar('pdf.page.width',page.widthSp*bpPerSp,pv.mediaBox[2],.000500000001);scalar('pdf.page.height',page.heightSp*bpPerSp,pv.mediaBox[3],.000500000001);
- scalar('pdf.origin.x',(page.boxXSp-bounds.minXSp)*bpPerSp,pv.rootMatrix[4],.000500000001);
+ assert.ok(Number.isSafeInteger(wrapperExtraWidthSp)&&wrapperExtraWidthSp>=0&&(allowText||wrapperExtraWidthSp===0));
+ scalar('pdf.origin.x',(page.boxXSp+wrapperExtraWidthSp-bounds.minXSp)*bpPerSp,pv.rootMatrix[4],.000500000001);
  scalar('pdf.origin.y',(page.boxBaselineYSp-bounds.minYSp-box.depthSp)*bpPerSp,pv.rootMatrix[5],.000500000001);
  for(const s of metrics.shortening){const input=metrics.inputs[s.inputId-1],places=metrics.placements.filter(p=>p.inputId===s.inputId&&p.side===s.side);assert.ok(places.length<=1);
   const tip=places.length?metrics.templates[places[0].templateId-1]:null,additional=input.additionalShorteningSp[s.side];
@@ -128,7 +139,7 @@ export function verifyArrowDriverState(metrics,svg,pdf,page){
  }
  for(const a of [sv.paths,pv.paths,ss.paints,ps.paints])assert.equal(a.length,paints.length,'Native shipped paint count.');
  assert.equal(sv.clips.length,metrics.clips.length);assert.equal(pv.clips.length,metrics.clips.length);
- const geometry=(id,a,p,convert,limit)=>{const expected=nativeSegments(p,convert),actual=collapseMoves(a.segments);assert.equal(actual.length,expected.length,id+' segment count');for(let j=0;j<expected.length;j++){const e=expected[j],r=actual[j];assert.equal(r.kind,e.kind,id+'.'+j+' segment kind');for(const key of ['point','a','b'])if(e[key])for(const axis of ['x','y'])scalar(id+'.'+j+'.'+key+'.'+axis,e[key][axis],r[key][axis],limit);}};
+ const geometry=(id,a,p,convert,limit)=>{const expected=nativeSegments(p,convert),actual=collapseMoves(a.segments);assert.equal(actual.length,expected.length,id+' segment count');for(let j=0;j<expected.length;j++){const e=expected[j],r=actual[j];assert.equal(r.kind,e.kind,id+'.'+j+' segment kind');for(const key of ['point','a','b'])if(e[key])for(const axis of ['x','y'])scalar(id+'.'+j+'.'+key+'.'+axis,e[key][axis],r[key][axis],limit*(convert===pgfPdfPoint?(e.rectangleOperands??1):1));}};
  const matches=(a,p)=>{const expected=nativeSegments(p,n=>n/65536),actual=collapseMoves(a.segments);return actual.length===expected.length&&expected.every((e,j)=>{
   const r=actual[j];return r.kind===e.kind&&['point','a','b'].every(k=>!e[k]||['x','y'].every(axis=>Math.abs(r[k][axis]-e[k][axis])<=1/65536));});};
  const remaining=[...paints],physical=[];

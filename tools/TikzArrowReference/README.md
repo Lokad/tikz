@@ -1,5 +1,17 @@
 # Native arrow references
 
+The complete diagram workflow reuses these probes and readers through
+`tools/TikzVisual/diagram-arrow-reference.mjs`; see the
+[comparison workflow](../TikzPathLabelComparison/README.md). Text is admitted
+only in that bounded geometry mode and remains grounded by the separate DVI/TFM
+reader. The glyph-free workflow below preserves its original restrictions.
+
+Frozen snapshots retain generator/reader hashes as provenance. Current checks
+verify the fixture/manifest/TeX inputs, reparse raw observations and require the
+same semantic records and native check coverage. Historical checker arithmetic
+stays in the snapshot; current PDF rectangle checks convert each `re` operand
+separately, as the PGF PDF driver does. Unchanged native images are preserved.
+
 This development harness grounds arrow geometry before adding arrow support to
 the public converter. It uses six authored, glyph-free TikZ fixtures with legacy
 `>` defaults, `arrows.meta` defaults, Stealth and Latex dimensions, explicit

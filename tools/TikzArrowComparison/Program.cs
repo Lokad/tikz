@@ -47,7 +47,9 @@ try
     foreach (var source in snapshot.RootElement.GetProperty("sourceHashes").EnumerateObject())
     {
         var bytes = Canonical(File.ReadAllBytes(At(source.Name)));
-        Require(Hash(bytes) == source.Value.GetString(), "Changed native producer source: " + source.Name);
+        if (source.Name.EndsWith(".tex", StringComparison.Ordinal) || source.Name.EndsWith(".tikz", StringComparison.Ordinal)
+            || source.Name == "tests/Reference/Arrows/cases.json")
+            Require(Hash(bytes) == source.Value.GetString(), "Changed native engine input: " + source.Name);
         inputs[source.Name] = Hash(bytes); Save("input-captures/" + source.Name, bytes);
     }
     foreach (var folder in new[] { "src/Lokad.TikZ", "tools/TikzArrowComparison" })

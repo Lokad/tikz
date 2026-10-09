@@ -47,9 +47,24 @@ anonymous labels only in probed runs and requires unchanged SVG drawings, PDF
 bytes and 1x/4x PDF pages. Coordinates are recorded separately from text nodes.
 The comparison checks their measured text/anchors, DVI/TFM glyph placements,
 calculated coordinates, picture bounds, paint state and physical ordering.
-Construction paths and original PDF frames/pages are retained for subsequent
-path/arrow geometry and image qualification. These numeric checks alone do not
-admit complete diagrams or establish pixel identity.
+Supplement the exact saved diagram report with the existing arrow probes:
+
+```sh
+node tools/TikzVisual/diagram-arrow-reference.mjs <exact-original-diagram-report>
+dotnet run --project tools/TikzPathLabelComparison -c Release -- <exact-supplemental-report>
+```
+
+This checks saved originals rather than regenerating their images. The producer
+accepts only the fixed source/wrapper/probe hashes, requires unchanged native
+tool binaries and engine inputs, and proves unchanged SVG drawing and PDF bytes.
+The comparison links the existing arrow checker for every shipped background,
+shaft and tip, including curve controls, template dimensions/endpoints/hulls,
+placement matrices and shortening. Glyph checking remains independent. PGF's
+final move after a transformed rectangle paints no segment and is normalized
+along with consecutive moves. PDF rectangles convert their position and size
+operands separately; their finite serialization bounds accumulate per operand.
+Original PDF frames/pages remain retained for image qualification. These
+numeric checks alone do not admit complete diagrams or establish pixel identity.
 
 Frozen references retain their original generator/checker source hashes as
 provenance. Changes to the fixture, TeX wrappers or font profile require new

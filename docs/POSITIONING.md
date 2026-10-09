@@ -49,6 +49,7 @@ distances, named targets, skew coordinate bases, scope restoration and node
 transform reset/full/local ordering. Native rejection controls cover scoped
 library availability. The complete diagrams also pass independent text/anchor,
 DVI/TFM glyph, coordinate, picture-bounds and effective paint-order/state checks.
-Complete path/arrow geometry, framing and primary/local/PDF image admission
-remain open. Iteration images
+Supplemental native arrow observations ground complete background/shaft/tip
+geometry, template dimensions and shortening through the same comparison tool.
+Framing and primary/local/PDF image admission remain open. Iteration images
 do not establish a general pixel-perfect or image-conformance claim.

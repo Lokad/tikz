@@ -12,7 +12,7 @@ internal static class NativeArrowComparison
 {
     public const double SpPerBp = 65536 * 72.27 / 72;
     public sealed record Check(string Quantity, object Expected, object Actual, double? Delta, double Limit, string Unit, bool Passed);
-    public static List<Check> Compare(GraphicsScene scene, TikzSuccess success, JsonElement native)
+    public static List<Check> Compare(GraphicsScene scene, TikzSuccess success, JsonElement native, int expectedGlyphs = 0)
     {
         var checks = new List<Check>();
         var paints = native.GetProperty("driverState").GetProperty("paints").EnumerateArray().ToArray();
@@ -21,7 +21,7 @@ internal static class NativeArrowComparison
         var templates = native.GetProperty("templates").EnumerateArray().ToDictionary(p => p.GetProperty("id").GetInt32());
         var clips = native.GetProperty("clips").EnumerateArray().Select(p => p.GetInt32()).ToArray();
         Equal("paint.count", paints.Length, scene.Paths.Count);
-        Equal("glyph.count", 0, scene.Drawables.OfType<PaintedGlyphRun>().Sum(g => g.Glyphs.Length));
+        Equal("glyph.count", expectedGlyphs, scene.Drawables.OfType<PaintedGlyphRun>().Sum(g => g.Glyphs.Length));
         Equal("tip.count", placements.Count, scene.Paths.Count(p => p.Arrow is not null));
         Equal("clip.count", clips.Length, scene.Clips.Count);
         for (var i = 0; i < Math.Min(paints.Length, scene.Paths.Count); i++)
@@ -161,6 +161,8 @@ internal static class NativeArrowComparison
             if (segment.Kind == SegmentKind.Move && result.Count > 0 && result[^1].Kind == SegmentKind.Move) result[^1] = segment;
             else result.Add(segment);
         }
-        return result;
+        // Consecutive moves and a final move without a drawing segment paint
+        // nothing. PGF adds the latter after transformed rectangle backgrounds.
+        return result.Where((s, i) => s.Kind != SegmentKind.Move || i + 1 < result.Count).ToList();
     }
 }

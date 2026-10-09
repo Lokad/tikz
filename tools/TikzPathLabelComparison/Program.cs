@@ -5,6 +5,7 @@ using Lokad.TikZ;
 using Lokad.TikZ.Graphics;
 using TikzPathLabelComparison;
 using TikzShapeComparison;
+using TikzArrowComparison;
 
 if (args.Length != 1) throw new ArgumentException("Usage: TikzPathLabelComparison <owned-native-report>; no image qualification claim.");
 var root = Directory.GetCurrentDirectory();
@@ -45,13 +46,18 @@ try
     await Save("actual.svg", Encoding.UTF8.GetBytes(success.Svg));
     await Save("public.svg", Encoding.UTF8.GetBytes(publicSuccess.Svg));
     var checks = NativeLabels.Compare(trace!, success, native, glyphs, svg);
+    if (input.Arrows is not null)
+        checks = [.. checks, .. NativeArrowComparison.Compare(trace!, success, input.Arrows.RootElement, glyphs.Nodes.Sum(n => n.Glyphs.Length))
+            .Select(c => new NativeLabels.Check("arrows." + c.Quantity, c.Expected, c.Actual, c.Passed,
+                c.Quantity.StartsWith("paint-", StringComparison.Ordinal) && int.TryParse(c.Quantity.AsSpan(6, c.Quantity.IndexOf('.') - 6), out var ordinal)
+                    && ordinal > 0 && ordinal <= trace!.Paths.Count ? trace.Paths[ordinal - 1].Source.Location : null))];
     await Save("checks.json", JsonSerializer.SerializeToUtf8Bytes(checks, json));
     foreach (var file in Directory.EnumerateFiles(Path.Combine(root, "src/Lokad.TikZ"), "*", SearchOption.AllDirectories)
         .Where(f => !Path.GetRelativePath(root, f).Split(Path.DirectorySeparatorChar).Any(p => p is "bin" or "obj")).Order(StringComparer.Ordinal))
         await Save("source-captures/" + Path.GetRelativePath(root, file).Replace('\\', '/'), await File.ReadAllBytesAsync(file));
     foreach (var file in new[] { "tools/TikzPathLabelComparison/Program.cs", "tools/TikzPathLabelComparison/NativeLabels.cs", "tools/TikzPathLabelComparison/NativeInput.cs",
         "tools/TikzPathLabelComparison/TikzPathLabelComparison.csproj", "tools/TikzShapeComparison/NativeGlyphTrace.cs",
-        "Directory.Build.props", "Directory.Packages.props" })
+        "tools/TikzArrowComparison/NativeArrowComparison.cs", "Directory.Build.props", "Directory.Packages.props" })
         await Save("source-captures/" + file, await File.ReadAllBytesAsync(Path.Combine(root, file)));
     await Publish(true, new { numericPassed = checks.All(c => c.Passed), checks = checks.Length,
         nodes = ids.Length, glyphs = glyphs.Nodes.Sum(n => n.Glyphs.Length), publicTraceParity = true,
