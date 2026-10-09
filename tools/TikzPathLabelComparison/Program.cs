@@ -47,7 +47,7 @@ try
     await Save("public.svg", Encoding.UTF8.GetBytes(publicSuccess.Svg));
     var checks = NativeLabels.Compare(trace!, success, native, glyphs, svg);
     if (input.Arrows is not null)
-        checks = [.. checks, .. NativeArrowComparison.Compare(trace!, success, input.Arrows.RootElement, glyphs.Nodes.Sum(n => n.Glyphs.Length))
+        checks = [.. checks, .. NativeArrowComparison.Compare(trace!, success, input.Arrows.RootElement, glyphs.Nodes.Sum(n => n.Glyphs.Length), ignoreTrailingMoves: true)
             .Select(c => new NativeLabels.Check("arrows." + c.Quantity, c.Expected, c.Actual, c.Passed,
                 c.Quantity.StartsWith("paint-", StringComparison.Ordinal) && int.TryParse(c.Quantity.AsSpan(6, c.Quantity.IndexOf('.') - 6), out var ordinal)
                     && ordinal > 0 && ordinal <= trace!.Paths.Count ? trace.Paths[ordinal - 1].Source.Location : null))];

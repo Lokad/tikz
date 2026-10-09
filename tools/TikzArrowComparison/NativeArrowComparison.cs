@@ -12,7 +12,7 @@ internal static class NativeArrowComparison
 {
     public const double SpPerBp = 65536 * 72.27 / 72;
     public sealed record Check(string Quantity, object Expected, object Actual, double? Delta, double Limit, string Unit, bool Passed);
-    public static List<Check> Compare(GraphicsScene scene, TikzSuccess success, JsonElement native, int expectedGlyphs = 0)
+    public static List<Check> Compare(GraphicsScene scene, TikzSuccess success, JsonElement native, int expectedGlyphs = 0, bool ignoreTrailingMoves = false)
     {
         var checks = new List<Check>();
         var paints = native.GetProperty("driverState").GetProperty("paints").EnumerateArray().ToArray();
@@ -114,7 +114,7 @@ internal static class NativeArrowComparison
         }
         void Path(string name, JsonElement expected, GraphicPath actual)
         {
-            var e = Segments(expected); var a = Normalize(actual.Segments);
+            var e = Segments(expected, ignoreTrailingMoves); var a = Normalize(actual.Segments, ignoreTrailingMoves);
             Equal(name + ".segment.count", e.Count, a.Count);
             for (var i = 0; i < Math.Min(e.Count, a.Count); i++)
             {
@@ -127,7 +127,7 @@ internal static class NativeArrowComparison
         }
     }
 
-    private static List<Segment> Segments(JsonElement expected)
+    private static List<Segment> Segments(JsonElement expected, bool ignoreTrailingMoves)
     {
         var segments = new List<Segment>(); Point a = default, b = default, rectangle = default;
         foreach (var p in expected.EnumerateArray())
@@ -151,9 +151,9 @@ internal static class NativeArrowComparison
                 default: throw new InvalidDataException("Unknown native path token.");
             }
         }
-        return Normalize(segments);
+        return Normalize(segments, ignoreTrailingMoves);
     }
-    private static List<Segment> Normalize(IEnumerable<Segment> segments)
+    private static List<Segment> Normalize(IEnumerable<Segment> segments, bool ignoreTrailingMoves)
     {
         var result = new List<Segment>();
         foreach (var segment in segments)
@@ -163,6 +163,8 @@ internal static class NativeArrowComparison
         }
         // Consecutive moves and a final move without a drawing segment paint
         // nothing. PGF adds the latter after transformed rectangle backgrounds.
-        return result.Where((s, i) => s.Kind != SegmentKind.Move || i + 1 < result.Count).ToList();
+        // Keep the legacy fixture's strict recorded-move coverage unchanged;
+        // the mixed diagram contract admits this explicit paint equivalence.
+        return ignoreTrailingMoves ? result.Where((s, i) => s.Kind != SegmentKind.Move || i + 1 < result.Count).ToList() : result;
     }
 }
