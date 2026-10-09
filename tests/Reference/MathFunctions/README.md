@@ -13,8 +13,25 @@ two-argument `min`/`max` contract. Ordinary tests compare all printed results an
 anchors. The network and focused corpus also pass 5,866 independent numeric
 checks against fresh conversion, with paired 1x/4x raw image differences retained.
 Both fixtures also pass 48 primary and 16 PDF iteration views under independently
-checked native-only policies. Portable native archives and final clean-source
-acceptance remain open. Raw image differences alone do not establish conformance.
+checked native-only policies. The two portable archives retain their four checked
+native reports and every owned asset. Final clean-source acceptance remains open.
+Raw image differences alone do not establish conformance.
+
+Restore the checked evidence without invoking native tools or the converter:
+
+```sh
+node tools/TikzVisual/materialize-path-label-cache.mjs network-math-functions
+node tools/TikzVisual/materialize-path-label-cache.mjs math-functions-contract
+node tools/TikzVisual/path-label-cache-self-test.mjs
+```
+
+The focused archive uses the existing bounded codec with gzip-packed control
+records; decoding restores the original JSON bytes exactly. Its measured 53.5 MB
+archive has a fixed 64 MB compressed budget. Other cases retain 48 MB. Original
+file and inflation limits remain 16 MB per record, with 256 MB carrier and 512 MB
+logical-data bounds. All ten corruption controls and thirteen archive roundtrips
+pass. Restoration preserves native calibration; current output and final source
+qualification remain separate checks.
 
 Regenerate only the fixed repository-authored inputs through the existing
 scalar/node observer:

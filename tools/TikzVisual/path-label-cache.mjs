@@ -4,15 +4,16 @@ import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {gunzipSync} from 'node:zlib';
 import {calcHash,calcEqual} from './calc-saved-images.mjs';
-import {decodePathLabelCache,pathLabelCacheBounds} from './path-label-cache-codec.mjs';
+import {decodePathLabelCache,pathLabelCacheBounds,pathLabelCompressedLimit} from './path-label-cache-codec.mjs';
 
 export function pathLabelCacheDefinition(fixture){
- const math=['flowchart-math-macros','math-macro-contract'].includes(fixture),loops=['flowchart-foreach','foreach-contract'].includes(fixture),styles=['flowchart-parameterized','style-contract'].includes(fixture),diagram=math||loops||styles||['flowchart-basic','network-bent','flowchart-transformed'].includes(fixture);
- const fixtures=math?['flowchart-math-macros','math-macro-contract']:loops?['flowchart-foreach','foreach-contract']:styles?['flowchart-parameterized','style-contract']:diagram?['flowchart-basic','flowchart-transformed','network-bent']:['interactions','placement'];assert.ok(fixtures.includes(fixture));
- const directory='tests/Reference/'+(math?'MathMacros':loops?'Foreach':styles?'Styles':diagram?'Diagrams':'PathLabels');
+ const functions=['math-functions-contract','network-math-functions'].includes(fixture);
+ const math=['flowchart-math-macros','math-macro-contract'].includes(fixture),loops=['flowchart-foreach','foreach-contract'].includes(fixture),styles=['flowchart-parameterized','style-contract'].includes(fixture),diagram=functions||math||loops||styles||['flowchart-basic','network-bent','flowchart-transformed'].includes(fixture);
+ const fixtures=functions?['math-functions-contract','network-math-functions']:math?['flowchart-math-macros','math-macro-contract']:loops?['flowchart-foreach','foreach-contract']:styles?['flowchart-parameterized','style-contract']:diagram?['flowchart-basic','flowchart-transformed','network-bent']:['interactions','placement'];assert.ok(fixtures.includes(fixture));
+ const directory='tests/Reference/'+(functions?'MathFunctions':math?'MathMacros':loops?'Foreach':styles?'Styles':diagram?'Diagrams':'PathLabels');
  const roles=['path-label-native-primary-calibration','path-label-independent-primary-check','path-label-native-pdf-calibration','path-label-independent-pdf-check'];
  if(!diagram)roles.push('path-label-complete-text-sensitivity','path-label-independent-text-check');
- return{diagram,fixtures,directory,roles,profileRole:math?'math-macro-frozen-image-profile':loops?'foreach-frozen-image-profile':styles?'style-frozen-image-profile':diagram?'diagram-frozen-image-profile':'path-label-frozen-image-profile'};
+ return{diagram,fixtures,directory,roles,profileRole:functions?'math-function-frozen-image-profile':math?'math-macro-frozen-image-profile':loops?'foreach-frozen-image-profile':styles?'style-frozen-image-profile':diagram?'diagram-frozen-image-profile':'path-label-frozen-image-profile'};
 }
 
 export async function loadPathLabelCache(repositoryRoot,fixture,read=readFile){
@@ -24,7 +25,7 @@ export async function loadPathLabelCache(repositoryRoot,fixture,read=readFile){
  assert.equal(entry.file,directory+'/'+fixture+'.images.cache.gz');assert.equal(manifest.fixture,fixture);
  assert.equal(manifest.converterInvoked,false);assert.equal(manifest.imageConformanceClaim,false);
  for(const[file,digest]of Object.entries(profile.transportSources))assert.equal(calcHash(await read(path.join(repositoryRoot,file))),digest,'Changed archive transport dependency.');
- const compressed=await read(path.join(repositoryRoot,entry.file));assert.ok(compressed.length<=pathLabelCacheBounds.compressed);assert.equal(compressed.length,manifest.compressedBytes);
+ const compressed=await read(path.join(repositoryRoot,entry.file));assert.ok(compressed.length<=pathLabelCompressedLimit(fixture));assert.equal(compressed.length,manifest.compressedBytes);
  assert.equal(calcHash(compressed),manifest.compressedSha256,'Unreviewed path-label archive bytes.');
  const bytes=gunzipSync(compressed,{maxOutputLength:pathLabelCacheBounds.decoded});assert.equal(bytes.length,manifest.decodedBytes);assert.equal(calcHash(bytes),manifest.decodedSha256);
  const cache=decodePathLabelCache(bytes,fixture);assert.equal(cache.files.size,manifest.logicalFiles);assert.equal(cache.blobs.size,manifest.uniqueBlobs);assert.equal(cache.logicalBytes,manifest.logicalBytes);

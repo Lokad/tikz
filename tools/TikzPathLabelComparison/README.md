@@ -74,11 +74,14 @@ the focused corpus uses measured rectangle backgrounds. They pass 1,995 and
 total. Fresh output also has paired whole/local 1x/4x iteration images and passes
 48 primary/16 PDF views under checked native-only policies. The independent
 native checkers reproduce 788 sources, including 612 visible defect views that
-are all rejected. Portable reference evidence and final clean-source acceptance
-remain open. Control captures retain full image pairs, local metrics and paired
-crop sheets within the unchanged shared artifact bound.
+are all rejected. Both portable reference archives now restore every original
+asset byte; final clean-source acceptance remains open. Control captures retain
+full image pairs, local metrics and paired crop sheets within the unchanged
+shared artifact bound.
 Separate scalar snapshots include the complete-turn boundary fixture under
 [`tests/Reference/MathFunctions`](../../tests/Reference/MathFunctions/README.md).
+The focused archive's versioned record packing uses bounded gzip inflation;
+existing archive bytes and their codec representation remain unchanged.
 
 ```sh
 node tools/TikzVisual/path-label-reference.mjs flowchart-basic

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "role": "math-function-frozen-image-profile",
+  "fixtures": {
+    "network-math-functions": {
+      "file": "tests/Reference/MathFunctions/network-math-functions.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "network-math-functions",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-2ba13e54-0a17-4df8-a7a5-16ec9d241df7/report.json",
+            "sha256": "d74cfe03db1b4da89cc6541ebb2ea78bf90c05562301eed8bab770b2d727a38f"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-189ae4df-1401-4ac8-9512-2e4a79b8242d/report.json",
+            "sha256": "c0836b7e798fd7246f22ada59de68cf2282ab27fbd0cda62a9d9f7983002f3b1"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-f4d7b55b-881d-4bdf-925b-083acc593d84/report.json",
+            "sha256": "2cb263aad24be3e0b97922d98e65e6b1bb23fb24b8c32d769c8d81aacdf21143"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-c62c2283-8e6b-4f33-9e51-4f12a477c120/report.json",
+            "sha256": "a44f5d823b2a2d8f744b8c1f6a336554751245ee48d9e9dd37accc2970a40c7b"
+          }
+        ],
+        "compressedSha256": "c278597d6b5a67a51190e4982377127337e6d36562f16f90079b6369328fee6a",
+        "decodedSha256": "a0f866c25641c56516bad191c976aa17c75bd2b087db37dae9c51f0dfdfd4e76",
+        "compressedBytes": 16398679,
+        "decodedBytes": 59446244,
+        "logicalFiles": 2557,
+        "uniqueBlobs": 1085,
+        "logicalBytes": 88925260,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "math-functions-contract": {
+      "file": "tests/Reference/MathFunctions/math-functions-contract.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "math-functions-contract",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-c3437619-0706-4884-81c3-ef6c8381313f/report.json",
+            "sha256": "b4ece434cf51f977ffa4cd8c50e0d8d0b2cddc0ef5f451d5fe14ceadbbd164ed"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-2811bdb6-d381-4c13-869e-e50c7db94f7b/report.json",
+            "sha256": "179d4b1b28daecaf3ead32d1d10f098c4c7b50957d5c7f40cbd790565d90ae87"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-6fca5850-1c60-484a-b4f2-7ffa3fb6ef1e/report.json",
+            "sha256": "01a57992a9c749d53422ef739adefa648df85aa04eb8a97d98c01e1997e6bf82"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-0f3f15d6-eb3d-462e-aaf4-53760b8ac19a/report.json",
+            "sha256": "a6b0c4524c100eb148a5f2e3efb629dac54fab6b3cea50b5001a9f8c7dab0d3b"
+          }
+        ],
+        "compressedSha256": "ebf1b1c0e86e1d3effc3c9b6db02df8fad75ddfc9d430376ccf2e4d4b7941460",
+        "decodedSha256": "5e9ab661d3fa7be37f6142293b26fb194e60fad5bcf3dd6f393c468bcc6c2352",
+        "compressedBytes": 53502678,
+        "decodedBytes": 102302565,
+        "logicalFiles": 3114,
+        "uniqueBlobs": 1501,
+        "logicalBytes": 442448615,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    }
+  },
+  "transportSources": {
+    "tools/TikzVisual/path-label-cache-codec.mjs": "f463ed983905fa508e9cced37697c85df86217e73ad5ade09bc5c45fab64b2eb",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/path-label-cache.mjs": "9b1510bb9dfc06deebef6910e62cf57d0595f500324df218363359646460b093"
+  }
+}

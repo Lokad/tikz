@@ -47,6 +47,7 @@ checks for fresh public output, glyphs, geometry, paint and framing. All 651
 ordinary tests pass. Paired 1x/4x iteration images retain small raster differences.
 Both fixtures now pass 48 primary and 16 PDF iteration views under independent
 native-only policies. The native checkers reproduce all 788 reference/control
-sources; all 28 primary/PDF corruption controls pass. Portable reference evidence
-and final committed clean-source qualification remain open. Broader PGF functions,
+sources; all 28 primary/PDF corruption controls pass. The portable archives restore
+all original evidence bytes, including the focused corpus's packed control JSON.
+Final committed clean-source qualification remains open. Broader PGF functions,
 math labels and plotting remain release scope.
