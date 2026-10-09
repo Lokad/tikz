@@ -110,6 +110,30 @@ aliases; all definition contents and painted drawing remain exact. Full raw
 SVG/DVI, process receipts and captured font inputs remain in ignored artifacts.
 Existing non-math native routes and calibration are preserved.
 
+The primary workflow observes two native atlas matrix encodings through the
+existing intrinsic-image and explicit-viewport routes in natural/expanded,
+1x/4x and transparent/white/black views. It derives limits per exact view and
+region from native measurements, then checks representative missing/displaced
+script, fraction, radical and path-label marks with numeric gates bypassed.
+The empty label has an added-ink control. Every mark has policy coverage;
+representative faults do not establish sensitivity to every possible mark fault.
+Owned artifacts, PNG decoding, policy maxima and generic report-corruption
+controls reuse the existing machinery. Math rule rectangles explicitly opt
+into vector capture; default source handling stays unchanged.
+
+```sh
+node tools/TikzVisual/calibrate-math-label-primary.mjs <accepted-native-image-report>
+node tools/TikzVisual/check-math-label-primary.mjs <exact-primary-report> <accepted-native-image-report>
+node tools/TikzVisual/math-label-primary-self-test.mjs <exact-primary-report>
+node tools/TikzVisual/math-label-primary-images.mjs <accepted-native-image-report> <exact-primary-report> <current-public-export-report>
+```
+
+The primary checker independently decodes whole and local pixels, rederives
+native framing, encodings and policies, and recaptures each native/controlled
+source. The current-output matrix verifies public source hashes, decodes all
+72 view pairs and recaptures the public SVGs. Retain unchanged calibration
+between iterations; PDF and final feature qualification are separate gates.
+
 Regeneration is a separate development operation on these trusted inputs:
 
 ```sh
@@ -122,5 +146,5 @@ All 734 ordinary tests pass at this implementation stage. The eleven earlier
 public diagram/contract SVGs remain byte-identical. Frozen-native image
 diagnostics use the existing pinned renderer, physical registration, paired
 images, overlay/blink viewer and source-attributed crops. Raw pixel differences,
-math-specific image/PDF qualification and final clean-source acceptance remain
-open; the existing EC text policy cannot stand in for math font or rule semantics.
+math-specific PDF qualification and final clean-source acceptance remain open;
+the existing EC text policy cannot stand in for math font or rule semantics.

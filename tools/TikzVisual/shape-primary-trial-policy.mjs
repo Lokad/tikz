@@ -4,6 +4,19 @@ export const shapeViews = ['natural', 'expanded'].flatMap(frame => [1, 4].flatMa
 const key = v => `${v.frame}-${v.scale}x-${v.background}`;
 const metricKeys = ['rawChangedPixels', 'maxRawChannelError', 'premultipliedChangedPixels', 'maxPremultipliedChannelError', 'meanForegroundChannelError'];
 
+// Per-view/per-region maxima across declared native encodings only.
+// Shared with calc; reference scope and coverage remain the caller's policy.
+export function nativeMetricEnvelope(rows) {
+  assert.ok(rows.length > 0); const result = structuredClone(rows[0]);
+  for (const row of rows) {
+    for (const k of metricKeys) result[k] = Math.max(result[k], row[k]);
+    assert.equal(row.topology.componentDifference, 0);
+    assert.ok(['both-empty', 'measured'].includes(row.topology.edgeState));
+    result.topology.maxEdgeDisplacementRasterPixels = Math.max(result.topology.maxEdgeDisplacementRasterPixels, row.topology.maxEdgeDisplacementRasterPixels);
+  }
+  return result;
+}
+
 function metricLimits(m) {
   for (const k of metricKeys) assert.ok(Number.isFinite(m[k]) && m[k] >= 0, 'Invalid oracle metric: ' + k);
   assert.ok(m.maxRawChannelError <= 255 && m.maxPremultipliedChannelError <= 255);

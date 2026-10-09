@@ -4,15 +4,20 @@ import assert from 'node:assert/strict';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {sha256} from './shape-oracle-bundle.mjs';
 
-export async function arrowVectorDocument(renderer,{svg,driver,origin,camera,frame}){
+export async function arrowVectorDocument(renderer,{svg,driver,origin,camera,frame,allowMathMarks=false}){
  assert.ok(['natural','expanded'].includes(frame));
  assert.ok(Object.values(camera).every(Number.isFinite)&&Number.isSafeInteger(camera.width)&&Number.isSafeInteger(camera.height)&&camera.width>0&&camera.height>0);
  assert.ok(camera.width*camera.height*16<=20000000);
- return renderer.page.evaluate(({svg,driver,origin,camera,frame})=>{
+ assert.equal(typeof allowMathMarks,'boolean');
+ return renderer.page.evaluate(({svg,driver,origin,camera,frame,allowMathMarks})=>{
   const require=(v,m)=>{if(!v)throw Error(m);},ns='http://www.w3.org/2000/svg',doc=new DOMParser().parseFromString(svg,'image/svg+xml'),source=doc.documentElement;
   require(!doc.querySelector('parsererror')&&!doc.doctype&&source.localName==='svg'&&doc.querySelectorAll('svg').length===1,'Expected one safe source SVG.');
   const ids=new Set();for(const e of doc.querySelectorAll('*')){
-   require(e.namespaceURI===ns&&['svg','g','defs','path','use','title','desc','clipPath'].includes(e.localName),'Unsupported vector capture element.');
+   require(e.namespaceURI===ns&&['svg','g','defs','path','use','title','desc','clipPath',...(allowMathMarks?['rect']:[])].includes(e.localName),'Unsupported vector capture element.');
+   if(e.localName==='rect')for(const key of ['x','y','width','height']){
+    const text=e.getAttribute(key)??(['x','y'].includes(key)?'0':null),n=Number(text);
+    require(text!==null&&/^[-+]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][-+]?\d+)?$/.test(text)&&Number.isFinite(n)&&Math.abs(n)<=1000000&&(!['width','height'].includes(key)||n>0),'Invalid math rule rectangle.');
+   }
    if(e.id){require(!ids.has(e.id),'Duplicate source identity.');ids.add(e.id);}
    for(const a of e.attributes)require(!a.name.toLowerCase().startsWith('on')&&!['style','base'].includes(a.localName)
     &&(a.localName!=='href'||/^#[\w.-]+$/.test(a.value))&&(!a.value.includes('url(')||a.localName==='clip-path'&&/^url\(#[\w.-]+\)$/.test(a.value)),'Executable/external vector capture source.');
@@ -42,12 +47,12 @@ export async function arrowVectorDocument(renderer,{svg,driver,origin,camera,fra
   }else root.append(content);
   return{svg:new XMLSerializer().serializeToString(outer),natural,sourceViewBox:view,sourceElementCount:doc.querySelectorAll('*').length,
    viewportContract:frame==='natural'?'Declared intrinsic viewport clips vector content.':'Original content maps directly onto the unchanged native camera without an added viewport.'};
- },{svg,driver,origin,camera,frame});
+ },{svg,driver,origin,camera,frame,allowMathMarks});
 }
 
 export async function measureArrowVectorPair(renderer,input){
- const reference=await arrowVectorDocument(renderer,{svg:input.reference,driver:input.leftIsDriver,origin:input.origin,camera:input.camera,frame:input.frame});
- const actual=await arrowVectorDocument(renderer,{svg:input.actual,driver:false,origin:{x:0,y:0},camera:input.camera,frame:input.frame});
+ const reference=await arrowVectorDocument(renderer,{svg:input.reference,driver:input.leftIsDriver,origin:input.origin,camera:input.camera,frame:input.frame,allowMathMarks:input.allowMathMarks===true});
+ const actual=await arrowVectorDocument(renderer,{svg:input.actual,driver:false,origin:{x:0,y:0},camera:input.camera,frame:input.frame,allowMathMarks:input.allowMathMarks===true});
  const result=await measureEdgeTrialPrimary(renderer,{...input,reference:reference.svg,actual:actual.svg,leftIsDriver:false,origin:{x:0,y:0},frame:'expanded'});
  return{...result,naturalFrames:{reference:reference.natural,actual:actual.natural},vectorCapture:{schemaVersion:1,
   rasterSize:{width:input.camera.width*input.scale,height:input.camera.height*input.scale},frame:input.frame,scale:input.scale,

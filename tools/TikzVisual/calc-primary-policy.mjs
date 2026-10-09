@@ -1,22 +1,11 @@
 // Limits are exclusively the native-only observations in each exact view/region.
 import assert from 'node:assert/strict';
-import {deriveShapeTrialPolicy,evaluateShapeTrial,shapeViews} from './shape-primary-trial-policy.mjs';
+import {deriveShapeTrialPolicy,evaluateShapeTrial,shapeViews,nativeMetricEnvelope as envelope} from './shape-primary-trial-policy.mjs';
 import {calcPrimaryContract} from './calc-primary-reference.mjs';
 
 export const calcPrimaryCaptures=['intrinsic-image','explicit-viewport'];
 export const calcPrimaryViews=calcPrimaryCaptures.flatMap(capture=>shapeViews.map(v=>({capture,...v})));
 export const calcPrimaryKey=v=>v.capture+'/'+v.frame+'/'+v.scale+'x-'+v.background;
-function envelope(rows){
-  assert.ok(rows.length>0);const result=structuredClone(rows[0]);
-  for(const row of rows){
-    for(const key of ['rawChangedPixels','maxRawChannelError','premultipliedChangedPixels','maxPremultipliedChannelError','meanForegroundChannelError'])
-      result[key]=Math.max(result[key],row[key]);
-    assert.equal(row.topology.componentDifference,0);
-    assert.ok(['both-empty','measured'].includes(row.topology.edgeState));
-    result.topology.maxEdgeDisplacementRasterPixels=Math.max(result.topology.maxEdgeDisplacementRasterPixels,row.topology.maxEdgeDisplacementRasterPixels);
-  }
-  return result;
-}
 export function deriveCalcPrimaryPolicy(records){
   const expected=calcPrimaryContract.representations.flatMap(encoding=>calcPrimaryViews.map(view=>encoding+'/'+calcPrimaryKey(view)));
   assert.deepEqual(records.map(r=>r.encoding+'/'+calcPrimaryKey(r)).sort(),expected.sort(),'Incomplete or duplicate native calibration views');
