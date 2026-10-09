@@ -1,0 +1,153 @@
+{
+  "fonts": [
+    {
+      "number": 60,
+      "name": "lmsy8",
+      "sizeSp": 524288
+    },
+    {
+      "number": 58,
+      "name": "lmmi6",
+      "sizeSp": 393216
+    },
+    {
+      "number": 57,
+      "name": "lmmi8",
+      "sizeSp": 524288
+    },
+    {
+      "number": 56,
+      "name": "lmmi12",
+      "sizeSp": 786432
+    },
+    {
+      "number": 54,
+      "name": "rm-lmr8",
+      "sizeSp": 524288
+    },
+    {
+      "number": 53,
+      "name": "rm-lmr12",
+      "sizeSp": 786432
+    },
+    {
+      "number": 51,
+      "name": "lmex10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 49,
+      "name": "lmsy7",
+      "sizeSp": 458752
+    },
+    {
+      "number": 48,
+      "name": "lmsy10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 47,
+      "name": "lmmi5",
+      "sizeSp": 327680
+    },
+    {
+      "number": 46,
+      "name": "lmmi7",
+      "sizeSp": 458752
+    },
+    {
+      "number": 45,
+      "name": "lmmi10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 44,
+      "name": "rm-lmr5",
+      "sizeSp": 327680
+    },
+    {
+      "number": 43,
+      "name": "rm-lmr7",
+      "sizeSp": 458752
+    },
+    {
+      "number": 42,
+      "name": "rm-lmr10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 41,
+      "name": "ec-lmr10",
+      "sizeSp": 655360
+    }
+  ],
+  "origins": [
+    "identifier",
+    "number",
+    "greek",
+    "operators",
+    "grouping",
+    "upright",
+    "superscript",
+    "subscript",
+    "paired",
+    "reversePaired",
+    "nestedScripts",
+    "groupedBase",
+    "fraction",
+    "nestedFraction",
+    "fractionScript",
+    "root",
+    "rootFraction",
+    "nestedRoot",
+    "mixed",
+    "spacing",
+    "uppercaseGreek",
+    "tallCombined",
+    "large",
+    "largeFraction",
+    "largeNestedScripts",
+    "largeTallRoot"
+  ],
+  "nativeFiles": {
+    "lmsy8.tfm": "b6b96268d56481a5bc7cbb34b140ca1fa5017d2767acc4e11a94b30eabd114f7",
+    "lm-mathsy.enc": "a2980b38288ef4024b8a3e170c19c9d4e2ee8b7dde97a59e8148291ffd3443db",
+    "lmsy8.pfb": "e23c98a5dadbaf4f156082cfcfa7b3366f849ee86b0410db53a9c6fe4e67920b",
+    "lmmi6.tfm": "e7305bead3f6b2c8313e1234cb52376219d4283227c23295fe2f654e3ba3b551",
+    "lm-mathit.enc": "0d7b9e82ad6274470876761c22573c28db1f1b32d647b688230b3a366f0e373b",
+    "lmmi6.pfb": "84b90db59b216d7f25f89a45c7565d7cccccc6c32961fe972b1a53558fa2035e",
+    "lmmi8.tfm": "8d8514f9b0d11e443d9a3cdc059622b06797c1dbcb3cee994f6ac3329c462a82",
+    "lmmi8.pfb": "ec3aa1701ea2dbbd9ea2b7316ffe81726a3a2ecb31442fbaf719800f2625e68d",
+    "lmmi12.tfm": "06870b7e003008214eefcf9bc4215006faff9edf5d99bee75211de57620d1818",
+    "lmmi12.pfb": "19579dda4280cea64aacdd0f80b53b7f1e7930e98fe9858ab38aab33c8623836",
+    "rm-lmr8.tfm": "80bcbfd844d2310ac1d3bead45aee25e91b1a4a0a60ff1771959b9a1e90ec1a2",
+    "lm-rm.enc": "8bf8f9bd48d49aa3f3c597716908854e4d9207b009c109e6d9c5887feb856844",
+    "lmr8.pfb": "4a117a1dd9cf4f8b7eea4587eaa4f612be7ca329cb1d8255a2c6bb20febbfa69",
+    "rm-lmr12.tfm": "9d4e3d8e39a41b93d91f79c1c47d2297efb7b1af220b94860693c08361f227aa",
+    "lmr12.pfb": "d5fd4fdecfdbc8f97e955964aa2574927182303df178fe0c2e568fe9056e326c",
+    "lmex10.tfm": "9547b25fd525782610200d794a82de33037887422751fcc29c5768cfa650e626",
+    "lm-mathex.enc": "7ecd3eb53329d24551d4e125c741037a4bf94872bf545492b6fb4c7d21f381c4",
+    "lmex10.pfb": "8e12eda1d29f55271bcef9a5022b42c8c10f8e65060dd6a8880556aa5484c052",
+    "lmsy7.tfm": "3e92767469b4df54c985a533b8064789df60f21ab69d381dbf01bb608e3fbff8",
+    "lmsy7.pfb": "c434f5fb70bc41978ac63c673556a2d913211f297947aa1f0d18b93da25ebe4b",
+    "lmsy10.tfm": "11f429b2c08f944627faa5942277297d7f8fef40edae2bae46cb238b838400ba",
+    "lmsy10.pfb": "9969fd5ae5281ad40cdf6d8caf50084636a43ed7b7647e0e9e1195e859cec7cc",
+    "lmmi5.tfm": "7bc98c12006eb1d784ce276f5dc008e0d631ee6bc659efadec24801c00d2a462",
+    "lmmi5.pfb": "b1f4adc7d712c838c9de8f13182e587eea9fd1ad2b3652c39e5d8d23022ad228",
+    "lmmi7.tfm": "8548d4d19fc2b3671a5e11526f9013df8828b5b9b0f8277dc0ae7148bd1d33f5",
+    "lmmi7.pfb": "7c646a6a841c2e99909f7d5673d778fc104e43efad281ea0b5687636c544c639",
+    "lmmi10.tfm": "d9fce8963e8cb075bf31a5715a8f4a54688f7026b3a06e882ff2eb9c0d110320",
+    "lmmi10.pfb": "c24662506b402f3e0033cc75eb746eb490a1b7477e6b3ef52053f5025ec0fc57",
+    "rm-lmr5.tfm": "420a4fc1563b171e5a791bb71211d85e6bf62fd2f2ed2a7f34f742049d6e5071",
+    "lmr5.pfb": "584815958b6e66cf4ec2b590f93bd853117f862f4f0fa8b06f4ee6eb6035e845",
+    "rm-lmr7.tfm": "373a4f72b5a088f9caee2cfd75adb2b25116e0cba3ad2bfa99b5f8a7e902a482",
+    "lmr7.pfb": "cf94a1a79a32c446f11e585164463234a515721d509d2f2cfb0ab61f6f744ddc",
+    "rm-lmr10.tfm": "50dc8240a67003c1ec5bcd55f703c87189aeab0d199c42b4dc3e141a02488998",
+    "lmr10.pfb": "84eb01245abb17c0530ca3909427256d73df8bed2d7243b9f2717ca08c010ac8",
+    "ec-lmr10.tfm": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5",
+    "lm-ec.enc": "7f9932c402d22a937b853406cfdf4166b80260e3ff21a03fe9a4c05105a2918c"
+  },
+  "mapSha256": "d40c55f3e00607c98ae0d99112dcb56e18e9b9ea8febac443cfd6533469ac90d",
+  "glyphs": 109,
+  "rules": 15
+}

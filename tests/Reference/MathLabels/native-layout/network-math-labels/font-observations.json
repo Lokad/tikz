@@ -1,0 +1,80 @@
+{
+  "fonts": [
+    {
+      "number": 49,
+      "name": "lmsy7",
+      "sizeSp": 458752
+    },
+    {
+      "number": 48,
+      "name": "lmsy10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 46,
+      "name": "lmmi7",
+      "sizeSp": 458752
+    },
+    {
+      "number": 45,
+      "name": "lmmi10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 44,
+      "name": "rm-lmr5",
+      "sizeSp": 327680
+    },
+    {
+      "number": 43,
+      "name": "rm-lmr7",
+      "sizeSp": 458752
+    },
+    {
+      "number": 42,
+      "name": "rm-lmr10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 41,
+      "name": "ec-lmr10",
+      "sizeSp": 655360
+    }
+  ],
+  "origins": [
+    "hub",
+    "worker1",
+    "worker2",
+    "worker3",
+    "output",
+    "diagram-label-1",
+    "diagram-label-2",
+    "diagram-label-3",
+    "diagram-label-4",
+    "diagram-label-5"
+  ],
+  "nativeFiles": {
+    "lmsy7.tfm": "3e92767469b4df54c985a533b8064789df60f21ab69d381dbf01bb608e3fbff8",
+    "lm-mathsy.enc": "a2980b38288ef4024b8a3e170c19c9d4e2ee8b7dde97a59e8148291ffd3443db",
+    "lmsy7.pfb": "c434f5fb70bc41978ac63c673556a2d913211f297947aa1f0d18b93da25ebe4b",
+    "lmsy10.tfm": "11f429b2c08f944627faa5942277297d7f8fef40edae2bae46cb238b838400ba",
+    "lmsy10.pfb": "9969fd5ae5281ad40cdf6d8caf50084636a43ed7b7647e0e9e1195e859cec7cc",
+    "lmmi7.tfm": "8548d4d19fc2b3671a5e11526f9013df8828b5b9b0f8277dc0ae7148bd1d33f5",
+    "lm-mathit.enc": "0d7b9e82ad6274470876761c22573c28db1f1b32d647b688230b3a366f0e373b",
+    "lmmi7.pfb": "7c646a6a841c2e99909f7d5673d778fc104e43efad281ea0b5687636c544c639",
+    "lmmi10.tfm": "d9fce8963e8cb075bf31a5715a8f4a54688f7026b3a06e882ff2eb9c0d110320",
+    "lmmi10.pfb": "c24662506b402f3e0033cc75eb746eb490a1b7477e6b3ef52053f5025ec0fc57",
+    "rm-lmr5.tfm": "420a4fc1563b171e5a791bb71211d85e6bf62fd2f2ed2a7f34f742049d6e5071",
+    "lm-rm.enc": "8bf8f9bd48d49aa3f3c597716908854e4d9207b009c109e6d9c5887feb856844",
+    "lmr5.pfb": "584815958b6e66cf4ec2b590f93bd853117f862f4f0fa8b06f4ee6eb6035e845",
+    "rm-lmr7.tfm": "373a4f72b5a088f9caee2cfd75adb2b25116e0cba3ad2bfa99b5f8a7e902a482",
+    "lmr7.pfb": "cf94a1a79a32c446f11e585164463234a515721d509d2f2cfb0ab61f6f744ddc",
+    "rm-lmr10.tfm": "50dc8240a67003c1ec5bcd55f703c87189aeab0d199c42b4dc3e141a02488998",
+    "lmr10.pfb": "84eb01245abb17c0530ca3909427256d73df8bed2d7243b9f2717ca08c010ac8",
+    "ec-lmr10.tfm": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5",
+    "lm-ec.enc": "7f9932c402d22a937b853406cfdf4166b80260e3ff21a03fe9a4c05105a2918c"
+  },
+  "mapSha256": "d40c55f3e00607c98ae0d99112dcb56e18e9b9ea8febac443cfd6533469ac90d",
+  "glyphs": 44,
+  "rules": 2
+}

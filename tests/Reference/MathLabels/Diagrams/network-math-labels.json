@@ -1,0 +1,1697 @@
+{
+  "sourceSha256": "7b4faa43cb8f0fbb9338629b03d4fc7ce4cca6924c0b3f4fe927635ebfe83702",
+  "nodes": [
+    {
+      "name": "hub",
+      "anchor": "center",
+      "widthSp": 2470778,
+      "heightSp": 451461,
+      "depthSp": 127430,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "0.0pt",
+        "0.0pt"
+      ]
+    },
+    {
+      "name": "worker1",
+      "anchor": "center",
+      "widthSp": 1891213,
+      "heightSp": 533458,
+      "depthSp": 162660,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "73.92259pt",
+        "-42.67911pt"
+      ]
+    },
+    {
+      "name": "worker2",
+      "anchor": "center",
+      "widthSp": 1891213,
+      "heightSp": 533458,
+      "depthSp": 162660,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "85.35823pt",
+        "0.0pt"
+      ]
+    },
+    {
+      "name": "worker3",
+      "anchor": "center",
+      "widthSp": 1891213,
+      "heightSp": 533458,
+      "depthSp": 162660,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "73.92259pt",
+        "42.67911pt"
+      ]
+    },
+    {
+      "name": "output",
+      "anchor": "west",
+      "widthSp": 1665561,
+      "heightSp": 552203,
+      "depthSp": 361856,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "131.08261pt",
+        "0.0pt"
+      ]
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "south",
+      "widthSp": 623722,
+      "heightSp": 282168,
+      "depthSp": 127431,
+      "frame": [
+        "1.0",
+        "0.0",
+        "0.0",
+        "1.0",
+        "38.18849pt",
+        "0.0pt"
+      ]
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "south",
+      "widthSp": 623722,
+      "heightSp": 282168,
+      "depthSp": 127431,
+      "frame": [
+        "0.86603",
+        "-0.49994",
+        "0.49994",
+        "0.86603",
+        "36.1898pt",
+        "-20.89236pt"
+      ]
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "south",
+      "widthSp": 1788041,
+      "heightSp": 416790,
+      "depthSp": 127431,
+      "frame": [
+        "0.82729",
+        "0.5617",
+        "-0.5617",
+        "0.82729",
+        "120.82175pt",
+        "-26.4264pt"
+      ]
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "south",
+      "widthSp": 623722,
+      "heightSp": 282168,
+      "depthSp": 127431,
+      "frame": [
+        "0.86603",
+        "0.49994",
+        "-0.49994",
+        "0.86603",
+        "36.1898pt",
+        "20.89236pt"
+      ]
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "south",
+      "widthSp": 1788041,
+      "heightSp": 416790,
+      "depthSp": 127431,
+      "frame": [
+        "0.82729",
+        "-0.5617",
+        "0.5617",
+        "0.82729",
+        "120.82175pt",
+        "26.4264pt"
+      ]
+    }
+  ],
+  "anchors": [
+    {
+      "name": "hub",
+      "anchor": "text",
+      "xSp": -1235389,
+      "ySp": -162015
+    },
+    {
+      "name": "hub",
+      "anchor": "center",
+      "xSp": 0,
+      "ySp": 0
+    },
+    {
+      "name": "hub",
+      "anchor": "north",
+      "xSp": 0,
+      "ySp": 499160
+    },
+    {
+      "name": "hub",
+      "anchor": "south",
+      "xSp": 0,
+      "ySp": -499160
+    },
+    {
+      "name": "hub",
+      "anchor": "west",
+      "xSp": -1445104,
+      "ySp": 0
+    },
+    {
+      "name": "hub",
+      "anchor": "east",
+      "xSp": 1445104,
+      "ySp": 0
+    },
+    {
+      "name": "hub",
+      "anchor": "north west",
+      "xSp": -1445104,
+      "ySp": 499160
+    },
+    {
+      "name": "hub",
+      "anchor": "north east",
+      "xSp": 1445104,
+      "ySp": 499160
+    },
+    {
+      "name": "hub",
+      "anchor": "south west",
+      "xSp": -1445104,
+      "ySp": -499160
+    },
+    {
+      "name": "hub",
+      "anchor": "south east",
+      "xSp": 1445104,
+      "ySp": -499160
+    },
+    {
+      "name": "hub",
+      "anchor": "base",
+      "xSp": 0,
+      "ySp": -162015
+    },
+    {
+      "name": "hub",
+      "anchor": "base west",
+      "xSp": -1445104,
+      "ySp": -162015
+    },
+    {
+      "name": "hub",
+      "anchor": "base east",
+      "xSp": 1445104,
+      "ySp": -162015
+    },
+    {
+      "name": "hub",
+      "anchor": "mid",
+      "xSp": 0,
+      "ySp": -20933
+    },
+    {
+      "name": "hub",
+      "anchor": "mid west",
+      "xSp": -1445104,
+      "ySp": -20933
+    },
+    {
+      "name": "hub",
+      "anchor": "mid east",
+      "xSp": 1445104,
+      "ySp": -20933
+    },
+    {
+      "name": "worker1",
+      "anchor": "text",
+      "xSp": 3898985,
+      "ySp": -2982417
+    },
+    {
+      "name": "worker1",
+      "anchor": "center",
+      "xSp": 4844591,
+      "ySp": -2797018
+    },
+    {
+      "name": "worker1",
+      "anchor": "north",
+      "xSp": 4844591,
+      "ySp": -2239244
+    },
+    {
+      "name": "worker1",
+      "anchor": "south",
+      "xSp": 4844591,
+      "ySp": -3354792
+    },
+    {
+      "name": "worker1",
+      "anchor": "west",
+      "xSp": 3339741,
+      "ySp": -2797018
+    },
+    {
+      "name": "worker1",
+      "anchor": "east",
+      "xSp": 6349441,
+      "ySp": -2797018
+    },
+    {
+      "name": "worker1",
+      "anchor": "north west",
+      "xSp": 3339741,
+      "ySp": -2239244
+    },
+    {
+      "name": "worker1",
+      "anchor": "north east",
+      "xSp": 6349441,
+      "ySp": -2239244
+    },
+    {
+      "name": "worker1",
+      "anchor": "south west",
+      "xSp": 3339741,
+      "ySp": -3354792
+    },
+    {
+      "name": "worker1",
+      "anchor": "south east",
+      "xSp": 6349441,
+      "ySp": -3354792
+    },
+    {
+      "name": "worker1",
+      "anchor": "base",
+      "xSp": 4844591,
+      "ySp": -2982417
+    },
+    {
+      "name": "worker1",
+      "anchor": "base west",
+      "xSp": 3339741,
+      "ySp": -2982417
+    },
+    {
+      "name": "worker1",
+      "anchor": "base east",
+      "xSp": 6349441,
+      "ySp": -2982417
+    },
+    {
+      "name": "worker1",
+      "anchor": "mid",
+      "xSp": 4844591,
+      "ySp": -2841335
+    },
+    {
+      "name": "worker1",
+      "anchor": "mid west",
+      "xSp": 3339741,
+      "ySp": -2841335
+    },
+    {
+      "name": "worker1",
+      "anchor": "mid east",
+      "xSp": 6349441,
+      "ySp": -2841335
+    },
+    {
+      "name": "worker2",
+      "anchor": "text",
+      "xSp": 4648431,
+      "ySp": -185399
+    },
+    {
+      "name": "worker2",
+      "anchor": "center",
+      "xSp": 5594037,
+      "ySp": 0
+    },
+    {
+      "name": "worker2",
+      "anchor": "north",
+      "xSp": 5594037,
+      "ySp": 557774
+    },
+    {
+      "name": "worker2",
+      "anchor": "south",
+      "xSp": 5594037,
+      "ySp": -557774
+    },
+    {
+      "name": "worker2",
+      "anchor": "west",
+      "xSp": 4089187,
+      "ySp": 0
+    },
+    {
+      "name": "worker2",
+      "anchor": "east",
+      "xSp": 7098887,
+      "ySp": 0
+    },
+    {
+      "name": "worker2",
+      "anchor": "north west",
+      "xSp": 4089187,
+      "ySp": 557774
+    },
+    {
+      "name": "worker2",
+      "anchor": "north east",
+      "xSp": 7098887,
+      "ySp": 557774
+    },
+    {
+      "name": "worker2",
+      "anchor": "south west",
+      "xSp": 4089187,
+      "ySp": -557774
+    },
+    {
+      "name": "worker2",
+      "anchor": "south east",
+      "xSp": 7098887,
+      "ySp": -557774
+    },
+    {
+      "name": "worker2",
+      "anchor": "base",
+      "xSp": 5594037,
+      "ySp": -185399
+    },
+    {
+      "name": "worker2",
+      "anchor": "base west",
+      "xSp": 4089187,
+      "ySp": -185399
+    },
+    {
+      "name": "worker2",
+      "anchor": "base east",
+      "xSp": 7098887,
+      "ySp": -185399
+    },
+    {
+      "name": "worker2",
+      "anchor": "mid",
+      "xSp": 5594037,
+      "ySp": -44317
+    },
+    {
+      "name": "worker2",
+      "anchor": "mid west",
+      "xSp": 4089187,
+      "ySp": -44317
+    },
+    {
+      "name": "worker2",
+      "anchor": "mid east",
+      "xSp": 7098887,
+      "ySp": -44317
+    },
+    {
+      "name": "worker3",
+      "anchor": "text",
+      "xSp": 3898985,
+      "ySp": 2611619
+    },
+    {
+      "name": "worker3",
+      "anchor": "center",
+      "xSp": 4844591,
+      "ySp": 2797018
+    },
+    {
+      "name": "worker3",
+      "anchor": "north",
+      "xSp": 4844591,
+      "ySp": 3354792
+    },
+    {
+      "name": "worker3",
+      "anchor": "south",
+      "xSp": 4844591,
+      "ySp": 2239244
+    },
+    {
+      "name": "worker3",
+      "anchor": "west",
+      "xSp": 3339741,
+      "ySp": 2797018
+    },
+    {
+      "name": "worker3",
+      "anchor": "east",
+      "xSp": 6349441,
+      "ySp": 2797018
+    },
+    {
+      "name": "worker3",
+      "anchor": "north west",
+      "xSp": 3339741,
+      "ySp": 3354792
+    },
+    {
+      "name": "worker3",
+      "anchor": "north east",
+      "xSp": 6349441,
+      "ySp": 3354792
+    },
+    {
+      "name": "worker3",
+      "anchor": "south west",
+      "xSp": 3339741,
+      "ySp": 2239244
+    },
+    {
+      "name": "worker3",
+      "anchor": "south east",
+      "xSp": 6349441,
+      "ySp": 2239244
+    },
+    {
+      "name": "worker3",
+      "anchor": "base",
+      "xSp": 4844591,
+      "ySp": 2611619
+    },
+    {
+      "name": "worker3",
+      "anchor": "base west",
+      "xSp": 3339741,
+      "ySp": 2611619
+    },
+    {
+      "name": "worker3",
+      "anchor": "base east",
+      "xSp": 6349441,
+      "ySp": 2611619
+    },
+    {
+      "name": "worker3",
+      "anchor": "mid",
+      "xSp": 4844591,
+      "ySp": 2752701
+    },
+    {
+      "name": "worker3",
+      "anchor": "mid west",
+      "xSp": 3339741,
+      "ySp": 2752701
+    },
+    {
+      "name": "worker3",
+      "anchor": "mid east",
+      "xSp": 6349441,
+      "ySp": 2752701
+    },
+    {
+      "name": "output",
+      "anchor": "text",
+      "xSp": 9635636,
+      "ySp": -95173
+    },
+    {
+      "name": "output",
+      "anchor": "center",
+      "xSp": 10468416,
+      "ySp": 0
+    },
+    {
+      "name": "output",
+      "anchor": "north",
+      "xSp": 10468416,
+      "ySp": 666744
+    },
+    {
+      "name": "output",
+      "anchor": "south",
+      "xSp": 10468416,
+      "ySp": -666744
+    },
+    {
+      "name": "output",
+      "anchor": "west",
+      "xSp": 8590630,
+      "ySp": 0
+    },
+    {
+      "name": "output",
+      "anchor": "east",
+      "xSp": 12346202,
+      "ySp": 0
+    },
+    {
+      "name": "output",
+      "anchor": "north west",
+      "xSp": 8590630,
+      "ySp": 666744
+    },
+    {
+      "name": "output",
+      "anchor": "north east",
+      "xSp": 12346202,
+      "ySp": 666744
+    },
+    {
+      "name": "output",
+      "anchor": "south west",
+      "xSp": 8590630,
+      "ySp": -666744
+    },
+    {
+      "name": "output",
+      "anchor": "south east",
+      "xSp": 12346202,
+      "ySp": -666744
+    },
+    {
+      "name": "output",
+      "anchor": "base",
+      "xSp": 10468416,
+      "ySp": -95173
+    },
+    {
+      "name": "output",
+      "anchor": "base west",
+      "xSp": 8590630,
+      "ySp": -95173
+    },
+    {
+      "name": "output",
+      "anchor": "base east",
+      "xSp": 12346202,
+      "ySp": -95173
+    },
+    {
+      "name": "output",
+      "anchor": "mid",
+      "xSp": 10468416,
+      "ySp": 45909
+    },
+    {
+      "name": "output",
+      "anchor": "mid west",
+      "xSp": 8590630,
+      "ySp": 45909
+    },
+    {
+      "name": "output",
+      "anchor": "mid east",
+      "xSp": 12346202,
+      "ySp": 45909
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "text",
+      "xSp": 2190860,
+      "ySp": 358967
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "center",
+      "xSp": 2502721,
+      "ySp": 436336
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "north",
+      "xSp": 2502721,
+      "ySp": 872672
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "south",
+      "xSp": 2502721,
+      "ySp": 0
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "west",
+      "xSp": 1959323,
+      "ySp": 436336
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "east",
+      "xSp": 3046119,
+      "ySp": 436336
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "north west",
+      "xSp": 1959323,
+      "ySp": 872672
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "north east",
+      "xSp": 3046119,
+      "ySp": 872672
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "south west",
+      "xSp": 1959323,
+      "ySp": 0
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "south east",
+      "xSp": 3046119,
+      "ySp": 0
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "base",
+      "xSp": 2502721,
+      "ySp": 358967
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "base west",
+      "xSp": 1959323,
+      "ySp": 358967
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "base east",
+      "xSp": 3046119,
+      "ySp": 358967
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "mid",
+      "xSp": 2502721,
+      "ySp": 500049
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "mid west",
+      "xSp": 1959323,
+      "ySp": 500049
+    },
+    {
+      "name": "diagram-label-1",
+      "anchor": "mid east",
+      "xSp": 3046119,
+      "ySp": 500049
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "text",
+      "xSp": 2281116,
+      "ySp": -902416
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "center",
+      "xSp": 2589875,
+      "ySp": -991324
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "north",
+      "xSp": 2808017,
+      "ySp": -613445
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "south",
+      "xSp": 2371735,
+      "ySp": -1369202
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "west",
+      "xSp": 2119278,
+      "ySp": -719659
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "east",
+      "xSp": 3060473,
+      "ySp": -1262990
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "north west",
+      "xSp": 2337420,
+      "ySp": -341780
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "north east",
+      "xSp": 3278615,
+      "ySp": -885111
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "south west",
+      "xSp": 1901138,
+      "ySp": -1097537
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "south east",
+      "xSp": 2842333,
+      "ySp": -1640868
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "base",
+      "xSp": 2551196,
+      "ySp": -1058327
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "base west",
+      "xSp": 2080599,
+      "ySp": -786662
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "base east",
+      "xSp": 3021794,
+      "ySp": -1329993
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "mid",
+      "xSp": 2621728,
+      "ySp": -936147
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "mid west",
+      "xSp": 2151131,
+      "ySp": -664482
+    },
+    {
+      "name": "diagram-label-2",
+      "anchor": "mid east",
+      "xSp": 3092326,
+      "ySp": -1207813
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "text",
+      "xSp": 6976930,
+      "ySp": -1937089
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "center",
+      "xSp": 7635273,
+      "ySp": -1315222
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "north",
+      "xSp": 7352371,
+      "ySp": -898562
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "south",
+      "xSp": 7918174,
+      "ySp": -1731881
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "west",
+      "xSp": 6704116,
+      "ySp": -1947453
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "east",
+      "xSp": 8566430,
+      "ySp": -682989
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "north west",
+      "xSp": 6421214,
+      "ySp": -1530793
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "north east",
+      "xSp": 8283528,
+      "ySp": -266329
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "south west",
+      "xSp": 6987017,
+      "ySp": -2364112
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "south east",
+      "xSp": 8849331,
+      "ySp": -1099648
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "base",
+      "xSp": 7716540,
+      "ySp": -1434913
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "base west",
+      "xSp": 6785383,
+      "ySp": -2067144
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "base east",
+      "xSp": 8647697,
+      "ySp": -802680
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "mid",
+      "xSp": 7637294,
+      "ySp": -1318198
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "mid west",
+      "xSp": 6706137,
+      "ySp": -1950429
+    },
+    {
+      "name": "diagram-label-3",
+      "anchor": "mid east",
+      "xSp": 8568451,
+      "ySp": -685965
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "text",
+      "xSp": 1922194,
+      "ySp": 1524166
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "center",
+      "xSp": 2153595,
+      "ySp": 1747080
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "north",
+      "xSp": 1935453,
+      "ySp": 2124959
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "south",
+      "xSp": 2371735,
+      "ySp": 1369202
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "west",
+      "xSp": 1682998,
+      "ySp": 1475415
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "east",
+      "xSp": 2624193,
+      "ySp": 2018746
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "north west",
+      "xSp": 1464856,
+      "ySp": 1853294
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "north east",
+      "xSp": 2406051,
+      "ySp": 2396625
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "south west",
+      "xSp": 1901138,
+      "ySp": 1097537
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "south east",
+      "xSp": 2842333,
+      "ySp": 1640868
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "base",
+      "xSp": 2192274,
+      "ySp": 1680077
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "base west",
+      "xSp": 1721677,
+      "ySp": 1408412
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "base east",
+      "xSp": 2662872,
+      "ySp": 1951743
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "mid",
+      "xSp": 2121742,
+      "ySp": 1802257
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "mid west",
+      "xSp": 1651145,
+      "ySp": 1530592
+    },
+    {
+      "name": "diagram-label-4",
+      "anchor": "mid east",
+      "xSp": 2592340,
+      "ySp": 2073923
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "text",
+      "xSp": 7380198,
+      "ySp": 2531025
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "center",
+      "xSp": 8201075,
+      "ySp": 2148540
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "north",
+      "xSp": 8483977,
+      "ySp": 2565200
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "south",
+      "xSp": 7918174,
+      "ySp": 1731881
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "west",
+      "xSp": 7269918,
+      "ySp": 2780771
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "east",
+      "xSp": 9132232,
+      "ySp": 1516307
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "north west",
+      "xSp": 7552820,
+      "ySp": 3197431
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "north east",
+      "xSp": 9415134,
+      "ySp": 1932967
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "south west",
+      "xSp": 6987017,
+      "ySp": 2364112
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "south east",
+      "xSp": 8849331,
+      "ySp": 1099648
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "base",
+      "xSp": 8119808,
+      "ySp": 2028849
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "base west",
+      "xSp": 7188651,
+      "ySp": 2661080
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "base east",
+      "xSp": 9050965,
+      "ySp": 1396616
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "mid",
+      "xSp": 8199054,
+      "ySp": 2145564
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "mid west",
+      "xSp": 7267897,
+      "ySp": 2777795
+    },
+    {
+      "name": "diagram-label-5",
+      "anchor": "mid east",
+      "xSp": 9130211,
+      "ySp": 1513331
+    }
+  ],
+  "pictureBox": [
+    [
+      "14883571",
+      "8528758",
+      "0"
+    ]
+  ],
+  "scalarCalls": [
+    {
+      "ordinal": 1,
+      "name": "\\angle",
+      "printed": "-30.0"
+    },
+    {
+      "ordinal": 2,
+      "name": "\\xoffset",
+      "printed": "2.59808"
+    },
+    {
+      "ordinal": 3,
+      "name": "\\yoffset",
+      "printed": "-1.5"
+    },
+    {
+      "ordinal": 4,
+      "name": "\\angle",
+      "printed": "0.0"
+    },
+    {
+      "ordinal": 5,
+      "name": "\\xoffset",
+      "printed": "3.0"
+    },
+    {
+      "ordinal": 6,
+      "name": "\\yoffset",
+      "printed": "0.0"
+    },
+    {
+      "ordinal": 7,
+      "name": "\\angle",
+      "printed": "30.0"
+    },
+    {
+      "ordinal": 8,
+      "name": "\\xoffset",
+      "printed": "2.59808"
+    },
+    {
+      "ordinal": 9,
+      "name": "\\yoffset",
+      "printed": "1.5"
+    }
+  ],
+  "internalScalarCalls": [
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1.25"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "-1.0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1.925"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1.9237"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.8"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2.2"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2.096774"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": ".8"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".75"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": ".8"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".75"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.325"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "5.4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.25"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2.828427"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "3.191538"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@z",
+      "printed": "60"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "3.6"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4.95"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": ".5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "4"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "1"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\pgf@temp@a",
+      "printed": "2.3"
+    },
+    {
+      "name": "\\pgf@temp@b",
+      "printed": "0"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.4"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.4"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\tikz@time",
+      "printed": "0.5"
+    },
+    {
+      "name": "\\pgf@temp",
+      "printed": "0.5"
+    }
+  ]
+}

@@ -8,6 +8,8 @@ import {captureProcess} from './qualification-process.mjs';
 import {edgeAnchors,edgeSanitize} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 const cases={
+ 'network-math-labels':{mathEvidence:true,names:['hub','worker1','worker2','worker3','output',...Array.from({length:5},(_,i)=>'diagram-label-'+(i+1))],hash:'7b4faa43cb8f0fbb9338629b03d4fc7ce4cca6924c0b3f4fe927635ebfe83702',scalarCalls:Array.from({length:3},()=>['\\angle','\\xoffset','\\yoffset']).flat()},
+ 'math-label-contract':{folder:'MathLabels',mathEvidence:true,names:['identifier','number','greek','operators','grouping','upright','superscript','subscript','paired','reversePaired','nestedScripts','groupedBase','fraction','nestedFraction','fractionScript','root','rootFraction','nestedRoot','mixed','spacing','uppercaseGreek','tallCombined','large','largeFraction','largeNestedScripts','largeTallRoot'],hash:'aa272e4de214b9582ea75ac3ed88b86b7a1ae05de5072d0f7a9d0ee565997aec'},
  'math-function-boundaries':{folder:'MathFunctions',names:['sentinel'],hash:'0c60e598e8d440ba4215f9cf6b958f4d0b136b9a2f4d17c861354dba5a95994e',scalarCalls:Array(1440).fill('\\value')},
  'network-math-functions':{names:['hub','worker1','worker2','worker3','output'],hash:'2263a4ae32200cfcc435655c3447d4eed0f5b7584f0d88584d9b1b17da579bbf',scalarCalls:[...Array.from({length:3},()=>['\\angle','\\xoffset','\\yoffset','\\padding']).flat(),'\\gap']},
  'math-functions-contract':{folder:'MathFunctions',names:['absLiteral','absNegative','absTiny','minimum','maximum','minimumTie','sinZero','sinThirty','cosThirty','sinFortyFive','cosFortyFive','sinNinety','cosNinety','sinHalfTurn','sinThreeQuarters','sinNegative','cosNegative','sinPeriod','cosLarge','sinHalf','cosHalf','sinNegativeHalf','cosNegativeHalf','sinNearPeriod','cosNearHalfTurn','sinSafeMinimum','nested','before','inside','restored','loop1','loop2','loopRestored','sinShiftBoundary','sinLargeNegative','minimumRegister','maximumRegister'],hash:'48927b1ad0cbcf7b139e0eccf4c8daee8358a82362dc46f91dce623232ff6d2e',scalarCalls:[...Array(29).fill('\\value'),'\\probe','\\value','\\value','\\probe','\\value','\\value','\\value','\\value']},
@@ -37,7 +39,8 @@ const selected=process.argv.length===2?Object.keys(cases):process.argv.slice(2);
 assert.ok(selected.length>0&&selected.every(id=>Object.hasOwn(cases,id))&&new Set(selected).size===selected.length,'Only fixed trusted fixtures may be selected.');
 const output=path.join(root,'artifacts/positioning-native/run-'+randomUUID()),artifacts={},commands=[],results=[];
 const save=(f,b)=>writeArtifact(output,f,b,artifacts),bin=path.join(process.env.LOCALAPPDATA,'Programs/MiKTeX/miktex/bin/x64');
-const tools=Object.fromEntries(await Promise.all(['latex','dvisvgm'].map(async name=>{const executable=path.join(bin,name+'.exe');return[name,{executable,sha256:sha256(await readFile(executable))}];})));
+const mathEvidence=selected.some(id=>cases[id].mathEvidence);
+const tools=Object.fromEntries(await Promise.all(['latex','dvisvgm',...(mathEvidence?['dvitype','kpsewhich']:[])].map(async name=>{const executable=path.join(bin,name+'.exe');return[name,{executable,sha256:sha256(await readFile(executable))}];})));
 async function execute(name,args,cwd,tag,expectedError){const p=await captureProcess(tools[name].executable,args,{cwd});await save('commands/'+tag+'.log',edgeSanitize(p.output));
  commands.push({name,args,tag,exitCode:p.exitCode,failure:p.failure});assert.equal(p.failure,null);
  if(expectedError){assert.equal(p.exitCode,1);assert.ok(p.output.includes(expectedError),'Unexpected native failure');}
@@ -52,7 +55,7 @@ await publish(false);
 try{
  const profile=JSON.parse(await readFile(path.join(root,'tests/Reference/NodeShapes/oracle-profile.json')));
  for(const name of Object.keys(tools)){const version=await execute(name,['--version'],root,'version-'+name);
-  assert.ok(version.includes(name==='latex'?profile.latexVersion:profile.dvisvgmVersion),'Changed pinned native tool '+name);}
+  assert.ok(version.includes(name==='latex'?profile.latexVersion:name==='dvisvgm'?profile.dvisvgmVersion:name==='dvitype'?profile.dviTypeVersion:profile.kpseVersion),'Changed pinned native tool '+name);}
  const wrapperSource=await readFile(path.join(root,'tools/TikzPathLabelReference/placement.tex'),'utf8');
  await save('wrapper-source.tex',wrapperSource);await save('script.mjs',await readFile(new URL(import.meta.url)));
  for(const id of selected){const c=cases[id];
@@ -60,6 +63,23 @@ try{
   let wrapper=wrapperSource.replace('straight,quarter,reverse,inverted,bend,absolute,from,target,border,reset,full,zero,one',c.names.join(','));
   const start=wrapper.indexOf('        \\labelanchor{\\labelname}{text}'),end=wrapper.indexOf('      }%',start);assert.ok(start>=0&&end>start);
   wrapper=wrapper.slice(0,start)+edgeAnchors.map(a=>'        \\labelanchor{\\labelname}{'+a+'}').join('\n')+'\n'+wrapper.slice(end);
+  if(c.mathEvidence){
+   // Reuse native node origins, including anonymous path labels; no candidate layout.
+   wrapper=wrapper.replace('\\newbox\\labelpicture','\\newbox\\labelpicture\n\\newcount\\diagramlabelcounter');
+   wrapper=wrapper.replace('      \\pgfgettransformentries',String.raw`      \edef\labelnodeid{#3}%
+      \ifx\labelnodeid\pgfutil@empty
+        \global\advance\diagramlabelcounter by 1
+        \edef\labelnodeid{diagram-label-\the\diagramlabelcounter}%
+      \fi
+      \def\labelshape{#1}\def\labelcoordinate{coordinate}%
+      \ifx\labelshape\labelcoordinate\else
+        \setbox\pgfnodeparttextbox=\hbox{\special{lokad-node-origin \labelnodeid}\box\pgfnodeparttextbox}%
+      \fi
+      \pgfgettransformentries`);
+   wrapper=wrapper.replace('PATH-LABEL-NODE #3|','PATH-LABEL-NODE \\labelnodeid|').replace('\\labeloriginalnode{#1}{#2}{#3}{#4}','\\labeloriginalnode{#1}{#2}{\\labelnodeid}{#4}');
+  }
+  const mathMapFile=c.mathEvidence?(await execute('kpsewhich',['lm.map'],root,id+'-font-map')).trim():null;
+  const mathMap=c.mathEvidence?await readFile(mathMapFile):null;if(mathMap)await save(id+'/fonts/lm.map',mathMap);
   const svg={};let native;
   for(const state of ['plain','probed']){
    const folder=path.join(output,id,state);await mkdir(folder,{recursive:true});await save(id+'/'+state+'/case.tikz',source);
@@ -81,9 +101,23 @@ try{
     const f=path.resolve(folder,line.slice(6));if(f.startsWith(output+path.sep))continue;const key=path.basename(f),h=sha256(await readFile(f));
     if(inputs[key])assert.equal(inputs[key],h);inputs[key]=h;}
    await save(id+'/'+state+'/native-inputs.json',JSON.stringify(inputs,null,2)+'\n');
-   await execute('dvisvgm',['--no-fonts','--exact-bbox','--output=case.svg','case.dvi'],folder,id+'-'+state+'-svg');
+   await execute('dvisvgm',['--no-fonts','--exact-bbox',...(mathMapFile?['--fontmap='+mathMapFile,'--cache=none']:[]),'--output=case.svg','case.dvi'],folder,id+'-'+state+'-svg');
    svg[state]=await readFile(path.join(folder,'case.svg'));await save(id+'/'+state+'/case.svg',svg[state]);
    if(state==='probed'){
+    if(c.mathEvidence){
+     const trace=edgeSanitize(await execute('dvitype',['-disable-installer','-out-mode=4','case.dvi'],folder,id+'-glyph-trace'));await save(id+'/native-positions.log',trace);
+     const fonts=[...trace.matchAll(/^Font (\d+): ([A-Za-z0-9-]+)---loaded at size (\d+) DVI units/gm)].map(m=>({number:Number(m[1]),name:m[2],sizeSp:integer(m[3])}));
+     assert.ok(fonts.length>0&&fonts.length<=32);assert.equal(new Set(fonts.map(f=>f.number)).size,fonts.length);
+     const origins=[...trace.matchAll(/xxx 'lokad-node-origin ([A-Za-z0-9_-]+)'/g)].map(m=>m[1]);assert.deepEqual(origins,c.names);
+     const map=mathMap;
+     const nativeFiles={};
+     for(const font of fonts){
+      const tfm=font.name+'.tfm',row=map.toString().split(/\r?\n/).find(l=>l.startsWith(font.name+' '));assert.ok(row,'Missing pinned map entry: '+font.name);
+      const files=[tfm,...[...row.matchAll(/<<?([A-Za-z0-9_.-]+\.(?:enc|pfb))/g)].map(m=>m[1])];assert.ok(files.length>=2&&files.length<=4);
+      for(const file of files){if(nativeFiles[file])continue;const location=(await execute('kpsewhich',[file],root,id+'-font-'+file.replaceAll('.','-'))).trim(),bytes=await readFile(location);assert.ok(bytes.length>0&&bytes.length<=2000000);await save(id+'/fonts/'+file,bytes);nativeFiles[file]=sha256(bytes);}
+     }
+     await save(id+'/math-font-observations.json',JSON.stringify({fonts,origins,nativeFiles,mapSha256:sha256(map),glyphs:(trace.match(/: (?:setchar|set[1-4] )/g)??[]).length,rules:(trace.match(/: (?:setrule|putrule) /g)??[]).length},null,2)+'\n');
+    }
     assert.ok(log.includes('PATH-LABEL-PGF 3.1.11a'));const anchors=records(log,'PATH-LABEL-ANCHOR');assert.equal(anchors.length,c.names.length*edgeAnchors.length);
     const nodes=records(log,'PATH-LABEL-NODE').filter(r=>c.names.includes(r[0]));assert.deepEqual(nodes.map(r=>r[0]),c.names);
     for(const r of nodes){assert.equal(r.length,11);for(const s of r.slice(5,9))assert.ok(Number.isFinite(Number(s))&&Math.abs(Number(s))<=10000);
