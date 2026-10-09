@@ -8,6 +8,10 @@ import {captureProcess} from './qualification-process.mjs';
 import {edgeAnchors,edgeSanitize} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 const cases={
+ 'foreach-overflow-positive':{folder:'Foreach',names:[],hash:'82da67c90c5aabf638c16229e15abca30e76820d8de11b0a4de01e8d02e34118',nativeError:'! Dimension too large.'},
+ 'foreach-overflow-negative':{folder:'Foreach',names:[],hash:'186455aa5ee7833331432de435568e400e93adfe0189b9068d4e56a7663e54a7',nativeError:'! Dimension too large.'},
+ 'flowchart-foreach':{names:['input','stage1','stage2','stage3','output'],hash:'64ee9c160bb1a8c652bc0cdd38c6396abccc1bde6c686d8f109169e3a72803ad'},
+ 'foreach-contract':{folder:'Foreach',names:['asc1','asc2','asc3','down3','down2','down1','step1','step3','step5','literalred','literalblue','spaced','outerbefore','inner3','inner4','outerafter','before1','after1','before2','after2','restored','negative-1','negative-3','negative-5','equal','away1','away3','width8mm','width12mm'],hash:'4f24bda640333cfedb5f357dc19d42abe2e9537d2c67afafa4c75e3ea1911628'},
  'flowchart-basic':{names:['input','check','output','retry'],hash:'16ef26c526d0892f2fa643240cf0e9c4a74ea52a62252d4aff8c8ee792762b54'},
  'network-bent':{names:['queue','primary','replica'],hash:'da163c256834b3c94477f4e368cbe69cc700a867b93a0b73a210d3e7a4aa0e54'},
  'flowchart-transformed':{names:['start','finish'],hash:'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa'},

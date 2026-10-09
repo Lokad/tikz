@@ -53,5 +53,5 @@ both PDF routes, using policies derived only from native encodings. Independent
 checking exports fresh converter output, repeats all 2,053 numeric checks and
 recaptures all 64 current views. Native sensitivity includes first-glyph and
 whole-label controls for both fixtures and arrow-tip controls for the flowchart.
-These calibrated fixtures leave final clean export acceptance and broader TikZ
-compatibility as separate requirements.
+Both fixtures also pass final acceptance in a clean committed source export
+and the integrated ordinary suite. Broader TikZ compatibility remains separate.

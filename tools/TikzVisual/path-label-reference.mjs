@@ -15,6 +15,7 @@ const cases={
  interactions:['seed','first','second','reuse','clipped','continued','nested','escaped']
 };
 const diagrams={
+ 'flowchart-foreach':{hash:'64ee9c160bb1a8c652bc0cdd38c6396abccc1bde6c686d8f109169e3a72803ad',nodes:['input','stage1','stage2','stage3','output'].map(id=>[id,'rectangle']),labels:4,coordinates:['row1','row2','row3','return'],constructionOrder:['input','row1','stage1','row2','stage2','row3','stage3','output','diagram-label-1','diagram-label-2','diagram-label-3','diagram-label-4','return']},
  'flowchart-parameterized':{hash:'9783a9f385b8bcc1ad4cb5a4fe589c85ae179f7e5eb15a7cf68d5450bd7105c6',nodes:[['input','rectangle'],['check','rectangle'],['retry','rectangle'],['output','rectangle']],labels:3,coordinates:['return'],constructionOrder:['input','check','retry','output','diagram-label-1','diagram-label-2','diagram-label-3','return']},
  'style-contract':{folder:'Styles',hash:'082e7ac3084bf8b4a3c6bdd36e190578f2d9039278657f00ea38df245f6c200d',nodes:['single','braced','nested','scoped','restored','ignored','appended'].map(id=>[id,'rectangle']),labels:0,coordinates:[],constructionOrder:['single','braced','nested','scoped','restored','ignored','appended']},
  'flowchart-basic':{hash:'16ef26c526d0892f2fa643240cf0e9c4a74ea52a62252d4aff8c8ee792762b54',nodes:[['input','rectangle'],['check','rectangle'],['output','rectangle'],['retry','rectangle']],labels:3,coordinates:['return'],constructionOrder:['input','check','output','retry','diagram-label-1','diagram-label-2','diagram-label-3','return']},

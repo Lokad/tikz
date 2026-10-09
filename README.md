@@ -38,7 +38,13 @@ their native-only limits. Wider positioning and diagram coverage remains.
 
 [Single-argument styles](docs/STYLES.md) now convert an additional complete
 flowchart. Eleven new named nodes match 176 independently measured native
-anchors. This feature's image/PDF and final-export qualification remain pending.
+anchors. Both style fixtures pass independent image/PDF policies and fresh-output
+acceptance in a clean source export.
+
+[Bounded statement loops](docs/FOREACH.md) now convert a repeated-stage
+flowchart using lists/ranges, scoped bindings, positioning, labels, arrows and
+calculated coordinates. Its native numeric checks pass; image/PDF and final
+clean-source acceptance remain pending.
 
 ```csharp
 using Lokad.TikZ;

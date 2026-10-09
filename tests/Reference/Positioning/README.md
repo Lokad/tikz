@@ -1,4 +1,4 @@
-# Node measurements for positioning and parameterized styles
+# Node measurements for positioning, styles and bounded loops
 
 These observations come from PGF 3.1.11a and trusted, authored sources under
 `tests/Fixtures/Diagrams` and `tests/Fixtures/Positioning`. The complete diagrams
@@ -8,6 +8,12 @@ measured. The parameterized flowchart and focused style contract add eleven node
 and 176 anchors under `Diagrams/flowchart-parameterized.json` and
 `Styles/style-contract.json`. Sources
 are bound by their LF-normalized SHA-256 hashes.
+
+The foreach flowchart adds five named nodes and 80 anchors under
+`Diagrams/flowchart-foreach.json`. `Foreach/foreach-contract.json` adds 29 nodes
+and 464 anchors for literal/grouped/dimension lists, ascending/descending/stepped
+integer ranges, equal/unreachable/opposite-direction endpoints, nested variable
+shadowing and iteration scope restoration.
 
 The iteration command is:
 
@@ -20,6 +26,7 @@ Pass fixed fixture names to measure only affected sources, for example:
 ```text
 node tools/TikzVisual/diagram-positioning-reference.mjs contract registration scoped-unavailable scoped-reloaded
 node tools/TikzVisual/diagram-positioning-reference.mjs flowchart-parameterized style-contract style-missing-argument style-second-parameter
+node tools/TikzVisual/diagram-positioning-reference.mjs flowchart-foreach foreach-contract
 ```
 
 It accepts only fixed repository sources. It reuses the existing native

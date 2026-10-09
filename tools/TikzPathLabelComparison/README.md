@@ -42,6 +42,14 @@ existing native producer, glyph reader and numeric comparison. The flowchart
 also accepts the arrow supplement below; the rectangle-only contract retains
 its node/glyph/paint observations without an arrow-template calibration claim.
 
+`flowchart-foreach` uses the same trusted diagram producer and arrow supplement
+for the declared bounded loop subset. Repeated anonymous path labels receive
+distinct probe identities at runtime. Its 1,765 numeric checks cover nine text
+nodes, 48 glyphs, calculated coordinates, five arrow tips and paint/frame order.
+The focused loop grammar/scope fixture uses the node measurements under
+`tests/Reference/Positioning/Foreach`; numeric iteration evidence remains separate
+from image-policy and final clean-source acceptance.
+
 ```sh
 node tools/TikzVisual/path-label-reference.mjs flowchart-basic
 dotnet run --project tools/TikzPathLabelComparison -c Release -- <exact-native-report-path>
