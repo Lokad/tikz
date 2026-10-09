@@ -6,16 +6,16 @@ import {randomUUID} from 'node:crypto';
 import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
-import {loadPathLabelEvidence} from './path-label-evidence.mjs';
+import {loadLabelImageEvidence} from './diagram-image-evidence.mjs';
 import {runCalcChild,readCalcChild,ownCalcBundle} from './calc-admission-child.mjs';
 import {calcEqual} from './calc-saved-images.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
 import {shapeViews,deriveShapeTrialPolicy,evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
-import {buildPathLabelImageReference,pathLabelPrimaryCaptures,mutatePathLabelImage} from './path-label-image-reference.mjs';
+import {buildPathLabelImageReference,pathLabelPrimaryCaptures,mutatePathLabelImage,pathLabelImageControls,pathLabelControlViews} from './path-label-image-reference.mjs';
 
-assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/calibrate-path-label-primary.mjs <placement|interactions>');
-const id=process.argv[2],output=path.join(root,'artifacts/path-label-primary-calibration/run-'+randomUUID()),artifacts={};
+assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/calibrate-path-label-primary.mjs <placement|interactions|frozen-diagram-arrow-report>');
+const input=process.argv[2],output=path.join(root,'artifacts/path-label-primary-calibration/run-'+randomUUID()),artifacts={};let id=input;
 const save=(p,b)=>writeArtifact(output,p,b,artifacts),json=(p,v)=>save(p,JSON.stringify(v,null,2)+'\n');
 let phase='native-input',renderer,native,frame;const records=[],controls=[];
 const key=v=>v.frame+'/'+v.scale+'x-'+v.background;
@@ -38,16 +38,17 @@ async function observe(prefix,svg,view,target){
  const row={...view,metrics:pair.metrics,regions:pair.regions,repeat:pair.repeat,actualRepeat:pair.actualRepeat,naturalFrames:pair.naturalFrames,images};
  await json(prefix+'/record.json',row);return{file:prefix+'/record.json',...row};
 }
-function envelope(rows){
+function envelope(rows,local=false){
  const result=structuredClone(rows[0]);
- for(const r of rows){assert.equal(r.topology.componentDifference,0,'Native encoding changes topology.');
+ for(const r of rows){if(!local||!native.arrowMetrics)assert.equal(r.topology.componentDifference,0,'Native encoding changes topology.');
   for(const k of['rawChangedPixels','maxRawChannelError','premultipliedChangedPixels','maxPremultipliedChannelError','meanForegroundChannelError'])result[k]=Math.max(result[k],r[k]);
   result.topology.maxEdgeDisplacementRasterPixels=Math.max(result.topology.maxEdgeDisplacementRasterPixels,r.topology.maxEdgeDisplacementRasterPixels);
+  result.topology.componentDifference=Math.max(result.topology.componentDifference,r.topology.componentDifference);
  }return result;
 }
 await publish(false);
 try{
- native=await loadPathLabelEvidence(id);await ownCalcBundle(native,'native',save);
+ native=await loadLabelImageEvidence(input);id=native.report.definition.id;await ownCalcBundle(native,'native',save);
  const handle=await runCalcChild(root,'dotnet',['run','--project','tools/TikzPathLabelOracle','-c','Release','--',path.relative(root,path.join(output,'native/report.json'))],'oracle',save);
  const oracle=await readCalcChild(root,handle,'path-label-native-glyph-oracle');await ownCalcBundle(oracle,'oracle',save);
  assert.equal(oracle.report.converterInvoked,false);assert.equal(oracle.report.nativeInputSha256,native.sha256);
@@ -56,7 +57,7 @@ try{
  frame=await buildPathLabelImageReference(renderer,native,oracle.json('native-glyphs.json'));
  await json('frame.json',{...frame,encodings:frame.encodings.map(({svg,...e})=>e)});
  for(const e of frame.encodings)await save('encodings/'+e.id+'.svg',e.svg);
- for(const file of['calibrate-path-label-primary.mjs','path-label-image-reference.mjs','path-label-evidence.mjs','shape-frame-math.mjs','shape-pdf-camera.mjs',
+ for(const file of['calibrate-path-label-primary.mjs','path-label-image-reference.mjs','path-label-evidence.mjs','diagram-image-evidence.mjs','shape-frame-math.mjs','shape-pdf-camera.mjs',
   'calc-png.mjs','shape-raster-metrics.mjs','shape-primary-trial-policy.mjs','edge-trial-images.mjs','edge-oracle-pair.mjs','arrow-vector-pair.mjs',
   'compare.mjs','shape-oracle-bundle.mjs','calc-admission-child.mjs','calc-saved-images.mjs','browser-profile.json','text-profile.json','node-profile.json','package.json','package-lock.json'])
   await save('source-captures/tools/TikzVisual/'+file,await readFile(path.join(root,'tools/TikzVisual/'+file)));
@@ -70,18 +71,17 @@ try{
  for(const capture of pathLabelPrimaryCaptures){const rows=[];
   for(const view of shapeViews){const matches=records.filter(r=>r.capture===capture&&r.file.endsWith('/'+key(view)+'/record.json'));
    const measured=await Promise.all(matches.map(async r=>JSON.parse(await readFile(path.join(output,r.file))))),base=measured[0];
-   rows.push({...base,...envelope(measured.map(r=>r.metrics)),regions:base.regions.map((r,i)=>({...r,...envelope(measured.map(row=>row.regions[i]))}))});
-  }policies[capture]=deriveShapeTrialPolicy(rows,'Fixed trusted path-label '+id+' native-only decimal encodings; '+capture);
+   rows.push({...base,...envelope(measured.map(r=>r.metrics)),regions:base.regions.map((r,i)=>({...r,...envelope(measured.map(row=>row.regions[i]),true)}))});
+  }policies[capture]=deriveShapeTrialPolicy(rows,'Fixed trusted path-label '+id+' native-only decimal encodings; '+capture,shapeViews,!!native.arrowMetrics);
  }
  await json('policies.json',policies);
  phase='label-sensitivity';
- const glyphs=oracle.json('native-glyphs.json').nodes;let offset=0;const labels=[];
- for(const node of glyphs){if(!['from','target','seed'].includes(node.id))labels.push({nodeId:node.id,target:'native-glyph-'+offset});offset+=node.glyphs.length;}
- for(const label of labels)for(const kind of['missing','quarter-pixel-shift']){
-  const original=frame.encodings[0].svg,altered=await mutatePathLabelImage(renderer,original,{...label,kind}),name=label.nodeId+'/'+kind;
+ const controlViews=pathLabelControlViews(frame)??shapeViews;
+ for(const label of pathLabelImageControls(frame,oracle.json('native-glyphs.json'))){
+  const kind=label.kind,original=frame.encodings[0].svg,altered=await mutatePathLabelImage(renderer,original,label),name=label.nodeId+'/'+kind;
   await save('controls/'+name+'/altered.svg',altered);
   const control={...label,kind,numericChecksBypassed:true,comparisons:[]};controls.push(control);
-  for(const capture of pathLabelPrimaryCaptures)for(const view of shapeViews){
+  for(const capture of pathLabelPrimaryCaptures)for(const view of controlViews){
    const row=await observe('controls/'+name+'/'+capture+'/'+key(view),altered,{...view,capture},label.target);
    const evaluation=evaluateShapeTrial(policies[capture],view,row),base=records.find(r=>r.encoding===frame.encodings[0].id&&r.capture===capture&&r.file.endsWith('/'+key(view)+'/record.json'));
    const a=await readFile(path.join(output,base.file)),baseline=JSON.parse(a);
@@ -91,9 +91,9 @@ try{
    else calcEqual(row.metrics,baseline.metrics,'Invisible control changed metrics.');
    await json(row.file,{...row,observedVisible:visible,evaluation});control.comparisons.push({capture,...view,file:row.file,observedVisible:visible,rejected:!evaluation.passed});
   }
-  console.log(JSON.stringify({phase,node:label.nodeId,kind,views:24}));
+  console.log(JSON.stringify({phase,node:label.nodeId,kind,views:pathLabelPrimaryCaptures.length*controlViews.length}));
  }
  await publish(true,{coverage:{encodings:2,captures:2,nativeViews:records.length,labelControls:controls.length,controlViews:controls.reduce((n,c)=>n+c.comparisons.length,0),regions:frame.regions.length},
-  scope:'Native-only primary/local calibration and first-glyph missing/displacement sensitivity for each path label. PDF gates and current converter acceptance remain open.'});
+  scope:'Native-only primary/local calibration; text controls and, for diagrams, whole-label and native-tip controls in expanded white 1x/4x through both captures. PDF gates and current converter acceptance remain open.'});
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,{error:error.message});process.exitCode=1;}
 finally{await renderer?.browser.close();}

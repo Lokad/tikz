@@ -46,7 +46,8 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs){
   const segments=recover(parsePath(p.d)),matrix=world(p.transforms),paint={...p.paint};
   const width=metrics.driverState.paints[i].widthSp/65536;
   if(paint.stroke!=='none')paint['stroke-width']=String(width);
-  return{...p,id:'native-paint-'+i,d:pathData(segments),segments,matrix,paint};
+  const role=bundle.arrowMetrics?.driverState.paints[i].role;
+  return{...p,id:'native-paint-'+i,d:pathData(segments),segments,matrix,paint,...(role?{role}:{} )};
  });
  const clips=metadata.clips.map(p=>({...p,segments:recover(parsePath(p.d)),matrix:world(p.transforms)}));
  const outlines=new Map(metadata.definitions.map(p=>[p.id,parsePath(p.d)])),uses=[];
@@ -66,7 +67,7 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs){
   // Conservative affine pen/miter envelope; kept separate from PGF picture bounds.
   const m=p.matrix,r=p.paint.stroke==='none'?0:Number(p.paint['stroke-width'])*Number(p.paint['stroke-miterlimit'])/2;
   const dx=r*(Math.abs(m[0])+Math.abs(m[2])),dy=r*(Math.abs(m[1])+Math.abs(m[3]));
-  contributions.push({id:p.id,kind:'path',bound:{minX:bounds.minX-dx,minY:bounds.minY-dy,maxX:bounds.maxX+dx,maxY:bounds.maxY+dy}});
+  contributions.push({id:p.id,kind:'path',...(p.role?{role:p.role}:{}),bound:{minX:bounds.minX-dx,minY:bounds.minY-dy,maxX:bounds.maxX+dx,maxY:bounds.maxY+dy}});
  }
  for(const p of uses){const outline=outlines.get(p.href.slice(1));assert.ok(outline);
   contributions.push({id:p.id,kind:'glyph',nodeId:p.nodeId,font:p.font,slot:p.slot,bound:pathBounds(transformSegments(outline,p.matrix))});
@@ -116,10 +117,27 @@ export function pathLabelPdfFrame(bundle,frame){
  return{camera,regions,registration:'Native PDF save-position, picture bounds, measured wrapper glue and recorded PDF rasters; no candidate fitting.'};
 }
 
-export async function mutatePathLabelImage(renderer,svg,{target,kind}){
- assert.ok(/^native-glyph-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift'].includes(kind));
- return renderer.page.evaluate(({svg,target,kind})=>{const doc=new DOMParser().parseFromString(svg,'image/svg+xml'),p=doc.getElementById(target);if(!p)throw Error('Missing native control glyph.');
-  if(kind==='missing')p.remove();else p.setAttribute('transform','translate(0.25 0) '+p.getAttribute('transform'));
+export function pathLabelImageControls(frame,glyphs){
+ const diagram=frame.regions.some(r=>r.role==='tip'),controls=[];let offset=0;
+ for(const node of glyphs.nodes){
+  const targets=node.glyphs.map((_,i)=>'native-glyph-'+(offset+i)),target=targets[0];
+  if(!['from','target','seed'].includes(node.id)){
+   controls.push(...['missing','quarter-pixel-shift'].map(kind=>({nodeId:node.id,target,kind})));
+   if(diagram)controls.push({nodeId:node.id,target,targets,kind:'missing-label'});
+  }offset+=node.glyphs.length;
+ }
+ if(diagram)for(const r of frame.regions.filter(r=>r.role==='tip'))controls.push(...['missing','quarter-pixel-shift'].map(kind=>({nodeId:r.id,target:r.id,kind})));
+ return controls;
+}
+export function pathLabelControlViews(frame){
+ return frame.regions.some(r=>r.role==='tip')?[1,4].map(scale=>({frame:'expanded',scale,background:'white'})):null;
+}
+export async function mutatePathLabelImage(renderer,svg,{target,kind,targets}){
+ assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label'].includes(kind));
+ if(kind==='missing-label')assert.ok(targets.length>0&&targets.every(t=>/^native-glyph-\d+$/.test(t))&&targets[0]===target);
+ return renderer.page.evaluate(({svg,target,kind,targets})=>{const doc=new DOMParser().parseFromString(svg,'image/svg+xml'),p=doc.getElementById(target);if(!p)throw Error('Missing native control element.');
+  if(kind==='missing')p.remove();else if(kind==='missing-label')for(const id of targets){const e=doc.getElementById(id);if(!e)throw Error('Missing label glyph.');e.remove();}
+  else p.setAttribute('transform','translate(0.25 0) '+p.getAttribute('transform'));
   return new XMLSerializer().serializeToString(doc);
- },{svg,target,kind});
+ },{svg,target,kind,targets});
 }

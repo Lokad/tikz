@@ -65,6 +65,12 @@ along with consecutive moves. PDF rectangles convert their position and size
 operands separately; their finite serialization bounds accumulate per operand.
 Original PDF frames/pages remain retained for image qualification. These
 numeric checks alone do not admit complete diagrams or establish pixel identity.
+Diagram numeric exports retain path/glyph source spans. The existing primary
+calibrator accepts the frozen supplemental report, and the current primary
+comparison links failed native regions back to those spans. Native-only cameras,
+per-region limits, whole-label and tip sensitivity now have independent image
+recapture. Fresh diagram primary comparisons still fail some views; those
+receipts drive the next implementation work before PDF/final admission.
 
 Frozen references retain their original generator/checker source hashes as
 provenance. Changes to the fixture, TeX wrappers or font profile require new

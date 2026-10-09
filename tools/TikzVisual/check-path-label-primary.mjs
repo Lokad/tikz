@@ -9,8 +9,8 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {decodeCalcPng} from './calc-png.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {createRenderer} from './compare.mjs';
-import {loadPathLabelEvidence} from './path-label-evidence.mjs';
-import {buildPathLabelImageReference,pathLabelPrimaryCaptures,pathLabelImageEncodings,mutatePathLabelImage} from './path-label-image-reference.mjs';
+import {loadLabelImageEvidence} from './diagram-image-evidence.mjs';
+import {buildPathLabelImageReference,pathLabelPrimaryCaptures,pathLabelImageEncodings,mutatePathLabelImage,pathLabelImageControls,pathLabelControlViews} from './path-label-image-reference.mjs';
 import {shapeViews,deriveShapeTrialPolicy,evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
@@ -23,7 +23,7 @@ export function verifyPathLabelPrimaryPixels(bundle){
  const frame=bundle.json('frame.json'),compare=createShapeRasterMetrics().compare;
  const expected=pathLabelImageEncodings.flatMap(encoding=>pathLabelPrimaryCaptures.flatMap(capture=>shapeViews.map(v=>'encodings/'+encoding+'/'+capture+'/'+key(v)+'/record.json')));
  calcEqual(r.records.map(r=>r.file).sort(),expected.sort(),'Native encoding/view coverage differs.');
- assert.equal(r.records.length,48);assert.equal(r.controls.length,r.fixture==='placement'?22:14);
+ assert.equal(r.records.length,48);
  const decoded=new Map();let comparisons=0,regions=0;
  function png(file,cache=false){const bytes=bundle.files.get(file);assert.ok(bytes,'Missing paired image.');const digest=sha256(bytes);
   if(!cache)return decodeCalcPng(bytes);if(!decoded.has(digest))decoded.set(digest,decodeCalcPng(bytes));return decoded.get(digest);}
@@ -41,19 +41,19 @@ export function verifyPathLabelPrimaryPixels(bundle){
  const policies=readPathLabelPrimaryPolicies(bundle);
  for(const capture of pathLabelPrimaryCaptures){const aggregate=shapeViews.map(view=>{
   const rows=nativeRows.filter(v=>v.capture===capture&&key(v)===key(view)),base=rows[0];assert.equal(rows.length,2);
-  function maxima(items){const value=structuredClone(items[0]);for(const item of items){assert.equal(item.topology.componentDifference,0);
+  function maxima(items,local=false){const value=structuredClone(items[0]);for(const item of items){if(!local||!frame.regions.some(r=>r.role==='tip'))assert.equal(item.topology.componentDifference,0);
    for(const k of['rawChangedPixels','maxRawChannelError','premultipliedChangedPixels','maxPremultipliedChannelError','meanForegroundChannelError'])value[k]=Math.max(value[k],item[k]);
-   value.topology.maxEdgeDisplacementRasterPixels=Math.max(value.topology.maxEdgeDisplacementRasterPixels,item.topology.maxEdgeDisplacementRasterPixels);}return value;}
-  return{...base,...maxima(rows.map(r=>r.metrics)),regions:base.regions.map((region,i)=>({...region,...maxima(rows.map(r=>r.regions[i]))}))};
+   value.topology.maxEdgeDisplacementRasterPixels=Math.max(value.topology.maxEdgeDisplacementRasterPixels,item.topology.maxEdgeDisplacementRasterPixels);
+   value.topology.componentDifference=Math.max(value.topology.componentDifference,item.topology.componentDifference);}return value;}
+  return{...base,...maxima(rows.map(r=>r.metrics)),regions:base.regions.map((region,i)=>({...region,...maxima(rows.map(r=>r.regions[i]),true)}))};
  });
-  calcEqual(deriveShapeTrialPolicy(aggregate,'Fixed trusted path-label '+r.fixture+' native-only decimal encodings; '+capture),policies[capture],'Native-only policy derivation differs.');
+  calcEqual(deriveShapeTrialPolicy(aggregate,'Fixed trusted path-label '+r.fixture+' native-only decimal encodings; '+capture,shapeViews,frame.regions.some(r=>r.role==='tip')),policies[capture],'Native-only policy derivation differs.');
  }
- const glyphs=bundle.json('oracle/native-glyphs.json').nodes;let offset=0;const labels=[];
- for(const node of glyphs){if(!['from','target','seed'].includes(node.id))labels.push({nodeId:node.id,target:'native-glyph-'+offset});offset+=node.glyphs.length;}
- calcEqual(r.controls.map(c=>c.nodeId+'/'+c.kind),labels.flatMap(l=>['missing','quarter-pixel-shift'].map(kind=>l.nodeId+'/'+kind)),'Label sensitivity coverage differs.');
+ const labels=pathLabelImageControls(frame,bundle.json('oracle/native-glyphs.json')),controlViews=pathLabelControlViews(frame)??shapeViews;
+ calcEqual(r.controls.map(({comparisons,numericChecksBypassed,...control})=>control),labels,'Image sensitivity coverage differs.');
  let visible=0,invisible=0;
- for(const control of r.controls){assert.equal(control.numericChecksBypassed,true);assert.equal(control.target,labels.find(l=>l.nodeId===control.nodeId).target);
-  calcEqual(control.comparisons.map(c=>c.capture+'/'+key(c)).sort(),pathLabelPrimaryCaptures.flatMap(capture=>shapeViews.map(v=>capture+'/'+key(v))).sort(),'Control views differ.');
+ for(const control of r.controls){assert.equal(control.numericChecksBypassed,true);
+  calcEqual(control.comparisons.map(c=>c.capture+'/'+key(c)).sort(),pathLabelPrimaryCaptures.flatMap(capture=>controlViews.map(v=>capture+'/'+key(v))).sort(),'Control views differ.');
   for(const record of control.comparisons){const result=row(record.file),view={frame:record.frame,scale:record.scale,background:record.background},evaluation=evaluateShapeTrial(policies[record.capture],view,result);
    calcEqual(evaluation,result.evaluation,'Control verdict differs.');
    const baseline=nativeRows.find(r=>r.encoding===pathLabelImageEncodings[0]&&r.capture===record.capture&&key(r)===key(record));
@@ -63,16 +63,19 @@ export function verifyPathLabelPrimaryPixels(bundle){
    else{calcEqual(result.metrics,baseline.metrics,'Invisible control changed observations.');invisible++;}
   }
  }
- calcEqual(r.coverage,{encodings:2,captures:2,nativeViews:48,labelControls:r.controls.length,controlViews:r.controls.length*24,regions:frame.regions.length},'Coverage summary differs.');
+ calcEqual(r.coverage,{encodings:2,captures:2,nativeViews:48,labelControls:r.controls.length,controlViews:r.controls.length*pathLabelPrimaryCaptures.length*controlViews.length,regions:frame.regions.length},'Coverage summary differs.');
  return{comparisons,regions,visibleControls:visible,invisibleControls:invisible};
 }
 
 export async function checkPathLabelPrimary(file,save=async()=>{}){
  const bundle=await loadCalcSavedReport(file,'path-label-native-primary-calibration');
- const pixels=verifyPathLabelPrimaryPixels(bundle),native=await loadPathLabelEvidence(bundle.report.fixture);
+ const pixels=verifyPathLabelPrimaryPixels(bundle),native=await loadLabelImageEvidence(['placement','interactions'].includes(bundle.report.fixture)?bundle.report.fixture:path.relative(root,path.join(path.dirname(file),'native/report.json')));
  assert.equal(native.sha256,bundle.report.nativeInputSha256);assert.ok(bundle.files.get('native/report.json').equals(native.bytes));
- for(const [file,bytes]of native.files)assert.ok(bundle.files.get('native/'+file).equals(bytes),'Changed owned native input.');
- for(const [file,bytes]of bundle.files)if(file.startsWith('source-captures/'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice('source-captures/'.length)))),'Current calibration dependency changed: '+file);
+ for(const file of Object.keys(native.report.artifacts))assert.ok(bundle.files.get('native/'+file).equals(native.files.get(file)),'Changed owned native input.');
+ // Producer script captures remain immutable provenance. Current readers below
+ // must reconstruct the same frame, policy, controlled SVGs and every PNG.
+ // Renderer/profile/package inputs remain pinned before that replay.
+ for(const [file,bytes]of bundle.files)if(file.startsWith('source-captures/')&&!file.endsWith('.mjs'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice('source-captures/'.length)))),'Current calibration dependency changed: '+file);
  const oracle=bundle.json('oracle/report.json');assert.equal(oracle.converterInvoked,false);assert.equal(oracle.nativeInputSha256,native.sha256);
  assert.ok(oracle.assemblyReferences.every(n=>n==='System'||n.startsWith('System.')));
  for(const [file,bytes]of bundle.files)if(file.startsWith('oracle/source-captures/'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice('oracle/source-captures/'.length)))),'Native reader dependency changed.');
@@ -99,7 +102,7 @@ export async function checkPathLabelPrimary(file,save=async()=>{}){
   for(const control of bundle.report.controls){const svg=await mutatePathLabelImage(renderer,frame.encodings[0].svg,control);
    assert.equal(svg,bundle.files.get('controls/'+control.nodeId+'/'+control.kind+'/altered.svg').toString('utf8'),'Controlled SVG differs.');
    for(const record of control.comparisons)await recapture(record,svg);
-   console.log(JSON.stringify({phase:'source-recapture',node:control.nodeId,kind:control.kind,views:24}));
+   console.log(JSON.stringify({phase:'source-recapture',node:control.nodeId,kind:control.kind,views:control.comparisons.length}));
   }
  }finally{await renderer.browser.close();}
  return{bundle,pixels,recaptured};

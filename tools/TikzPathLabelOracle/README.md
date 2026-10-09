@@ -31,7 +31,26 @@ every native encoding and controlled source. Every path label has missing and
 quarter-pixel-shift controls on its first glyph. Invisible samples, such as black
 text on black or text outside its clip, remain explicit.
 
-Complete-text sensitivity reuses the already checked primary policies:
+The same primary commands accept an exact frozen supplemental diagram-arrow
+report in place of `placement` or `interactions`. This reuses the three trusted
+complete diagrams, original label observations and independently replayed arrow
+roles. It derives cameras and local glyph/path regions from native evidence.
+Controls cover first-glyph loss/displacement, every whole label and every arrow
+tip, in expanded white 1x/4x views through both capture routes. All 24 positive
+views remain required. The independent checker replays every native/control
+source and decodes whole/local pixels; the current comparison consumes a fresh
+diagram numeric report and retains source spans for failed regions.
+
+Whole-image topology remains strict. For diagrams, a local crop's component
+limit can reflect an independently observed native-only difference in that
+exact view and region. The network fixture has such a one-component difference
+at a tip crop in natural 1x intrinsic captures; no candidate error contributes
+to that limit. Existing glyph-only family policies retain their strict behavior.
+Current diagram primary comparisons still have unresolved failures, so these
+calibrations do not establish complete-diagram conformance or close PDF gates.
+
+Complete-text sensitivity for the original path-label fixtures reuses their
+already checked primary policies:
 
 ```sh
 node tools/TikzVisual/compare-path-label-text-sensitivity.mjs <exact-calibration-report> <exact-independent-check-report>

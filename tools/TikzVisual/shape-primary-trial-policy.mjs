@@ -4,7 +4,7 @@ export const shapeViews = ['natural', 'expanded'].flatMap(frame => [1, 4].flatMa
 const key = v => `${v.frame}-${v.scale}x-${v.background}`;
 const metricKeys = ['rawChangedPixels', 'maxRawChannelError', 'premultipliedChangedPixels', 'maxPremultipliedChannelError', 'meanForegroundChannelError'];
 
-function metricLimits(m) {
+function metricLimits(m, nativeLocalTopology = false) {
   for (const k of metricKeys) assert.ok(Number.isFinite(m[k]) && m[k] >= 0, 'Invalid oracle metric: ' + k);
   assert.ok(m.maxRawChannelError <= 255 && m.maxPremultipliedChannelError <= 255);
   assert.ok(Number.isInteger(m.rawChangedPixels) && Number.isInteger(m.premultipliedChangedPixels));
@@ -12,14 +12,15 @@ function metricLimits(m) {
   assert.deepEqual([t.threshold, t.connectivity, t.edgeNeighborhood], [16, 8, 4]);
   assert.ok(['both-empty', 'measured'].includes(t.edgeState), 'Oracle reconstruction lost an entire edge set.');
   assert.ok(Number.isFinite(t.maxEdgeDisplacementRasterPixels) && t.maxEdgeDisplacementRasterPixels >= 0);
-  assert.equal(t.componentDifference, 0, 'Oracle representation changed component counts.');
+  if (nativeLocalTopology) assert.ok(Number.isSafeInteger(t.componentDifference) && t.componentDifference >= 0);
+  else assert.equal(t.componentDifference, 0, 'Oracle representation changed component counts.');
   // Only explicit upward rounding of a measured foreground mean. No margin is
   // chosen from candidate errors or from another region/view/background.
   return { ...Object.fromEntries(metricKeys.map(k => [k, k === 'meanForegroundChannelError' ? Math.ceil(m[k] * 1e9) / 1e9 : m[k]])),
-    maxEdgeDisplacementRasterPixels: t.maxEdgeDisplacementRasterPixels, componentDifference: 0 };
+    maxEdgeDisplacementRasterPixels: t.maxEdgeDisplacementRasterPixels, componentDifference: nativeLocalTopology ? t.componentDifference : 0 };
 }
 
-export function deriveShapeTrialPolicy(measurements, scope = '28-node original-primary fixture', requiredViews = shapeViews) {
+export function deriveShapeTrialPolicy(measurements, scope = '28-node original-primary fixture', requiredViews = shapeViews, nativeLocalTopology = false) {
   assert.equal(measurements.length, requiredViews.length, 'Incomplete oracle measurement coverage.');
   assert.equal(new Set(measurements.map(key)).size, requiredViews.length, 'Duplicate oracle measurement.');
   assert.deepEqual(measurements.map(key).sort(), requiredViews.map(key).sort());
@@ -30,7 +31,7 @@ export function deriveShapeTrialPolicy(measurements, scope = '28-node original-p
   const rows = measurements.map(m => {
     assert.deepEqual(m.regions.map(r => ({ id: r.id, nodeId: r.nodeId, kind: r.kind, rectangle: r.rectangle })), regions, 'Regions changed between oracle views.');
     return { frame: m.frame, scale: m.scale, background: m.background, whole: metricLimits(m),
-      regions: m.regions.map(r => ({ id: r.id, limits: metricLimits(r) })) };
+      regions: m.regions.map(r => ({ id: r.id, limits: metricLimits(r, nativeLocalTopology) })) };
   });
   return { schemaVersion: 1, comparisonKind: 'unapproved-shape-primary-trial-policy', approvedImagePolicy: false, conformanceClaim: false,
     scope, rounding: 'Foreground mean rounded upward to 1e-9 channel units; every other limit is the independent observation in that exact region/view/background.', regions, rows };

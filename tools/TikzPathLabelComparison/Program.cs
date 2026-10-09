@@ -45,6 +45,12 @@ try
         throw new InvalidDataException("Public/traced conversion parity failed.");
     await Save("actual.svg", Encoding.UTF8.GetBytes(success.Svg));
     await Save("public.svg", Encoding.UTF8.GetBytes(publicSuccess.Svg));
+    if (isDiagram)
+        await Save("source-map.json", JsonSerializer.SerializeToUtf8Bytes(new {
+            paths = trace!.Paths.Select((p, i) => new { index = i, source = p.Source.Location }),
+            glyphs = trace.Drawables.OfType<PaintedGlyphRun>().SelectMany(r => r.Glyphs)
+                .Select((g, i) => new { index = i, source = g.Placement.Source.Location })
+        }, json));
     var checks = NativeLabels.Compare(trace!, success, native, glyphs, svg);
     if (input.Arrows is not null)
         checks = [.. checks, .. NativeArrowComparison.Compare(trace!, success, input.Arrows.RootElement, glyphs.Nodes.Sum(n => n.Glyphs.Length), ignoreTrailingMoves: true)

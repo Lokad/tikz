@@ -58,5 +58,8 @@ at 1x and 4x when serialized to six decimals. Original native SVG coordinate
 serialization changes three pixels at the final `r` of `Anchor` at 4x, despite
 matching glyph identities, outlines and TeX layout. This diagnostic establishes
 the cause for that fixture; native-only calibration must still set image limits.
-Framing and primary/local/PDF image admission remain open. Iteration images
+Native-only primary/local calibration and glyph/whole-label/tip sensitivity now
+have independent decoded-image checking and source recapture. Fresh diagram
+primary comparisons retain source-linked viewport and path differences for
+resolution. Framing and primary/local/PDF image admission remain open. Iteration images
 do not establish a general pixel-perfect or image-conformance claim.

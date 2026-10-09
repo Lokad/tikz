@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {root} from './shape-oracle-bundle.mjs';
 import {calcHash,calcEqual,loadCalcSavedReport} from './calc-saved-images.mjs';
-import {parsePathLabelNative,pathLabelPhysicalCalls,pathLabelDriverState} from './path-label-native.mjs';
+import {parsePathLabelNative,parseDiagramNative,pathLabelPhysicalCalls,pathLabelDriverState} from './path-label-native.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 import {edgeCanonical} from './edge-log.mjs';
 export const pathLabelReference='tests/Reference/PathLabels/native/report.json';
@@ -32,7 +32,8 @@ export async function loadPathLabelEvidence(id='placement'){
 }
 export function verifyPathLabelEvidence(b){
  const ids=b.report.definition.nodes.map(n=>n.id),text=f=>b.files.get(f).toString('utf8');
- const m=parsePathLabelNative(text('svg-probed.log'),ids),p=parsePathLabelNative(text('pdf-probed.log'),ids);calcEqual(m,p,'SVG/PDF native observations differ.');
+ const parse=log=>b.report.role==='diagram-native-reference'?parseDiagramNative(log,b.report.definition):parsePathLabelNative(log,ids);
+ const m=parse(text('svg-probed.log')),p=parse(text('pdf-probed.log'));calcEqual(m,p,'SVG/PDF native observations differ.');
  m.physicalOrder=pathLabelPhysicalCalls(m,text('native-positions.log'),text('pdf-probed.log'));
  m.driverState=pathLabelDriverState(b.files.get('probed-reference.svg'),b.files.get('probed-reference.pdf'));
  calcEqual(m,b.json('metrics.json'),'Reparsed native measurements differ.');
