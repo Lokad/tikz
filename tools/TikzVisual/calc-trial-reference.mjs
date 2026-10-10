@@ -6,6 +6,7 @@ import {loadCalcSavedReport,calcHash,calcEqual} from './calc-saved-images.mjs';
 import {deriveCalcPrimaryPolicy} from './calc-primary-policy.mjs';
 import {deriveCalcPdfPolicy} from './calc-pdf-policy.mjs';
 import {readCalcLayoutEvidence} from './calc-layout-evidence.mjs';
+import {calcCurrentCaptureHash} from './calc-capture-compatibility.mjs';
 export const calcTrialPins={
   primaryCheck:'10b6f62eff01ad5c1c30892af92b74a3477b23562c1f99fe4f9c6c452b8aa0b8',
   primaryCalibration:'625d7361a487be42eb61ff4ae8e7188f6bbb7bcc8761202cafaa87cd615d2885',
@@ -44,11 +45,11 @@ export function readCalcTrialReference(bundle){
   return{cache,pin,native,primaryPolicy,pdfPolicy,primaryFrame:bundle.json('primaryCalibration/native-frame.json'),registration,
     nativeSourceHashes:Object.assign({},...Object.values(reports).map(report=>report.sourceHashes??{}))};
 }
-export async function currentCalcSources(root,hashes){
+export async function currentCalcSources(root,hashes,read=readFile){
   assert.ok(Object.keys(hashes).length>0);for(const[file,digest]of Object.entries(hashes)){
     assert.match(file,/^(?:src\/Lokad\.TikZ\/|tools\/TikzReference\/|tools\/TikzVisual\/|Directory\.Build\.props$|global\.json$)/);
     assert.ok(!file.split('/').some(p=>!p||p==='.'||p==='..'));assert.match(digest,/^[a-f0-9]{64}$/);
-    assert.equal(calcHash(await readFile(path.join(root,file))),digest,'Guarded calc source changed: '+file);
+    calcCurrentCaptureHash(file,digest,await read(path.join(root,file)));
   }
 }
 export async function loadCalcTrialReference(root,file){const bundle=await loadCalcSavedReport(path.resolve(root,file),'calc-native-trial-reference-projection');

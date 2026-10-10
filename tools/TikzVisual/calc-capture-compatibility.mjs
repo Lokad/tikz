@@ -5,8 +5,6 @@ import path from 'node:path';
 import {gunzipSync} from 'node:zlib';
 import {calcHash} from './calc-saved-images.mjs';
 import {decodeCalcNativeCache,calcNativeCacheBounds} from './calc-native-cache-codec.mjs';
-import {calcNativeCacheFile,calcNativeCacheSha256} from './calc-native-cache-pin.mjs';
-import {loadCalcTrialCache} from './calc-trial-cache.mjs';
 
 // Reviewed math mark/alias opt-ins, inspection vocabulary and identical envelope extraction.
 // These are byte-pair enrollments, not permission to accept another tool version.
@@ -19,6 +17,8 @@ export const calcCaptureCompatibility=Object.fromEntries([
  ['shape-primary-trial-policy.mjs','7cbbce06ba3175ecfc4289f6019ca1571355fd70e78e280892adf00877f689c2','b79d3fd5899d76d9e5e9ceab88883f0346338f9e7fa9eb2ffb616309469c5b71']
 ].map(([file,historical,current])=>['tools/TikzVisual/'+file,{historical,current}]));
 calcCaptureCompatibility['tools/TikzReference/Program.cs']={historical:'b479bbfaf21f000d36179d39fe3dc5d80e2f976e1cbfd9a0c13aedaa83dd191e',current:'53297ae818ffbd5cc2f1042e8dd846633698ff79318a8e067af4289ff7134517'};
+// The public-trial consumer now uses this same exact-pair check.
+calcCaptureCompatibility['tools/TikzVisual/calc-trial-reference.mjs']={historical:'a94f03a04694ddd1f7639a96ab54b0db4edc4513b07bffea2dac7e37118c9b6e',current:'94c117ee0bf4bf762b22f709bb56b026522b7c0bcac97d2f661df2fc744819dc'};
 
 export function calcCurrentCaptureHash(file,historical,bytes){
  const actual=calcHash(bytes),pair=calcCaptureCompatibility[file];
@@ -31,6 +31,9 @@ export function calcHistoricalToolRead(root,read=readFile){
  let historical;
  async function capturedSources(){
   if(!historical)historical=(async()=>{
+   // Trial pins are initialized before a historical archive is requested.
+   const {calcNativeCacheFile,calcNativeCacheSha256}=await import('./calc-native-cache-pin.mjs');
+   const {loadCalcTrialCache}=await import('./calc-trial-cache.mjs');
    const compressed=await read(path.join(root,calcNativeCacheFile));assert.ok(compressed.length<=calcNativeCacheBounds.compressed);
    assert.equal(calcHash(compressed),calcNativeCacheSha256,'Unreviewed native cache bytes');
    const cache=decodeCalcNativeCache(gunzipSync(compressed,{maxOutputLength:calcNativeCacheBounds.decoded})),result=new Map();

@@ -6,13 +6,18 @@ import {root} from './shape-oracle-bundle.mjs';
 import {calcHash} from './calc-saved-images.mjs';
 import {calcNativeCacheFile} from './calc-native-cache-pin.mjs';
 import {calcCaptureCompatibility,calcCurrentCaptureHash,calcHistoricalToolRead} from './calc-capture-compatibility.mjs';
+import {currentCalcSources} from './calc-trial-reference.mjs';
+import {captureProcess} from './qualification-process.mjs';
 assert.equal(process.argv.length,2);
+const entry=await captureProcess(process.execPath,['--input-type=module','--eval','import {loadCalcTrialReference} from "./tools/TikzVisual/calc-trial-reference.mjs"; if(typeof loadCalcTrialReference!=="function")throw new Error("Missing trial entry");'],{cwd:root});
+assert.equal(entry.failure,null);assert.equal(entry.exitCode,0,entry.output);
 const historicalRead=calcHistoricalToolRead(root);let acceptedVersions=0;
 for(const[file,pair]of Object.entries(calcCaptureCompatibility)){
  const current=await readFile(path.join(root,file)),historical=await historicalRead(path.join(root,file));
  assert.equal(calcCurrentCaptureHash(file,pair.historical,current),pair.current);assert.equal(calcHash(historical),pair.historical);
  const originalRead=calcHistoricalToolRead(root,f=>path.resolve(f)===path.resolve(root,file)?Promise.resolve(historical):readFile(f));
  assert.ok((await originalRead(path.join(root,file))).equals(historical));assert.equal(calcCurrentCaptureHash(file,pair.historical,historical),pair.historical);acceptedVersions+=2;
+ await currentCalcSources(root,{[file]:pair.historical});await currentCalcSources(root,{[file]:pair.current});
 }
 const file='tools/TikzVisual/arrow-vector-pair.mjs',current=await readFile(path.join(root,file)),pair=calcCaptureCompatibility[file];
 assert.throws(()=>calcCurrentCaptureHash(file,pair.historical,Buffer.concat([current,Buffer.from('\n// unreviewed')])),/Unreviewed current calc capture dependency/);
@@ -20,4 +25,9 @@ assert.throws(()=>calcCurrentCaptureHash(file,'0'.repeat(64),current),/Unreviewe
 const corrupted=calcHistoricalToolRead(root,async f=>{const b=await readFile(f);if(path.resolve(f)!==path.resolve(root,calcNativeCacheFile))return b;
  const changed=Buffer.from(b);changed[changed.length-1]^=1;return changed;});
 await assert.rejects(corrupted(path.join(root,file)),/Unreviewed native cache bytes/);
-console.log(JSON.stringify({validated:true,reviewedTools:Object.keys(calcCaptureCompatibility).length,acceptedVersions,controls:['unknown-current-version','wrong-historical-source','changed-frozen-container']}));
+await assert.rejects(currentCalcSources(root,{[file]:pair.historical},async()=>Buffer.concat([current,Buffer.from('\n// unreviewed')])),/Unreviewed current calc capture dependency/);
+await assert.rejects(currentCalcSources(root,{[file]:'0'.repeat(64)}),/Unreviewed current calc capture dependency/);
+const unchanged='tools/TikzVisual/calc-pdf-policy.mjs',bytes=await readFile(path.join(root,unchanged));
+assert.ok(!Object.hasOwn(calcCaptureCompatibility,unchanged));await currentCalcSources(root,{[unchanged]:calcHash(bytes)});
+await assert.rejects(currentCalcSources(root,{[unchanged]:calcHash(bytes)},async()=>Buffer.concat([bytes,Buffer.from('\n// unreviewed')])),/Unreviewed current calc capture dependency/);
+console.log(JSON.stringify({validated:true,reviewedTools:Object.keys(calcCaptureCompatibility).length,acceptedVersions,currentConsumerChecks:acceptedVersions+1,trialEntryImport:true,controls:['unknown-current-version','wrong-historical-source','changed-frozen-container','consumer-unknown-version','consumer-wrong-historical-source','consumer-changed-unenrolled-source']}));
