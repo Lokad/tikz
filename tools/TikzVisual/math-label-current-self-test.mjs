@@ -33,6 +33,10 @@ controls.push(...runPrimaryReportControls(pdf,p=>verifyMathCurrentPixels(primary
  ['rehashed-wrong-intrinsic-frame',(r,json)=>json(id+'/views/candidate/natural/1x/record.json',v=>v.sourceFrame.x+=.25)],
  ['rehashed-PDF-pixels',(r,json)=>json(r.records[0].file,v=>v.fullPage.rawChangedPixels++)]
 ]));
+if(pdf.report.pixelCheckOwner!==undefined&&id!=='flowchart-styled-labels')controls.push(...runPrimaryReportControls(pdf,p=>verifyMathCurrentPixels(primary,p,pc,dc),[
+ ['missing-independent-PDF-pixel-owner',r=>delete r.pixelCheckOwner],
+ ['forged-independent-PDF-pixel-owner',r=>r.pixelCheckOwner='producer']
+]));
 if(id==='flowchart-styled-labels')controls.push(...runPrimaryReportControls(pdf,p=>verifyMathCurrentPixels(primary,p,pc,dc),[
  ['missing-styled-rule-envelope',(r,json)=>json('calibration/'+id+'/policies.json',p=>delete p.candidate.rulePixels)],
  ['rehashed-styled-rule-envelope',(r,json)=>json('calibration/'+id+'/policies.json',p=>p.candidate.rulePixels[0].regions[0].limits[0]++)]

@@ -9,7 +9,6 @@ import {ownCalcBundle} from './calc-admission-child.mjs';
 import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {shapePdfViews} from './shape-pdf-trial-policy.mjs';
-import {pdfPagePixelReader} from './path-label-pdf-pixels.mjs';
 import {mathFramingFamily} from './math-label-framing.mjs';
 import {mathPdfSources,mathPdfKey,mathPdfCoverage,evaluateMathPdf,measureMathPdf} from './math-label-pdf-images.mjs';
 import {verificationMode} from './verification-views.mjs';
@@ -17,10 +16,10 @@ assert.ok([5,6].includes(process.argv.length),'Usage: compare-math-label-pdf.mjs
 const verification=verificationMode(process.argv[5]);
 const output=path.join(root,'artifacts/math-pdf-current/run-'+randomUUID()),artifacts={},records=[],sources={},cases=[],files=new Map();
 const save=(file,b)=>writeArtifact(output,file,b,artifacts),json=(file,v)=>save(file,JSON.stringify(v,null,2)+'\n');
-let renderer,calibration,checked,publicBundle,phase='inputs',decodedPairs=0,regionChecks=0,sourceRecaptures=0;
+let renderer,calibration,checked,publicBundle,phase='inputs',capturedPairs=0,regionChecks=0,sourceRecaptures=0;
 async function publish(completed,extra={}){
  const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'math-label-current-pdf-iteration',completed,phase:completed?'complete':phase,
-  verificationMode:verification,reusedOriginalReference:verification==='iteration',converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
+  verificationMode:verification,pixelCheckOwner:'independent-current-check',reusedOriginalReference:verification==='iteration',converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
   calibrationSha256:calibration?.sha256,calibrationCheckSha256:checked?.sha256,publicInputSha256:publicBundle?.sha256,
   renderer:renderer?.identity,cases,records,sources,artifacts,...extra},null,2)+'\n');await writeArtifact(output,'report.json',bytes);
  console.log(JSON.stringify({completed,phase,report:path.relative(root,path.join(output,'report.json')).replaceAll('\\','/'),sha256:sha256(bytes)}));
@@ -47,7 +46,6 @@ try{
   const exported=publicBundle.report.records.find(r=>r.id===id);assert.equal(exported.publicTraceParity,true);
   assert.ok(publicBundle.files.get(id+'/source.tikz').equals(calibration.files.get('native/'+id+'/probed/case.tikz')));
   assert.equal(exported.svgSha256,sha256(publicBundle.files.get(id+'/actual.svg')));const summary={id,views:[]};cases.push(summary);phase='current-pdf';
-  const owned={files,json:f=>JSON.parse(files.get(f))},read=pdfPagePixelReader(owned,pdf,'calibration/native/'+id);
   const owner={caseId:id,native,files};
   for(const mode of ['original','candidate'])for(const view of shapePdfViews){
    if(mode==='original'&&verification==='iteration'){
@@ -55,7 +53,7 @@ try{
     const original=calibration.json(index.file),row={...original,mode},file=id+'/views/original/'+mathPdfKey(view)+'/record.json';
     for(const image of Object.values(row.images)){const bytes=calibration.files.get(image);await save(image,bytes);files.set(image,bytes);}
     const evaluation=evaluateMathPdf(policies.original,view,row,owner);await json(file,{...row,evaluation});files.set(file,Buffer.from(JSON.stringify({...row,evaluation})));
-    calcEqual(evaluateMathPdf(policies.original,view,read(file),owner),evaluation);decodedPairs++;regionChecks+=pdf.regions.length;
+    capturedPairs++;regionChecks+=pdf.regions.length;
     const entry={caseId:id,mode,...view,file,passed:evaluation.passed};records.push(entry);summary.views.push(entry);continue;
    }
    const svg=mode==='original'?calibration.files.get(id+'/encodings/original.svg').toString():publicBundle.files.get(id+'/actual.svg').toString();
@@ -63,7 +61,9 @@ try{
    for(const [name,b64]of Object.entries(pair.images)){const f=prefix+'/'+name+'.png',b=Buffer.from(b64,'base64');images[name]=f;await save(f,b);files.set(f,b);}
    const {images:ignored,crops,...result}=pair,row={mode,...result,images},evaluation=evaluateMathPdf(policies[mode],view,row,owner),file=prefix+'/record.json';
    await json(file,{...row,evaluation});files.set(file,Buffer.from(JSON.stringify({...row,evaluation})));
-   const decoded=read(file),independent=evaluateMathPdf(policies[mode],view,decoded,owner);calcEqual(independent,evaluation);decodedPairs++;regionChecks+=pdf.regions.length;
+   // The current checker independently decodes all whole/local PNG metrics
+   // and evaluates the same policy, including styled rule pixel envelopes.
+   capturedPairs++;regionChecks+=pdf.regions.length;
    const replay=await measureMathPdf(renderer,{...context,svg,encoding:mode,view});
    for(const name of ['sourceFrame','clipFrame','whole','regions','fullPage','outsideWholeChangedPixels','repeat'])calcEqual(replay[name],row[name],'Current math PDF source recapture differs.');
    assert.ok(Buffer.from(replay.images['svg-page'],'base64').equals(files.get(images['svg-page'])));sourceRecaptures++;
@@ -72,13 +72,13 @@ try{
   }
  }
  const views=family.length*shapePdfViews.length;
- assert.equal(decodedPairs,views*2);assert.equal(regionChecks,coverage.regions*shapePdfViews.length*2);assert.equal(sourceRecaptures,views*(verification==='iteration'?1:2));
+ assert.equal(capturedPairs,views*2);assert.equal(regionChecks,coverage.regions*shapePdfViews.length*2);assert.equal(sourceRecaptures,views*(verification==='iteration'?1:2));
  for(const[f,digest]of Object.entries(sources))assert.equal(sha256(await readFile(path.join(root,f))),digest,'Source changed during current math PDF checking.');
  const gates=Object.fromEntries(['original','candidate'].map(mode=>[mode,{passed:records.filter(r=>r.mode===mode).every(r=>r.passed),views}]));
- await save('index.html','<!doctype html><meta charset="utf-8"><title>Current math PDF comparisons</title><h1>Current output against native-only PDF limits</h1><p><a href="report.json">Both routes and independent checks</a>. Feature-final acceptance is separate.</p>'+
+ await save('index.html','<!doctype html><meta charset="utf-8"><title>Current math PDF comparisons</title><h1>Current output against native-only PDF limits</h1><p><a href="report.json">Both captured routes and source recaptures</a>. Independent pixel checking and feature-final acceptance remain required.</p>'+
   cases.map(c=>'<section><h2>'+c.id+'</h2><p><img width="1000" src="'+c.id+'/views/candidate/expanded/1x/sheet.png"></p></section>').join(''));
- await publish(true,{gates,pdfPassed:Object.values(gates).every(g=>g.passed),checked:{decodedPairs,regionChecks,sourceRecaptures},
-  scope:'Affected current original/candidate PDF gates on source-checked public output. Frozen references unchanged; feature-final qualification remains open.'});
+ await publish(true,{gates,pdfPassed:Object.values(gates).every(g=>g.passed),checked:{capturedPairs,regionChecks,sourceRecaptures},
+  scope:'Affected current original/candidate PDF gates on source-checked public output. Frozen references unchanged; independent pixel checking and feature-final qualification remain required.'});
  process.exitCode=Object.values(gates).every(g=>g.passed)?0:1;
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,{error:error.message});process.exitCode=1;}
 finally{await renderer?.browser.close();}

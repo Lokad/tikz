@@ -104,6 +104,13 @@ This consolidates the same reader's duplicate pass on the same images. Missing
 or forged checking ownership fails; these common controls run once on math.
 Historical receipts with the producer's additional pass remain readable.
 
+Current PDF production delegates its repeated PNG reader and decoded-policy
+evaluation to that same independent checker. It retains initial policy checks,
+styled per-pixel rule envelopes, both routes and complete source recaptures.
+PDF receipts also declare checking ownership; missing/forged PDF ownership is
+tested once on math. Registration, native ownership and all PDF negatives stay
+separate from primary image policy. Both historical counter formats remain readable.
+
 ## Iteration view mapping
 
 Iteration uses eight primary views rather than 24 Cartesian combinations:
