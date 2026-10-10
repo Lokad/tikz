@@ -47,5 +47,16 @@ regions. Both routes must own identical public output and the exact frozen
 calibrations. PDF checking retains the native-only pixel envelope for the two
 thin rules as well as the ordinary regional checks. Shared corruption controls
 also reject omitted views, split source, forged summaries, changed decoded pixels
-and altered/missing rule envelopes. Final clean-source acceptance and integration
-remain separate.
+and altered/missing rule envelopes.
+
+Final clean-source acceptance and main integration pass at `2efa289`: 24 primary,
+eight original/candidate PDF and 32 source views for this case, with 63
+native/current controls. All 24 converter PNGs match the frozen native integer
+encodings exactly; the original driver and ordinary PDF retain their separate
+calibrated checks. The complete 23-case regression passes 552 primary/184
+PDF/736 source views, 673 declared controls and all 808 ordinary tests in both
+main and the clean export. All 2,008 source files and distinct owned receipts
+are reconciled after the run. Calc retains its accepted qualification and 83
+controls: its 159 dependencies are unchanged, and new functional output matches
+the accepted output. No native calibration is regenerated. Broader M1–M4,
+hosted qualification and release remain open.

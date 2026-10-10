@@ -76,10 +76,20 @@ limits apply throughout; exhaustion produces no partial SVG.
 
 The fixed profile completes final clean-export acceptance and integration:
 72 primary/local views, 24 original/candidate PDF views and 96 source recaptures
-for its three cases. The full sixteen-case regression matrix passes 384 primary
-views, 128 PDF views, 512 source recaptures and 20,194 previous-family numeric
-checks; both ordinary suites pass all 734 tests. Independent math checks retain
-native box, anchor, glyph, rule, paint and framing semantics.
+for its original three cases. The separate
+[styled multiline flowchart](../tests/Reference/StyledLabels/README.md) combines
+normal math with all six existing prose faces, mixed-size rows, three alignments,
+positioning, path labels, arrows and calculated coordinates. At `2efa289` it
+passes 24 primary/eight PDF/32 source views and independent checks of nine boxes,
+27 dimensions, 144 anchors, 75 glyphs and two rules. Its thin-rule PDF checking
+also retains native-only per-pixel error envelopes, so endpoint errors cannot
+cancel in aggregate regional metrics.
+
+The full 23-case clean-export regression and main integration pass 552 primary
+views, 184 PDF views, 736 source recaptures and 26,977 previous-family numeric
+checks; both ordinary suites pass all 808 tests. Independent math checks retain
+native box, anchor, glyph, rule, paint and framing semantics. Frozen calibration
+is preserved, including the original three-case limits.
 
 Reopen qualification for a changed dependency, failed regression or identified
 coverage gap. Check fresh converter output before claiming current conformance;

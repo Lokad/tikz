@@ -1,4 +1,4 @@
-# Styled multiline flowchart: numeric grounding
+# Styled multiline flowchart: grounding
 
 The repository-authored `flowchart-styled-labels.tikz` combines four measured
 nodes, five path labels, five Stealth arrows, positioning and a calculated
@@ -114,5 +114,17 @@ cases preserve their frozen limits and pass all twenty-four current PDF views.
 Independent checking decodes all 92 comparisons and 9,292 regions and recaptures
 every native/control SVG source. Current styled output passes all eight
 original/candidate PDF views, 808 region checks and eight source recaptures.
-These iteration results leave portable evidence and final source acceptance
-open.
+The [portable evidence](../../../StyledLabels/README.md) now owns all eight
+frozen input reports in three archives. Final clean-export acceptance and main
+integration at `2efa289` pass this case's 27 dimensions/288 anchor coordinates,
+24 primary/eight PDF views, 32 source recaptures and 63 native/current controls.
+All 24 actual primary PNGs equal their frozen native integer-encoding views.
+The original driver retains a calibrated antialiasing residual at 4×: 150
+changed pixels with at most 6/255 channel error. PDF checks retain their separate
+native-only limits and rule-pixel envelopes.
+
+The complete final matrix passes 23 cases, 552 primary/184 PDF/736 source views
+and both 808-test suites. Every one of the 2,008 main/export source files and
+every owned receipt is checked after the run. No native calibration is
+regenerated. This closes the fixed styled flowchart's declared interaction
+coverage; broader text/math, hosted and release qualification remain separate.

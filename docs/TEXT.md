@@ -1,7 +1,7 @@
 # Bounded text profile
 
-The `latin-modern-ec-10-12-v1` label frontend supplies the public rectangle-node
-prototype. Its parser and measured layout remain internal. The profile uses
+The `latin-modern-ec-10-12-v1` profile supplies measured prose labels.
+Its parser and measured layout remain internal. The profile uses
 only bundled regular, bold, and italic Latin Modern outlines at their 10pt
 and 12pt design sizes; it never discovers fonts or invokes TeX at runtime.
 
@@ -33,8 +33,9 @@ The symbol commands are `\textbackslash`, `\textasciicircum`,
 `\textasciitilde`, `\textquotedbl`, `\textquotedblleft`,
 `\textquotedblright`, `\textsterling`, `\textsection`, `\textunderscore`,
 `\ae`, `\AE`, `\oe`, `\OE`, `\o`, `\O`, `\ss`, `\i`, and `\j`.
-All other commands fail. Raw `$`, `^`, `_`, `#`, and `&` require a declared
-escape; dollar-delimited math fails rather than rendering as ordinary text.
+All other prose commands fail. `$...$` delimits the
+[bounded math-label grammar](MATH-LABELS.md); `\$` emits a literal dollar sign.
+Raw `^`, `_`, `#`, and `&` require a declared escape outside that math grammar.
 
 Literal repertoire: printable ASCII excluding those syntax characters;
 U+00C0–U+00D6, U+00D8–U+00DE, U+00E0–U+00F6, U+00F8–U+00FE;
@@ -69,6 +70,16 @@ The sixteen native-reference cases and their exact integer tests ground the
 enumerated interactions they exercise. They do not establish general TeX
 typesetting or every combination of the declared primitives. New interactions
 require their own oracle cases; see [grounding instructions](TESTING.md).
+
+The [styled multiline flowchart](../tests/Fixtures/Diagrams/flowchart-styled-labels.tikz)
+qualifies the combined interaction of all six prose faces, three alignments,
+mixed-size rows, normal inline math, positioning, measured borders, arrows,
+sloped path labels and calculated coordinates. Its nine boxes/27 dimensions,
+144 anchors, 75 glyphs and two rules pass independent native checks. Final
+clean-export acceptance and integration at `2efa289` pass 24 primary/local views,
+eight original/candidate PDF views and 32 source recaptures for this case,
+within the full 23-case matrix. The [frozen evidence](../tests/Reference/StyledLabels/README.md)
+uses the existing profile; it adds no fonts, wrapping or general TeX support.
 
 The [rectangle-node prototype](NODES.md) consumes these measured labels and
 matches actual TikZ box, separation, anchor, background-corner, and native glyph
