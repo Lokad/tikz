@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "role": "paint-diagram-frozen-image-profile",
+  "fixtures": {
+    "flowchart-paint": {
+      "file": "tests/Reference/PaintDiagrams/flowchart-paint.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "flowchart-paint",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-79e292b2-54f5-4c5a-ad82-b605574e8016/report.json",
+            "sha256": "fbad68807a228350c1c98212b2e6b3256943d455de6a49646a29ddf71a9d9dd0"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-392be8ad-ac21-4354-9b72-5abc857e985f/report.json",
+            "sha256": "c457e59f7a2b32d8b3f68a16cf57fe4386ceeac8f08f95645ab99ffdc7f6d505"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-ae16d218-9671-401e-948e-6aac8c95f5e9/report.json",
+            "sha256": "d70d7ffb370f23eee1896121cbb18795a666eb8978bd75f6c17c813a7df744f5"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-9259cad6-3043-4d7b-b5c9-d153fd9ad96d/report.json",
+            "sha256": "60dbaa66c1e9b80bddac9d74b82cd371d029da3f3926caccc13ebdc6980ca1f7"
+          }
+        ],
+        "compressedSha256": "406d9bee112b0098aa7517d704c28a2e9acdb6723777c54a7ea3eafa4dbe630c",
+        "decodedSha256": "852edff9ec4a2118032a958feb469cfb06d18be52417e9636ef51de0fb11c37e",
+        "compressedBytes": 15598540,
+        "decodedBytes": 49756292,
+        "logicalFiles": 1829,
+        "uniqueBlobs": 871,
+        "logicalBytes": 73476051,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    }
+  },
+  "transportSources": {
+    "tools/TikzVisual/path-label-cache-codec.mjs": "8c132654b1c3e716b4712ffb290ff7ed6a9326c9bc2dfbd4e7b24e5a484da1b3",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/path-label-cache.mjs": "adca1ec72d77cca3513f274efb1274658fee00e9c278684be4792a97088174fc"
+  }
+}
