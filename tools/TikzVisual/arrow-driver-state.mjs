@@ -80,10 +80,13 @@ export function arrowPdfVectors(bytes,{allowText=false}={}){
   else if(['S','f','f*','B','B*'].includes(op)){assert.equal(textActive,false);nums(0);assert.ok(rootMatrix&&segments.length&&!pendingClip);paths.push({segments,matrix:[...matrix],operation:op==='S'?'stroke':op.startsWith('f')?'fill':'fillstroke'});segments=[];}
   else if(op==='W'||op==='W*'){assert.equal(textActive,false);nums(0);assert.ok(segments.length&&!pendingClip);pendingClip=true;}
   else if(op==='n'){assert.equal(textActive,false);nums(0);if(pendingClip)clips.push({segments,matrix:[...matrix]});segments=[];pendingClip=false;}
-  else if(['w','M','J','j','g','G'].includes(op)){idle();nums(1);}
-  else if(op==='rg'||op==='RG'){idle();nums(3);}
+  else if(['w','M','J','j'].includes(op)){idle();nums(1);}
+  // pdfTeX can change text color/opacity inside BT/ET. The separate paint
+  // reader retains that state; these operators cannot change path geometry.
+  else if(op==='g'||op==='G'){assert.equal(segments.length,0);nums(1);}
+  else if(op==='rg'||op==='RG'){assert.equal(segments.length,0);nums(3);}
   else if(op==='d'){idle();assert.equal(args.length,2);assert.ok(Array.isArray(args[0])&&Number.isFinite(args[1]));}
-  else if(op==='gs'){idle();assert.equal(args.length,1);assert.equal(args[0]?.type,'name');}
+  else if(op==='gs'){assert.equal(segments.length,0);assert.equal(args.length,1);assert.equal(args[0]?.type,'name');}
   // Text is grounded by the separate DVI/TFM reader. Admit only this native
   // text grammar while preserving all surrounding path/graphics state.
   else if(allowText&&op==='BT'){idle();nums(0);textActive=true;}

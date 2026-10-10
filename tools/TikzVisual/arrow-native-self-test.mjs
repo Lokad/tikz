@@ -1,5 +1,7 @@
 // Browser-free, hand-derived picture/ink/placement controls and coverage faults.
 import assert from 'node:assert/strict';
+import {deflateSync} from 'node:zlib';
+import {arrowPdfVectors} from './arrow-driver-state.mjs';
 import {loadArrowEvidence} from './arrow-evidence.mjs';
 import {buildArrowNativeFrame,reconstructArrowPicture,arrowFiniteHullPoint,arrowWorldMatrix} from './arrow-native-frame.mjs';
 import {makeArrowNativeSvg,arrowNativeRepresentations,arrowNativeRoots} from './arrow-native-svg.mjs';
@@ -11,6 +13,18 @@ import {arrowPrimaryPlan,arrowPdfPlan} from './arrow-native-contract.mjs';
 
 let controls=0;const equal=(a,b)=>{assert.deepEqual(a,b);controls++;},close=(a,b)=>{assert.ok(Math.abs(a-b)<=1e-12,`${a} != ${b}`);controls++;};
 const rejects=action=>{assert.throws(action);controls++;},f=edgeSpToCss;
+// Colored/translucent labels change paint inside a PDF text object while
+// path geometry and graphics transforms remain independently checked.
+function paintedTextPdf(body){
+ const stream=deflateSync(Buffer.from(`1 0 0 1 0 0 cm BT ${body} ET 0 0 m 1 0 l S`));
+ return Buffer.concat([Buffer.from(`%PDF-1.5\n1 0 obj << /Type /Page /MediaBox [0 0 4 4] /Contents 2 0 R >> endobj\n2 0 obj << /Length ${stream.length} /Filter /FlateDecode >> stream\n`),stream,Buffer.from('\nendstream endobj\n')]);
+}
+const textPaint=paintedTextPdf('.3 g .1 .2 .3 rg /pgf@ca0.7 gs /F1 10 Tf 0 0 Td [(a)] TJ');
+equal(arrowPdfVectors(textPaint,{allowText:true}).paths.length,1);
+equal(arrowPdfVectors(textPaint,{allowText:true}).rootMatrix,[1,0,0,1,0,0]);
+rejects(()=>arrowPdfVectors(textPaint));
+for(const body of ['1 w','q','1 0 0 1 0 0 cm','BT','0 0 m','(a) Tj'])
+ rejects(()=>arrowPdfVectors(paintedTextPdf(body),{allowText:true}));
 const input={id:1,modes:'draw,',lineWidthSp:65536,segments:[{kind:'move',xSp:0,ySp:0},{kind:'line',xSp:65536,ySp:0}]};
 const paint={ordinal:1,eventId:1,role:'shaft',pathId:1,placementId:null,operation:'stroke',widthSp:65536,cap:0,join:0,miter:10,
  strokeOpacity:1,fillOpacity:1,strokeRgb:[0,0,0],fillRgb:[0,0,0],dashSp:[],phaseSp:0,clips:[]};
