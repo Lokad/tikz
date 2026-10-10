@@ -81,3 +81,13 @@ ground coordinate streams, finite function sampling, smooth handlers and complet
 network interactions. Ordinary tests cover frozen native path/arrow geometry,
 continuation, source locations, malformed input and shared budgets/cancellation.
 Full plotting image qualification remains pending until final feature acceptance.
+
+The native image harness retains both PGF's picture viewport and the independent
+viewport enclosing stroke ink. In the fixed smooth contract, their 0.11 CSS pixel
+height difference changes one thresholded glyph component in intrinsic 1× images
+on transparent or white backgrounds. Six native captures with matching viewports
+prove that the component difference disappears. Only those two views and the
+whole picture/two affected glyph regions admit the observed component residual;
+all channel, changed-pixel and edge limits still come from native encodings.
+Missing/shifted glyph controls cover the affected views, and independent readers
+reject omitted registration evidence or inflated/out-of-scope limits.

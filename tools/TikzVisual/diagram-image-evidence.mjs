@@ -10,6 +10,12 @@ import {parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 import {edgePdfPage,edgeCanonical} from './edge-log.mjs';
 const frozen={
+ 'network-coordinate-plot':'505873235da5ff68c746b6c1e110ace4fb8374a86c150b5cf0b3987f2eb464e2',
+ 'coordinate-plot-contract':'3e1914a7fb4bad411ea45e9426e875926ab0b09b34cc9af7b5c1c0edee9cd797',
+ 'network-function-plot':'59f688286f688e3a5e6f7dae7ba745235c64340bd54d14aed1ee3ff3bfae8c0c',
+ 'function-plot-contract':'a917bef6dfa229da99d975f83e896520031bf97a9b60d4fc0325517f9210f9aa',
+ 'network-smooth-plot':'945a7de5fb329b894c62d19d5e382aaaacf21dfccdea7bbf73dedffd492d5bd0',
+ 'smooth-plot-contract':'eb7d51e4c5ff6adf20430d2bec851ae564749251a21405007282e9c8345ec897',
  'network-math-functions':'91279df9a386bbb605bed4f3814b59062af5c28520caf0bb339ef6e5a9c55adb',
  'math-functions-contract':'da694557502934660cb8b4b5e43eaa770a4130975fe52e7f1e314879b12ad674',
  'flowchart-basic':'32f4efb3172f5da86c1d9436e9868773389c351d4ac0dbccafd86813b4810634',
@@ -25,7 +31,9 @@ const frozen={
 // Shared fixed-case classification; rectangle and arrow measurements stay separate.
 export const rectangleImageCounts=Object.freeze({'style-contract':7,'foreach-contract':29,'math-macro-contract':25,'math-functions-contract':37});
 export const isRectangleImageCase=id=>Object.hasOwn(rectangleImageCounts,id);
-export const labelImageSourceFile=id=>'tests/Fixtures/'+(id==='style-contract'?'Styles':id==='foreach-contract'?'Foreach':id==='math-macro-contract'?'MathMacros':id==='math-functions-contract'?'MathFunctions':'Diagrams')+'/'+id+'.tikz';
+const plottingCases=new Set(['network-coordinate-plot','coordinate-plot-contract','network-function-plot','function-plot-contract','network-smooth-plot','smooth-plot-contract']);
+export const isPlotImageCase=id=>plottingCases.has(id);
+export const labelImageSourceFile=id=>'tests/Fixtures/'+(['coordinate-plot-contract','function-plot-contract','smooth-plot-contract'].includes(id)?'Plotting':id==='style-contract'?'Styles':id==='foreach-contract'?'Foreach':id==='math-macro-contract'?'MathMacros':id==='math-functions-contract'?'MathFunctions':'Diagrams')+'/'+id+'.tikz';
 export async function loadLabelImageEvidence(input){
  if(['placement','interactions'].includes(input))return loadPathLabelEvidence(input);
  const file=path.resolve(root,input),role=JSON.parse(await readFile(file)).role;
@@ -48,9 +56,10 @@ export async function loadLabelImageEvidence(input){
  for(const[f,h]of Object.entries(report.sourceHashes))if(f.startsWith('tests/Fixtures/')||f.endsWith('.tex')||f==='tools/TikzFontData/font-profile.json')
   assert.equal(calcHash(edgeCanonical(await readFile(path.join(root,f)))),h,'Native engine input changed: '+f);
  const original=verifyPathLabelEvidence({bytes,report,files,json:f=>JSON.parse(files.get(f))}),text=f=>b.files.get(f).toString('utf8');
- const arrows=parseArrowLog(text('svg-probed.log'),{allowWrapperGlue:true});calcEqual(arrows,parseArrowLog(text('pdf-probed.log'),{allowWrapperGlue:true}));
+ const options={allowWrapperGlue:true,allowNoArrows:isPlotImageCase(id)&&id.endsWith('-contract')};
+ const arrows=parseArrowLog(text('svg-probed.log'),options);calcEqual(arrows,parseArrowLog(text('pdf-probed.log'),options));
  arrows.driverState=verifyArrowDriverState(arrows,b.files.get('supplemental-reference.svg'),b.files.get('supplemental-reference.pdf'),edgePdfPage(text('pdf-probed.log')),
-  {allowText:true,wrapperExtraWidthSp:b.report.wrapperExtraWidthSp});calcEqual(arrows,b.json('arrow-metrics.json'));
+  {allowText:true,wrapperExtraWidthSp:b.report.wrapperExtraWidthSp,allowDegenerateLine:id==='function-plot-contract',allowTrailingDegenerateLine:id==='smooth-plot-contract'});calcEqual(arrows,b.json('arrow-metrics.json'));
  // Supply the original backend files to existing image/PDF readers. Ownership
  // still covers the outer frozen bundle, including every original artifact.
  for(const[f,bytes]of files)if(!b.files.has(f))b.files.set(f,bytes);

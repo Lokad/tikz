@@ -12,7 +12,7 @@ export async function loadQualifiedPathLabelPrimary(calibrationFile,checkFile){
  const calibration=await loadCalcSavedReport(path.resolve(root,calibrationFile),'path-label-native-primary-calibration');
  const checked=await loadCalcSavedReport(path.resolve(root,checkFile),'path-label-independent-primary-check');
  assert.equal(checked.report.inputSha256,calibration.sha256);
- const views=calibration.report.records.length+calibration.report.controls.reduce((n,c)=>n+c.comparisons.length,0);
+ const views=calibration.report.records.length+calibration.report.controls.reduce((n,c)=>n+c.comparisons.length,0)+(calibration.report.rootRegistrations?.length??0);
  assert.equal(checked.report.sourceRecaptures,views);assert.equal(checked.report.pixels.comparisons,views);
  assert.ok(checked.files.get('input-report.json').equals(calibration.bytes),'Changed checked primary input.');
  assert.equal(calibration.report.converterInvoked,false);assert.equal(calibration.report.nativeToolInvoked,false);

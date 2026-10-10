@@ -13,18 +13,19 @@ import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
 import {shapeViews,deriveShapeTrialPolicy,evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
 import {buildPathLabelImageReference,pathLabelPrimaryCaptures,mutatePathLabelImage,pathLabelImageControls,pathLabelControlViews} from './path-label-image-reference.mjs';
+import {pathLabelNativeComponentLimit,pathLabelRootRegistrationViews,registerPathLabelNativeRoot} from './path-label-primary-policy.mjs';
 
 assert.ok(process.argv.length===3||(process.argv.length===5&&process.argv[3]==='--reuse'),'Usage: node tools/TikzVisual/calibrate-path-label-primary.mjs <placement|interactions|frozen-diagram-arrow-report> [--reuse <prior-calibration>]');
 const input=process.argv[2],output=path.join(root,'artifacts/path-label-primary-calibration/run-'+randomUUID()),artifacts={};let id=input;
 const save=(p,b)=>writeArtifact(output,p,b,artifacts),json=(p,v)=>save(p,JSON.stringify(v,null,2)+'\n');
-let phase='native-input',renderer,native,frame,reuse,reusedViews=0,reusedExpandedViews=0;const records=[],controls=[],reusableSources=new Map();
+let phase='native-input',renderer,native,frame,reuse,reusedViews=0,reusedExpandedViews=0;const records=[],controls=[],rootRegistrations=[],reusableSources=new Map();
 const key=v=>v.frame+'/'+v.scale+'x-'+v.background;
 async function publish(completed,extra={}){
  if(completed)assert.ok(Object.keys(artifacts).length<=4096,'Primary report exceeds shared artifact bounds.');
  const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'path-label-native-primary-calibration',completed,
   phase:completed?'complete':phase,converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,
   imageConformanceClaim:false,imageAdmission:'pending',fixture:id,nativeInputSha256:native?.sha256,renderer:renderer?.identity,
-  artifacts,records,controls,...(reuse?{reuse:{inputSha256:reuse.sha256,reusedViews,reusedExpandedViews}}:{}),...extra},null,2)+'\n');
+  artifacts,records,controls,...(rootRegistrations.length?{rootRegistrations}:{}),...(reuse?{reuse:{inputSha256:reuse.sha256,reusedViews,reusedExpandedViews}}:{}),...extra},null,2)+'\n');
  await writeArtifact(output,'report.json',bytes);console.log(JSON.stringify({completed,phase,report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(bytes)}));
 }
 async function observe(prefix,svg,view,target){
@@ -50,9 +51,9 @@ async function observe(prefix,svg,view,target){
  const row={...view,metrics:pair.metrics,regions:pair.regions,repeat:pair.repeat,actualRepeat:pair.actualRepeat,naturalFrames:pair.naturalFrames,images};
  await json(prefix+'/record.json',row);return{file:prefix+'/record.json',...row};
 }
-function envelope(rows){
+function envelope(rows,componentLimit=0){
  const result=structuredClone(rows[0]);
- for(const r of rows){assert.equal(r.topology.componentDifference,0,'Native encoding changes topology.');
+ for(const r of rows){assert.ok(r.topology.componentDifference<=componentLimit,'Native encoding changes topology outside declared scope.');
   for(const k of['rawChangedPixels','maxRawChannelError','premultipliedChangedPixels','maxPremultipliedChannelError','meanForegroundChannelError'])result[k]=Math.max(result[k],r[k]);
   result.topology.maxEdgeDisplacementRasterPixels=Math.max(result.topology.maxEdgeDisplacementRasterPixels,r.topology.maxEdgeDisplacementRasterPixels);
   result.topology.componentDifference=Math.max(result.topology.componentDifference,r.topology.componentDifference);
@@ -78,7 +79,7 @@ try{
  await json('frame.json',{...frame,encodings:frame.encodings.map(({svg,...e})=>e)});
  for(const e of frame.encodings)await save('encodings/'+e.id+'.svg',e.svg);
  for(const file of['calibrate-path-label-primary.mjs','path-label-image-reference.mjs','path-label-evidence.mjs','diagram-image-evidence.mjs','diagram-native-root.mjs','arrow-native-svg.mjs','edge-oracle.mjs','curved-node-path-units.mjs','shape-frame-math.mjs','shape-pdf-camera.mjs',
-  'calc-png.mjs','shape-raster-metrics.mjs','shape-primary-trial-policy.mjs','edge-trial-images.mjs','edge-oracle-pair.mjs','arrow-vector-pair.mjs',
+  'calc-png.mjs','shape-raster-metrics.mjs','shape-primary-trial-policy.mjs','path-label-primary-policy.mjs','edge-trial-images.mjs','edge-oracle-pair.mjs','arrow-vector-pair.mjs',
   'compare.mjs','shape-oracle-bundle.mjs','calc-admission-child.mjs','calc-saved-images.mjs','browser-profile.json','text-profile.json','node-profile.json','package.json','package-lock.json'])
   await save('source-captures/tools/TikzVisual/'+file,await readFile(path.join(root,'tools/TikzVisual/'+file)));
  phase='native-encodings';
@@ -87,12 +88,23 @@ try{
    records.push({encoding:encoding.id,capture,file:row.file,metrics:row.metrics});}
   console.log(JSON.stringify({phase,encoding:encoding.id,capture,views:shapeViews.length}));
  }
+ phase='native-root-registration';
+ for(const view of pathLabelRootRegistrationViews(id,frame.encodings.map(e=>e.id))){
+  const base=JSON.parse(await readFile(path.join(output,records.find(r=>r.encoding===view.encoding&&r.capture===view.capture&&r.file.endsWith('/'+key(view)+'/record.json')).file)));
+  const svg=registerPathLabelNativeRoot(frame.encodings.find(e=>e.id===view.encoding).svg,base.naturalFrames.reference),prefix='root-registration/'+view.encoding+'/'+key(view);
+  await save(prefix+'/registered.svg',svg);const row=await observe(prefix,svg,view);
+  calcEqual(row.naturalFrames.reference,row.naturalFrames.actual,'Matched native roots differ.');
+  for(const metric of[row.metrics,...row.regions])assert.equal(metric.topology.componentDifference,0,'Matched native root changes topology.');
+  rootRegistrations.push({...view,file:row.file});
+ }
  const policies={};
  for(const capture of pathLabelPrimaryCaptures){const rows=[];
   for(const view of shapeViews){const matches=records.filter(r=>r.capture===capture&&r.file.endsWith('/'+key(view)+'/record.json'));
    const measured=await Promise.all(matches.map(async r=>JSON.parse(await readFile(path.join(output,r.file))))),base=measured[0];
-   rows.push({...base,...envelope(measured.map(r=>r.metrics)),regions:base.regions.map((r,i)=>({...r,...envelope(measured.map(row=>row.regions[i]))}))});
-  }policies[capture]=deriveShapeTrialPolicy(rows,'Fixed trusted path-label '+id+' native-only decimal encodings; '+capture,shapeViews);
+   rows.push({...base,...envelope(measured.map(r=>r.metrics),pathLabelNativeComponentLimit(id,capture,view,'whole-picture')),
+    regions:base.regions.map((r,i)=>({...r,...envelope(measured.map(row=>row.regions[i]),pathLabelNativeComponentLimit(id,capture,view,r.id))}))});
+  }policies[capture]=deriveShapeTrialPolicy(rows,'Fixed trusted path-label '+id+' native-only decimal encodings; '+capture,shapeViews,
+    (view,region)=>pathLabelNativeComponentLimit(id,capture,view,region));
  }
  await json('policies.json',policies);
  phase='label-sensitivity';

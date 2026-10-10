@@ -9,20 +9,20 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {decodeCalcPng} from './calc-png.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {createRenderer} from './compare.mjs';
-import {loadLabelImageEvidence,isRectangleImageCase} from './diagram-image-evidence.mjs';
+import {loadLabelImageEvidence,isRectangleImageCase,isPlotImageCase} from './diagram-image-evidence.mjs';
 import {buildPathLabelImageReference,pathLabelPrimaryCaptures,pathLabelImageEncodings,pathLabelDiagramImageEncodings,mutatePathLabelImage,pathLabelImageControls,pathLabelControlViews} from './path-label-image-reference.mjs';
 import {shapeViews,deriveShapeTrialPolicy,evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
 import {runCalcChild,readCalcChild} from './calc-admission-child.mjs';
-import {readPathLabelPrimaryPolicies} from './path-label-primary-policy.mjs';
+import {readPathLabelPrimaryPolicies,pathLabelNativeComponentLimit,pathLabelRootRegistrationViews,registerPathLabelNativeRoot} from './path-label-primary-policy.mjs';
 
 const key=v=>v.frame+'/'+v.scale+'x-'+v.background;
 export function verifyPathLabelPrimaryPixels(bundle){
  const r=bundle.report;assert.equal(r.converterInvoked,false);assert.equal(r.nativeToolInvoked,false);
  const frame=bundle.json('frame.json'),compare=createShapeRasterMetrics().compare;
  const encodings=frame.nativePathEncoding?pathLabelDiagramImageEncodings:pathLabelImageEncodings;
- if(frame.nativePathEncoding)assert.ok(frame.regions.some(r=>r.role==='tip')||
+ if(frame.nativePathEncoding)assert.ok(frame.regions.some(r=>r.role==='tip')||isPlotImageCase(frame.caseId)||
   (isRectangleImageCase(frame.caseId)&&frame.nativePathEncoding.kind==='rectangle-background'));
  calcEqual(frame.encodings.map(e=>e.id),encodings,'Native representation coverage differs.');
  const expected=encodings.flatMap(encoding=>pathLabelPrimaryCaptures.flatMap(capture=>shapeViews.map(v=>'encodings/'+encoding+'/'+capture+'/'+key(v)+'/record.json')));
@@ -42,16 +42,26 @@ export function verifyPathLabelPrimaryPixels(bundle){
   assert.equal(row.repeat.rawChangedPixels,0);assert.equal(row.actualRepeat.rawChangedPixels,0);comparisons++;return row;
  }
  const nativeRows=r.records.map(record=>{const result=row(record.file);calcEqual(result.metrics,record.metrics,'Native summary differs.');return{...result,encoding:record.encoding,file:record.file};});
+ const rootViews=pathLabelRootRegistrationViews(r.fixture,encodings),rootRecords=r.rootRegistrations??[];
+ calcEqual(rootRecords.map(({file,...view})=>view),rootViews,'Native root registration coverage differs.');
+ for(const record of rootRecords){
+  const observed=row(record.file),baseline=nativeRows.find(v=>v.encoding===record.encoding&&v.capture===record.capture&&key(v)===key(record));
+  const registered=registerPathLabelNativeRoot(bundle.files.get('encodings/'+record.encoding+'.svg').toString(),baseline.naturalFrames.reference);
+  assert.equal(bundle.files.get(record.file.replace('/record.json','/registered.svg')).toString(),registered,'Registered native source differs.');
+  calcEqual(observed.naturalFrames.reference,baseline.naturalFrames.reference);calcEqual(observed.naturalFrames.reference,observed.naturalFrames.actual);
+  for(const metric of[observed.metrics,...observed.regions])assert.equal(metric.topology.componentDifference,0,'Matched native root changes topology.');
+ }
  const policies=readPathLabelPrimaryPolicies(bundle);
  for(const capture of pathLabelPrimaryCaptures){const aggregate=shapeViews.map(view=>{
   const rows=nativeRows.filter(v=>v.capture===capture&&key(v)===key(view)),base=rows[0];assert.equal(rows.length,encodings.length);
-  function maxima(items){const value=structuredClone(items[0]);for(const item of items){assert.equal(item.topology.componentDifference,0);
+  function maxima(items,region){const value=structuredClone(items[0]);for(const item of items){assert.ok(item.topology.componentDifference<=pathLabelNativeComponentLimit(r.fixture,capture,view,region));
    for(const k of['rawChangedPixels','maxRawChannelError','premultipliedChangedPixels','maxPremultipliedChannelError','meanForegroundChannelError'])value[k]=Math.max(value[k],item[k]);
    value.topology.maxEdgeDisplacementRasterPixels=Math.max(value.topology.maxEdgeDisplacementRasterPixels,item.topology.maxEdgeDisplacementRasterPixels);
    value.topology.componentDifference=Math.max(value.topology.componentDifference,item.topology.componentDifference);}return value;}
-  return{...base,...maxima(rows.map(r=>r.metrics)),regions:base.regions.map((region,i)=>({...region,...maxima(rows.map(r=>r.regions[i]))}))};
+  return{...base,...maxima(rows.map(r=>r.metrics),'whole-picture'),regions:base.regions.map((region,i)=>({...region,...maxima(rows.map(r=>r.regions[i]),region.id)}))};
  });
-  calcEqual(deriveShapeTrialPolicy(aggregate,'Fixed trusted path-label '+r.fixture+' native-only decimal encodings; '+capture,shapeViews),policies[capture],'Native-only policy derivation differs.');
+  calcEqual(deriveShapeTrialPolicy(aggregate,'Fixed trusted path-label '+r.fixture+' native-only decimal encodings; '+capture,shapeViews,
+   (view,region)=>pathLabelNativeComponentLimit(r.fixture,capture,view,region)),policies[capture],'Native-only policy derivation differs.');
  }
  const labels=pathLabelImageControls(frame,bundle.json('oracle/native-glyphs.json')),controlViews=pathLabelControlViews(frame)??shapeViews;
  calcEqual(r.controls.map(({comparisons,numericChecksBypassed,...control})=>control),labels,'Image sensitivity coverage differs.');
@@ -103,6 +113,10 @@ export async function checkPathLabelPrimary(file,save=async()=>{}){
    recaptured++;
   }
   for(const record of bundle.report.records)await recapture(record,frame.encodings.find(e=>e.id===record.encoding).svg);
+  for(const record of bundle.report.rootRegistrations??[]){
+   const baseline=bundle.json(bundle.report.records.find(v=>v.encoding===record.encoding&&v.capture===record.capture&&v.file.endsWith('/'+key(record)+'/record.json')).file);
+   await recapture(record,registerPathLabelNativeRoot(frame.encodings.find(e=>e.id===record.encoding).svg,baseline.naturalFrames.reference));
+  }
   for(const control of bundle.report.controls){const svg=await mutatePathLabelImage(renderer,frame.encodings[0].svg,control);
    assert.equal(svg,bundle.files.get('controls/'+control.nodeId+'/'+control.kind+'/altered.svg').toString('utf8'),'Controlled SVG differs.');
    for(const record of control.comparisons)await recapture(record,svg);

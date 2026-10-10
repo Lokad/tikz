@@ -15,4 +15,11 @@ if(original.report.controls.some(c=>c.kind==='missing-label'))defects.push(
 if(original.json('frame.json').nativePathEncoding)defects.push(
  ['missing-native-path-encoding',r=>r.records=r.records.filter(v=>v.encoding!=='native-paths-pt-short')]
 );
+if(original.report.rootRegistrations?.length)defects.push(
+ ['missing-native-root-registration',r=>r.rootRegistrations.pop()],
+ ['rehashed-root-registration-metric',(r,json)=>json(r.rootRegistrations[0].file,p=>p.metrics.topology.componentDifference++)],
+ ['inflated-native-component-policy',(r,json)=>json('policies.json',p=>p['intrinsic-image'].rows.find(v=>v.frame==='natural'&&v.scale===1&&v.background==='white').regions.find(v=>v.id==='native-glyph-1').limits.componentDifference++)],
+ ['out-of-scope-native-component-policy',(r,json)=>json('policies.json',p=>p['explicit-viewport'].rows[0].whole.componentDifference++)],
+ ['missing-affected-glyph-control',r=>r.controls.splice(r.controls.findIndex(c=>c.target==='native-glyph-1'&&c.kind==='missing'),1)]
+);
 console.log(JSON.stringify({validated:true,controls:runPrimaryReportControls(original,verifyPathLabelPrimaryPixels,defects)}));

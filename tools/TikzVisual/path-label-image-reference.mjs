@@ -4,7 +4,7 @@ import {multiply,parseTransform,parsePath,pathData,pathBounds,transformSegments,
 import {shapePdfRasterRectangle} from './shape-pdf-camera.mjs';
 import {decodeCalcPng} from './calc-png.mjs';
 import {diagramNativeNaturalRoot,rectangleNativeNaturalRoot,rectangleNativePrimitives} from './diagram-native-root.mjs';
-import {isRectangleImageCase,rectangleImageCounts} from './diagram-image-evidence.mjs';
+import {isRectangleImageCase,rectangleImageCounts,isPlotImageCase} from './diagram-image-evidence.mjs';
 import {makeArrowNativeSvg,arrowNativeRepresentations} from './arrow-native-svg.mjs';
 import {readEdgeOriginal,edgeOracleInstructions,edgeOracleVariants} from './edge-oracle.mjs';
 
@@ -169,19 +169,26 @@ export function pathLabelPdfFrame(bundle,frame){
 }
 
 export function pathLabelImageControls(frame,glyphs){
- const diagram=frame.regions.some(r=>r.role==='tip')||isRectangleImageCase(frame.caseId),controls=[];let offset=0;
+ const diagram=frame.regions.some(r=>r.role==='tip')||isRectangleImageCase(frame.caseId)||isPlotImageCase(frame.caseId),controls=[];let offset=0;
  for(const node of glyphs.nodes){
   const targets=node.glyphs.map((_,i)=>'native-glyph-'+(offset+i)),target=targets[0];
   if(!['from','target','seed'].includes(node.id)){
    controls.push(...['missing','quarter-pixel-shift'].map(kind=>({nodeId:node.id,target,kind})));
    if(diagram)controls.push({nodeId:node.id,target,targets,kind:'missing-label'});
+   if(frame.caseId==='smooth-plot-contract'){
+    assert.equal(node.id,'sentinel');assert.ok(targets.length>=3);
+    for(const i of[1,2])controls.push(...['missing','quarter-pixel-shift'].map(kind=>({nodeId:node.id+'-glyph-'+i,target:targets[i],kind})));
+   }
   }offset+=node.glyphs.length;
  }
  if(diagram)for(const r of frame.regions.filter(r=>r.role==='tip'))controls.push(...['missing','quarter-pixel-shift'].map(kind=>({nodeId:r.id,target:r.id,kind})));
  return controls;
 }
 export function pathLabelControlViews(frame){
- return frame.regions.some(r=>r.role==='tip')||isRectangleImageCase(frame.caseId)?[1,4].map(scale=>({frame:'expanded',scale,background:'white'})):null;
+ if(frame.caseId==='smooth-plot-contract')return[
+  ...[1,4].map(scale=>({frame:'expanded',scale,background:'white'})),
+  ...['transparent','white'].map(background=>({frame:'natural',scale:1,background}))];
+ return frame.regions.some(r=>r.role==='tip')||isRectangleImageCase(frame.caseId)||isPlotImageCase(frame.caseId)?[1,4].map(scale=>({frame:'expanded',scale,background:'white'})):null;
 }
 export async function mutatePathLabelImage(renderer,svg,{target,kind,targets}){
  assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label'].includes(kind));
