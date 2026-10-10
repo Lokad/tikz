@@ -1,0 +1,29 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=12mm,
+  box/.style={draw,rectangle,minimum width=14mm,inner sep=3pt,
+    draw=blue!65!black,fill=blue!8,text=blue!65!black},
+  route/.style={line width=.8pt,line cap=round,line join=round}]
+  \node[box,text=red!30!blue] (input) {Input};
+  \node[box,right=of input,opacity=.7,text opacity=.8] (check) {Check};
+  \node[box,right=of check,draw=teal,fill=green!12,text=teal] (store) {Store};
+  \node[box,below=of check,draw=orange,fill=orange!20,text=orange!65!black]
+    (review) {Review};
+  \draw[route,-{Stealth},draw=blue!65!black,
+    dash pattern=on 3pt off 2pt,dash phase=1pt,opacity=.6]
+    (input) -- node[midway,above,text=blue,text opacity=.8] {parse} (check);
+  \draw[route,-{Latex},draw=teal,dotted,draw opacity=.7]
+    (check) -- node[midway,below,text=teal] {send} (store);
+  \draw[route,-{Stealth},draw=orange,dashed]
+    (check) -- node[midway,right,text=orange!65!black] {audit} (review);
+  \begin{scope}
+    \clip (1.4,-1.4) rectangle (5.3,.5);
+    \draw[route,-{Stealth},draw=violet,
+      dash pattern=on 4pt off 1pt,line width=1pt,draw opacity=.6]
+      (review) to[bend right=18]
+      node[pos=.55,sloped,below,text=violet,text opacity=.7] {retry} (store);
+  \end{scope}
+  \coordinate (return) at ($(review.south)+(-1cm,-8mm)$);
+  \draw[route,-{Latex},draw=red!30!blue,dashdotted,draw opacity=.65]
+    (review.south) -- (return) -|
+    node[pos=.7,sloped,below,text=red!30!blue,text opacity=.75] {again} (input.south);
+\end{tikzpicture}

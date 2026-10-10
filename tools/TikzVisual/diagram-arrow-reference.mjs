@@ -12,8 +12,12 @@ import {edgeSanitize,edgePdfPage,edgeCanonical} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 import {arrowHooks,parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
+import {requiresSvgArrowFillCorrection} from './svg-arrow-color-evidence.mjs';
+import {verifyPathLabelEvidence} from './path-label-evidence.mjs';
 assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/diagram-arrow-reference.mjs <exact-original-diagram-report>');
 const expected={
+ 'flowchart-draw-color':'00382dca733736532da904d9246c7354565d22e91673a951218a229e052b5137',
+ 'arrow-color-contract':'48afc2076c84177c9b62aa7d583db5dfad0bf829c5f6b7746d0b32f5796b5bff',
  'flowchart-paint':'38e3c9edcca5fbdc25ecf8e614e9c8e0e3cd0c42b302e00374bae309f8f17722',
  'network-smooth-plot':'10029c10cbbf08c4a13579659138f0a2b7be155c93b866cdb4096c0b5555faee',
  'smooth-plot-contract':'d2f3415578d92be358eed7d2d2927720d10cee97d56417885d88b82f3b219985',
@@ -29,6 +33,8 @@ const expected={
  'network-bent':'da163c256834b3c94477f4e368cbe69cc700a867b93a0b73a210d3e7a4aa0e54',
  'flowchart-transformed':'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa'};
 const probeHashes={
+ 'flowchart-draw-color':'9f405de1c802ffa12553cf096d0e681ffdaee5d24607ca582e3d59f8b0659988',
+ 'arrow-color-contract':'0f0c08a7ef63329ae6883692f695a0d83e6f68409dec4e3cb6b23aca7880b670',
  'flowchart-paint':'9f405de1c802ffa12553cf096d0e681ffdaee5d24607ca582e3d59f8b0659988',
  'network-smooth-plot':'c7ec00be138953e6621f1e4f7405a36e870b78f5f96d7d92cc046af998696b6d',
  'smooth-plot-contract':'8c46ea74d34c10fc5638c8750a5b381d948587dee96e76c5ed47918a71370414',
@@ -56,8 +62,9 @@ try{
  assert.equal(sha256(source),expected[id]);assert.equal(original.report.sourceHashes[sourceFile],expected[id]);assert.ok(source.equals(original.files.get('source-captures/'+sourceFile)));
  // Owned artifacts are not authorization to execute arbitrary TeX. These
  // wrapper/probe bytes come from the fixed, reviewed diagram producer.
- for(const[f,h]of Object.entries({'svg-wrapper.tex':'3d76e71ce8bb5df4e395d9ffb34063c64f00f7237ece5ac69cbd868b3cdc7868','pdf-wrapper.tex':'789f0ad2d515e51a7d79bb456f1f186ce3dc49be9035514df4e6b38751110893','probes.tex':probeHashes[id]}))
+ for(const[f,h]of Object.entries({'svg-wrapper.tex':requiresSvgArrowFillCorrection(id)?'21e0592fb0e916badd03e5acb762979831ed6d6ceddb36fcb1786148bf2cf8a8':'3d76e71ce8bb5df4e395d9ffb34063c64f00f7237ece5ac69cbd868b3cdc7868','pdf-wrapper.tex':'789f0ad2d515e51a7d79bb456f1f186ce3dc49be9035514df4e6b38751110893','probes.tex':probeHashes[id]}))
   assert.equal(sha256(original.files.get(f)),h,'Untrusted native wrapper/probes: '+f);
+ verifyPathLabelEvidence(original);
  assert.ok(edgeCanonical(original.files.get('source-captures/tools/TikzEdgeReference/edge-hooks.tex')).equals(edgeCanonical(await readFile(path.join(root,'tools/TikzEdgeReference/edge-hooks.tex')))));
  await ownCalcBundle(original,'original',save);
  for(const[f,b]of original.files)if(f==='metrics.json'||f==='probed-reference.svg'||f==='native-positions.log'||f.startsWith('fonts/')||f.startsWith('source-captures/'))await save(f,b);

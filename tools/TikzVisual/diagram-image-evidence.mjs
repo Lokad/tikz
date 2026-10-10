@@ -10,6 +10,8 @@ import {parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 import {edgePdfPage,edgeCanonical} from './edge-log.mjs';
 const frozen={
+ 'flowchart-draw-color':'3d142d85514ee246f7c5eb87496af146af70a35b958e954ab793b5b020742218',
+ 'arrow-color-contract':'7e9ba8c6246ef1ce864d71552f970c8eead2cd0d75a0a903b5b5cb8411aecaea',
  'flowchart-paint':'824207226ad73f36cfee7f6cdd7a3e29409fa90e630c2085af19d96ea0140ac9',
  'network-coordinate-plot':'505873235da5ff68c746b6c1e110ace4fb8374a86c150b5cf0b3987f2eb464e2',
  'coordinate-plot-contract':'3e1914a7fb4bad411ea45e9426e875926ab0b09b34cc9af7b5c1c0edee9cd797',

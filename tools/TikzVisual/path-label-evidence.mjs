@@ -7,6 +7,7 @@ import {calcHash,calcEqual,loadCalcSavedReport} from './calc-saved-images.mjs';
 import {parsePathLabelNative,parseDiagramNative,pathLabelPhysicalCalls,pathLabelDriverState} from './path-label-native.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 import {edgeCanonical} from './edge-log.mjs';
+import {verifySvgArrowFillCorrection} from './svg-arrow-color-evidence.mjs';
 export const pathLabelReference='tests/Reference/PathLabels/native/report.json';
 export const pathLabelReferenceSha256='e8a8e511265aab232f33054dd810536fec236c9a6e2e43a34025ff59f99f6eb3';
 const cases={
@@ -31,6 +32,7 @@ export async function loadPathLabelEvidence(id='placement'){
  return verifyPathLabelEvidence(b);
 }
 export function verifyPathLabelEvidence(b){
+ verifySvgArrowFillCorrection(b);
  const ids=b.report.definition.nodes.map(n=>n.id),text=f=>b.files.get(f).toString('utf8');
  const parse=log=>b.report.role==='diagram-native-reference'?parseDiagramNative(log,b.report.definition):parsePathLabelNative(log,ids);
  const m=parse(text('svg-probed.log')),p=parse(text('pdf-probed.log'));calcEqual(m,p,'SVG/PDF native observations differ.');

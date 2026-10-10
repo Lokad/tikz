@@ -8,6 +8,8 @@ import {captureProcess} from './qualification-process.mjs';
 import {edgeAnchors,edgeWrapper,edgeHooks,edgeCanonical,edgeSanitize,edgePdfPage} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 import {parsePathLabelNative,parseDiagramNative,pathLabelPhysicalCalls,pathLabelDriverState} from './path-label-native.mjs';
+import {requiresSvgArrowFillCorrection,svgArrowFillChangedPaintIndices,correctedArrowFillWrapper,verifySvgArrowFillCorrection} from './svg-arrow-color-evidence.mjs';
+import {svgDefaultArrowFillWorkaroundKind} from './svg-arrow-color-workaround.mjs';
 
 assert.ok(process.argv.length===2||process.argv.length===3,'Usage: node tools/TikzVisual/path-label-reference.mjs [fixed fixture name]');
 const cases={
@@ -15,6 +17,8 @@ const cases={
  interactions:['seed','first','second','reuse','clipped','continued','nested','escaped']
 };
 const diagrams={
+ 'flowchart-draw-color':{hash:'00382dca733736532da904d9246c7354565d22e91673a951218a229e052b5137',nodes:['input','check','store','review'].map(id=>[id,'rectangle']),labels:5,coordinates:['return'],constructionOrder:['input','check','store','review','diagram-label-1','diagram-label-2','diagram-label-3','diagram-label-4','return','diagram-label-5']},
+ 'arrow-color-contract':{hash:'48afc2076c84177c9b62aa7d583db5dfad0bf829c5f6b7746d0b32f5796b5bff',nodes:[],labels:3,coordinates:[],constructionOrder:['diagram-label-1','diagram-label-2','diagram-label-3']},
  'flowchart-paint':{hash:'38e3c9edcca5fbdc25ecf8e614e9c8e0e3cd0c42b302e00374bae309f8f17722',nodes:['input','check','store','review'].map(id=>[id,'rectangle']),labels:5,coordinates:['return'],constructionOrder:['input','check','store','review','diagram-label-1','diagram-label-2','diagram-label-3','diagram-label-4','return','diagram-label-5']},
  'network-smooth-plot':{hash:'10029c10cbbf08c4a13579659138f0a2b7be155c93b866cdb4096c0b5555faee',nodes:['input','filter','output'].map(id=>[id,'rectangle']),labels:3,coordinates:['origin','return'],constructionOrder:['input','filter','output','diagram-label-1','diagram-label-2','origin','diagram-label-3','return']},
  'smooth-plot-contract':{folder:'Plotting',hash:'d2f3415578d92be358eed7d2d2927720d10cee97d56417885d88b82f3b219985',nodes:[['sentinel','rectangle']],labels:0,coordinates:['seed'],constructionOrder:['sentinel','seed']},
@@ -35,6 +39,7 @@ const diagrams={
  'flowchart-transformed':{hash:'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa',nodes:[['start','rectangle'],['finish','rectangle']],labels:2,coordinates:['waypoint'],constructionOrder:['start','finish','diagram-label-1','waypoint','diagram-label-2']}
 };
 const id=process.argv[2]??'placement',diagram=Object.hasOwn(diagrams,id);assert.ok(diagram||Object.hasOwn(cases,id),'Only fixed trusted repository fixtures are accepted.');
+const correctSvgFill=requiresSvgArrowFillCorrection(id);
 const source='tests/Fixtures/'+(diagram?(diagrams[id].folder??'Diagrams'):'PathLabels')+'/'+id+'.tikz';
 const definition=diagram?{id,nodes:[...diagrams[id].nodes.map(([id,shape])=>({id,shape})),...Array.from({length:diagrams[id].labels},(_,i)=>({id:'diagram-label-'+(i+1),shape:'rectangle',sourceName:''}))],coordinates:diagrams[id].coordinates,constructionOrder:diagrams[id].constructionOrder}:{id,nodes:cases[id].map(id=>({id,shape:'rectangle'})),coordinates:[]};
 const ids=definition.nodes.map(n=>n.id);
@@ -65,6 +70,7 @@ try{
  const native=JSON.parse(await readFile(path.join(root,'tests/Reference/NodeShapes/oracle-profile.json'))),pdf=JSON.parse(await readFile(path.join(root,'tests/Reference/NodeShapes/pdf-oracle-profile.json')));
  const tools={};for(const[n,v]of Object.entries({latex:native.latexVersion,pdflatex:pdf.pdfLatexVersion,dvisvgm:native.dvisvgmVersion,dvitype:native.dviTypeVersion,pdftoppm:pdf.pdfRasterizerVersion}))tools[n]=await identify(n,v);
  const sources=[source,edgeWrapper,edgeHooks,'tools/TikzVisual/path-label-reference.mjs','tools/TikzVisual/path-label-native.mjs','tools/TikzVisual/qualification-process.mjs','tools/TikzVisual/edge-log.mjs','tools/TikzVisual/edge-replay.mjs','tools/TikzVisual/edge-driver-state.mjs','tools/TikzFontData/font-profile.json'];
+ if(correctSvgFill)sources.push('tools/TikzVisual/svg-arrow-color-workaround.mjs','tools/TikzVisual/svg-arrow-color-evidence.mjs','tools/TikzVisual/arrow-driver-state.mjs');
  const sourceHashes={};for(const file of sources){const b=edgeCanonical(await readFile(path.join(root,file)));sourceHashes[file]=sha256(b);await save('source-captures/'+file,b);}
  if(diagram)assert.equal(sourceHashes[source],diagrams[id].hash,'Changed trusted diagram source.');
  const profile=JSON.parse(await readFile(path.join(root,'tools/TikzFontData/font-profile.json')));
@@ -89,21 +95,24 @@ try{
   .replace(/^[ \t]*\\setbox\\pgfnodeparttextbox=\\hbox\{\\special\{lokad-node-origin [^}]+\}\\box\\pgfnodeparttextbox\}%\n/m,'')
   .replace('\\hbox{\\box\\lokadpicture}','\\hbox{\\pdfsavepos\\write16{LOKAD-PDF-PAGE \\number\\pdflastxpos|\\number\\pdflastypos|\\number\\pdfpagewidth|\\number\\pdfpageheight|END}\\box\\lokadpicture}');
  assert.ok(!pdfWrapper.includes('\\special{'));
+ const originalWrapper=wrapper;
+ if(correctSvgFill){await save('original-svg-wrapper.tex',wrapper);wrapper=correctedArrowFillWrapper(wrapper);}
  const probes=[...ids.flatMap(id=>edgeAnchors.map(a=>'\\lokadanchor{'+id+'}{'+a+'}')),...definition.coordinates.map(id=>'\\lokadanchor{'+id+'}{center}')].join('\n')+'\n';
  await save('probes.tex',probes);await save('svg-wrapper.tex',wrapper);await save('pdf-wrapper.tex',pdfWrapper);
  const observations={};
- for(const route of ['svg','pdf'])for(const state of ['plain','probed']){
+ for(const route of (correctSvgFill?['original-svg','svg','pdf']:['svg','pdf']))for(const state of ['plain','probed']){
+  const svgRoute=route!=='pdf';
   phase=route+'-'+state;const folder=await outputPath(output,'work/'+phase);await mkdir(folder,{recursive:true});
   await copyFile(path.join(root,source),path.join(folder,'case.tikz'));await copyFile(path.join(root,edgeHooks),path.join(folder,'edge-hooks.tex'));
-  await writeFile(path.join(folder,'probes.tex'),probes);await writeFile(path.join(folder,'case.tex'),(state==='probed'?'\\AtBeginDocument{\\lokadprobestrue}\n':'')+(route==='svg'?wrapper:pdfWrapper));
-  await execute(tools[route==='svg'?'latex':'pdflatex'].executable,['-disable-write18','-disable-installer','-interaction=nonstopmode','-halt-on-error','-recorder','case.tex'],folder,phase+'-compile');
+  await writeFile(path.join(folder,'probes.tex'),probes);await writeFile(path.join(folder,'case.tex'),(state==='probed'?'\\AtBeginDocument{\\lokadprobestrue}\n':'')+(route==='original-svg'?originalWrapper:svgRoute?wrapper:pdfWrapper));
+  await execute(tools[svgRoute?'latex':'pdflatex'].executable,['-disable-write18','-disable-installer','-interaction=nonstopmode','-halt-on-error','-recorder','case.tex'],folder,phase+'-compile');
   const log=edgeSanitize(await readFile(path.join(folder,'case.log'),'utf8'));await save(phase+'.log',log);
   const inputs={};for(const line of (await readFile(path.join(folder,'case.fls'),'utf8')).split(/\r?\n/).filter(l=>l.startsWith('INPUT '))){const p=path.resolve(folder,line.slice(6));if(p.startsWith(output+path.sep))continue;const key=path.basename(p),h=sha256(await readFile(p));if(inputs[key])assert.equal(inputs[key],h);inputs[key]=h;}
   await json(phase+'-inputs.json',inputs);
-  if(route==='svg'){
+  if(svgRoute){
    await execute(tools.dvisvgm.executable,['--no-fonts','--exact-bbox','--bbox=min','--page=1','--output=reference.svg','case.dvi'],folder,phase+'-outline');
-   const bytes=await readFile(path.join(folder,'reference.svg'));await save(state+'-reference.svg',bytes);
-   let trace=null;if(state==='probed'){trace=edgeSanitize(await execute(tools.dvitype.executable,['-disable-installer','-out-mode=4','case.dvi'],folder,'glyph-trace'));await save('native-positions.log',trace);}
+   const bytes=await readFile(path.join(folder,'reference.svg'));await save((route==='original-svg'?'original-':'')+state+'-reference.svg',bytes);
+   let trace=null;if(state==='probed'&&route==='svg'){trace=edgeSanitize(await execute(tools.dvitype.executable,['-disable-installer','-out-mode=4','case.dvi'],folder,'glyph-trace'));await save('native-positions.log',trace);}
    observations[phase]={log,bytes,trace};
   }else{
    const bytes=await readFile(path.join(folder,'case.pdf'));await save(state+'-reference.pdf',bytes);const pages={};
@@ -119,7 +128,14 @@ try{
  assert.deepEqual(metrics,pdfMetrics,'Native SVG/PDF semantic observations differ.');
  metrics.physicalOrder=pathLabelPhysicalCalls(metrics,svg.trace,pdfObserved.log);
  metrics.driverState=pathLabelDriverState(svg.bytes,pdfObserved.bytes);
+ let nativeSvgCorrection;
+ if(correctSvgFill){
+  nativeSvgCorrection={kind:svgDefaultArrowFillWorkaroundKind,changedPaintIndices:svgArrowFillChangedPaintIndices(id),pdfUnmodified:true};
+  await json('native-svg-correction.json',nativeSvgCorrection);
+  const files=new Map(await Promise.all(Object.keys(artifacts).map(async file=>[file,await readFile(await outputPath(output,file))])));
+  verifySvgArrowFillCorrection({report:{definition,artifacts,sourceHashes,nativeSvgCorrection},files});
+ }
  await json('metrics.json',metrics);
  await publish(true,{sourceHashes,tools:Object.fromEntries(Object.entries(tools).map(([n,t])=>[n,{version:t.version,sha256:t.sha256}])),definition,pdfPage:pdfObserved.page,
-  invariance:{svgDrawing:true,pdfBytes:true,pdfPixels:true},counts:{nodes:metrics.nodes.length,pathCalls:metrics.constructionPaths.length,paintedPaths:metrics.driverState.pathPaints,anchors:metrics.nodes.length*edgeAnchors.length}});
+  ...(nativeSvgCorrection?{nativeSvgCorrection}:{}),invariance:{svgDrawing:true,pdfBytes:true,pdfPixels:true},counts:{nodes:metrics.nodes.length,pathCalls:metrics.constructionPaths.length,paintedPaths:metrics.driverState.pathPaints,anchors:metrics.nodes.length*edgeAnchors.length}});
 }catch(error){await save('failure.log',edgeSanitize(error.stack??String(error)));await publish(false,{error:edgeSanitize(error.message)});process.exitCode=1;}

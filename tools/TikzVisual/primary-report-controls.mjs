@@ -17,7 +17,9 @@ export function runPrimaryReportControls(original,verify,defects){
   const report=structuredClone(original.report),files=new Map(original.files);
   const json=(file,change)=>{const value=JSON.parse(files.get(file));change(value);
    const bytes=Buffer.from(JSON.stringify(value,null,2)+'\n');files.set(file,bytes);report.artifacts[file]=calcHash(bytes);};
-  edit(report,json);
+  const artifact=(file,change)=>{assert.ok(files.has(file));const bytes=Buffer.from(change(files.get(file)));
+   files.set(file,bytes);report.artifacts[file]=calcHash(bytes);};
+  edit(report,json,artifact);
   assert.notEqual(JSON.stringify(report),JSON.stringify(original.report),'Control made no change: '+name);
   const bytes=Buffer.from(JSON.stringify(report,null,2)+'\n');
   for(const [file,digest]of Object.entries(report.artifacts))assert.equal(calcHash(files.get(file)),digest);

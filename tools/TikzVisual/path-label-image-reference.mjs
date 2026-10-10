@@ -7,6 +7,7 @@ import {diagramNativeNaturalRoot,rectangleNativeNaturalRoot,rectangleNativePrimi
 import {isRectangleImageCase,rectangleImageCounts,isPlotImageCase} from './diagram-image-evidence.mjs';
 import {makeArrowNativeSvg,arrowNativeRepresentations} from './arrow-native-svg.mjs';
 import {readEdgeOriginal,edgeOracleInstructions,edgeOracleVariants} from './edge-oracle.mjs';
+import {requiresSvgArrowFillCorrection,svgArrowFillChangedPaintIndices} from './svg-arrow-color-evidence.mjs';
 
 const spToCss=96/(72.27*65536),ptToCss=96/72.27;
 const fixed=(v,n)=>{assert.ok(Number.isFinite(v));return(Math.abs(v)<10**(-n)/2?0:v).toFixed(n).replace(/\.?0+$/,'');};
@@ -194,7 +195,12 @@ export function pathLabelImageControls(frame,glyphs){
   }offset+=node.glyphs.length;
  }
  if(diagram)for(const r of frame.regions.filter(r=>r.role==='tip'))controls.push(...['missing','quarter-pixel-shift'].map(kind=>({nodeId:r.id,target:r.id,kind})));
- if(frame.caseId==='flowchart-paint')for(const kind of ['path','glyph']){
+ if(requiresSvgArrowFillCorrection(frame.caseId)){
+  const target='native-paint-'+svgArrowFillChangedPaintIndices(frame.caseId)[0],region=frame.regions.find(r=>r.id===target);
+  assert.equal(region?.role,'tip');assert.equal(region.clips?.length??0,0,'Wrong-fill control requires a visible unclipped tip.');
+  controls.push({nodeId:target,target,kind:'wrong-default-fill'});
+ }
+ if(['flowchart-paint','flowchart-draw-color'].includes(frame.caseId))for(const kind of ['path','glyph']){
   const region=frame.regions.find(r=>r.kind===kind&&r.clips?.length);assert.ok(region,'Paint diagram must retain clipped '+kind+' evidence.');
   controls.push({nodeId:'clipped-'+kind,target:region.id,kind:'missing-clip'});
  }
@@ -207,11 +213,12 @@ export function pathLabelControlViews(frame){
  return frame.regions.some(r=>r.role==='tip')||isRectangleImageCase(frame.caseId)||isPlotImageCase(frame.caseId)?[1,4].map(scale=>({frame:'expanded',scale,background:'white'})):null;
 }
 export async function mutatePathLabelImage(renderer,svg,{target,kind,targets}){
- assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label','missing-clip'].includes(kind));
+ assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label','missing-clip','wrong-default-fill'].includes(kind));
  if(kind==='missing-label')assert.ok(targets.length>0&&targets.every(t=>/^native-glyph-\d+$/.test(t))&&targets[0]===target);
  return renderer.page.evaluate(({svg,target,kind,targets})=>{const doc=new DOMParser().parseFromString(svg,'image/svg+xml'),p=doc.getElementById(target);if(!p)throw Error('Missing native control element.');
   if(kind==='missing')p.remove();else if(kind==='missing-label')for(const id of targets){const e=doc.getElementById(id);if(!e)throw Error('Missing label glyph.');e.remove();}
   else if(kind==='missing-clip'){let removed=0;for(let e=p;e&&e.localName!=='svg';e=e.parentElement)if(e.hasAttribute('clip-path')){e.removeAttribute('clip-path');removed++;}if(!removed)throw Error('Missing controlled clip.');}
+  else if(kind==='wrong-default-fill'){if(p.localName!=='path')throw Error('Expected an arrow path.');p.setAttribute('fill','#000000');}
   else p.setAttribute('transform','translate(0.25 0) '+p.getAttribute('transform'));
   return new XMLSerializer().serializeToString(doc);
  },{svg,target,kind,targets});

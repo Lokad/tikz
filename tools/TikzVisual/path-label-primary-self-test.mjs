@@ -9,6 +9,9 @@ import {primaryReportCorruptions,runPrimaryReportControls} from './primary-repor
 assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/path-label-primary-self-test.mjs <exact-native-calibration-report>');
 const original=await loadCalcSavedReport(path.resolve(root,process.argv[2]),'path-label-native-primary-calibration');
 const defects=primaryReportCorruptions('policies.json',p=>p['intrinsic-image'].rows[0].whole.rawChangedPixels++);
+if(original.report.controls.some(c=>c.kind==='wrong-default-fill'))defects.push(
+ ['missing-wrong-default-fill-control',r=>r.controls.splice(r.controls.findIndex(c=>c.kind==='wrong-default-fill'),1)]
+);
 if(original.report.controls.some(c=>c.kind==='missing-label'))defects.push(
  ['missing-whole-label-control',r=>r.controls.splice(r.controls.findIndex(c=>c.kind==='missing-label'),1)]
 );

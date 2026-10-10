@@ -620,5 +620,25 @@ node tools/TikzVisual/arrow-color-driver-self-test.mjs
 
 The hook belongs to reference generation; the production assembly remains
 independent of TeX. The closed explicit-color corpus keeps its frozen evidence.
-Full numeric/image qualification of a complete diagram using implicit `draw=`
-arrow colors is still pending.
+The standard native producer applies the hook only to two pinned trusted
+fixtures: the four-row contract and the
+[complete flowchart](../tests/Fixtures/Diagrams/flowchart-draw-color.tikz).
+It retains original plain/probed SVGs and their wrapper, corrected plain/probed
+SVGs, and the unmodified PDF with its rasters. Independent readers require
+unchanged root, geometry, clips, glyph contours/positions/paint and all other
+path paint; only the declared default tip fills may change. Rehashed corruption
+controls reuse the shared artifact/report machinery. The primary image harness
+also replaces a visible affected tip's fill with black and requires pixel
+rejection with numeric checks bypassed.
+
+```text
+node tools/TikzVisual/path-label-reference.mjs flowchart-draw-color
+node tools/TikzVisual/path-label-reference.mjs arrow-color-contract
+node tools/TikzVisual/svg-arrow-color-evidence-self-test.mjs <native-report>
+node tools/TikzVisual/diagram-arrow-reference.mjs <native-report>
+```
+
+Both fixtures pass affected comparisons of fresh public/traced conversion:
+2,508 native numeric checks, 48 current SVG views, 16 PDF views through both
+gates and 64 independent current recaptures. Portable-cache, final-source and
+clean-export qualification of this scope remains pending.

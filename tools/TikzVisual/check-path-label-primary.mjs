@@ -72,7 +72,7 @@ export function verifyPathLabelPrimaryPixels(bundle){
    calcEqual(evaluation,result.evaluation,'Control verdict differs.');
    const baseline=nativeRows.find(r=>r.encoding===pathLabelImageEncodings[0]&&r.capture===record.capture&&key(r)===key(record));
    const differs=sha256(bundle.files.get(result.images.actual))!==sha256(bundle.files.get(baseline.images.actual));
-   if(control.kind==='missing-clip')assert.equal(differs,true,'Clip boundary control must change pixels.');
+   if(['missing-clip','wrong-default-fill'].includes(control.kind))assert.equal(differs,true,'Declared visible control must change pixels.');
    assert.equal(record.observedVisible,differs);assert.equal(result.observedVisible,differs);assert.equal(record.rejected,!evaluation.passed);
    if(differs){assert.equal(evaluation.passed,false);assert.ok(evaluation.checks.some(c=>c.id===control.target&&!c.passed));visible++;}
    else{calcEqual(result.metrics,baseline.metrics,'Invisible control changed observations.');invisible++;}

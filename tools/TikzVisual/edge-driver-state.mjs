@@ -11,8 +11,11 @@ const initial=()=>({fill:[0,0,0],stroke:null,width:1,cap:0,join:0,miter:4,
 const rgb=s=>{assert.match(s,/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/);const t=s.length===4?[...s.slice(1)].map(c=>c+c).join(''):s.slice(1);
   return[0,2,4].map(i=>parseInt(t.slice(i,i+2),16)/255);};
 
-export function edgeSvgPaints(bytes){
-  assert.ok(bytes.length<=1000000);const svg=bytes.toString('utf8'),stack=[],paints=[],clips=[];let state=initial(),skip=0;
+export function edgeSvgPaints(bytes,{includeGlyphs=false}={}){
+  assert.ok(bytes.length<=1000000);const svg=bytes.toString('utf8'),stack=[],paints=[],clips=[],glyphs=[],definitions=[];let state=initial(),skip=0,root;
+  // Opt-in correction audit: preserve every glyph contour, placement and paint.
+  // Ordinary driver-state callers retain their existing result shape.
+  if(includeGlyphs)state.transforms=[];
   const clean=svg.replace(/<\?xml[^>]+\?>/g,'').replace(/<!--[\s\S]*?-->/g,'');
   for(const token of clean.match(/<[^>]+>|[^<]+/g)??[]){
     if(!token.startsWith('<')){assert.equal(token.trim(),'');continue;}
@@ -32,13 +35,20 @@ export function edgeSvgPaints(bytes){
       else if(key==='stroke-dasharray')next.dash=value==='none'?[]:value.split(',').map(number);
       else if(key==='stroke-dashoffset')next.phase=number(value);
       else if(key==='clip-path'){assert.match(value,/^url\(#[a-zA-Z0-9-]+\)$/);next.clips.push(value.slice(5,-1));}
+      else if(key==='transform'&&includeGlyphs)next.transforms.push(value);
       else assert.ok(['xmlns','xmlns:xlink','version','width','height','viewBox','id','transform','d','x','y','xlink:href','clip-path','clipPathUnits'].includes(key),'Unsupported edge SVG attribute: '+key);
     }
     if(name==='path'&&!skip){assert.ok(attrs.d);paints.push({...next,data:attrs.d});}
+    if(includeGlyphs){
+      if(name==='svg')root=attrs;
+      if(name==='path'&&skip&&!stack.some(parent=>parent.name==='clipPath')){assert.ok(attrs.id);definitions.push(attrs);}
+      if(name==='use'){assert.equal(skip,0);glyphs.push({attributes:attrs,paint:next});}
+    }
     if(name==='clipPath')clips.push(attrs.id);
     if(!token.endsWith('/>')){assert.ok(stack.length<64);stack.push({name,state,skip});state=next;if(name==='defs'||name==='clipPath')skip++;}
   }
-  assert.equal(stack.length,0);assert.ok(paints.length>0&&paints.length<1000);return{paints,clips};
+  assert.equal(stack.length,0);assert.ok(paints.length>0&&paints.length<1000);
+  return{paints,clips,...(includeGlyphs?{root,glyphs,definitions:definitions.sort((a,b)=>a.id.localeCompare(b.id))}:{})};
 }
 
 function pdfObjects(bytes){
