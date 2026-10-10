@@ -35,12 +35,25 @@ export function verifyMathPrimaryPixels(bundle){
  assert.equal(sha256(bundle.files.get('inputs/native-report.json')),nativeHash);
  calcEqual(r.records.map(v=>v.file).sort(),declaredCases.flatMap(c=>mathPrimaryEncodings.flatMap(e=>mathPrimaryViews.map(v=>
   c.id+'/encodings/'+e+'/'+mathPrimaryKey(v)+'/record.json'))).sort(),'Native math view coverage differs.');
- let pairs=0,regions=0,visibleControls=0,invisibleControls=0;
- for(const declared of declaredCases){
+ // Check every case's owned frame and fault contract before expensive pixels.
+ // A structural fault in a later case must not replay earlier native views.
+ const prepared=declaredCases.map(declared=>{
   const id=declared.id,frame=bundle.json(id+'/frame.json');
   validateMathInspectionFrame(frame,declared,bundle.json('events/'+id+'/measurements.json'),
    bundle.json(id+'/supplement.json'),bundle.json(id+'/path-supplement.json'));
   const summary=r.cases.find(c=>c.id===id);calcEqual(summary,{id,regions:frame.regions.length,counts:frame.counts},'Math count summary differs.');
+  const expected=mathPrimaryControls(frame),controls=r.controls.filter(c=>c.caseId===id);
+  calcEqual(controls.map(({caseId,numericChecksBypassed,comparisons,...c})=>c),expected,'Math fault ownership/coverage differs.');
+  for(const control of controls){
+   assert.equal(control.numericChecksBypassed,true);
+   calcEqual(control.comparisons.map(mathPrimaryKey).sort(),mathControlViews.map(mathPrimaryKey).sort(),'Math control view coverage differs.');
+   for(const index of control.comparisons)
+    assert.equal(index.file,id+'/controls/'+control.name+'/'+control.kind+'/'+mathPrimaryKey(index)+'/record.json');
+  }
+  return{id,frame,controls};
+ });
+ let pairs=0,regions=0,visibleControls=0,invisibleControls=0;
+ for(const {id,frame,controls}of prepared){
   const pixels=pathLabelPrimaryPixelReader(bundle,frame),nativeRows=[];
   for(const index of r.records.filter(v=>v.caseId===id)){
    assert.ok(mathPrimaryEncodings.includes(index.encoding));assert.ok(index.file.startsWith(id+'/encodings/'+index.encoding+'/'+index.capture+'/'));
@@ -50,13 +63,8 @@ export function verifyMathPrimaryPixels(bundle){
    pairs++;regions+=row.regions.length;
   }
   const policies=deriveMathPrimaryPolicy(id,nativeRows);calcEqual(policies,bundle.json(id+'/policies.json'),'Native-only policy derivation differs.');
-  const expected=mathPrimaryControls(frame),controls=r.controls.filter(c=>c.caseId===id);
-  calcEqual(controls.map(({caseId,numericChecksBypassed,comparisons,...c})=>c),expected,'Math fault ownership/coverage differs.');
   for(const control of controls){
-   assert.equal(control.numericChecksBypassed,true);
-   calcEqual(control.comparisons.map(mathPrimaryKey).sort(),mathControlViews.map(mathPrimaryKey).sort(),'Math control view coverage differs.');
    for(const index of control.comparisons){
-    assert.equal(index.file,id+'/controls/'+control.name+'/'+control.kind+'/'+mathPrimaryKey(index)+'/record.json');
     const row=pixels(index.file);assert.equal(mathPrimaryKey(row),mathPrimaryKey(index));assert.equal(row.converterInvoked,false);
     const evaluation=evaluateMathPrimary(policies,row);calcEqual(row.evaluation,evaluation,'Math control verdict differs.');
     const base=nativeRows.find(r=>r.encoding===mathPrimaryEncodings[0]&&mathPrimaryKey(r)===mathPrimaryKey(row));

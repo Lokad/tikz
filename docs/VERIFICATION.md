@@ -88,6 +88,10 @@ standalone self-tests remain callable without a selector and still run all their
 controls. PDF/current overlays reuse the existing rehashed-artifact helper.
 No native calibration, image-negative fixture or per-region threshold is removed.
 
+Math primary checks validate every owned frame and fault contract before
+decoding pixels. Structural faults in a later case therefore fail immediately;
+well-formed reports retain the full independent pixel and policy checks.
+
 ## Iteration view mapping
 
 Iteration uses eight primary views rather than 24 Cartesian combinations:
