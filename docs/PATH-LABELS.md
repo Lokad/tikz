@@ -43,7 +43,9 @@ The original three complete diagrams also support positioning, calc and arrows.
 The [paint flowchart](../tests/Fixtures/Diagrams/flowchart-paint.tikz) adds an
 orthogonal return label with colored/translucent paths, measured nodes and a
 clipped curved arrow. Its nine boxes, 144 anchors, 45 glyphs and five arrows
-pass 1,739 independent numeric checks; its full image qualification is pending.
+pass 1,739 independent numeric checks. The fixed fixture also passes 24 primary
+SVG views, eight PDF views and 32 independent current-source recaptures under
+the pinned renderer policies. Its arrow paint checks use explicit `color=`.
 Ten ordinary controls cover unequal legs, endpoints and the corner's slope.
 
 The [interaction fixture](../tests/Fixtures/PathLabels/interactions.tikz) adds
