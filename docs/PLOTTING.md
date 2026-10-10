@@ -80,7 +80,10 @@ The six fixtures in [the native snapshot](../tests/Reference/Plotting/README.md)
 ground coordinate streams, finite function sampling, smooth handlers and complete
 network interactions. Ordinary tests cover frozen native path/arrow geometry,
 continuation, source locations, malformed input and shared budgets/cancellation.
-Full plotting image qualification remains pending until final feature acceptance.
+All six fixed fixtures pass independent numeric, primary/local, PDF and
+current-source checks under the pinned renderer profile. Final qualification
+also covers a fresh-export regression of the earlier diagram, style, loop,
+math and path-label cases. Broader TikZ and release qualification remain separate.
 
 The native image harness retains both PGF's picture viewport and the independent
 viewport enclosing stroke ink. In the fixed smooth contract, their 0.11 CSS pixel
