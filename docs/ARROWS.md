@@ -638,9 +638,11 @@ node tools/TikzVisual/svg-arrow-color-evidence-self-test.mjs <native-report>
 node tools/TikzVisual/diagram-arrow-reference.mjs <native-report>
 ```
 
-Both fixtures pass affected comparisons of fresh public/traced conversion:
+Both fixtures pass final clean-export acceptance and main-worktree integration
+through fresh public/traced conversion:
 2,508 native numeric checks, 48 current SVG views, 16 PDF views through both
 gates and 64 independent current recaptures. The
 [frozen native archives](../tests/Reference/ArrowColors/README.md) preserve their
-calibration and backend evidence. Final-source, clean-export and main-worktree
-qualification of this scope remains pending.
+calibration and backend evidence. This qualification covers the two authored
+fixtures under the pinned local renderer. Broader diagram and hosted
+qualification remain open.
