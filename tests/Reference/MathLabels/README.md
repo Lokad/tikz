@@ -231,3 +231,14 @@ diagnostics use the existing pinned renderer, physical registration, paired
 images, overlay/blink viewer and source-attributed crops. Raw pixel differences
 and original-driver residuals remain available. Broader math coverage and hosted
 qualification remain open. Math checks preserve their own font and rule semantics.
+
+The native-only reader also has explicit selection for the styled multiline
+flowchart. Its original three-case default preserves all 116 frozen payload
+files and 942 native PNGs. The independent primary checker retains the original
+native input and calibration. Its [source guard](../../../tools/TikzVisual/check-math-label-primary.mjs)
+allows only the two reviewed historical/current C# selector versions, scoped
+to that immutable original input. All other recorded C# and profile sources
+still require exact matching. Unknown versions, other containers, exchanged
+pairs and changes to unreviewed dependencies are rejected by the existing
+primary control suite. This source review extends neither native policy limits
+nor current diagram conformance.

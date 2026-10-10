@@ -14,6 +14,20 @@ import {validateMathInspectionFrame} from './check-math-label-framing.mjs';
 import {mathPrimaryNativeCase,mathPrimarySources,mathPrimaryViews,mathPrimaryEncodings,mathPrimaryKey,mathPrimaryNativeHash,
  mathControlViews,mathPrimaryControls,mutateMathPrimary,deriveMathPrimaryPolicy,evaluateMathPrimary,measureMathPrimary} from './math-label-primary.mjs';
 
+// Reviewed f99ce86 selector addition. The original three cases retain all
+// 116 frozen event payloads and 942 PNGs (see the styled source review).
+// These pairs apply only to the original immutable input, never another version.
+export const mathNativeSourcePairs=Object.freeze({
+ 'tools/TikzShapeCalibration/Program.cs':Object.freeze({historical:'4616e8d4f03f4f3473f04bf3b88aeaf0e22f9a5261d93ed0aeaa68e5541ea5e4',current:'2a8784723d9bea21bc50d9c736be11c79f0be722953c1c8fad48ba43495c0145'}),
+ 'tools/TikzShapeCalibration/MathEvents.cs':Object.freeze({historical:'cf60bebdfb3b3461ec8f35bcf759fd2b54ccfea3cdfa38092efc8412c21a9aea',current:'ff73078c4851f3f7aad8279f7b9729825232a2ba8e0e7fc6c95a48bf67749997'})
+});
+export function mathNativeSourceHash(nativeInput,file,historical,actual){
+ if(actual===historical)return actual;
+ const pair=mathNativeSourcePairs[file];
+ assert.ok(nativeInput==='b124baf97409d134781e233dd605461e315387991c2bae6cba8e975ec64c650a'
+  &&pair&&historical===pair.historical&&actual===pair.current,'Unreviewed native math reader source: '+file);
+ return actual;
+}
 export function verifyMathPrimaryPixels(bundle){
  const r=bundle.report;assert.equal(r.converterInvoked,false);assert.equal(r.nativeToolInvoked,false);
  const declaredCases=mathFramingFamily(r.cases.map(c=>c.id)),nativeHash=mathPrimaryNativeHash(declaredCases.map(c=>c.id));
@@ -67,8 +81,9 @@ export async function checkMathPrimary(file,nativeFile){
  const declaredCases=mathFramingFamily(bundle.report.cases.map(c=>c.id));
  assert.equal(nativeBundle.sha256,mathPrimaryNativeHash(declaredCases.map(c=>c.id)));assert.ok(nativeBundle.bytes.equals(bundle.files.get('inputs/native-report.json')));
  for(const [file,bytes]of nativeBundle.files)if(file.startsWith('events/'))assert.ok(bytes.equals(bundle.files.get(file)),'Changed native event input: '+file);
+ const nativeSourceHashes={};
  for(const [file,digest]of Object.entries(nativeBundle.report.sources))if(file.endsWith('.cs')||file.endsWith('.csproj')||file.endsWith('.json'))
-  assert.equal(sha256(await readFile(path.join(root,file))),digest,'Changed native reader/profile input: '+file);
+  nativeSourceHashes[file]=mathNativeSourceHash(nativeBundle.sha256,file,digest,sha256(await readFile(path.join(root,file))));
  for(const file of mathPrimarySources.filter(f=>!f.endsWith('.mjs')))
   assert.ok(bundle.files.get('source-captures/tools/TikzVisual/'+file).equals(await readFile(path.join(root,'tools/TikzVisual/'+file))),'Changed calibration environment: '+file);
  const renderer=await createRenderer();let recaptured=0;
@@ -96,7 +111,7 @@ export async function checkMathPrimary(file,nativeFile){
   }
  }finally{await renderer.browser.close();}
  assert.equal(recaptured,bundle.report.coverage.nativeViews+bundle.report.coverage.controlViews);
- return{inputSha256:bundle.sha256,pixels,sourceRecaptures:recaptured};
+ return{inputSha256:bundle.sha256,pixels,sourceRecaptures:recaptured,nativeSourceHashes};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  assert.equal(process.argv.length,4,'Usage: check-math-label-primary.mjs <calibration-report> <accepted-native-image-report>');
