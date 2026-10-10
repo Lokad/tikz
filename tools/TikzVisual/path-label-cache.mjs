@@ -8,7 +8,11 @@ import {decodePathLabelCache,pathLabelCacheBounds,pathLabelCompressedLimit} from
 import {mathLabelCacheGroups,verifyMathPortablePart} from './math-label-cache-inputs.mjs';
 
 export function pathLabelCacheDefinition(fixture){
- if(Object.hasOwn(mathLabelCacheGroups,fixture))return{mathLabels:mathLabelCacheGroups[fixture],fixtures:Object.keys(mathLabelCacheGroups).sort(),directory:'tests/Reference/MathLabels',roles:mathLabelCacheGroups[fixture].map(r=>r.role),profileRole:'math-label-frozen-image-profile'};
+ if(Object.hasOwn(mathLabelCacheGroups,fixture)){
+  const styled=fixture.startsWith('styled-labels-');
+  return{mathLabels:mathLabelCacheGroups[fixture],fixtures:Object.keys(mathLabelCacheGroups).filter(f=>f.startsWith(styled?'styled-labels-':'math-labels-')).sort(),
+   directory:'tests/Reference/'+(styled?'StyledLabels':'MathLabels'),roles:mathLabelCacheGroups[fixture].map(r=>r.role),profileRole:styled?'styled-label-frozen-image-profile':'math-label-frozen-image-profile'};
+ }
  const plottingFixtures=['network-coordinate-plot','coordinate-plot-contract','network-function-plot','function-plot-contract','network-smooth-plot','smooth-plot-contract'];
  const plotting=plottingFixtures.includes(fixture);
  const functions=['math-functions-contract','network-math-functions'].includes(fixture);

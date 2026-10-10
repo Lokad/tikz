@@ -8,7 +8,7 @@ import {calcHash} from './calc-saved-images.mjs';
 import {loadPathLabelCache,pathLabelCacheDefinition} from './path-label-cache.mjs';
 import {encodePathLabelCache,decodePathLabelCache,pathLabelCacheBounds} from './path-label-cache-codec.mjs';
 import {encodeCalcTrialCache} from './calc-trial-cache-codec.mjs';
-import {mathLabelCacheGroups,mathLabelCacheReports,verifyMathPortableInputs,verifyMathPortablePart} from './math-label-cache-inputs.mjs';
+import {mathLabelCacheGroups,mathLabelCacheReports,styledLabelCacheReports,verifyMathPortableInputs,verifyMathPortablePart} from './math-label-cache-inputs.mjs';
 
 assert.equal(process.argv.length,2,'Usage: node tools/TikzVisual/path-label-cache-self-test.mjs');
 const small=encodePathLabelCache(new Map([['a',Buffer.from('same')],['b',Buffer.from('same')],['empty',Buffer.alloc(0)]]),'placement'),decoded=decodePathLabelCache(small,'placement');
@@ -49,16 +49,25 @@ for(const fixture of['placement','interactions','flowchart-basic','network-bent'
  const raw=gunzipSync(original,{maxOutputLength:pathLabelCacheBounds.decoded});assert.equal(calcHash(raw),loaded.manifest.decodedSha256);
  if(Object.hasOwn(mathLabelCacheGroups,fixture))for(const d of loaded.manifest.reports){
   const bytes=loaded.cache.files.get(d.file),report=JSON.parse(bytes),files=new Map(Object.keys(report.artifacts).map(f=>[f,loaded.cache.files.get(path.posix.dirname(d.file)+'/'+f)]));
-  mathReports.set(d.role,{bytes,sha256:d.sha256,report,files,json:f=>JSON.parse(files.get(f))});
+  mathReports.set(d.sha256,{bytes,sha256:d.sha256,report,files,json:f=>JSON.parse(files.get(f))});
  }
  fixtures.push({fixture,logicalFiles:loaded.cache.files.size,uniqueBlobs:loaded.cache.blobs.size});
 }
-const mathInputs=mathLabelCacheReports.map(d=>mathReports.get(d.role)),mathQualification=verifyMathPortableInputs(mathInputs);
+const mathInputs=mathLabelCacheReports.map(d=>mathReports.get(d.sha256)),mathQualification=verifyMathPortableInputs(mathInputs),
+ styledInputs=styledLabelCacheReports.map(d=>mathReports.get(d.sha256)),styledQualification=verifyMathPortableInputs(styledInputs,true);
 const mathControls=[
  ['math-evidence-phase-exchanged',()=>verifyMathPortablePart('math-labels-primary',mathInputs.slice(0,2))],
  ['math-historical-native-claim-erased',()=>verifyMathPortablePart('math-labels-native',[{...mathInputs[0],report:{...mathInputs[0].report,nativeToolInvoked:false}},mathInputs[1]])],
  ['math-restored-owner-changed',()=>{const owner=mathInputs[3],files=new Map(owner.files);files.set('input-report.json',Buffer.from('{}\n'));
-  verifyMathPortablePart('math-labels-primary',[mathInputs[2],{...owner,files}]);}]
+  verifyMathPortablePart('math-labels-primary',[mathInputs[2],{...owner,files}]);}],
+ ['styled-evidence-phase-exchanged',()=>verifyMathPortablePart('styled-labels-primary',styledInputs.slice(0,2))],
+ ['styled-historical-native-claim-erased',()=>verifyMathPortablePart('styled-labels-native',[{...styledInputs[0],report:{...styledInputs[0].report,nativeToolInvoked:false}},styledInputs[1]])],
+ ['styled-restored-owner-changed',()=>{const owner=styledInputs[3],files=new Map(owner.files);files.set('input-report.json',Buffer.from('{}\n'));
+  verifyMathPortablePart('styled-labels-primary',[styledInputs[2],{...owner,files}]);}],
+ ['styled-original-owners-exchanged',()=>verifyMathPortableInputs(mathInputs,true)],
+ ['styled-missing-pdf-phase',()=>verifyMathPortableInputs(styledInputs.slice(0,7),true)],
+ ['styled-rehashed-pdf-owner',()=>{const owner=styledInputs[7],files=new Map(owner.files);files.set('input-report.json',Buffer.from('{}\n'));
+  verifyMathPortableInputs([...styledInputs.slice(0,7),{...owner,files}],true);}]
 ];
 for(const[name,run]of mathControls)assert.throws(run,undefined,'Accepted '+name);
-console.log(JSON.stringify({validated:true,controls:[...controls.map(([name])=>name),'corrupt-pinned-archive','rehashed-unreviewed-archive',...mathControls.map(([name])=>name)],fixtures,mathQualification}));
+console.log(JSON.stringify({validated:true,controls:[...controls.map(([name])=>name),'corrupt-pinned-archive','rehashed-unreviewed-archive',...mathControls.map(([name])=>name)],fixtures,mathQualification,styledQualification}));

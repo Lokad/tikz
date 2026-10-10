@@ -7,13 +7,14 @@ import {encodeCalcTrialCache,decodeCalcTrialCache,calcTrialCacheBounds,calcTrial
 export const pathLabelCacheBounds=calcTrialCacheBounds;
 const nativeMagic=Buffer.from('LTZPL01\n'),calcMagic=Buffer.from('LTZCC01\n');
 const packedMagic=Buffer.from('LTZPL02\n');
-const packedFixture=fixture=>['math-functions-contract','math-labels-primary','math-labels-pdf'].includes(fixture);
+const packedFixture=fixture=>['math-functions-contract','math-labels-primary','math-labels-pdf','styled-labels-primary','styled-labels-pdf'].includes(fixture);
 // The measured focused corpus compresses to 53.5 MB; existing cases keep 48 MB.
 // The fixed combined PDF evidence measures 65.7 MB; other math parts keep 48 MB.
 export const pathLabelCompressedLimit=fixture=>fixture==='math-labels-pdf'?80000000:fixture==='math-functions-contract'?64000000:pathLabelCacheBounds.compressed;
 const controlRecord=file=>file.includes('/controls/')&&file.endsWith('/record.json');
 const metadata=fixture=>{assert.ok(['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract','flowchart-math-macros','math-macro-contract','network-math-functions','math-functions-contract','math-labels-native','math-labels-primary','math-labels-pdf',
- 'network-coordinate-plot','coordinate-plot-contract','network-function-plot','function-plot-contract','network-smooth-plot','smooth-plot-contract'].includes(fixture));return{schemaVersion:1,role:'path-label-native-image-cache',fixture,
+ 'network-coordinate-plot','coordinate-plot-contract','network-function-plot','function-plot-contract','network-smooth-plot','smooth-plot-contract',
+ 'styled-labels-native','styled-labels-primary','styled-labels-pdf'].includes(fixture));return{schemaVersion:1,role:'path-label-native-image-cache',fixture,
  scope:'Frozen native calibration and sensitivity evidence only; current conversion and final feature conformance remain separate.',
  converterInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending'};};
 

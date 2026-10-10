@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "role": "styled-label-frozen-image-profile",
+  "fixtures": {
+    "styled-labels-native": {
+      "file": "tests/Reference/StyledLabels/styled-labels-native.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "styled-labels-native",
+        "reports": [
+          {
+            "role": "math-label-path-native",
+            "file": "artifacts/positioning-native/run-13f44e3d-ac9b-495b-a7d7-ace4418d82ee/report.json",
+            "sha256": "70c21514f08464239450311c75881446e1094b9b1e647c377671317f08b13811"
+          },
+          {
+            "role": "math-label-native-image-iteration",
+            "file": "artifacts/styled-labels-native-encoding/run-36e617d-final/report.json",
+            "sha256": "8e8319ea03da1fde250a1ca29a1b96ace966c5ea3cfb3e3bb530364d4d69c8a7"
+          }
+        ],
+        "compressedSha256": "4e58861c26e8bf6c85fc72d6c34b30c153c00b5a07b328a8a72588691565eb39",
+        "decodedSha256": "75650543590b1bbe8a8363a48f9cc9acdab4ef8a0a4097b2a0a02b1cbc1952f2",
+        "compressedBytes": 4625989,
+        "decodedBytes": 11488850,
+        "logicalFiles": 551,
+        "uniqueBlobs": 258,
+        "logicalBytes": 14063559,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "styled-labels-primary": {
+      "file": "tests/Reference/StyledLabels/styled-labels-primary.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "styled-labels-primary",
+        "reports": [
+          {
+            "role": "math-label-native-primary-calibration",
+            "file": "artifacts/math-primary-calibration/run-0a8522ee-e696-40c6-a50d-b9d548d6c2ce/report.json",
+            "sha256": "a8fa4e859d09420be360faa9d639b6803f2ee2980b6a3aa7775a4f42b2732c0e"
+          },
+          {
+            "role": "math-label-independent-primary-check",
+            "file": "artifacts/math-primary-check/run-29bc7d16-14a3-4651-af4d-9b09c874237d/report.json",
+            "sha256": "e3530831f410c347332fdee44d73850bc4b29f8143aa3b5ad528bde2c8b8d47a"
+          }
+        ],
+        "compressedSha256": "2f7fdf5d4a6afeee7e58810ebf60f91571824e49220a1b9213fc23863f22893a",
+        "decodedSha256": "d80a3ae61db5d63374d156ee521f4b648f62d728c3f1e63af2d57d69ef915168",
+        "compressedBytes": 9119435,
+        "decodedBytes": 23463633,
+        "logicalFiles": 887,
+        "uniqueBlobs": 478,
+        "logicalBytes": 54613581,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "styled-labels-pdf": {
+      "file": "tests/Reference/StyledLabels/styled-labels-pdf.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "styled-labels-pdf",
+        "reports": [
+          {
+            "role": "math-label-native-pdf-reference",
+            "file": "artifacts/math-pdf-reference/run-fef2a75f-49e7-47a1-8b9a-52363c8c765f/report.json",
+            "sha256": "6ea432d26eba15e461f63a22b6d1478388939f2647f5ea4a798445ed07784c02"
+          },
+          {
+            "role": "math-label-independent-native-pdf-check",
+            "file": "artifacts/math-pdf-native-check/run-196314a6-a8ce-4309-a64f-7730640c12eb/report.json",
+            "sha256": "87be4d509917a9a91065cf61358a7244e7b88a221fead6ecdfa09357a933feb9"
+          },
+          {
+            "role": "math-label-native-pdf-calibration",
+            "file": "artifacts/math-pdf-calibration/run-ce4d3373-0ab5-4c26-a79c-0719c1a253f3/report.json",
+            "sha256": "eaecf331895b9f496faf997e42e357faf0321ca6e48b8b4214b169e9bcdbe639"
+          },
+          {
+            "role": "math-label-independent-pdf-image-check",
+            "file": "artifacts/math-pdf-check/run-f9493469-aa2d-44e6-8b39-ec908e4926e1/report.json",
+            "sha256": "1edf9e4918fb5d675b5dd5101d21d1b548caca479a8b929b9a1735228920fd61"
+          }
+        ],
+        "compressedSha256": "6243a11ea205eeb17308896091e68565b6f5f3f25efc1d2856f762c66343d797",
+        "decodedSha256": "16ec393712c7f768cca469193721ed2f6b0ceee724886a88a46f7a41a94b8323",
+        "compressedBytes": 32928895,
+        "decodedBytes": 51878030,
+        "logicalFiles": 1340,
+        "uniqueBlobs": 902,
+        "logicalBytes": 82402546,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    }
+  },
+  "transportSources": {
+    "tools/TikzVisual/path-label-cache-codec.mjs": "cd96caa36b1873b051eab0f8caedbdf833ad3891e426b1907f1cd37ec403dd67",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/path-label-cache.mjs": "524f2243d67a03465bbdbb4b738068476106ca25a8d2fc151d5ec1abd37c1607",
+    "tools/TikzVisual/math-label-cache-inputs.mjs": "96e60ee7410121cd90c62fe9de66cdd167397f5329c99306b2df6244463aed1f"
+  }
+}
