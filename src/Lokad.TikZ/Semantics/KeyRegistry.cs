@@ -90,6 +90,10 @@ internal static class KeyRegistry
                 // The sharp handler is the default. Other plot handlers remain
                 // explicit unsupported options until their geometry is declared.
                 case "sharp plot": break;
+                case "domain": state.Plot = state.Plot.Domain(option.Value, state, budget); break;
+                case "samples": state.Plot = state.Plot.Count(option.Value, state, budget); break;
+                case "samples at": state.Plot = state.Plot with { Values = option.Value }; break;
+                case "variable": state.Plot = state.Plot.SetVariable(option.Value, budget); break;
                 case "draw": state.Paint = paint with { Stroke = value is not ("none" or "false"), StrokeColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.StrokeColor : Color.Parse(option.Value, budget) }; break;
                 case "fill": state.Paint = paint with { Fill = value is not ("none" or "false"), FillColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.FillColor : Color.Parse(option.Value, budget) }; break;
                 case "color": var color = Color.Parse(option.Value, budget); state.Paint = paint with { StrokeColor = color, FillColor = color }; state.Node = state.Node with { TextColor = color }; break;

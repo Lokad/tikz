@@ -15,6 +15,8 @@ const cases={
  interactions:['seed','first','second','reuse','clipped','continued','nested','escaped']
 };
 const diagrams={
+ 'network-function-plot':{hash:'92a7a7ebfd39bb8e735a3c52f6972acaec607e4de2df5549e5cfcbe6acf88fdc',nodes:['input','filter','output'].map(id=>[id,'rectangle']),labels:3,coordinates:['origin','return'],constructionOrder:['input','filter','output','diagram-label-1','diagram-label-2','origin','diagram-label-3','return']},
+ 'function-plot-contract':{folder:'Plotting',hash:'bd15f0fa3345ea0df4f5c5a0acd8c1ed48457b5c9429f70ffdded448198c2f11',nodes:['sentinel','restored'].map(id=>[id,'rectangle']),labels:0,coordinates:[],constructionOrder:['sentinel','restored']},
  'network-coordinate-plot':{hash:'4283ad96c06887488e4625436398350664931e13a5a9409470425bca7fa6dcc1',nodes:['input','filter','output'].map(id=>[id,'rectangle']),labels:3,coordinates:['origin','return'],constructionOrder:['input','filter','output','diagram-label-1','diagram-label-2','origin','diagram-label-3','return']},
  'coordinate-plot-contract':{folder:'Plotting',hash:'555ddf964ab1ebc2ca18719f9f3e8b5f04044741db610d4cd4773d799c5b4de4',nodes:[['sentinel','rectangle']],labels:0,coordinates:['seed'],constructionOrder:['sentinel','seed']},
  'network-math-functions':{hash:'2263a4ae32200cfcc435655c3447d4eed0f5b7584f0d88584d9b1b17da579bbf',nodes:['hub','worker1','worker2','worker3','output'].map(id=>[id,'rectangle']),labels:5,coordinates:['slot1','slot2','slot3','relay','return'],constructionOrder:['hub','slot1','worker1','slot2','worker2','slot3','worker3','output','diagram-label-1','diagram-label-2','diagram-label-3','diagram-label-4','diagram-label-5','relay','return']},

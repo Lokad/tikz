@@ -235,19 +235,19 @@ internal sealed partial class Evaluator(Budget budget)
                     var plotState = state.Clone(budget, plot.Source);
                     KeyRegistry.ApplyStyle("every plot", plotState, budget, plot.Source);
                     KeyRegistry.Apply(plot.Options, plotState, budget);
-                    for (var i = 0; i < plot.Points.Count; i++)
+                    var sampleIndex = 0;
+                    foreach (var coordinate in PlotCoordinates(plot, plotState))
                     {
-                        var coordinate = plot.Points[i];
                         // The coordinate-list scanner records the entire stream
                         // before emission; + and ++ both use its entry reference.
                         var plotPoint = PathCoordinate(coordinate, plotState, reference, out _);
                         var world = PgfTransform.Apply(plotState.Transform, plotPoint, budget, coordinate.Source);
-                        if (i == 0 && !plot.Connect) path.Move(world);
+                        if (sampleIndex++ == 0 && !plot.Connect) path.Move(world);
                         else path.Line(world);
                         position = plotPoint;
                     }
                     // An empty stream leaves PGF's plot-last-point at the origin.
-                    if (plot.Points.Count == 0) position = default;
+                    if (sampleIndex == 0) position = default;
                     reference = position;
                     pending = null;
                     break;

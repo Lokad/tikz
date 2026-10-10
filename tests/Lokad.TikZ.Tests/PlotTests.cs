@@ -13,9 +13,100 @@ public sealed class PlotTests
 {
     private static readonly TikzOptions Body = TikzOptions.Default with { InputKind = TikzInputKind.PictureBody };
 
+    [Fact]
+    public void Complete_network_combines_function_sampling_and_existing_diagram_features()
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/Diagrams/network-function-plot.tikz"));
+        var converted = TikzConverter.Convert(source, TikzOptions.Default, CancellationToken.None);
+        Assert.True(converted is TikzSuccess, string.Join("; ", converted.Diagnostics.Select(d => d.Code + ": " + d.Message + " at " + d.Span.Offset)));
+    }
+
+    [Theory]
+    [InlineData("", 24)]
+    [InlineData("domain=-5:5", 25)]
+    [InlineData("domain=0:1,samples=4", 4)]
+    [InlineData("domain=1:0,samples=4", 4)]
+    [InlineData("domain=2:2,samples=7", 2)]
+    [InlineData("domain=0:0.00005,samples=9", 2)]
+    [InlineData("domain=0:1,samples=0", 2)]
+    [InlineData("domain=0:1,samples=3.5", 3)]
+    [InlineData("samples at={0,0.25,...,1}", 5)]
+    [InlineData("samples at={1,0.75,...,0}", 5)]
+    [InlineData("samples at={}", 0)]
+    public void Function_sampling_uses_finite_native_range_counts(string options, int count)
+    {
+        var scene = Scene(@"\draw[" + options + @"]plot(\x,0);");
+        Assert.Equal(count, scene.Paths.Sum(p => p.Path.Segments.Count));
+    }
+
+    [Theory]
+    [InlineData("domain=0:1,samples=3,samples at={2,3}", 2)]
+    [InlineData("samples at={2,3},domain=0:1,samples=3", 3)]
+    public void Later_domain_and_samples_options_replace_explicit_lists(string options, int count)
+        => Assert.Equal(count, Assert.Single(Scene(@"\draw[" + options + @"]plot(\x,0);").Paths).Path.Segments.Count);
+
+    [Fact]
+    public void Function_variable_shadowing_restores_numeric_bindings()
+    {
+        var scene = Scene(@"\pgfmathsetmacro\x{7}\draw[x=1pt,y=1pt,domain=0:1,samples=3]plot(\x,\x);\draw[x=1pt,y=1pt](\x,0)--(8,0);");
+        Assert.Equal(new[] { 0, 32768, 65536 }, scene.Paths[0].Path.Segments.Select(s => (int)Math.Round(s.End.X * 72.27 / 72 * 65536)));
+        Assert.Equal(7, Pt(scene.Paths[1].Path.Segments[0].End.X));
+        Assert.Single(scene.NumericAssignments);
+    }
+
+    [Theory]
+    [InlineData("\\x^2", -4)]
+    [InlineData("(\\x)^2", 4)]
+    [InlineData("pow(\\x,2)", 4)]
+    public void Negative_samples_preserve_text_expansion_and_power_grouping(string expression, int y)
+    {
+        var scene = Scene(@"\draw[x=1pt,y=1pt,samples at={-2}]plot(\x,{" + expression + "});");
+        Assert.Equal(y, Pt(Assert.Single(scene.Paths).Path.Segments[0].End.Y));
+    }
+
+    [Theory]
+    [InlineData("domain=0", "(\\x,0)", "TIKZ001")]
+    [InlineData("domain=0:1:2", "(\\x,0)", "TIKZ001")]
+    [InlineData("domain=0:1cm", "(\\x,0)", "TIKZ002")]
+    [InlineData("variable=x", "(\\x,0)", "TIKZ002")]
+    [InlineData("variable=\\%", "(\\x,0)", "TIKZ002")]
+    [InlineData("samples=1/0", "(\\x,0)", "TIKZ004")]
+    [InlineData("samples=16384", "(\\x,0)", "TIKZ004")]
+    [InlineData("samples at={0,0,...,1}", "(\\x,0)", "TIKZ002")]
+    [InlineData("samples at={0,,1}", "(\\x,0)", "TIKZ002")]
+    [InlineData("samples at={0,1e-3}", "(\\x,0)", "TIKZ002")]
+    [InlineData("samples at={0,1,2,...,3}", "(\\x,0)", "TIKZ002")]
+    [InlineData("samples at={0,1}", "(\\x,{\\x^0.5})", "TIKZ002")]
+    [InlineData("samples at={0,1}", "(\\x,{tan(\\x)})", "TIKZ002")]
+    [InlineData("samples at={0,1}", "(\\x,{1/\\x})", "TIKZ004")]
+    [InlineData("samples at={0,1}", "(\\x,{pow(128,2)})", "TIKZ004")]
+    [InlineData("samples at={0,1}", "(\\unknown,0)", "TIKZ003")]
+    [InlineData("samples at={}", "(\\x,{sqrt(\\x)})", "TIKZ002")]
+    [InlineData("samples at={}", "(\\x,{sin()})", "TIKZ001")]
+    public void Undeclared_function_sampling_fails_explicitly(string options, string point, string code)
+    {
+        var failure = Assert.IsType<TikzFailure>(TikzConverter.Convert(@"\draw[" + options + "]plot" + point + ";", Body, CancellationToken.None));
+        Assert.Equal(code, Assert.Single(failure.Diagnostics).Code);
+        Assert.Equal(0, failure.Statistics.OutputBytes);
+    }
+
+    [Fact]
+    public void Function_samples_share_loop_segment_expansion_and_work_limits()
+    {
+        const string source = @"\draw[domain=0:1,samples=100]plot(\x,{sin(90*\x)});";
+        foreach (var limits in new[] { TikzLimits.Default with { MaxLoopIterations = 3 }, TikzLimits.Default with { MaxSegments = 3 }, TikzLimits.Default with { MaxExpandedTokens = 50 }, TikzLimits.Default with { MaxWork = 300 } })
+        {
+            var failure = Assert.IsType<TikzFailure>(TikzConverter.Convert(source, Body with { Limits = limits }, CancellationToken.None));
+            Assert.Equal("TIKZ005", Assert.Single(failure.Diagnostics).Code);
+            Assert.Equal(0, failure.Statistics.OutputBytes);
+        }
+    }
+
     [Theory]
     [InlineData("Diagrams", "network-coordinate-plot", "4283ad96c06887488e4625436398350664931e13a5a9409470425bca7fa6dcc1", "e9a125c0f0d31a8b7ca25d67775571cc2f2a5c662bbb0d2d1daa9637b3942608", 34)]
     [InlineData("Plotting", "coordinate-plot-contract", "555ddf964ab1ebc2ca18719f9f3e8b5f04044741db610d4cd4773d799c5b4de4", "c78e00e16e0c3105ef6f290d10e792b5ae1a914587328c6e8a394b0d5d14415f", 5)]
+    [InlineData("Diagrams", "network-function-plot", "92a7a7ebfd39bb8e735a3c52f6972acaec607e4de2df5549e5cfcbe6acf88fdc", "411731d2af235c6b6163d615fcb4e14df80a6d75d82ddea872859439e4f7871a", 35)]
+    [InlineData("Plotting", "function-plot-contract", "bd15f0fa3345ea0df4f5c5a0acd8c1ed48457b5c9429f70ffdded448198c2f11", "2c5340e74a7b7509524b33d4b2e997f141112ec8dcc7797a45e10a334386e02e", 14)]
     public void Samples_continuation_paint_arrows_and_bounds_match_frozen_native_geometry(string folder, string id, string sourceHash, string nativeHash, int glyphs)
     {
         var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", folder, id + ".tikz"));
@@ -94,7 +185,7 @@ public sealed class PlotTests
     [Theory]
     [InlineData("plot file {secret.dat}", "TIKZ002")]
     [InlineData("plot function {x*x}", "TIKZ002")]
-    [InlineData("plot (\\x,{cos(\\x)})", "TIKZ002")]
+    [InlineData("plot (\\x,{sqrt(\\x)})", "TIKZ002")]
     [InlineData("plot[smooth]coordinates{(0,0)(1,1)}", "TIKZ002")]
     [InlineData("plot[mark=*]coordinates{(0,0)(1,1)}", "TIKZ002")]
     [InlineData("plot coordinates{garbage}", "TIKZ001")]

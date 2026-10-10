@@ -13,6 +13,7 @@ internal sealed class EvaluationState
     public Paint Paint { get; set; } = new();
     public ConnectionSettings Connection { get; set; } = new();
     public ArrowSettings Arrows { get; set; } = new();
+    public PlotSettings Plot { get; set; } = PlotSettings.Default;
     public PaintChanges PaintChanges { get; set; }
     public DashLength[] ConfiguredDash { get; set; } = [];
     public DashLength ConfiguredDashPhase { get; set; }
@@ -38,7 +39,7 @@ internal sealed class EvaluationState
         budget.Charge(source, Styles.Count + Variables.Count + NumericBindings.Count + Clips.Count + 1);
         return new()
         {
-            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Arrows = Arrows, Node = Node, NodeDistance = NodeDistance, Libraries = Libraries, PositioningAvailable = PositioningAvailable, RelevantForPictureSize = RelevantForPictureSize,
+            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Arrows = Arrows, Plot = Plot, Node = Node, NodeDistance = NodeDistance, Libraries = Libraries, PositioningAvailable = PositioningAvailable, RelevantForPictureSize = RelevantForPictureSize,
             ConfiguredDash = ConfiguredDash, ConfiguredDashPhase = ConfiguredDashPhase, PendingDash = PendingDash,
             Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal), NumericBindings = new(NumericBindings, StringComparer.Ordinal), CoordinateValue = CoordinateValue
         };

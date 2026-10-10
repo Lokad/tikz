@@ -6,7 +6,7 @@ import {randomUUID} from 'node:crypto';
 import {root,sha256,writeArtifact} from './shape-oracle-bundle.mjs';
 import {loadArrowEvidence} from './arrow-evidence.mjs';
 import {parseArrowLog} from './arrow-log.mjs';
-import {verifyArrowDriverState,arrowSvgSegments,arrowSvgVectors} from './arrow-driver-state.mjs';
+import {verifyArrowDriverState,arrowSvgSegments,arrowSvgVectors,matchNativeArrowSvgOrder} from './arrow-driver-state.mjs';
 assert.equal(process.argv.length,2);
 const output=path.join(root,'artifacts/arrow-native-controls/run-'+randomUUID()),artifacts={},controls=[];
 const save=(p,b)=>writeArtifact(output,p,b,artifacts);let phase='frozen-native-inputs';
@@ -15,6 +15,18 @@ async function reject(id,action,pattern){let error;try{await action();}catch(e){
 try{
  await writeArtifact(output,'report.json',JSON.stringify({completed:false,phase,converterInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false})+'\n');
  const evidence=await loadArrowEvidence();controls.push({id:'complete pinned cached replay',passed:true,rejected:false});
+ // Function-plot equal domains produce exactly two coincident samples. Only
+ // this isolated butt-stroke omission is admitted by the explicit opt-in.
+ const zero={paintEvents:[{id:1,kind:'path',target:1}],paths:[{id:1,role:'shaft',paint:'stroke',segments:[{kind:'move',xSp:65536,ySp:131072},{kind:'line',xSp:65536,ySp:131072}]}]};
+ const moveOnly=[{segments:[{kind:'move',point:{x:1,y:2}}],matrix:[1,0,0,1,0,0]}],zeroPaint=[{stroke:[0,0,0],fill:null,cap:0}];
+ await reject('degenerate stroke omission requires explicit opt-in',()=>matchNativeArrowSvgOrder(zero,moveOnly,zeroPaint),/one geometry\/placement identity/);
+ assert.equal(matchNativeArrowSvgOrder(zero,moveOnly,zeroPaint,{allowDegenerateLine:true})[0].pathId,1);
+ controls.push({id:'explicit isolated coincident butt-stroke omission',passed:true,rejected:false});
+ const nonzero=structuredClone(zero);nonzero.paths[0].segments[1].xSp++;
+ await reject('one-sp line loss remains invalid',()=>matchNativeArrowSvgOrder(nonzero,moveOnly,zeroPaint,{allowDegenerateLine:true}),/one geometry\/placement identity/);
+ await reject('round-cap dot loss remains invalid',()=>matchNativeArrowSvgOrder(zero,moveOnly,[{...zeroPaint[0],cap:1}],{allowDegenerateLine:true}),/one geometry\/placement identity/);
+ const repeated=structuredClone(zero);repeated.paths[0].segments.push({...repeated.paths[0].segments[1]});
+ await reject('longer degenerate stream is outside the isolated-pair opt-in',()=>matchNativeArrowSvgOrder(repeated,moveOnly,zeroPaint,{allowDegenerateLine:true}),/one geometry\/placement identity/);
  const files=new Map();for(const p of [...Object.keys(evidence.snapshot.sourceHashes),'tests/Reference/Arrows/snapshot.json',...Object.keys(evidence.snapshot.artifacts).map(p=>'tests/Reference/Arrows/'+p)])files.set(p,await readFile(path.join(root,p)));
  const read=p=>{const b=files.get(p);assert.ok(b,'Missing virtual native input: '+p);return b;};
  const override=(file,value)=>loadArrowEvidence(async p=>p===file?value:read(p));

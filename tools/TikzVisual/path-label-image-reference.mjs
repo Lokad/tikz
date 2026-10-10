@@ -71,8 +71,16 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
   }
  }
  assert.equal(uses.length,metadata.uses.length);
- const contributions=[];
- for(const p of paths){const bounds=pathBounds(transformSegments(p.segments,p.matrix));
+ const contributions=[],nonDrawingPaints=[];
+ for(const [index,p]of paths.entries()){
+  if(p.segments.length===1&&p.segments[0].kind==='move'){
+   // Retain native paint/order and encoding, while excluding a proved invisible
+   // isolated butt stroke from ink regions. Picture bounds remain independent.
+   assert.equal(p.paint['stroke-linecap'],'butt');assert.equal(p.paint.fill,'none');assert.notEqual(p.paint.stroke,'none');
+   assert.ok(bundle.arrowMetrics?.driverState.isolatedButtDegenerateOmissions?.some(o=>o.quantity==='paint-'+(index+1)+'.svg'));
+   nonDrawingPaints.push({id:p.id,kind:'isolated-zero-length-butt-stroke'});continue;
+  }
+  const bounds=pathBounds(transformSegments(p.segments,p.matrix));
   // Conservative affine pen/miter envelope; kept separate from PGF picture bounds.
   const m=p.matrix,r=p.paint.stroke==='none'?0:Number(p.paint['stroke-width'])*Number(p.paint['stroke-miterlimit'])/2;
   const dx=r*(Math.abs(m[0])+Math.abs(m[2])),dy=r*(Math.abs(m[1])+Math.abs(m[3]));
@@ -142,6 +150,7 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
  return{caseId:bundle.report.definition.id,origin:metadata.origin,camera,regions,picture,driverRoot,bounds,encodings,
   ...(natural?{natural}:{}),
   ...(nativePathEncoding?{nativePathEncoding}:{}),
+  ...(nonDrawingPaints.length?{nonDrawingPaints}:{}),
   nativePaths:paths.length,nativeGlyphs:uses.length,nativeClips:clips.length,converterInvoked:false,
   contract:'Original native paths/outlines/paint/order/clips; PGF dimensions recovered as sp, exact physical scale, independent DVI glyph advances and observed native frames. Decimal variants are fixed before candidate measurement.'};
 }

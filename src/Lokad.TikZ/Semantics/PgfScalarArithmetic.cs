@@ -14,6 +14,45 @@ internal static class PgfScalarArithmetic
     internal static string Evaluate(Source source, Budget budget)
         => Evaluate(Expression.Parse(source, budget), budget, 0).Printed;
 
+    internal static Number EvaluatePlot(Expression expression, IReadOnlyDictionary<string, Number> variables, Budget budget)
+    {
+        var value = Evaluate(expression, budget, 0, variables);
+        return new(double.Parse(value.Printed, CultureInfo.InvariantCulture), value.HasUnit) { Origin = value.Source };
+    }
+
+    internal static long PlotRegister(Source source, Budget budget) => ReadDimension(source.Trim().Value, source, budget);
+    internal static string PlotPrint(long register, Source source, Budget budget) => Print(register, source, budget);
+
+    internal static void ValidatePlot(Expression expression, IReadOnlyDictionary<string, Number> variables, string sample, Budget budget, int depth = 0)
+    {
+        budget.Depth(expression.Source, depth, budget.Limits.MaxExpressionDepth);
+        switch (expression)
+        {
+            case Literal literal when literal.Source.Trim().Span.ContainsAnyExcept("0123456789."):
+                throw new CompileError("TIKZ002", "Function plots require ordinary decimal literals.", literal.Source);
+            case Literal or PhysicalLiteral: break;
+            case Variable variable:
+                if (variable.Name != sample && !variables.ContainsKey(variable.Name))
+                    throw new CompileError("TIKZ003", $"Unknown numeric variable '{variable.Name}'.", variable.Source);
+                break;
+            case Unary unary: ValidatePlot(unary.Operand, variables, sample, budget, depth + 1); break;
+            case Binary binary:
+                ValidatePlot(binary.Left, variables, sample, budget, depth + 1);
+                ValidatePlot(binary.Right, variables, sample, budget, depth + 1);
+                break;
+            case Function function:
+                var arity = Arity(function.Name, true);
+                if (arity == 0) throw new CompileError("TIKZ002", $"Unsupported function plot function '{function.Name}'.", function.Source);
+                if (function.Arguments.Count != arity) throw new CompileError("TIKZ001", $"'{function.Name}' requires {arity} argument(s).", function.Source);
+                foreach (var argument in function.Arguments) ValidatePlot(argument, variables, sample, budget, depth + 1);
+                break;
+            default: throw new CompileError("TIKZ002", "Unsupported function plot expression.", expression.Source);
+        }
+    }
+
+    private static int Arity(string name, bool powers)
+        => name switch { "abs" or "sin" or "cos" => 1, "min" or "max" => 2, "pow" when powers => 2, _ => 0 };
+
     internal static double MultiplyDimensions(double a, double b, Source source, Budget budget)
     {
         var x = ReadDimension(a.ToString("0.#################", CultureInfo.InvariantCulture), source, budget);
@@ -21,9 +60,9 @@ internal static class PgfScalarArithmetic
         return Product(x, y, source) / (double)Unity;
     }
 
-    private readonly record struct Scalar(string Printed, Source Source);
+    private readonly record struct Scalar(string Printed, Source Source, bool HasUnit = false);
 
-    private static Scalar Evaluate(Expression expression, Budget budget, int depth)
+    private static Scalar Evaluate(Expression expression, Budget budget, int depth, IReadOnlyDictionary<string, Number>? variables = null)
     {
         budget.Depth(expression.Source, depth, budget.Limits.MaxExpressionDepth);
         switch (expression)
@@ -35,13 +74,13 @@ internal static class PgfScalarArithmetic
                 ReadDimension(text, literal.Source, budget);
                 return new(text, literal.Source);
             case Unary unary:
-                var operand = Evaluate(unary.Operand, budget, depth + 1);
+                var operand = Evaluate(unary.Operand, budget, depth + 1, variables);
                 var unarySource = Related(unary.Source, operand.Source, budget);
                 return unary.Operator == '+' ? operand
-                    : new(Print(-ReadDimension(operand.Printed, unarySource, budget), unarySource, budget), unarySource);
-            case Binary binary when binary.Operator is '+' or '-' or '*' or '/':
-                var a = Evaluate(binary.Left, budget, depth + 1);
-                var b = Evaluate(binary.Right, budget, depth + 1);
+                    : new(Print(-ReadDimension(operand.Printed, unarySource, budget), unarySource, budget), unarySource, operand.HasUnit);
+            case Binary binary when binary.Operator is '+' or '-' or '*' or '/' || variables is not null && binary.Operator == '^':
+                var a = Evaluate(binary.Left, budget, depth + 1, variables);
+                var b = Evaluate(binary.Right, budget, depth + 1, variables);
                 var origin = Related(Related(binary.Source, a.Source, budget), b.Source, budget);
                 var x = ReadDimension(a.Printed, origin, budget);
                 var y = ReadDimension(b.Printed, origin, budget);
@@ -49,11 +88,22 @@ internal static class PgfScalarArithmetic
                 {
                     '+' => Checked(x + y, origin), '-' => Checked(x - y, origin),
                     '*' => Product(x, y, origin), '/' => Divide(x, y, origin, budget),
+                    '^' => Power(x, y, origin, budget),
                     _ => throw new InvalidOperationException()
                 };
-                return new(Print(value, origin, budget), origin);
+                return new(Print(value, origin, budget), origin, a.HasUnit || b.HasUnit);
+            case PhysicalLiteral physical when variables is not null:
+                var dimension = physical.Evaluate(variables, budget);
+                var register = ReadDimension(dimension.Value.ToString("0.#################", CultureInfo.InvariantCulture), physical.Source, budget);
+                return new(Print(register, physical.Source, budget), physical.Source, true);
+            case Variable variable when variables is not null:
+                if (!variables.TryGetValue(variable.Name, out var bound))
+                    throw new CompileError("TIKZ003", $"Unknown numeric variable '{variable.Name}'.", variable.Source);
+                var boundSource = bound.Relate(variable.Source, budget);
+                var boundRegister = ReadDimension(bound.Value.ToString("0.#################", CultureInfo.InvariantCulture), boundSource, budget);
+                return new(Print(boundRegister, boundSource, budget), boundSource, bound.HasUnit);
             case Function function:
-                return EvaluateFunction(function, budget, depth);
+                return EvaluateFunction(function, budget, depth, variables);
             case Variable variable when variable.Name.StartsWith('\\'):
                 throw new CompileError("TIKZ003", $"Unknown numeric variable '{variable.Name}'.", variable.Source);
             default:
@@ -61,23 +111,25 @@ internal static class PgfScalarArithmetic
         }
     }
 
-    private static Scalar EvaluateFunction(Function function, Budget budget, int depth)
+    private static Scalar EvaluateFunction(Function function, Budget budget, int depth, IReadOnlyDictionary<string, Number>? variables)
     {
         var source = function.Source;
         foreach (var argument in function.Arguments) source = Related(source, argument.Source, budget);
-        var arity = function.Name switch { "abs" or "sin" or "cos" => 1, "min" or "max" => 2, _ => 0 };
+        var arity = Arity(function.Name, variables is not null);
         if (arity == 0) throw new CompileError("TIKZ002", $"Unsupported numeric assignment function '{function.Name}'.", source);
         if (function.Arguments.Count != arity)
             throw new CompileError("TIKZ001", $"'{function.Name}' requires {arity} argument(s).", source);
-        var first = Evaluate(function.Arguments[0], budget, depth + 1);
+        var first = Evaluate(function.Arguments[0], budget, depth + 1, variables);
         source = Related(source, first.Source, budget);
         var x = ReadDimension(first.Printed, source, budget);
         long y = 0;
+        var hasUnit = first.HasUnit;
         if (arity == 2)
         {
-            var second = Evaluate(function.Arguments[1], budget, depth + 1);
+            var second = Evaluate(function.Arguments[1], budget, depth + 1, variables);
             source = Related(source, second.Source, budget);
             y = ReadDimension(second.Printed, source, budget);
+            hasUnit |= second.HasUnit;
         }
         budget.Charge(source);
         var value = function.Name switch
@@ -91,9 +143,47 @@ internal static class PgfScalarArithmetic
             // The temporary angle shift can exceed the literal-input bound;
             // normalization brings it back before any table product or result.
             "sin" => Cosine(x - 90 * Unity, source, budget),
+            "pow" => Power(x, y, source, budget),
             _ => throw new InvalidOperationException()
         };
-        return new(Print(value, source, budget), source);
+        return new(Print(value, source, budget), source, hasUnit);
+    }
+
+    private static long Power(long value, long exponent, Source source, Budget budget)
+    {
+        if (exponent % Unity != 0)
+            throw new CompileError("TIKZ002", "Function plots require whole-number power exponents.", source);
+        if (value == 0) return exponent == 0 ? Unity : 0;
+        var count = exponent / Unity;
+        if (count < 0) { value = Reciprocal(value, source, budget); count = -count; }
+        var result = Unity;
+        while (count > 0)
+        {
+            budget.Charge(source);
+            if (count % 2 != 0) result = Product(result, value, source);
+            if (count > 1) value = Product(value, value, source);
+            count /= 2;
+        }
+        return result;
+    }
+
+    private static long Reciprocal(long value, Source source, Budget budget)
+    {
+        // PGF's reciprocal uses different decimal registers from division.
+        var text = Print(value, source, budget);
+        var dot = text.IndexOf('.');
+        var whole = long.Parse(text.AsSpan(0, dot), CultureInfo.InvariantCulture);
+        var fraction = text[(dot + 1)..].PadRight(5, '0');
+        if (fraction.AsSpan(0, 5).ContainsAnyExcept('0') == false) return Unity / whole;
+        var large = whole > 100;
+        var digits = large ? 3 : 5;
+        var coefficient = long.Parse(text[..dot] + fraction[..digits], CultureInfo.InvariantCulture);
+        var reciprocal = 1000000000L / coefficient;
+        var result = Checked(reciprocal / 10000 * Unity, source);
+        var tail = Checked(reciprocal % 10000 * Unity, source);
+        if (large) tail /= 1000000;
+        else for (var i = 0; i < 4; i++) { budget.Charge(source); tail = Product(tail, 6554, source); }
+        return Checked(result + tail, source);
     }
 
     private static long Cosine(long angle, Source source, Budget budget)

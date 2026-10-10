@@ -1,0 +1,4993 @@
+{
+  "schemaVersion": 1,
+  "pgf": "3.1.11a",
+  "inputs": [
+    {
+      "id": 1,
+      "modes": "draw,",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "xSp": -1305275,
+          "ySp": -486053
+        },
+        {
+          "kind": "rectsize",
+          "xSp": 2610550,
+          "ySp": 972106
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "modes": "",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": []
+    },
+    {
+      "id": 3,
+      "modes": "draw,",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "xSp": 3196168,
+          "ySp": -422338
+        },
+        {
+          "kind": "rectsize",
+          "xSp": 2983486,
+          "ySp": 844676
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "modes": "",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": []
+    },
+    {
+      "id": 5,
+      "modes": "draw,",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "xSp": 8070547,
+          "ySp": -486053
+        },
+        {
+          "kind": "rectsize",
+          "xSp": 2983486,
+          "ySp": 972106
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "modes": "",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": []
+    },
+    {
+      "id": 7,
+      "modes": "",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "xSp": 1047441,
+          "ySp": 13107
+        },
+        {
+          "kind": "rectsize",
+          "xSp": 2406560,
+          "ySp": 1015750
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "modes": "draw,",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 1318382,
+          "ySp": 0
+        },
+        {
+          "kind": "line",
+          "xSp": 3183061,
+          "ySp": 0
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "modes": "",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "xSp": 6102939,
+          "ySp": 13107
+        },
+        {
+          "kind": "rectsize",
+          "xSp": 2044322,
+          "ySp": 888320
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "modes": "draw,",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 6192761,
+          "ySp": 0
+        },
+        {
+          "kind": "line",
+          "xSp": 8057440,
+          "ySp": 0
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "modes": "",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": []
+    },
+    {
+      "id": 12,
+      "modes": "draw,",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 2450297,
+          "ySp": -6402419
+        },
+        {
+          "kind": "line",
+          "xSp": 3009701,
+          "ySp": -5749781
+        },
+        {
+          "kind": "line",
+          "xSp": 3569104,
+          "ySp": -5283611
+        },
+        {
+          "kind": "line",
+          "xSp": 4128508,
+          "ySp": -5003909
+        },
+        {
+          "kind": "line",
+          "xSp": 4687911,
+          "ySp": -4910676
+        },
+        {
+          "kind": "line",
+          "xSp": 5247314,
+          "ySp": -4817443
+        },
+        {
+          "kind": "line",
+          "xSp": 5806718,
+          "ySp": -4537741
+        },
+        {
+          "kind": "line",
+          "xSp": 6366121,
+          "ySp": -4071571
+        },
+        {
+          "kind": "line",
+          "xSp": 6925525,
+          "ySp": -3418933
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "modes": "",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "xSp": 6165778,
+          "ySp": -4897569
+        },
+        {
+          "kind": "rectsize",
+          "xSp": 2078896,
+          "ySp": 1015750
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "modes": "draw,",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 2450297,
+          "ySp": -4910676
+        },
+        {
+          "kind": "line",
+          "xSp": 3009701,
+          "ySp": -4482565
+        },
+        {
+          "kind": "line",
+          "xSp": 3569104,
+          "ySp": -4119577
+        },
+        {
+          "kind": "line",
+          "xSp": 4128508,
+          "ySp": -3877091
+        },
+        {
+          "kind": "line",
+          "xSp": 4687911,
+          "ySp": -3791869
+        },
+        {
+          "kind": "line",
+          "xSp": 5247314,
+          "ySp": -3877091
+        },
+        {
+          "kind": "line",
+          "xSp": 5806718,
+          "ySp": -4119577
+        },
+        {
+          "kind": "line",
+          "xSp": 6366121,
+          "ySp": -4482565
+        },
+        {
+          "kind": "line",
+          "xSp": 6925525,
+          "ySp": -4910676
+        },
+        {
+          "kind": "line",
+          "xSp": 7484928,
+          "ySp": -4910676
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "modes": "",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": []
+    },
+    {
+      "id": 16,
+      "modes": "draw,",
+      "lineWidthSp": 26214,
+      "additionalShorteningSp": {
+        "start": 0,
+        "end": 0
+      },
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 9562290,
+          "ySp": -499160
+        },
+        {
+          "kind": "line",
+          "xSp": 9562290,
+          "ySp": -6402419
+        },
+        {
+          "kind": "line",
+          "xSp": 2450296,
+          "ySp": -6402419
+        },
+        {
+          "kind": "line",
+          "xSp": 0,
+          "ySp": -499160
+        }
+      ]
+    }
+  ],
+  "paths": [
+    {
+      "id": 1,
+      "role": "shaft",
+      "inputId": 1,
+      "templateId": null,
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "xSp": -1305275,
+          "ySp": -486053
+        },
+        {
+          "kind": "rectsize",
+          "xSp": 2610550,
+          "ySp": 972106
+        }
+      ],
+      "paint": "stroke"
+    },
+    {
+      "id": 2,
+      "role": "shaft",
+      "inputId": 3,
+      "templateId": null,
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "xSp": 3196168,
+          "ySp": -422338
+        },
+        {
+          "kind": "rectsize",
+          "xSp": 2983486,
+          "ySp": 844676
+        }
+      ],
+      "paint": "stroke"
+    },
+    {
+      "id": 3,
+      "role": "shaft",
+      "inputId": 5,
+      "templateId": null,
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "rectcorner",
+          "xSp": 8070547,
+          "ySp": -486053
+        },
+        {
+          "kind": "rectsize",
+          "xSp": 2983486,
+          "ySp": 972106
+        }
+      ],
+      "paint": "stroke"
+    },
+    {
+      "id": 4,
+      "role": "template",
+      "inputId": 8,
+      "templateId": 1,
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 277243,
+          "ySp": 0
+        },
+        {
+          "kind": "line",
+          "xSp": 42326,
+          "ySp": 88523
+        },
+        {
+          "kind": "line",
+          "xSp": 119577,
+          "ySp": 0
+        },
+        {
+          "kind": "line",
+          "xSp": 42326,
+          "ySp": -88523
+        },
+        {
+          "kind": "close",
+          "xSp": 277243,
+          "ySp": 0
+        }
+      ],
+      "paint": "fillstroke"
+    },
+    {
+      "id": 5,
+      "role": "shaft",
+      "inputId": 8,
+      "templateId": null,
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 1318382,
+          "ySp": 0
+        },
+        {
+          "kind": "line",
+          "xSp": 2981514,
+          "ySp": 0
+        }
+      ],
+      "paint": "stroke"
+    },
+    {
+      "id": 6,
+      "role": "shaft",
+      "inputId": 10,
+      "templateId": null,
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 6192761,
+          "ySp": 0
+        },
+        {
+          "kind": "line",
+          "xSp": 7855893,
+          "ySp": 0
+        }
+      ],
+      "paint": "stroke"
+    },
+    {
+      "id": 7,
+      "role": "shaft",
+      "inputId": 12,
+      "templateId": null,
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 2450297,
+          "ySp": -6402419
+        },
+        {
+          "kind": "line",
+          "xSp": 3009701,
+          "ySp": -5749781
+        },
+        {
+          "kind": "line",
+          "xSp": 3569104,
+          "ySp": -5283611
+        },
+        {
+          "kind": "line",
+          "xSp": 4128508,
+          "ySp": -5003909
+        },
+        {
+          "kind": "line",
+          "xSp": 4687911,
+          "ySp": -4910676
+        },
+        {
+          "kind": "line",
+          "xSp": 5247314,
+          "ySp": -4817443
+        },
+        {
+          "kind": "line",
+          "xSp": 5806718,
+          "ySp": -4537741
+        },
+        {
+          "kind": "line",
+          "xSp": 6366121,
+          "ySp": -4071571
+        },
+        {
+          "kind": "line",
+          "xSp": 6925525,
+          "ySp": -3418933
+        }
+      ],
+      "paint": "stroke"
+    },
+    {
+      "id": 8,
+      "role": "shaft",
+      "inputId": 14,
+      "templateId": null,
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 2450297,
+          "ySp": -4910676
+        },
+        {
+          "kind": "line",
+          "xSp": 3009701,
+          "ySp": -4482565
+        },
+        {
+          "kind": "line",
+          "xSp": 3569104,
+          "ySp": -4119577
+        },
+        {
+          "kind": "line",
+          "xSp": 4128508,
+          "ySp": -3877091
+        },
+        {
+          "kind": "line",
+          "xSp": 4687911,
+          "ySp": -3791869
+        },
+        {
+          "kind": "line",
+          "xSp": 5247314,
+          "ySp": -3877091
+        },
+        {
+          "kind": "line",
+          "xSp": 5806718,
+          "ySp": -4119577
+        },
+        {
+          "kind": "line",
+          "xSp": 6366121,
+          "ySp": -4482565
+        },
+        {
+          "kind": "line",
+          "xSp": 6925525,
+          "ySp": -4910676
+        },
+        {
+          "kind": "line",
+          "xSp": 7283381,
+          "ySp": -4910676
+        }
+      ],
+      "paint": "stroke"
+    },
+    {
+      "id": 9,
+      "role": "shaft",
+      "inputId": 16,
+      "templateId": null,
+      "lineWidthSp": 26214,
+      "segments": [
+        {
+          "kind": "move",
+          "xSp": 9562290,
+          "ySp": -499160
+        },
+        {
+          "kind": "line",
+          "xSp": 9562290,
+          "ySp": -6402419
+        },
+        {
+          "kind": "line",
+          "xSp": 2450296,
+          "ySp": -6402419
+        },
+        {
+          "kind": "line",
+          "xSp": 77259,
+          "ySp": -685296
+        }
+      ],
+      "paint": "stroke"
+    }
+  ],
+  "templates": [
+    {
+      "id": 1,
+      "name": "Stealth",
+      "configuredSizeSp": [
+        314571,
+        235928,
+        102234,
+        26214
+      ],
+      "finalSizeSp": [
+        314571,
+        235928,
+        119577,
+        26214
+      ],
+      "ends": {
+        "tipSp": 314571,
+        "backSp": 0,
+        "lineSp": 113024
+      },
+      "visualEnds": {
+        "tipSp": 314571,
+        "backSp": 102234
+      },
+      "hull": [
+        {
+          "xSp": 314571,
+          "ySp": 0
+        },
+        {
+          "xSp": 0,
+          "ySp": 117964
+        },
+        {
+          "xSp": 0,
+          "ySp": -117964
+        },
+        {
+          "xSp": 102234,
+          "ySp": 0
+        }
+      ],
+      "paths": [
+        4
+      ]
+    }
+  ],
+  "placements": [
+    {
+      "id": 1,
+      "inputId": 8,
+      "side": "end",
+      "templateId": 1,
+      "matrix": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "xSp": 2868490,
+      "ySp": 0
+    },
+    {
+      "id": 2,
+      "inputId": 10,
+      "side": "end",
+      "templateId": 1,
+      "matrix": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "xSp": 7742869,
+      "ySp": 0
+    },
+    {
+      "id": 3,
+      "inputId": 14,
+      "side": "end",
+      "templateId": 1,
+      "matrix": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "xSp": 7170357,
+      "ySp": -4910676
+    },
+    {
+      "id": 4,
+      "inputId": 16,
+      "side": "end",
+      "templateId": 1,
+      "matrix": [
+        -0.38333,
+        0.92354,
+        -0.92354,
+        -0.38333
+      ],
+      "xSp": 120584,
+      "ySp": -789678
+    }
+  ],
+  "shortening": [
+    {
+      "inputId": 8,
+      "side": "end",
+      "distanceSp": 201547,
+      "totalLengthSp": 314571,
+      "precise": false
+    },
+    {
+      "inputId": 8,
+      "side": "start",
+      "distanceSp": 0,
+      "totalLengthSp": 0,
+      "precise": false
+    },
+    {
+      "inputId": 10,
+      "side": "end",
+      "distanceSp": 201547,
+      "totalLengthSp": 314571,
+      "precise": false
+    },
+    {
+      "inputId": 10,
+      "side": "start",
+      "distanceSp": 0,
+      "totalLengthSp": 0,
+      "precise": false
+    },
+    {
+      "inputId": 12,
+      "side": "end",
+      "distanceSp": 0,
+      "totalLengthSp": 0,
+      "precise": false
+    },
+    {
+      "inputId": 12,
+      "side": "start",
+      "distanceSp": 0,
+      "totalLengthSp": 0,
+      "precise": false
+    },
+    {
+      "inputId": 14,
+      "side": "end",
+      "distanceSp": 201547,
+      "totalLengthSp": 314571,
+      "precise": false
+    },
+    {
+      "inputId": 14,
+      "side": "start",
+      "distanceSp": 0,
+      "totalLengthSp": 0,
+      "precise": false
+    },
+    {
+      "inputId": 16,
+      "side": "end",
+      "distanceSp": 201547,
+      "totalLengthSp": 314571,
+      "precise": false
+    },
+    {
+      "inputId": 16,
+      "side": "start",
+      "distanceSp": 0,
+      "totalLengthSp": 0,
+      "precise": false
+    }
+  ],
+  "paintEvents": [
+    {
+      "id": 1,
+      "kind": "path",
+      "target": 1
+    },
+    {
+      "id": 2,
+      "kind": "path",
+      "target": 2
+    },
+    {
+      "id": 3,
+      "kind": "path",
+      "target": 3
+    },
+    {
+      "id": 4,
+      "kind": "path",
+      "target": 5
+    },
+    {
+      "id": 5,
+      "kind": "tip",
+      "target": 1
+    },
+    {
+      "id": 6,
+      "kind": "path",
+      "target": 6
+    },
+    {
+      "id": 7,
+      "kind": "tip",
+      "target": 2
+    },
+    {
+      "id": 8,
+      "kind": "path",
+      "target": 7
+    },
+    {
+      "id": 9,
+      "kind": "path",
+      "target": 8
+    },
+    {
+      "id": 10,
+      "kind": "tip",
+      "target": 3
+    },
+    {
+      "id": 11,
+      "kind": "path",
+      "target": 9
+    },
+    {
+      "id": 12,
+      "kind": "tip",
+      "target": 4
+    }
+  ],
+  "clips": [],
+  "pictureBounds": {
+    "minXSp": -1318382,
+    "minYSp": -6415526,
+    "maxXSp": 11067140,
+    "maxYSp": 1028857
+  },
+  "pictureBox": {
+    "widthSp": 13477787,
+    "heightSp": 7444383,
+    "depthSp": 0
+  },
+  "driverState": {
+    "passed": true,
+    "checks": [
+      {
+        "quantity": "pdf.page.width",
+        "expected": 597.7584059775841,
+        "actual": 597.758,
+        "delta": 0.000405977584023276,
+        "limit": 0.000500000001
+      },
+      {
+        "quantity": "pdf.page.height",
+        "expected": 797.0112079701122,
+        "actual": 797.011,
+        "delta": 0.000207970112228395,
+        "limit": 0.000500000001
+      },
+      {
+        "quantity": "pdf.origin.x",
+        "expected": 170.41448875797792,
+        "actual": 170.414,
+        "delta": 0.0004887579779335738,
+        "limit": 0.000500000001
+      },
+      {
+        "quantity": "pdf.origin.y",
+        "expected": 656.5687661746965,
+        "actual": 656.569,
+        "delta": 0.00023382530343951657,
+        "limit": 0.000500000001
+      },
+      {
+        "quantity": "input-8.end.shortening",
+        "expected": 201547,
+        "actual": 201547,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-8.end.totalLength",
+        "expected": 314571,
+        "actual": 314571,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-8.start.shortening",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-8.start.totalLength",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-10.end.shortening",
+        "expected": 201547,
+        "actual": 201547,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-10.end.totalLength",
+        "expected": 314571,
+        "actual": 314571,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-10.start.shortening",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-10.start.totalLength",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-12.end.shortening",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-12.end.totalLength",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-12.start.shortening",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-12.start.totalLength",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-14.end.shortening",
+        "expected": 201547,
+        "actual": 201547,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-14.end.totalLength",
+        "expected": 314571,
+        "actual": 314571,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-14.start.shortening",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-14.start.totalLength",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-16.end.shortening",
+        "expected": 201547,
+        "actual": 201547,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-16.end.totalLength",
+        "expected": 314571,
+        "actual": 314571,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-16.start.shortening",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-16.start.totalLength",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-8.shaft.start.xSp",
+        "expected": 1318382,
+        "actual": 1318382,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-8.shaft.end.xSp",
+        "expected": 2981514,
+        "actual": 2981514,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-8.shaft.start.ySp",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-8.shaft.end.ySp",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "placement-1.axis.x",
+        "expected": 2868490,
+        "actual": 2868490,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "placement-1.axis.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-10.shaft.start.xSp",
+        "expected": 6192761,
+        "actual": 6192761,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-10.shaft.end.xSp",
+        "expected": 7855893,
+        "actual": 7855893,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-10.shaft.start.ySp",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "input-10.shaft.end.ySp",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "placement-2.axis.x",
+        "expected": 7742869,
+        "actual": 7742869,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "placement-2.axis.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-1.svg.0.point.x",
+        "expected": -19.916915893554688,
+        "actual": -19.91692,
+        "delta": 0.000004106445313567519,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.svg.0.point.y",
+        "expected": -7.4165802001953125,
+        "actual": -7.41658,
+        "delta": 2.0019531277171154e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.svg.1.point.x",
+        "expected": 19.916915893554688,
+        "actual": 19.91691,
+        "delta": 0.0000058935546860539034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.svg.1.point.y",
+        "expected": -7.4165802001953125,
+        "actual": -7.41658,
+        "delta": 2.0019531277171154e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.svg.2.point.x",
+        "expected": 19.916915893554688,
+        "actual": 19.91691,
+        "delta": 0.0000058935546860539034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.svg.2.point.y",
+        "expected": 7.4165802001953125,
+        "actual": 7.41658,
+        "delta": 2.0019531277171154e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.svg.3.point.x",
+        "expected": -19.916915893554688,
+        "actual": -19.91692,
+        "delta": 0.000004106445313567519,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.svg.3.point.y",
+        "expected": 7.4165802001953125,
+        "actual": 7.41658,
+        "delta": 2.0019531277171154e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.pdf.0.point.x",
+        "expected": -19.842758178710938,
+        "actual": -19.84276,
+        "delta": 0.0000018212890608992893,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-1.pdf.0.point.y",
+        "expected": -7.3889617919921875,
+        "actual": -7.38896,
+        "delta": 0.000001791992187527569,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-1.pdf.1.point.x",
+        "expected": 19.842758178710938,
+        "actual": 19.84276,
+        "delta": 0.0000018212890608992893,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-1.pdf.1.point.y",
+        "expected": -7.3889617919921875,
+        "actual": -7.38896,
+        "delta": 0.000001791992187527569,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-1.pdf.2.point.x",
+        "expected": 19.842758178710938,
+        "actual": 19.84276,
+        "delta": 0.0000018212890608992893,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-1.pdf.2.point.y",
+        "expected": 7.3889617919921875,
+        "actual": 7.38896,
+        "delta": 0.000001791992187527569,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-1.pdf.3.point.x",
+        "expected": -19.842758178710938,
+        "actual": -19.84276,
+        "delta": 0.0000018212890608992893,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-1.pdf.3.point.y",
+        "expected": 7.3889617919921875,
+        "actual": 7.38896,
+        "delta": 0.000001791992187527569,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-1.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-1.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-1.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-1.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-1.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-1.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-1.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-1.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-1.svg.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.pdf.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-1.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-1.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-1.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-1.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-1.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-1.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-1.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-1.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-1.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-1.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-1.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-1.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-2.svg.0.point.x",
+        "expected": 48.7696533203125,
+        "actual": 48.76965,
+        "delta": 0.0000033203125013869794,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.svg.0.point.y",
+        "expected": -6.444366455078125,
+        "actual": -6.44437,
+        "delta": 0.0000035449218751537614,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.svg.1.point.x",
+        "expected": 94.29403686523438,
+        "actual": 94.29403,
+        "delta": 0.000006865234368547135,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.svg.1.point.y",
+        "expected": -6.444366455078125,
+        "actual": -6.44437,
+        "delta": 0.0000035449218751537614,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.svg.2.point.x",
+        "expected": 94.29403686523438,
+        "actual": 94.29403,
+        "delta": 0.000006865234368547135,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.svg.2.point.y",
+        "expected": 6.444366455078125,
+        "actual": 6.44436,
+        "delta": 0.00000645507812535584,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.svg.3.point.x",
+        "expected": 48.7696533203125,
+        "actual": 48.76965,
+        "delta": 0.0000033203125013869794,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.svg.3.point.y",
+        "expected": 6.444366455078125,
+        "actual": 6.44436,
+        "delta": 0.00000645507812535584,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.pdf.0.point.x",
+        "expected": 48.58807373046875,
+        "actual": 48.58807,
+        "delta": 0.0000037304687481309884,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-2.pdf.0.point.y",
+        "expected": -6.4203643798828125,
+        "actual": -6.42036,
+        "delta": 0.000004379882812877156,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-2.pdf.1.point.x",
+        "expected": 93.94296264648438,
+        "actual": 93.94296,
+        "delta": 0.0000026464843756457412,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-2.pdf.1.point.y",
+        "expected": -6.4203643798828125,
+        "actual": -6.42036,
+        "delta": 0.000004379882812877156,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-2.pdf.2.point.x",
+        "expected": 93.94296264648438,
+        "actual": 93.94296,
+        "delta": 0.0000026464843756457412,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-2.pdf.2.point.y",
+        "expected": 6.420379638671875,
+        "actual": 6.420380000000001,
+        "delta": 3.613281256420464e-7,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-2.pdf.3.point.x",
+        "expected": 48.58807373046875,
+        "actual": 48.58807,
+        "delta": 0.0000037304687481309884,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-2.pdf.3.point.y",
+        "expected": 6.420379638671875,
+        "actual": 6.420380000000001,
+        "delta": 3.613281256420464e-7,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-2.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-2.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-2.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-2.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-2.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-2.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-2.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-2.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-2.svg.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.pdf.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-2.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-2.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-2.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-2.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-2.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-2.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-2.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-2.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-2.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-2.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-2.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-2.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-3.svg.0.point.x",
+        "expected": 123.14677429199219,
+        "actual": 123.14677,
+        "delta": 0.000004291992183880211,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.svg.0.point.y",
+        "expected": -7.4165802001953125,
+        "actual": -7.41658,
+        "delta": 2.0019531277171154e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.svg.1.point.x",
+        "expected": 168.67115783691406,
+        "actual": 168.67115,
+        "delta": 0.000007836914051040367,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.svg.1.point.y",
+        "expected": -7.4165802001953125,
+        "actual": -7.41658,
+        "delta": 2.0019531277171154e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.svg.2.point.x",
+        "expected": 168.67115783691406,
+        "actual": 168.67115,
+        "delta": 0.000007836914051040367,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.svg.2.point.y",
+        "expected": 7.4165802001953125,
+        "actual": 7.41658,
+        "delta": 2.0019531277171154e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.svg.3.point.x",
+        "expected": 123.14677429199219,
+        "actual": 123.14677,
+        "delta": 0.000004291992183880211,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.svg.3.point.y",
+        "expected": 7.4165802001953125,
+        "actual": 7.41658,
+        "delta": 2.0019531277171154e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.pdf.0.point.x",
+        "expected": 122.68827819824219,
+        "actual": 122.68828,
+        "delta": 0.0000018017578184981176,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-3.pdf.0.point.y",
+        "expected": -7.3889617919921875,
+        "actual": -7.38896,
+        "delta": 0.000001791992187527569,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-3.pdf.1.point.x",
+        "expected": 168.0431671142578,
+        "actual": 168.04317,
+        "delta": 0.0000028857421909833647,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-3.pdf.1.point.y",
+        "expected": -7.3889617919921875,
+        "actual": -7.38896,
+        "delta": 0.000001791992187527569,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-3.pdf.2.point.x",
+        "expected": 168.0431671142578,
+        "actual": 168.04317,
+        "delta": 0.0000028857421909833647,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-3.pdf.2.point.y",
+        "expected": 7.3889617919921875,
+        "actual": 7.38896,
+        "delta": 0.000001791992187527569,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-3.pdf.3.point.x",
+        "expected": 122.68827819824219,
+        "actual": 122.68828,
+        "delta": 0.0000018017578184981176,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-3.pdf.3.point.y",
+        "expected": 7.3889617919921875,
+        "actual": 7.38896,
+        "delta": 0.000001791992187527569,
+        "limit": 0.000015258792
+      },
+      {
+        "quantity": "paint-3.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-3.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-3.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-3.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-3.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-3.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-3.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-3.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-3.svg.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.pdf.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-3.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-3.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-3.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-3.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-3.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-3.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-3.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-3.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-3.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-3.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-3.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-3.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-4.svg.0.point.x",
+        "expected": 20.116912841796875,
+        "actual": 20.11691,
+        "delta": 0.000002841796874264446,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-4.svg.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-4.svg.1.point.x",
+        "expected": 45.494293212890625,
+        "actual": 45.4943,
+        "delta": 0.000006787109377626166,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-4.svg.1.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-4.pdf.0.point.x",
+        "expected": 20.042007446289062,
+        "actual": 20.042,
+        "delta": 0.000007446289060908384,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-4.pdf.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-4.pdf.1.point.x",
+        "expected": 45.32490539550781,
+        "actual": 45.3249,
+        "delta": 0.000005395507812977485,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-4.pdf.1.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-4.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-4.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-4.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-4.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-4.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-4.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-4.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-4.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-4.svg.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-4.pdf.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-4.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-4.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-4.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-4.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-4.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-4.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-4.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-4.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-4.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-4.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-4.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-4.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-5.svg.0.point.x",
+        "expected": 4.2303924560546875,
+        "actual": 4.2304,
+        "delta": 0.000007543945312882272,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.svg.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.svg.1.point.x",
+        "expected": 0.645843505859375,
+        "actual": 0.64584,
+        "delta": 0.00000350585937503034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.svg.1.point.y",
+        "expected": 1.3507537841796875,
+        "actual": 1.35075,
+        "delta": 0.000003784179687604805,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.svg.2.point.x",
+        "expected": 1.8246002197265625,
+        "actual": 1.8246,
+        "delta": 2.1972656250035527e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.svg.2.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.svg.3.point.x",
+        "expected": 0.645843505859375,
+        "actual": 0.64584,
+        "delta": 0.00000350585937503034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.svg.3.point.y",
+        "expected": -1.3507537841796875,
+        "actual": -1.35075,
+        "delta": 0.000003784179687604805,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.pdf.0.point.x",
+        "expected": 4.214630126953125,
+        "actual": 4.21463,
+        "delta": 1.2695312534560799e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.pdf.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.pdf.1.point.x",
+        "expected": 0.6434326171875,
+        "actual": 0.64343,
+        "delta": 0.000002617187500053575,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.pdf.1.point.y",
+        "expected": 1.3457183837890625,
+        "actual": 1.34572,
+        "delta": 0.0000016162109375272848,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.pdf.2.point.x",
+        "expected": 1.8177947998046875,
+        "actual": 1.8178,
+        "delta": 0.000005200195312582423,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.pdf.2.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.pdf.3.point.x",
+        "expected": 0.6434326171875,
+        "actual": 0.64343,
+        "delta": 0.000002617187500053575,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.pdf.3.point.y",
+        "expected": -1.3457183837890625,
+        "actual": -1.34572,
+        "delta": 0.0000016162109375272848,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-5.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-5.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-5.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-5.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-5.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-5.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-5.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-5.svg.matrix.4",
+        "expected": 43.769683837890625,
+        "actual": 43.76968,
+        "delta": 0.000003837890623969997,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.pdf.matrix.4",
+        "expected": 43.606719970703125,
+        "actual": 43.60672,
+        "delta": 2.9296877812612365e-8,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-5.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-5.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-5.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-5.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-5.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-5.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-5.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-5.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-5.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-5.fillOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-5.fill.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-5.fill.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-5.fill.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-6.svg.0.point.x",
+        "expected": 94.49403381347656,
+        "actual": 94.49403,
+        "delta": 0.000003813476567415819,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-6.svg.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-6.svg.1.point.x",
+        "expected": 119.87141418457031,
+        "actual": 119.87141,
+        "delta": 0.00000418457031514663,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-6.svg.1.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-6.pdf.0.point.x",
+        "expected": 94.1422119140625,
+        "actual": 94.14221,
+        "delta": 0.0000019140624942792783,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-6.pdf.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-6.pdf.1.point.x",
+        "expected": 119.42510986328125,
+        "actual": 119.42511,
+        "delta": 1.3671875365162123e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-6.pdf.1.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-6.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-6.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-6.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-6.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-6.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-6.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-6.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-6.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-6.svg.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-6.pdf.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-6.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-6.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-6.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-6.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-6.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-6.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-6.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-6.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-6.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-6.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-6.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-6.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-7.svg.0.point.x",
+        "expected": 4.2303924560546875,
+        "actual": 4.2304,
+        "delta": 0.000007543945312882272,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.svg.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.svg.1.point.x",
+        "expected": 0.645843505859375,
+        "actual": 0.64584,
+        "delta": 0.00000350585937503034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.svg.1.point.y",
+        "expected": 1.3507537841796875,
+        "actual": 1.35075,
+        "delta": 0.000003784179687604805,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.svg.2.point.x",
+        "expected": 1.8246002197265625,
+        "actual": 1.8246,
+        "delta": 2.1972656250035527e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.svg.2.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.svg.3.point.x",
+        "expected": 0.645843505859375,
+        "actual": 0.64584,
+        "delta": 0.00000350585937503034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.svg.3.point.y",
+        "expected": -1.3507537841796875,
+        "actual": -1.35075,
+        "delta": 0.000003784179687604805,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.pdf.0.point.x",
+        "expected": 4.214630126953125,
+        "actual": 4.21463,
+        "delta": 1.2695312534560799e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.pdf.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.pdf.1.point.x",
+        "expected": 0.6434326171875,
+        "actual": 0.64343,
+        "delta": 0.000002617187500053575,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.pdf.1.point.y",
+        "expected": 1.3457183837890625,
+        "actual": 1.34572,
+        "delta": 0.0000016162109375272848,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.pdf.2.point.x",
+        "expected": 1.8177947998046875,
+        "actual": 1.8178,
+        "delta": 0.000005200195312582423,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.pdf.2.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.pdf.3.point.x",
+        "expected": 0.6434326171875,
+        "actual": 0.64343,
+        "delta": 0.000002617187500053575,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.pdf.3.point.y",
+        "expected": -1.3457183837890625,
+        "actual": -1.34572,
+        "delta": 0.0000016162109375272848,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-7.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-7.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-7.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-7.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-7.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-7.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-7.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-7.svg.matrix.4",
+        "expected": 118.14680480957031,
+        "actual": 118.1468,
+        "delta": 0.000004809570313568656,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.pdf.matrix.4",
+        "expected": 117.70692443847656,
+        "actual": 117.70692,
+        "delta": 0.0000044384765658378456,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-7.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-7.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-7.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-7.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-7.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-7.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-7.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-7.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-7.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-7.fillOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-7.fill.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-7.fill.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-7.fill.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-8.svg.0.point.x",
+        "expected": 37.38856506347656,
+        "actual": 37.38857,
+        "delta": 0.000004936523438914264,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.0.point.y",
+        "expected": -97.69316101074219,
+        "actual": -97.69316,
+        "delta": 0.00000101074218150643,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.1.point.x",
+        "expected": 45.92439270019531,
+        "actual": 45.9244,
+        "delta": 0.000007299804686056177,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.1.point.y",
+        "expected": -87.73469543457031,
+        "actual": -87.7347,
+        "delta": 0.0000045654296911834535,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.2.point.x",
+        "expected": 54.460205078125,
+        "actual": 54.4602,
+        "delta": 0.000005078124999613465,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.2.point.y",
+        "expected": -80.62150573730469,
+        "actual": -80.6215,
+        "delta": 0.0000057373046900011104,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.3.point.x",
+        "expected": 62.99603271484375,
+        "actual": 62.99603,
+        "delta": 0.000002714843752471552,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.3.point.y",
+        "expected": -76.35359191894531,
+        "actual": -76.35359,
+        "delta": 0.0000019189453155377123,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.4.point.x",
+        "expected": 71.53184509277344,
+        "actual": 71.53185,
+        "delta": 0.000004907226568207079,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.4.point.y",
+        "expected": -74.93096923828125,
+        "actual": -74.93097,
+        "delta": 7.617187520736479e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.5.point.x",
+        "expected": 80.06765747070312,
+        "actual": 80.06766,
+        "delta": 0.0000025292968786061465,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.5.point.y",
+        "expected": -73.50834655761719,
+        "actual": -73.50835,
+        "delta": 0.0000034423828054741534,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.6.point.x",
+        "expected": 88.60348510742188,
+        "actual": 88.60349,
+        "delta": 0.000004892578118642632,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.6.point.y",
+        "expected": -69.24043273925781,
+        "actual": -69.24043,
+        "delta": 0.0000027392578090257302,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.7.point.x",
+        "expected": 97.13929748535156,
+        "actual": 97.1393,
+        "delta": 0.000002514648443252554,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.7.point.y",
+        "expected": -62.12724304199219,
+        "actual": -62.12724,
+        "delta": 0.0000030419921870361577,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.8.point.x",
+        "expected": 105.67512512207031,
+        "actual": 105.67513,
+        "delta": 0.0000048779296832890395,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.svg.8.point.y",
+        "expected": -52.16877746582031,
+        "actual": -52.16878,
+        "delta": 0.0000025341796856537258,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.pdf.0.point.x",
+        "expected": 37.249359130859375,
+        "actual": 37.24936,
+        "delta": 8.691406279126568e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.0.point.y",
+        "expected": -97.32942199707031,
+        "actual": -97.32942,
+        "delta": 0.000001997070313564109,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.1.point.x",
+        "expected": 45.75340270996094,
+        "actual": 45.7534,
+        "delta": 0.0000027099609383185452,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.1.point.y",
+        "expected": -87.40803527832031,
+        "actual": -87.40804,
+        "delta": 0.0000047216796872362465,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.2.point.x",
+        "expected": 54.25743103027344,
+        "actual": 54.25743,
+        "delta": 0.0000010302734381184564,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.2.point.y",
+        "expected": -80.32133483886719,
+        "actual": -80.32133,
+        "delta": 0.000004838867184275841,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.3.point.x",
+        "expected": 62.761474609375,
+        "actual": 62.76147,
+        "delta": 0.000004609374997244231,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.3.point.y",
+        "expected": -76.06930541992188,
+        "actual": -76.0693,
+        "delta": 0.0000054199218766370905,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.4.point.x",
+        "expected": 71.26551818847656,
+        "actual": 71.26552,
+        "delta": 0.000001811523432593276,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.4.point.y",
+        "expected": -74.6519775390625,
+        "actual": -74.65198,
+        "delta": 0.0000024609374946749085,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.5.point.x",
+        "expected": 79.76954650878906,
+        "actual": 79.76955,
+        "delta": 0.000003491210932793365,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.5.point.y",
+        "expected": -73.23464965820312,
+        "actual": -73.23465,
+        "delta": 3.417968770236257e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.6.point.x",
+        "expected": 88.27359008789062,
+        "actual": 88.27359,
+        "delta": 8.789062633240974e-8,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.6.point.y",
+        "expected": -68.98263549804688,
+        "actual": -68.98264,
+        "delta": 0.0000045019531285106495,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.7.point.x",
+        "expected": 96.77763366699219,
+        "actual": 96.77763,
+        "delta": 0.0000036669921854581844,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.7.point.y",
+        "expected": -61.89591979980469,
+        "actual": -61.89592,
+        "delta": 2.0019530921899786e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.8.point.x",
+        "expected": 105.28167724609375,
+        "actual": 105.28168,
+        "delta": 0.0000027539062443793227,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.pdf.8.point.y",
+        "expected": -51.97453308105469,
+        "actual": -51.97453,
+        "delta": 0.000003081054686049356,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-8.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-8.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-8.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-8.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-8.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-8.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-8.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-8.svg.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.pdf.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-8.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-8.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-8.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-8.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-8.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-8.dash.0",
+        "expected": 2.98883056640625,
+        "actual": 2.98883,
+        "delta": 5.664062499022293e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.dash.1",
+        "expected": 2.98883056640625,
+        "actual": 2.98883,
+        "delta": 5.664062499022293e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-8.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-8.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-8.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-9.svg.0.point.x",
+        "expected": 37.38856506347656,
+        "actual": 37.38857,
+        "delta": 0.000004936523438914264,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.0.point.y",
+        "expected": -74.93096923828125,
+        "actual": -74.93097,
+        "delta": 7.617187520736479e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.1.point.x",
+        "expected": 45.92439270019531,
+        "actual": 45.9244,
+        "delta": 0.000007299804686056177,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.1.point.y",
+        "expected": -68.39851379394531,
+        "actual": -68.39851,
+        "delta": 0.0000037939453108037924,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.2.point.x",
+        "expected": 54.460205078125,
+        "actual": 54.4602,
+        "delta": 0.000005078124999613465,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.2.point.y",
+        "expected": -62.85975646972656,
+        "actual": -62.85976,
+        "delta": 0.0000035302734389119905,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.3.point.x",
+        "expected": 62.99603271484375,
+        "actual": 62.99603,
+        "delta": 0.000002714843752471552,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.3.point.y",
+        "expected": -59.15971374511719,
+        "actual": -59.15971,
+        "delta": 0.0000037451171905900082,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.4.point.x",
+        "expected": 71.53184509277344,
+        "actual": 71.53185,
+        "delta": 0.000004907226568207079,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.4.point.y",
+        "expected": -57.85932922363281,
+        "actual": -57.85933,
+        "delta": 7.763671874272404e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.5.point.x",
+        "expected": 80.06765747070312,
+        "actual": 80.06766,
+        "delta": 0.0000025292968786061465,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.5.point.y",
+        "expected": -59.15971374511719,
+        "actual": -59.15971,
+        "delta": 0.0000037451171905900082,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.6.point.x",
+        "expected": 88.60348510742188,
+        "actual": 88.60349,
+        "delta": 0.000004892578118642632,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.6.point.y",
+        "expected": -62.85975646972656,
+        "actual": -62.85976,
+        "delta": 0.0000035302734389119905,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.7.point.x",
+        "expected": 97.13929748535156,
+        "actual": 97.1393,
+        "delta": 0.000002514648443252554,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.7.point.y",
+        "expected": -68.39851379394531,
+        "actual": -68.39851,
+        "delta": 0.0000037939453108037924,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.8.point.x",
+        "expected": 105.67512512207031,
+        "actual": 105.67513,
+        "delta": 0.0000048779296832890395,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.8.point.y",
+        "expected": -74.93096923828125,
+        "actual": -74.93097,
+        "delta": 7.617187520736479e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.9.point.x",
+        "expected": 111.13557434082031,
+        "actual": 111.13557,
+        "delta": 0.0000043408203111994226,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.svg.9.point.y",
+        "expected": -74.93096923828125,
+        "actual": -74.93097,
+        "delta": 7.617187520736479e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.pdf.0.point.x",
+        "expected": 37.249359130859375,
+        "actual": 37.24936,
+        "delta": 8.691406279126568e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.0.point.y",
+        "expected": -74.6519775390625,
+        "actual": -74.65198,
+        "delta": 0.0000024609374946749085,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.1.point.x",
+        "expected": 45.75340270996094,
+        "actual": 45.7534,
+        "delta": 0.0000027099609383185452,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.1.point.y",
+        "expected": -68.14384460449219,
+        "actual": -68.14384,
+        "delta": 0.000004604492190196652,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.2.point.x",
+        "expected": 54.25743103027344,
+        "actual": 54.25743,
+        "delta": 0.0000010302734381184564,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.2.point.y",
+        "expected": -62.62571716308594,
+        "actual": -62.62572,
+        "delta": 0.0000028369140636641532,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.3.point.x",
+        "expected": 62.761474609375,
+        "actual": 62.76147,
+        "delta": 0.000004609374997244231,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.3.point.y",
+        "expected": -58.939453125,
+        "actual": -58.93945,
+        "delta": 0.000003124999999215561,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.4.point.x",
+        "expected": 71.26551818847656,
+        "actual": 71.26552,
+        "delta": 0.000001811523432593276,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.4.point.y",
+        "expected": -57.64390563964844,
+        "actual": -57.6439,
+        "delta": 0.0000056396484353626875,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.5.point.x",
+        "expected": 79.76954650878906,
+        "actual": 79.76955,
+        "delta": 0.000003491210932793365,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.5.point.y",
+        "expected": -58.939453125,
+        "actual": -58.93945,
+        "delta": 0.000003124999999215561,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.6.point.x",
+        "expected": 88.27359008789062,
+        "actual": 88.27359,
+        "delta": 8.789062633240974e-8,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.6.point.y",
+        "expected": -62.62571716308594,
+        "actual": -62.62572,
+        "delta": 0.0000028369140636641532,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.7.point.x",
+        "expected": 96.77763366699219,
+        "actual": 96.77763,
+        "delta": 0.0000036669921854581844,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.7.point.y",
+        "expected": -68.14384460449219,
+        "actual": -68.14384,
+        "delta": 0.000004604492190196652,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.8.point.x",
+        "expected": 105.28167724609375,
+        "actual": 105.28168,
+        "delta": 0.0000027539062443793227,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.8.point.y",
+        "expected": -74.6519775390625,
+        "actual": -74.65198,
+        "delta": 0.0000024609374946749085,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.9.point.x",
+        "expected": 110.72178649902344,
+        "actual": 110.72179,
+        "delta": 0.000003500976561099378,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.pdf.9.point.y",
+        "expected": -74.6519775390625,
+        "actual": -74.65198,
+        "delta": 0.0000024609374946749085,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-9.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-9.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-9.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-9.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-9.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-9.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-9.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-9.svg.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.pdf.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-9.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-9.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-9.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-9.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-9.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-9.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-9.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-9.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-9.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-10.svg.0.point.x",
+        "expected": 4.2303924560546875,
+        "actual": 4.2304,
+        "delta": 0.000007543945312882272,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.svg.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.svg.1.point.x",
+        "expected": 0.645843505859375,
+        "actual": 0.64584,
+        "delta": 0.00000350585937503034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.svg.1.point.y",
+        "expected": 1.3507537841796875,
+        "actual": 1.35075,
+        "delta": 0.000003784179687604805,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.svg.2.point.x",
+        "expected": 1.8246002197265625,
+        "actual": 1.8246,
+        "delta": 2.1972656250035527e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.svg.2.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.svg.3.point.x",
+        "expected": 0.645843505859375,
+        "actual": 0.64584,
+        "delta": 0.00000350585937503034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.svg.3.point.y",
+        "expected": -1.3507537841796875,
+        "actual": -1.35075,
+        "delta": 0.000003784179687604805,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.pdf.0.point.x",
+        "expected": 4.214630126953125,
+        "actual": 4.21463,
+        "delta": 1.2695312534560799e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.pdf.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.pdf.1.point.x",
+        "expected": 0.6434326171875,
+        "actual": 0.64343,
+        "delta": 0.000002617187500053575,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.pdf.1.point.y",
+        "expected": 1.3457183837890625,
+        "actual": 1.34572,
+        "delta": 0.0000016162109375272848,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.pdf.2.point.x",
+        "expected": 1.8177947998046875,
+        "actual": 1.8178,
+        "delta": 0.000005200195312582423,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.pdf.2.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.pdf.3.point.x",
+        "expected": 0.6434326171875,
+        "actual": 0.64343,
+        "delta": 0.000002617187500053575,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.pdf.3.point.y",
+        "expected": -1.3457183837890625,
+        "actual": -1.34572,
+        "delta": 0.0000016162109375272848,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-10.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-10.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-10.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-10.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-10.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-10.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-10.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-10.svg.matrix.4",
+        "expected": 109.41096496582031,
+        "actual": 109.41096,
+        "delta": 0.000004965820309621449,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.pdf.matrix.4",
+        "expected": 109.00360107421875,
+        "actual": 109.0036,
+        "delta": 0.000001074218744179234,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.svg.matrix.5",
+        "expected": -74.93096923828125,
+        "actual": -74.93097,
+        "delta": 7.617187520736479e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-10.pdf.matrix.5",
+        "expected": -74.6519775390625,
+        "actual": -74.65198,
+        "delta": 0.0000024609374946749085,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-10.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-10.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-10.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-10.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-10.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-10.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-10.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-10.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-10.fillOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-10.fill.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-10.fill.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-10.fill.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-11.svg.0.point.x",
+        "expected": 145.90896606445312,
+        "actual": 145.90897,
+        "delta": 0.000003935546885713848,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.svg.0.point.y",
+        "expected": -7.6165771484375,
+        "actual": -7.61658,
+        "delta": 0.000002851562499905924,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.svg.1.point.x",
+        "expected": 145.90896606445312,
+        "actual": 145.90897,
+        "delta": 0.000003935546885713848,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.svg.1.point.y",
+        "expected": -97.69316101074219,
+        "actual": -97.69316,
+        "delta": 0.00000101074218150643,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.svg.2.point.x",
+        "expected": 37.3885498046875,
+        "actual": 37.38855,
+        "delta": 1.953125021714186e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.svg.2.point.y",
+        "expected": -97.69316101074219,
+        "actual": -97.69316,
+        "delta": 0.00000101074218150643,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.svg.3.point.x",
+        "expected": 1.1788787841796875,
+        "actual": 1.17888,
+        "delta": 0.000001215820312427951,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.svg.3.point.y",
+        "expected": -10.456787109375,
+        "actual": -10.45679,
+        "delta": 0.000002890624999807301,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.pdf.0.point.x",
+        "expected": 145.36572265625,
+        "actual": 145.36572,
+        "delta": 0.0000026562499897408998,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.pdf.0.point.y",
+        "expected": -7.5882110595703125,
+        "actual": -7.58821,
+        "delta": 0.000001059570312378355,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.pdf.1.point.x",
+        "expected": 145.36572265625,
+        "actual": 145.36572,
+        "delta": 0.0000026562499897408998,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.pdf.1.point.y",
+        "expected": -97.32942199707031,
+        "actual": -97.32942,
+        "delta": 0.000001997070313564109,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.pdf.2.point.x",
+        "expected": 37.24934387207031,
+        "actual": 37.24934,
+        "delta": 0.000003872070315935616,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.pdf.2.point.y",
+        "expected": -97.32942199707031,
+        "actual": -97.32942,
+        "delta": 0.000001997070313564109,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.pdf.3.point.x",
+        "expected": 1.1744842529296875,
+        "actual": 1.17448,
+        "delta": 0.000004252929687531548,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.pdf.3.point.y",
+        "expected": -10.4178466796875,
+        "actual": -10.41785,
+        "delta": 0.0000033203124996106226,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.svg.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-11.pdf.matrix.0",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-11.svg.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-11.pdf.matrix.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-11.svg.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-11.pdf.matrix.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-11.svg.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-11.pdf.matrix.3",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-11.svg.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.pdf.matrix.4",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.svg.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-11.pdf.matrix.5",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-11.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-11.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-11.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-11.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-11.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-11.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-11.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-11.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-12.svg.0.point.x",
+        "expected": 4.2303924560546875,
+        "actual": 4.2304,
+        "delta": 0.000007543945312882272,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.svg.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.svg.1.point.x",
+        "expected": 0.645843505859375,
+        "actual": 0.64584,
+        "delta": 0.00000350585937503034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.svg.1.point.y",
+        "expected": 1.3507537841796875,
+        "actual": 1.35075,
+        "delta": 0.000003784179687604805,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.svg.2.point.x",
+        "expected": 1.8246002197265625,
+        "actual": 1.8246,
+        "delta": 2.1972656250035527e-7,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.svg.2.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.svg.3.point.x",
+        "expected": 0.645843505859375,
+        "actual": 0.64584,
+        "delta": 0.00000350585937503034,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.svg.3.point.y",
+        "expected": -1.3507537841796875,
+        "actual": -1.35075,
+        "delta": 0.000003784179687604805,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.pdf.0.point.x",
+        "expected": 4.214630126953125,
+        "actual": 4.21463,
+        "delta": 1.2695312534560799e-7,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.pdf.0.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.pdf.1.point.x",
+        "expected": 0.6434326171875,
+        "actual": 0.64343,
+        "delta": 0.000002617187500053575,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.pdf.1.point.y",
+        "expected": 1.3457183837890625,
+        "actual": 1.34572,
+        "delta": 0.0000016162109375272848,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.pdf.2.point.x",
+        "expected": 1.8177947998046875,
+        "actual": 1.8178,
+        "delta": 0.000005200195312582423,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.pdf.2.point.y",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.pdf.3.point.x",
+        "expected": 0.6434326171875,
+        "actual": 0.64343,
+        "delta": 0.000002617187500053575,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.pdf.3.point.y",
+        "expected": -1.3457183837890625,
+        "actual": -1.34572,
+        "delta": 0.0000016162109375272848,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.svg.matrix.0",
+        "expected": -0.38333,
+        "actual": -0.38333,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-12.pdf.matrix.0",
+        "expected": -0.38333,
+        "actual": -0.38333,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-12.svg.matrix.1",
+        "expected": 0.92354,
+        "actual": 0.92354,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-12.pdf.matrix.1",
+        "expected": 0.92354,
+        "actual": 0.92354,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-12.svg.matrix.2",
+        "expected": -0.92354,
+        "actual": -0.92354,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-12.pdf.matrix.2",
+        "expected": -0.92354,
+        "actual": -0.92354,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-12.svg.matrix.3",
+        "expected": -0.38333,
+        "actual": -0.38333,
+        "delta": 0,
+        "limit": 0.000001
+      },
+      {
+        "quantity": "paint-12.pdf.matrix.3",
+        "expected": -0.38333,
+        "actual": -0.38333,
+        "delta": 0,
+        "limit": 1e-10
+      },
+      {
+        "quantity": "paint-12.svg.matrix.4",
+        "expected": 1.8399658203125,
+        "actual": 1.83997,
+        "delta": 0.0000041796875001054445,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.pdf.matrix.4",
+        "expected": 1.8331146240234375,
+        "actual": 1.83311,
+        "delta": 0.000004624023437482805,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.svg.matrix.5",
+        "expected": -12.049530029296875,
+        "actual": -12.04953,
+        "delta": 2.9296874259898686e-8,
+        "limit": 0.0000152587890625
+      },
+      {
+        "quantity": "paint-12.pdf.matrix.5",
+        "expected": -12.004653930664062,
+        "actual": -12.00465,
+        "delta": 0.000003930664062679057,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.svg.pen",
+        "expected": 26214,
+        "actual": 26214.4,
+        "delta": 0.4000000000014552,
+        "limit": 0.5
+      },
+      {
+        "quantity": "paint-12.pdf.pen",
+        "expected": 0.39849853515625,
+        "actual": 0.3985,
+        "delta": 0.0000014648437500208722,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.cap",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-12.join",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-12.miter",
+        "expected": 10,
+        "actual": 10,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-12.strokeOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-12.phase",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.000007629396
+      },
+      {
+        "quantity": "paint-12.stroke.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-12.stroke.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-12.stroke.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-12.fillOpacity",
+        "expected": 1,
+        "actual": 1,
+        "delta": 0,
+        "limit": 0
+      },
+      {
+        "quantity": "paint-12.fill.0",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-12.fill.1",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      },
+      {
+        "quantity": "paint-12.fill.2",
+        "expected": 0,
+        "actual": 0,
+        "delta": 0,
+        "limit": 0.00392156862745098
+      }
+    ],
+    "paints": [
+      {
+        "ordinal": 1,
+        "eventId": 1,
+        "role": "shaft",
+        "pathId": 1,
+        "placementId": null,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 2,
+        "eventId": 2,
+        "role": "shaft",
+        "pathId": 2,
+        "placementId": null,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 3,
+        "eventId": 3,
+        "role": "shaft",
+        "pathId": 3,
+        "placementId": null,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 4,
+        "eventId": 4,
+        "role": "shaft",
+        "pathId": 5,
+        "placementId": null,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 5,
+        "eventId": 5,
+        "role": "tip",
+        "pathId": 4,
+        "placementId": 1,
+        "operation": "fillstroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 6,
+        "eventId": 6,
+        "role": "shaft",
+        "pathId": 6,
+        "placementId": null,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 7,
+        "eventId": 7,
+        "role": "tip",
+        "pathId": 4,
+        "placementId": 2,
+        "operation": "fillstroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 8,
+        "eventId": 8,
+        "role": "shaft",
+        "pathId": 7,
+        "placementId": null,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [
+          196608,
+          196608
+        ],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 9,
+        "eventId": 9,
+        "role": "shaft",
+        "pathId": 8,
+        "placementId": null,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 10,
+        "eventId": 10,
+        "role": "tip",
+        "pathId": 4,
+        "placementId": 3,
+        "operation": "fillstroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 11,
+        "eventId": 11,
+        "role": "shaft",
+        "pathId": 9,
+        "placementId": null,
+        "operation": "stroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": null,
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      },
+      {
+        "ordinal": 12,
+        "eventId": 12,
+        "role": "tip",
+        "pathId": 4,
+        "placementId": 4,
+        "operation": "fillstroke",
+        "widthSp": 26214,
+        "cap": 0,
+        "join": 0,
+        "miter": 10,
+        "strokeOpacity": 1,
+        "fillOpacity": 1,
+        "strokeRgb": [
+          0,
+          0,
+          0
+        ],
+        "fillRgb": [
+          0,
+          0,
+          0
+        ],
+        "dashSp": [],
+        "phaseSp": 0,
+        "clips": []
+      }
+    ],
+    "clips": 0,
+    "svgRootMatrix": [
+      0.996264,
+      0,
+      0,
+      -0.996264,
+      98.4145,
+      68.442453
+    ],
+    "pdfRootMatrix": [
+      1,
+      0,
+      0,
+      1,
+      170.414,
+      656.569
+    ],
+    "orderSource": "Unique native geometry/placement identities matched to original SVG order and independently checked in original PDF order; callbacks may be buffered.",
+    "scope": "Independently decoded native SVG/PDF path geometry, placement, paint order and effective state. Driver serialization limits only; no candidate image policy."
+  }
+}

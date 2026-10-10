@@ -258,8 +258,15 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
     private PlotOperation ReadPlot(Source origin, bool connect)
     {
         var options = ReadOptions();
+        if (_reader.Peek == '(')
+        {
+            var point = ReadCoordinate();
+            if (point.X is null || point.Y is null || point.Calculation is not null)
+                throw new CompileError("TIKZ002", "Function plots require explicit Cartesian or polar expressions.", point.Source);
+            return new([], options, connect, origin with { Length = source.Offset + _reader.Position - origin.Offset }) { FunctionPoint = point };
+        }
         if (!_reader.Word("coordinates"))
-            throw new CompileError("TIKZ002", "Only coordinate-list plot data is supported.", _reader.Here);
+            throw new CompileError("TIKZ002", "Only coordinate lists and in-process function plot expressions are supported.", _reader.Here);
         var reader = new Cursor(_reader.Group('{', '}'), budget);
         var points = new List<Coordinate>();
         while (!reader.End)

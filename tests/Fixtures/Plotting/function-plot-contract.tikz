@@ -1,0 +1,27 @@
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \node (sentinel) at (-8,-8) {Functions};
+  \draw plot (\x,0);
+  \draw[domain=0:1,samples=4] plot (\x,{1+\x/3});
+  \draw[domain=1:0,samples=4] plot (\x,{2+\x^2});
+  \draw[domain=2:2,samples=7] plot (\x,3);
+  \draw[domain=0:0.00005,samples=9] plot (\x,4);
+  \draw[domain=0:1,samples=0] plot (\x,5);
+  \draw[domain=0:1,samples=3.5] plot (\x,6);
+  \draw[samples at={-1,0,0.5,1}] plot (\x,{sin(45*\x)});
+  \draw[samples at={0,0.25,...,1}] plot (\x,{\x^3});
+  \draw[samples at={1,0.75,...,0}] plot (\x,{pow(\x,2)});
+  \draw[samples at={0,0.5,...,1},samples=3,domain=0:2] plot (\x,7);
+  \pgfmathsetmacro\x{7}
+  \begin{scope}[every plot/.style={domain=0:1,samples=3,variable=\t}]
+    \draw plot[variable=\x] (\x,{max(abs(\x),cos(45*\x))});
+  \end{scope}
+  \draw (7,7) -- plot[domain=0:1,samples=2,variable=\t,xshift=2pt] (\t,{\t*1pt}) -- ++(1,0);
+  \draw[domain=1:2,samples=5] plot (\x,{pow(\x,-2)});
+  \draw[samples at={0,1,-1}] plot (\x,{0^\x});
+  \draw[samples at={-1,0,1}] plot (\x,{min(sin(30),cos(60))});
+  \draw[samples at={0,30,60,90}] plot (\x:1pt);
+  \foreach \i in {1,2} {
+    \draw[variable=\t,samples at={1,2,3}] plot (\t,{\i*\t});
+  }
+  \node (restored) at (\x,-8) {After};
+\end{tikzpicture}

@@ -111,24 +111,33 @@ function nativeSegments(path,convert){
  }
  return collapseMoves(result);
 }
+function driverSegments(path,actual,convert,allowDegenerateLine){
+ const expected=nativeSegments(path,convert),raw=path.segments;
+ // The dvisvgm system driver omits an isolated zero-length butt stroke.
+ // Require the exact native registers and the sole move/line pair; no general
+ // line omission or rounded-coordinate equivalence is admitted.
+ return allowDegenerateLine&&path.paint==='stroke'&&raw.length===2&&raw[0].kind==='move'&&raw[1].kind==='line'
+  &&raw[0].xSp===raw[1].xSp&&raw[0].ySp===raw[1].ySp&&actual.length===1&&actual[0].kind==='move'
+  ?expected.slice(0,1):expected;
+}
 // Shared by the math supplement: path identity is independent of text/rules.
 // Keep native SVG serialization limits here; PDF checking remains separate.
-export function matchNativeArrowSvgOrder(metrics,svgPaths,svgPaints){
+export function matchNativeArrowSvgOrder(metrics,svgPaths,svgPaints,{allowDegenerateLine=false}={}){
  const paints=[];
  for(const event of metrics.paintEvents){
   if(event.kind==='path'){const p=metrics.paths[event.target-1];assert.equal(p.role,'shaft');assert.ok(p.paint);paints.push({eventId:event.id,pathId:p.id,role:'shaft',path:p,matrix:[...identity]});}
   else{const place=metrics.placements[event.target-1],tip=metrics.templates[place.templateId-1];for(const id of tip.paths){const p=metrics.paths[id-1];paints.push({eventId:event.id,pathId:id,role:'tip',placementId:place.id,path:p,matrix:[...place.matrix,place.xSp/65536,place.ySp/65536]});}}
  }
  for(const a of [svgPaths,svgPaints])assert.equal(a.length,paints.length,'Native shipped paint count.');
- const matches=(a,p)=>{const expected=nativeSegments(p,n=>n/65536),actual=collapseMoves(a.segments);return actual.length===expected.length&&expected.every((e,j)=>{
+ const matches=(a,p,permit)=>{const actual=collapseMoves(a.segments),expected=driverSegments(p,actual,n=>n/65536,permit);return actual.length===expected.length&&expected.every((e,j)=>{
   const r=actual[j];return r.kind===e.kind&&['point','a','b'].every(k=>!e[k]||['x','y'].every(axis=>Math.abs(r[k][axis]-e[k][axis])<=1/65536));});};
  const remaining=[...paints],physical=[];
  for(let i=0;i<svgPaths.length;i++){const s=svgPaints[i],operation=s.stroke===null?'fill':s.fill===null?'stroke':'fillstroke';
-  const matchesIndex=remaining.flatMap((e,j)=>e.path.paint===operation&&matches(svgPaths[i],e.path)&&e.matrix.every((n,k)=>Math.abs(n-svgPaths[i].matrix[k])<=(k<4?1e-6:1/65536))?[j]:[]);
+  const matchesIndex=remaining.flatMap((e,j)=>e.path.paint===operation&&matches(svgPaths[i],e.path,allowDegenerateLine&&s.cap===0)&&e.matrix.every((n,k)=>Math.abs(n-svgPaths[i].matrix[k])<=(k<4?1e-6:1/65536))?[j]:[]);
   assert.equal(matchesIndex.length,1,'Native SVG paint requires one geometry/placement identity: '+(i+1));physical.push(remaining.splice(matchesIndex[0],1)[0]);}
  assert.equal(remaining.length,0);return physical;
 }
-export function verifyArrowDriverState(metrics,svg,pdf,page,{allowText=false,wrapperExtraWidthSp=0}={}){
+export function verifyArrowDriverState(metrics,svg,pdf,page,{allowText=false,wrapperExtraWidthSp=0,allowDegenerateLine=false}={}){
  const sv=arrowSvgVectors(svg,{allowText}),pv=arrowPdfVectors(pdf,{allowText}),ss=edgeSvgPaints(svg),ps=edgePdfPaints(pdf),checks=[];
  const scalar=(quantity,expected,actual,limit=0)=>{const delta=Math.abs(expected-actual);assert.ok(Number.isFinite(expected)&&Number.isFinite(actual)&&delta<=limit,quantity+': '+actual+' vs '+expected+' (limit '+limit+')');checks.push({quantity,expected,actual,delta,limit});};
  assert.ok(page&&Number.isSafeInteger(page.widthSp)&&Number.isSafeInteger(page.heightSp));const bpPerSp=72/(72.27*65536),bounds=metrics.pictureBounds,box=metrics.pictureBox;
@@ -150,14 +159,18 @@ export function verifyArrowDriverState(metrics,svg,pdf,page,{allowText=false,wra
   for(const place of metrics.placements.filter(p=>p.inputId===input.id)){const tip=metrics.templates[place.templateId-1],additional=input.additionalShorteningSp[place.side],d=tip.ends.tipSp+additional,sign=place.side==='start'?1:-1,point=place.side==='start'?start:end;
    scalar('placement-'+place.id+'.axis.x',point.xSp+sign*ux*d,place.xSp);scalar('placement-'+place.id+'.axis.y',point.ySp+sign*uy*d,place.ySp);}
  }
- const physical=matchNativeArrowSvgOrder(metrics,sv.paths,ss.paints);
+ const physical=matchNativeArrowSvgOrder(metrics,sv.paths,ss.paints,{allowDegenerateLine});
  for(const a of [pv.paths,ps.paints])assert.equal(a.length,physical.length,'Native shipped paint count.');
  assert.equal(sv.clips.length,metrics.clips.length);assert.equal(pv.clips.length,metrics.clips.length);
- const geometry=(id,a,p,convert,limit)=>{const expected=nativeSegments(p,convert),actual=collapseMoves(a.segments);assert.equal(actual.length,expected.length,id+' segment count');for(let j=0;j<expected.length;j++){const e=expected[j],r=actual[j];assert.equal(r.kind,e.kind,id+'.'+j+' segment kind');for(const key of ['point','a','b'])if(e[key])for(const axis of ['x','y'])scalar(id+'.'+j+'.'+key+'.'+axis,e[key][axis],r[key][axis],limit*(convert===pgfPdfPoint?(e.rectangleOperands??1):1));}};
+ const omissions=[];
+ const geometry=(id,a,p,convert,limit,permit=false)=>{const actual=collapseMoves(a.segments),expected=driverSegments(p,actual,convert,permit);
+  if(expected.length!==nativeSegments(p,convert).length)omissions.push({quantity:id,nativePathId:p.id,kind:'isolated-zero-length-butt-stroke'});
+  assert.equal(actual.length,expected.length,id+' segment count');for(let j=0;j<expected.length;j++){const e=expected[j],r=actual[j];assert.equal(r.kind,e.kind,id+'.'+j+' segment kind');for(const key of ['point','a','b'])if(e[key])for(const axis of ['x','y'])scalar(id+'.'+j+'.'+key+'.'+axis,e[key][axis],r[key][axis],limit*(convert===pgfPdfPoint?(e.rectangleOperands??1):1));}};
  const shipped=[];
  for(let i=0;i<physical.length;i++){const e=physical[i],s=ss.paints[i],p=ps.paints[i],id='paint-'+(i+1),stroke=e.path.paint!=='fill',fill=e.path.paint!=='stroke';
   assert.equal(p.operation,e.path.paint);assert.equal(pv.paths[i].operation,e.path.paint);assert.equal(s.stroke!==null,stroke);assert.equal(s.fill!==null,fill);
-  geometry(id+'.svg',sv.paths[i],e.path,n=>n/65536,1/65536);geometry(id+'.pdf',pv.paths[i],e.path,pgfPdfPoint,.000007629396);
+  geometry(id+'.svg',sv.paths[i],e.path,n=>n/65536,1/65536,allowDegenerateLine&&s.cap===0);
+  geometry(id+'.pdf',pv.paths[i],e.path,pgfPdfPoint,.000007629396);
   for(let j=0;j<6;j++){scalar(id+'.svg.matrix.'+j,e.matrix[j],sv.paths[i].matrix[j],j<4?1e-6:1/65536);const expected=j<4?e.matrix[j]:pgfPdfPoint(Math.round(e.matrix[j]*65536));scalar(id+'.pdf.matrix.'+j,expected,pv.paths[i].matrix[j],j<4?1e-10:.000007629396);}
   if(stroke){scalar(id+'.svg.pen',e.path.lineWidthSp,s.width*65536,.5);scalar(id+'.pdf.pen',pgfPdfPoint(e.path.lineWidthSp),p.width,.000007629396);
    for(const k of ['cap','join','miter','strokeOpacity'])scalar(id+'.'+k,s[k],p[k]);assert.equal(s.dash.length,p.dash.length);
@@ -172,6 +185,7 @@ export function verifyArrowDriverState(metrics,svg,pdf,page,{allowText=false,wra
  for(let i=0;i<metrics.clips.length;i++){const p=metrics.paths[metrics.clips[i]-1];geometry('clip-'+i+'.svg',sv.clips[i],p,n=>n/65536,1/65536);geometry('clip-'+i+'.pdf',pv.clips[i],p,pgfPdfPoint,.000007629396);
   assert.deepEqual(sv.clips[i].matrix,identity);assert.deepEqual(pv.clips[i].matrix,identity);}
  return{passed:true,checks,paints:shipped,clips:metrics.clips.length,svgRootMatrix:sv.rootMatrix,pdfRootMatrix:pv.rootMatrix,
+  ...(omissions.length?{isolatedButtDegenerateOmissions:omissions}:{}),
   orderSource:'Unique native geometry/placement identities matched to original SVG order and independently checked in original PDF order; callbacks may be buffered.',
   scope:'Independently decoded native SVG/PDF path geometry, placement, paint order and effective state. Driver serialization limits only; no candidate image policy.'};
 }
