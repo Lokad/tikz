@@ -9,6 +9,8 @@ native inputs, fonts, renderer and per-view pixel policies intact.
 # Ordinary tests plus affected numeric/images and independent pixel checking.
 node tools/TikzVisual/verify.mjs iterate
 node tools/TikzVisual/verify.mjs iterate --feature plots
+node tools/TikzVisual/verify.mjs iterate --feature math
+node tools/TikzVisual/verify.mjs iterate --feature styled
 node tools/TikzVisual/verify.mjs iterate --case flowchart-draw-color
 
 # All 26 diagrams, all original image views, independent checking and controls.
@@ -18,9 +20,13 @@ node tools/TikzVisual/verify.mjs qualify --case smooth-plot-contract
 ```
 
 Features are `core`, `labels`, `positioning`, `styles`, `foreach`, `macros`,
-`functions`, `plots`, `paint`, `math` and `styled`. Core exercises the complete
-paint, bent/transformed network, smooth-plot, math and styled diagrams. Math's
-frozen three-case contract remains together, including its focused cases.
+`functions`, `plots`, `paint`, `math` and `styled`. Core exercises four complete
+diagrams: implicit paint/clips, bent network, transformed nodes and smooth plots.
+These cover positioning, path labels, arrows and calc together, including curved
+and transformed interactions. Math and styled labels have separate affected
+commands; their native ownership/font work is not repeated on every geometry
+iteration. Math's frozen three-case contract remains together, including its
+focused cases. All 26 fixtures remain in final qualification.
 Iteration runs the entire ordinary suite before the affected comparisons.
 No command above runs TeX. Only pinned repository fixtures are materialized.
 

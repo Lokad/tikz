@@ -14,7 +14,7 @@ import {pathLabelPdfDefects} from './path-label-pdf-self-test.mjs';
 import {mathLabelCacheReports,styledLabelCacheReports} from './math-label-cache-inputs.mjs';
 
 const features={
- core:['flowchart-draw-color','network-bent','flowchart-transformed','network-smooth-plot','network-math-labels','flowchart-styled-labels'],
+ core:['flowchart-draw-color','network-bent','flowchart-transformed','network-smooth-plot'],
  labels:['placement','interactions','flowchart-basic'],
  positioning:['flowchart-basic','network-bent','flowchart-transformed'],
  styles:['style-contract','flowchart-parameterized'],
