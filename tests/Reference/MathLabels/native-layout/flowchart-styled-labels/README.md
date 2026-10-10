@@ -40,3 +40,19 @@ in the 4x white view. The natural size difference is below 0.000005 CSS pixels.
 These are iteration observations. Native-only calibration, source-attributed
 local checks, original/candidate PDF checks and final current-source image
 qualification remain required before admitting this additional diagram.
+
+The existing native-only encoding experiment explains the observed sample
+difference: using independently measured integer glyph placements reproduces
+the converter's PNG bytes exactly at both 1x and 4x in four encodings (DVI
+outlines or selected-size atlases, with 6/12-digit matrices). Fractional driver
+advances and transform flattening produce different sample patterns. The
+experiment checks eight encodings in 48 views, including 16 transparent pairs
+decoded independently. It runs neither TeX nor the converter:
+
+```sh
+node tools/TikzVisual/math-label-native-images.mjs --case flowchart-styled-labels --out artifacts/styled-label-native-images
+node tools/TikzVisual/check-math-label-native-images.mjs artifacts/styled-label-native-images/report.json
+```
+
+This explains the iteration discrepancy for the observed views. It does not
+replace local/phase sensitivity, native path/framing or PDF qualification.

@@ -16,6 +16,19 @@ converter assembly dependency. Its default output is
 `artifacts/math-label-native-events/`. The image command reuses the pinned
 renderer and produces native-only diagnostic pairs; it admits no image policy.
 
+An explicit additive selector diagnoses the
+[styled multiline flowchart](../../tests/Reference/MathLabels/native-layout/flowchart-styled-labels/README.md):
+
+```text
+dotnet run --project tools/TikzShapeCalibration -c Release -- derive-math-events --case flowchart-styled-labels --out artifacts/styled-label-native-events
+node tools/TikzVisual/math-label-native-images.mjs --case flowchart-styled-labels --out artifacts/styled-label-native-images
+```
+
+It reuses the same native face/DVI/SVG readers, eight encodings and saved sample
+checker for nine labels, 75 glyphs and two rules. Its 48 diagnostic views include
+16 independently decoded transparent pairs. The original three-case default
+is unchanged; these experiments do not admit candidate image or PDF conformance.
+
 The circle/ellipse route and its five representations remain as described below.
 
 ```text

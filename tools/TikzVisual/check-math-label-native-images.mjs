@@ -11,7 +11,8 @@ import {mathNativeEncodingIds} from './math-label-native-svg.mjs';
 export async function checkMathNativeImages(file) {
  const bundle=await loadCalcSavedReport(file,'math-label-native-image-iteration'),r=bundle.report;
  assert.equal(r.converterInvoked,false);assert.equal(r.nativeToolInvoked,false);
- assert.deepEqual(r.cases.map(c=>c.id),['network-math-labels','math-label-contract','math-atom-contract']);
+ const styled=r.cases.length===1&&r.cases[0].id==='flowchart-styled-labels';
+ assert.deepEqual(r.cases.map(c=>c.id),styled?['flowchart-styled-labels']:['network-math-labels','math-label-contract','math-atom-contract']);
  for(const[file,digest]of Object.entries(r.sources))assert.equal(sha256(await readFile(path.join(root,file))),digest,'Changed native image tool: '+file);
  assert.equal(sha256(bundle.files.get('events/derivation.json')),r.nativeDerivationSha256);
  const compare=createShapeRasterMetrics().compare,decodedChecks=[];let decodedPairs=0,views=0;
@@ -45,7 +46,7 @@ export async function checkMathNativeImages(file) {
    }
   }
  }
- assert.equal(views,144);assert.equal(decodedPairs,48);
+ assert.equal(views,styled?48:144);assert.equal(decodedPairs,styled?16:48);
  return{reportSha256:bundle.sha256,views,independentlyDecodedTransparentPairs:decodedPairs,decodedChecks,approvedImagePolicy:false,imageConformanceClaim:false};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

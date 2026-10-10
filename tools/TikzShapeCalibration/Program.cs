@@ -21,11 +21,12 @@ internal static partial class Program
     {
         try
         {
-            if ((args.Length != 1 && (args.Length != 3 || args[1] != "--out")) || args[0] is not ("derive-svg" or "derive-math-events"))
-                throw new InvalidOperationException("Usage: dotnet run --project tools/TikzShapeCalibration -c Release -- derive-svg|derive-math-events [--out artifacts/...]");
+            var styled = args is ["derive-math-events", "--case", "flowchart-styled-labels", "--out", _];
+            if (!styled && ((args.Length != 1 && (args.Length != 3 || args[1] != "--out")) || args[0] is not ("derive-svg" or "derive-math-events")))
+                throw new InvalidOperationException("Usage: dotnet run --project tools/TikzShapeCalibration -c Release -- derive-svg|derive-math-events [--case flowchart-styled-labels] [--out artifacts/...]");
             root = FindRoot();
             var output = (args.Length == 1 ? At(args[0] == "derive-svg" ? "artifacts/node-shape-calibration" : "artifacts/math-label-native-events")
-                : Path.GetFullPath(args[2], root)).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                : Path.GetFullPath(args[^1], root)).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
             Require(output.StartsWith(At("artifacts") + Path.DirectorySeparatorChar, OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal), "Calibration output must be a directory inside artifacts/.");
             for (var current = new DirectoryInfo(output); current is not null && current.FullName != root; current = current.Parent)
                 if (current.Exists && (current.Attributes & FileAttributes.ReparsePoint) != 0) throw new InvalidOperationException("Calibration output must not cross a symlink or junction.");
@@ -34,7 +35,7 @@ internal static partial class Program
             File.Delete(Out("derivation.json"));
             if (args[0] == "derive-math-events")
             {
-                DeriveMathEvents(output, artifacts, Copy, Write);
+                DeriveMathEvents(output, artifacts, Copy, Write, styled);
                 return 0;
             }
             var configuration = Directory.GetParent(AppContext.BaseDirectory.TrimEnd(Path.DirectorySeparatorChar))!.Name;

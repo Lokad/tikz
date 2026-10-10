@@ -5,13 +5,15 @@ internal static partial class Program
 {
     // Same bounded artifacts and CLI as shape calibration, distinct native math
     // semantics. This route consumes frozen inputs only and never launches TeX.
-    private static void DeriveMathEvents(string output, List<string> artifacts, Action<string, string> copy, Action<string, object> write)
+    private static void DeriveMathEvents(string output, List<string> artifacts, Action<string, string> copy, Action<string, object> write, bool styled)
     {
         const string baseline = "tests/Reference/MathLabels";
         var records = new List<object>();
-        foreach (var id in new[] { "network-math-labels", "math-label-contract", "math-atom-contract" })
+        var fixtures = styled ? new[] { "flowchart-styled-labels" }
+            : new[] { "network-math-labels", "math-label-contract", "math-atom-contract" };
+        foreach (var id in fixtures)
         {
-            var diagram = id == "network-math-labels";
+            var diagram = id is "network-math-labels" or "flowchart-styled-labels";
             var fixture = "tests/Fixtures/" + (diagram ? "Diagrams/" : "MathLabels/") + id + ".tikz";
             var measuredFile = baseline + "/" + (diagram ? "Diagrams/" : "") + id + ".json";
             using var measured = Read(measuredFile);
@@ -48,6 +50,7 @@ internal static partial class Program
             evidence = new { artifacts = artifacts.ToDictionary(f => f, f => Hash(Path.Combine(output, f))),
                 toolHashes = sourceFiles.ToDictionary(f => f, f => Hash(At(f))), assemblySha256 = Hash(typeof(Program).Assembly.Location),
                 frameworkReferences = typeof(Program).Assembly.GetReferencedAssemblies().Select(a => a.Name).Order().ToArray() } });
-        Console.WriteLine("Independent math SVG binding: 64 labels, 459 glyphs, 37 rules; frozen inputs only; image policy remains pending.");
+        Console.WriteLine(styled ? "Independent styled SVG binding: 9 labels, 75 glyphs, 2 rules; frozen inputs only; image policy remains pending."
+            : "Independent math SVG binding: 64 labels, 459 glyphs, 37 rules; frozen inputs only; image policy remains pending.");
     }
 }

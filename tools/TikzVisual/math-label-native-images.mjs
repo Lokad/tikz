@@ -11,7 +11,9 @@ import {buildMathNativeVariants,mathNativeEncodingIds} from './math-label-native
 import {checkMathNativeImages} from './check-math-label-native-images.mjs';
 
 const args=process.argv.slice(2);
-assert.ok(args.length===0||args.length===2&&args[0]==='--out','Usage: node tools/TikzVisual/math-label-native-images.mjs [--out artifacts/...]');
+const styled=args[0]==='--case'&&args[1]==='flowchart-styled-labels';
+if(styled)args.splice(0,2);
+assert.ok(args.length===0||args.length===2&&args[0]==='--out','Usage: node tools/TikzVisual/math-label-native-images.mjs [--case flowchart-styled-labels] [--out artifacts/...]');
 const output=path.resolve(root,args[1]??'artifacts/math-native-image/run-'+randomUUID());await outputPath(output);
 const artifacts={},cases=[],sources={};
 const save=(file,bytes)=>writeArtifact(output,file,bytes,artifacts);
@@ -21,14 +23,16 @@ const files=['tools/TikzVisual/math-label-native-images.mjs','tools/TikzVisual/m
  'tools/TikzVisual/compare.mjs','tools/TikzVisual/browser-profile.json','tools/TikzVisual/package-lock.json','tools/TikzVisual/calc-saved-images.mjs',
  'tools/TikzVisual/check-math-label-native-images.mjs','tools/TikzVisual/calc-png.mjs','tools/TikzVisual/shape-raster-metrics.mjs'];
 for(const file of files)sources[file]=sha256(await readFile(path.join(root,file)));
-const captured=await captureProcess('dotnet',['run','--project','tools/TikzShapeCalibration','-c','Release','--','derive-math-events','--out',path.relative(root,path.join(output,'events'))],{cwd:root,timeout:180000});
+const captured=await captureProcess('dotnet',['run','--project','tools/TikzShapeCalibration','-c','Release','--','derive-math-events',
+ ...(styled?['--case','flowchart-styled-labels']:[]),'--out',path.relative(root,path.join(output,'events'))],{cwd:root,timeout:180000});
 await save('commands/native-events.log',captured.output);assert.equal(captured.failure,null);assert.equal(captured.exitCode,0,'Native event binding failed.');
 const derivationBytes=await readFile(path.join(output,'events/derivation.json')),derivation=JSON.parse(derivationBytes);
 assert.equal(derivation.comparisonKind,'oracle-only-math-events');assert.equal(derivation.completed,true);
 assert.equal(derivation.converterInvoked,false);assert.equal(derivation.nativeToolInvoked,false);
 assert.equal(derivation.approvedImagePolicy,false);assert.equal(derivation.imageConformanceClaim,false);
 assert.ok(derivation.evidence.frameworkReferences.every(n=>n==='System'||n.startsWith('System.')),'Unexpected native oracle dependency.');
-assert.deepEqual(derivation.cases,[{id:'network-math-labels',nodes:10,glyphs:44,rules:2,driverChecks:116},
+assert.deepEqual(derivation.cases,styled?[{id:'flowchart-styled-labels',nodes:9,glyphs:75,rules:2,driverChecks:176}]:
+ [{id:'network-math-labels',nodes:10,glyphs:44,rules:2,driverChecks:116},
  {id:'math-label-contract',nodes:26,glyphs:109,rules:15,driverChecks:330},
  {id:'math-atom-contract',nodes:28,glyphs:306,rules:20,driverChecks:748}]);
 await save('events/derivation.json',derivationBytes);
@@ -78,7 +82,7 @@ try{
   approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',registration:'Frozen original native SVG origin; unchanged paths and paint order.',
   nativeDerivationSha256:sha256(derivationBytes),sources,renderer:renderer.identity,cases,artifacts});
  const owned=await loadCalcSavedReport(path.join(output,'report.json'),'math-label-native-image-iteration');
- assert.equal(owned.report.cases.length,3);
+ assert.equal(owned.report.cases.length,styled?1:3);
  await json('independent-check.json',await checkMathNativeImages(owned.file));
- console.log(JSON.stringify({report:path.relative(root,owned.file).replaceAll('\\','/'),sha256:owned.sha256,views:144,approvedImagePolicy:false}));
+ console.log(JSON.stringify({report:path.relative(root,owned.file).replaceAll('\\','/'),sha256:owned.sha256,views:styled?48:144,approvedImagePolicy:false}));
 }finally{await renderer?.browser.close();}
