@@ -7,8 +7,9 @@ The nineteen math font/size resources are now bundled and independently checked
 through the [font tooling](../../../tools/TikzFontData/README.md). The internal
 source-aware parser and integer math layout preserve selected optical styles,
 glyph/rule provenance and paint order. The fixed primary/local and both PDF
-image matrices pass their native-derived policies; final clean-source feature
-qualification remains separate.
+image matrices and final clean-source feature qualification pass for the three
+fixed sources. Native calibration and current-output qualification remain
+separate operations.
 
 | Fixed source | Measured labels | Anchors | DVI glyphs | DVI rules | User scalar results |
 | --- | --- | --- | --- | --- | --- |
@@ -213,9 +214,14 @@ node tools/TikzVisual/diagram-positioning-reference.mjs --framing network-math-l
 node tools/TikzVisual/diagram-positioning-reference.mjs --paths network-math-labels math-label-contract math-atom-contract
 ```
 
-All 734 ordinary tests pass at this implementation stage. The eleven earlier
-public diagram/contract SVGs remain byte-identical. Frozen-native image
+All 734 ordinary tests pass in both the final clean export and integrated tree.
+All sixteen fresh public/traced outputs match their qualified functional output;
+the thirteen earlier cases pass 20,194 numeric checks. Final acceptance covers
+384 primary views, 128 PDF views, 512 source recaptures and 52 previous-family
+framing checks, with 374 shared/math controls and the separate 83 calc controls.
+The 72 primary/24 PDF math views retain independent box, anchor, glyph, rule,
+paint and framing checks. Frozen-native image
 diagnostics use the existing pinned renderer, physical registration, paired
-images, overlay/blink viewer and source-attributed crops. Raw pixel differences,
-broader math image coverage and final clean-source acceptance remain open;
-the existing EC text policy cannot stand in for math font or rule semantics.
+images, overlay/blink viewer and source-attributed crops. Raw pixel differences
+and original-driver residuals remain available. Broader math coverage and hosted
+qualification remain open. Math checks preserve their own font and rule semantics.

@@ -7,7 +7,8 @@ labels, 1,024 anchors, 459 glyphs and 37 rules. Unsupported or malformed math
 reports its offending source span and emits no partial SVG. The
 [native observations](../tests/Reference/MathLabels/README.md) ground this fixed
 profile. The fixed primary/local and both PDF matrices pass native-derived
-policies; final clean-source feature qualification remains open.
+policies. Final clean-source acceptance and integration pass for this fixed
+profile, including fresh public/traced output and the earlier diagram families.
 
 The first profile supports inline `$...$` runs within existing node and path
 labels, including mixed prose and math. It uses a small source-aware math AST,
@@ -73,7 +74,15 @@ groups, missing arguments/base atoms and duplicate scripts produce source-aware
 syntax diagnostics. Shared cancellation, nesting, work, glyph and graphics
 limits apply throughout; exhaustion produces no partial SVG.
 
-Completion requires fresh conversion of the complete network and focused
-corpus, independent checks of boxes/anchors/glyphs/rules/paint, affected image
-comparisons, and the required final clean-export acceptance and integration.
-Native calibration and current converter qualification remain separate.
+The fixed profile completes final clean-export acceptance and integration:
+72 primary/local views, 24 original/candidate PDF views and 96 source recaptures
+for its three cases. The full sixteen-case regression matrix passes 384 primary
+views, 128 PDF views, 512 source recaptures and 20,194 previous-family numeric
+checks; both ordinary suites pass all 734 tests. Independent math checks retain
+native box, anchor, glyph, rule, paint and framing semantics.
+
+Reopen qualification for a changed dependency, failed regression or identified
+coverage gap. Check fresh converter output before claiming current conformance;
+preserve native calibration while its inputs and tools remain unchanged.
+These results cover the declared grammar and fixed renderer profile. Broader
+math coverage, hosted qualification and universal pixel identity remain open.

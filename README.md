@@ -63,8 +63,11 @@ in the export and integrated tree. Portable archives preserve checked native evi
 [Bounded math labels](docs/MATH-LABELS.md) now render inline scripts, Greek
 symbols, fractions, roots and mixed prose in node and path labels. Three fixed
 sources match all 64 native text boxes, 1,024 anchors, 459 glyph placements and
-37 rules. Paired images retain raw differences; math image/PDF policies and
-final clean-export feature qualification remain pending.
+37 rules. The three sources pass 72 primary/local views, 24 original/candidate
+PDF views and 96 source recaptures against frozen native-derived policies.
+Final sixteen-case acceptance passes 384 primary views, 128 PDF views and 512
+source recaptures; all 734 tests pass in the clean export and integrated tree.
+Raw differences remain available. Broader math and hosted qualification remain open.
 
 ```csharp
 using Lokad.TikZ;
