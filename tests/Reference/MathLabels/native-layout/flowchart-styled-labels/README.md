@@ -94,3 +94,25 @@ math ownership corruptions are rejected. Current converter output passes all
 the corresponding native integer PNGs are byte-identical. The original three
 cases still pass their 72 views and original frozen policies. These scoped
 primary results do not close PDF, portability or final-source acceptance.
+
+The ordinary PDF reference also binds the selected TFM/Type 1 inputs, all nine
+boxes and 144 anchors, picture bounds and measured page origin. Plain/probed
+PDFs and their 1x/4x rasters are byte-identical. The shared PDF camera derives
+101 picture/label/glyph/rule/path regions without fitting or resampling.
+
+PDF calibration compares the original driver SVG and two native integer SVG
+encodings in four views each. The same twenty local faults exercise eighty
+PDF views with numeric checks bypassed. A quarter-pixel fraction-bar shift
+demonstrated that endpoint errors can cancel in aggregate regional metrics.
+For this case's two rule crops, each policy also bounds every pixel/channel
+error against the PDF by the maximum observed in its native encodings. The
+new limits use no converter or fault observations; existing cameras, PNG
+decoding, aggregate checks and report controls are reused. All eighty visible
+fault views are rejected in their owned regions. Twenty-two image corruption
+controls and ten native ownership/replay controls pass. The original three
+cases preserve their frozen limits and pass all twenty-four current PDF views.
+Independent checking decodes all 92 comparisons and 9,292 regions and recaptures
+every native/control SVG source. Current styled output passes all eight
+original/candidate PDF views, 808 region checks and eight source recaptures.
+These iteration results leave portable evidence and final source acceptance
+open.

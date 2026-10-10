@@ -8,7 +8,7 @@ import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
-import {mathFramingCases} from './math-label-framing.mjs';
+import {mathFramingFamily} from './math-label-framing.mjs';
 import {mutateMathPrimary} from './math-label-primary.mjs';
 import {loadMathPdfImageInputs,bindMathPdfImageInputs,verifyMathPdfImagePixels,measureMathPdf,mathPdfKey} from './math-label-pdf-images.mjs';
 export async function checkMathPdfImages(file){
@@ -20,7 +20,7 @@ export async function checkMathPdfImages(file){
  const pixels=verifyMathPdfImagePixels(bundle),renderer=await createRenderer();let recaptured=0;
  try{
   calcEqual(renderer.identity,r.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
-  for(const c of mathFramingCases){
+  for(const c of mathFramingFamily(r.cases.map(c=>c.id))){
    const frame=bundle.json(c.id+'/frame.json'),pdf=bundle.json(c.id+'/pdf-frame.json'),context={native:loaded.native,caseId:c.id,frame,pdf};
    const recapture=async(index,svg,encoding)=>{
     const row=bundle.json(index.file),pair=await measureMathPdf(renderer,{...context,svg,encoding,view:index});
@@ -36,7 +36,7 @@ export async function checkMathPdfImages(file){
    console.log(JSON.stringify({phase:'math-pdf-source-recapture',caseId:c.id,recaptured}));
   }
  }finally{await renderer.browser.close();}
- assert.equal(recaptured,112);return{bundle,pixels,recaptured};
+ assert.equal(recaptured,r.coverage.nativeViews+r.coverage.controlViews);return{bundle,pixels,recaptured};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  assert.equal(process.argv.length,3,'Usage: check-math-label-pdf.mjs <native-PDF-image-calibration>');

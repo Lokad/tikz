@@ -8,7 +8,7 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {captureProcess} from './qualification-process.mjs';
 import {edgeSanitize} from './edge-log.mjs';
 import {decodeCalcPng} from './calc-png.mjs';
-import {mathFramingCases} from './math-label-framing.mjs';
+import {mathFramingFamily} from './math-label-framing.mjs';
 import {mathPdfMeasurements,mathPdfFontBinding,mathNativePdfFrame,validateMathPdfReference,verifyMathPdfReplay,readMathPdfInputs} from './math-label-pdf-native.mjs';
 
 assert.equal(process.argv.length,6,'Usage: check-math-label-pdf-native.mjs <native-pdf-report> <native-path-report> <primary-calibration> <primary-check>');
@@ -27,14 +27,16 @@ try{
  const wrapperInput=await loadCalcSavedReport(path.resolve(root,process.argv[3]),'math-label-path-native');
  const primary=await loadCalcSavedReport(path.resolve(root,process.argv[4]),'math-label-native-primary-calibration');
  const primaryCheck=await loadCalcSavedReport(path.resolve(root,process.argv[5]),'math-label-independent-primary-check');
- assert.equal(primaryCheck.report.inputSha256,primary.sha256);assert.equal(primaryCheck.report.sourceRecaptures,220);
+ const declaredCases=mathFramingFamily(primary.report.cases.map(c=>c.id));
+ assert.equal(primaryCheck.report.inputSha256,primary.sha256);
+ assert.equal(primaryCheck.report.sourceRecaptures,primary.report.coverage.nativeViews+primary.report.coverage.controlViews);
  assert.ok(primaryCheck.files.get('input-report.json').equals(primary.bytes));
  const measurements=validateMathPdfReference(owned,wrapperInput),tools={};
  for(const name of ['pdflatex','pdftoppm','pdfinfo']){
   const executable=path.join(process.env.LOCALAPPDATA,'Programs/MiKTeX/miktex/bin/x64',name+'.exe');
   assert.equal(sha256(await readFile(executable)),owned.report.tools[name].sha256,'Changed native PDF tool: '+name);tools[name]=executable;
  }
- for(const c of mathFramingCases){
+ for(const c of declaredCases){
   const frame=mathNativePdfFrame(owned,c.id,primary.json(c.id+'/frame.json'));
   assert.equal(frame.regions.length,1+c.nodes+c.glyphs+c.rules+c.paths);
   for(const scale of [1,4]){
@@ -44,7 +46,7 @@ try{
   }
   await json(c.id+'/pdf-frame.json',frame);frames.push({id:c.id,regions:frame.regions.length,origin:frame.camera.origin});
  }
- for(const c of mathFramingCases)for(const state of ['plain','probed']){
+ for(const c of declaredCases)for(const state of ['plain','probed']){
   const id=c.id,folder=path.join(output,'replay/'+id+'/'+state);await mkdir(folder,{recursive:true});
   for(const file of ['case.tex','case.tikz','math-framing.tex','arrow-hooks.tex'])
    await save('replay/'+id+'/'+state+'/'+file,owned.files.get(id+'/'+state+'/'+file));
@@ -68,7 +70,8 @@ try{
  const sourceReplay=verifyMathPdfReplay(owned,replay);await save('input-report.json',owned.bytes);await save('inputs/primary-check.json',primaryCheck.bytes);
  for(const file of ['math-label-pdf-native.mjs','check-math-label-pdf-native.mjs','path-label-image-reference.mjs','shape-pdf-camera.mjs','qualification-process.mjs','calc-png.mjs'])
   await save('source-captures/tools/TikzVisual/'+file,await readFile(path.join(root,'tools/TikzVisual/'+file)));
- assert.equal(frames.reduce((n,f)=>n+f.regions,0),634);
- await publish(true,{measurements,sourceReplay,requiredRegions:634,primaryInputSha256:primary.sha256,primaryCheckSha256:primaryCheck.sha256,
+ const requiredRegions=declaredCases.reduce((n,c)=>n+1+c.nodes+c.glyphs+c.rules+c.paths,0);
+ assert.equal(frames.reduce((n,f)=>n+f.regions,0),requiredRegions);
+ await publish(true,{measurements,sourceReplay,requiredRegions,primaryInputSha256:primary.sha256,primaryCheckSha256:primaryCheck.sha256,
   scope:'Native math PDF source/page/font/crop reference only. Original/converter PDF policies, sensitivity, current conformance and feature-final acceptance remain open.'});
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,{error:error.message});process.exitCode=1;}

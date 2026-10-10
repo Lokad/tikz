@@ -11,6 +11,9 @@ const original=await loadCalcSavedReport(path.resolve(root,process.argv[2]),'mat
  primary=await loadCalcSavedReport(path.resolve(root,process.argv[4]),'math-label-native-primary-calibration'),
  checked=await loadCalcSavedReport(path.resolve(root,process.argv[5]),'math-label-independent-native-pdf-check');
 assert.equal(checked.report.nativeInputSha256,original.sha256);
+const styled=original.report.cases.length===1,id=styled?'flowchart-styled-labels':'network-math-labels',
+ anchorId=styled?id:'math-atom-contract',font=Object.keys(original.json(id+'/plain/native-inputs.json')).find(f=>f.endsWith('.tfm'));
+assert.ok(font);
 const verify=bundle=>{
  validateMathPdfReference(bundle,wrappers);verifyMathPdfReplay(bundle,checked.report.replay);
  for(const c of checked.report.frames)assert.deepEqual(mathNativePdfFrame(bundle,c.id,primary.json(c.id+'/frame.json')),checked.json(c.id+'/pdf-frame.json'));
@@ -21,23 +24,23 @@ const controls=runPrimaryReportControls(original,verify,[
  ['missing-math-case',r=>r.cases.pop()],
  ['duplicate-math-case',r=>r.cases[1]=structuredClone(r.cases[0])],
  ['wrong-wrapper-owner',r=>r.wrapperInputSha256='0'.repeat(64)],
- ['rehashed-native-font',(r,json)=>json('network-math-labels/plain/native-inputs.json',v=>v['rm-lmr5.tfm']='0'.repeat(64))],
- ['rehashed-page-position',(r,json)=>json('network-math-labels/measurements.json',v=>v.page.boxXSp++)],
- ['rehashed-wrapper-glue',(r,json)=>json('network-math-labels/measurements.json',v=>v.wrapperExtraWidthSp++)],
- ['missing-native-anchor',(r,json)=>json('math-atom-contract/measurements.json',v=>v.anchors.pop())]
+ ['rehashed-native-font',(r,json)=>json(id+'/plain/native-inputs.json',v=>v[font]='0'.repeat(64))],
+ ['rehashed-page-position',(r,json)=>json(id+'/measurements.json',v=>v.page.boxXSp++)],
+ ['rehashed-wrapper-glue',(r,json)=>json(id+'/measurements.json',v=>v.wrapperExtraWidthSp++)],
+ ['missing-native-anchor',(r,json)=>json(anchorId+'/measurements.json',v=>v.anchors.pop())]
 ]);
 // Both original/probed equality and rehashing can be forged together. The saved
 // independent source replay remains a separate observation and must reject it.
-const forged={...original,report:structuredClone(original.report),files:new Map(original.files)},bytes=Buffer.from(original.files.get('network-math-labels/probed-reference.pdf'));bytes[100]^=1;
+const forged={...original,report:structuredClone(original.report),files:new Map(original.files)},bytes=Buffer.from(original.files.get(id+'/probed-reference.pdf'));bytes[100]^=1;
 for(const state of ['plain','probed']){
- const file='network-math-labels/'+state+'-reference.pdf';forged.files.set(file,bytes);forged.report.artifacts[file]=sha256(bytes);
+ const file=id+'/'+state+'-reference.pdf';forged.files.set(file,bytes);forged.report.artifacts[file]=sha256(bytes);
 }
 for(const [file,digest]of Object.entries(forged.report.artifacts))assert.equal(sha256(forged.files.get(file)),digest);
 assert.throws(()=>verifyMathPdfReplay(forged,checked.report.replay),/Native PDF source replay differs/);
 controls.push('matching-pdf-corruption-rejected-by-source-replay');
-const badFrame=structuredClone(primary.json('math-atom-contract/frame.json'));badFrame.regions[0].rectangle.x=1000000;
-assert.throws(()=>mathNativePdfFrame(original,'math-atom-contract',badFrame),/Region escapes the native page/);controls.push('crop-outside-native-page');
-const output=path.join(root,'artifacts/math-pdf-native-controls'),report={schemaVersion:1,role:'math-label-native-pdf-ownership-controls',completed:true,phase:'complete',
+const badFrame=structuredClone(primary.json(anchorId+'/frame.json'));badFrame.regions[0].rectangle.x=1000000;
+assert.throws(()=>mathNativePdfFrame(original,anchorId,badFrame),/Region escapes the native page/);controls.push('crop-outside-native-page');
+const output=path.join(root,'artifacts/math-pdf-native-controls',...(styled?['styled-labels']:[])),report={schemaVersion:1,role:'math-label-native-pdf-ownership-controls',completed:true,phase:'complete',
  converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
  inputSha256:original.sha256,nativeCheckSha256:checked.sha256,controls,
  artifacts:{'input-report.json':original.sha256}};

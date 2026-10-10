@@ -6,8 +6,12 @@ import {calcEqual} from './calc-saved-images.mjs';
 import {sha256} from './shape-oracle-bundle.mjs';
 import {edgePdfPage} from './edge-log.mjs';
 import {pathLabelPdfFrame} from './path-label-image-reference.mjs';
-import {mathFramingCases} from './math-label-framing.mjs';
+import {mathFramingFamily} from './math-label-framing.mjs';
 export const mathPdfWrapperInputSha256='05c910aee989202da26444e4c8bbe0ed71a28192a2d37a1ec6076fd3d8a668be';
+export function mathPdfWrapperHash(ids){
+ const family=mathFramingFamily(ids);
+ return family.length===1?'70c21514f08464239450311c75881446e1094b9b1e647c377671317f08b13811':mathPdfWrapperInputSha256;
+}
 export async function readMathPdfInputs(folder,output){
  const inputs={};for(const line of (await readFile(path.join(folder,'case.fls'),'utf8')).split(/\r?\n/).filter(l=>l.startsWith('INPUT '))){
   const file=path.resolve(folder,line.slice(6));if(file.startsWith(output+path.sep))continue;
@@ -16,13 +20,14 @@ export async function readMathPdfInputs(folder,output){
  assert.ok(Object.hasOwn(inputs,'pgfsys-pdftex.def')&&!Object.hasOwn(inputs,'pgfsys-dvisvgm.def'));return inputs;
 }
 export function verifyMathPdfReplay(bundle,replay){
- const expected=mathFramingCases.flatMap(c=>['plain','probed'].map(state=>c.id+'/'+state));
+ const family=mathFramingFamily(bundle.report.cases.map(c=>c.id));
+ const expected=family.flatMap(c=>['plain','probed'].map(state=>c.id+'/'+state));
  calcEqual(replay.map(r=>r.caseId+'/'+r.state).sort(),expected.sort(),'Native PDF replay coverage differs.');
  for(const r of replay){
   assert.equal(r.pdfSha256,sha256(bundle.files.get(r.caseId+'/'+r.state+'-reference.pdf')),'Native PDF source replay differs.');
   for(const scale of [1,4])assert.equal(r.rasters[scale],sha256(bundle.files.get(r.caseId+'/'+r.state+'-pdf-page-'+scale+'x.png')),'Native raster source replay differs.');
  }
- return{pdfs:6,rasters:12};
+ return{pdfs:family.length*2,rasters:family.length*4};
 }
 export function mathPdfWrapper(source){
  const driver='\\def\\pgfsysdriver{pgfsys-dvisvgm.def}',ship='\\hbox{\\box\\labelpicture}';
@@ -71,16 +76,17 @@ export function mathPdfFontBinding(inputs,frozen){
  return{files,requiredMetricFiles:required,outlineFiles:outlines.map(([file])=>file),converterInvoked:false};
 }
 export function mathNativePdfFrame(bundle,id,frame){
- assert.ok(mathFramingCases.some(c=>c.id===id));assert.equal(frame.caseId,id);
+ assert.ok(mathFramingFamily(bundle.report.cases.map(c=>c.id)).some(c=>c.id===id));assert.equal(frame.caseId,id);
  const m=bundle.json(id+'/measurements.json'),files=new Map();
  for(const scale of [1,4])files.set('probed-pdf-page-'+scale+'x.png',bundle.files.get(id+'/probed-pdf-page-'+scale+'x.png'));
  return pathLabelPdfFrame({pdfPage:m.page,metrics:{pictureBounds:m.pictureBounds,pictureBox:m.pictureBoxDimensions,wrapperExtraWidthSp:m.wrapperExtraWidthSp},files},frame);
 }
 export function validateMathPdfReference(bundle,wrapperInput){
  assert.equal(bundle.report.converterInvoked,false);assert.equal(bundle.report.nativeToolInvoked,true);
- assert.equal(wrapperInput.sha256,mathPdfWrapperInputSha256);assert.equal(bundle.report.wrapperInputSha256,wrapperInput.sha256);
- calcEqual(bundle.report.cases.map(c=>c.id),mathFramingCases.map(c=>c.id),'Native math PDF fixture coverage differs.');
- for(const c of mathFramingCases){
+ const family=mathFramingFamily(wrapperInput.report.results.map(c=>c.id));
+ assert.equal(wrapperInput.sha256,mathPdfWrapperHash(family.map(c=>c.id)));assert.equal(bundle.report.wrapperInputSha256,wrapperInput.sha256);
+ calcEqual(bundle.report.cases.map(c=>c.id),family.map(c=>c.id),'Native math PDF fixture coverage differs.');
+ for(const c of family){
   const id=c.id,expected=wrapperInput.json(id+'/measurements.json'),supplement=wrapperInput.json(id+'/framing.json');
   const measured=mathPdfMeasurements(bundle.files.get(id+'/probed.log').toString(),expected);
   calcEqual(measured,bundle.json(id+'/measurements.json'),'Native PDF measurements disagree with raw log.');
@@ -95,5 +101,6 @@ export function validateMathPdfReference(bundle,wrapperInput){
   for(const file of ['reference.pdf','pdf-page-1x.png','pdf-page-4x.png'])
    assert.ok(bundle.files.get(id+'/plain-'+file).equals(bundle.files.get(id+'/probed-'+file)),'PDF probe changed '+file);
  }
- return{cases:3,labels:64,anchors:1024,plainProbedPdfPairs:3,plainProbedRasterPairs:6};
+ const labels=family.reduce((n,c)=>n+c.nodes,0);
+ return{cases:family.length,labels,anchors:labels*16,plainProbedPdfPairs:family.length,plainProbedRasterPairs:family.length*2};
 }

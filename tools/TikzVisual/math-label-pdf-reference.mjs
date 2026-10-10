@@ -1,4 +1,4 @@
-// Only the three frozen trusted math wrappers; shared bounded process/artifact handling.
+// Fixed trusted math wrappers; shared bounded process/artifact handling.
 import assert from 'node:assert/strict';
 import {readFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
@@ -7,8 +7,8 @@ import {root,sha256,writeArtifact} from './shape-oracle-bundle.mjs';
 import {captureProcess} from './qualification-process.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {edgeSanitize} from './edge-log.mjs';
-import {mathFramingCases} from './math-label-framing.mjs';
-import {mathPdfWrapper,mathPdfMeasurements,mathPdfFontBinding,mathPdfWrapperInputSha256,validateMathPdfReference,readMathPdfInputs} from './math-label-pdf-native.mjs';
+import {mathFramingFamily} from './math-label-framing.mjs';
+import {mathPdfWrapper,mathPdfMeasurements,mathPdfFontBinding,mathPdfWrapperHash,validateMathPdfReference,readMathPdfInputs} from './math-label-pdf-native.mjs';
 assert.equal(process.argv.length,3,'Usage: math-label-pdf-reference.mjs <accepted-math-native-path-report>');
 const output=path.join(root,'artifacts/math-pdf-reference/run-'+randomUUID()),artifacts={},commands=[],cases=[],tools={};
 const save=(file,bytes)=>writeArtifact(output,file,bytes,artifacts),json=(file,value)=>save(file,JSON.stringify(value,null,2)+'\n');
@@ -27,7 +27,9 @@ async function execute(name,args,cwd,tag){
 }
 await publish(false);
 try{
- wrapperInput=await loadCalcSavedReport(path.resolve(root,process.argv[2]),'math-label-path-native');assert.equal(wrapperInput.sha256,mathPdfWrapperInputSha256);
+ wrapperInput=await loadCalcSavedReport(path.resolve(root,process.argv[2]),'math-label-path-native');
+ const declaredCases=mathFramingFamily(wrapperInput.report.results.map(c=>c.id));
+ assert.equal(wrapperInput.sha256,mathPdfWrapperHash(declaredCases.map(c=>c.id)));
  await save('inputs/wrapper-report.json',wrapperInput.bytes);
  const profile=JSON.parse(await readFile(path.join(root,'tests/Reference/NodeShapes/pdf-oracle-profile.json')));
  for(const [name,expected]of Object.entries({pdflatex:profile.pdfLatexVersion,pdftoppm:profile.pdfRasterizerVersion,pdfinfo:profile.pdfInfoVersion})){
@@ -39,7 +41,7 @@ try{
  for(const file of ['tools/TikzVisual/math-label-pdf-reference.mjs','tools/TikzVisual/math-label-pdf-native.mjs','tools/TikzVisual/qualification-process.mjs',
   'tools/TikzVisual/edge-log.mjs','tests/Reference/NodeShapes/pdf-oracle-profile.json'])
   await save('source-captures/'+file,await readFile(path.join(root,file)));
- for(const c of mathFramingCases){
+ for(const c of declaredCases){
   const id=c.id,expected=wrapperInput.json(id+'/measurements.json'),supplement=wrapperInput.json(id+'/framing.json'),states={};
   await json(id+'/frozen-framing.json',supplement);await json(id+'/frozen-measurements.json',expected);
   await json(id+'/frozen-fonts.json',wrapperInput.json(id+'/math-font-observations.json'));
