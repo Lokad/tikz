@@ -1,0 +1,16 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=10mm,
+  base/.style={draw,rectangle,inner sep=3pt},
+  colored/.style={base,draw=blue,fill=blue!8},
+  stage/.style={colored,font=\bfseries},
+  wide/.style={stage,minimum width=#1}]
+  \node[wide=16mm] (a) {Input};
+  \node[wide=18mm,right=of a] (b) {Parse};
+  \node[wide=20mm,right=of b] (c) {Check};
+  \node[wide=18mm,below=of c] (d) {Store};
+  \node[wide=16mm,left=of d] (e) {Output};
+  \draw[-{Stealth}] (a) -- node[above] {read} (b);
+  \draw[-{Stealth}] (b) -- node[above] {test} (c);
+  \draw[-{Stealth}] (c) -- (d) -- (e);
+  \draw[-{Stealth}] (e) -- ($(a)+(0,-1)$) -- (a);
+\end{tikzpicture}

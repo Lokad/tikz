@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" />
+    <ProjectReference Include="../../src/Lokad.TikZ/Lokad.TikZ.csproj" />
+    <None Include="../../tests/Fixtures/Diagrams/flowchart-draw-color.tikz;../../tests/Fixtures/Diagrams/flowchart-styled-labels.tikz;../../tests/Fixtures/Diagrams/network-math-labels.tikz;../../tests/Fixtures/Diagrams/network-smooth-plot.tikz"
+          Link="Fixtures/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Fixtures/*.tikz" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

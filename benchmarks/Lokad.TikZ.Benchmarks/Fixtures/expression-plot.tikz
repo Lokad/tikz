@@ -1,0 +1,3 @@
+\begin{tikzpicture}
+  \draw plot[domain=-2:2,samples=200] (\x,{sin(90*\x)});
+\end{tikzpicture}

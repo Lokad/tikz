@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/Lokad.TikZ.Benchmarks/Lokad.TikZ.Benchmarks.csproj" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="src/Lokad.TikZ/Lokad.TikZ.csproj" />
   </Folder>

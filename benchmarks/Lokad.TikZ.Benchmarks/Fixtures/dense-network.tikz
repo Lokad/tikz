@@ -1,0 +1,18 @@
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}[cell/.style={draw,rectangle,minimum width=6mm,minimum height=4mm,inner sep=.25mm,outer sep=0pt}]
+  \foreach \y in {0,...,9} {
+    \foreach \x in {0,...,9} {
+      \node[cell] (n\x-\y) at (\x,\y) {\x\y};
+    }
+  }
+  \foreach \y in {0,...,9} {
+    \foreach \x in {0,...,8} {
+      \draw[-{Stealth}] (n\x-\y.east) -- ++(.4,0);
+    }
+  }
+  \foreach \y in {0,...,8} {
+    \foreach \x in {0,...,9} {
+      \draw[-{Stealth}] (n\x-\y.north) -- ++(0,.6);
+    }
+  }
+\end{tikzpicture}
