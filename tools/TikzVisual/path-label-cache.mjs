@@ -14,14 +14,14 @@ export function pathLabelCacheDefinition(fixture){
    directory:'tests/Reference/'+(styled?'StyledLabels':'MathLabels'),roles:mathLabelCacheGroups[fixture].map(r=>r.role),profileRole:styled?'styled-label-frozen-image-profile':'math-label-frozen-image-profile'};
  }
  const plottingFixtures=['network-coordinate-plot','coordinate-plot-contract','network-function-plot','function-plot-contract','network-smooth-plot','smooth-plot-contract'];
- const paint=fixture==='flowchart-paint',plotting=plottingFixtures.includes(fixture);
+ const arrowColors=['arrow-color-contract','flowchart-draw-color'],arrowColor=arrowColors.includes(fixture),paint=fixture==='flowchart-paint',plotting=plottingFixtures.includes(fixture);
  const functions=['math-functions-contract','network-math-functions'].includes(fixture);
- const math=['flowchart-math-macros','math-macro-contract'].includes(fixture),loops=['flowchart-foreach','foreach-contract'].includes(fixture),styles=['flowchart-parameterized','style-contract'].includes(fixture),diagram=paint||plotting||functions||math||loops||styles||['flowchart-basic','network-bent','flowchart-transformed'].includes(fixture);
- const fixtures=paint?['flowchart-paint']:plotting?plottingFixtures.sort():functions?['math-functions-contract','network-math-functions']:math?['flowchart-math-macros','math-macro-contract']:loops?['flowchart-foreach','foreach-contract']:styles?['flowchart-parameterized','style-contract']:diagram?['flowchart-basic','flowchart-transformed','network-bent']:['interactions','placement'];assert.ok(fixtures.includes(fixture));
- const directory='tests/Reference/'+(paint?'PaintDiagrams':plotting?'Plotting':functions?'MathFunctions':math?'MathMacros':loops?'Foreach':styles?'Styles':diagram?'Diagrams':'PathLabels');
+ const math=['flowchart-math-macros','math-macro-contract'].includes(fixture),loops=['flowchart-foreach','foreach-contract'].includes(fixture),styles=['flowchart-parameterized','style-contract'].includes(fixture),diagram=arrowColor||paint||plotting||functions||math||loops||styles||['flowchart-basic','flowchart-transformed','network-bent'].includes(fixture);
+ const fixtures=arrowColor?arrowColors:paint?['flowchart-paint']:plotting?plottingFixtures.sort():functions?['math-functions-contract','network-math-functions']:math?['flowchart-math-macros','math-macro-contract']:loops?['flowchart-foreach','foreach-contract']:styles?['flowchart-parameterized','style-contract']:diagram?['flowchart-basic','flowchart-transformed','network-bent']:['interactions','placement'];assert.ok(fixtures.includes(fixture));
+ const directory='tests/Reference/'+(arrowColor?'ArrowColors':paint?'PaintDiagrams':plotting?'Plotting':functions?'MathFunctions':math?'MathMacros':loops?'Foreach':styles?'Styles':diagram?'Diagrams':'PathLabels');
  const roles=['path-label-native-primary-calibration','path-label-independent-primary-check','path-label-native-pdf-calibration','path-label-independent-pdf-check'];
  if(!diagram)roles.push('path-label-complete-text-sensitivity','path-label-independent-text-check');
- return{diagram,fixtures,directory,roles,profileRole:paint?'paint-diagram-frozen-image-profile':plotting?'plotting-frozen-image-profile':functions?'math-function-frozen-image-profile':math?'math-macro-frozen-image-profile':loops?'foreach-frozen-image-profile':styles?'style-frozen-image-profile':diagram?'diagram-frozen-image-profile':'path-label-frozen-image-profile'};
+ return{diagram,fixtures,directory,roles,profileRole:arrowColor?'arrow-color-frozen-image-profile':paint?'paint-diagram-frozen-image-profile':plotting?'plotting-frozen-image-profile':functions?'math-function-frozen-image-profile':math?'math-macro-frozen-image-profile':loops?'foreach-frozen-image-profile':styles?'style-frozen-image-profile':diagram?'diagram-frozen-image-profile':'path-label-frozen-image-profile'};
 }
 
 export async function loadPathLabelCache(repositoryRoot,fixture,read=readFile){

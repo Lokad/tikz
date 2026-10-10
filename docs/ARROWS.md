@@ -640,5 +640,7 @@ node tools/TikzVisual/diagram-arrow-reference.mjs <native-report>
 
 Both fixtures pass affected comparisons of fresh public/traced conversion:
 2,508 native numeric checks, 48 current SVG views, 16 PDF views through both
-gates and 64 independent current recaptures. Portable-cache, final-source and
-clean-export qualification of this scope remains pending.
+gates and 64 independent current recaptures. The
+[frozen native archives](../tests/Reference/ArrowColors/README.md) preserve their
+calibration and backend evidence. Final-source, clean-export and main-worktree
+qualification of this scope remains pending.

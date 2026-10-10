@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "role": "arrow-color-frozen-image-profile",
+  "fixtures": {
+    "arrow-color-contract": {
+      "file": "tests/Reference/ArrowColors/arrow-color-contract.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "arrow-color-contract",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-9bed9e74-3e1f-431b-9010-a56507aadc9f/report.json",
+            "sha256": "8113b2608b082264a7157ee9553bd4c4c1482d9aa4159416f2403ce4d468ff51"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-6780111b-6ecc-4918-bf43-8928818063e3/report.json",
+            "sha256": "04d8af95fea5781345dc089ac8dcd1a80ee576e214a96720ff2189100a6f15cf"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-319727a2-24e5-40e0-971f-ce0eba76f197/report.json",
+            "sha256": "1932a9ba70d5bfce8e44a957f7bc05c62a90d2494a7486b85b4ce977538592aa"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-78813edd-de84-4eab-9262-b52550659719/report.json",
+            "sha256": "4004c8626612321ff79c4e30a41f5771b954909a13ed73418c35793611d9123e"
+          }
+        ],
+        "compressedSha256": "1b78dd2eac03f706e50af6f90a5150bcdb298d0c34bd1e81703b118bca792860",
+        "decodedSha256": "290a95d59d5aaf4f34cb29b38a05b7f5060078bb137968542bcd247523dcb468",
+        "compressedBytes": 4080642,
+        "decodedBytes": 13433776,
+        "logicalFiles": 1464,
+        "uniqueBlobs": 581,
+        "logicalBytes": 23737757,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "flowchart-draw-color": {
+      "file": "tests/Reference/ArrowColors/flowchart-draw-color.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "flowchart-draw-color",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-40dea5de-a1c2-4be5-9b8e-6c83277942b9/report.json",
+            "sha256": "3d647358b2cea2f4c7174ec5876cb980b3edc670b53a21d2662c9816860ac193"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-83e57575-b00d-4fe8-b62f-561c9f68312e/report.json",
+            "sha256": "91483475e3a0e78fbaace02e37efdff6a5ecbe12c8e245f9fe54d61c30940e17"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-efa80e1b-32df-48cf-adb6-53299c2469ca/report.json",
+            "sha256": "f59f6e0138f4f09843d1f30180ab988ed3c2b6e5d581d351f9dbeb38045fa448"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-feae0545-4f42-4708-afd7-1a205d64e5df/report.json",
+            "sha256": "ebc5c51a58f1bad1cc9059ce97f464866d189ff0d21b2e1d7c1a3402d59d3f01"
+          }
+        ],
+        "compressedSha256": "82147329d45ff82b4a5954fbf83ca452a98a8d592c383e5892943d418c437f6d",
+        "decodedSha256": "968a6c7e0287bd99747d52810b18aa61957fb3c63f16a09dfff249b34cb1e3ec",
+        "compressedBytes": 15792438,
+        "decodedBytes": 50660564,
+        "logicalFiles": 1882,
+        "uniqueBlobs": 892,
+        "logicalBytes": 74947740,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    }
+  },
+  "transportSources": {
+    "tools/TikzVisual/path-label-cache-codec.mjs": "cff0d11cb803e473820446886434d0024574d7ee1d253ea810674433b57ebb50",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/path-label-cache.mjs": "b7aff61f8d39f023da8f7455650966dddc3ee2700e503f7f649f56cb23c5b189"
+  }
+}
