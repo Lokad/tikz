@@ -35,6 +35,10 @@ export function verifyMathCurrentLabels(scene,measurements){
 
 export function verifyMathCurrentPixels(primary,pdf,primaryCalibration,pdfCalibration){
  const mode=reportVerificationMode(primary,pdf),views=currentPrimaryViews(mode);
+ // Historical accepted producers also decoded PNGs; new producers leave that
+ // same independent pass here. Do not accept missing or invented ownership.
+ const pairCount=primary.report.pixelCheckOwner===undefined?'decodedPairs':'capturedPairs';
+ if(primary.report.pixelCheckOwner!==undefined)assert.equal(primary.report.pixelCheckOwner,'independent-current-check');
  assert.equal(pdf.report.reusedOriginalReference??false,mode==='iteration','Changed original-reference reuse policy.');
  const family=mathFramingFamily(primary.report.cases.map(c=>c.id)),styled=family.length===1,
   owners=styled?styledLabelCacheReports:mathLabelCacheReports,expected=styled
@@ -55,7 +59,7 @@ export function verifyMathCurrentPixels(primary,pdf,primaryCalibration,pdfCalibr
  for(const[f,b]of primary.files)if(f.startsWith('public/'))assert.ok(pdf.files.get(f).equals(b),'Changed owned public output.');
  calcEqual(pdf.report.cases.map(c=>c.id),family.map(c=>c.id));
  calcEqual(pdf.report.records.map(r=>r.caseId+'/'+r.mode+'/'+mathPdfKey(r)).sort(),family.flatMap(c=>['original','candidate'].flatMap(mode=>shapePdfViews.map(v=>c.id+'/'+mode+'/'+mathPdfKey(v)))).sort());
- calcEqual(primary.report.checked,{decodedPairs:expected.primary,regionChecks:expected.primaryRegions,sourceRecaptures:expected.primary,identicalNativeViews:primary.report.checked.identicalNativeViews});
+ calcEqual(primary.report.checked,{[pairCount]:expected.primary,regionChecks:expected.primaryRegions,sourceRecaptures:expected.primary,identicalNativeViews:primary.report.checked.identicalNativeViews});
  calcEqual(pdf.report.checked,{decodedPairs:expected.pdf,regionChecks:expected.pdfRegions,sourceRecaptures:mode==='iteration'?expected.pdf/2:expected.pdf});
  calcEqual(pdf.report.gates,Object.fromEntries(['original','candidate'].map(mode=>[mode,{passed:pdf.report.records.filter(r=>r.mode===mode).every(r=>r.passed),views:expected.pdf/2}])));
  const native={files:new Map([...pdfCalibration.files].filter(([f])=>f.startsWith('native/')).map(([f,b])=>[f.slice(7),b]))};

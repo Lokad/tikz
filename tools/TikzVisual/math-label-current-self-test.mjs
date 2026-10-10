@@ -21,6 +21,11 @@ const controls=['altered-integer-math-anchor','altered-integer-text-dimension',.
  ['rehashed-primary-pixels',(r,json)=>json(r.cases[0].views[0].file,v=>v.metrics.rawChangedPixels++)],
  ['rehashed-primary-verdict',(r,json)=>json(r.cases[0].views[0].file,v=>v.evaluation.passed=!v.evaluation.passed)]
 ])];
+// Ownership is common to both families; exercise these two faults once.
+if(primary.report.pixelCheckOwner!==undefined&&id!=='flowchart-styled-labels')controls.push(...runPrimaryReportControls(primary,p=>verifyMathCurrentPixels(p,pdf,pc,dc),[
+ ['missing-independent-pixel-owner',r=>delete r.pixelCheckOwner],
+ ['forged-independent-pixel-owner',r=>r.pixelCheckOwner='producer']
+]));
 controls.push(...runPrimaryReportControls(pdf,p=>verifyMathCurrentPixels(primary,p,pc,dc),[
  ['duplicate-PDF-route',r=>r.records[4]=structuredClone(r.records[0])],
  ['split-public-output',r=>r.publicInputSha256='0'.repeat(64)],

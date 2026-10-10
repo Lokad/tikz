@@ -7,7 +7,6 @@ import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {createRenderer} from './compare.mjs';
 import {installShapeMetrics} from './shape-image-pair.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
-import {pathLabelPrimaryPixelReader} from './path-label-primary-pixels.mjs';
 import {mathFramingFamily} from './math-label-framing.mjs';
 import {mathFramingNumeric} from './check-math-label-framing.mjs';
 import {mathPrimaryNativeCase,mathPrimarySources,mathPrimaryKey,evaluateMathPrimary,measureMathPrimary} from './math-label-primary.mjs';
@@ -17,10 +16,10 @@ assert.ok([5,6].includes(process.argv.length),'Usage: math-label-primary-images.
 const mode=verificationMode(process.argv[5]),views=currentPrimaryViews(mode);
 const output=path.join(root,'artifacts/math-primary-current/run-'+randomUUID()),artifacts={},cases=[],sources={};
 const save=(f,b)=>writeArtifact(output,f,b,artifacts),json=(f,v)=>save(f,JSON.stringify(v,null,2)+'\n');
-let renderer,calibration,publicBundle,phase='current-input';let decodedPairs=0,regionChecks=0,sourceRecaptures=0,identicalNativeViews=0;
+let renderer,calibration,publicBundle,phase='current-input';let capturedPairs=0,regionChecks=0,sourceRecaptures=0,identicalNativeViews=0;
 async function publish(completed,extra={}){
  const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'math-label-current-primary-iteration',completed,phase:completed?'complete':phase,
-  verificationMode:mode,converterInvoked:true,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
+  verificationMode:mode,pixelCheckOwner:'independent-current-check',converterInvoked:true,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
   calibrationSha256:calibration?.sha256,publicInputSha256:publicBundle?.sha256,renderer:renderer?.identity,cases,sources,artifacts,...extra},null,2)+'\n');
  await writeArtifact(output,'report.json',bytes);console.log(JSON.stringify({completed,report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(bytes)}));
 }
@@ -68,25 +67,24 @@ try{
    const row=JSON.parse(await readFile(path.join(output,index.file)));owned.files.set(index.file,Buffer.from(JSON.stringify(row)));
    for(const name of ['reference','actual'])owned.files.set(row.images[name],await readFile(path.join(output,row.images[name])));
   }
-  const read=pathLabelPrimaryPixelReader(owned,native.frame);
   for(const index of summary.views){
-   const row=read(index.file),evaluation=evaluateMathPrimary(policies,row);calcEqual(row.evaluation,evaluation,'Decoded current verdict differs.');
-   decodedPairs++;regionChecks+=row.regions.length;
-   // All local metrics were independently decoded above. Replay still checks
-   // complete reference/candidate PNG identity and whole-image metrics.
+   const row=owned.json(index.file),evaluation=evaluateMathPrimary(policies,row);calcEqual(row.evaluation,evaluation,'Current verdict differs.');
+   capturedPairs++;regionChecks+=row.regions.length;
+   // Independent PNG/local validation belongs to check-math-label-current.
+   // Replay still checks complete source PNG identity and whole metrics.
    const pair=await measureMathPrimary(renderer,native,svg,index,undefined,{sourceRecapture:true});
    for(const name of ['reference','actual'])assert.equal(sha256(Buffer.from(pair.images[name],'base64')),
     sha256(owned.files.get(row.images[name])),'Current source recapture differs.');
    calcEqual(pair.metrics,row.metrics,'Current recapture metrics differ.');sourceRecaptures++;
   }
-  console.log(JSON.stringify({phase,caseId:id,views:summary.views.length,independentlyDecoded:true,sourceRecaptured:true}));
+  console.log(JSON.stringify({phase,caseId:id,views:summary.views.length,pixelCheckOwner:'independent-current-check',sourceRecaptured:true}));
  }
- assert.equal(decodedPairs,declaredCases.length*views.length);
+ assert.equal(capturedPairs,declaredCases.length*views.length);
  assert.equal(regionChecks,declaredCases.reduce((n,c)=>n+c.nodes+c.glyphs+c.rules+c.paths,0)*views.length);
- assert.equal(sourceRecaptures,decodedPairs);
+ assert.equal(sourceRecaptures,capturedPairs);
  for(const [f,digest]of Object.entries(sources))assert.equal(sha256(await readFile(path.join(root,f))),digest,'Source changed during primary check: '+f);
- await save('index.html','<!doctype html><meta charset="utf-8"><title>Current math primary views</title><h1>Current math output against native-only limits</h1><p><a href="report.json">All '+decodedPairs+' views and independent checks</a>. PDF and final feature qualification remain open.</p>'+
+ await save('index.html','<!doctype html><meta charset="utf-8"><title>Current math primary views</title><h1>Current math output against native-only limits</h1><p><a href="report.json">All '+capturedPairs+' captured views and source recaptures</a>. Independent pixel checking, PDF and final feature qualification remain open.</p>'+
   cases.map(c=>'<section><h2>'+c.id+'</h2><a href="'+c.id+'/numeric.json">Source-attributed framing/bounds</a><p><img width="1000" src="'+c.id+'/intrinsic-image/natural/1x-white/comparison.png"></p></section>').join(''));
- await publish(true,{checked:{decodedPairs,regionChecks,sourceRecaptures,identicalNativeViews},scope:mode==='iteration'?'Affected mechanism/interaction views only; final qualification requires the complete matrix.':'Current unchanged public-export sources; full required primary/local matrix only. Native calibration stays frozen. Both PDF and final clean-source qualification remain open.'});
+ await publish(true,{checked:{capturedPairs,regionChecks,sourceRecaptures,identicalNativeViews},scope:mode==='iteration'?'Affected mechanism/interaction views only; independent pixel checking and final qualification remain required.':'Current unchanged public-export sources; full required primary/local matrix only. Native calibration stays frozen. Independent pixel checking, PDF and final clean-source qualification remain open.'});
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,{error:error.message});process.exitCode=1;}
 finally{await renderer?.browser.close();}

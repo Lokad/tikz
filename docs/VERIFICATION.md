@@ -97,6 +97,13 @@ and whole-image metrics. It keeps every view and avoids regenerating local
 metrics already checked by initial capture and independent PNG decoding.
 Calibration and targeted sensitivity captures retain their full region sets.
 
+Current math/styled primary producers capture all browser metrics and recapture
+the complete source PNGs. Their receipts explicitly leave independent PNG
+validation to the current checker, which decodes every whole/local observation.
+This consolidates the same reader's duplicate pass on the same images. Missing
+or forged checking ownership fails; these common controls run once on math.
+Historical receipts with the producer's additional pass remain readable.
+
 ## Iteration view mapping
 
 Iteration uses eight primary views rather than 24 Cartesian combinations:
