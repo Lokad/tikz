@@ -1,0 +1,18 @@
+\usetikzlibrary{calc}
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \node (sentinel) at (-5,-5) {Plots};
+  \coordinate (seed) at (2,3);
+  \draw (9,9) plot coordinates {(1,2) (3,4)} -- ++(1,0);
+  \draw (9,9) -- plot[sharp plot] coordinates {(1,2) (3,4)} -- ++(1,0);
+  \draw (1,1) -- plot coordinates {+(1,0) ++(2,0) +(1,0)} -- ++(1,0);
+  \begin{scope}[every plot/.style={xshift=1pt}]
+    \draw (1,1) -- plot[xshift=2pt,red] coordinates {+(1,0) ++(2,0) +(1,0)} -- ++(1,0);
+  \end{scope}
+  \draw (8,9) plot coordinates {} -- ++(1,1);
+  \draw (8,9) plot coordinates {(3,4)} -- ++(1,1);
+  \draw plot coordinates {(seed) ($(seed)+(1,2)$) (90:2)} -- (4,5);
+  \begin{scope}[scale=2,shift={(seed)}]
+    \draw plot coordinates {(0,0) (1,2)} -- (2,1);
+  \end{scope}
+  \draw plot[shift={($(seed)+(1,1)$)}] coordinates {(0,0) (2,1)} -- ++(1,0);
+\end{tikzpicture}

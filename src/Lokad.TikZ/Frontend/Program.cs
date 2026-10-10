@@ -15,6 +15,7 @@ internal abstract record PathOperation(Source Source)
 }
 internal sealed record MoveOperation(Coordinate Point, Source Origin) : PathOperation(Origin);
 internal sealed record LineOperation(Coordinate Point, string Kind, Source Origin) : PathOperation(Origin);
+internal sealed record PlotOperation(List<Coordinate> Points, List<Option> Options, bool Connect, Source Origin) : PathOperation(Origin);
 internal sealed record ToOperation(Coordinate Target, List<Option> Options, Source Origin) : PathOperation(Origin);
 internal sealed record EdgeOperation(Coordinate Target, List<Option> Options, Source Origin) : PathOperation(Origin);
 internal sealed record CurveOperation(Coordinate A, Coordinate B, Coordinate End, Source Origin) : PathOperation(Origin);

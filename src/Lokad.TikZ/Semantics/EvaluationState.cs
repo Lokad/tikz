@@ -32,6 +32,7 @@ internal sealed class EvaluationState
     public Dictionary<string, List<Option>> Styles { get; set; } = new(StringComparer.Ordinal);
     public Dictionary<string, Number> Variables { get; set; } = new(StringComparer.Ordinal);
     public Dictionary<string, Source> NumericBindings { get; set; } = new(StringComparer.Ordinal);
+    public Func<Coordinate, EvaluationState, Point>? CoordinateValue { get; set; }
     public EvaluationState Clone(Budget budget, Source source)
     {
         budget.Charge(source, Styles.Count + Variables.Count + NumericBindings.Count + Clips.Count + 1);
@@ -39,7 +40,7 @@ internal sealed class EvaluationState
         {
             Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Arrows = Arrows, Node = Node, NodeDistance = NodeDistance, Libraries = Libraries, PositioningAvailable = PositioningAvailable, RelevantForPictureSize = RelevantForPictureSize,
             ConfiguredDash = ConfiguredDash, ConfiguredDashPhase = ConfiguredDashPhase, PendingDash = PendingDash,
-            Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal), NumericBindings = new(NumericBindings, StringComparer.Ordinal)
+            Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal), NumericBindings = new(NumericBindings, StringComparer.Ordinal), CoordinateValue = CoordinateValue
         };
     }
     public Number Number(Source source, Budget budget) => Expression.Parse(source, budget).Evaluate(Variables, budget);

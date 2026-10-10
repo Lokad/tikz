@@ -87,6 +87,9 @@ internal static class KeyRegistry
             switch (key)
             {
                 case "": continue;
+                // The sharp handler is the default. Other plot handlers remain
+                // explicit unsupported options until their geometry is declared.
+                case "sharp plot": break;
                 case "draw": state.Paint = paint with { Stroke = value is not ("none" or "false"), StrokeColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.StrokeColor : Color.Parse(option.Value, budget) }; break;
                 case "fill": state.Paint = paint with { Fill = value is not ("none" or "false"), FillColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.FillColor : Color.Parse(option.Value, budget) }; break;
                 case "color": var color = Color.Parse(option.Value, budget); state.Paint = paint with { StrokeColor = color, FillColor = color }; state.Node = state.Node with { TextColor = color }; break;
@@ -220,7 +223,16 @@ internal static class KeyRegistry
         var reader = new Cursor(source, budget);
         var group = reader.Group('(', ')'); reader.Complete();
         var parts = Options.Split(group, ',', budget);
-        if (parts.Count != 2) throw new CompileError("TIKZ001", "Expected (x,y).", source);
+        if (parts.Count != 2)
+        {
+            // Named/calc coordinates need the evaluator's source-aware symbol
+            // table. Keep the existing explicit (x,y) arithmetic unchanged.
+            if (state.CoordinateValue is null) throw new CompileError("TIKZ001", "Expected (x,y).", source);
+            var coordinateReader = new Cursor(source, budget);
+            var coordinate = CoordinateReader.Read(coordinateReader, budget);
+            coordinateReader.Complete();
+            return state.CoordinateValue(coordinate, state);
+        }
         var x = state.Number(parts[0], budget); var y = state.Number(parts[1], budget);
         return (x.HasUnit ? new Point(x.Bp, 0) : PgfTransform.Scale(state.XBasis, x.Value, budget, source))
             + (y.HasUnit ? new Point(0, y.Bp) : PgfTransform.Scale(state.YBasis, y.Value, budget, source));

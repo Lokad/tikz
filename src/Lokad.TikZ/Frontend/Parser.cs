@@ -171,12 +171,14 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             else if (_reader.Take("--"))
             {
                 if (_reader.Word("cycle")) operations.Add(new CloseOperation(origin));
+                else if (_reader.Word("plot")) operations.Add(ReadPlot(origin, true));
                 else
                 {
                     var labels = ReadPathLabels();
                     operations.Add(new LineOperation(ReadCoordinate(), "line", origin) { Labels = labels });
                 }
             }
+            else if (_reader.Word("plot")) operations.Add(ReadPlot(origin, false));
             else if (_reader.Take("|-")) operations.Add(new LineOperation(ReadCoordinate(), "vh", origin));
             else if (_reader.Take("-|")) operations.Add(new LineOperation(ReadCoordinate(), "hv", origin));
             else if (_reader.Word("to")) operations.Add(ReadConnection(origin, false));
@@ -252,6 +254,23 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         var options = ReadOptions();
         CheckShapeKeys(options, key);
         return RequiredValue(options, key, _reader.Here);
+    }
+    private PlotOperation ReadPlot(Source origin, bool connect)
+    {
+        var options = ReadOptions();
+        if (!_reader.Word("coordinates"))
+            throw new CompileError("TIKZ002", "Only coordinate-list plot data is supported.", _reader.Here);
+        var reader = new Cursor(_reader.Group('{', '}'), budget);
+        var points = new List<Coordinate>();
+        while (!reader.End)
+        {
+            budget.Charge(reader.Here);
+            if (reader.Peek is not ('(' or '+'))
+                throw new CompileError("TIKZ001", "Expected a plot coordinate.", reader.Here);
+            if (points.Count >= budget.Limits.MaxSegments) Budget.Fail(reader.Here, "plot points");
+            points.Add(CoordinateReader.Read(reader, budget));
+        }
+        return new(points, options, connect, origin with { Length = source.Offset + _reader.Position - origin.Offset });
     }
     private PathOperation ReadConnection(Source origin, bool separate)
     {

@@ -1,0 +1,136 @@
+using Lokad.TikZ.Graphics;
+using Lokad.TikZ.Frontend;
+using Lokad.TikZ.Semantics;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using TikzArrowComparison;
+using Xunit;
+
+namespace Lokad.TikZ.Tests;
+
+public sealed class PlotTests
+{
+    private static readonly TikzOptions Body = TikzOptions.Default with { InputKind = TikzInputKind.PictureBody };
+
+    [Theory]
+    [InlineData("Diagrams", "network-coordinate-plot", "4283ad96c06887488e4625436398350664931e13a5a9409470425bca7fa6dcc1", "e9a125c0f0d31a8b7ca25d67775571cc2f2a5c662bbb0d2d1daa9637b3942608", 34)]
+    [InlineData("Plotting", "coordinate-plot-contract", "555ddf964ab1ebc2ca18719f9f3e8b5f04044741db610d4cd4773d799c5b4de4", "c78e00e16e0c3105ef6f290d10e792b5ae1a914587328c6e8a394b0d5d14415f", 5)]
+    public void Samples_continuation_paint_arrows_and_bounds_match_frozen_native_geometry(string folder, string id, string sourceHash, string nativeHash, int glyphs)
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", folder, id + ".tikz"));
+        Assert.Equal(sourceHash, Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(source.Replace("\r\n", "\n")))));
+        var nativeBytes = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Reference/Plotting", id + ".json"));
+        Assert.Equal(nativeHash, Convert.ToHexStringLower(SHA256.HashData(nativeBytes)));
+        using var native = JsonDocument.Parse(nativeBytes);
+        GraphicsScene? scene = null;
+        var converted = TikzConverter.ConvertWithTrace(source, TikzOptions.Default, CancellationToken.None, value => scene = value);
+        var success = Assert.IsType<TikzSuccess>(converted);
+        var checks = NativeArrowComparison.Compare(scene!, success, native.RootElement, glyphs, ignoreTrailingMoves: true);
+        var failures = checks.Where(c => !c.Passed).ToArray();
+        Assert.True(failures.Length == 0, string.Join(Environment.NewLine, failures.Select(c => c.Quantity + ": expected " + c.Expected + ", actual " + c.Actual)));
+    }
+
+    [Fact]
+    public void Complete_network_combines_plots_labels_positioning_arrows_and_calc()
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/Diagrams/network-coordinate-plot.tikz"));
+        GraphicsScene? trace = null;
+        var converted = TikzConverter.ConvertWithTrace(source, TikzOptions.Default,
+            CancellationToken.None, scene => trace = scene);
+        Assert.True(converted is TikzSuccess, string.Join("; ", converted.Diagnostics.Select(d => d.Code + ": " + d.Message + " at " + d.Span.Offset)));
+        var publicResult = Assert.IsType<TikzSuccess>(TikzConverter.Convert(source, TikzOptions.Default, CancellationToken.None));
+        Assert.Equal(publicResult.Svg, Assert.IsType<TikzSuccess>(converted).Svg);
+        Assert.Equal(6, trace!.Nodes.Count);
+        Assert.Equal(4, trace.Paths.Count(p => p.Arrow is not null));
+        Assert.Contains(trace.Coordinates, p => p.Key == "return");
+    }
+
+    [Theory]
+    [InlineData("plot", "Move,Move,Line,Line")]
+    [InlineData("-- plot", "Move,Line,Line,Line")]
+    public void Sharp_plots_preserve_subpaths_and_continue_from_the_last_sample(string operation, string kinds)
+    {
+        var scene = Scene(@"\draw[x=1pt,y=1pt](9,9) " + operation + @" coordinates{(1,2)(3,4)}--++(1,0);");
+        var segments = Assert.Single(scene.Paths).Path.Segments;
+        Assert.Equal(kinds, string.Join(',', segments.Select(s => s.Kind)));
+        Assert.Equal(new[] { (9, 9), (1, 2), (3, 4), (4, 4) }, segments.Select(s => (Pt(s.End.X), Pt(s.End.Y))));
+    }
+
+    [Fact]
+    public void Relative_samples_use_entry_reference_then_restore_local_plot_options()
+    {
+        var scene = Scene(@"\tikzset{every plot/.style={xshift=1pt}}\draw[x=1pt,y=1pt](1,1)--plot[xshift=2pt,red]coordinates{+(1,0)++(2,0)+(1,0)}--++(1,0);");
+        var path = Assert.Single(scene.Paths);
+        Assert.Equal(new[] { (1, 1), (5, 1), (6, 1), (5, 1), (3, 1) },
+            path.Path.Segments.Select(s => (Pt(s.End.X), Pt(s.End.Y))));
+        Assert.Equal(new Paint().StrokeColor, path.Paint.StrokeColor);
+    }
+
+    [Theory]
+    [InlineData("", "Move,Line", 1, 1)]
+    [InlineData("(3,4)", "Move,Move,Line", 4, 5)]
+    public void Empty_and_single_point_streams_have_defined_continuation(string points, string kinds, int x, int y)
+    {
+        var scene = Scene(@"\draw[x=1pt,y=1pt](8,9)plot coordinates{" + points + @"}--++(1,1);");
+        var segments = Assert.Single(scene.Paths).Path.Segments;
+        Assert.Equal(kinds, string.Join(',', segments.Select(s => s.Kind)));
+        Assert.Equal((x, y), (Pt(segments[^1].End.X), Pt(segments[^1].End.Y)));
+    }
+
+    [Fact]
+    public void Parsed_samples_retain_source_spans_and_macro_provenance()
+    {
+        const string source = @"\draw plot[sharp plot]coordinates{(1pt,2pt)(3pt,4pt)};";
+        var program = new Parser(new(source, 0, source.Length), new Budget(TikzLimits.Default, CancellationToken.None)).Parse(TikzInputKind.PictureBody);
+        var plot = Assert.IsType<PlotOperation>(Assert.Single(Assert.IsType<PathStatement>(Assert.Single(program)).Operations));
+        Assert.StartsWith("plot", plot.Source.Value);
+        Assert.Equal(new[] { "(1pt,2pt)", "(3pt,4pt)" }, plot.Points.Select(p => p.Source.Value));
+        const string assigned = @"\pgfmathsetmacro\height{1/2}\draw plot coordinates{(0,\height)(1,\height)};";
+        var scene = Scene(assigned);
+        Assert.Contains(Assert.Single(scene.Paths).Source.RelatedLocations(), s => s.Offset == assigned.IndexOf(@"\height", StringComparison.Ordinal));
+    }
+
+    [Theory]
+    [InlineData("plot file {secret.dat}", "TIKZ002")]
+    [InlineData("plot function {x*x}", "TIKZ002")]
+    [InlineData("plot (\\x,{cos(\\x)})", "TIKZ002")]
+    [InlineData("plot[smooth]coordinates{(0,0)(1,1)}", "TIKZ002")]
+    [InlineData("plot[mark=*]coordinates{(0,0)(1,1)}", "TIKZ002")]
+    [InlineData("plot coordinates{garbage}", "TIKZ001")]
+    [InlineData("plot coordinates{(0,0)(1,)}", "TIKZ001")]
+    [InlineData("plot coordinates{(0,0)", "TIKZ001")]
+    public void Undeclared_or_malformed_data_fails_without_output(string plot, string code)
+    {
+        var source = @"\draw " + plot + ";";
+        var failure = Assert.IsType<TikzFailure>(TikzConverter.Convert(source, Body, CancellationToken.None));
+        var diagnostic = Assert.Single(failure.Diagnostics);
+        Assert.Equal(code, diagnostic.Code);
+        Assert.InRange(diagnostic.Span.Offset, 6, source.Length);
+        Assert.Equal(0, failure.Statistics.OutputBytes);
+    }
+
+    [Fact]
+    public void Plot_scanning_and_lowering_share_limits_and_cancellation()
+    {
+        const string source = @"\draw plot coordinates{(0,0)(1,1)(2,0)(3,1)};";
+        foreach (var limits in new[] { TikzLimits.Default with { MaxSegments = 3 }, TikzLimits.Default with { MaxWork = 40 }, TikzLimits.Default with { MaxCoordinatePixels = 10 } })
+        {
+            var failure = Assert.IsType<TikzFailure>(TikzConverter.Convert(source, Body with { Limits = limits }, CancellationToken.None));
+            Assert.Equal("TIKZ005", Assert.Single(failure.Diagnostics).Code);
+            Assert.Equal(0, failure.Statistics.OutputBytes);
+        }
+        using var cancellation = new CancellationTokenSource();
+        cancellation.Cancel();
+        Assert.Throws<OperationCanceledException>(() => TikzConverter.Convert(source, Body, cancellation.Token));
+    }
+
+    private static GraphicsScene Scene(string source)
+    {
+        GraphicsScene? scene = null;
+        var result = TikzConverter.ConvertWithTrace(source, Body, CancellationToken.None, value => scene = value);
+        Assert.True(result is TikzSuccess, string.Join("; ", result.Diagnostics.Select(d => d.Message)));
+        return scene!;
+    }
+    private static int Pt(double bp) => (int)Math.Round(bp * 72.27 / 72);
+}

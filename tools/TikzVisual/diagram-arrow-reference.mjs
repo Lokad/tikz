@@ -14,6 +14,8 @@ import {arrowHooks,parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/diagram-arrow-reference.mjs <exact-original-diagram-report>');
 const expected={
+ 'network-coordinate-plot':'4283ad96c06887488e4625436398350664931e13a5a9409470425bca7fa6dcc1',
+ 'coordinate-plot-contract':'555ddf964ab1ebc2ca18719f9f3e8b5f04044741db610d4cd4773d799c5b4de4',
  'network-math-functions':'2263a4ae32200cfcc435655c3447d4eed0f5b7584f0d88584d9b1b17da579bbf',
  'flowchart-math-macros':'a9a0389cf48da3f7036092e2ee00203ed517ee6668452c1352b7acd35d70deef',
  'flowchart-foreach':'64ee9c160bb1a8c652bc0cdd38c6396abccc1bde6c686d8f109169e3a72803ad',
@@ -22,6 +24,8 @@ const expected={
  'network-bent':'da163c256834b3c94477f4e368cbe69cc700a867b93a0b73a210d3e7a4aa0e54',
  'flowchart-transformed':'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa'};
 const probeHashes={
+ 'network-coordinate-plot':'c7ec00be138953e6621f1e4f7405a36e870b78f5f96d7d92cc046af998696b6d',
+ 'coordinate-plot-contract':'8c46ea74d34c10fc5638c8750a5b381d948587dee96e76c5ed47918a71370414',
  'network-math-functions':'1afd33acc7daca8942d8ece1782f3a09cc6a0160cd57a099f60a6a3868147f20',
  'flowchart-math-macros':'443475fd0abd007c5cecd424ddbd3c59fa476983963d1076e578ab794db6ce78',
  'flowchart-foreach':'d66b7327ab7df75a213fde20221eab43d9a1b017846090867fac363b63f4f647',
@@ -37,7 +41,7 @@ await publish(false);
 try{
  const file=path.resolve(root,process.argv[2]);assert.ok(file.startsWith(path.join(root,'artifacts')+path.sep));
  const original=await loadCalcSavedReport(file,'diagram-native-reference'),id=original.report.definition.id;
- assert.ok(Object.hasOwn(expected,id));const sourceFile='tests/Fixtures/Diagrams/'+id+'.tikz',source=edgeCanonical(await readFile(path.join(root,sourceFile)));
+ assert.ok(Object.hasOwn(expected,id));const sourceFile='tests/Fixtures/'+(id==='coordinate-plot-contract'?'Plotting':'Diagrams')+'/'+id+'.tikz',source=edgeCanonical(await readFile(path.join(root,sourceFile)));
  assert.equal(sha256(source),expected[id]);assert.equal(original.report.sourceHashes[sourceFile],expected[id]);assert.ok(source.equals(original.files.get('source-captures/'+sourceFile)));
  // Owned artifacts are not authorization to execute arbitrary TeX. These
  // wrapper/probe bytes come from the fixed, reviewed diagram producer.
@@ -71,7 +75,7 @@ try{
   let bytes;
   if(route==='svg'){await execute(tools.dvisvgm,['--no-fonts','--exact-bbox','--bbox=min','--page=1','--output=reference.svg','case.dvi'],folder,'svg-outline');bytes=await readFile(path.join(folder,'reference.svg'));await save('supplemental-reference.svg',bytes);assert.equal(canonicalEdgeSvg(bytes),canonicalEdgeSvg(original.files.get('plain-reference.svg')));}
   else{bytes=await readFile(path.join(folder,'case.pdf'));await save('supplemental-reference.pdf',bytes);assert.ok(bytes.equals(original.files.get('plain-reference.pdf')),'Arrow probes changed original PDF bytes.');}
-  observations[route]={log,bytes,metrics:parseArrowLog(log,{allowWrapperGlue:true})};
+  observations[route]={log,bytes,metrics:parseArrowLog(log,{allowWrapperGlue:true,allowNoArrows:id==='coordinate-plot-contract'})};
  }
  phase='native-checking';assert.deepEqual(observations.svg.metrics,observations.pdf.metrics);
  const metrics=observations.svg.metrics,extra=metrics.pictureBox.widthSp-(metrics.pictureBounds.maxXSp-metrics.pictureBounds.minXSp);

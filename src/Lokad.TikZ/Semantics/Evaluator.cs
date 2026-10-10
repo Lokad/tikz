@@ -10,7 +10,10 @@ internal sealed partial class Evaluator(Budget budget)
     private readonly Dictionary<string, Point> _coordinates = new(StringComparer.Ordinal);
     public GraphicsScene Evaluate(List<Statement> statements, TikzOptions options)
     {
-        var state = new EvaluationState();
+        var state = new EvaluationState
+        {
+            CoordinateValue = (coordinate, current) => PathCoordinate(coordinate, current, default, out _)
+        };
         var origin = statements.FirstOrDefault()?.Source ?? new Source("", 0, 0);
         state.Styles["every edge"] = [new("draw", origin.Slice(0, 0), origin)];
         foreach (var library in options.Libraries) LoadLibrary(library, state, statements.FirstOrDefault()?.Source ?? new Source("", 0, 0));
@@ -223,6 +226,30 @@ internal sealed partial class Evaluator(Budget budget)
                     path.Cubic(Global(a), Global(b), Global(curveNode is null ? target : NodeBorder(curveNode, b, state.Transform, curve.End.Source)));
                     position = target;
                     pending = curveNode; pendingSource = curve.End.Source;
+                    break;
+                case PlotOperation plot:
+                    // PGF groups every-plot/local options while retaining the
+                    // enclosing path's paint. The plot scanner updates TikZ's
+                    // last position even when the handler starts a new subpath.
+                    Flush();
+                    var plotState = state.Clone(budget, plot.Source);
+                    KeyRegistry.ApplyStyle("every plot", plotState, budget, plot.Source);
+                    KeyRegistry.Apply(plot.Options, plotState, budget);
+                    for (var i = 0; i < plot.Points.Count; i++)
+                    {
+                        var coordinate = plot.Points[i];
+                        // The coordinate-list scanner records the entire stream
+                        // before emission; + and ++ both use its entry reference.
+                        var plotPoint = PathCoordinate(coordinate, plotState, reference, out _);
+                        var world = PgfTransform.Apply(plotState.Transform, plotPoint, budget, coordinate.Source);
+                        if (i == 0 && !plot.Connect) path.Move(world);
+                        else path.Line(world);
+                        position = plotPoint;
+                    }
+                    // An empty stream leaves PGF's plot-last-point at the origin.
+                    if (plot.Points.Count == 0) position = default;
+                    reference = position;
+                    pending = null;
                     break;
                 case ToOperation to:
                     // TikZ prescans +/++ in the enclosing coordinate system,

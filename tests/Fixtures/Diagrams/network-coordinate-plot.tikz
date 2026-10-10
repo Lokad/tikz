@@ -1,0 +1,17 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=10mm,
+  box/.style={draw,rectangle,minimum width=#1,inner sep=3pt}]
+  \node[box=14mm] (input) {Input};
+  \node[box=16mm,right=of input] (filter) {Filter};
+  \node[box=16mm,right=of filter] (output) {Output};
+  \draw[-{Stealth}] (input.east) -- node[midway,above] {sample} (filter.west);
+  \draw[-{Stealth}] (filter.east) -- node[midway,above] {result} (output.west);
+  \coordinate (origin) at ($(filter.south)+(-12mm,-20mm)$);
+  \begin{scope}[shift={(origin)},x=6mm,y=5mm]
+    \draw[dashed] plot coordinates {(0,0) (1,0.5) (2,0) (3,0.5) (4,0)};
+    \draw[-{Stealth}] (0,0) -- plot coordinates {(0,0.5) (1,1) (2,0.25) (3,0.75)}
+      -- node[midway,above] {trace} (4,0.5);
+  \end{scope}
+  \coordinate (return) at ($(origin)+(0,-8mm)$);
+  \draw[-{Stealth}] (output.south) |- (return) -- (input.south);
+\end{tikzpicture}
