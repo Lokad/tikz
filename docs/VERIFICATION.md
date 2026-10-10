@@ -92,6 +92,11 @@ Math primary checks validate every owned frame and fault contract before
 decoding pixels. Structural faults in a later case therefore fail immediately;
 well-formed reports retain the full independent pixel and policy checks.
 
+Math primary source recapture checks complete reference/candidate PNG identity
+and whole-image metrics. It keeps every view and avoids regenerating local
+metrics already checked by initial capture and independent PNG decoding.
+Calibration and targeted sensitivity captures retain their full region sets.
+
 ## Iteration view mapping
 
 Iteration uses eight primary views rather than 24 Cartesian combinations:

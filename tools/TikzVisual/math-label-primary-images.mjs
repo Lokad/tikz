@@ -72,7 +72,9 @@ try{
   for(const index of summary.views){
    const row=read(index.file),evaluation=evaluateMathPrimary(policies,row);calcEqual(row.evaluation,evaluation,'Decoded current verdict differs.');
    decodedPairs++;regionChecks+=row.regions.length;
-   const pair=await measureMathPrimary(renderer,native,svg,index);
+   // All local metrics were independently decoded above. Replay still checks
+   // complete reference/candidate PNG identity and whole-image metrics.
+   const pair=await measureMathPrimary(renderer,native,svg,index,undefined,{sourceRecapture:true});
    for(const name of ['reference','actual'])assert.equal(sha256(Buffer.from(pair.images[name],'base64')),
     sha256(owned.files.get(row.images[name])),'Current source recapture differs.');
    calcEqual(pair.metrics,row.metrics,'Current recapture metrics differ.');sourceRecaptures++;

@@ -41,11 +41,16 @@ export async function mathPrimaryNativeCase(renderer,bundle,id,supplement,pathSu
  for(const encoding of mathPrimaryEncodings)encodings.push({id:encoding,svg:await withMathNaturalRoot(renderer,native.variants.find(v=>v.id===encoding).svg,frame)});
  return{reference,events,measurements,supplement,pathSupplement,frame,encodings};
 }
-export async function measureMathPrimary(renderer,native,svg,view,target){
+export async function measureMathPrimary(renderer,native,svg,view,target,{sourceRecapture=false}={}){
  const measure=view.capture==='intrinsic-image'?measureEdgeTrialPrimary:measureArrowVectorPair;
  assert.ok(mathPrimaryCaptures.includes(view.capture));
+ assert.equal(typeof sourceRecapture,'boolean');
+ assert.ok(!sourceRecapture||target===undefined,'Source recapture cannot narrow targeted diagnostics.');
+ // Recapture checks both complete PNGs and whole metrics. The shared renderer
+ // requires a region; retain one without repeating all local observations.
+ const regions=sourceRecapture?native.frame.regions.slice(0,1):native.frame.regions;
  return measure(renderer,{reference:native.reference,actual:svg,leftIsDriver:true,origin:native.frame.origin,
-  camera:native.frame.camera,regions:native.frame.regions,allowMathMarks:true,...view,
+  camera:native.frame.camera,regions,allowMathMarks:true,...view,
   cropLimit:target?1:0,cropRegionIds:target?[target]:[],
   referenceLabel:'Original native TikZ',rightLabel:'Independent math encoding / inspected output'});
 }
