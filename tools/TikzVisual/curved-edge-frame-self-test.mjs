@@ -40,6 +40,16 @@ try{
   equal('move-only retains position',curvedPathBounds(positioned),{minX:5,minY:7,maxX:5,maxY:7});
   equal('move-only round-cap has no ink',edgeStrokeEnvelope(positioned,2,1,0,10).stroke,null);
   equal('cubic pen envelope',edgeStrokeEnvelope([move,arch],2,0,0,10).stroke,{minX:-1,minY:-1,maxX:11,maxY:8.5});
+  const triangle=[move,{kind:'line',from:{x:0,y:0},to:{x:2,y:0}},
+    {kind:'line',from:{x:2,y:0},to:{x:2,y:2}},{kind:'close',from:{x:2,y:2},to:{x:0,y:0}}];
+  const continued={kind:'line',from:{x:0,y:0},to:{x:4,y:0}};
+  const postClose=edgeStrokeEnvelope([...triangle,continued],2,2,2,10);
+  equal('post-close stroke equals an explicit next subpath',postClose,
+    edgeStrokeEnvelope([...triangle,move,continued],2,2,2,10));
+  equal('post-close keeps three closed-contour joins',postClose.joins.length,3);
+  equal('post-close caps belong only to the new open subpath',postClose.caps.map(c=>c.point),[{x:0,y:0},{x:4,y:0}]);
+  equal('post-close square cap reaches the continued endpoint plus radius',postClose.stroke.maxX,5);
+  reject('post-close continuation cannot invent a different origin',()=>edgeStrokeEnvelope([...triangle,{...continued,from:{x:1,y:0}}],2,2,2,10));
   equal('small browser-box arithmetic floor',browserBoxLimit([move,arch]),.00004);
   equal('float32 four-ulp budget at 256',browserBoxLimit([{...move,to:{x:256,y:0}}]),1/8192);
   equal('float32 four-ulp budget at 1024',browserBoxLimit([{...move,to:{x:1024,y:0}}]),1/2048);

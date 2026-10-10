@@ -56,14 +56,28 @@ inside a bounded `\foreach`. Bindings and local geometry settings restore after
 the plot. Sampling shares expansion, work, loop, coordinate and segment limits,
 and cancellation with the rest of conversion.
 
-Malformed domains/lists/variables, unknown variables, undeclared functions,
-fractional powers and arithmetic overflow fail explicitly. Smooth/other
-handlers, marks, file data, gnuplot and PGFPlots remain unsupported. The production
-converter never invokes a native reference tool.
+`smooth` turns either coordinate or function streams into cubic curves. Endpoint
+controls coincide with the first/last samples; interior controls use PGF's
+finite support-vector arithmetic before the current transform. `tension` accepts
+an ordinary decimal or numeric binding, with default 0.5. Zero and negative
+tensions retain their native meaning. `sharp plot` restores the straight handler;
+handler and tension settings follow the same scoped option order as sampling.
 
-The four fixtures in [the native snapshot](../tests/Reference/Plotting/README.md)
-ground sharp coordinate streams, finite function sampling and complete network
-interactions. Ordinary tests cover frozen native path/arrow geometry,
+`smooth cycle` produces a closed cubic contour. Following PGF's construction
+order, it starts at the second sample and wraps through the last, first and second
+samples before closing. It starts a new subpath even with `-- plot`. Zero or one
+samples emit no plot geometry; two emit only a move to the second sample. Following
+path operations use the last sampled coordinate, independently of the closed
+contour's endpoint. Smooth controls contribute to picture bounds, while curve
+extrema and the active pen determine ink bounds.
+
+Malformed domains/lists/variables/tensions, unknown variables, undeclared
+functions, fractional powers and arithmetic overflow fail explicitly. Sharp
+cycle and other handlers, marks, file data, gnuplot and PGFPlots remain unsupported.
+The production converter never invokes a native reference tool.
+
+The six fixtures in [the native snapshot](../tests/Reference/Plotting/README.md)
+ground coordinate streams, finite function sampling, smooth handlers and complete
+network interactions. Ordinary tests cover frozen native path/arrow geometry,
 continuation, source locations, malformed input and shared budgets/cancellation.
-Full plotting image qualification remains pending until smoothing and the final
-feature acceptance are complete.
+Full plotting image qualification remains pending until final feature acceptance.

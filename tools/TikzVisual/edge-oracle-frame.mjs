@@ -15,7 +15,14 @@ export function edgeStrokeEnvelope(segments,width,cap,join,miter){
   assert.ok(Number.isFinite(width)&&width>0&&[0,1,2].includes(cap)&&[0,1,2].includes(join)&&Number.isFinite(miter)&&miter>=1);
   const r=width/2,boxes=[],joins=[],caps=[],degenerate=[],groups=[];let group=null;
   for(const s of segments){if(s.kind==='move'){group={start:s.to,edges:[],closed:false};groups.push(group);continue;}
-    assert.ok(group&&!group.closed,'Drawing after native close requires a move.');group.edges.push(s);if(s.kind==='close')group.closed=true;
+    assert.ok(group,'Drawing requires a native move.');
+    if(group.closed){
+      // A drawing command after close starts a new subpath at the closed
+      // contour's initial point: https://www.w3.org/TR/SVG2/paths.html#PathDataClosePathCommand
+      assert.ok(equal(s.from,group.start),'Post-close drawing must start at the closed contour origin.');
+      group={start:group.start,edges:[],closed:false};groups.push(group);
+    }
+    group.edges.push(s);if(s.kind==='close')group.closed=true;
     const u=tangent(s,false);if(!u)continue;
     if(s.kind==='cubic')boxes.push(inflate(pathBounds([s]),r));
     else for(const p of[s.from,s.to])for(const sign of[-1,1])boxes.push(pointBox({x:p.x-sign*u.y*r,y:p.y+sign*u.x*r}));

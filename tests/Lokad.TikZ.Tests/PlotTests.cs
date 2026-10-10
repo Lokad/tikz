@@ -14,6 +14,58 @@ public sealed class PlotTests
     private static readonly TikzOptions Body = TikzOptions.Default with { InputKind = TikzInputKind.PictureBody };
 
     [Fact]
+    public void Complete_network_combines_smoothing_cycles_and_existing_diagram_features()
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/Diagrams/network-smooth-plot.tikz"));
+        var converted = TikzConverter.Convert(source, TikzOptions.Default, CancellationToken.None);
+        Assert.True(converted is TikzSuccess, string.Join("; ", converted.Diagnostics.Select(d => d.Code + ": " + d.Message + " at " + d.Span.Offset)));
+    }
+
+    [Theory]
+    [InlineData("smooth", "", "Move,Line", 1, 0)]
+    [InlineData("smooth", "(1,1)", "Move,Move,Line", 2, 1)]
+    [InlineData("smooth", "(0,0)(2,2)", "Move,Move,Cubic,Line", 3, 2)]
+    [InlineData("smooth cycle", "", "Move,Line", 1, 0)]
+    [InlineData("smooth cycle", "(1,1)", "Move,Line", 2, 1)]
+    [InlineData("smooth cycle", "(0,0)(2,2)", "Move,Move,Line", 3, 2)]
+    [InlineData("smooth cycle", "(0,0)(1,2)(3,1)", "Move,Move,Cubic,Cubic,Cubic,Close,Line", 4, 1)]
+    public void Smooth_short_streams_and_closed_continuation_preserve_native_last_position(string handler, string coordinates, string kinds, int x, int y)
+    {
+        var scene = Scene(@"\draw[x=1pt,y=1pt](9,9)plot[" + handler + "]coordinates{" + coordinates + "}--++(1,0);");
+        var segments = Assert.Single(scene.Paths).Path.Segments;
+        Assert.Equal(kinds, string.Join(',', segments.Select(s => s.Kind)));
+        Assert.Equal((x, y), (Pt(segments[^1].End.X), Pt(segments[^1].End.Y)));
+    }
+
+    [Theory]
+    [InlineData("tension=1/2", "TIKZ002")]
+    [InlineData("tension=0.5cm", "TIKZ002")]
+    [InlineData("tension=16384", "TIKZ004")]
+    [InlineData("tension=nan", "TIKZ002")]
+    [InlineData("sharp cycle", "TIKZ002")]
+    public void Undeclared_smoothing_options_fail_with_input_spans(string option, string code)
+    {
+        var source = @"\draw plot[smooth," + option + "]coordinates{(0,0)(1,2)(3,1)};";
+        var failure = Assert.IsType<TikzFailure>(TikzConverter.Convert(source, Body, CancellationToken.None));
+        var diagnostic = Assert.Single(failure.Diagnostics);
+        Assert.Equal(code, diagnostic.Code);
+        Assert.InRange(diagnostic.Span.Offset, 18, source.Length);
+        Assert.Equal(0, failure.Statistics.OutputBytes);
+    }
+
+    [Fact]
+    public void Smooth_controls_share_segment_coordinate_and_work_limits()
+    {
+        const string source = @"\draw plot[smooth cycle]coordinates{(0,0)(1,2)(3,1)(2,0)};";
+        foreach (var limits in new[] { TikzLimits.Default with { MaxSegments = 3 }, TikzLimits.Default with { MaxWork = 50 }, TikzLimits.Default with { MaxCoordinatePixels = 1 } })
+        {
+            var failure = Assert.IsType<TikzFailure>(TikzConverter.Convert(source, Body with { Limits = limits }, CancellationToken.None));
+            Assert.Equal("TIKZ005", Assert.Single(failure.Diagnostics).Code);
+            Assert.Equal(0, failure.Statistics.OutputBytes);
+        }
+    }
+
+    [Fact]
     public void Complete_network_combines_function_sampling_and_existing_diagram_features()
     {
         var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/Diagrams/network-function-plot.tikz"));
@@ -107,6 +159,8 @@ public sealed class PlotTests
     [InlineData("Plotting", "coordinate-plot-contract", "555ddf964ab1ebc2ca18719f9f3e8b5f04044741db610d4cd4773d799c5b4de4", "c78e00e16e0c3105ef6f290d10e792b5ae1a914587328c6e8a394b0d5d14415f", 5)]
     [InlineData("Diagrams", "network-function-plot", "92a7a7ebfd39bb8e735a3c52f6972acaec607e4de2df5549e5cfcbe6acf88fdc", "411731d2af235c6b6163d615fcb4e14df80a6d75d82ddea872859439e4f7871a", 35)]
     [InlineData("Plotting", "function-plot-contract", "bd15f0fa3345ea0df4f5c5a0acd8c1ed48457b5c9429f70ffdded448198c2f11", "2c5340e74a7b7509524b33d4b2e997f141112ec8dcc7797a45e10a334386e02e", 14)]
+    [InlineData("Diagrams", "network-smooth-plot", "10029c10cbbf08c4a13579659138f0a2b7be155c93b866cdb4096c0b5555faee", "f940fe339ea2536e2c08e3dfd9b24493e08d58ee2ce7d951a79aef2770fd1e05", 35)]
+    [InlineData("Plotting", "smooth-plot-contract", "d2f3415578d92be358eed7d2d2927720d10cee97d56417885d88b82f3b219985", "d0d90eeed43d854a27ec5026bc257c3e42631e7f27b530d7fc4996e4fe302a9c", 6)]
     public void Samples_continuation_paint_arrows_and_bounds_match_frozen_native_geometry(string folder, string id, string sourceHash, string nativeHash, int glyphs)
     {
         var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures", folder, id + ".tikz"));
@@ -186,7 +240,7 @@ public sealed class PlotTests
     [InlineData("plot file {secret.dat}", "TIKZ002")]
     [InlineData("plot function {x*x}", "TIKZ002")]
     [InlineData("plot (\\x,{sqrt(\\x)})", "TIKZ002")]
-    [InlineData("plot[smooth]coordinates{(0,0)(1,1)}", "TIKZ002")]
+    [InlineData("plot[const plot]coordinates{(0,0)(1,1)}", "TIKZ002")]
     [InlineData("plot[mark=*]coordinates{(0,0)(1,1)}", "TIKZ002")]
     [InlineData("plot coordinates{garbage}", "TIKZ001")]
     [InlineData("plot coordinates{(0,0)(1,)}", "TIKZ001")]

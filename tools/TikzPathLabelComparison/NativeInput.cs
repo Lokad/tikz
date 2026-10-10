@@ -14,7 +14,7 @@ internal sealed class NativeInput : IDisposable
     internal string Svg { get; }
     internal string Fixture { get; }
     internal bool IsDiagram { get; }
-    internal string SourceFile => "tests/Fixtures/" + (Fixture is "coordinate-plot-contract" or "function-plot-contract" ? "Plotting" : Fixture == "style-contract" ? "Styles" : Fixture == "foreach-contract" ? "Foreach" : Fixture == "math-macro-contract" ? "MathMacros" : Fixture == "math-functions-contract" ? "MathFunctions" : IsDiagram ? "Diagrams" : "PathLabels") + "/" + Fixture + ".tikz";
+    internal string SourceFile => "tests/Fixtures/" + (Fixture is "coordinate-plot-contract" or "function-plot-contract" or "smooth-plot-contract" ? "Plotting" : Fixture == "style-contract" ? "Styles" : Fixture == "foreach-contract" ? "Foreach" : Fixture == "math-macro-contract" ? "MathMacros" : Fixture == "math-functions-contract" ? "MathFunctions" : IsDiagram ? "Diagrams" : "PathLabels") + "/" + Fixture + ".tikz";
     internal string[] Ids { get; }
     internal NativeGlyphTrace.Evidence Glyphs { get; }
     private readonly string folder;
@@ -31,7 +31,7 @@ internal sealed class NativeInput : IDisposable
             || r.GetProperty("converterInvoked").GetBoolean() || r.GetProperty("imageConformanceClaim").GetBoolean())
             throw new InvalidDataException("Expected completed independent native observations.");
         Fixture = r.GetProperty("definition").GetProperty("id").GetString()!;
-        if (IsDiagram ? Fixture is not ("network-function-plot" or "function-plot-contract" or "network-coordinate-plot" or "coordinate-plot-contract" or "flowchart-basic" or "network-bent" or "flowchart-transformed" or "flowchart-parameterized" or "flowchart-foreach" or "foreach-contract" or "style-contract" or "flowchart-math-macros" or "math-macro-contract" or "network-math-functions" or "math-functions-contract") : Fixture is not ("placement" or "interactions"))
+        if (IsDiagram ? Fixture is not ("network-smooth-plot" or "smooth-plot-contract" or "network-function-plot" or "function-plot-contract" or "network-coordinate-plot" or "coordinate-plot-contract" or "flowchart-basic" or "network-bent" or "flowchart-transformed" or "flowchart-parameterized" or "flowchart-foreach" or "foreach-contract" or "style-contract" or "flowchart-math-macros" or "math-macro-contract" or "network-math-functions" or "math-functions-contract") : Fixture is not ("placement" or "interactions"))
             throw new InvalidDataException("Only fixed trusted fixtures are accepted.");
         Metrics = JsonDocument.Parse(Read("metrics.json"));
         if (r.GetProperty("role").GetString() == "diagram-arrow-native-reference") Arrows = JsonDocument.Parse(Read("arrow-metrics.json"));

@@ -1,0 +1,21 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=10mm,
+  box/.style={draw,rectangle,minimum width=#1,inner sep=3pt}]
+  \node[box=14mm] (input) {Input};
+  \node[box=16mm,right=of input] (filter) {Filter};
+  \node[box=16mm,right=of filter] (output) {Output};
+  \draw[-{Stealth}] (input.east) -- node[midway,above] {sample} (filter.west);
+  \draw[-{Stealth}] (filter.east) -- node[midway,above] {result} (output.west);
+  \pgfmathsetmacro\gain{3/4}
+  \coordinate (origin) at ($(filter.south)+(0,-24mm)$);
+  \begin{scope}[shift={(origin)},x=6mm,y=8mm]
+    \draw[dashed] plot[smooth,tension=0.7,domain=-2:2,samples=7] (\x,{\gain*cos(45*\x)});
+    \draw[-{Stealth}] plot[smooth] coordinates {(-2,-0.8) (-1,-0.3) (0,-0.6) (1,0) (2,-0.4)}
+      -- node[midway,above] {signal} (2.5,-0.4);
+    \begin{scope}[rotate=17,xscale=0.7]
+      \filldraw[fill=gray!20] plot[smooth cycle,tension=1] coordinates {(0.5,0.3) (1.5,0.3) (1.5,1.3) (0.5,1.3)};
+    \end{scope}
+  \end{scope}
+  \coordinate (return) at ($(origin)+(-12mm,-8mm)$);
+  \draw[-{Stealth}] (output.south) |- (return) -- (input.south);
+\end{tikzpicture}

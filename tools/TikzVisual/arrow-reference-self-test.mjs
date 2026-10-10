@@ -27,6 +27,17 @@ try{
  await reject('round-cap dot loss remains invalid',()=>matchNativeArrowSvgOrder(zero,moveOnly,[{...zeroPaint[0],cap:1}],{allowDegenerateLine:true}),/one geometry\/placement identity/);
  const repeated=structuredClone(zero);repeated.paths[0].segments.push({...repeated.paths[0].segments[1]});
  await reject('longer degenerate stream is outside the isolated-pair opt-in',()=>matchNativeArrowSvgOrder(repeated,moveOnly,zeroPaint,{allowDegenerateLine:true}),/one geometry\/placement identity/);
+ const trailing=structuredClone(zero);trailing.paths[0].segments=[{kind:'move',xSp:0,ySp:0},
+  {kind:'control1',xSp:0,ySp:0},{kind:'control2',xSp:65536,ySp:131072},{kind:'curve',xSp:131072,ySp:65536},{kind:'line',xSp:131072,ySp:65536}];
+ const cubic=[{segments:[{kind:'move',point:{x:0,y:0}},{kind:'cubic',a:{x:0,y:0},b:{x:1,y:2},point:{x:2,y:1}}],matrix:[1,0,0,1,0,0]}];
+ await reject('trailing coincident cubic continuation requires separate opt-in',()=>matchNativeArrowSvgOrder(trailing,cubic,zeroPaint,{allowDegenerateLine:true}),/one geometry\/placement identity/);
+ assert.equal(matchNativeArrowSvgOrder(trailing,cubic,zeroPaint,{allowTrailingDegenerateLine:true})[0].pathId,1);
+ controls.push({id:'explicit single coincident butt line after cubic',passed:true,rejected:false});
+ const trailingNonzero=structuredClone(trailing);trailingNonzero.paths[0].segments.at(-1).xSp++;
+ await reject('trailing one-sp cubic continuation cannot disappear',()=>matchNativeArrowSvgOrder(trailingNonzero,cubic,zeroPaint,{allowTrailingDegenerateLine:true}),/one geometry\/placement identity/);
+ await reject('trailing omission cannot change cap class',()=>matchNativeArrowSvgOrder(trailing,cubic,[{...zeroPaint[0],cap:1}],{allowTrailingDegenerateLine:true}),/one geometry\/placement identity/);
+ const trailingRepeated=structuredClone(trailing);trailingRepeated.paths[0].segments.push({...trailingRepeated.paths[0].segments.at(-1)});
+ await reject('repeated trailing zero lines are outside the cubic opt-in',()=>matchNativeArrowSvgOrder(trailingRepeated,cubic,zeroPaint,{allowTrailingDegenerateLine:true}),/one geometry\/placement identity/);
  const files=new Map();for(const p of [...Object.keys(evidence.snapshot.sourceHashes),'tests/Reference/Arrows/snapshot.json',...Object.keys(evidence.snapshot.artifacts).map(p=>'tests/Reference/Arrows/'+p)])files.set(p,await readFile(path.join(root,p)));
  const read=p=>{const b=files.get(p);assert.ok(b,'Missing virtual native input: '+p);return b;};
  const override=(file,value)=>loadArrowEvidence(async p=>p===file?value:read(p));

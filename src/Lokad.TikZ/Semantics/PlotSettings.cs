@@ -1,10 +1,15 @@
 using System.Globalization;
 using Lokad.TikZ.Frontend;
+using Lokad.TikZ.Geometry;
 
 namespace Lokad.TikZ.Semantics;
 
+internal enum PlotHandler { Sharp, Smooth, SmoothCycle }
+
 internal sealed record PlotSettings(Source Start, Source End, Source Samples, Source Values, Source Variable)
 {
+    internal PlotHandler Handler { get; init; }
+    internal Source Tension { get; init; } = Text("0.13875");
     internal static PlotSettings Default { get; } = new(
         Text("-5"), Text("5"), Text("25"),
         Text("-5,-4.5833333,...,5"), Text("\\x"));
@@ -16,7 +21,21 @@ internal sealed record PlotSettings(Source Start, Source End, Source Samples, So
         Source Map(Source source, Source initial) => source == initial
             ? SourceExpansion.Generated(source.Value, origin, [], budget) : source;
         return this with { Start = Map(Start, Default.Start), End = Map(End, Default.End),
-            Samples = Map(Samples, Default.Samples), Values = Map(Values, Default.Values), Variable = Map(Variable, Default.Variable) };
+            Samples = Map(Samples, Default.Samples), Values = Map(Values, Default.Values), Variable = Map(Variable, Default.Variable), Tension = Map(Tension, Default.Tension) };
+    }
+
+    internal PlotSettings WithTension(Source source, EvaluationState state, Budget budget)
+    {
+        var expanded = SourceExpansion.Bind(source, state.NumericBindings, budget, removeComments: true).Trim();
+        var span = expanded.Span;
+        if (span.Length > 0 && span[0] is '+' or '-') span = span[1..];
+        if (span.Length == 0 || span.ContainsAnyExcept("0123456789.") || span.Count('.') > 1 || !span.ContainsAny("0123456789"))
+            throw new CompileError("TIKZ002", "Plot tension requires an ordinary decimal or numeric binding.", expanded);
+        var register = PgfScalarArithmetic.PlotRegister(expanded, budget);
+        const double spPerBp = 72.27 * 65536 / 72;
+        var scaled = PgfTransform.Scale(new(register / spPerBp, 0), 0.2775, budget, expanded);
+        var printed = PgfScalarArithmetic.PlotPrint((long)Math.Round(scaled.X * spPerBp), expanded, budget);
+        return this with { Tension = SourceExpansion.Generated(printed, source, [expanded], budget) };
     }
 
     internal PlotSettings Domain(Source source, EvaluationState state, Budget budget)

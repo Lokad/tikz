@@ -1,0 +1,27 @@
+\usetikzlibrary{calc}
+\begin{tikzpicture}[x=1pt,y=1pt]
+  \node (sentinel) at (-8,-8) {Smooth};
+  \coordinate (seed) at (4pt,3pt);
+  \draw (8,8) plot[smooth] coordinates {} -- ++(1,0);
+  \draw plot[smooth] coordinates {(1,1)} -- ++(1,0);
+  \draw plot[smooth] coordinates {(0,0) (2,2)} -- ++(1,0);
+  \draw plot[smooth] coordinates {(0,0) (1,2) (3,1)};
+  \draw (8,8) -- plot[smooth,tension=0.25] coordinates {(0,1) (1,3) (3,0) (4,2)} -- ++(1,0);
+  \draw plot[smooth,tension=0] coordinates {(0,3) (1,4) (2,3)};
+  \draw plot[smooth,tension=-1] coordinates {(0,5) (1,6) (2,5)};
+  \draw (9,8) plot[smooth cycle] coordinates {} -- ++(1,0);
+  \draw (8,8) plot[smooth cycle] coordinates {(1,2)} -- ++(1,0);
+  \draw (8,8) -- plot[smooth cycle] coordinates {(0,0) (2,2)} -- ++(1,0);
+  \draw plot[smooth cycle] coordinates {(0,0) (2,2) (4,0)} -- ++(1,0);
+  \filldraw plot[smooth cycle,tension=1] coordinates {(0,0) (2,0) (2,2) (0,2)};
+  \draw (8,8) -- plot[smooth cycle] coordinates {(0,3) (2,3) (2,5) (0,5)};
+  \draw (4,3) plot[smooth] coordinates {+(1,0) ++(0,1) +(2,0) ++(1,1)} -- ++(1,0);
+  \pgfmathsetmacro\tau{0.75}
+  \begin{scope}[every plot/.style={smooth,tension=\tau},rotate=31,xscale=0.6,yshift=2pt]
+    \draw plot[sharp plot] coordinates {(0,0) (1,2) (3,1)};
+    \draw plot[smooth cycle,tension=0.9] coordinates {(0,0) (1,2) (3,1) (seed)};
+    \draw plot[variable=\t,domain=-1:1,samples=5] (\t,{(\t)^2});
+  \end{scope}
+  \draw plot[smooth,xshift=1pt] coordinates {(seed) ($(seed)+(2pt,1pt)$) (90:4pt)} -- ++(1,0);
+  \draw plot coordinates {(0,7) (1,8) (2,7)};
+\end{tikzpicture}

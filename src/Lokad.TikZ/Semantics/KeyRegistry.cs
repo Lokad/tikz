@@ -87,9 +87,10 @@ internal static class KeyRegistry
             switch (key)
             {
                 case "": continue;
-                // The sharp handler is the default. Other plot handlers remain
-                // explicit unsupported options until their geometry is declared.
-                case "sharp plot": break;
+                case "sharp plot": state.Plot = state.Plot with { Handler = PlotHandler.Sharp }; break;
+                case "smooth": state.Plot = state.Plot with { Handler = PlotHandler.Smooth }; break;
+                case "smooth cycle": state.Plot = state.Plot with { Handler = PlotHandler.SmoothCycle }; break;
+                case "tension": state.Plot = state.Plot.WithTension(option.Value, state, budget); break;
                 case "domain": state.Plot = state.Plot.Domain(option.Value, state, budget); break;
                 case "samples": state.Plot = state.Plot.Count(option.Value, state, budget); break;
                 case "samples at": state.Plot = state.Plot with { Values = option.Value }; break;
