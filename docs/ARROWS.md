@@ -600,3 +600,25 @@ The saved-proof checker materializes the bound trial and repeats the full
 independent image/moment checks with another current compilation. Structural
 loading alone does not establish image bindings. The profile remains specific
 to its declared local renderer; hosted rendering needs separate qualification.
+
+The pinned PGF SVG driver has a default-arrow-fill defect when an attached
+label uses the same color as the path stroke: its color cache can skip setting
+the tip fill, leaving black in the SVG while unmodified pdfTeX fills it with
+the stroke color. The [four-row fixture](../tests/Fixtures/Diagrams/arrow-color-contract.tikz)
+isolates no-label, matching-label, different-label and explicit `color=` cases.
+The public converter emits the PDF-consistent teal tip in all four cases.
+
+A [native-reference hook](../tools/TikzVisual/svg-arrow-color-workaround.mjs)
+reapplies PGF's automatic tip fill after its normal color setup. The separate
+live native control verifies corrected SVG color, unchanged geometry and other
+paint, identical PDF pixels, and plain/probed noninterference. It retains the
+original and corrected backend outputs and the observed cache traces:
+
+```text
+node tools/TikzVisual/arrow-color-driver-self-test.mjs
+```
+
+The hook belongs to reference generation; the production assembly remains
+independent of TeX. The closed explicit-color corpus keeps its frozen evidence.
+Full numeric/image qualification of a complete diagram using implicit `draw=`
+arrow colors is still pending.

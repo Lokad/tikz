@@ -1,0 +1,10 @@
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}[line width=1pt,draw opacity=.8]
+  \draw[draw=teal,-{Stealth}] (0,0) -- (3,0);
+  \draw[draw=teal,-{Stealth}] (0,-1) --
+    node[midway,above,text=teal] {same} (3,-1);
+  \draw[draw=teal,-{Stealth}] (0,-2) --
+    node[midway,above,text=violet] {other} (3,-2);
+  \draw[color=teal,-{Stealth}] (0,-3) --
+    node[midway,above,text=teal] {color} (3,-3);
+\end{tikzpicture}

@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Xml.Linq;
 using Lokad.TikZ.Geometry;
 using Lokad.TikZ.Graphics;
+using Lokad.TikZ.Semantics;
 using TikzArrowComparison;
 using Xunit;
 
@@ -147,6 +148,33 @@ public sealed class ArrowTests
         Assert.IsType<TikzSuccess>(TikzConverter.ConvertWithTrace(source, Options with { Libraries = ["arrows.meta"] }, CancellationToken.None, s => scene = s));
         Assert.Equal(new[] { "Computer Modern Rightarrow", "Stealth" }, scene!.Paths.Where(p => p.Arrow is not null).Select(p => p.Arrow!.Template.Name));
         Assert.Equal(5, scene.Paths.Count);
+    }
+
+    [Fact]
+    public void Default_arrow_fill_matches_native_PDF_with_same_color_path_labels()
+    {
+        var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory,
+            "Fixtures", "Diagrams", "arrow-color-contract.tikz"));
+        var ordinary = Assert.IsType<TikzSuccess>(TikzConverter.Convert(source, Options, CancellationToken.None));
+        GraphicsScene? scene = null;
+        var traced = Assert.IsType<TikzSuccess>(TikzConverter.ConvertWithTrace(source, Options,
+            CancellationToken.None, value => scene = value));
+        Assert.Equal(ordinary.Svg, traced.Svg);
+        var document = XDocument.Parse(ordinary.Svg);
+        var tips = scene!.Paths.Select((path, index) => (Path: path, Index: index))
+            .Where(value => value.Path.Arrow is not null).ToArray();
+        Assert.Equal(4, tips.Length);
+        foreach (var tip in tips)
+        {
+            // All four fills are teal in unmodified pdfTeX, including the same-
+            // color label whose uncorrected PGF SVG tip incorrectly becomes black.
+            Assert.True(tip.Path.Paint.Fill);
+            Assert.Equal(new Color(0, .5, .5), tip.Path.Paint.FillColor);
+            Assert.Equal(tip.Path.Paint.StrokeColor, tip.Path.Paint.FillColor);
+            var element = document.Descendants().Single(value =>
+                value.Attribute("id")?.Value == "candidate-p" + tip.Index);
+            Assert.Equal("#008080", element.Attribute("fill")?.Value);
+        }
     }
 
     private static TikzOptions Options => TikzOptions.Default with { IdPrefix = "candidate" };
