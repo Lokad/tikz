@@ -205,6 +205,10 @@ internal sealed partial class Evaluator(Budget budget)
                         var border = targetNode is null ? end : NodeBorder(targetNode, orthogonalCorner, state.Transform, line.Point.Source);
                         orthogonalCorner = Corner(startPoint, border, line.Kind == "hv");
                         path.Line(Global(orthogonalCorner)); path.Line(Global(border));
+                        // TikZ's orthogonal timer starts at the logical source,
+                        // before its border is flushed, and ends at the target border.
+                        PathLabels(line, new(position, default, default, border), false, state, labels,
+                            Corner(position, border, line.Kind == "hv"));
                     }
                     else
                     {

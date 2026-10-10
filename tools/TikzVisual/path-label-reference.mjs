@@ -15,6 +15,7 @@ const cases={
  interactions:['seed','first','second','reuse','clipped','continued','nested','escaped']
 };
 const diagrams={
+ 'flowchart-paint':{hash:'38e3c9edcca5fbdc25ecf8e614e9c8e0e3cd0c42b302e00374bae309f8f17722',nodes:['input','check','store','review'].map(id=>[id,'rectangle']),labels:5,coordinates:['return'],constructionOrder:['input','check','store','review','diagram-label-1','diagram-label-2','diagram-label-3','diagram-label-4','return','diagram-label-5']},
  'network-smooth-plot':{hash:'10029c10cbbf08c4a13579659138f0a2b7be155c93b866cdb4096c0b5555faee',nodes:['input','filter','output'].map(id=>[id,'rectangle']),labels:3,coordinates:['origin','return'],constructionOrder:['input','filter','output','diagram-label-1','diagram-label-2','origin','diagram-label-3','return']},
  'smooth-plot-contract':{folder:'Plotting',hash:'d2f3415578d92be358eed7d2d2927720d10cee97d56417885d88b82f3b219985',nodes:[['sentinel','rectangle']],labels:0,coordinates:['seed'],constructionOrder:['sentinel','seed']},
  'network-function-plot':{hash:'92a7a7ebfd39bb8e735a3c52f6972acaec607e4de2df5549e5cfcbe6acf88fdc',nodes:['input','filter','output'].map(id=>[id,'rectangle']),labels:3,coordinates:['origin','return'],constructionOrder:['input','filter','output','diagram-label-1','diagram-label-2','origin','diagram-label-3','return']},

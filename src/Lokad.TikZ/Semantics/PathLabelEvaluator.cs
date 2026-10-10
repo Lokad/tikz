@@ -6,7 +6,7 @@ namespace Lokad.TikZ.Semantics;
 
 internal sealed partial class Evaluator
 {
-    private void PathLabels(PathOperation operation, ConnectionCurve segment, bool curved, EvaluationState parent, List<Action> deferred)
+    private void PathLabels(PathOperation operation, ConnectionCurve segment, bool curved, EvaluationState parent, List<Action> deferred, Point? corner = null)
     {
         foreach (var label in operation.Labels)
         {
@@ -30,8 +30,18 @@ internal sealed partial class Evaluator
                 }
                 else
                 {
-                    tangent = segment.End - segment.Start;
-                    at = segment.Start + PgfTransform.Scale(tangent, time, budget, label.Source);
+                    var start = segment.Start; var end = segment.End;
+                    if (corner is Point bend)
+                    {
+                        // Each leg receives half the timer, independent of its
+                        // length. The corner belongs to the second leg at pos=.5.
+                        var timeSp = (long)Math.Round(time * 65536, MidpointRounding.AwayFromZero);
+                        if (timeSp < 32768) end = bend;
+                        else start = bend;
+                        time = PgfTransform.Printed(2 * timeSp - (timeSp < 32768 ? 0 : 65536));
+                    }
+                    tangent = end - start;
+                    at = start + PgfTransform.Scale(tangent, time, budget, label.Source);
                 }
                 var frame = PgfTransform.Then(parent.Transform, Affine.Translation(at.X, at.Y), budget, label.Source);
                 if (!settings.TransformShape) frame = Affine.Translation(frame.E, frame.F);

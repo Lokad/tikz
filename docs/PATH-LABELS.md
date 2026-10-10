@@ -1,12 +1,13 @@
 # Attached path labels
 
-The converter parses measured nodes before the target of straight `--` and
-straight or supported curved `to` segments:
+The converter parses measured nodes before the target of straight `--`,
+orthogonal `-|` / `|-` and straight or supported curved `to` segments:
 
 ```tex
 \begin{tikzpicture}
   \draw (0,0) -- node[midway,above] {read} (3,0);
   \draw[bend left=20] (0,-1) to node[pos=.45,sloped,above] {send} (3,-1);
+  \draw (0,-2) -| node[pos=.75,sloped,above] {retry} (3,0);
 \end{tikzpicture}
 ```
 
@@ -14,6 +15,8 @@ Grouped text, optional node names, existing node shape/text options, `midway`,
 dimensionless `pos` in `[0,1]`, `sloped=true|false`, `allow upside down=true|false`
 and unvalued `above`, `below`, `left`, `right` are implemented. Position defaults
 to `.5`. Curve positions use the cubic parameter, rather than arc length.
+An orthogonal segment assigns half the timer to each leg, independently of
+their lengths. Position `.5` is the corner and uses the second leg's slope.
 Placement uses the resolved segment before arrow shortening. Slopes use the
 local tangent, PGF's finite normalization and its default upright policy.
 `transform shape` retains the enclosing linear transform; otherwise placement
@@ -26,7 +29,7 @@ All parsing, geometry, glyphs and SVG output share conversion limits and
 cancellation. Diagnostics retain the original label and option spans.
 
 Separate `edge` labels, labels after a target, explicit label `at`, label nodes
-on other path operators, distance-valued directional options, `auto`/`swap`,
+on other path operators such as explicit cubic controls, distance-valued directional options, `auto`/`swap`,
 out-of-range positions and paths combining labels with a new clip or separate
 edges fail explicitly. These forms require additional native interaction
 evidence before extending the contract.
@@ -36,7 +39,12 @@ The [focused native corpus](../tests/Fixtures/PathLabels/placement.tikz) has
 Ordinary tests compare text boxes and retained anchors exactly in scaled points,
 and independently check glyph slots, positions, transformed baselines, effective
 paint and physical order. Original diagram sources also parse their attached labels.
-The three complete diagrams currently fail later at the `positioning` library.
+The original three complete diagrams also support positioning, calc and arrows.
+The [paint flowchart](../tests/Fixtures/Diagrams/flowchart-paint.tikz) adds an
+orthogonal return label with colored/translucent paths, measured nodes and a
+clipped curved arrow. Its nine boxes, 144 anchors, 45 glyphs and five arrows
+pass 1,739 independent numeric checks; its full image qualification is pending.
+Ten ordinary controls cover unequal legs, endpoints and the corner's slope.
 
 The [interaction fixture](../tests/Fixtures/PathLabels/interactions.tikz) adds
 continued segments, reuse of named-label anchors, bold `every node` styling,

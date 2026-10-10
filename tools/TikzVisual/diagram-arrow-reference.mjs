@@ -14,6 +14,7 @@ import {arrowHooks,parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/diagram-arrow-reference.mjs <exact-original-diagram-report>');
 const expected={
+ 'flowchart-paint':'38e3c9edcca5fbdc25ecf8e614e9c8e0e3cd0c42b302e00374bae309f8f17722',
  'network-smooth-plot':'10029c10cbbf08c4a13579659138f0a2b7be155c93b866cdb4096c0b5555faee',
  'smooth-plot-contract':'d2f3415578d92be358eed7d2d2927720d10cee97d56417885d88b82f3b219985',
  'network-function-plot':'92a7a7ebfd39bb8e735a3c52f6972acaec607e4de2df5549e5cfcbe6acf88fdc',
@@ -28,6 +29,7 @@ const expected={
  'network-bent':'da163c256834b3c94477f4e368cbe69cc700a867b93a0b73a210d3e7a4aa0e54',
  'flowchart-transformed':'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa'};
 const probeHashes={
+ 'flowchart-paint':'9f405de1c802ffa12553cf096d0e681ffdaee5d24607ca582e3d59f8b0659988',
  'network-smooth-plot':'c7ec00be138953e6621f1e4f7405a36e870b78f5f96d7d92cc046af998696b6d',
  'smooth-plot-contract':'8c46ea74d34c10fc5638c8750a5b381d948587dee96e76c5ed47918a71370414',
  'function-plot-contract':'f0cc9c582d00542d4e86c6e4d5d734872cb510207628e6246bfd07b509253dbf',

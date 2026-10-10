@@ -172,15 +172,11 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             {
                 if (_reader.Word("cycle")) operations.Add(new CloseOperation(origin));
                 else if (_reader.Word("plot")) operations.Add(ReadPlot(origin, true));
-                else
-                {
-                    var labels = ReadPathLabels();
-                    operations.Add(new LineOperation(ReadCoordinate(), "line", origin) { Labels = labels });
-                }
+                else operations.Add(ReadLabelledLine(origin, "line"));
             }
             else if (_reader.Word("plot")) operations.Add(ReadPlot(origin, false));
-            else if (_reader.Take("|-")) operations.Add(new LineOperation(ReadCoordinate(), "vh", origin));
-            else if (_reader.Take("-|")) operations.Add(new LineOperation(ReadCoordinate(), "hv", origin));
+            else if (_reader.Take("|-")) operations.Add(ReadLabelledLine(origin, "vh"));
+            else if (_reader.Take("-|")) operations.Add(ReadLabelledLine(origin, "hv"));
             else if (_reader.Word("to")) operations.Add(ReadConnection(origin, false));
             else if (_reader.Word("edge")) operations.Add(ReadConnection(origin, true));
             else if (_reader.Take(".."))
@@ -291,6 +287,12 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         var span = origin with { Length = source.Offset + _reader.Position - origin.Offset };
         return separate ? new EdgeOperation(target, options, span) { Labels = labels } : new ToOperation(target, options, span) { Labels = labels };
     }
+    private LineOperation ReadLabelledLine(Source origin, string kind)
+    {
+        var labels = ReadPathLabels();
+        return new(ReadCoordinate(), kind, origin) { Labels = labels };
+    }
+
     private List<NodeStatement> ReadPathLabels()
     {
         var labels = new List<NodeStatement>();

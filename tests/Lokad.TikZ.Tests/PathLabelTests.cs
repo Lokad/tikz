@@ -18,13 +18,14 @@ public sealed class PathLabelTests
     [InlineData("flowchart-basic", 3)]
     [InlineData("network-bent", 3)]
     [InlineData("flowchart-transformed", 2)]
+    [InlineData("flowchart-paint", 5)]
     public void Complete_diagrams_parse_their_original_attached_labels(string id, int count)
     {
         var source = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/Diagrams/" + id + ".tikz"));
         var program = new Parser(new(source, 0, source.Length), new Budget(TikzLimits.Default, CancellationToken.None)).Parse(TikzInputKind.Picture);
         var labels = Labels(program).ToArray();
         Assert.Equal(count, labels.Length);
-        Assert.All(labels, label => Assert.StartsWith("node", label.Source.Value));
+        Assert.All(labels, label => Assert.StartsWith("node", label.Source.Value.TrimStart()));
         static IEnumerable<NodeStatement> Labels(List<Statement> statements)
             => statements.SelectMany(statement => statement switch
             {
@@ -69,6 +70,34 @@ public sealed class PathLabelTests
             Assert.All(node.Layout.Text.Glyphs, glyph => Assert.InRange(glyph.Source.Offset, node.Source.Offset, node.Source.Offset + node.Source.Length - 1));
         }
         Assert.Equal(13, result.Statistics.Nodes);
+    }
+
+    [Theory]
+    [InlineData("-|", "0", 0, 0, 1, 0)]
+    [InlineData("-|", ".25", 4, 0, 1, 0)]
+    [InlineData("-|", ".5", 8, 0, 0, 1)]
+    [InlineData("-|", ".75", 8, 1, 0, 1)]
+    [InlineData("-|", "1", 8, 2, 0, 1)]
+    [InlineData("|-", "0", 0, 0, 0, 1)]
+    [InlineData("|-", ".25", 0, 1, 0, 1)]
+    [InlineData("|-", ".5", 0, 2, 1, 0)]
+    [InlineData("|-", ".75", 4, 2, 1, 0)]
+    [InlineData("|-", "1", 8, 2, 1, 0)]
+    public void Orthogonal_labels_split_the_timer_between_unequal_legs_and_use_the_selected_slope(
+        string operation, string time, int xPt, int yPt, int a, int b)
+    {
+        var source = @"\draw[x=1pt,y=1pt](0,0) " + operation + " node[pos=" + time +
+            @",sloped,anchor=center](label){} (8,2);";
+        GraphicsScene? scene = null;
+        Assert.IsType<TikzSuccess>(TikzConverter.ConvertWithTrace(source, TikzOptions.Default with { InputKind = TikzInputKind.PictureBody },
+            CancellationToken.None, value => scene = value));
+        var node = Assert.Single(scene!.Nodes);
+        var budget = new Budget(TikzLimits.Default, CancellationToken.None);
+        var metrics = NodeFontMetrics.Resolve(TextFont.Default, budget, node.Source);
+        var center = PgfTransform.Apply(node.Transform, node.Layout.Anchor("center", metrics, budget, node.Source).Bp, budget, node.Source);
+        Assert.Equal((xPt * 65536, yPt * 65536), (Sp(center.X), Sp(center.Y)));
+        Assert.Equal((a, b, -b, a), (node.Transform.A, node.Transform.B, node.Transform.C, node.Transform.D));
+        Assert.StartsWith("node", node.Source.Value.TrimStart());
     }
 
     [Fact]
