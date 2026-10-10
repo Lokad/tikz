@@ -6,7 +6,8 @@ import {gunzipSync} from 'node:zlib';
 import {calcHash} from './calc-saved-images.mjs';
 import {decodeCalcNativeCache,calcNativeCacheBounds} from './calc-native-cache-codec.mjs';
 
-// Reviewed math mark/alias opt-ins, inspection vocabulary and identical envelope extraction.
+// Reviewed math mark/alias opt-ins, inspection vocabulary, identical envelopes,
+// and plotting's explicit component-limit callback (calc retains strict zero).
 // These are byte-pair enrollments, not permission to accept another tool version.
 export const calcCaptureCompatibility=Object.fromEntries([
  ['arrow-vector-pair.mjs','0c81b0c8bcccac19f1f6c0da2075666e4fad80f48bea425cd485e28b1e45f3c8','f814101df3ffdb30d897d6a1d2d51713cac9555192471b54c9f8e026d467408e'],
@@ -14,7 +15,7 @@ export const calcCaptureCompatibility=Object.fromEntries([
  ['compare.mjs','3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687','d5ff938976a29c9311366c38260da88c66aae6c05a14c76b92cc3ad9eb0a9197'],
  ['edge-oracle-pair.mjs','20df641b0a7f6ffdb3e0795991ad2f3f709ab63e633e83087e47078c432b01d6','fce2f037171eb45fa304870174fedf9f50ad7b90332c8547e40b1d5b48c00b31'],
  ['edge-pdf-image-pair.mjs','75e5c4fe967b280eeb1e5ab47dde1085292f021a8da455bba917736dedd14693','e26db98beba5e2750e6635ffa7699a36a156d6461a954496a0a4b06deed34c6f'],
- ['shape-primary-trial-policy.mjs','7cbbce06ba3175ecfc4289f6019ca1571355fd70e78e280892adf00877f689c2','b79d3fd5899d76d9e5e9ceab88883f0346338f9e7fa9eb2ffb616309469c5b71']
+ ['shape-primary-trial-policy.mjs','7cbbce06ba3175ecfc4289f6019ca1571355fd70e78e280892adf00877f689c2','5942f8eb07c5ceca56cf3a28eef1263929ff7cfd39ed51ec6630a70c404a4e60']
 ].map(([file,historical,current])=>['tools/TikzVisual/'+file,{historical,current}]));
 calcCaptureCompatibility['tools/TikzReference/Program.cs']={historical:'b479bbfaf21f000d36179d39fe3dc5d80e2f976e1cbfd9a0c13aedaa83dd191e',current:'53297ae818ffbd5cc2f1042e8dd846633698ff79318a8e067af4289ff7134517'};
 // The public-trial consumer now uses this same exact-pair check.

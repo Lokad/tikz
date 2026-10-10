@@ -395,7 +395,7 @@
     "tools/TikzVisual/calc-admission-policy.mjs": "665a92d0468084079eae4cfcea31659b136b52563c338277b536ce3f176bf8a8",
     "tools/TikzVisual/calc-admission-reader.mjs": "15f87cd193be26b4a17f5df2631e417c0c3fccbc4339cd2d137c7e6cf0a63242",
     "tools/TikzVisual/calc-admission-self-test.mjs": "e9dc0c3c79cb8cdb344f2ccec05282784f557fd96821d24efe694485fc147dae",
-    "tools/TikzVisual/calc-capture-compatibility.mjs": "0d612500f59a94c759d00009bdf1dcf8b2ef975e85d4e67904f75934c54e3bb5",
+    "tools/TikzVisual/calc-capture-compatibility.mjs": "d6ebf281568d2051a3889531b63da35a4e33d6bab6f18874565f8ba2b13bffb1",
     "tools/TikzVisual/calc-layout-evidence.mjs": "8342d5737e5a85aa6994eabeec15c7a2a963297a6625c2e3bf7734aee2fed2a2",
     "tools/TikzVisual/calc-native-cache-codec.mjs": "06dce3abbd6376d7ce1bf7856f1b53d7bc6109b0c4dd32606614961b8b5d601a",
     "tools/TikzVisual/calc-native-cache-pin.mjs": "adab81a26431503e572c9c057b414237d088237e4267fdd158058d76c5c1522c",
@@ -441,7 +441,7 @@
     "tools/TikzVisual/shape-oracle-bundle.mjs": "bc0e2657627ff5caf8405cb6005da2f645b4fe3f398655c58cb867e5d38d8125",
     "tools/TikzVisual/shape-pdf-camera.mjs": "9941c14fb2783d41a82c29c4899cac9f0d4a137008d00ffefc22c89a30613658",
     "tools/TikzVisual/shape-pdf-trial-policy.mjs": "fcd52ca4f9caa1512bed5b68760b541ee5be29f3a91286ef892cef42a854b4e4",
-    "tools/TikzVisual/shape-primary-trial-policy.mjs": "b79d3fd5899d76d9e5e9ceab88883f0346338f9e7fa9eb2ffb616309469c5b71",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "5942f8eb07c5ceca56cf3a28eef1263929ff7cfd39ed51ec6630a70c404a4e60",
     "tools/TikzVisual/shape-raster-metrics.mjs": "bb4becb5e6025fe3d296b7536214536e486c127ffd46a4adf62fc11778861936",
     "tools/TikzVisual/text-profile.json": "5d51a7482e3cec8896b02ebe8f9a872f8cb0bc535ddced6312bbad10f87231e1",
     "tools/TikzVisual/trial-calc.mjs": "375807c0db32aa8695ba0416c35e42a324e1a98d6a6f75f2f11dbdccb799cad7"
