@@ -11,13 +11,15 @@ import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {measureEdgePdfPair} from './edge-pdf-image-pair.mjs';
 import {shapePdfViews,evaluateShapePdfTrial} from './shape-pdf-trial-policy.mjs';
+import {verificationMode} from './verification-views.mjs';
 
-assert.equal(process.argv.length,4,'Usage: node tools/TikzVisual/compare-path-label-pdf.mjs <native-PDF-calibration-report> <fresh-numeric-report>');
+assert.ok([4,5].includes(process.argv.length),'Usage: compare-path-label-pdf.mjs <native-PDF-calibration-report> <fresh-numeric-report> [--iteration]');
+const verification=verificationMode(process.argv[4]);
 const output=path.join(root,'artifacts/path-label-pdf-iteration/run-'+randomUUID()),artifacts={},save=(p,b)=>writeArtifact(output,p,b,artifacts),json=(p,v)=>save(p,JSON.stringify(v,null,2)+'\n');
 let renderer,phase='inputs',inputs,fixture;const records=[];
 async function publish(completed,extra={}){const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'path-label-current-pdf-iteration',completed,
  phase:completed?'complete':phase,converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
- artifacts,inputs,fixture,records,...extra},null,2)+'\n');await writeArtifact(output,'report.json',bytes);
+ verificationMode:verification,reusedOriginalReference:verification==='iteration',artifacts,inputs,fixture,records,...extra},null,2)+'\n');await writeArtifact(output,'report.json',bytes);
  console.log(JSON.stringify({completed,report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(bytes)}));}
 await publish(false);
 try{
@@ -31,10 +33,18 @@ try{
  for(const [file,bytes]of calibration.files)if(file.startsWith('source-captures/')&&!file.endsWith('.mjs'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice(16)))),'Changed native PDF dependency.');
  for(const [file,bytes]of numeric.files)if(file.startsWith(numericPrefix+'source-captures/'))assert.ok(bytes.equals(await readFile(path.join(root,file.slice((numericPrefix+'source-captures/').length)))),'Changed converter dependency.');
  inputs={calibration:process.argv[2],calibrationSha256:calibration.sha256,numeric:process.argv[3],numericSha256:numeric.sha256};
- await ownCalcBundle(calibration,'calibration',save);await ownCalcBundle(numeric,'numeric',save);await save('source-captures/tools/TikzVisual/compare-path-label-pdf.mjs',await readFile(path.join(root,'tools/TikzVisual/compare-path-label-pdf.mjs')));
+ await ownCalcBundle(calibration,'calibration',save);await ownCalcBundle(numeric,'numeric',save);
+ for(const file of ['compare-path-label-pdf.mjs','verification-views.mjs'])await save('source-captures/tools/TikzVisual/'+file,await readFile(path.join(root,'tools/TikzVisual/'+file)));
  const frame=calibration.json('frame.json'),pdf=calibration.json('pdf-frame.json'),policies=calibration.json('policies.json');
  renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');phase='current-pdf';
  for(const mode of['original','candidate'])for(const view of shapePdfViews){
+  if(mode==='original'&&verification==='iteration'){
+   const file='views/original/'+view.frame+'/'+view.scale+'x/record.json',original=calibration.json(file);
+   const row={...original,mode,images:{...original.images}},evaluation=evaluateShapePdfTrial(policies.original,view,row);
+   for(const image of Object.values(row.images))await save(image,calibration.files.get(image));
+   await json(file,{...row,evaluation});records.push({mode,...view,file,passed:evaluation.passed,failed:evaluation.checks.filter(c=>!c.passed)});
+   continue;
+  }
   const pair=await measureEdgePdfPair(renderer,{svg:mode==='original'?native.files.get('probed-reference.svg').toString('utf8'):numeric.files.get(numericPrefix+'public.svg').toString('utf8'),
    pdfPage:'data:image/png;base64,'+native.files.get('probed-pdf-page-'+view.scale+'x.png').toString('base64'),...view,...pdf,
    units:mode==='original'?'bp':'cssPixels',svgOriginBp:mode==='original'?frame.origin:{x:0,y:0},cropLimit:2,rightLabel:mode==='original'?'Original native SVG':'Fresh public converter'});

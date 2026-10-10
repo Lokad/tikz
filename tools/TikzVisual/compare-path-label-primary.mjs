@@ -8,18 +8,19 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {ownCalcBundle} from './calc-admission-child.mjs';
 import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
-import {shapeViews,evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
+import {evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
-import {pathLabelPrimaryCaptures} from './path-label-image-reference.mjs';
 import {loadLabelImageEvidence,labelImageSourceFile} from './diagram-image-evidence.mjs';
 import {readPathLabelPrimaryPolicies} from './path-label-primary-policy.mjs';
+import {verificationMode,currentPrimaryViews} from './verification-views.mjs';
 
-assert.equal(process.argv.length,4,'Usage: node tools/TikzVisual/compare-path-label-primary.mjs <native-calibration-report> <fresh-numeric-iteration-report>');
+assert.ok([4,5].includes(process.argv.length),'Usage: compare-path-label-primary.mjs <native-calibration-report> <fresh-numeric-report> [--iteration]');
+const mode=verificationMode(process.argv[4]);
 const output=path.join(root,'artifacts/path-label-primary-iteration/run-'+randomUUID()),artifacts={},save=(p,b)=>writeArtifact(output,p,b,artifacts);
 let renderer,phase='inputs';const records=[];
 async function publish(completed,result={}){const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'path-label-current-primary-iteration',completed,
- phase:completed?'complete':phase,converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',artifacts,records,result},null,2)+'\n');
+ phase:completed?'complete':phase,verificationMode:mode,converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',artifacts,records,result},null,2)+'\n');
  await writeArtifact(output,'report.json',bytes);console.log(JSON.stringify({completed,report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(bytes)}));}
 await publish(false);
 try{
@@ -36,7 +37,7 @@ try{
  const actual=numeric.files.get(diagram?'actual.svg':'current/actual.svg'),publicSvg=numeric.files.get(diagram?'public.svg':'current/public.svg');
  assert.ok(actual.equals(publicSvg));
  await ownCalcBundle(calibration,'calibration',save);await ownCalcBundle(numeric,'numeric',save);
- for(const file of['tools/TikzVisual/compare-path-label-primary.mjs','tools/TikzVisual/path-label-primary-policy.mjs'])
+ for(const file of['tools/TikzVisual/compare-path-label-primary.mjs','tools/TikzVisual/path-label-primary-policy.mjs','tools/TikzVisual/verification-views.mjs'])
   await save('source-captures/'+file,await readFile(path.join(root,file)));
  const frame=calibration.json('frame.json'),policies=readPathLabelPrimaryPolicies(calibration);
  const sources=diagram?numeric.json('source-map.json'):null;
@@ -46,7 +47,7 @@ try{
  }):[];
  renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer,'Native renderer changed.');
  await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');phase='current-images';
- for(const capture of pathLabelPrimaryCaptures)for(const view of shapeViews){
+ for(const {capture,...view} of currentPrimaryViews(mode,id)){
   const measure=capture==='intrinsic-image'?measureEdgeTrialPrimary:measureArrowVectorPair;
   const pair=await measure(renderer,{reference:native.files.get('probed-reference.svg').toString('utf8'),actual:actual.toString('utf8'),
    leftIsDriver:true,origin:frame.origin,camera:frame.camera,regions:frame.regions,...view,cropLimit:view.background==='white'?2:0,

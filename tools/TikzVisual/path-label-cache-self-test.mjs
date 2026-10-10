@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
-import {gzipSync,gunzipSync} from 'node:zlib';
+import {gzipSync} from 'node:zlib';
 import {root} from './shape-oracle-bundle.mjs';
 import {calcHash} from './calc-saved-images.mjs';
 import {loadPathLabelCache,pathLabelCacheDefinition} from './path-label-cache.mjs';
@@ -10,7 +10,8 @@ import {encodePathLabelCache,decodePathLabelCache,pathLabelCacheBounds} from './
 import {encodeCalcTrialCache} from './calc-trial-cache-codec.mjs';
 import {mathLabelCacheGroups,mathLabelCacheReports,styledLabelCacheReports,verifyMathPortableInputs,verifyMathPortablePart} from './math-label-cache-inputs.mjs';
 
-assert.equal(process.argv.length,2,'Usage: node tools/TikzVisual/path-label-cache-self-test.mjs');
+assert.ok(process.argv.length===2||(process.argv.length===3&&process.argv[2]==='--controls-only'),'Usage: path-label-cache-self-test.mjs [--controls-only]');
+const controlsOnly=process.argv[2]==='--controls-only';
 const small=encodePathLabelCache(new Map([['a',Buffer.from('same')],['b',Buffer.from('same')],['empty',Buffer.alloc(0)]]),'placement'),decoded=decodePathLabelCache(small,'placement');
 assert.equal(decoded.blobs.size,2);assert.ok(decoded.files.get('a').equals(decoded.files.get('b')));assert.ok(encodePathLabelCache(new Map([...decoded.files].reverse()),'placement').equals(small));
 const controls=[
@@ -38,15 +39,23 @@ controls.push(
 );
 for(const[name,run]of controls)assert.throws(run,undefined,'Accepted '+name);
 const fixtures=[],mathReports=new Map();
-for(const fixture of['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract','flowchart-math-macros','math-macro-contract','network-math-functions','math-functions-contract','flowchart-paint',...Object.keys(mathLabelCacheGroups),...pathLabelCacheDefinition('network-coordinate-plot').fixtures,...pathLabelCacheDefinition('arrow-color-contract').fixtures]){
- const loaded=await loadPathLabelCache(root,fixture);assert.equal(calcHash(encodePathLabelCache(loaded.cache.files,fixture)),loaded.manifest.decodedSha256);
- const archive=path.resolve(root,pathLabelCacheDefinition(fixture).directory+'/'+fixture+'.images.cache.gz');
- const original=await readFile(archive),corrupt=Buffer.from(original);corrupt[corrupt.length-1]^=1;
- await assert.rejects(loadPathLabelCache(root,fixture,f=>path.resolve(f)===archive?Promise.resolve(corrupt):readFile(f)),/Unreviewed path-label archive bytes/);
- const changed=new Map(loaded.cache.files),first=[...changed.keys()].find(f=>f.endsWith('.png'));assert.ok(first);changed.set(first,Buffer.from('rehashed false image'));
- const rehashed=gzipSync(encodePathLabelCache(changed,fixture),{level:9});
- await assert.rejects(loadPathLabelCache(root,fixture,f=>path.resolve(f)===archive?Promise.resolve(rehashed):readFile(f)));
- const raw=gunzipSync(original,{maxOutputLength:pathLabelCacheBounds.decoded});assert.equal(calcHash(raw),loaded.manifest.decodedSha256);
+const positiveFixtures=controlsOnly?['placement',...Object.keys(mathLabelCacheGroups)]:
+ ['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract','flowchart-math-macros','math-macro-contract','network-math-functions','math-functions-contract','flowchart-paint',...Object.keys(mathLabelCacheGroups),...pathLabelCacheDefinition('network-coordinate-plot').fixtures,...pathLabelCacheDefinition('arrow-color-contract').fixtures];
+let transportControlsFixture;
+for(const fixture of positiveFixtures){
+ const loaded=await loadPathLabelCache(root,fixture);
+ if(!controlsOnly)assert.equal(calcHash(encodePathLabelCache(loaded.cache.files,fixture)),loaded.manifest.decodedSha256);
+ // Both faults stop at the same immutable archive digest before decoding or
+ // interpreting the family. Run that mechanism once, not once per archive.
+ if(!transportControlsFixture){
+  const archive=path.resolve(root,pathLabelCacheDefinition(fixture).directory+'/'+fixture+'.images.cache.gz');
+  const original=await readFile(archive),corrupt=Buffer.from(original);corrupt[corrupt.length-1]^=1;
+  await assert.rejects(loadPathLabelCache(root,fixture,f=>path.resolve(f)===archive?Promise.resolve(corrupt):readFile(f)),/Unreviewed path-label archive bytes/);
+  const changed=new Map(loaded.cache.files),first=[...changed.keys()].find(f=>f.endsWith('.png'));assert.ok(first);changed.set(first,Buffer.from('rehashed false image'));
+  const rehashed=gzipSync(encodePathLabelCache(changed,fixture),{level:9});
+  await assert.rejects(loadPathLabelCache(root,fixture,f=>path.resolve(f)===archive?Promise.resolve(rehashed):readFile(f)));
+  transportControlsFixture=fixture;
+ }
  if(Object.hasOwn(mathLabelCacheGroups,fixture))for(const d of loaded.manifest.reports){
   const bytes=loaded.cache.files.get(d.file),report=JSON.parse(bytes),files=new Map(Object.keys(report.artifacts).map(f=>[f,loaded.cache.files.get(path.posix.dirname(d.file)+'/'+f)]));
   mathReports.set(d.sha256,{bytes,sha256:d.sha256,report,files,json:f=>JSON.parse(files.get(f))});
@@ -70,4 +79,5 @@ const mathControls=[
   verifyMathPortableInputs([...styledInputs.slice(0,7),{...owner,files}],true);}]
 ];
 for(const[name,run]of mathControls)assert.throws(run,undefined,'Accepted '+name);
-console.log(JSON.stringify({validated:true,controls:[...controls.map(([name])=>name),'corrupt-pinned-archive','rehashed-unreviewed-archive',...mathControls.map(([name])=>name)],fixtures,mathQualification,styledQualification}));
+console.log(JSON.stringify({validated:true,positiveArchiveRoundtrips:controlsOnly?'delegated-to-materialization':'all-28',transportControlsFixture,
+ controls:[...controls.map(([name])=>name),'corrupt-pinned-archive','rehashed-unreviewed-archive',...mathControls.map(([name])=>name)],fixtures,mathQualification,styledQualification}));

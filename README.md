@@ -92,6 +92,8 @@ do not require a TeX installation. Release packages are produced explicitly with
 `dotnet pack src/Lokad.TikZ -c Release`.
 
 The [reference and visual harness](docs/TESTING.md) is development tooling.
+The [verification execution index](docs/VERIFICATION.md) separates affected
+iteration from final qualification and explains each retained coverage boundary.
 It produces comparison PNGs, failure crops, machine-readable metrics, source
 traces, and a local inspection viewer. Its browser and TeX dependencies are
 isolated from the production library.

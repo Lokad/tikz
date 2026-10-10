@@ -10,15 +10,17 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {pathLabelPrimaryPixelReader} from './path-label-primary-pixels.mjs';
 import {mathFramingFamily} from './math-label-framing.mjs';
 import {mathFramingNumeric} from './check-math-label-framing.mjs';
-import {mathPrimaryNativeCase,mathPrimarySources,mathPrimaryViews,mathPrimaryKey,evaluateMathPrimary,measureMathPrimary} from './math-label-primary.mjs';
+import {mathPrimaryNativeCase,mathPrimarySources,mathPrimaryKey,evaluateMathPrimary,measureMathPrimary} from './math-label-primary.mjs';
+import {verificationMode,currentPrimaryViews} from './verification-views.mjs';
 
-assert.equal(process.argv.length,5,'Usage: math-label-primary-images.mjs <native-image-report> <native-primary-calibration> <current-public-export>');
+assert.ok([5,6].includes(process.argv.length),'Usage: math-label-primary-images.mjs <native-image-report> <native-primary-calibration> <current-public-export> [--iteration]');
+const mode=verificationMode(process.argv[5]),views=currentPrimaryViews(mode);
 const output=path.join(root,'artifacts/math-primary-current/run-'+randomUUID()),artifacts={},cases=[],sources={};
 const save=(f,b)=>writeArtifact(output,f,b,artifacts),json=(f,v)=>save(f,JSON.stringify(v,null,2)+'\n');
 let renderer,calibration,publicBundle,phase='current-input';let decodedPairs=0,regionChecks=0,sourceRecaptures=0,identicalNativeViews=0;
 async function publish(completed,extra={}){
  const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'math-label-current-primary-iteration',completed,phase:completed?'complete':phase,
-  converterInvoked:true,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
+  verificationMode:mode,converterInvoked:true,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
   calibrationSha256:calibration?.sha256,publicInputSha256:publicBundle?.sha256,renderer:renderer?.identity,cases,sources,artifacts,...extra},null,2)+'\n');
  await writeArtifact(output,'report.json',bytes);console.log(JSON.stringify({completed,report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(bytes)}));
 }
@@ -35,7 +37,7 @@ try{
  }
  await save('inputs/calibration-report.json',calibration.bytes);await save('inputs/public-report.json',publicBundle.bytes);
  for(const [f,b]of publicBundle.files)await save('public/'+f,b);
- for(const f of ['math-label-primary-images.mjs',...mathPrimarySources]){
+ for(const f of ['math-label-primary-images.mjs','verification-views.mjs',...mathPrimarySources]){
   const file='tools/TikzVisual/'+f,bytes=await readFile(path.join(root,file));sources[file]=sha256(bytes);await save('source-captures/'+file,bytes);
  }
  renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer,'Changed primary renderer.');await installShapeMetrics(renderer);
@@ -48,7 +50,7 @@ try{
   await json(id+'/frame.json',native.frame);await json(id+'/numeric.json',numeric);
   const summary={id,regions:native.frame.regions.length,nativeBoundsPassed:true,nativeRootPassed:true,views:[]};cases.push(summary);
   phase='current-primary';
-  for(const view of mathPrimaryViews){
+  for(const view of views){
    const prefix=id+'/'+mathPrimaryKey(view),pair=await measureMathPrimary(renderer,native,svg,view),images={};
    for(const [name,b64]of Object.entries(pair.images))if(['reference','actual','difference','amplified','comparison'].includes(name)){
     images[name]=prefix+'/'+name+'.png';await save(images[name],Buffer.from(b64,'base64'));
@@ -77,12 +79,12 @@ try{
   }
   console.log(JSON.stringify({phase,caseId:id,views:summary.views.length,independentlyDecoded:true,sourceRecaptured:true}));
  }
- assert.equal(decodedPairs,declaredCases.length*24);
- assert.equal(regionChecks,declaredCases.reduce((n,c)=>n+c.nodes+c.glyphs+c.rules+c.paths,0)*24);
+ assert.equal(decodedPairs,declaredCases.length*views.length);
+ assert.equal(regionChecks,declaredCases.reduce((n,c)=>n+c.nodes+c.glyphs+c.rules+c.paths,0)*views.length);
  assert.equal(sourceRecaptures,decodedPairs);
  for(const [f,digest]of Object.entries(sources))assert.equal(sha256(await readFile(path.join(root,f))),digest,'Source changed during primary check: '+f);
  await save('index.html','<!doctype html><meta charset="utf-8"><title>Current math primary views</title><h1>Current math output against native-only limits</h1><p><a href="report.json">All '+decodedPairs+' views and independent checks</a>. PDF and final feature qualification remain open.</p>'+
-  cases.map(c=>'<section><h2>'+c.id+'</h2><a href="'+c.id+'/numeric.json">Source-attributed framing/bounds</a><p><img width="1000" src="'+c.id+'/intrinsic-image/expanded/1x-white/comparison.png"></p></section>').join(''));
- await publish(true,{checked:{decodedPairs,regionChecks,sourceRecaptures,identicalNativeViews},scope:'Current unchanged public-export sources; full required primary/local matrix only. Native calibration stays frozen. Both PDF and final clean-source qualification remain open.'});
+  cases.map(c=>'<section><h2>'+c.id+'</h2><a href="'+c.id+'/numeric.json">Source-attributed framing/bounds</a><p><img width="1000" src="'+c.id+'/intrinsic-image/natural/1x-white/comparison.png"></p></section>').join(''));
+ await publish(true,{checked:{decodedPairs,regionChecks,sourceRecaptures,identicalNativeViews},scope:mode==='iteration'?'Affected mechanism/interaction views only; final qualification requires the complete matrix.':'Current unchanged public-export sources; full required primary/local matrix only. Native calibration stays frozen. Both PDF and final clean-source qualification remain open.'});
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,{error:error.message});process.exitCode=1;}
 finally{await renderer?.browser.close();}

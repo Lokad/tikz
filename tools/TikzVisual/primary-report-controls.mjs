@@ -19,7 +19,7 @@ export function runPrimaryReportControls(original,verify,defects){
    const bytes=Buffer.from(JSON.stringify(value,null,2)+'\n');files.set(file,bytes);report.artifacts[file]=calcHash(bytes);};
   const artifact=(file,change)=>{assert.ok(files.has(file));const bytes=Buffer.from(change(files.get(file)));
    files.set(file,bytes);report.artifacts[file]=calcHash(bytes);};
-  edit(report,json,artifact);
+  edit(report,json,artifact,file=>JSON.parse(files.get(file)));
   assert.notEqual(JSON.stringify(report),JSON.stringify(original.report),'Control made no change: '+name);
   const bytes=Buffer.from(JSON.stringify(report,null,2)+'\n');
   for(const [file,digest]of Object.entries(report.artifacts))assert.equal(calcHash(files.get(file)),digest);

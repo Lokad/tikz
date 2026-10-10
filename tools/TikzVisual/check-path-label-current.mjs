@@ -12,23 +12,27 @@ import {labelImageSourceFile} from './diagram-image-evidence.mjs';
 import {pathLabelPrimaryPixelReader} from './path-label-primary-pixels.mjs';
 import {pathLabelPdfPixelReader} from './path-label-pdf-pixels.mjs';
 import {readPathLabelPrimaryPolicies} from './path-label-primary-policy.mjs';
-import {pathLabelPrimaryCaptures,pathLabelPdfFrame} from './path-label-image-reference.mjs';
-import {shapeViews,evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
+import {pathLabelPdfFrame} from './path-label-image-reference.mjs';
+import {evaluateShapeTrial} from './shape-primary-trial-policy.mjs';
 import {shapePdfViews,evaluateShapePdfTrial} from './shape-pdf-trial-policy.mjs';
 import {createRenderer} from './compare.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
 import {measureEdgePdfPair} from './edge-pdf-image-pair.mjs';
+import {currentPrimaryViews,reportVerificationMode} from './verification-views.mjs';
 
 const primaryKey=v=>v.capture+'/'+v.frame+'/'+v.scale+'x-'+v.background;
 const pdfKey=v=>v.mode+'/'+v.frame+'/'+v.scale+'x';
 export function verifyPathLabelCurrentPixels(primary,pdf){
+ const mode=reportVerificationMode(primary,pdf);
+ assert.equal(pdf.report.reusedOriginalReference??false,mode==='iteration','Changed original-reference reuse policy.');
  const frame=primary.json('calibration/frame.json'),pdfFrame=pdf.json('calibration/pdf-frame.json');
+ const primaryViews=currentPrimaryViews(mode,frame.caseId);
  const primaryPolicies=readPathLabelPrimaryPolicies({json:f=>primary.json('calibration/'+f)}),pdfPolicies=pdf.json('calibration/policies.json');
  assert.equal(primary.report.converterInvoked,false);assert.equal(pdf.report.converterInvoked,false);
  assert.equal(primary.report.nativeToolInvoked,false);assert.equal(pdf.report.nativeToolInvoked,false);
- calcEqual(primary.report.records.map(primaryKey).sort(),pathLabelPrimaryCaptures.flatMap(capture=>shapeViews.map(v=>primaryKey({...v,capture}))).sort(),'Changed current primary views.');
+ calcEqual(primary.report.records.map(primaryKey).sort(),primaryViews.map(primaryKey).sort(),'Changed current primary views.');
  calcEqual(pdf.report.records.map(pdfKey).sort(),['original','candidate'].flatMap(mode=>shapePdfViews.map(v=>pdfKey({...v,mode}))).sort(),'Changed current PDF routes/views.');
  assert.equal(primary.report.result.fixture,pdf.report.fixture);
  assert.equal(primary.report.result.sourceNumericSha256,pdf.report.inputs.numericSha256,'Current reports use different numeric outputs.');
@@ -39,7 +43,7 @@ export function verifyPathLabelCurrentPixels(primary,pdf){
  assert.ok(source.width>0&&source.height>0&&corners.every((v,i)=>Number.isFinite(v)&&Math.abs(v-nativeCorners[i])<=framingTolerance),'Current intrinsic frame differs from native bounds.');
  for(const record of pdf.report.records.filter(r=>r.mode==='candidate'))calcEqual(pdf.json(record.file).sourceFrame,source,'Current intrinsic frame changed between views.');
  const primaryPassed=primary.report.records.every(r=>r.passed),pdfPassed=pdf.report.records.every(r=>r.passed);
- assert.equal(primary.report.result.primaryPassed,primaryPassed);assert.equal(primary.report.result.views,24);
+ assert.equal(primary.report.result.primaryPassed,primaryPassed);assert.equal(primary.report.result.views,primaryViews.length);
  assert.equal(pdf.report.pdfPassed,pdfPassed);
  calcEqual(pdf.report.gates,Object.fromEntries(['original','candidate'].map(mode=>[mode,{passed:pdf.report.records.filter(r=>r.mode===mode).every(r=>r.passed),views:4}])), 'Forged current PDF gates.');
  const readPrimary=pathLabelPrimaryPixelReader(primary,frame),readPdf=pathLabelPdfPixelReader(pdf,pdfFrame,'calibration/native');
@@ -55,9 +59,14 @@ export function verifyPathLabelCurrentPixels(primary,pdf){
  for(const record of pdf.report.records){
   assert.equal(record.background,'white');assert.equal(record.file,'views/'+pdfKey(record)+'/record.json');const row=readPdf(record.file);
   calcEqual(pdfKey(row),pdfKey(record));assert.equal(row.background,'white');
+  if(mode==='iteration'&&record.mode==='original'){
+   const original=pdf.json('calibration/'+record.file),{evaluation:ignored,mode:ignoredMode,...saved}=row;
+   calcEqual(saved,original,'Changed reused original PDF observation.');
+   for(const image of Object.values(row.images))assert.ok(pdf.files.get(image).equals(pdf.files.get('calibration/'+image)),'Changed reused original PNG.');
+  }
   verdict(record,row,evaluateShapePdfTrial(pdfPolicies[record.mode],{frame:record.frame,scale:record.scale,background:'white'},row));
  }
- return{primaryPassed,pdfPassed,framing:{checks:4,toleranceCssPixels:framingTolerance,source,nativeCorners},primaryViews:24,pdfViews:8,primaryRegionChecks:24*frame.regions.length,pdfRegionChecks:8*pdfFrame.regions.length};
+ return{verificationMode:mode,primaryPassed,pdfPassed,framing:{checks:4,toleranceCssPixels:framingTolerance,source,nativeCorners},primaryViews:primaryViews.length,pdfViews:8,primaryRegionChecks:primaryViews.length*frame.regions.length,pdfRegionChecks:8*pdfFrame.regions.length};
 }
 
 async function currentSources(bundle,prefix,historicalScripts=false){
@@ -126,15 +135,16 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
    for(const k of['metrics','regions','repeat','actualRepeat'])calcEqual(pair[k],row[k],'Current primary source recapture differs: '+k);
    for(const k of['reference','actual'])assert.ok(Buffer.from(pair.images[k],'base64').equals(primary.files.get(row.images[k])),'Changed source-bound primary PNG.');recaptured++;
   }
-  console.log(JSON.stringify({phase:'current-source-recapture',primaryViews:24}));
+  console.log(JSON.stringify({phase:'current-source-recapture',primaryViews:pixels.primaryViews}));
   for(const record of pdf.report.records){const row=pdf.json(record.file),original=row.mode==='original';
+   if(original&&pixels.verificationMode==='iteration')continue;
    const pair=await measureEdgePdfPair(renderer,{svg:original?reference:svg,pdfPage:'data:image/png;base64,'+native.files.get('probed-pdf-page-'+row.scale+'x.png').toString('base64'),
     ...pdfFrame,frame:row.frame,scale:row.scale,units:original?'bp':'cssPixels',svgOriginBp:original?frame.origin:{x:0,y:0},cropLimit:0});
    for(const k of['sourceFrame','clipFrame','whole','regions','fullPage','outsideWholeChangedPixels','repeat'])calcEqual(pair[k],row[k],'Current PDF source recapture differs: '+k);
    assert.ok(Buffer.from(pair.images['svg-page'],'base64').equals(pdf.files.get(row.images['svg-page'])),'Changed source-bound PDF PNG.');recaptured++;
   }
  }finally{await renderer.browser.close();}
- return{fixture:native.report.definition.id,inputSha256:{primary:primary.sha256,pdf:pdf.sha256,primaryCheck:checked.sha256,pdfCheck:pdfChecked.sha256},
+ return{fixture:native.report.definition.id,verificationMode:pixels.verificationMode,reusedOriginalReferenceViews:pixels.verificationMode==='iteration'?4:0,inputSha256:{primary:primary.sha256,pdf:pdf.sha256,primaryCheck:checked.sha256,pdfCheck:pdfChecked.sha256},
   pixels,sourceRecaptures:recaptured,freshNumericChecks:fresh.report.result.checks,converterSourceCaptures:captures.length,passed:pixels.primaryPassed&&pixels.pdfPassed};
 }
 
