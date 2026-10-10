@@ -38,7 +38,7 @@ controls.push(
 );
 for(const[name,run]of controls)assert.throws(run,undefined,'Accepted '+name);
 const fixtures=[],mathReports=new Map();
-for(const fixture of['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract','flowchart-math-macros','math-macro-contract','network-math-functions','math-functions-contract',...Object.keys(mathLabelCacheGroups)]){
+for(const fixture of['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract','flowchart-math-macros','math-macro-contract','network-math-functions','math-functions-contract',...Object.keys(mathLabelCacheGroups),...pathLabelCacheDefinition('network-coordinate-plot').fixtures]){
  const loaded=await loadPathLabelCache(root,fixture);assert.equal(calcHash(encodePathLabelCache(loaded.cache.files,fixture)),loaded.manifest.decodedSha256);
  const archive=path.resolve(root,pathLabelCacheDefinition(fixture).directory+'/'+fixture+'.images.cache.gz');
  const original=await readFile(archive),corrupt=Buffer.from(original);corrupt[corrupt.length-1]^=1;

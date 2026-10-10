@@ -42,6 +42,15 @@ The JSON files contain unchanged native arrow/path observations. Ordinary tests
 pin their bytes and fixture hashes, then reuse the independent numeric checker.
 Live native regeneration remains separate from `dotnet test`.
 
+The six `*.images.cache.gz` files carry frozen primary/local and PDF calibration
+and independent checking receipts in the existing bounded lossless format.
+`image-profile.json` pins every archive/report hash and its transport readers.
+Recovery uses `node tools/TikzVisual/materialize-path-label-cache.mjs <fixture>`;
+it checks existing evidence bytes and never replaces a different artifact.
+The shared archive self-test covers all six cases alongside the prior corpus.
+Fresh converter output and final source qualification remain separate from
+portable native evidence.
+
 This is coordinate-list, finite-function and smooth-handler iteration evidence.
 Other handlers, marks, file/gnuplot input, PGFPlots and full plotting image
 qualification are outside this snapshot's claim.
