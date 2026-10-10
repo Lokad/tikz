@@ -70,11 +70,27 @@ image pairs with 800 independently recomputed region checks. Glyph/rule bound
 residuals are below 0.0000000000001 CSS pixels; raw path-ink diagnostics retain
 the public conservative padding separately from exact painted ink. Fourteen
 existing path/bounds corruption controls pass for the additive diagram. These
-checks retain the original three-case default. Native-only primary/local policy
-calibration, both PDF routes and final fresh-source acceptance remain open.
+checks retain the original three-case default. Both PDF routes and final
+fresh-source feature acceptance remain open.
 
 Trusted supplemental observation:
 
 ```sh
 node tools/TikzVisual/diagram-positioning-reference.mjs --paths flowchart-styled-labels
 ```
+
+Native primary/local calibration now covers two integer encodings in 48 views
+across intrinsic-image/explicit-viewport capture, natural/expanded framing,
+1x/4x scale and transparent/white/black backgrounds. All limits come from the
+native-only observations. Twenty missing/quarter-pixel-displacement controls
+exercise the six EC faces (including the small period), normal math under bold
+prose, both rules and the complete sloped multiline label. All 80 fault views
+are visible and rejected with numeric checks bypassed.
+
+Independent checking decodes 128 whole pairs and 12,800 region observations,
+rederives policies and recaptures every native/control source. Ten generic and
+math ownership corruptions are rejected. Current converter output passes all
+24 required primary/local views, 2,400 region checks and 24 source recaptures;
+the corresponding native integer PNGs are byte-identical. The original three
+cases still pass their 72 views and original frozen policies. These scoped
+primary results do not close PDF, portability or final-source acceptance.

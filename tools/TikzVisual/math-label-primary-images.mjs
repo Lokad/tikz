@@ -8,7 +8,7 @@ import {createRenderer} from './compare.mjs';
 import {installShapeMetrics} from './shape-image-pair.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {pathLabelPrimaryPixelReader} from './path-label-primary-pixels.mjs';
-import {mathFramingCases} from './math-label-framing.mjs';
+import {mathFramingFamily} from './math-label-framing.mjs';
 import {mathFramingNumeric} from './check-math-label-framing.mjs';
 import {mathPrimaryNativeCase,mathPrimarySources,mathPrimaryViews,mathPrimaryKey,evaluateMathPrimary,measureMathPrimary} from './math-label-primary.mjs';
 
@@ -27,7 +27,9 @@ try{
  const nativeBundle=await loadCalcSavedReport(path.resolve(root,process.argv[2]),'math-label-native-image-iteration');
  calibration=await loadCalcSavedReport(path.resolve(root,process.argv[3]),'math-label-native-primary-calibration');
  publicBundle=await loadCalcSavedReport(path.resolve(root,process.argv[4]),'math-label-candidate-export');
- calcEqual(publicBundle.report.records.map(r=>r.id),mathFramingCases.map(c=>c.id),'Current math fixture coverage differs.');
+ const declaredCases=mathFramingFamily(publicBundle.report.records.map(r=>r.id));
+ calcEqual(calibration.report.cases.map(c=>c.id),declaredCases.map(c=>c.id),'Calibration/public fixture coverage differs.');
+ assert.equal(calibration.report.nativeInputSha256,nativeBundle.sha256,'Changed calibrated native input.');
  for(const [f,digest]of Object.entries(publicBundle.json('candidate-source-hashes.json'))){
   assert.equal(sha256(await readFile(path.join(root,f))),digest,'Public export does not describe current source: '+f);sources[f]=digest;
  }
@@ -37,7 +39,7 @@ try{
   const file='tools/TikzVisual/'+f,bytes=await readFile(path.join(root,file));sources[file]=sha256(bytes);await save('source-captures/'+file,bytes);
  }
  renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer,'Changed primary renderer.');await installShapeMetrics(renderer);
- for(const declared of mathFramingCases){
+ for(const declared of declaredCases){
   const id=declared.id,native=await mathPrimaryNativeCase(renderer,nativeBundle,id,calibration.json(id+'/supplement.json'),calibration.json(id+'/path-supplement.json'));
   calcEqual(JSON.parse(JSON.stringify(native.frame)),calibration.json(id+'/frame.json'),'Changed native framing.');
   const policies=calibration.json(id+'/policies.json'),svg=publicBundle.files.get(id+'/actual.svg').toString(),scene=publicBundle.json(id+'/actual-scene.json');
@@ -75,9 +77,11 @@ try{
   }
   console.log(JSON.stringify({phase,caseId:id,views:summary.views.length,independentlyDecoded:true,sourceRecaptured:true}));
  }
- assert.equal(decodedPairs,72);assert.equal(regionChecks,15144);assert.equal(sourceRecaptures,72);
+ assert.equal(decodedPairs,declaredCases.length*24);
+ assert.equal(regionChecks,declaredCases.reduce((n,c)=>n+c.nodes+c.glyphs+c.rules+c.paths,0)*24);
+ assert.equal(sourceRecaptures,decodedPairs);
  for(const [f,digest]of Object.entries(sources))assert.equal(sha256(await readFile(path.join(root,f))),digest,'Source changed during primary check: '+f);
- await save('index.html','<!doctype html><meta charset="utf-8"><title>Current math primary views</title><h1>Current math output against native-only limits</h1><p><a href="report.json">All 72 views and independent checks</a>. PDF and final feature qualification remain open.</p>'+
+ await save('index.html','<!doctype html><meta charset="utf-8"><title>Current math primary views</title><h1>Current math output against native-only limits</h1><p><a href="report.json">All '+decodedPairs+' views and independent checks</a>. PDF and final feature qualification remain open.</p>'+
   cases.map(c=>'<section><h2>'+c.id+'</h2><a href="'+c.id+'/numeric.json">Source-attributed framing/bounds</a><p><img width="1000" src="'+c.id+'/intrinsic-image/expanded/1x-white/comparison.png"></p></section>').join(''));
  await publish(true,{checked:{decodedPairs,regionChecks,sourceRecaptures,identicalNativeViews},scope:'Current unchanged public-export sources; full required primary/local matrix only. Native calibration stays frozen. Both PDF and final clean-source qualification remain open.'});
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,{error:error.message});process.exitCode=1;}

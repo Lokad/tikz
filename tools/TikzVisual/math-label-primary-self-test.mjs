@@ -7,7 +7,16 @@ import {verifyMathPrimaryPixels} from './check-math-label-primary.mjs';
 import {primaryReportCorruptions,runPrimaryReportControls} from './primary-report-controls.mjs';
 assert.equal(process.argv.length,3,'Usage: math-label-primary-self-test.mjs <exact-native-calibration-report>');
 const original=await loadCalcSavedReport(path.resolve(root,process.argv[2]),'math-label-native-primary-calibration');
-const defects=primaryReportCorruptions('network-math-labels/policies.json',p=>p['intrinsic-image'].rows[0].whole.rawChangedPixels++);
+const styled=original.report.cases.length===1&&original.report.cases[0].id==='flowchart-styled-labels';
+const first=styled?'flowchart-styled-labels':'network-math-labels';
+const defects=primaryReportCorruptions(first+'/policies.json',p=>p['intrinsic-image'].rows[0].whole.rawChangedPixels++);
+if(styled)defects.push(
+ ['wrong-math-rule-owner',(r,json)=>json(first+'/frame.json',f=>f.records.find(m=>m.kind==='rule').nodeId='input')],
+ ['missing-radical-control',r=>r.controls.splice(r.controls.findIndex(c=>c.name==='radical-overbar'),1)],
+ ['wrong-controlled-mark',r=>r.controls[0].targets[0]='native-glyph-1'],
+ ['missing-styled-label-region',(r,json)=>json(first+'/frame.json',f=>f.regions.splice(f.regions.findIndex(s=>s.id==='label-output'),1))]
+);
+else
 defects.push(
  ['wrong-math-rule-owner',(r,json)=>json('network-math-labels/frame.json',f=>f.records.find(m=>m.kind==='rule').nodeId='worker1')],
  ['missing-radical-control',r=>r.controls.splice(r.controls.findIndex(c=>c.name==='assembled-radical-piece'),1)],

@@ -7,7 +7,7 @@ import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {createRenderer} from './compare.mjs';
 import {installShapeMetrics} from './shape-image-pair.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
-import {mathFramingCases} from './math-label-framing.mjs';
+import {mathFramingFamily} from './math-label-framing.mjs';
 import {mathPrimaryNativeCase,mathPrimarySources,mathPrimaryViews,mathPrimaryEncodings,mathPrimaryKey,
  mathControlViews,mathPrimaryControls,mutateMathPrimary,deriveMathPrimaryPolicy,evaluateMathPrimary,measureMathPrimary} from './math-label-primary.mjs';
 
@@ -43,7 +43,8 @@ try{
  for(const [file,bytes]of nativeBundle.files)if(file.startsWith('events/'))await save(file,bytes);
  for(const file of ['calibrate-math-label-primary.mjs',...mathPrimarySources])
   await save('source-captures/tools/TikzVisual/'+file,await readFile(path.join(root,'tools/TikzVisual/'+file)));
- for(const declared of mathFramingCases){
+ const declaredCases=mathFramingFamily(nativeBundle.report.cases.map(c=>c.id));
+ for(const declared of declaredCases){
   const id=declared.id,native=await mathPrimaryNativeCase(renderer,nativeBundle,id);
   await json(id+'/frame.json',native.frame);await json(id+'/supplement.json',native.supplement);await json(id+'/path-supplement.json',native.pathSupplement);
   for(const e of native.encodings)await save(id+'/encodings/'+e.id+'.svg',e.svg);
@@ -75,9 +76,11 @@ try{
  }
  const coverage={cases:cases.length,encodings:2,captures:2,nativeViews:records.length,controls:controls.length,
   controlViews:controls.reduce((n,c)=>n+c.comparisons.length,0),regions:cases.reduce((n,c)=>n+c.regions,0)};
- assert.deepEqual(coverage,{cases:3,encodings:2,captures:2,nativeViews:144,controls:19,controlViews:76,regions:631});
+ assert.deepEqual(coverage,declaredCases.length===1?
+  {cases:1,encodings:2,captures:2,nativeViews:48,controls:20,controlViews:80,regions:100}:
+  {cases:3,encodings:2,captures:2,nativeViews:144,controls:19,controlViews:76,regions:631});
  await save('index.html','<!doctype html><meta charset="utf-8"><title>Native math primary calibration</title><h1>Native math primary limits and sensitivity</h1><p>Native-only limits. PDF and final qualification remain open. <a href="report.json">All views, policies and fixed regions</a></p>'+
   cases.map(c=>'<section><h2>'+c.id+'</h2><a href="'+c.id+'/policies.json">Native-only limits</a> · <a href="'+c.id+'/frame.json">Fixed ownership</a><p><img width="1000" src="'+c.id+'/encodings/atlas-integer-6/intrinsic-image/expanded/1x-white/comparison.png"></p></section>').join(''));
- await publish(true,{coverage,scope:'Three fixed math fixtures; native-only whole/local limits and representative mark/label faults. No all-mark fault-coverage claim. Both PDF and final current-converter acceptance remain open.'});
+ await publish(true,{coverage,scope:'Explicit fixed math family; native-only whole/local limits and representative mark/label faults. No all-mark fault-coverage claim. Both PDF and final current-converter acceptance remain open.'});
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,{error:error.message});process.exitCode=1;}
 finally{await renderer?.browser.close();}

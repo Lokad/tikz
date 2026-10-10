@@ -9,20 +9,20 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {createRenderer} from './compare.mjs';
 import {installShapeMetrics} from './shape-image-pair.mjs';
 import {pathLabelPrimaryPixelReader} from './path-label-primary-pixels.mjs';
-import {mathFramingCases} from './math-label-framing.mjs';
+import {mathFramingFamily} from './math-label-framing.mjs';
 import {validateMathInspectionFrame} from './check-math-label-framing.mjs';
-import {mathPrimaryNativeCase,mathPrimarySources,mathPrimaryViews,mathPrimaryEncodings,mathPrimaryKey,mathNativeImageSha256,
+import {mathPrimaryNativeCase,mathPrimarySources,mathPrimaryViews,mathPrimaryEncodings,mathPrimaryKey,mathPrimaryNativeHash,
  mathControlViews,mathPrimaryControls,mutateMathPrimary,deriveMathPrimaryPolicy,evaluateMathPrimary,measureMathPrimary} from './math-label-primary.mjs';
 
 export function verifyMathPrimaryPixels(bundle){
  const r=bundle.report;assert.equal(r.converterInvoked,false);assert.equal(r.nativeToolInvoked,false);
- assert.equal(r.nativeInputSha256,mathNativeImageSha256);
- assert.equal(sha256(bundle.files.get('inputs/native-report.json')),mathNativeImageSha256);
- calcEqual(r.cases.map(c=>c.id),mathFramingCases.map(c=>c.id),'Math fixture coverage differs.');
- calcEqual(r.records.map(v=>v.file).sort(),mathFramingCases.flatMap(c=>mathPrimaryEncodings.flatMap(e=>mathPrimaryViews.map(v=>
+ const declaredCases=mathFramingFamily(r.cases.map(c=>c.id)),nativeHash=mathPrimaryNativeHash(declaredCases.map(c=>c.id));
+ assert.equal(r.nativeInputSha256,nativeHash);
+ assert.equal(sha256(bundle.files.get('inputs/native-report.json')),nativeHash);
+ calcEqual(r.records.map(v=>v.file).sort(),declaredCases.flatMap(c=>mathPrimaryEncodings.flatMap(e=>mathPrimaryViews.map(v=>
   c.id+'/encodings/'+e+'/'+mathPrimaryKey(v)+'/record.json'))).sort(),'Native math view coverage differs.');
  let pairs=0,regions=0,visibleControls=0,invisibleControls=0;
- for(const declared of mathFramingCases){
+ for(const declared of declaredCases){
   const id=declared.id,frame=bundle.json(id+'/frame.json');
   validateMathInspectionFrame(frame,declared,bundle.json('events/'+id+'/measurements.json'),
    bundle.json(id+'/supplement.json'),bundle.json(id+'/path-supplement.json'));
@@ -54,14 +54,18 @@ export function verifyMathPrimaryPixels(bundle){
    }
   }
  }
- assert.equal(r.controls.length,19);
- calcEqual(r.coverage,{cases:3,encodings:2,captures:2,nativeViews:144,controls:19,controlViews:76,regions:631},'Math calibration coverage summary differs.');
+ const expected=declaredCases.length===1?
+  {cases:1,encodings:2,captures:2,nativeViews:48,controls:20,controlViews:80,regions:100}:
+  {cases:3,encodings:2,captures:2,nativeViews:144,controls:19,controlViews:76,regions:631};
+ assert.equal(r.controls.length,expected.controls);
+ calcEqual(r.coverage,expected,'Math calibration coverage summary differs.');
  return{pairs,regions,visibleControls,invisibleControls};
 }
 export async function checkMathPrimary(file,nativeFile){
  const bundle=await loadCalcSavedReport(file,'math-label-native-primary-calibration'),pixels=verifyMathPrimaryPixels(bundle);
  const nativeBundle=await loadCalcSavedReport(nativeFile,'math-label-native-image-iteration');
- assert.equal(nativeBundle.sha256,mathNativeImageSha256);assert.ok(nativeBundle.bytes.equals(bundle.files.get('inputs/native-report.json')));
+ const declaredCases=mathFramingFamily(bundle.report.cases.map(c=>c.id));
+ assert.equal(nativeBundle.sha256,mathPrimaryNativeHash(declaredCases.map(c=>c.id)));assert.ok(nativeBundle.bytes.equals(bundle.files.get('inputs/native-report.json')));
  for(const [file,bytes]of nativeBundle.files)if(file.startsWith('events/'))assert.ok(bytes.equals(bundle.files.get(file)),'Changed native event input: '+file);
  for(const [file,digest]of Object.entries(nativeBundle.report.sources))if(file.endsWith('.cs')||file.endsWith('.csproj')||file.endsWith('.json'))
   assert.equal(sha256(await readFile(path.join(root,file))),digest,'Changed native reader/profile input: '+file);
@@ -70,7 +74,7 @@ export async function checkMathPrimary(file,nativeFile){
  const renderer=await createRenderer();let recaptured=0;
  try{
   calcEqual(renderer.identity,bundle.report.renderer,'Changed calibration renderer.');await installShapeMetrics(renderer);
-  for(const declared of mathFramingCases){
+  for(const declared of declaredCases){
    const id=declared.id,native=await mathPrimaryNativeCase(renderer,nativeBundle,id,bundle.json(id+'/supplement.json'),bundle.json(id+'/path-supplement.json'));
    calcEqual(JSON.parse(JSON.stringify(native.frame)),bundle.json(id+'/frame.json'),'Native math frame reconstruction differs.');
    for(const e of native.encodings)assert.equal(e.svg,bundle.files.get(id+'/encodings/'+e.id+'.svg').toString(),'Native math encoding differs.');
@@ -91,7 +95,8 @@ export async function checkMathPrimary(file,nativeFile){
    console.log(JSON.stringify({phase:'native-source-recapture',caseId:id}));
   }
  }finally{await renderer.browser.close();}
- assert.equal(recaptured,220);return{inputSha256:bundle.sha256,pixels,sourceRecaptures:recaptured};
+ assert.equal(recaptured,bundle.report.coverage.nativeViews+bundle.report.coverage.controlViews);
+ return{inputSha256:bundle.sha256,pixels,sourceRecaptures:recaptured};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  assert.equal(process.argv.length,4,'Usage: check-math-label-primary.mjs <calibration-report> <accepted-native-image-report>');

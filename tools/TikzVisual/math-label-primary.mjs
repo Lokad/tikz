@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {root,sha256} from './shape-oracle-bundle.mjs';
 import {shapeViews,deriveShapeTrialPolicy,evaluateShapeTrial,nativeMetricEnvelope} from './shape-primary-trial-policy.mjs';
-import {mathFramingCases,deriveMathFraming,withMathNaturalRoot} from './math-label-framing.mjs';
+import {mathFramingCases,mathFramingFamily,deriveMathFraming,withMathNaturalRoot} from './math-label-framing.mjs';
 import {buildMathNativeVariants} from './math-label-native-svg.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
@@ -14,6 +14,10 @@ export const mathPrimaryViews=mathPrimaryCaptures.flatMap(capture=>shapeViews.ma
 export const mathPrimaryKey=v=>v.capture+'/'+v.frame+'/'+v.scale+'x-'+v.background;
 export const mathControlViews=mathPrimaryCaptures.flatMap(capture=>[1,4].map(scale=>({capture,frame:'expanded',scale,background:'white'})));
 export const mathNativeImageSha256='b124baf97409d134781e233dd605461e315387991c2bae6cba8e975ec64c650a';
+export function mathPrimaryNativeHash(ids){
+ const family=mathFramingFamily(ids);
+ return family.length===1?'8e8319ea03da1fde250a1ca29a1b96ace966c5ea3cfb3e3bb530364d4d69c8a7':mathNativeImageSha256;
+}
 export const mathPrimarySources=['math-label-primary.mjs','math-label-framing.mjs','math-label-native-svg.mjs','math-label-native-paths.mjs',
  'check-math-label-framing.mjs','diagram-native-root.mjs','arrow-log.mjs','arrow-driver-state.mjs','arrow-native-frame.mjs',
  'edge-oracle.mjs','edge-oracle-frame.mjs','edge-oracle-pair.mjs','edge-trial-images.mjs','arrow-vector-pair.mjs',
@@ -21,7 +25,9 @@ export const mathPrimarySources=['math-label-primary.mjs','math-label-framing.mj
  'shape-raster-metrics.mjs','calc-png.mjs','calc-saved-images.mjs','shape-oracle-bundle.mjs','compare.mjs',
  'browser-profile.json','package.json','package-lock.json'];
 export async function mathPrimaryNativeCase(renderer,bundle,id,supplement,pathSupplement){
- assert.equal(bundle.sha256,mathNativeImageSha256,'Use the accepted frozen native-only input.');
+ const family=mathFramingFamily(bundle.report.cases.map(c=>c.id));
+ assert.ok(family.some(c=>c.id===id),'Native input does not own this fixture.');
+ assert.equal(bundle.sha256,mathPrimaryNativeHash(family.map(c=>c.id)),'Use the accepted frozen native-only input.');
  assert.equal(bundle.report.converterInvoked,false);
  const prefix='events/'+id+'/',reference=bundle.files.get(prefix+'oracle.svg').toString(),
   events=bundle.json(prefix+'events.json'),measurements=bundle.json(prefix+'measurements.json'),atlases={};
@@ -44,7 +50,7 @@ export async function measureMathPrimary(renderer,native,svg,view,target){
   referenceLabel:'Original native TikZ',rightLabel:'Independent math encoding / inspected output'});
 }
 export function deriveMathPrimaryPolicy(caseId,records){
- assert.ok(mathFramingCases.some(c=>c.id===caseId));
+ assert.ok(mathFramingCases.some(c=>c.id===caseId)||caseId==='flowchart-styled-labels');
  const expected=mathPrimaryEncodings.flatMap(encoding=>mathPrimaryViews.map(v=>encoding+'/'+mathPrimaryKey(v)));
  assert.deepEqual(records.map(r=>r.encoding+'/'+mathPrimaryKey(r)).sort(),expected.sort(),'Math native view coverage differs.');
  for(const r of records){assert.equal(r.converterInvoked,false);assert.equal(r.repeat.rawChangedPixels,0);assert.equal(r.actualRepeat.rawChangedPixels,0);}
@@ -72,7 +78,18 @@ export function mathPrimaryControls(frame){
   return{name,nodeId,targets:selected.map(r=>r.id),region:whole?'label-'+nodeId:selected[0].id};
  };
  let targets;
- if(frame.caseId==='network-math-labels')targets=[
+ if(frame.caseId==='flowchart-styled-labels')targets=[
+  select('bold-ten','input',r=>r.font==='bold-10'),
+  select('italic-ten','filter',r=>r.font==='italic-10'),
+  select('bold-twelve','output',r=>r.font==='bold-12'),
+  select('regular-period','review',r=>r.font==='regular-10'&&r.slot===46),
+  select('italic-twelve','review',r=>r.font==='italic-12'),
+  select('regular-twelve','diagram-label-1',r=>r.font==='regular-12'),
+  select('normal-math-under-bold','output',r=>r.font==='math-italic-12'),
+  select('fraction-bar','review',r=>r.kind==='rule'),
+  select('radical-overbar','review',r=>r.kind==='rule'&&r.index===1),
+  select('complete-multiline-sloped-label','diagram-label-5',()=>true,true)];
+ else if(frame.caseId==='network-math-labels')targets=[
   select('complete-path-label','diagram-label-1',()=>true,true),
   select('five-point-script','output',r=>r.font==='math-roman-5'),
   select('fraction-bar','output',r=>r.kind==='rule')];
