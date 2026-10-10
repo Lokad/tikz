@@ -64,6 +64,15 @@ async function command(name,executable,args,kind='report',role){
   await save('tests/verification.trx',bytes);
  }
  if(kind==='controls'){result=markers.find(m=>m.validated===true);assert.ok(result,'Missing corruption result: '+name);
+  if(Number.isInteger(result.controls)&&result.report){
+   assert.equal(path.basename(args[0]),'math-label-pdf-self-test.mjs','Unknown report-backed control receipt.');
+   const saved=await loadCalcSavedReport(path.join(root,result.report),'math-label-pdf-image-controls');
+   assert.equal(saved.sha256,result.sha256);assert.equal(saved.report.completed,true);
+   assert.equal(saved.report.inputSha256,sha256(await readFile(path.resolve(root,args[1]))));
+   assert.equal(result.controls,name==='math-pdf-controls'?19:22);
+   assert.equal(saved.report.controls.length,result.controls);await save('receipts/'+name+'.json',saved.bytes);
+   result={...result,controls:saved.report.controls};
+  }
   if(Array.isArray(result.controls)){assert.ok(result.controls.length>0&&result.controls.every(c=>typeof c==='string'));assert.equal(new Set(result.controls).size,result.controls.length);}
   else{const expected={'svg-arrow-color-evidence-self-test.mjs':11,'path-label-cache-self-test.mjs':19}[path.basename(args[0])];
    assert.ok(expected,'Unknown numeric control schema: '+args[0]);assert.equal(result.controls,expected);
