@@ -120,6 +120,7 @@ try{
    const a=await readFile(path.join(output,base.file)),baseline=JSON.parse(a);
    // Exact independent recapture determines visibility; never grant an error allowance from a defect.
    const visible=artifacts[row.images.actual]!==artifacts[baseline.images.actual];
+   if(kind==='missing-clip')assert.equal(visible,true,'Clip boundary control must change pixels: '+name);
    if(visible){assert.equal(evaluation.passed,false,'Visible label defect passed: '+name+' '+capture+' '+key(view));assert.ok(evaluation.checks.some(c=>c.id===label.target&&!c.passed),'Target region did not reject '+name);}
    else calcEqual(row.metrics,baseline.metrics,'Invisible control changed metrics.');
    await json(row.file,{...row,observedVisible:visible,evaluation});control.comparisons.push({capture,...view,file:row.file,observedVisible:visible,rejected:!evaluation.passed});

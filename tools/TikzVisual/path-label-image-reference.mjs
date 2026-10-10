@@ -59,6 +59,7 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
   return{...p,id:'native-paint-'+i,d:pathData(segments),segments,matrix,paint,...(role?{role}:{} )};
  });
  const clips=metadata.clips.map(p=>({...p,segments:recover(parsePath(p.d)),matrix:world(p.transforms)}));
+ const clipIndices=ids=>ids.map(id=>{const index=clips.findIndex(c=>c.id===id);assert.ok(index>=0);return index;});
  const outlines=new Map(metadata.definitions.map(p=>[p.id,parsePath(p.d)])),uses=[];
  let index=0;
  for(let i=0;i<metrics.nodes.length;i++){
@@ -84,10 +85,12 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
   // Conservative affine pen/miter envelope; kept separate from PGF picture bounds.
   const m=p.matrix,r=p.paint.stroke==='none'?0:Number(p.paint['stroke-width'])*Number(p.paint['stroke-miterlimit'])/2;
   const dx=r*(Math.abs(m[0])+Math.abs(m[2])),dy=r*(Math.abs(m[1])+Math.abs(m[3]));
-  contributions.push({id:p.id,kind:'path',...(p.role?{role:p.role}:{}),bound:{minX:bounds.minX-dx,minY:bounds.minY-dy,maxX:bounds.maxX+dx,maxY:bounds.maxY+dy}});
+  contributions.push({id:p.id,kind:'path',...(p.role?{role:p.role}:{}),bound:{minX:bounds.minX-dx,minY:bounds.minY-dy,maxX:bounds.maxX+dx,maxY:bounds.maxY+dy},
+   ...(bundle.arrowMetrics&&p.clips.length?{clips:clipIndices(p.clips)}:{})});
  }
  for(const p of uses){const outline=outlines.get(p.href.slice(1));assert.ok(outline);
-  contributions.push({id:p.id,kind:'glyph',nodeId:p.nodeId,font:p.font,slot:p.slot,bound:pathBounds(transformSegments(outline,p.matrix))});
+  contributions.push({id:p.id,kind:'glyph',nodeId:p.nodeId,font:p.font,slot:p.slot,bound:pathBounds(transformSegments(outline,p.matrix)),
+   ...(bundle.arrowMetrics&&p.clips.length?{clips:clipIndices(p.clips)}:{})});
  }
  const b=metrics.pictureBounds,picture={minX:b.minXSp*spToCss,minY:-b.maxYSp*spToCss,maxX:b.maxXSp*spToCss,maxY:-b.minYSp*spToCss};
  const v=metadata.view,driverRoot={minX:(v[0]-metadata.origin.x)*4/3,minY:(v[1]-metadata.origin.y)*4/3,
@@ -130,19 +133,28 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
    native={instructions:{kind:'rectangle-background',converterInvoked:false,checks:instructions.checks,clips:instructions.clips,
     paints:instructions.paths.map(p=>({...p,attributes:p.paint}))}};
   }else native=makeArrowNativeSvg(bundle.arrowMetrics,{picture,inkRoot:natural.root},arrowNativeRepresentations.find(v=>v.name==='pt-short'),'ink');
-  assert.equal(native.instructions.clips.length,0,'These fixed diagrams have no native clips.');
-  const svg=await renderer.page.evaluate(({source,paints})=>{
+  assert.equal(native.instructions.clips.length,clips.length,'Native clip coverage differs.');
+  const svg=await renderer.page.evaluate(({source,paints,nativeClips,clipIds})=>{
    const doc=new DOMParser().parseFromString(source,'image/svg+xml'),s=doc.documentElement;
    const glyphs=()=>[...doc.querySelectorAll('use')].map(e=>e.outerHTML),before=glyphs(),defs=doc.querySelector('defs').outerHTML,box=s.getAttribute('viewBox');
+   const fonts=()=>[...doc.querySelectorAll('defs path')].filter(e=>!e.closest('clipPath')).map(e=>e.outerHTML),fontBefore=fonts();
+   for(const[i,clip]of nativeClips.entries()){
+    const c=doc.getElementById(clipIds[i]);if(c?.localName!=='clipPath'||c.children.length!==1||c.firstElementChild.localName!=='path')throw Error('Missing native clip.');
+    const p=c.firstElementChild;for(const a of [...p.attributes])p.removeAttribute(a.name);
+    p.setAttribute('d',clip.d);if(clip.transform)p.setAttribute('transform',clip.transform);
+   }
    for(const[i,p]of paints.entries()){
     const e=doc.getElementById('native-paint-'+i);if(!e||e.localName!=='path')throw Error('Missing native paint.');
+    const chain=[];for(let parent=e.parentElement;parent&&parent!==s;parent=parent.parentElement){const clip=parent.getAttribute('clip-path');if(clip)chain.unshift(clipIds.indexOf(clip.slice(5,-1)));}
+    if(chain.some(id=>id<0)||JSON.stringify(chain)!==JSON.stringify(p.clips??[]))throw Error('Native paint clip ownership differs.');
     for(const a of [...e.attributes])if(a.name!=='id')e.removeAttribute(a.name);
     for(const[k,v]of Object.entries(p.attributes))if(k!=='id')e.setAttribute(k,v);
     e.setAttribute('d',p.d);if(p.transform)e.setAttribute('transform',p.transform);
    }
-   if(JSON.stringify(before)!==JSON.stringify(glyphs())||defs!==doc.querySelector('defs').outerHTML||box!==s.getAttribute('viewBox'))throw Error('Native glyphs, outlines or root changed.');
+   if(JSON.stringify(before)!==JSON.stringify(glyphs())||JSON.stringify(fontBefore)!==JSON.stringify(fonts())||
+     (!nativeClips.length&&defs!==doc.querySelector('defs').outerHTML)||box!==s.getAttribute('viewBox'))throw Error('Native glyphs, outlines or root changed.');
    return new XMLSerializer().serializeToString(s);
-  },{source:encodings[1].svg,paints:native.instructions.paints});
+  },{source:encodings[1].svg,paints:native.instructions.paints,nativeClips:native.instructions.clips,clipIds:clips.map(c=>c.id)});
   // Saved JSON has no negative zero; normalize instruction metadata before
   // independent in-memory versus saved-frame comparison. SVGs stay unchanged.
   nativePathEncoding=JSON.parse(JSON.stringify(native.instructions));encodings.push({id:pathLabelDiagramImageEncodings[2],svg,converterInvoked:false});
@@ -182,6 +194,10 @@ export function pathLabelImageControls(frame,glyphs){
   }offset+=node.glyphs.length;
  }
  if(diagram)for(const r of frame.regions.filter(r=>r.role==='tip'))controls.push(...['missing','quarter-pixel-shift'].map(kind=>({nodeId:r.id,target:r.id,kind})));
+ if(frame.caseId==='flowchart-paint')for(const kind of ['path','glyph']){
+  const region=frame.regions.find(r=>r.kind===kind&&r.clips?.length);assert.ok(region,'Paint diagram must retain clipped '+kind+' evidence.');
+  controls.push({nodeId:'clipped-'+kind,target:region.id,kind:'missing-clip'});
+ }
  return controls;
 }
 export function pathLabelControlViews(frame){
@@ -191,10 +207,11 @@ export function pathLabelControlViews(frame){
  return frame.regions.some(r=>r.role==='tip')||isRectangleImageCase(frame.caseId)||isPlotImageCase(frame.caseId)?[1,4].map(scale=>({frame:'expanded',scale,background:'white'})):null;
 }
 export async function mutatePathLabelImage(renderer,svg,{target,kind,targets}){
- assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label'].includes(kind));
+ assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label','missing-clip'].includes(kind));
  if(kind==='missing-label')assert.ok(targets.length>0&&targets.every(t=>/^native-glyph-\d+$/.test(t))&&targets[0]===target);
  return renderer.page.evaluate(({svg,target,kind,targets})=>{const doc=new DOMParser().parseFromString(svg,'image/svg+xml'),p=doc.getElementById(target);if(!p)throw Error('Missing native control element.');
   if(kind==='missing')p.remove();else if(kind==='missing-label')for(const id of targets){const e=doc.getElementById(id);if(!e)throw Error('Missing label glyph.');e.remove();}
+  else if(kind==='missing-clip'){let removed=0;for(let e=p;e&&e.localName!=='svg';e=e.parentElement)if(e.hasAttribute('clip-path')){e.removeAttribute('clip-path');removed++;}if(!removed)throw Error('Missing controlled clip.');}
   else p.setAttribute('transform','translate(0.25 0) '+p.getAttribute('transform'));
   return new XMLSerializer().serializeToString(doc);
  },{svg,target,kind,targets});

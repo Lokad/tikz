@@ -6,7 +6,7 @@ import {edgeCssSegments,edgeStrokeEnvelope} from './edge-oracle-frame.mjs';
 
 const pointBox=p=>({minX:p.x,minY:p.y,maxX:p.x,maxY:p.y});
 const inflate=(b,r)=>({minX:b.minX-r,minY:b.minY-r,maxX:b.maxX+r,maxY:b.maxY+r});
-function intersect(a,b){
+export function intersect(a,b){
   if(!a)return null;
   const result={minX:Math.max(a.minX,b.minX),minY:Math.max(a.minY,b.minY),maxX:Math.min(a.maxX,b.maxX),maxY:Math.min(a.maxY,b.maxY)};
   return result.minX>result.maxX||result.minY>result.maxY?null:result;

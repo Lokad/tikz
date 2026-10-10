@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import {deflateSync} from 'node:zlib';
 import {arrowPdfVectors} from './arrow-driver-state.mjs';
+import {diagramNativeNaturalRoot} from './diagram-native-root.mjs';
 import {loadArrowEvidence} from './arrow-evidence.mjs';
 import {buildArrowNativeFrame,reconstructArrowPicture,arrowFiniteHullPoint,arrowWorldMatrix} from './arrow-native-frame.mjs';
 import {makeArrowNativeSvg,arrowNativeRepresentations,arrowNativeRoots} from './arrow-native-svg.mjs';
@@ -25,6 +26,21 @@ equal(arrowPdfVectors(textPaint,{allowText:true}).rootMatrix,[1,0,0,1,0,0]);
 rejects(()=>arrowPdfVectors(textPaint));
 for(const body of ['1 w','q','1 0 0 1 0 0 cm','BT','0 0 m','(a) Tj'])
  rejects(()=>arrowPdfVectors(paintedTextPdf(body),{allowText:true}));
+// A clipped complete diagram must constrain both native paths and glyphs,
+// while preserving the independent PGF picture contribution to its root.
+const pt=65536*edgeSpToCss,rect=(id,x,y,w,h)=>({id,segments:[
+ {kind:'rectcorner',xSp:x*65536,ySp:y*65536},{kind:'rectsize',xSp:w*65536,ySp:h*65536}]}),
+ clipMetrics={paths:[rect(1,0,0,4,4),rect(2,1,1,2,2)],placements:[],clips:[2],driverState:{passed:true,paints:[
+ {ordinal:1,pathId:1,placementId:null,operation:'fill',fillOpacity:1,clips:[0],role:'shaft'}]}},
+ picture={minX:0,minY:-pt,maxX:pt,maxY:0},clipBox={minX:pt,minY:-3*pt,maxX:3*pt,maxY:-pt},
+ clipGlyph={id:'clipped-glyph',nodeId:'label',clips:[0],bound:{minX:0,minY:-4*pt,maxX:4*pt,maxY:0}},
+ outsideGlyph={id:'outside-glyph',nodeId:'label',clips:[0],bound:{minX:5*pt,minY:0,maxX:6*pt,maxY:pt}};
+const clippedRoot=diagramNativeNaturalRoot(clipMetrics,picture,[clipGlyph,outsideGlyph]);
+equal(clippedRoot.ink,clipBox);equal(clippedRoot.contributions.length,2);
+equal(clippedRoot.root,{minX:0,minY:-3*pt,maxX:3*pt,maxY:0});
+close(diagramNativeNaturalRoot(clipMetrics,picture,[{...outsideGlyph,clips:[]}]).root.maxX,6*pt);
+rejects(()=>diagramNativeNaturalRoot({...clipMetrics,driverState:{passed:true,paints:[{...clipMetrics.driverState.paints[0],clips:[1]}]}},picture,[]));
+rejects(()=>diagramNativeNaturalRoot(clipMetrics,picture,[{...clipGlyph,clips:[1]}]));
 const input={id:1,modes:'draw,',lineWidthSp:65536,segments:[{kind:'move',xSp:0,ySp:0},{kind:'line',xSp:65536,ySp:0}]};
 const paint={ordinal:1,eventId:1,role:'shaft',pathId:1,placementId:null,operation:'stroke',widthSp:65536,cap:0,join:0,miter:10,
  strokeOpacity:1,fillOpacity:1,strokeRgb:[0,0,0],fillRgb:[0,0,0],dashSp:[],phaseSp:0,clips:[]};
