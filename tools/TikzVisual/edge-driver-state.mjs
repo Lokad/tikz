@@ -98,6 +98,12 @@ export function verifyEdgeDriverState(metrics,svg,pdf){
   let checks=2;const paints=[],constructionDifferences=[];
   function same(actual,expected,limit=0){assert.equal(actual.length,expected.length);for(let i=0;i<actual.length;i++){
     assert.ok(Math.abs(actual[i]-expected[i])<=limit,'Emitted native driver state differs: '+actual[i]+' vs '+expected[i]);checks++;}}
+  // PGF emits TeX's shortest dimension decimal, not a uniformly rounded
+  // five-decimal number. Recover its integer bp-scaled points before comparing
+  // with the independent pt-to-bp multiplication. No geometric tolerance.
+  function pdfDimensions(actual,expectedSp){
+    same(actual.map(v=>Math.round(v*65536)),expectedSp.map(v=>Math.round(pgfPdfPoint(v)*65536)));
+  }
   for(let i=0;i<order.length;i++){
     const pathId=order[i],native=metrics.paths[pathId-1].paint,s=svgState.paints[i],p=pdfState.paints[i];
     assert.equal(p.operation,native.operation);checks++;
@@ -109,10 +115,10 @@ export function verifyEdgeDriverState(metrics,svg,pdf){
       clips:s.clips.map(id=>{const index=svgState.clips.indexOf(id);assert.ok(index>=0);return index;})};
     same(effective.clips,p.clips);
     if(stroke){same(s.stroke,p.stroke,1/255);
-      same([p.width],[pgfPdfPoint(effective.widthSp)],.000005);
+      pdfDimensions([p.width],[effective.widthSp]);
       same([s.cap,s.join,s.miter,s.strokeOpacity],[p.cap,p.join,p.miter,p.strokeOpacity]);
-      same(p.dash,effective.dashSp.map(pgfPdfPoint),.000005);
-      same([p.phase],[pgfPdfPoint(effective.dashPhaseSp)],.000005);
+      pdfDimensions(p.dash,effective.dashSp);
+      pdfDimensions([p.phase],[effective.dashPhaseSp]);
     }
     if(fill){same(s.fill,p.fill,1/255);same([s.fillOpacity],[p.fillOpacity]);}
     const active=[...(stroke?['widthSp','cap','join','miter','strokeOpacity','strokeRgb','dashSp','dashPhaseSp']:[]),...(fill?['fillOpacity','fillRgb']:[])];

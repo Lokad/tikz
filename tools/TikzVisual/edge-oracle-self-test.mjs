@@ -2,12 +2,14 @@
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
 import path from 'node:path';
+import {deflateSync} from 'node:zlib';
 import {root,writeArtifact} from './shape-oracle-bundle.mjs';
 import {nativeEdgeSegments,edgeNativeFrame,edgeGlyphMatrix,edgeSpToCss} from './edge-oracle.mjs';
 import {edgeStrokeEnvelope} from './edge-oracle-frame.mjs';
 import {measureEdgeOraclePair} from './edge-oracle-pair.mjs';
 import {createRenderer} from './compare.mjs';
 import {installShapeMetrics} from './shape-image-pair.mjs';
+import {verifyEdgeDriverState} from './edge-driver-state.mjs';
 
 const output=path.join(root,'artifacts/edge-oracle-controls/run-'+randomUUID()),checks=[];let renderer;
 function equal(name,actual,expected){assert.deepEqual(actual,expected,name);checks.push({name,passed:true});}
@@ -17,6 +19,19 @@ const move=p=>({kind:'move',from:null,to:p}),line=(from,to)=>({kind:'line',from,
 const token=(kind,xSp=0,ySp=0)=>({kind,xSp,ySp}),native=segments=>({segments});
 try{
   assert.equal(process.argv.length,2);
+  // A four-pt pen/dash prints as 3.9851 bp: it recovers the exact integer
+  // dimension although its distance from that fraction exceeds .000005.
+  const dimensionSvg=Buffer.from("<svg><path d='M0 0L1 0' fill='none' stroke='#000' stroke-width='4' stroke-dasharray='4,1' stroke-dashoffset='1'/></svg>");
+  const dimensionMetrics={paths:[{modes:[],paint:{operation:'stroke'}}],physicalOrder:{paintedPaths:[1]}};
+  function dimensionPdf(width='3.9851',dash='3.9851',phase='.99628'){
+    const stream=deflateSync(Buffer.from(`${width} w 4 M [${dash} .99628] ${phase} d 0 0 m 1 0 l S`));
+    return Buffer.concat([Buffer.from(`%PDF-1.5\n1 0 obj << /Type /Page /Contents 2 0 R /Resources 3 0 R >> endobj\n2 0 obj << /Length ${stream.length} /Filter /FlateDecode >> stream\n`),stream,
+      Buffer.from('\nendstream endobj\n3 0 obj << /ExtGState 4 0 R >> endobj\n4 0 obj << >> endobj\n')]);
+  }
+  equal('shortest PDF decimals recover exact pen, dash and phase',verifyEdgeDriverState(dimensionMetrics,dimensionSvg,dimensionPdf()).passed,true);
+  reject('one PDF scaled-point pen corruption',()=>verifyEdgeDriverState(dimensionMetrics,dimensionSvg,dimensionPdf('3.98512')));
+  reject('one PDF scaled-point dash corruption',()=>verifyEdgeDriverState(dimensionMetrics,dimensionSvg,dimensionPdf('3.9851','3.98512')));
+  reject('one PDF scaled-point phase corruption',()=>verifyEdgeDriverState(dimensionMetrics,dimensionSvg,dimensionPdf('3.9851','3.9851','.99629')));
   equal('native rectangle direction',nativeEdgeSegments(native([token('rectcorner',65536,131072),token('rectsize',196608,262144)])).map(s=>[s.kind,s.to.x,s.to.y]),
     [['move',65536,131072],['line',262144,131072],['line',262144,393216],['line',65536,393216],['close',65536,131072]]);
   for(const[name,segments]of[
