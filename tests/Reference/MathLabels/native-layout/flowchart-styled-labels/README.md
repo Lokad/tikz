@@ -56,3 +56,25 @@ node tools/TikzVisual/check-math-label-native-images.mjs artifacts/styled-label-
 
 This explains the iteration discrepancy for the observed views. It does not
 replace local/phase sensitivity, native path/framing or PDF qualification.
+
+The additive `framing.json` and `paths.json` bind the original drawing to five
+arrow placements, ten unique PGF paths and fourteen painted paths (four node
+outlines, five connections and five uses of the shared Stealth template).
+Supplemental probes preserve the original drawing, text boxes, anchors and
+font/glyph/rule observations. The existing frame builder derives picture,
+painted ink and natural root bounds plus 100 label/glyph/rule/path regions.
+
+Iteration checks cover four serialized root dimensions, 275 independent path,
+transform, pen and conservative metadata quantities, and eight natural/expanded
+image pairs with 800 independently recomputed region checks. Glyph/rule bound
+residuals are below 0.0000000000001 CSS pixels; raw path-ink diagnostics retain
+the public conservative padding separately from exact painted ink. Fourteen
+existing path/bounds corruption controls pass for the additive diagram. These
+checks retain the original three-case default. Native-only primary/local policy
+calibration, both PDF routes and final fresh-source acceptance remain open.
+
+Trusted supplemental observation:
+
+```sh
+node tools/TikzVisual/diagram-positioning-reference.mjs --paths flowchart-styled-labels
+```

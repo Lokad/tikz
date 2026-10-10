@@ -12,6 +12,13 @@ export const mathFramingCases=[
  {id:'math-label-contract',folder:'MathLabels',nodes:26,glyphs:109,rules:15,paths:26},
  {id:'math-atom-contract',folder:'MathLabels',nodes:28,glyphs:306,rules:20,paths:28}
 ];
+const styledCase={id:'flowchart-styled-labels',folder:'Diagrams',nodes:9,glyphs:75,rules:2,paths:14};
+// Explicit additive family; the qualified three-case default stays fixed.
+export function mathFramingFamily(ids){
+ if(ids.length===1&&ids[0]===styledCase.id)return[styledCase];
+ assert.deepEqual(ids,mathFramingCases.map(c=>c.id),'Unexpected math framing family.');
+ return mathFramingCases;
+}
 const spToCss=96/(72.27*65536);
 const capIds={butt:0,round:1,square:2},joinIds={miter:0,round:1,bevel:2};
 const inflate=(b,r)=>({minX:b.minX-r,minY:b.minY-r,maxX:b.maxX+r,maxY:b.maxY+r});
@@ -23,7 +30,7 @@ const rectangle=(b,camera,padding=2)=>{
 };
 
 export async function deriveMathFraming(renderer,{caseId,reference,events,measurements,supplement,native,pathSupplement=null}) {
- const declared=mathFramingCases.find(c=>c.id===caseId);assert.ok(declared,'Unexpected math framing fixture.');
+ const declared=[...mathFramingCases,styledCase].find(c=>c.id===caseId);assert.ok(declared,'Unexpected math framing fixture.');
  assert.equal(supplement.schemaVersion,1);assert.equal(supplement.role,'native-math-framing-supplement');
  for(const key of['drawingNoninterference','frozenDrawingUnchanged','frozenLayoutAndFontsUnchanged'])assert.equal(supplement.observation[key],true);
  assert.equal(supplement.sourceSha256,measurements.sourceSha256);

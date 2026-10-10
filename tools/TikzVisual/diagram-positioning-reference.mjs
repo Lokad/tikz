@@ -9,7 +9,7 @@ import {edgeAnchors,edgeSanitize} from './edge-log.mjs';
 import {canonicalEdgeSvg} from './edge-replay.mjs';
 import {arrowHooks,parseArrowLog} from './arrow-log.mjs';
 const cases={
- 'flowchart-styled-labels':{additive:true,mathEvidence:true,names:['input','filter','output','review',...Array.from({length:5},(_,i)=>'diagram-label-'+(i+1))],hash:'9a067e170478c3c082fe05733bcb9a5d564d198651ef4c5b6dd27485967c0c3e'},
+ 'flowchart-styled-labels':{additive:true,mathEvidence:true,arrowPlacements:5,names:['input','filter','output','review',...Array.from({length:5},(_,i)=>'diagram-label-'+(i+1))],hash:'9a067e170478c3c082fe05733bcb9a5d564d198651ef4c5b6dd27485967c0c3e'},
  'math-atom-contract':{folder:'MathLabels',mathEvidence:true,names:['greekOne','greekTwo','variants','capitals','binary','relations','arrows','negation','ordinary','punctuation','binStartEnd','binContext','lowerOne','lowerTwo','upperOne','upperTwo','digits','kernLigatures','upright','uprightGreek','glue','scriptSpacing','largeAtoms','largeScripts','multiline','negativeSpace','assembledRoot','largeAssembledRoot'],hash:'69c1ca3af3e8c1bdfbc61f90ca78f0ab08d66f02d10a1dd92246414b7921e182'},
  'network-math-labels':{mathEvidence:true,names:['hub','worker1','worker2','worker3','output',...Array.from({length:5},(_,i)=>'diagram-label-'+(i+1))],hash:'7b4faa43cb8f0fbb9338629b03d4fc7ce4cca6924c0b3f4fe927635ebfe83702',scalarCalls:Array.from({length:3},()=>['\\angle','\\xoffset','\\yoffset']).flat()},
  'math-label-contract':{folder:'MathLabels',mathEvidence:true,names:['identifier','number','greek','operators','grouping','upright','superscript','subscript','paired','reversePaired','nestedScripts','groupedBase','fraction','nestedFraction','fractionScript','root','rootFraction','nestedRoot','mixed','spacing','uppercaseGreek','tallCombined','large','largeFraction','largeNestedScripts','largeTallRoot'],hash:'aa272e4de214b9582ea75ac3ed88b86b7a1ae05de5072d0f7a9d0ee565997aec'},
@@ -43,7 +43,7 @@ const noMaintenance=arguments_[0]==='--no-maintenance';if(noMaintenance)argument
 const defaultCases=Object.keys(cases).filter(id=>!cases[id].additive);
 const selected=arguments_.length?arguments_:(framing?defaultCases.filter(id=>cases[id].mathEvidence):defaultCases);
 assert.ok(selected.length>0&&selected.every(id=>Object.hasOwn(cases,id))&&new Set(selected).size===selected.length,'Only fixed trusted fixtures may be selected.');
-assert.ok(!framing||selected.every(id=>cases[id].mathEvidence&&!cases[id].additive),'Supplemental framing currently admits only the three qualified math fixtures.');
+assert.ok(!framing||selected.every(id=>cases[id].mathEvidence),'Supplemental framing admits only fixed trusted math fixtures.');
 const output=path.join(root,'artifacts/positioning-native/run-'+randomUUID()),artifacts={},commands=[],results=[];
 const save=(f,b)=>writeArtifact(output,f,b,artifacts),bin=path.join(process.env.LOCALAPPDATA,'Programs/MiKTeX/miktex/bin/x64');
 const mathEvidence=selected.some(id=>cases[id].mathEvidence);
@@ -164,9 +164,10 @@ try{
      await save(id+'/framing.json',JSON.stringify({sourceSha256:c.hash,pictureBounds:Object.fromEntries(['minXSp','minYSp','maxXSp','maxYSp'].map((key,i)=>[key,integer(b[0][i])])),
       pictureBox:native.pictureBox,lineWidthsSp:[...new Set(widths.map(r=>integer(r[0])))].sort((a,b)=>a-b)},null,2)+'\n');
      if(nativePaths){
-      const paths=parseArrowLog(log,{allowWrapperGlue:true,allowNoArrows:id!=='network-math-labels'});
+      const placements=c.arrowPlacements??(id==='network-math-labels'?6:0);
+      const paths=parseArrowLog(log,{allowWrapperGlue:true,allowNoArrows:placements===0});
       assert.deepEqual(paths.pictureBounds,Object.fromEntries(['minXSp','minYSp','maxXSp','maxYSp'].map((key,i)=>[key,integer(b[0][i])])));
-      assert.equal(paths.placements.length,id==='network-math-labels'?6:0);
+      assert.equal(paths.placements.length,placements);
       await save(id+'/paths.json',JSON.stringify({sourceSha256:c.hash,...paths},null,2)+'\n');
      }
     }

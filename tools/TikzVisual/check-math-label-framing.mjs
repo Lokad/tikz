@@ -6,7 +6,7 @@ import path from 'node:path';
 import {loadCalcSavedReport,calcEqual,calcHash} from './calc-saved-images.mjs';
 import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {unionBounds,containment} from './shape-frame-math.mjs';
-import {mathFramingCases} from './math-label-framing.mjs';
+import {mathFramingFamily} from './math-label-framing.mjs';
 import {bindMathNativePaths} from './math-label-native-paths.mjs';
 import {diagramNativeNaturalRoot} from './diagram-native-root.mjs';
 import {nativeEdgeSegments} from './edge-oracle.mjs';
@@ -151,10 +151,10 @@ export async function checkMathFramingImages(file){
  assert.equal(report.nativeToolInvoked,false);assert.equal(report.converterInvoked,true);
  assert.equal(calcHash(owned.files.get('inputs/native-report.json')),report.nativeInputReportSha256);
  assert.equal(calcHash(owned.files.get('inputs/public-report.json')),report.publicInputReportSha256);
- calcEqual(report.cases.map(c=>c.id),mathFramingCases.map(c=>c.id),'Math fixture coverage differs.');
+ const declaredCases=mathFramingFamily(report.cases.map(c=>c.id));
  let pairs=0,regionChecks=0,markBoxes=0,labels=0,nativeBoundsChecks=0,nativeRootChecks=0;const residuals=[];
  for(const [i,row] of report.cases.entries()){
-  const c=mathFramingCases[i],frame=owned.json(c.id+'/frame.json');
+  const c=declaredCases[i],frame=owned.json(c.id+'/frame.json');
   const regionMap=validateMathInspectionFrame(frame,c,owned.json('events/'+c.id+'/measurements.json'),owned.json(c.id+'/supplement.json'),owned.files.has(c.id+'/path-supplement.json')?owned.json(c.id+'/path-supplement.json'):null);
   calcEqual(row.counts,frame.counts,'Reported math region count differs.');
   assert.equal(frame.labels.length,c.nodes);labels+=c.nodes;markBoxes+=c.glyphs+c.rules;
@@ -197,7 +197,10 @@ export async function checkMathFramingImages(file){
     id:r.id,...attribution(a.rgba,b.rgba,candidate,a.width,Object.fromEntries(Object.entries(r.rectangle).map(([k,v])=>[k,v*record.scale])))}))});
   }
  }
- assert.equal(pairs,24);assert.equal(markBoxes,496);assert.equal(labels,64);assert.equal(regionChecks,5048);
+ assert.equal(pairs,declaredCases.length*8);
+ assert.equal(markBoxes,declaredCases.reduce((n,c)=>n+c.glyphs+c.rules,0));
+ assert.equal(labels,declaredCases.reduce((n,c)=>n+c.nodes,0));
+ assert.equal(regionChecks,declaredCases.reduce((n,c)=>n+c.nodes+c.glyphs+c.rules+c.paths,0)*8);
  return{schemaVersion:1,role:'independent-math-framing-image-check',completed:true,reportSha256:owned.sha256,
   pairs,regionChecks,markBoxes,labels,nativeBoundsChecks,nativeRootChecks,residuals,approvedImagePolicy:false,imageConformanceClaim:false};
 }

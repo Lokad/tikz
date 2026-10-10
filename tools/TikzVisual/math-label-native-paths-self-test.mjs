@@ -6,17 +6,26 @@ import {root,sha256,writeArtifact,outputPath} from './shape-oracle-bundle.mjs';
 import {loadCalcSavedReport} from './calc-saved-images.mjs';
 import {bindMathNativePaths} from './math-label-native-paths.mjs';
 import {mathPathBoundContract,validateMathInspectionFrame} from './check-math-label-framing.mjs';
-import {mathFramingCases} from './math-label-framing.mjs';
+import {mathFramingFamily} from './math-label-framing.mjs';
 import {parseArrowLog} from './arrow-log.mjs';
 const args=process.argv.slice(2);assert.ok(args.length===3&&args[1]==='--out');
 const owned=await loadCalcSavedReport(path.resolve(root,args[0]),'math-label-framing-image-iteration'),output=await outputPath(path.resolve(root,args[2])),controls=[];
-for(const c of mathFramingCases){
+const declaredCases=mathFramingFamily(owned.report.cases.map(c=>c.id));
+for(const c of declaredCases){
  const frame=owned.json(c.id+'/frame.json'),scene=owned.json('public/'+c.id+'/actual-scene.json');
  validateMathInspectionFrame(frame,c,owned.json('events/'+c.id+'/measurements.json'),owned.json(c.id+'/supplement.json'),owned.json(c.id+'/path-supplement.json'));
  assert.equal(mathPathBoundContract(frame,scene).passed,true);assert.ok(owned.json(c.id+'/numeric.json').checks.filter(c=>c.name.startsWith('root.')).every(c=>c.passed));
  controls.push({name:c.id+'-integer-path-root-and-bounds',passed:true,rejected:false});
 }
-const id='network-math-labels',frame=owned.json(id+'/frame.json'),scene=owned.json('public/'+id+'/actual-scene.json'),supplement=owned.json(id+'/supplement.json'),native=owned.json(id+'/path-supplement.json');
+const id=declaredCases.find(c=>owned.json(c.id+'/path-supplement.json').metrics.placements.length>0)?.id;
+assert.ok(id,'Path controls require the fixed arrow-bearing diagram.');
+const frame=owned.json(id+'/frame.json'),scene=owned.json('public/'+id+'/actual-scene.json'),supplement=owned.json(id+'/supplement.json'),native=owned.json(id+'/path-supplement.json');
+const tipIndex=frame.nativePaths.metrics.driverState.paints.findIndex(p=>p.placementId!==null);
+// In both fixed diagrams the first tip follows its connection's shaft;
+// earlier shaft-role paths include node outlines and cannot serve this fault.
+const shaftIndex=tipIndex-1;
+assert.ok(shaftIndex>=0&&tipIndex>=0);
+assert.equal(frame.nativePaths.metrics.driverState.paints[shaftIndex].role,'shaft');
 for(const name of ['wrong-path-owner','missing-integer-path','changed-integer-endpoint','changed-native-pen','changed-native-tip-placement']){
  const changed=structuredClone(native);
  if(name==='wrong-path-owner')changed.sourceSha256='0'.repeat(64);
@@ -28,12 +37,12 @@ for(const name of ['wrong-path-owner','missing-integer-path','changed-integer-en
  controls.push({name,passed:true,rejected:true});
 }
 for(const name of ['omitted-shaft-ink','unexplained-straight-padding','changed-local-geometry','changed-public-pen','changed-tip-transform','missing-tip-transforms','unbounded-global-padding']){
- const changed=structuredClone(scene),shaft=changed.paths[5];
+ const changed=structuredClone(scene),shaft=changed.paths.filter(p=>p.semanticId.startsWith('path-'))[shaftIndex];
  if(name==='omitted-shaft-ink')shaft.inkBounds.minY=0;
  if(name==='unexplained-straight-padding')shaft.inkBounds.minX--;
  if(name==='changed-local-geometry')shaft.geometryBounds.maxX++;
  if(name==='changed-public-pen')shaft.paint.width++;
- if(name==='changed-tip-transform')changed.pathTransforms[6].e++;
+ if(name==='changed-tip-transform')changed.pathTransforms[tipIndex].e++;
  if(name==='missing-tip-transforms')delete changed.pathTransforms;
  if(name==='unbounded-global-padding')changed.inkBounds.minX-=100;
  assert.equal(mathPathBoundContract(frame,changed).passed,false,name);
@@ -49,9 +58,9 @@ const noArrow=['ARROW-PGF 3.1.11a|END','ARROW-INPUT 1|draw,|26214|0|0|END',
 assert.throws(()=>parseArrowLog(noArrow));
 assert.equal(parseArrowLog(noArrow,{allowNoArrows:true}).templates.length,0);
 controls.push({name:'no-arrow-opt-in-preserves-default-rejection',passed:true,rejected:true});
-const sources={};for(const file of ['math-label-native-paths-self-test.mjs','math-label-native-paths.mjs','check-math-label-framing.mjs','arrow-log.mjs','arrow-driver-state.mjs'])
+const sources={};for(const file of ['math-label-native-paths-self-test.mjs','math-label-native-paths.mjs','math-label-framing.mjs','check-math-label-framing.mjs','arrow-log.mjs','arrow-driver-state.mjs'])
  sources['tools/TikzVisual/'+file]=sha256(await readFile(path.join(root,'tools/TikzVisual',file)));
-assert.equal(controls.length,16);
+assert.equal(controls.length,declaredCases.length+13);
 const report={schemaVersion:1,role:'math-native-path-and-bounds-controls',phase:'complete',completed:true,passed:true,controls,sources,inputReportSha256:owned.sha256,
  converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending'};
 await writeArtifact(output,'report.json',JSON.stringify(report,null,2)+'\n');

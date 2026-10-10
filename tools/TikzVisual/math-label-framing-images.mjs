@@ -7,7 +7,7 @@ import {installShapeMetrics} from './shape-image-pair.mjs';
 import {root,sha256,writeArtifact,outputPath} from './shape-oracle-bundle.mjs';
 import {loadCalcSavedReport} from './calc-saved-images.mjs';
 import {buildMathNativeVariants} from './math-label-native-svg.mjs';
-import {deriveMathFraming,mathFramingCases,withMathNaturalRoot} from './math-label-framing.mjs';
+import {deriveMathFraming,mathFramingFamily,withMathNaturalRoot} from './math-label-framing.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {checkMathFramingImages,mathFramingNumeric} from './check-math-label-framing.mjs';
 
@@ -17,6 +17,8 @@ const output=await outputPath(path.resolve(root,args[3])),artifacts={},sources={
 const save=(file,bytes)=>writeArtifact(output,file,bytes,artifacts),json=(file,value)=>save(file,JSON.stringify(value,null,2)+'\n');
 const nativeOwned=await loadCalcSavedReport(path.resolve(root,args[0]),'math-label-native-image-iteration');
 const publicOwned=await loadCalcSavedReport(path.resolve(root,args[1]),'math-label-candidate-export');
+const declaredCases=mathFramingFamily(nativeOwned.report.cases.map(c=>c.id));
+assert.deepEqual(publicOwned.report.records.map(c=>c.id),declaredCases.map(c=>c.id),'Public/native fixture coverage differs.');
 const nativeFiles=Object.fromEntries(Object.entries(nativeOwned.report.artifacts).filter(([file])=>file.startsWith('events/')));
 for(const file of Object.keys(nativeFiles))await save(file,nativeOwned.files.get(file));
 await save('inputs/native-report.json',nativeOwned.bytes);
@@ -34,7 +36,7 @@ for(const file of ['math-label-framing-images.mjs','math-label-framing.mjs','mat
 const renderer=await createRenderer();
 try{
  await installShapeMetrics(renderer);
- for(const declared of mathFramingCases){
+ for(const declared of declaredCases){
   const id=declared.id,prefix='events/'+id+'/',events=nativeOwned.json(prefix+'events.json'),measurements=nativeOwned.json(prefix+'measurements.json');
   const reference=nativeOwned.files.get(prefix+'oracle.svg').toString(),atlases={};
   for(const font of new Set(events.nodes.flatMap(n=>n.glyphs.map(g=>g.font))))atlases[font]=nativeOwned.files.get(prefix+'fonts/'+font+'.svg').toString();
