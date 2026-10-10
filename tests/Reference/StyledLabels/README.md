@@ -31,3 +31,21 @@ reports retain their historical, unapproved image-policy status. Frozen input
 restoration is separate from current conversion and final feature acceptance;
 new output must pass the required numeric/image/PDF/source checks before any
 current conformance claim.
+
+The existing independent current checker accepts this fixed one-case family or
+the original three-case math family. Run it on matching current primary/PDF
+reports and their frozen calibrations:
+
+```sh
+node tools/TikzVisual/check-math-label-current.mjs <current-primary> <current-PDF> <native-primary-calibration> <native-PDF-calibration>
+node tools/TikzVisual/math-label-current-self-test.mjs <current-primary> <current-PDF> <native-primary-calibration> <native-PDF-calibration>
+```
+
+It checks nine boxes/27 integer dimensions, 288 integer anchor coordinates,
+75 glyphs/two rules, all 24 primary views/2,400 regions and eight PDF views/808
+regions. Both routes must own identical public output and the exact frozen
+calibrations. PDF checking retains the native-only pixel envelope for the two
+thin rules as well as the ordinary regional checks. Shared corruption controls
+also reject omitted views, split source, forged summaries, changed decoded pixels
+and altered/missing rule envelopes. Final clean-source acceptance and integration
+remain separate.
