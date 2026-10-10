@@ -11,6 +11,7 @@ import {calcPrimaryViews} from './calc-primary-policy.mjs';
 import {calcPdfViews} from './calc-pdf-policy.mjs';
 import {calcTrialCachePath} from './calc-trial-cache-codec.mjs';
 import {calcProfileSha256} from './calc-profile-pin.mjs';
+import {calcHistoricalToolRead,calcCurrentCaptureHash} from './calc-capture-compatibility.mjs';
 export const calcProfileFile='tools/TikzVisual/calc-profile.json';
 export const calcProfilePinFile='tools/TikzVisual/calc-profile-pin.mjs';
 export const calcPolicyId='chromium-153-pgf-calc-coordinates-v1';
@@ -22,8 +23,9 @@ const entries=['calc-admission-policy.mjs','calc-admission-reader.mjs','calc-adm
   'calc-admission-child.mjs','prepare-calc-admission.mjs','compare-calc-conformance.mjs','check-calc-conformance.mjs'].map(f=>'tools/TikzVisual/'+f);
 const digest=value=>calcHash(Buffer.from(JSON.stringify(value)));
 export async function loadCalcQualification(root){
-  const native=await loadCalcNativeCache(root,{pixels:false}),publicTrial=await loadCalcTrialCache(root,{pixels:false});
-  await verifyCalcTrialCacheSources(publicTrial.evidence,root);
+  const historicalRead=calcHistoricalToolRead(root);
+  const native=await loadCalcNativeCache(root,{pixels:false,read:historicalRead}),publicTrial=await loadCalcTrialCache(root,{pixels:false});
+  await verifyCalcTrialCacheSources(publicTrial.evidence,root,{read:historicalRead});
   const reference=calcTrialOwned(publicTrial.evidence.trial,'reference');
   for(const key of ['primary','pdf']){
     const nativeBundle=native.evidence[key],prefix=key==='primary'?'primaryCalibration':'pdfCalibration';
@@ -34,7 +36,9 @@ export async function loadCalcQualification(root){
 }
 export async function calcAdmissionSources(e,root,read=readFile){
   const result={};for(const hashes of [e.native.evidence.sources,e.publicTrial.evidence.sources])for(const[f,h]of Object.entries(hashes)){
-    if(f.startsWith('src/Lokad.TikZ/'))continue;assert.ok(!Object.hasOwn(result,f)||result[f]===h,'Conflicting calc admission source');result[f]=h;
+    if(f.startsWith('src/Lokad.TikZ/'))continue;
+    const current=calcCurrentCaptureHash(f,h,await read(path.join(root,f)));
+    assert.ok(!Object.hasOwn(result,f)||result[f]===current,'Conflicting calc admission source');result[f]=current;
   }
   const queue=[...entries],seen=new Set();for(let i=0;i<queue.length;i++){
     const f=queue[i];if(seen.has(f)||f===calcProfilePinFile)continue;seen.add(f);assert.match(f,/^tools\/TikzVisual\/[a-z0-9.-]+\.mjs$/);

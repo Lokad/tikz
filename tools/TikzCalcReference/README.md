@@ -350,6 +350,13 @@ node tools/TikzVisual/calc-native-cache-self-test.mjs
 node tools/TikzVisual/prepare-calc-native-cache.mjs --replay
 ```
 
+These raw archive commands require the original captured tool versions. Current
+admission also supports the explicitly reviewed math capture additions for this
+fixed glyph-free fixture. Historical proof loading retains its owned source
+bytes; the current profile guards actual current tool bytes. Unknown versions
+remain rejected. Use the compatibility controls and admission preparation below
+for the reviewed current tools; the frozen calibration archives stay unchanged.
+
 Native verification independently decodes all 536 primary pairs/12,864 regional
 observations and all 100 PDF pairs/2,700 regional observations, derives both
 policies again and checks complete view/defect/visibility coverage. The primary
@@ -387,6 +394,7 @@ Its scope is only the fixed glyph-free fixture with opaque black 0.4-pt strokes.
 
 ```powershell
 node tools/TikzVisual/prepare-calc-admission.mjs
+node tools/TikzVisual/calc-capture-compatibility-self-test.mjs
 node tools/TikzVisual/calc-admission-self-test.mjs
 node tools/TikzVisual/compare-calc-conformance.mjs
 node tools/TikzVisual/check-calc-conformance.mjs artifacts/calc-conformance/run-<id>/report.json
