@@ -1,0 +1,127 @@
+{
+  "fonts": [
+    {
+      "number": 65,
+      "name": "ec-lmri12",
+      "sizeSp": 786432
+    },
+    {
+      "number": 59,
+      "name": "lmmi12",
+      "sizeSp": 786432
+    },
+    {
+      "number": 57,
+      "name": "rm-lmr8",
+      "sizeSp": 524288
+    },
+    {
+      "number": 56,
+      "name": "rm-lmr12",
+      "sizeSp": 786432
+    },
+    {
+      "number": 55,
+      "name": "ec-lmbx12",
+      "sizeSp": 786432
+    },
+    {
+      "number": 54,
+      "name": "ec-lmr12",
+      "sizeSp": 786432
+    },
+    {
+      "number": 53,
+      "name": "ec-lmri10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 50,
+      "name": "lmsy7",
+      "sizeSp": 458752
+    },
+    {
+      "number": 47,
+      "name": "lmmi7",
+      "sizeSp": 458752
+    },
+    {
+      "number": 46,
+      "name": "lmmi10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 45,
+      "name": "rm-lmr5",
+      "sizeSp": 327680
+    },
+    {
+      "number": 44,
+      "name": "rm-lmr7",
+      "sizeSp": 458752
+    },
+    {
+      "number": 43,
+      "name": "rm-lmr10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 42,
+      "name": "ec-lmbx10",
+      "sizeSp": 655360
+    },
+    {
+      "number": 41,
+      "name": "ec-lmr10",
+      "sizeSp": 655360
+    }
+  ],
+  "origins": [
+    "input",
+    "filter",
+    "output",
+    "review",
+    "diagram-label-1",
+    "diagram-label-2",
+    "diagram-label-3",
+    "diagram-label-4",
+    "diagram-label-5"
+  ],
+  "nativeFiles": {
+    "ec-lmri12.tfm": "879072f2a2086f46e61934977f2e919bb6f196c08442b5b62242e78e576820ce",
+    "lm-ec.enc": "7f9932c402d22a937b853406cfdf4166b80260e3ff21a03fe9a4c05105a2918c",
+    "lmri12.pfb": "78dc9fcb4af454305a5564d568eace838c375f3bf3d82337b0e87fdeb00e2d2c",
+    "lmmi12.tfm": "06870b7e003008214eefcf9bc4215006faff9edf5d99bee75211de57620d1818",
+    "lm-mathit.enc": "0d7b9e82ad6274470876761c22573c28db1f1b32d647b688230b3a366f0e373b",
+    "lmmi12.pfb": "19579dda4280cea64aacdd0f80b53b7f1e7930e98fe9858ab38aab33c8623836",
+    "rm-lmr8.tfm": "80bcbfd844d2310ac1d3bead45aee25e91b1a4a0a60ff1771959b9a1e90ec1a2",
+    "lm-rm.enc": "8bf8f9bd48d49aa3f3c597716908854e4d9207b009c109e6d9c5887feb856844",
+    "lmr8.pfb": "4a117a1dd9cf4f8b7eea4587eaa4f612be7ca329cb1d8255a2c6bb20febbfa69",
+    "rm-lmr12.tfm": "9d4e3d8e39a41b93d91f79c1c47d2297efb7b1af220b94860693c08361f227aa",
+    "lmr12.pfb": "d5fd4fdecfdbc8f97e955964aa2574927182303df178fe0c2e568fe9056e326c",
+    "ec-lmbx12.tfm": "d19c45859d453c0802699d27aa2bff735574b9bc97d8791aa76e3c7de6c38a36",
+    "lmbx12.pfb": "fb9b7cf1d13a8a837c2c6b238e7255f8d6f4cd6608bf3024ee68e43d04f01a08",
+    "ec-lmr12.tfm": "299021120f0a29ef61278a2363903bd8defbb8faaade458eb79067342aecb56f",
+    "ec-lmri10.tfm": "372f968b4eeb47bf6a6c941c8793bce118d1800f12e194a351c7493ecc158f2a",
+    "lmri10.pfb": "1239c71330ac8f0584e22f4d6abd0f016421fc73c545b15512ccf80b263f5c66",
+    "lmsy7.tfm": "3e92767469b4df54c985a533b8064789df60f21ab69d381dbf01bb608e3fbff8",
+    "lm-mathsy.enc": "a2980b38288ef4024b8a3e170c19c9d4e2ee8b7dde97a59e8148291ffd3443db",
+    "lmsy7.pfb": "c434f5fb70bc41978ac63c673556a2d913211f297947aa1f0d18b93da25ebe4b",
+    "lmmi7.tfm": "8548d4d19fc2b3671a5e11526f9013df8828b5b9b0f8277dc0ae7148bd1d33f5",
+    "lmmi7.pfb": "7c646a6a841c2e99909f7d5673d778fc104e43efad281ea0b5687636c544c639",
+    "lmmi10.tfm": "d9fce8963e8cb075bf31a5715a8f4a54688f7026b3a06e882ff2eb9c0d110320",
+    "lmmi10.pfb": "c24662506b402f3e0033cc75eb746eb490a1b7477e6b3ef52053f5025ec0fc57",
+    "rm-lmr5.tfm": "420a4fc1563b171e5a791bb71211d85e6bf62fd2f2ed2a7f34f742049d6e5071",
+    "lmr5.pfb": "584815958b6e66cf4ec2b590f93bd853117f862f4f0fa8b06f4ee6eb6035e845",
+    "rm-lmr7.tfm": "373a4f72b5a088f9caee2cfd75adb2b25116e0cba3ad2bfa99b5f8a7e902a482",
+    "lmr7.pfb": "cf94a1a79a32c446f11e585164463234a515721d509d2f2cfb0ab61f6f744ddc",
+    "rm-lmr10.tfm": "50dc8240a67003c1ec5bcd55f703c87189aeab0d199c42b4dc3e141a02488998",
+    "lmr10.pfb": "84eb01245abb17c0530ca3909427256d73df8bed2d7243b9f2717ca08c010ac8",
+    "ec-lmbx10.tfm": "0895c940bd2e763b70dcab18ebf27fd3f93c2490f43b2a8c028fc7fc24b2e855",
+    "lmbx10.pfb": "4acd67f9ece59a12e073aa863dbb1d5cea194f7f7b88ecce4659184d8275aa42",
+    "ec-lmr10.tfm": "cd13479f463b9a575d053dd7bf0884daa46bfdeffe4b7f537c193861652ac9e5"
+  },
+  "mapSha256": "d40c55f3e00607c98ae0d99112dcb56e18e9b9ea8febac443cfd6533469ac90d",
+  "glyphs": 75,
+  "rules": 2
+}

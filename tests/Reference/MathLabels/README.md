@@ -17,6 +17,11 @@ separate operations.
 | `math-label-contract` | 26 | 416 | 109 | 15 | 0 |
 | `math-atom-contract` | 28 | 448 | 306 | 20 | 0 |
 
+The additive [styled flowchart](native-layout/flowchart-styled-labels/README.md)
+grounds mixed prose/math and multiline interactions numerically. Its image
+inspection is an iteration result; its primary/PDF qualification remains open.
+It is selected explicitly and does not change the three-case default above.
+
 The small network combines five node labels and five path labels with
 positioning, calculated coordinates, degree functions, loops, styles and six
 arrows. The focused corpus exercises atom spacing, paired scripts in either
@@ -38,8 +43,9 @@ DVI movements, units, origins, font selections, glyph advances and rules are
 validated before comparing every box, anchor, glyph and rule. Native corruption
 controls exercise this reader. An approved math image policy remains separate.
 
-The `fonts/` directory retains sixteen original TFM inputs from the existing
-native runs. Their bytes must match both the selected font profiles and the
+The `fonts/` directory retains sixteen original TFM inputs from the qualified
+math runs and five additional EC TFM inputs used by the styled flowchart.
+Their bytes must match both the existing selected font profiles and the
 observations above. The shared native width decoder also recovers fractional
 driver advances, while the integer math measurements remain unchanged. The
 original SVG is bound to 1,194 origin/glyph/rule quantities, including rule

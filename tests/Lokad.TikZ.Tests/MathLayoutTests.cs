@@ -22,6 +22,7 @@ public sealed class MathLayoutTests
     [InlineData("MathLabels", "", "math-label-contract", 26)]
     [InlineData("MathLabels", "", "math-atom-contract", 28)]
     [InlineData("Diagrams", "Diagrams", "network-math-labels", 10)]
+    [InlineData("Diagrams", "Diagrams", "flowchart-styled-labels", 9)]
     public void Complete_math_corpus_measured_boxes_match_frozen_native_scaled_points(string fixtures, string references, string id, int count)
     {
         var sourceBytes = File.ReadAllBytes(Path.Combine(AppContext.BaseDirectory, "Fixtures", fixtures, id + ".tikz"));
@@ -39,7 +40,15 @@ public sealed class MathLayoutTests
                 .Select(a => a.GetProperty("anchor").GetString()).Distinct().Count());
         var trace = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "MathLabels", "native-layout", id, "native-positions.log"));
         using var observations = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "MathLabels", "native-layout", id, "font-observations.json")));
-        var events = NativeMathLabelTrace.Read(trace, NativeFaces(observations.RootElement), native.Select(n => n.GetProperty("name").GetString()!).ToArray());
+        var faces = NativeFaces(observations.RootElement);
+        if (id == "flowchart-styled-labels")
+        {
+            Assert.Equal(new[] { "bold-10", "bold-12", "italic-10", "italic-12", "regular-10", "regular-12" },
+                faces.Where(f => !f.Id.StartsWith("math-", StringComparison.Ordinal)).Select(f => f.Id).Order(StringComparer.Ordinal));
+            Assert.Equal(75, observations.RootElement.GetProperty("glyphs").GetInt32());
+            Assert.Equal(2, observations.RootElement.GetProperty("rules").GetInt32());
+        }
+        var events = NativeMathLabelTrace.Read(trace, faces, native.Select(n => n.GetProperty("name").GetString()!).ToArray());
         Assert.Equal(observations.RootElement.GetProperty("glyphs").GetInt32(), events.Sum(e => e.Glyphs.Length));
         Assert.Equal(observations.RootElement.GetProperty("rules").GetInt32(), events.Sum(e => e.Rules.Length));
         var bound = NativeMathSvg.Read(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Reference", "MathLabels", "native-layout", id, "oracle.svg")), events);
@@ -74,7 +83,9 @@ public sealed class MathLayoutTests
         foreach (var anchor in reference.RootElement.GetProperty("anchors").EnumerateArray())
         {
             var name = anchor.GetProperty("name").GetString()!; var node = scene.Nodes[indices[name]];
-            var metrics = NodeFontMetrics.Resolve(node.NodeFont, budget, origin);
+            // The frozen probes query after the picture, in the surrounding
+            // default font. PGF's mid anchor uses the querying font's ex.
+            var metrics = NodeFontMetrics.Resolve(TextFont.Default, budget, origin);
             var p = PgfTransform.Apply(node.Transform, node.Layout.Anchor(anchor.GetProperty("anchor").GetString()!, metrics, budget, origin).Bp, budget, origin);
             foreach (var (dimension, actual) in new[] { ("xSp", p.X), ("ySp", p.Y) })
             {

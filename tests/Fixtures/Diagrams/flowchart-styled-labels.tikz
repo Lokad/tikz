@@ -1,0 +1,18 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=12mm,
+  box/.style={draw,rectangle,inner sep=3pt,minimum width=#1}]
+  \node[box=18mm,font=\bfseries,align=center] (input) {Input\\$x_0$};
+  \node[box=20mm,right=of input,font=\itshape,align=left] (filter) {Filter\\$x^2+\alpha$};
+  \node[box=22mm,right=of filter,node font={\large\bfseries},align=right]
+    (output) {Output\\$y_1+y_2$};
+  \node[box=26mm,below=10mm of filter,align=left] (review)
+    {\textbf{Review} ffi.\\{\large\itshape Agpq}\\$\frac{x^2+1}{\sqrt{y}}$};
+  \draw[-{Stealth}] (input) -- node[midway,above,font=\large] {parse} (filter);
+  \draw[-{Stealth}] (filter) -- node[midway,above,font=\bfseries] {send} (output);
+  \draw[-{Stealth}] (filter.south) -- node[pos=.55,left,font=\itshape] {audit} (review.north);
+  \draw[-{Stealth},bend right=20] (review.east) to
+    node[midway,sloped,below,font={\large\bfseries}] {retry} (output.south);
+  \coordinate (return) at ($(review.south)+(-25mm,-10mm)$);
+  \draw[-{Stealth}] (review.south) |- (return) --
+    node[midway,sloped,below,align=center,font={\large\itshape}] {again\\later} (input.south);
+\end{tikzpicture}

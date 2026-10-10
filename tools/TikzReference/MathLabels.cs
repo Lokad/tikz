@@ -7,14 +7,18 @@ using Lokad.TikZ.Frontend;
 using Lokad.TikZ.Geometry;
 using Lokad.TikZ.Nodes;
 using Lokad.TikZ.Semantics;
+using Lokad.TikZ.Text;
 
 internal static partial class ReferenceTool
 {
     private static async Task<int> ExportMathLabels(string[] args)
     {
-        if (args.Length != 3 || args[1] != "--out")
-            throw new ArgumentException("Usage: TikzReference export-math-labels --out artifacts/...; three fixed trusted fixtures only.");
-        var output = ArtifactDirectory(args[2]);
+        var styled = args is [_, "--case", "flowchart-styled-labels", "--out", _];
+        if (!styled && (args.Length != 3 || args[1] != "--out"))
+            throw new ArgumentException("Usage: TikzReference export-math-labels [--case flowchart-styled-labels] --out artifacts/...; fixed trusted fixtures only.");
+        var fixtures = styled ? new[] { ("Diagrams", "flowchart-styled-labels") }
+            : new[] { ("Diagrams", "network-math-labels"), ("MathLabels", "math-label-contract"), ("MathLabels", "math-atom-contract") };
+        var output = ArtifactDirectory(args[^1]);
         var artifacts = new Dictionary<string, string>(StringComparer.Ordinal);
         var records = new List<object>();
         var phase = "source-capture";
@@ -45,10 +49,12 @@ internal static partial class ReferenceTool
                 "tools/TikzReference/NodeSvg.cs", "tools/TikzReference/TikzReference.csproj", "Directory.Build.props", "global.json" })
                 hashes.Add(file, HashFile(At(file)));
             SaveJson("candidate-source-hashes.json", hashes);
-            foreach (var (folder, id) in new[] { ("Diagrams", "network-math-labels"), ("MathLabels", "math-label-contract"), ("MathLabels", "math-atom-contract") })
+            foreach (var (folder, id) in fixtures)
             {
                 phase = id + "/public-conversion-and-parity";
                 var bytes = File.ReadAllBytes(At($"tests/Fixtures/{folder}/{id}.tikz"));
+                if (styled && Convert.ToHexStringLower(SHA256.HashData(bytes)) != "9a067e170478c3c082fe05733bcb9a5d564d198651ef4c5b6dd27485967c0c3e")
+                    throw new InvalidOperationException("Changed trusted styled-label fixture.");
                 var source = new UTF8Encoding(false, true).GetString(bytes);
                 GraphicsScene? scene = null;
                 var options = TikzOptions.Default with { IdPrefix = "candidate" };
@@ -67,7 +73,10 @@ internal static partial class ReferenceTool
                 var anchorBudget = new Budget(TikzLimits.Default, CancellationToken.None);
                 foreach (var (node, index) in scene.Nodes.Select((node, index) => (node, index)))
                 {
-                    var metrics = NodeFontMetrics.Resolve(node.NodeFont, anchorBudget, node.Source);
+                    // These post-picture queries run in the surrounding
+                    // default font, as pgfpointanchor does; node font sized
+                    // the shape but does not select the querying ex value.
+                    var metrics = NodeFontMetrics.Resolve(TextFont.Default, anchorBudget, node.Source);
                     trace["nodes"]![index]!["anchorsBp"] = JsonSerializer.SerializeToNode(NodeAnchorNames.ToDictionary(name => name,
                         name => PgfTransform.Apply(node.Transform, node.Layout.Anchor(name, metrics, anchorBudget, node.Source).Bp,
                             anchorBudget, node.Source)), Json);
