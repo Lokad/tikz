@@ -91,7 +91,7 @@ views, 240 PDF observations and 361 fresh source recaptures. The larger frozen
 reference matrices continue to establish reference policies and sensitivity.
 
 The existing runner limits restoration to three fixture jobs and comparison
-work to six jobs, builds numeric/export/native-observation tools once and runs
+work to four jobs, builds numeric/export/native-observation tools once and runs
 fresh conversions without repeated
 builds. It still awaits all in-flight children on failure and retains their logs.
 Shared report, process, archive and arrow-correction corruption identities run
@@ -104,6 +104,11 @@ families use the same comparison queue. This overlaps independent mechanisms
 without removing their executions; per-family dependency order and native
 policy/control deduplication remain separate. Every in-flight job is awaited
 before aggregate success or failure is published.
+
+Control discovery reads only the pinned calibration report and its hash-bound
+frame to select distinct corruption identities. Full artifact validation still
+runs in restoration, selected controls and every current checker. Discovery
+does not establish conformance or skip a fixture's independent positive checks.
 
 Materialization restores disjoint assets with eight bounded filesystem workers
 per fixture and awaits every in-flight operation before reporting a failure.
