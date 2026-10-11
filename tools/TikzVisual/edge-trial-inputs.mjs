@@ -7,6 +7,22 @@ import {edgeCanonical} from './edge-log.mjs';
 import {edgePrimaryContract} from './edge-primary-reference.mjs';
 import {deriveEdgePrimaryPolicy} from './edge-primary-policy.mjs';
 import {edgePdfCalibratedRoutes, deriveEdgePdfPolicy} from './edge-pdf-policy.mjs';
+import {edgeImageCacheReports} from './edge-image-cache.mjs';
+
+// The exact frozen report owns historical captures. Other qualifications must
+// still bind current tools; there is no general stale-source exemption.
+export async function verifyEdgeQualificationSources(role, bytes, report, read = readFile) {
+  const frozen = sha256(bytes) === edgeImageCacheReports[role].sha256;
+  const sources = {...report.sourceHashes};
+  for (const [p, h] of Object.entries(report.sourceHashes ?? {}))
+    assert.equal(report.artifacts['source-captures/' + p], h, 'Missing qualification source capture: ' + p);
+  for (const [p, h] of Object.entries(report.artifacts)) if (p.startsWith('source-captures/')) {
+    const file = p.slice(16); assert.ok(!sources[file] || sources[file] === h); sources[file] = h;
+  }
+  if (!frozen) for (const [p, h] of Object.entries(sources))
+    assert.equal(sha256(edgeCanonical(await read(path.join(root, p)))), h, 'Qualification source changed: ' + p);
+  return frozen;
+}
 
 export async function loadEdgeTrialInputs(files, save) {
   assert.deepEqual(Object.keys(files), ['primary', 'primaryCheck', 'pdf', 'pdfCheck']);
@@ -30,15 +46,14 @@ export async function loadEdgeTrialInputs(files, save) {
     } else {
       assert.equal(report.overallVerdict, 'pending'); assert.deepEqual(report.contract, edgePrimaryContract);
       assert.deepEqual(report.cases.map(c => c.id), ['continuation', 'styles', 'coordinates', 'nodes', 'clipping']);
-      for (const [p, h] of Object.entries(report.sourceHashes)) assert.equal(sha256(edgeCanonical(await readFile(path.join(root, p)))), h, 'Qualification source changed: ' + p);
       if (role === 'primary') assert.deepEqual(report.policy, deriveEdgePrimaryPolicy(report.cases));
       else for (const c of report.cases) for (const route of edgePdfCalibratedRoutes)
         assert.deepEqual(c.policies[route], deriveEdgePdfPolicy(c.measurements.filter(o => o.route === route), c.camera, c.regions, c.id + '/' + route));
     }
     const prefix = 'qualification/' + role;
+    await verifyEdgeQualificationSources(role, bytes, report);
     for (const [p, h] of Object.entries(report.artifacts)) {
       const b = await readFile(await outputPath(directory, p)); assert.equal(sha256(b), h, 'Qualification artifact changed: ' + p); await save(prefix + '/' + p, b);
-      if (p.startsWith('source-captures/')) assert.equal(sha256(edgeCanonical(await readFile(path.join(root, p.slice(16))))), h, 'Checker/source capture changed: ' + p);
     }
     await save(prefix + '/report.json', bytes); inputs[role] = {directory, prefix, bytes, report, read};
     records.push({role, input: file, sha256: sha256(bytes), copiedReport: prefix + '/report.json'});

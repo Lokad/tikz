@@ -5,6 +5,8 @@ import {randomUUID} from 'node:crypto';
 import path from 'node:path';
 import {root, sha256, writeArtifact} from './shape-oracle-bundle.mjs';
 import {loadEdgeImageCache, decodeEdgeImageCache, validateEdgeImageCache, edgeCacheRelative, edgeImageCacheSha256} from './edge-image-cache.mjs';
+import {edgeNativeRevisionsFile} from './edge-evidence.mjs';
+import {verifyEdgeQualificationSources} from './edge-trial-inputs.mjs';
 
 const base = path.join(root, 'artifacts/edge-image-cache-controls'), output = path.join(base, 'run-' + randomUUID()), controls = [];
 const e = await loadEdgeImageCache(), c = e.calibration;
@@ -31,8 +33,19 @@ reject('unreviewed empty archive', () => decodeEdgeImageCache(Buffer.alloc(0)));
 reject('compressed size bound', () => decodeEdgeImageCache(Buffer.alloc(64000001)));
 for (const p of ['../outside', '/absolute', 'C:/outside', 'a\\b', 'a//b', 'a/./b']) reject('unsafe path/' + p, () => edgeCacheRelative(p));
 const firstSource = Object.keys(e.toolHashes)[0];
-await assert.rejects(loadEdgeImageCache(async p => p === path.join(root, firstSource) ? Buffer.from('changed source') : readFile(p)));
-controls.push({name: 'changed qualification source before conversion', expected: 'reject', passed: true});
+const capturedSource = 'source-captures/' + firstSource;
+mutate('rehashed historical source capture', q => { const h = sha256('changed source');
+  q.assets = {...c.assets, ['primary/' + capturedSource]: h}; q.blobs = {...c.blobs, [h]: Buffer.from('changed source').toString('base64')}; });
+await assert.rejects(loadEdgeImageCache(async p => p === path.join(root, edgeNativeRevisionsFile) ? Buffer.from('{}') : readFile(p)));
+controls.push({name: 'unreviewed native source revisions before conversion', expected: 'reject', passed: true});
+const firstNativeSource = 'tools/TikzVisual/edge-driver-state.mjs';
+await assert.rejects(loadEdgeImageCache(async p => p === path.join(root, firstNativeSource) ? Buffer.from('changed source') : readFile(p)));
+controls.push({name: 'changed reviewed native reader before conversion', expected: 'reject', passed: true});
+const historical = e.reports.primary, historicalBytes = Buffer.from(c.reports.primary);
+await verifyEdgeQualificationSources('primary', historicalBytes, historical, async () => { throw Error('Historical tool must not be read.'); });
+await assert.rejects(verifyEdgeQualificationSources('primary', Buffer.concat([historicalBytes, Buffer.from(' ')]), historical,
+  async () => Buffer.from('changed source')));
+controls.push({name: 'unfrozen qualification still requires current sources', expected: 'reject', passed: true});
 for (const role of Object.keys(e.reports)) for (const [p, h] of Object.entries(e.reports[role].artifacts)) assert.equal(sha256(e.get(role, p)), h);
 controls.push({name: 'all 10200 original artifact digests reproduced', expected: 'pass', passed: true});
 const report = {schemaVersion: 1, comparisonKind: 'edge-image-cache-controls', completed: true, converterInvoked: false,

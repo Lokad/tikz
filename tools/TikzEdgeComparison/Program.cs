@@ -37,12 +37,14 @@ try
         var file = reference + a.Name; var bytes = File.ReadAllBytes(At(file)); Require(Hash(bytes) == a.Value.GetString(), "Changed native artifact: " + file);
         inputHashes[file] = Hash(bytes); Save("input-captures/" + file, bytes);
     }
+    var nativeRevisions = NativeSourceRevisions.Read(root);
+    Capture(NativeSourceRevisions.FileName, toolHashes);
     foreach (var s in snapshot.RootElement.GetProperty("sourceHashes").EnumerateObject())
-    { Capture(s.Name, toolHashes); Require(toolHashes[s.Name] == s.Value.GetString(), "Changed native source: " + s.Name); }
+    { Capture(s.Name, toolHashes); Require(NativeSourceRevisions.Matches(nativeRevisions, s.Name, s.Value.GetString()!, toolHashes[s.Name]), "Changed native source: " + s.Name); }
     using var manifest = JsonDocument.Parse(File.ReadAllText(At(reference + "cases.json")));
     var cases = manifest.RootElement.GetProperty("cases").EnumerateArray().ToArray(); var ids = new[] { "continuation", "styles", "coordinates", "nodes", "clipping" };
     Require(cases.Select(c => c.GetProperty("id").GetString()).SequenceEqual(ids), "Incomplete trusted corpus.");
-    foreach (var file in new[] { "tools/TikzEdgeComparison/Program.cs", "tools/TikzEdgeComparison/NativeComparison.cs", "tools/TikzEdgeComparison/TikzEdgeComparison.csproj", "tools/TikzEdgeComparison/packages.lock.json", "tools/TikzShapeComparison/NativeGlyphTrace.cs", "Directory.Build.props", "src/Lokad.TikZ/Lokad.TikZ.csproj", "src/Lokad.TikZ/packages.lock.json" }) Capture(file, toolHashes);
+    foreach (var file in new[] { "tools/TikzEdgeComparison/Program.cs", "tools/TikzEdgeComparison/NativeComparison.cs", "tools/TikzEdgeComparison/TikzEdgeComparison.csproj", "tools/TikzEdgeComparison/packages.lock.json", "tools/TikzEdgeOracle/NativeSourceRevisions.cs", "tools/TikzShapeComparison/NativeGlyphTrace.cs", "Directory.Build.props", "src/Lokad.TikZ/Lokad.TikZ.csproj", "src/Lokad.TikZ/packages.lock.json" }) Capture(file, toolHashes);
     foreach (var file in Directory.GetFiles(At("src/Lokad.TikZ"), "*.cs", SearchOption.AllDirectories).Where(f => !f.Contains(Path.DirectorySeparatorChar + "obj" + Path.DirectorySeparatorChar)).Order(StringComparer.Ordinal)) Capture(Path.GetRelativePath(root, file).Replace('\\', '/'), converterSources);
     foreach (var file in Directory.GetFiles(At("src/Lokad.TikZ/Resources"), "*.json", SearchOption.AllDirectories).Order(StringComparer.Ordinal)) Capture(Path.GetRelativePath(root, file).Replace('\\', '/'), converterSources);
     var rows = new List<object>(); var passed = true; var total = 0;

@@ -8,6 +8,11 @@ font metrics and SVG font identities. It validates the frozen snapshot, all
 116 native assets and nineteen reference sources before reading them, and
 checks input/source stability afterward.
 
+Historical snapshot source hashes remain intact. Three reviewed JavaScript
+reader revisions are pinned separately in `edge-native-source-revisions.json`;
+the shared .NET validator rejects every other source difference. Current tools
+and the revision record are captured and checked again after reading.
+
 ```text
 dotnet run --project tools/TikzEdgeOracle -c Release
 ```

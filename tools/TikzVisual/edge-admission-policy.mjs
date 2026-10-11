@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {root, sha256} from './shape-oracle-bundle.mjs';
-import {edgeCanonical} from './edge-log.mjs';
+import {edgeCanonical, edgeInputFiles} from './edge-log.mjs';
 import {edgeSnapshotSha256} from './edge-evidence.mjs';
 import {edgeImageCacheFile, edgeImageCacheSha256, edgeImageCacheDecodedSha256, edgeImageCacheReports, loadEdgeImageCache} from './edge-image-cache.mjs';
 import {edgePrimaryViews, edgePrimaryViewKey} from './edge-primary-policy.mjs';
@@ -17,15 +17,18 @@ export const edgePolicyId = 'chromium-153-native-pgf-straight-edges-v1';
 export const edgePolicyScope = 'Only the five fixed straight to/edge fixtures: 99 paths, 90 paints, two clips, four nodes, 64 anchors, one named coordinate and 16 glyphs. Calibrated derived-driver and ordinary-PDF agreement; exact pixels refer only to the independently reconstructed native SVG page.';
 export const edgeGateCounts = {numeric: 2585, frame: 630, primary: 3936, derivedPdf: 1372, candidatePdf: 1372, nativePage: 1332, freshPrimary: 150, freshPdfNative: 50};
 export const edgeAdmissionQualification = {
-  cacheControls: {report: 'artifacts/edge-image-cache-controls/run-fcc806ea-873e-46b9-a0bb-6abc978f004c/report.json', sha256: '36b97cffd754194b2afb7a5df429f1ed8d1df259d88f02c6cdbb92021f57af4d'},
-  cachedTrial: {report: 'artifacts/edge-cached-trial/run-ae228c0d-5d79-4af0-adc9-5d997d227257/report.json', sha256: '071acc378e2ca0d50a53dd47f9711392acbbadd57e8589c814c646444aa5ded1'},
-  trial: {report: 'artifacts/edge-public-trial/run-7f2290b5-ae5a-4a38-9e0c-021940d64425/report.json', sha256: '41473c68c456a3cf7a5b4e27aa5383fbb51bdce994d6d80eb4e8840f9f85a3c9'},
-  checker: {report: 'artifacts/edge-public-checks/run-d97c218c-377f-4124-9055-562bb816ef92/report.json', sha256: '03787497c4c7fe6bdf6ff2828a0aa2427011e91108a529edb45eb386605b099e'}
+  cacheControls: {report: 'artifacts/edge-image-cache-controls/run-c84128f2-ea1d-4cd4-ba2f-fd4bb2e51b6c/report.json', sha256: '22e9adca4d851d90faf2bf8030fc918548fffa6907ef2cd672d0c67607393cf8'},
+  cachedTrial: {report: 'artifacts/edge-cached-trial/run-459761dc-cddc-4e7d-8076-68da5e323deb/report.json', sha256: '7614b5ecd57e02270f7761b28c08298bec062601e69cc13fd83e3b2f738f259d'},
+  trial: {report: 'artifacts/edge-public-trial/run-87083d08-9a81-468a-a7b0-6ad520094ab4/report.json', sha256: 'fefd19eb30e3c436d78bd97701492d78f921b87ecfd00cd4eafacb2637f24fd8'},
+  checker: {report: 'artifacts/edge-public-checks/run-b77f75cb-3d7b-41d5-af83-dfe311da7a03/report.json', sha256: '25025133b532d2fce5b7c9d6bbd8b0340c10055d3f532175f0c529c17c70e990'}
 };
 const checkerControls = ['false-admission', 'false-converter-role', 'missing-case', 'missing-primary-view', 'missing-PDF-view', 'missing-native-page', 'changed-frame', 'changed-numeric', 'hidden-dot-correction', 'missing-original-diagnostics', 'missing-defect', 'numeric-mask', 'wrong-defect-target', 'false-visibility', 'missing-source-attribution', 'weakened-native-zero-gate', 'false-summary', 'missing-gallery', 'changed-qualification'];
 const extras = ['edge-image-cache.mjs', 'materialize-edge-image-cache.mjs', 'edge-image-owned-child.mjs', 'trial-edge-cached.mjs',
-  'edge-admission-policy.mjs', 'edge-admission-owned-child.mjs', 'prepare-edge-admission.mjs', 'compare-edge-conformance.mjs', 'edge-admission-self-test.mjs'].map(p => 'tools/TikzVisual/' + p);
-export const edgeGuardFiles = e => [...new Set([...Object.keys(e.toolHashes), ...edgeTrialSources, ...extras])].sort();
+  'edge-admission-policy.mjs', 'edge-admission-owned-child.mjs', 'prepare-edge-admission.mjs', 'compare-edge-conformance.mjs', 'edge-admission-self-test.mjs',
+  'edge-image-cache-self-test.mjs', 'edge-native-source-revisions.json'].map(p => 'tools/TikzVisual/' + p);
+export const edgeGuardFiles = e => [...new Set([...Object.keys(e.toolHashes), ...edgeTrialSources, ...edgeInputFiles, ...extras,
+  'tools/TikzEdgeOracle/NativeSourceRevisions.cs', 'tools/TikzEdgeComparison/Program.cs', 'tools/TikzEdgeComparison/TikzEdgeComparison.csproj',
+  'tools/TikzEdgeComparison/NativeComparison.cs', 'tools/TikzEdgeComparison/packages.lock.json'])].sort();
 const digest = value => sha256(JSON.stringify(value));
 const jsonRecord = value => JSON.parse(JSON.stringify(value));
 export function makeEdgeProfile(e, guardToolHashes) {

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "profile": "pgf-3.1.11a-straight-to-edge-v1",
+  "sources": {
+    "tools/TikzVisual/edge-driver-state.mjs": {
+      "historical": "c4644552717e8bfc5791de6ba810bbed91d5ea3b13968beea30cb9db3c887e47",
+      "current": "41286e81d674e3a2701ec4cfd650e10cb2e0afaec936c026c6dac917032f9487"
+    },
+    "tools/TikzVisual/labelled-border-pdf-vector.mjs": {
+      "historical": "4ad3e38812160a30aefa7ab978391358841b7e2e01c435b813c6dbeb6aa26845",
+      "current": "32ebc01bd92ea87ccc05a1b150187fda4d1cacd061937d02e1e694ad5a57879a"
+    },
+    "tools/TikzVisual/edge-replay.mjs": {
+      "historical": "c51334cbe7803a872b0bed7ab0007005b20ab5248452fcc1a8d79bac86a5c067",
+      "current": "51a70d59868b8a078a301f606e79a85ae3c2b33b1ea51129cbf6a795be899dcf"
+    }
+  }
+}

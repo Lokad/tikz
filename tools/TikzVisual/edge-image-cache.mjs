@@ -58,6 +58,7 @@ export function validateEdgeImageCache(c) {
         assert.deepEqual(q.policies[route], deriveEdgePdfPolicy(q.measurements.filter(o => o.route === route), q.camera, q.regions, q.id + '/' + route));
     }
     for (const [p, h] of Object.entries(r.sourceHashes ?? {})) { edgeCacheRelative(p); assert.match(h, digest); assert.ok(!toolHashes[p] || toolHashes[p] === h); toolHashes[p] = h; }
+    for (const [p, h] of Object.entries(r.sourceHashes ?? {})) assert.equal(r.artifacts['source-captures/' + p], h, 'Missing historical source capture: ' + p);
     for (const [p, h] of Object.entries(r.artifacts)) if (p.startsWith('source-captures/')) {
       const file = p.slice(16); edgeCacheRelative(file); assert.ok(!toolHashes[file] || toolHashes[file] === h); toolHashes[file] = h;
     }
@@ -84,7 +85,8 @@ export function decodeEdgeImageCache(compressed) {
 }
 export async function loadEdgeImageCache(read = readFile) {
   const e = decodeEdgeImageCache(await read(path.join(root, edgeImageCacheFile))), verified = validateEdgeImageCache(e.calibration);
-  for (const [p, h] of Object.entries(verified.toolHashes)) assert.equal(sha256(edgeCanonical(await read(path.join(root, p)))), h, 'Changed qualification source: ' + p);
-  const native = await loadEdgeEvidence(); assert.equal(native.snapshotSha256, e.calibration.snapshotSha256);
+  // Captured sources belong to the immutable reports, not the current tools.
+  // Current admission consumers have their own reviewed source guards.
+  const native = await loadEdgeEvidence(p => read(path.join(root, p))); assert.equal(native.snapshotSha256, e.calibration.snapshotSha256);
   return {...e, ...verified, native};
 }

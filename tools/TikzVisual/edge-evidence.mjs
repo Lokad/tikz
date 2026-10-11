@@ -9,6 +9,8 @@ import {verifyEdgeDriverState} from './edge-driver-state.mjs';
 import {canonicalEdgeSvg as svgDrawing} from './edge-replay.mjs';
 
 export const edgeSnapshotSha256='269a0bdd6eaa7f2e71b8558ba8b2a80b797c101139ad9b52c674d1aec4f0287a';
+export const edgeNativeRevisionsFile='tools/TikzVisual/edge-native-source-revisions.json';
+export const edgeNativeRevisionsSha256='db55ed1a5bb36c6ffac59d7da51c01e88b00b5515bf2ee278b6c0ced9e9db972';
 export const edgeReference='tests/Reference/Edges/';
 export const edgeCaseFiles=['svg-plain.log','plain-reference.svg','svg-probed.log','probed-reference.svg','native-positions.log',
   'pdf-plain.log','plain-reference.pdf','plain-pdf-page-1x.png','plain-pdf-page-4x.png','plain-pdf-info.txt','plain-pdf-fonts.txt',
@@ -34,8 +36,13 @@ export async function loadEdgeEvidence(read=relative=>readFile(path.join(root,re
   assert.equal(snapshot.schemaVersion,1);assert.equal(snapshot.profile,edgeProfile);roles(snapshot);
   assert.deepEqual(snapshot.cases.map(c=>c.id),edgeIds);
   assert.deepEqual(Object.keys(snapshot.sourceHashes).sort(),[...edgeInputFiles,...manifest.cases.map(c=>c.source)].sort());
+  const revisionBytes=edgeCanonical(await get(edgeNativeRevisionsFile));
+  assert.equal(sha256(revisionBytes),edgeNativeRevisionsSha256,'Unreviewed native source revisions.');
+  const revisions=JSON.parse(revisionBytes).sources;
   for(const[file,digest]of Object.entries(snapshot.sourceHashes)){
-    assert.match(digest,hashPattern);assert.equal(sha256(edgeCanonical(await get(file))),digest,'Changed edge reference source: '+file);
+    assert.match(digest,hashPattern);
+    const revision=revisions[file];if(revision)assert.equal(revision.historical,digest,'Changed historical native source: '+file);
+    assert.equal(sha256(edgeCanonical(await get(file))),revision?.current??digest,'Changed edge reference source: '+file);
   }
   assert.deepEqual(Object.keys(snapshot.artifacts).sort(),[...fontFiles,...edgeIds.flatMap(id=>edgeCaseFiles.map(f=>id+'/'+f))].sort());
   for(const[file,digest]of Object.entries(snapshot.artifacts)){

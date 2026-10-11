@@ -32,12 +32,13 @@ try
         nativeHashes[file] = Hash(bytes); Save("native-inputs/" + file, bytes);
     }
     var sourceHashes = new Dictionary<string, string>();
+    var nativeRevisions = NativeSourceRevisions.Read(root);
     foreach (var s in snapshot.RootElement.GetProperty("sourceHashes").EnumerateObject())
     {
-        var bytes = Canonical(File.ReadAllBytes(At(s.Name))); Require(Hash(bytes) == s.Value.GetString(), "Changed native source: " + s.Name);
+        var bytes = Canonical(File.ReadAllBytes(At(s.Name))); Require(NativeSourceRevisions.Matches(nativeRevisions, s.Name, s.Value.GetString()!, Hash(bytes)), "Changed native source: " + s.Name);
         sourceHashes[s.Name] = Hash(bytes); Save("source-captures/" + s.Name, bytes);
     }
-    foreach (var file in new[] { "tools/TikzEdgeOracle/Program.cs", "tools/TikzEdgeOracle/TikzEdgeOracle.csproj", "tools/TikzEdgeOracle/packages.lock.json", "tools/TikzShapeComparison/NativeGlyphTrace.cs", "Directory.Build.props", "global.json" })
+    foreach (var file in new[] { NativeSourceRevisions.FileName, "tools/TikzEdgeOracle/NativeSourceRevisions.cs", "tools/TikzEdgeOracle/Program.cs", "tools/TikzEdgeOracle/TikzEdgeOracle.csproj", "tools/TikzEdgeOracle/packages.lock.json", "tools/TikzShapeComparison/NativeGlyphTrace.cs", "Directory.Build.props", "global.json" })
     { var bytes = Canonical(File.ReadAllBytes(At(file))); sourceHashes[file] = Hash(bytes); Save("source-captures/" + file, bytes); }
     using var manifest = JsonDocument.Parse(File.ReadAllText(At(reference + "cases.json")));
     var cases = manifest.RootElement.GetProperty("cases").EnumerateArray().ToArray();

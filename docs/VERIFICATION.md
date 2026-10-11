@@ -128,6 +128,18 @@ fails without decoding unrelated pixels. The declared verdict, metrics and
 recapture summary must still equal independently computed values; metadata
 checks alone cannot establish conformance. All admission controls remain.
 
+Straight-edge cached admission preserves the exact four historical qualification
+reports, their source captures and all 10,200 assets. Those captures describe the
+tools used to produce frozen evidence; current tools have separate admission
+guards. The native snapshot retains its original hashes. Three explicitly pinned
+reader revisions permit later glyph auditing, starred PDF operators, exact
+scaled-point dimension checking and local glyph aliases; fixtures, wrappers,
+native outputs and limits remain exact. Both .NET development readers share the
+same revision validator. An arbitrary changed or rehashed revision record fails.
+Uncached qualifications still require current source equality. Every current
+admission runs fresh conversion and independent frame, numeric, primary/PDF,
+native-page and visible-defect checking before a conformance claim.
+
 The calc coordinator prepares provisional details from its independent checker.
 Before writing a completed report, the saved-receipt validator independently
 recomputes all trial pixels, policy decisions, source recapture and admission

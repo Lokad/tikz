@@ -33,6 +33,11 @@ and partial outputs. Fourteen ordinary test controls reject changed candidate
 geometry, missing edges, reordered paint, color/width/alpha/dash/cap, clipping,
 picture bounds, glyph placement/order and node frames.
 
+The native snapshot keeps its historical source hashes. The same revision
+validator used by `TikzEdgeOracle` accepts only three separately pinned reader
+updates; fixture, wrapper and artifact equality remains required. Current
+comparison sources and the revision record belong to the fresh report.
+
 For paired images and an HTML inspection viewer:
 
 ```text
