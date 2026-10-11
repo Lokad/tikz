@@ -1,5 +1,8 @@
 # Verification coverage and execution
 
+The [concise coverage index](VERIFICATION-COVERAGE.md) lists retained and
+consolidated checks, their acceptance boundaries and historical witnesses.
+
 Every check should close a supported-feature requirement or detect a named
 failure. Frozen reference qualification and checking current converter output
 are different tasks. Cached evidence is reusable only with its reviewed hashes,
