@@ -16,6 +16,7 @@ import {requiresSvgArrowFillCorrection} from './svg-arrow-color-evidence.mjs';
 import {verifyPathLabelEvidence} from './path-label-evidence.mjs';
 assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/diagram-arrow-reference.mjs <exact-original-diagram-report>');
 const expected={
+ 'flowchart-definitions':'3ce3467719edad6c46f13e153c26dcd080e6ce2868c588c59244b11d27148483',
  'flowchart-draw-color':'00382dca733736532da904d9246c7354565d22e91673a951218a229e052b5137',
  'arrow-color-contract':'48afc2076c84177c9b62aa7d583db5dfad0bf829c5f6b7746d0b32f5796b5bff',
  'flowchart-paint':'38e3c9edcca5fbdc25ecf8e614e9c8e0e3cd0c42b302e00374bae309f8f17722',
@@ -33,6 +34,7 @@ const expected={
  'network-bent':'da163c256834b3c94477f4e368cbe69cc700a867b93a0b73a210d3e7a4aa0e54',
  'flowchart-transformed':'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa'};
 const probeHashes={
+ 'flowchart-definitions':'5f4be2e8497e1659a9af51daf4bfa02dbc11b18ee58a250d8dc47ef5c4308076',
  'flowchart-draw-color':'9f405de1c802ffa12553cf096d0e681ffdaee5d24607ca582e3d59f8b0659988',
  'arrow-color-contract':'0f0c08a7ef63329ae6883692f695a0d83e6f68409dec4e3cb6b23aca7880b670',
  'flowchart-paint':'9f405de1c802ffa12553cf096d0e681ffdaee5d24607ca582e3d59f8b0659988',

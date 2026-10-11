@@ -20,8 +20,8 @@ TikzConversionResult TikzConverter.Convert(
 All arguments are explicit. `TikzOptions.Default` selects one
 `\begin{tikzpicture}...\end{tikzpicture}` environment, zero padding, default
 limits, no preloaded libraries and an automatically derived ID prefix.
-Before that picture, supported `\usetikzlibrary`, `\tikzset` and
-`\pgfmathsetmacro` statements are allowed. Only whitespace/comments may follow
+Before that picture, supported `\usetikzlibrary`, `\tikzset`, zero-argument
+`\def` and `\pgfmathsetmacro` statements are allowed. Only whitespace/comments may follow
 the picture. `TikzInputKind.PictureBody` instead parses supported statements
 without the picture wrapper. Neither input kind accepts a complete TeX document.
 

@@ -10,6 +10,8 @@ import {parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 import {edgePdfPage,edgeCanonical} from './edge-log.mjs';
 const frozen={
+ 'definitions-contract':'8a330cec15dc405fb700804aef3d88a5f286502278e30380d920c2ae4fac3df8',
+ 'flowchart-definitions':'5d9e24038b319f2c08fc080e095afa8b8c075fc216efb3dd1a34c10f2f4963e9',
  'flowchart-draw-color':'3d142d85514ee246f7c5eb87496af146af70a35b958e954ab793b5b020742218',
  'arrow-color-contract':'7e9ba8c6246ef1ce864d71552f970c8eead2cd0d75a0a903b5b5cb8411aecaea',
  'flowchart-paint':'824207226ad73f36cfee7f6cdd7a3e29409fa90e630c2085af19d96ea0140ac9',
@@ -32,11 +34,11 @@ const frozen={
  'math-macro-contract':'0f007f9f878fd179f44205e6d1cf0806d2a33e72e86461ed1f7b77944d18b006'
 };
 // Shared fixed-case classification; rectangle and arrow measurements stay separate.
-export const rectangleImageCounts=Object.freeze({'style-contract':7,'foreach-contract':29,'math-macro-contract':25,'math-functions-contract':37});
+export const rectangleImageCounts=Object.freeze({'definitions-contract':8,'style-contract':7,'foreach-contract':29,'math-macro-contract':25,'math-functions-contract':37});
 export const isRectangleImageCase=id=>Object.hasOwn(rectangleImageCounts,id);
 const plottingCases=new Set(['network-coordinate-plot','coordinate-plot-contract','network-function-plot','function-plot-contract','network-smooth-plot','smooth-plot-contract']);
 export const isPlotImageCase=id=>plottingCases.has(id);
-export const labelImageSourceFile=id=>'tests/Fixtures/'+(['coordinate-plot-contract','function-plot-contract','smooth-plot-contract'].includes(id)?'Plotting':id==='style-contract'?'Styles':id==='foreach-contract'?'Foreach':id==='math-macro-contract'?'MathMacros':id==='math-functions-contract'?'MathFunctions':'Diagrams')+'/'+id+'.tikz';
+export const labelImageSourceFile=id=>'tests/Fixtures/'+(['coordinate-plot-contract','function-plot-contract','smooth-plot-contract'].includes(id)?'Plotting':id==='definitions-contract'?'Definitions':id==='style-contract'?'Styles':id==='foreach-contract'?'Foreach':id==='math-macro-contract'?'MathMacros':id==='math-functions-contract'?'MathFunctions':'Diagrams')+'/'+id+'.tikz';
 export async function loadLabelImageEvidence(input){
  if(['placement','interactions'].includes(input))return loadPathLabelEvidence(input);
  const file=path.resolve(root,input),role=JSON.parse(await readFile(file)).role;

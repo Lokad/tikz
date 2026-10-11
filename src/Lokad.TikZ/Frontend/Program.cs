@@ -1,8 +1,17 @@
 namespace Lokad.TikZ.Frontend;
 
 internal abstract record Statement(Source Source);
-internal sealed record ScopeStatement(List<Option> Options, List<Statement> Body, Source Origin) : Statement(Origin);
-internal sealed record SetStatement(List<Option> Options, Source Origin) : Statement(Origin);
+internal sealed record ScopeStatement(List<Option> Options, List<Statement> Body, Source Origin) : Statement(Origin)
+{
+    internal Source? OptionsTemplate { get; init; }
+}
+internal sealed record SetStatement(List<Option> Options, Source Origin) : Statement(Origin)
+{
+    internal Source? OptionsTemplate { get; init; }
+}
+internal sealed record DefinitionStatement(Source Variable, Source Body, Source Origin) : Statement(Origin);
+internal sealed record TemplateStatement(Source Origin) : Statement(Origin);
+internal sealed record DefinitionCallStatement(Source Origin) : Statement(Origin);
 internal sealed record LibraryStatement(Source Names, Source Origin) : Statement(Origin);
 internal sealed record ForeachStatement(Source Variable, Source Values, Source Body, Source Origin) : Statement(Origin);
 internal sealed record MathAssignmentStatement(Source Variable, Source Expression, Source Origin) : Statement(Origin);

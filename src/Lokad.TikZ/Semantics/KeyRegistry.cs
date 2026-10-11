@@ -14,10 +14,20 @@ internal static class KeyRegistry
     }
     public static void Apply(IEnumerable<Option> options, EvaluationState state, Budget budget, int depth = 0)
     {
-        foreach (var option in options)
+        foreach (var original in options)
         {
+            var option = original;
             budget.Depth(option.Source, depth, budget.Limits.MaxExpansionDepth);
             var key = option.Key;
+            if (state.Definitions.Count != 0 && key.Contains('\\'))
+            {
+                var keySource = Options.Split(option.Source, '=', budget)[0];
+                var expandedKey = new TokenExpansion(state, budget).Expand(keySource);
+                if (Options.Split(expandedKey, ',', budget).Count != 1 || Options.Split(expandedKey, '=', budget).Count != 1)
+                    throw new CompileError("TIKZ002", "A token definition in a key must produce one supported key.", expandedKey);
+                key = Options.Clean(expandedKey);
+                option = option with { Key = key, Source = expandedKey };
+            }
             if (key.StartsWith("/tikz/", StringComparison.Ordinal)) key = key[6..];
             if (key.StartsWith("/pgf/", StringComparison.Ordinal)) key = key[5..];
             if (key.EndsWith("/.style", StringComparison.Ordinal)) { state.Styles[key[..^7]] = StyleExpansion.Read(option.Value, budget); continue; }
@@ -27,6 +37,11 @@ internal static class KeyRegistry
                 var additions = StyleExpansion.Read(option.Value, budget);
                 state.Styles[name] = state.Styles.TryGetValue(name, out var old) ? [.. old, .. additions] : additions;
                 continue;
+            }
+            if (state.Definitions.Count != 0 && option.Value.Length > 0)
+            {
+                var expandedValue = new TokenExpansion(state, budget).Expand(option.Value);
+                option = option with { Value = Options.Ungroup(expandedValue, budget) };
             }
             if (state.Styles.TryGetValue(key, out var style))
             {

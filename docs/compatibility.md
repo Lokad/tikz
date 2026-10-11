@@ -9,7 +9,7 @@ are separate from the fixed fixture evidence.
 ## Statements and base geometry
 
 `Picture` input contains one `tikzpicture`, optionally preceded by supported
-library/style/numeric-assignment statements. `PictureBody` contains the supported
+library/style/token-definition/numeric-assignment statements. `PictureBody` contains the supported
 statements directly. Percent comments, whitespace and balanced groups retain
 their defined parser meaning. Scope environments and braced statement groups
 restore local options; library availability is ordered within a conversion.
@@ -52,6 +52,7 @@ another family accepting a similar expression or option.
 | Calculated coordinates | Vector sums/factors, interpolation, physical distance, projection and selected rotated/nested modifiers | [Calc](CALC.md), [native tests](../tests/Lokad.TikZ.Tests/CalcCoordinateTests.cs) |
 | Styles | Scoped `/.style`/`/.append style`, automatic styles and one whole-value `#1` argument; no general TeX parameters | [Styles](STYLES.md), [tests](../tests/Lokad.TikZ.Tests/ParameterizedStyleTests.cs) |
 | Statement loops | One-variable literal lists/signed integer ranges and braced supported bodies | [Foreach](FOREACH.md), [tests](../tests/Lokad.TikZ.Tests/ForeachTests.cs) |
+| Token definitions | Zero-argument `\def\name{body}`, lazy scoped statement/value templates, source order and explicit cycles; no general TeX arguments | [Definitions](DEFINITIONS.md), [tests](../tests/Lokad.TikZ.Tests/DefinitionTests.cs) |
 | Numeric assignments | Scoped `\pgfmathsetmacro` targets and the guide's finite arithmetic subset | [Math macros](MATH-MACROS.md), [tests](../tests/Lokad.TikZ.Tests/MathMacroTests.cs) |
 | Scalar functions | Selected assignment arithmetic/trigonometry/min/max; other expression contexts do not widen this profile | [Math functions](MATH-FUNCTIONS.md), [native tests](../tests/Lokad.TikZ.Tests/MathFunctionTests.cs) |
 | Plotting | Sharp/smooth coordinate and finite function streams, connected plots, smooth cycle and bounded sampling | [Plotting](PLOTTING.md), [native tests](../tests/Lokad.TikZ.Tests/PlotTests.cs) |
@@ -64,7 +65,7 @@ enable the described subsets rather than executing the upstream library.
 Reloading does not reset definitions or state. No library availability leaks
 into another conversion. Unsupported library names produce `TIKZ002`.
 
-General TeX document commands, `\input`/file access, user `\def`/`\newcommand`,
+General TeX document commands, `\input`/file access, parameterized definitions/`\newcommand`,
 arbitrary package loading, unrestricted token expansion/typesetting, display
 math, external/installed fonts, automatic paragraph shaping, graph drawing,
 PGFPlots, file/gnuplot data, external images, raw SVG and script are outside the

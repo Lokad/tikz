@@ -14,7 +14,7 @@ export const pathLabelCompressedLimit=fixture=>fixture==='math-labels-pdf'?80000
 const controlRecord=file=>file.includes('/controls/')&&file.endsWith('/record.json');
 const metadata=fixture=>{assert.ok(['placement','interactions','flowchart-basic','network-bent','flowchart-transformed','flowchart-parameterized','style-contract','flowchart-foreach','foreach-contract','flowchart-math-macros','math-macro-contract','network-math-functions','math-functions-contract','math-labels-native','math-labels-primary','math-labels-pdf',
  'network-coordinate-plot','coordinate-plot-contract','network-function-plot','function-plot-contract','network-smooth-plot','smooth-plot-contract',
- 'styled-labels-native','styled-labels-primary','styled-labels-pdf','flowchart-paint','arrow-color-contract','flowchart-draw-color'].includes(fixture));return{schemaVersion:1,role:'path-label-native-image-cache',fixture,
+ 'styled-labels-native','styled-labels-primary','styled-labels-pdf','flowchart-paint','arrow-color-contract','flowchart-draw-color','definitions-contract','flowchart-definitions'].includes(fixture));return{schemaVersion:1,role:'path-label-native-image-cache',fixture,
  scope:'Frozen native calibration and sensitivity evidence only; current conversion and final feature conformance remain separate.',
  converterInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending'};};
 

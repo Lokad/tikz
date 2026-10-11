@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "role": "definition-frozen-image-profile",
+  "fixtures": {
+    "definitions-contract": {
+      "file": "tests/Reference/Definitions/definitions-contract.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "definitions-contract",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-bf8283a1-c1ba-4460-8e66-a386c51b8f12/report.json",
+            "sha256": "d452fc707c096f4e4b4bfd1bdb801bce94bc37ebafdd0f40903ad95642ae55fd"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-67b2ec50-8dec-4b4d-8441-5e2e80d0e764/report.json",
+            "sha256": "f1d458a324fe3a9eaef1dff60139e32c4505e6d490be06e6ec0daf32af0a1309"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-2a67ea8d-c466-41f8-befa-298316763d06/report.json",
+            "sha256": "95b9bae8803631c3ebc6a95bc58ae0a9c386ab94f158f1a29b59b158fe223e53"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-d1694ebd-ddb2-4a06-893a-8817f2ecfddb/report.json",
+            "sha256": "1c52ebceaf7bd5ccf000fd5bf08398bcedeaf6f9a8f87b0b9a5c4479b86677ad"
+          }
+        ],
+        "compressedSha256": "162ad3f383b99383bb90672d92e8bffd996e425ba685fc27e0ef7a0794115321",
+        "decodedSha256": "4bbe3538fd783ae1f39e514121224eacfb2cb573127d8dc13f0a4b8942a065df",
+        "compressedBytes": 5953111,
+        "decodedBytes": 24937557,
+        "logicalFiles": 1462,
+        "uniqueBlobs": 600,
+        "logicalBytes": 36993984,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    },
+    "flowchart-definitions": {
+      "file": "tests/Reference/Definitions/flowchart-definitions.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "flowchart-definitions",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-133ab5ab-6122-4be7-87ba-49e38ecf9cb7/report.json",
+            "sha256": "25438c66930df7efaf74a8138dfbc60998a1f79fb53fc2250efeeb276c9ff51d"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-0b13cb6e-e8e8-4bab-ba3f-7f3e8bc4dbe6/report.json",
+            "sha256": "b7085b6351a63c3ce9ee5daadab9fe2fd8ac782ab16dc0430b5fb88bc19a143c"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-9b92e4bd-ec2b-45a0-b79c-bf267dd4dd20/report.json",
+            "sha256": "4950ce8aacbe6fa92de09893b4fd5a73d730e307a2343de316a468ac3fa2d95b"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-09a18890-0baf-458a-9847-7816427e385c/report.json",
+            "sha256": "dff0e821c5f52e5462377bfa0356df1e67fcb3077a48ce77c7311a4d6490fe77"
+          }
+        ],
+        "compressedSha256": "3fdf8f062e723db372bd91a99175624f9b8413e31c19d1b4f0558ae20d2a87a6",
+        "decodedSha256": "98f31faf49c243e0adcfdaee47367fb0bea4eba6e1bd9217e144fd20233901a9",
+        "compressedBytes": 7063758,
+        "decodedBytes": 28835690,
+        "logicalFiles": 1639,
+        "uniqueBlobs": 700,
+        "logicalBytes": 42017371,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
+    }
+  },
+  "transportSources": {
+    "tools/TikzVisual/path-label-cache-codec.mjs": "27c8d63e8a8178fde225184072e8d9756375ae407ff6454f3537f83e8a1309f2",
+    "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
+    "tools/TikzVisual/path-label-cache.mjs": "61bf48c9b622bd5adb7f15e246fb84e528f0c39d3fa92cb22441f87b7a93326f"
+  }
+}

@@ -10,6 +10,8 @@
   calculated-coordinate library subsets.
 - Single-argument styles, statement loops, numeric assignments, selected scalar
   functions, inline math/multiline labels and bounded sharp/smooth plotting.
+- Scoped zero-argument token definitions, with lazy statement/value expansion,
+  source provenance, cycle diagnostics and shared limits/cancellation.
 - Independent native/reference, primary/PDF and visible-negative comparisons for
   fixed fixtures and complete flowchart/network interactions. Fast iteration is
   separate from final qualification, with unchanged reference evidence reused.

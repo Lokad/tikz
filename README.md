@@ -44,7 +44,7 @@ for each SVG when combining repeated conversions into one document.
 | Nodes and labels | [Nodes/anchors/borders](docs/NODES.md), [prose/multiline text](docs/TEXT.md), [inline math](docs/MATH-LABELS.md) |
 | Connections | [Straight edges](docs/EDGES.md), [curved edges](docs/CURVED-EDGES.md), [arrows](docs/ARROWS.md), [attached path labels](docs/PATH-LABELS.md) |
 | Libraries | [Positioning](docs/POSITIONING.md), [calculated coordinates](docs/CALC.md), plus the declared `arrows.meta` and `shapes.geometric` subsets |
-| Scoped computation | [Parameterized styles](docs/STYLES.md), [statement loops](docs/FOREACH.md), [numeric assignments](docs/MATH-MACROS.md), [selected functions](docs/MATH-FUNCTIONS.md) |
+| Scoped computation | [Token definitions](docs/DEFINITIONS.md), [parameterized styles](docs/STYLES.md), [statement loops](docs/FOREACH.md), [numeric assignments](docs/MATH-MACROS.md), [selected functions](docs/MATH-FUNCTIONS.md) |
 | Plots | [Sharp/smooth coordinate and finite function plots](docs/PLOTTING.md) |
 
 The [complete diagram corpus](tests/Fixtures/Diagrams/README.md) combines these

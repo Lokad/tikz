@@ -17,3 +17,9 @@ source-linked inspection and explicit unsupported/limit controls for all three
 diagrams. Reuse existing artifact/process/report handling and generic controls;
 retain separate native registration and semantic checks where they differ.
 Existing calc or arrow family admission does not qualify these interactions.
+
+`flowchart-definitions.tikz` additionally exercises lazy zero-argument token
+definitions in widths, styles, labels, coordinates and statement calls, with
+source-order/scoped redefinition. Its [focused mechanism corpus](../Definitions/definitions-contract.tikz)
+and [frozen native references](../../Reference/Definitions/README.md) retain
+independent measurements, original SVG, unmodified PDF and image-negative checks.

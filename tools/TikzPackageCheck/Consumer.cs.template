@@ -25,7 +25,7 @@ var records = args.Select(file =>
     return new { id = Path.GetFileNameWithoutExtension(file), success.Statistics,
         svgSha256 = Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(success.Svg))) };
 }).ToArray();
-if (records.Length != 4) throw new InvalidOperationException("Incomplete consumer corpus.");
+if (records.Length != 5) throw new InvalidOperationException("Incomplete consumer corpus.");
 Console.WriteLine(JsonSerializer.Serialize(new
 {
     completed = true, records,

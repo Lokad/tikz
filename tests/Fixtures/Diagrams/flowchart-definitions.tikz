@@ -1,0 +1,30 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\def\basewidth{12mm}
+\def\boxwidth{\basewidth}
+\def\gap{9mm}
+\def\painttone{blue}
+\def\captiontext{Input}
+\begin{tikzpicture}[node distance=\gap,
+  box/.style={draw=\painttone,rectangle,minimum width=\boxwidth,inner sep=3pt}]
+  \node[box] (input) {\captiontext};
+  \def\basewidth{16mm}
+  \def\captiontext{Check}
+  \def\placecheck{\node[box,right=of input] (check) {\captiontext};}
+  \placecheck
+  \begin{scope}
+    \def\basewidth{12mm}
+    \def\painttone{red}
+    \def\captiontext{Retry}
+    \node[box,below=of check] (retry) {\captiontext};
+  \end{scope}
+  \def\basewidth{14mm}
+  \node[box,right=of check] (output) {Output};
+  \def\readlabel{read}
+  \draw[-{Stealth}] (input) -- node[midway,above] {\readlabel} (check);
+  \draw[-{Stealth}] (check) -- node[midway,above] {ok} (output);
+  \draw[-{Stealth}] (check) -- node[midway,right] {again} (retry);
+  \def\drop{12mm}
+  \coordinate (return) at ($(input.south)+(0,-\drop)$);
+  \def\returnpath{\draw[-{Stealth}] (retry.west) -| (return) -- (input.south);}
+  \returnpath
+\end{tikzpicture}

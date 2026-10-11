@@ -19,6 +19,7 @@ const features={
  labels:['placement','interactions','flowchart-basic'],
  positioning:['flowchart-basic','network-bent','flowchart-transformed'],
  styles:['style-contract','flowchart-parameterized'],
+ definitions:['definitions-contract','flowchart-definitions'],
  foreach:['foreach-contract','flowchart-foreach'],
  macros:['math-macro-contract','flowchart-math-macros'],
  functions:['math-functions-contract','network-math-functions'],
@@ -109,11 +110,11 @@ async function nativeControls(fixture,pc,dc,text){
 // commands restore pinned trusted fixtures and never launch TeX.
 try{
  const cases=new Map();
- for(const directory of ['Diagrams','PathLabels','Styles','Foreach','MathMacros','MathFunctions','Plotting','PaintDiagrams','ArrowColors']){
+ for(const directory of ['Diagrams','PathLabels','Styles','Foreach','MathMacros','MathFunctions','Plotting','PaintDiagrams','ArrowColors','Definitions']){
   const profile=JSON.parse(await readFile(path.join(root,'tests/Reference/'+directory+'/image-profile.json')));
   for(const [fixture,entry]of Object.entries(profile.fixtures)){assert.ok(!cases.has(fixture));cases.set(fixture,{...entry,legacy:directory==='PathLabels',correction:directory==='ArrowColors'});}
  }
- const mathIds=['network-math-labels','math-label-contract','math-atom-contract'],all=[...cases.keys(),...mathIds,'flowchart-styled-labels'];assert.equal(all.length,26);
+ const mathIds=['network-math-labels','math-label-contract','math-atom-contract'],all=[...cases.keys(),...mathIds,'flowchart-styled-labels'];assert.equal(all.length,28);
  if(onlyCase)assert.ok(all.includes(onlyCase),'Unknown trusted fixture.');
  selected=onlyCase?[onlyCase]:qualification?all:features[feature];
  // Math's independent frozen contract binds its three-case family together.

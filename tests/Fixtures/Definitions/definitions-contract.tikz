@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+  \def\unused{\unused}
+  \def\widthalias{\basewidth}
+  \def\basewidth{8mm}
+  \def\painttone{red}
+  \tikzset{box/.style={draw=\painttone,rectangle,minimum width=\widthalias,inner sep=2pt}}
+  \node[box] (early) {Early};
+  \def\basewidth{12mm}
+  \def\painttone{blue}
+  \node[box] (late) at (2cm,0) {Late};
+  \begin{scope}
+    \def\basewidth{16mm}
+    \def\painttone{green}
+    \node[box] (local) at (4cm,0) {Local};
+  \end{scope}
+  \node[box] (restored) at (6cm,0) {Restored};
+  \def\boldword{\bfseries}
+  \node[box] (boundary) at (0,-1cm) {\boldword X};
+  \pgfmathsetmacro\offset{0.5}
+  \def\site{(2cm,-1cm)}
+  \def\placeone{\node[box] (placed) at \site {Placed};}
+  \placeone
+  \def\placerow{\node[box] (row\i) at (4cm+\i*1cm,-1cm) {Row \i};}
+  \foreach \i in {1,2} {\placerow}
+\end{tikzpicture}

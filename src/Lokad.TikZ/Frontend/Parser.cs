@@ -2,9 +2,17 @@ using Lokad.TikZ.Semantics;
 
 namespace Lokad.TikZ.Frontend;
 
-internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<string, Source>? bindings = null)
+internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<string, Source>? bindings = null, bool deferTemplates = false,
+    IReadOnlyCollection<string>? definitionNames = null)
 {
     private readonly Cursor _reader = new(source, budget);
+    private bool _templates = deferTemplates;
+    private HashSet<string> _definitions = definitionNames is null ? [] : CopyNames(definitionNames, source, budget);
+    private static HashSet<string> CopyNames(IReadOnlyCollection<string> names, Source origin, Budget budget)
+    {
+        budget.Charge(origin, names.Count);
+        return new(names, StringComparer.Ordinal);
+    }
     internal List<Statement> Body(int depth) => Statements("", depth);
     public List<Statement> Parse(TikzInputKind kind)
     {
@@ -16,12 +24,13 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             switch (command.Value)
             {
                 case "\\usetikzlibrary": result.Add(new LibraryStatement(_reader.Group('{', '}'), command)); break;
-                case "\\tikzset": result.Add(new SetStatement(Options.Read(_reader.Group('{', '}'), budget), command)); break;
+                case "\\tikzset": result.Add(ReadSet(command)); break;
+                case "\\def": result.Add(ReadDefinition(command)); break;
                 case "\\pgfmathsetmacro": result.Add(ReadMathAssignment(command)); break;
                 case "\\begin":
                     var environment = Options.Clean(_reader.Group('{', '}'));
                     if (environment != "tikzpicture") throw new CompileError("TIKZ002", "Expected a tikzpicture environment.", command);
-                    result.Add(new ScopeStatement(ReadOptions(), Statements("tikzpicture", 1), command));
+                    result.Add(ReadScope(command, "tikzpicture", 1));
                     _reader.Complete();
                     return result;
                 default: throw new CompileError("TIKZ002", $"Unsupported command '{command.Value}' before the picture.", command);
@@ -38,25 +47,20 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             if (_reader.Peek == '{')
             {
                 var group = _reader.Group('{', '}');
-                result.Add(new ScopeStatement([], new Parser(group, budget, bindings).Statements("", depth + 1), group));
+                result.Add(new ScopeStatement([], new Parser(group, budget, bindings, _templates, _definitions).Statements("", depth + 1), group));
                 continue;
             }
             var command = _reader.Command();
+            if (_templates && command.Value is "\\node" or "\\coordinate" or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip")
+            {
+                result.Add(new TemplateStatement(ReadStatementTemplate(command)));
+                continue;
+            }
             if (bindings is not null && command.Value is "\\node" or "\\coordinate" or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip")
             {
                 // Parse one bound statement at a time. Nested foreach headers and
                 // bodies remain templates until their own scoped binding exists.
-                while (!_reader.Take(";"))
-                {
-                    if (_reader.End) throw new CompileError("TIKZ001", "Unterminated loop statement; expected ';'.", command);
-                    if (_reader.Peek is '{' or '[' or '(')
-                    {
-                        var open = _reader.Peek;
-                        _reader.Group(open, open == '{' ? '}' : open == '[' ? ']' : ')');
-                    }
-                    else _reader.Advance();
-                }
-                var template = command with { Length = source.Offset + _reader.Position - command.Offset };
+                var template = ReadStatementTemplate(command);
                 result.AddRange(new Parser(Bind(template), budget).Body(depth));
                 continue;
             }
@@ -69,9 +73,10 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
                 case "\\begin":
                     var begin = Options.Clean(_reader.Group('{', '}'));
                     if (begin != "scope") throw new CompileError("TIKZ002", $"Unsupported environment '{begin}'.", command);
-                    result.Add(new ScopeStatement(ReadOptions(), Statements("scope", depth + 1), command));
+                    result.Add(ReadScope(command, "scope", depth + 1));
                     break;
-                case "\\tikzset": result.Add(new SetStatement(Options.Read(Bind(_reader.Group('{', '}')), budget), command)); break;
+                case "\\tikzset": result.Add(ReadSet(command)); break;
+                case "\\def": result.Add(ReadDefinition(command)); break;
                 case "\\usetikzlibrary": result.Add(new LibraryStatement(Bind(_reader.Group('{', '}')), command)); break;
                 case "\\foreach": result.Add(ReadForeach(command)); break;
                 case "\\pgfmathsetmacro": result.Add(ReadMathAssignment(command)); break;
@@ -86,13 +91,66 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
                 case "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip":
                     result.Add(ReadPath(command));
                     break;
-                default: throw new CompileError("TIKZ002", $"Unsupported command '{command.Value}'.", command);
+                default:
+                    if (_templates && _definitions.Contains(command.Value)) result.Add(new DefinitionCallStatement(command));
+                    else throw new CompileError("TIKZ002", $"Unsupported command '{command.Value}'.", command);
+                    break;
             }
         }
         if (environment.Length > 0) throw new CompileError("TIKZ001", $"Missing end of '{environment}'.", source.Slice(source.Length, 0));
         return result;
     }
     private Source Bind(Source value) => bindings is null ? value : SourceExpansion.Bind(value, bindings, budget);
+    private Source ReadStatementTemplate(Source command)
+    {
+        while (!_reader.Take(";"))
+        {
+            if (_reader.End) throw new CompileError("TIKZ001", "Unterminated statement; expected ';'.", command);
+            if (_reader.Peek is '{' or '[' or '(')
+            {
+                var open = _reader.Peek;
+                _reader.Group(open, open == '{' ? '}' : open == '[' ? ']' : ')');
+            }
+            else _reader.Advance();
+        }
+        return command with { Length = source.Offset + _reader.Position - command.Offset };
+    }
+    private ScopeStatement ReadScope(Source command, string environment, int depth)
+    {
+        var outer = _templates;
+        var names = _definitions.Count == 0 ? null : CopyNames(_definitions, command, budget);
+        Source? template = null;
+        List<Option> options;
+        if (_templates && _reader.Peek == '[') { template = _reader.Group('[', ']'); options = []; }
+        else options = ReadOptions();
+        var body = Statements(environment, depth);
+        _templates = outer;
+        if (names is null) _definitions.Clear(); else _definitions = names;
+        return new(options, body, command) { OptionsTemplate = template };
+    }
+    private SetStatement ReadSet(Source command)
+    {
+        var group = _reader.Group('{', '}');
+        if (!_templates) group = Bind(group);
+        return _templates ? new([], command) { OptionsTemplate = group } : new(Options.Read(group, budget), command);
+    }
+    private DefinitionStatement ReadDefinition(Source command)
+    {
+        if (_reader.Peek != '\\') throw new CompileError("TIKZ002", "Token definitions require one unbraced control-sequence target.", _reader.Here);
+        var variable = ReadVariable("Token definition");
+        if (_reader.Peek != '{') throw new CompileError("TIKZ002", "Token definitions support zero arguments and a braced body.", _reader.Here);
+        var body = _reader.Group('{', '}');
+        for (var position = 0; position < body.Length; position++)
+        {
+            budget.Charge(body.Slice(position, 1));
+            if (body.Span[position] == '%') { while (position < body.Length && body.Span[position] != '\n') { budget.Charge(body); position++; } continue; }
+            if (body.Span[position] == '\\') { position++; continue; }
+            if (body.Span[position] == '#') throw new CompileError("TIKZ002", "Token-definition parameters are unsupported.", body.Slice(position, 1));
+        }
+        _templates = true;
+        _definitions.Add(variable.Value);
+        return new(variable, body, command with { Length = source.Offset + _reader.Position - command.Offset });
+    }
     private List<Option> ReadOptions() => _reader.Peek == '[' ? Options.Read(Bind(_reader.Group('[', ']')), budget) : [];
     private ForeachStatement ReadForeach(Source command)
     {
@@ -111,6 +169,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         var variable = ReadVariable("Numeric assignment");
         if (_reader.Peek != '{') throw new CompileError("TIKZ001", "Expected a braced numeric expression.", _reader.Here);
         var expression = Bind(_reader.Group('{', '}'));
+        _definitions.Remove(variable.Value);
         return new(variable, expression, command with { Length = source.Offset + _reader.Position - command.Offset });
     }
     private Source ReadVariable(string feature)
@@ -118,7 +177,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         var variable = _reader.Command();
         if (variable.Length < 2 || variable.Span[1..].ContainsAnyExcept("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"))
             throw new CompileError("TIKZ002", $"{feature} requires one ASCII-letter control-sequence variable.", variable);
-        if (variable.Value is "\\begin" or "\\end" or "\\foreach" or "\\tikzset" or "\\usetikzlibrary" or "\\node" or "\\coordinate"
+        if (variable.Value is "\\begin" or "\\end" or "\\foreach" or "\\def" or "\\tikzset" or "\\usetikzlibrary" or "\\node" or "\\coordinate"
             or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip" or "\\shade"
             || variable.Span[1..].StartsWith("pgf", StringComparison.Ordinal) || variable.Span[1..].StartsWith("tikz", StringComparison.Ordinal))
             throw new CompileError("TIKZ002", $"{feature} cannot bind a reserved TikZ control sequence.", variable);
