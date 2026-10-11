@@ -30,15 +30,17 @@ export function validateCalcAdmissionReport(bytes,files,e){
   const reference=calcAdmissionBundle(files,'reference-input','calc-native-trial-reference-projection');assert.equal(reference.sha256,e.reference.sha256);
   assert.equal(r.inputs.trial.sha256,trial.sha256);assert.equal(r.inputs.checker.sha256,checker.sha256);assert.equal(r.inputs.recaptured.sha256,recaptured.sha256);
   assert.equal(checker.report.input.file,r.inputs.trial.sourceFile);
-  const combined=validateCalcCheckedTrial(e,trial,checker,recaptured),result=finishCalcAdmission(e.profile,combined);calcEqual(r.result,result,'Saved calc verdict differs');
-  calcEqual(r.metrics,combined.metrics);calcEqual(r.reproduction,combined.reproduction);
   const expectedSources={...e.profile.guardToolHashes,...trial.json('candidate/candidate-source-hashes.json')};calcEqual(r.sourceHashes,expectedSources,'Saved current compiler/tool sources differ');
   const expected=new Set(['profile.json','acceptance-pin.mjs','qualification/native-calibration.bin.gz','qualification/public-trial.bin.gz','agent-inspection.json',
     'export-command.log','trial-command.log','checker-command.log']);
   for(const prefix of ['trial','checker','recaptured','reference-input']){const b={trial,checker,recaptured,'reference-input':reference}[prefix];expected.add(prefix+'/report.json');for(const f of b.files.keys())expected.add(prefix+'/'+f);}
   for(const[f,h]of Object.entries(expectedSources)){expected.add('source-captures/'+f);assert.equal(calcHash(files.get('source-captures/'+f)),h,'Saved calc source capture differs');}
   calcEqual([...files.keys()].sort(),[...expected].sort(),'Unexpected/missing admitted calc artifact');
-  validateCalcAdmissionAgent(JSON.parse(files.get('agent-inspection.json')),trial,e.profile,result,files);
+  // Reject invalid ownership/entry metadata before full PNG validation. The
+  // declared result is still compared with the independent result below.
+  validateCalcAdmissionAgent(JSON.parse(files.get('agent-inspection.json')),trial,e.profile,r.result,files);
+  const combined=validateCalcCheckedTrial(e,trial,checker,recaptured),result=finishCalcAdmission(e.profile,combined);calcEqual(r.result,result,'Saved calc verdict differs');
+  calcEqual(r.metrics,combined.metrics);calcEqual(r.reproduction,combined.reproduction);
   return{bytes,sha256:calcHash(bytes),report:r,files,trial,checker,recaptured,combined,result};
 }
 export async function loadCalcAdmissionReport(file,e){

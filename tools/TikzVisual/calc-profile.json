@@ -393,7 +393,7 @@
     "tools/TikzVisual/calc-admission-agent.mjs": "42271a346ab1d36e1aec435363ac46e66514a243e336faf492a2f8dea194a70e",
     "tools/TikzVisual/calc-admission-child.mjs": "ac2fc155787ede560d4aa7fe843193c0b8f9452bf5f2fd3162a9aff14b38b2c3",
     "tools/TikzVisual/calc-admission-policy.mjs": "665a92d0468084079eae4cfcea31659b136b52563c338277b536ce3f176bf8a8",
-    "tools/TikzVisual/calc-admission-reader.mjs": "15f87cd193be26b4a17f5df2631e417c0c3fccbc4339cd2d137c7e6cf0a63242",
+    "tools/TikzVisual/calc-admission-reader.mjs": "22ec2f7fd58f8d0f1bae0c1c499e09325d0952196200023e33dfa69af5ca33f4",
     "tools/TikzVisual/calc-admission-self-test.mjs": "e9dc0c3c79cb8cdb344f2ccec05282784f557fd96821d24efe694485fc147dae",
     "tools/TikzVisual/calc-capture-compatibility.mjs": "c8ac96caae016ebdf39ae2b1b11d05541f82cc592c760cf31eadd9135361974e",
     "tools/TikzVisual/calc-layout-evidence.mjs": "8342d5737e5a85aa6994eabeec15c7a2a963297a6625c2e3bf7734aee2fed2a2",

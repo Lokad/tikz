@@ -96,6 +96,12 @@ and independent distances remain checked. Calc reviews this changed dependency
 through its existing exact source-pair and admission machinery before changing
 tool guards; native archives, policies, thresholds and scope remain frozen.
 
+Calc admission checks owned sources, artifact coverage and agent image links
+before its complete independent PNG pass. A substituted agent image therefore
+fails without decoding unrelated pixels. The declared verdict, metrics and
+recapture summary must still equal independently computed values; metadata
+checks alone cannot establish conformance. All admission controls remain.
+
 Math primary checks validate every owned frame and fault contract before
 decoding pixels. Structural faults in a later case therefore fail immediately;
 well-formed reports retain the full independent pixel and policy checks.
