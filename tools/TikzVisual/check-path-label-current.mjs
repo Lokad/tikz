@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {runCalcChild,readCalcChild,ownCalcBundle} from './calc-admission-child.mjs';
-import {loadQualifiedPathLabelPrimary} from './path-label-qualified-primary.mjs';
+import {loadQualifiedPathLabelPrimary,loadPathLabelCurrent,verifyPathLabelCalibrationReference} from './path-label-qualified-primary.mjs';
 import {labelImageSourceFile} from './diagram-image-evidence.mjs';
 import {pathLabelPrimaryPixelReader} from './path-label-primary-pixels.mjs';
 import {pathLabelPdfPixelReader} from './path-label-pdf-pixels.mjs';
@@ -20,15 +20,16 @@ import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {measureEdgeTrialPrimary} from './edge-trial-images.mjs';
 import {measureArrowVectorPair} from './arrow-vector-pair.mjs';
 import {measureEdgePdfPair} from './edge-pdf-image-pair.mjs';
-import {currentPrimaryViews,reportVerificationMode} from './verification-views.mjs';
+import {currentPrimaryViews,reportVerificationMode,reusesOriginalReference} from './verification-views.mjs';
 
 const primaryKey=v=>v.capture+'/'+v.frame+'/'+v.scale+'x-'+v.background;
 const pdfKey=v=>v.mode+'/'+v.frame+'/'+v.scale+'x';
 export function verifyPathLabelCurrentPixels(primary,pdf){
- const mode=reportVerificationMode(primary,pdf);
- assert.equal(pdf.report.reusedOriginalReference??false,mode==='iteration','Changed original-reference reuse policy.');
+ for(const bundle of [primary,pdf])verifyPathLabelCalibrationReference(bundle);
+ const mode=reportVerificationMode(primary,pdf),reuseReference=reusesOriginalReference(mode,primary.report.viewPolicy);
+ assert.equal(pdf.report.reusedOriginalReference??false,reuseReference,'Changed original-reference reuse policy.');
  const frame=primary.json('calibration/frame.json'),pdfFrame=pdf.json('calibration/pdf-frame.json');
- const primaryViews=currentPrimaryViews(mode,frame.caseId);
+ const primaryViews=currentPrimaryViews(mode,frame.caseId,primary.report.viewPolicy);
  const primaryPolicies=readPathLabelPrimaryPolicies({json:f=>primary.json('calibration/'+f)}),pdfPolicies=pdf.json('calibration/policies.json');
  assert.equal(primary.report.converterInvoked,false);assert.equal(pdf.report.converterInvoked,false);
  assert.equal(primary.report.nativeToolInvoked,false);assert.equal(pdf.report.nativeToolInvoked,false);
@@ -59,14 +60,14 @@ export function verifyPathLabelCurrentPixels(primary,pdf){
  for(const record of pdf.report.records){
   assert.equal(record.background,'white');assert.equal(record.file,'views/'+pdfKey(record)+'/record.json');const row=readPdf(record.file);
   calcEqual(pdfKey(row),pdfKey(record));assert.equal(row.background,'white');
-  if(mode==='iteration'&&record.mode==='original'){
+  if(reuseReference&&record.mode==='original'){
    const original=pdf.json('calibration/'+record.file),{evaluation:ignored,mode:ignoredMode,...saved}=row;
    calcEqual(saved,original,'Changed reused original PDF observation.');
    for(const image of Object.values(row.images))assert.ok(pdf.files.get(image).equals(pdf.files.get('calibration/'+image)),'Changed reused original PNG.');
   }
   verdict(record,row,evaluateShapePdfTrial(pdfPolicies[record.mode],{frame:record.frame,scale:record.scale,background:'white'},row));
  }
- return{verificationMode:mode,primaryPassed,pdfPassed,framing:{checks:4,toleranceCssPixels:framingTolerance,source,nativeCorners},primaryViews:primaryViews.length,pdfViews:8,primaryRegionChecks:primaryViews.length*frame.regions.length,pdfRegionChecks:8*pdfFrame.regions.length};
+ return{verificationMode:mode,viewPolicy:primary.report.viewPolicy,reusedOriginalReference:reuseReference,primaryPassed,pdfPassed,framing:{checks:4,toleranceCssPixels:framingTolerance,source,nativeCorners},primaryViews:primaryViews.length,pdfViews:8,primaryRegionChecks:primaryViews.length*frame.regions.length,pdfRegionChecks:8*pdfFrame.regions.length};
 }
 
 async function currentSources(bundle,prefix,historicalScripts=false){
@@ -81,12 +82,12 @@ function ownedEqual(owner,prefix,input){
 
 export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
  const [primaryFile,primaryCheckFile,pdfFile,pdfCheckFile]=args.map(f=>path.resolve(root,f));
- const primary=await loadCalcSavedReport(primaryFile,'path-label-current-primary-iteration');
- const pdf=await loadCalcSavedReport(pdfFile,'path-label-current-pdf-iteration');
- const primaryCalibrationFile=path.join(path.dirname(primaryFile),'calibration/report.json');
- const {calibration,checked,native,readerReplay}=await loadQualifiedPathLabelPrimary(primaryCalibrationFile,primaryCheckFile);
+ const primary=await loadPathLabelCurrent(primaryFile,'path-label-current-primary-iteration');
+ const pdf=await loadPathLabelCurrent(pdfFile,'path-label-current-pdf-iteration');
+ const primaryCalibrationFile=primary.referenceCalibration?.file??path.join(path.dirname(primaryFile),'calibration/report.json');
+ const {calibration,checked,native,readerReplay}=await loadQualifiedPathLabelPrimary(primaryCalibrationFile,primaryCheckFile,primary.referenceCalibration);
  if(readerReplay)await ownCalcBundle(readerReplay,'native-reader-replay',save);
- const pdfCalibration=await loadCalcSavedReport(path.join(path.dirname(pdfFile),'calibration/report.json'),'path-label-native-pdf-calibration');
+ const pdfCalibration=pdf.referenceCalibration??await loadCalcSavedReport(path.join(path.dirname(pdfFile),'calibration/report.json'),'path-label-native-pdf-calibration');
  const pdfChecked=await loadCalcSavedReport(pdfCheckFile,'path-label-independent-pdf-check');
  assert.equal(pdfChecked.report.inputSha256,pdfCalibration.sha256);assert.equal(pdfChecked.report.sourceRecaptures,pdfCalibration.report.records.length);
  assert.ok(pdfChecked.files.get('input-report.json').equals(pdfCalibration.bytes));
@@ -113,7 +114,7 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
  const pixels=verifyPathLabelCurrentPixels(primary,pdf);
  for(const[name,input]of Object.entries({primary,pdf,primaryCheck:checked,pdfCheck:pdfChecked}))await save('inputs/'+name+'-report.json',input.bytes);
  markConverter();
- const handle=await runCalcChild(root,'dotnet',['run','--project','tools/TikzPathLabelComparison','-c','Release','--',
+ const handle=await runCalcChild(root,'dotnet',['run','--project','tools/TikzPathLabelComparison','-c','Release',...(primary.report.viewPolicy?['--no-build']:[]),'--',
   path.relative(root,diagram?native.file:path.join(path.dirname(primaryFile),'numeric/native/report.json'))],'fresh-current',save);
  const fresh=await readCalcChild(root,handle,diagram?'diagram-current-numeric':'path-label-current-numeric');await ownCalcBundle(fresh,'fresh',save);
  assert.equal(fresh.report.converterInvoked,true);assert.equal(fresh.report.result.numericPassed,true);assert.equal(fresh.report.result.publicTraceParity,true);
@@ -139,14 +140,14 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
   }
   console.log(JSON.stringify({phase:'current-source-recapture',primaryViews:pixels.primaryViews}));
   for(const record of pdf.report.records){const row=pdf.json(record.file),original=row.mode==='original';
-   if(original&&pixels.verificationMode==='iteration')continue;
+   if(original&&pixels.reusedOriginalReference)continue;
    const pair=await measureEdgePdfPair(renderer,{svg:original?reference:svg,pdfPage:'data:image/png;base64,'+native.files.get('probed-pdf-page-'+row.scale+'x.png').toString('base64'),
     ...pdfFrame,regions:pdfFrame.regions.slice(0,1),frame:row.frame,scale:row.scale,units:original?'bp':'cssPixels',svgOriginBp:original?frame.origin:{x:0,y:0},cropLimit:0});
    for(const k of['sourceFrame','clipFrame','whole','fullPage','outsideWholeChangedPixels','repeat'])calcEqual(pair[k],row[k],'Current PDF source recapture differs: '+k);
    assert.ok(Buffer.from(pair.images['svg-page'],'base64').equals(pdf.files.get(row.images['svg-page'])),'Changed source-bound PDF PNG.');recaptured++;
   }
  }finally{await renderer.browser.close();}
- return{fixture:native.report.definition.id,verificationMode:pixels.verificationMode,reusedOriginalReferenceViews:pixels.verificationMode==='iteration'?4:0,inputSha256:{primary:primary.sha256,pdf:pdf.sha256,primaryCheck:checked.sha256,pdfCheck:pdfChecked.sha256},
+ return{fixture:native.report.definition.id,verificationMode:pixels.verificationMode,reusedOriginalReferenceViews:pixels.reusedOriginalReference?4:0,inputSha256:{primary:primary.sha256,pdf:pdf.sha256,primaryCheck:checked.sha256,pdfCheck:pdfChecked.sha256},
   pixels,sourceRecaptures:recaptured,freshNumericChecks:fresh.report.result.checks,converterSourceCaptures:captures.length,passed:pixels.primaryPassed&&pixels.pdfPassed};
 }
 

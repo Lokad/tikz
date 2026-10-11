@@ -8,8 +8,9 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {loadLabelImageEvidence} from './diagram-image-evidence.mjs';
 import {runCalcChild,readCalcChild} from './calc-admission-child.mjs';
 
-export async function loadQualifiedPathLabelPrimary(calibrationFile,checkFile){
- const calibration=await loadCalcSavedReport(path.resolve(root,calibrationFile),'path-label-native-primary-calibration');
+export async function loadQualifiedPathLabelPrimary(calibrationFile,checkFile,validatedCalibration){
+ const calibration=validatedCalibration??await loadCalcSavedReport(path.resolve(root,calibrationFile),'path-label-native-primary-calibration');
+ assert.equal(calibration.file,path.resolve(root,calibrationFile));
  const checked=await loadCalcSavedReport(path.resolve(root,checkFile),'path-label-independent-primary-check');
  assert.equal(checked.report.inputSha256,calibration.sha256);
  const views=calibration.report.records.length+calibration.report.controls.reduce((n,c)=>n+c.comparisons.length,0)+(calibration.report.rootRegistrations?.length??0);
@@ -47,4 +48,28 @@ export async function verifyPathLabelReaderReplay(calibration,native,replay){
  const captures=[...replay.files.keys()].filter(f=>f.startsWith('source-captures/')).sort();
  calcEqual(captures,[...calibration.files.keys()].filter(f=>f.startsWith('oracle/source-captures/')).map(f=>f.slice(7)).sort(),'Changed native reader source coverage.');
  for(const file of captures)assert.ok(replay.files.get(file).equals(await readFile(path.join(root,file.slice(16)))),'Stale native reader replay.');
+}
+
+export async function loadPathLabelCurrent(file,role){
+ const bundle=await loadCalcSavedReport(file,role),descriptor=bundle.report.referenceCalibration;
+ if(descriptor===undefined)return bundle;
+ assert.equal(bundle.report.viewPolicy,'mechanisms-v1');
+ assert.match(descriptor.file,/^artifacts\/[a-z-]+\/run-[a-f0-9-]+\/report\.json$/);
+ assert.match(descriptor.sha256,/^[a-f0-9]{64}$/);
+ const calibrationRole=role==='path-label-current-primary-iteration'?'path-label-native-primary-calibration':'path-label-native-pdf-calibration';
+ assert.ok(['path-label-current-primary-iteration','path-label-current-pdf-iteration'].includes(role));
+ const calibration=await loadCalcSavedReport(path.resolve(root,descriptor.file),calibrationRole);
+ assert.equal(calibration.sha256,descriptor.sha256,'Changed referenced calibration.');
+ assert.ok(!Object.keys(bundle.report.artifacts).some(f=>f.startsWith('calibration/')),'Mixed owned/referenced calibration.');
+ const files=new Map(bundle.files);files.set('calibration/report.json',calibration.bytes);
+ for(const[f,b]of calibration.files)files.set('calibration/'+f,b);
+ return{...bundle,referenceCalibration:calibration,files,json:f=>JSON.parse(files.get(f)),
+  png:f=>f.startsWith('calibration/')?calibration.png(f.slice(12)):bundle.png(f)};
+}
+
+export function verifyPathLabelCalibrationReference(bundle){
+ if(bundle.referenceCalibration===undefined)return;
+ const calibration=bundle.referenceCalibration;
+ calcEqual(bundle.report.referenceCalibration,{file:path.relative(root,calibration.file).replaceAll('\\','/'),sha256:calibration.sha256},'Changed calibration reference.');
+ assert.ok(!Object.keys(bundle.report.artifacts).some(f=>f.startsWith('calibration/')),'Mixed owned/referenced calibration.');
 }

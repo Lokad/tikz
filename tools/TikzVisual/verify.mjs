@@ -35,17 +35,19 @@ assert.ok(['iterate','qualify'].includes(action),'Usage: node tools/TikzVisual/v
 let feature='core',onlyCase;
 if(options.length){assert.equal(options.length,2);assert.ok(['--feature','--case'].includes(options[0]));
  if(options[0]==='--feature'){assert.equal(action,'iterate');assert.ok(Object.hasOwn(features,options[1]));feature=options[1];}else onlyCase=options[1];}
-const qualification=action==='qualify',mode=qualification?'qualification':'iteration',viewFlag=qualification?[]:['--iteration'];
+const qualification=action==='qualify',mode=qualification?'qualification':'iteration',viewFlag=qualification?['--qualification']:['--iteration'];
 const output=path.join(root,'artifacts/verification/run-'+randomUUID()),artifacts={},steps=[],rows=[],controls=[],consolidated=[],seen=new Map();
 const save=(f,b)=>writeArtifact(output,f,b,artifacts),json=(f,v)=>save(f,JSON.stringify(v,null,2)+'\n');
-const started=new Date().toISOString(),clock=performance.now();let phase='inputs',selected=[],sourceHashes;
-async function publish(completed,error){
+const started=new Date().toISOString(),clock=performance.now();let phase='inputs',selected=[],sourceHashes,publication=Promise.resolve();
+function publish(completed,error){
+ const next=publication.then(async()=>{
  const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'tikz-verification-run',completed,phase:completed?'complete':phase,
   verificationMode:mode,selectedFixtures:selected,fullDiagramMatrix:qualification&&!onlyCase,
   nativeToolInvoked:false,calibrationRegenerated:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
   started,finished:completed?new Date().toISOString():undefined,wallSeconds:(performance.now()-clock)/1000,artifacts,steps,rows,controls,consolidated,error,
   scope:qualification?'Required selected diagram matrix on current sources; remaining release/hosted qualification is separate.':'Affected numeric/images on current sources; full final qualification remains required.'},null,2)+'\n');
  await writeArtifact(output,'report.json',bytes);console.log(JSON.stringify({completed,phase,report:path.relative(root,path.join(output,'report.json')).replaceAll('\\','/'),sha256:sha256(bytes)}));
+ });publication=next;return next;
 }
 async function command(name,executable,args,kind='report',role){
  phase=name;console.log(JSON.stringify({phase,started:new Date().toISOString()}));const t=performance.now();
@@ -86,6 +88,13 @@ async function command(name,executable,args,kind='report',role){
  steps.push({name,command:{executable:path.basename(executable),arguments:args.map(a=>a.replaceAll(root,'<repo>'))},wallSeconds:(performance.now()-t)/1000,result});await publish(false);return result;
 }
 const node=(name,file,args=[],kind='report',role)=>command(name,process.execPath,['tools/TikzVisual/'+file,...args],kind,role);
+async function fixtureWork(fixtures,run){
+ let index=0,failed=false;
+ const workers=await Promise.allSettled(Array.from({length:Math.min(qualification?3:1,fixtures.length)},async()=>{
+  while(!failed&&index<fixtures.length){const fixture=fixtures[index++];try{await run(fixture);}catch(error){failed=true;throw error;}}
+ }));
+ for(const worker of workers)if(worker.status==='rejected')throw worker.reason;
+}
 async function snapshot(){
  const hashes={};
  async function visit(directory){for(const item of await readdir(path.join(root,directory),{withFileTypes:true})){
@@ -123,28 +132,45 @@ try{
  if(selected.some(id=>mathIds.includes(id)))selected=[...new Set([...selected,...mathIds])];
  sourceHashes=await snapshot();await json('source-hashes.json',sourceHashes);await publish(false);
  await command('ordinary','dotnet',['test','Lokad.TikZ.slnx','-c','Release','--logger','trx;LogFileName=verification.trx','--results-directory',path.join(output,'tests')],'tests');
- for(const fixture of selected.filter(id=>cases.has(id))){const entry=cases.get(fixture),[pc,pcheck,dc,dcheck,text]=entry.manifest.reports;
+ const diagramFixtures=selected.filter(id=>cases.has(id));
+ if(qualification){
+  for(const project of ['TikzPathLabelComparison','TikzReference'])await command(project+'-build','dotnet',['build','tools/'+project,'-c','Release'],'build');
+ }
+ await fixtureWork(diagramFixtures,async fixture=>{
   await node(fixture+'-materialize','materialize-path-label-cache.mjs',[fixture],'report','path-label-portable-cache-materialization');
-  if(qualification)await nativeControls(fixture,pc,dc,text);
-  if(qualification&&entry.correction)await node(fixture+'-correction-controls','svg-arrow-color-evidence-self-test.mjs',[path.posix.dirname(pc.file)+'/native/original/report.json'],'controls');
-  const numeric=entry.legacy?await node(fixture+'-numeric','compare-path-label-numeric.mjs',[fixture],'report','path-label-numeric-iteration'):
-   await command(fixture+'-numeric','dotnet',['run','--project','tools/TikzPathLabelComparison','-c','Release','--',path.posix.dirname(pc.file)+'/native/report.json'],'report','diagram-current-numeric');
+ });
+ if(qualification)for(const fixture of diagramFixtures){
+  const entry=cases.get(fixture),[pc,,dc,,text]=entry.manifest.reports;
+  await nativeControls(fixture,pc,dc,text);
+  if(entry.correction){
+   if(!seen.has('arrow-correction')){await node(fixture+'-correction-controls','svg-arrow-color-evidence-self-test.mjs',[path.posix.dirname(pc.file)+'/native/original/report.json'],'controls');seen.set('arrow-correction',fixture);}
+   else consolidated.push({fixture,control:'arrow-correction/11-controls',representative:seen.get('arrow-correction')});
+  }
+ }
+ await fixtureWork(diagramFixtures,async fixture=>{
+  const entry=cases.get(fixture),[pc,pcheck,dc,dcheck]=entry.manifest.reports;
+  const numeric=entry.legacy?await node(fixture+'-numeric','compare-path-label-numeric.mjs',[fixture,...(qualification?['--no-build']:[])],'report','path-label-numeric-iteration'):
+   await command(fixture+'-numeric','dotnet',['run','--project','tools/TikzPathLabelComparison','-c','Release',...(qualification?['--no-build']:[]),'--',path.posix.dirname(pc.file)+'/native/report.json'],'report','diagram-current-numeric');
   const primary=await node(fixture+'-primary','compare-path-label-primary.mjs',[pc.file,numeric.report,...viewFlag],'report','path-label-current-primary-iteration');
   const pdf=await node(fixture+'-pdf','compare-path-label-pdf.mjs',[dc.file,numeric.report,...viewFlag],'report','path-label-current-pdf-iteration');
   const checked=await node(fixture+'-check','check-path-label-current.mjs',[primary.report,pcheck.file,pdf.report,dcheck.file],'report','path-label-independent-current-check');
   const result=JSON.parse(await readFile(path.join(root,checked.report))).result;assert.equal(result.passed,true);assert.equal(result.verificationMode,mode);
-  if(qualification){if(!seen.has('current')){await node(fixture+'-current-controls','path-label-current-self-test.mjs',[primary.report,pdf.report],'controls');seen.set('current',fixture);}
-   else consolidated.push({fixture,control:'current/8-controls',representative:seen.get('current')});}
   rows.push({fixture,numeric,primary,pdf,checked,result});await publish(false);
+ });
+ if(qualification&&diagramFixtures.length){
+  const fixture=diagramFixtures[0],row=rows.find(r=>r.fixture===fixture);
+  await node(fixture+'-current-controls','path-label-current-self-test.mjs',[row.primary.report,row.pdf.report],'controls');
+  for(const other of diagramFixtures.slice(1))consolidated.push({fixture:other,control:'current/shared-controls',representative:fixture});
  }
- for(const [family,owners]of [['math',mathLabelCacheReports],['styled',styledLabelCacheReports]]){
-  if(!selected.some(id=>family==='math'?mathIds.includes(id):id==='flowchart-styled-labels'))continue;
+ const labelFamilies=[['math',mathLabelCacheReports],['styled',styledLabelCacheReports]].filter(([family])=>selected.some(id=>family==='math'?mathIds.includes(id):id==='flowchart-styled-labels'));
+ await fixtureWork(labelFamilies,async([family,owners])=>{
   for(const part of ['native','primary','pdf'])await node(family+'-'+part+'-materialize','materialize-path-label-cache.mjs',[(family==='math'?'math':'styled')+'-labels-'+part],'report','path-label-portable-cache-materialization');
   const [wrappers,native,pc,,pdfNative,pdfNativeCheck,dc,dcheck]=owners;
   if(qualification){await node(family+'-primary-controls','math-label-primary-self-test.mjs',[pc.file],'controls');
    await node(family+'-pdf-native-controls','math-label-pdf-native-self-test.mjs',[pdfNative.file,wrappers.file,pc.file,pdfNativeCheck.file],'controls');
    await node(family+'-pdf-controls','math-label-pdf-self-test.mjs',[dc.file],'controls');}
   const args=['run','--project','tools/TikzReference','-c','Release','--','export-math-labels'];if(family==='styled')args.push('--case','flowchart-styled-labels');
+  if(qualification)args.splice(args.indexOf('--'),0,'--no-build');
   args.push('--out','artifacts/verification-public-'+family+'/run-'+path.basename(output).slice(4));
   const exported=await command(family+'-public','dotnet',args,'report','math-label-candidate-export');
   const primary=await node(family+'-primary','math-label-primary-images.mjs',[native.file,pc.file,exported.report,...viewFlag],'report','math-label-current-primary-iteration');
@@ -153,8 +179,8 @@ try{
   const checkedReport=JSON.parse(await readFile(path.join(root,checked.report))),result=checkedReport.result;assert.equal(result.passed,true);assert.equal(result.verificationMode,mode);
   if(qualification){const controlled=await node(family+'-current-controls','math-label-current-self-test.mjs',[primary.report,pdf.report,pc.file,dc.file,'--controls-only'],'controls');bindControlBaseline(controlled,checkedReport);}
   rows.push({family,fixtures:family==='math'?mathIds:['flowchart-styled-labels'],exported,primary,pdf,checked,result});await publish(false);
- }
+ });
  if(qualification){await node('process-controls','qualification-process-self-test.mjs',[],'process');await node('cache-controls','path-label-cache-self-test.mjs',['--controls-only'],'controls');
-  await node('iteration-negative-controls','verification-views-self-test.mjs',[],'controls');}
- calcEqual(await snapshot(),sourceHashes,'Source changed during verification.');phase='complete';await publish(true);
+  await node('view-negative-controls','verification-views-self-test.mjs',[],'controls');}
+ calcEqual(await snapshot(),sourceHashes,'Source changed during verification.');rows.sort((a,b)=>selected.indexOf(a.fixture??a.fixtures[0])-selected.indexOf(b.fixture??b.fixtures[0]));phase='complete';await publish(true);
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,error.message);process.exitCode=1;}

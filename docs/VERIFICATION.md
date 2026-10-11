@@ -19,7 +19,7 @@ node tools/TikzVisual/verify.mjs iterate --feature arcs
 node tools/TikzVisual/verify.mjs iterate --feature fillrules
 node tools/TikzVisual/verify.mjs iterate --case flowchart-draw-color
 
-# All 30 diagrams, all original image views, independent checking and controls.
+# All 30 diagrams, focused current views, independent checking and controls.
 node tools/TikzVisual/verify.mjs qualify
 # A selected fixture has selected-scope qualification, never full-matrix status.
 node tools/TikzVisual/verify.mjs qualify --case smooth-plot-contract
@@ -43,6 +43,60 @@ compound contour winding and captured clip state, independent PGF/SVG/PDF rule
 checking and visible wrong-fill/clip-rule controls. All 30 fixtures remain in final qualification.
 Iteration runs the entire ordinary suite before the affected comparisons.
 No command above runs TeX. Only pinned repository fixtures are materialized.
+
+Routine current-output qualification uses the `mechanisms-v1` view policy.
+It replaces repeated camera products with the following eight interactions on
+every fixture; the smooth-plot contract additionally keeps natural 1x alpha,
+where its native topology policy has a demonstrated special branch.
+
+| Capture | Frame | Scale | Background | Requirement exercised |
+| --- | --- | ---: | --- | --- |
+| Intrinsic image | Natural | 1 | White | Natural dimensions and ordinary presentation |
+| Intrinsic image | Natural | 4 | White | Fine glyph, tip, stroke and punctuation differences |
+| Intrinsic image | Expanded | 1 | Transparent | Alpha, enclosing ink and overflow |
+| Intrinsic image | Expanded | 4 | Black | High-resolution contrast and expanded framing |
+| Explicit viewport | Natural | 1 | White | Independent viewport units and origin |
+| Explicit viewport | Natural | 4 | Black | High-resolution viewport sizing and contrast |
+| Explicit viewport | Expanded | 1 | Transparent | Viewport/alpha/overflow interaction |
+| Explicit viewport | Expanded | 4 | White | Fine viewport geometry with expanded ink |
+
+Both capture mechanisms independently exercise every frame, scale and
+background value. Extra products repeat those mechanisms; their removal must
+preserve a decoded rejecting witness for every previously visible negative.
+The view-selection control covers the full fixture corpus, including focused
+contracts, rather than sampling only complete diagrams. Its `--all` audit decodes
+one witness for every original negative. Routine execution consolidates nameless
+glyph absence, translation and label absence by fixture, font, punctuation/digit/
+letter class, node/path-label role and the smooth topology branch. Each alias
+names its retained representative. Named defects, non-glyph controls, math marks
+and positioning/transformed interaction controls remain individually checked.
+Every region of fresh output still receives independent checking; the alias
+mapping affects only repeated frozen sensitivity probes. Native calibration,
+original/corrected encodings and per-view pixel limits remain frozen. Historical
+reports without the policy marker retain their 24-view meaning; missing, split
+or unknown policy markers reject instead of silently changing interpretation.
+
+Both PDF frames and both scales remain on every diagram. Original native
+SVG/PDF observations are reused from their exact independently qualified
+calibration, with byte, source, renderer, registration and decoded-pixel checks.
+Routine path-label reports reference that calibration's exact artifact path and
+hash instead of copying its entire immutable image matrix into both reports.
+The existing owned-report reader validates every referenced byte; the checker
+reuses the resulting validated object. Missing/changed references and mixed
+owned/reference calibration reject. Historical reports retain their owned inputs.
+Fresh converter output is rendered on every candidate view and independently
+checked, including source recapture. This saves reference rerenders without
+substituting old converter output. The new matrix has 241 current primary
+views, 240 PDF observations and 361 fresh source recaptures. The larger frozen
+reference matrices continue to establish reference policies and sensitivity.
+
+The existing runner limits fixture work to three concurrent children, builds
+numeric/export tools once and runs their fresh conversions without repeated
+builds. It still awaits all in-flight children on failure and retains their logs.
+Shared report, process, archive and arrow-correction corruption identities run
+once; native numeric, math/styled ownership and reference policies keep their
+distinct checks. Live native-reference regeneration is a separate development
+operation and never part of this routine command.
 
 The report retains exact commands, child receipts, wall times, source hashes,
 failed regions and links to paired PNGs/crops. Changed source during a run is a

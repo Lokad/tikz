@@ -10,16 +10,16 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {mathFramingFamily} from './math-label-framing.mjs';
 import {mathFramingNumeric} from './check-math-label-framing.mjs';
 import {mathPrimaryNativeCase,mathPrimarySources,mathPrimaryKey,evaluateMathPrimary,measureMathPrimary} from './math-label-primary.mjs';
-import {verificationMode,currentPrimaryViews} from './verification-views.mjs';
+import {verificationMode,currentPrimaryViews,verificationViewPolicy} from './verification-views.mjs';
 
 assert.ok([5,6].includes(process.argv.length),'Usage: math-label-primary-images.mjs <native-image-report> <native-primary-calibration> <current-public-export> [--iteration]');
-const mode=verificationMode(process.argv[5]),views=currentPrimaryViews(mode);
+const mode=verificationMode(process.argv[5]),viewPolicy=verificationViewPolicy(process.argv[5]),views=currentPrimaryViews(mode,undefined,viewPolicy);
 const output=path.join(root,'artifacts/math-primary-current/run-'+randomUUID()),artifacts={},cases=[],sources={};
 const save=(f,b)=>writeArtifact(output,f,b,artifacts),json=(f,v)=>save(f,JSON.stringify(v,null,2)+'\n');
 let renderer,calibration,publicBundle,phase='current-input';let capturedPairs=0,regionChecks=0,sourceRecaptures=0,identicalNativeViews=0;
 async function publish(completed,extra={}){
  const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'math-label-current-primary-iteration',completed,phase:completed?'complete':phase,
-  verificationMode:mode,pixelCheckOwner:'independent-current-check',converterInvoked:true,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
+  verificationMode:mode,viewPolicy,pixelCheckOwner:'independent-current-check',converterInvoked:true,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
   calibrationSha256:calibration?.sha256,publicInputSha256:publicBundle?.sha256,renderer:renderer?.identity,cases,sources,artifacts,...extra},null,2)+'\n');
  await writeArtifact(output,'report.json',bytes);console.log(JSON.stringify({completed,report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(bytes)}));
 }

@@ -7,7 +7,8 @@ import {root,writeArtifact,sha256} from './shape-oracle-bundle.mjs';
 import {loadPathLabelEvidence} from './path-label-evidence.mjs';
 import {runCalcChild,readCalcChild,ownCalcBundle} from './calc-admission-child.mjs';
 
-assert.ok(process.argv.length===2||process.argv.length===3,'Usage: node tools/TikzVisual/compare-path-label-numeric.mjs [placement|interactions]');
+const noBuild=process.argv[3]==='--no-build';
+assert.ok(process.argv.length===2||process.argv.length===3||(process.argv.length===4&&noBuild),'Usage: node tools/TikzVisual/compare-path-label-numeric.mjs [placement|interactions] [--no-build]');
 const fixture=process.argv[2]??'placement';
 const output=path.join(root,'artifacts/path-label-iteration/run-'+randomUUID()),artifacts={};
 const save=(p,b)=>writeArtifact(output,p,b,artifacts);
@@ -23,7 +24,7 @@ await publish(false);
 try{
  const native=await loadPathLabelEvidence(fixture);await ownCalcBundle(native,'native',save);
  phase='current-conversion';converterInvoked=true;
- const handle=await runCalcChild(root,'dotnet',['run','--project','tools/TikzPathLabelComparison','-c','Release','--',
+ const handle=await runCalcChild(root,'dotnet',['run','--project','tools/TikzPathLabelComparison','-c','Release',...(noBuild?['--no-build']:[]),'--',
   path.relative(root,path.join(output,'native/report.json'))],'numeric',save);
  const candidate=await readCalcChild(root,handle,'path-label-current-numeric');
  await ownCalcBundle(candidate,'current',save);

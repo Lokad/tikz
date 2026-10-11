@@ -11,15 +11,16 @@ import {createShapeRasterMetrics} from './shape-raster-metrics.mjs';
 import {shapePdfViews} from './shape-pdf-trial-policy.mjs';
 import {mathFramingFamily} from './math-label-framing.mjs';
 import {mathPdfSources,mathPdfKey,mathPdfCoverage,evaluateMathPdf,measureMathPdf} from './math-label-pdf-images.mjs';
-import {verificationMode} from './verification-views.mjs';
+import {verificationMode,verificationViewPolicy,reusesOriginalReference} from './verification-views.mjs';
 assert.ok([5,6].includes(process.argv.length),'Usage: compare-math-label-pdf.mjs <native-PDF-calibration> <independent-PDF-check> <current-public-export> [--iteration]');
-const verification=verificationMode(process.argv[5]);
+const verification=verificationMode(process.argv[5]),viewPolicy=verificationViewPolicy(process.argv[5]);
+const reuseReference=reusesOriginalReference(verification,viewPolicy);
 const output=path.join(root,'artifacts/math-pdf-current/run-'+randomUUID()),artifacts={},records=[],sources={},cases=[],files=new Map();
 const save=(file,b)=>writeArtifact(output,file,b,artifacts),json=(file,v)=>save(file,JSON.stringify(v,null,2)+'\n');
 let renderer,calibration,checked,publicBundle,phase='inputs',capturedPairs=0,regionChecks=0,sourceRecaptures=0;
 async function publish(completed,extra={}){
  const bytes=Buffer.from(JSON.stringify({schemaVersion:1,role:'math-label-current-pdf-iteration',completed,phase:completed?'complete':phase,
-  verificationMode:verification,pixelCheckOwner:'independent-current-check',reusedOriginalReference:verification==='iteration',converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
+  verificationMode:verification,viewPolicy,pixelCheckOwner:'independent-current-check',reusedOriginalReference:reuseReference,converterInvoked:false,nativeToolInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,imageAdmission:'pending',
   calibrationSha256:calibration?.sha256,calibrationCheckSha256:checked?.sha256,publicInputSha256:publicBundle?.sha256,
   renderer:renderer?.identity,cases,records,sources,artifacts,...extra},null,2)+'\n');await writeArtifact(output,'report.json',bytes);
  console.log(JSON.stringify({completed,phase,report:path.relative(root,path.join(output,'report.json')).replaceAll('\\','/'),sha256:sha256(bytes)}));
@@ -48,7 +49,7 @@ try{
   assert.equal(exported.svgSha256,sha256(publicBundle.files.get(id+'/actual.svg')));const summary={id,views:[]};cases.push(summary);phase='current-pdf';
   const owner={caseId:id,native,files};
   for(const mode of ['original','candidate'])for(const view of shapePdfViews){
-   if(mode==='original'&&verification==='iteration'){
+   if(mode==='original'&&reuseReference){
     const index=calibration.report.records.find(r=>r.caseId===id&&r.encoding==='original'&&r.frame===view.frame&&r.scale===view.scale);assert.ok(index);
     const original=calibration.json(index.file),row={...original,mode},file=id+'/views/original/'+mathPdfKey(view)+'/record.json';
     for(const image of Object.values(row.images)){const bytes=calibration.files.get(image);await save(image,bytes);files.set(image,bytes);}
@@ -72,7 +73,7 @@ try{
   }
  }
  const views=family.length*shapePdfViews.length;
- assert.equal(capturedPairs,views*2);assert.equal(regionChecks,coverage.regions*shapePdfViews.length*2);assert.equal(sourceRecaptures,views*(verification==='iteration'?1:2));
+ assert.equal(capturedPairs,views*2);assert.equal(regionChecks,coverage.regions*shapePdfViews.length*2);assert.equal(sourceRecaptures,views*(reuseReference?1:2));
  for(const[f,digest]of Object.entries(sources))assert.equal(sha256(await readFile(path.join(root,f))),digest,'Source changed during current math PDF checking.');
  const gates=Object.fromEntries(['original','candidate'].map(mode=>[mode,{passed:records.filter(r=>r.mode===mode).every(r=>r.passed),views}]));
  await save('index.html','<!doctype html><meta charset="utf-8"><title>Current math PDF comparisons</title><h1>Current output against native-only PDF limits</h1><p><a href="report.json">Both captured routes and source recaptures</a>. Independent pixel checking and feature-final acceptance remain required.</p>'+

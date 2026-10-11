@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {root} from './shape-oracle-bundle.mjs';
-import {loadCalcSavedReport} from './calc-saved-images.mjs';
+import {loadPathLabelCurrent} from './path-label-qualified-primary.mjs';
 import {verifyPathLabelCurrentPixels} from './check-path-label-current.mjs';
 import {runPrimaryReportControls} from './primary-report-controls.mjs';
 
@@ -24,6 +24,19 @@ const defects=[
   ['unreviewed-reference-reuse','pdf',r=>r.reusedOriginalReference=false],
   ['rehashed-reused-reference','pdf',(r,json)=>json(r.records[0].file,v=>v.sourceFrame.x+=.25)]
  );
+ if(primary.report.viewPolicy!==undefined)defects.push(
+  ['missing-qualification-view-policy','primary',r=>delete r.viewPolicy],
+  ['split-qualification-view-policy','pdf',r=>r.viewPolicy='unreviewed'],
+  ['qualification-cannot-claim-iteration','primary',r=>r.verificationMode='iteration'],
+  ['unreviewed-reference-reuse','pdf',r=>r.reusedOriginalReference=false],
+  ['rehashed-reused-reference','pdf',(r,json)=>json(r.records[0].file,v=>v.sourceFrame.x+=.25)]
+ );
+ if(primary.referenceCalibration!==undefined)defects.push(
+  ['missing-calibration-reference','primary',r=>delete r.referenceCalibration],
+  ['changed-calibration-reference-hash','primary',r=>r.referenceCalibration.sha256='0'.repeat(64)],
+  ['split-calibration-reference-path','pdf',r=>r.referenceCalibration.file='artifacts/unreviewed/run-00000000-0000-0000-0000-000000000000/report.json'],
+  ['mixed-owned-referenced-calibration','primary',(r,json)=>json('calibration/frame.json',v=>v.origin.x+=.25)]
+ );
  return defects;
 }
 export function runPathLabelCurrentControls(primary,pdf){
@@ -35,6 +48,6 @@ export function runPathLabelCurrentControls(primary,pdf){
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  assert.equal(process.argv.length,4,'Usage: path-label-current-self-test.mjs <current-primary-report> <current-PDF-report>');
- const primary=await loadCalcSavedReport(path.resolve(root,process.argv[2]),'path-label-current-primary-iteration'),pdf=await loadCalcSavedReport(path.resolve(root,process.argv[3]),'path-label-current-pdf-iteration');
+ const primary=await loadPathLabelCurrent(path.resolve(root,process.argv[2]),'path-label-current-primary-iteration'),pdf=await loadPathLabelCurrent(path.resolve(root,process.argv[3]),'path-label-current-pdf-iteration');
  console.log(JSON.stringify({validated:true,controls:runPathLabelCurrentControls(primary,pdf)}));
 }

@@ -1,5 +1,5 @@
-// Affected iteration covers mechanisms and selected interactions. Native
-// calibration and final qualification retain every originally required view.
+// Current output covers independent mechanisms and selected interactions.
+// Frozen native calibration keeps its full product and per-view pixel policies.
 import assert from 'node:assert/strict';
 import {shapeViews} from './shape-primary-trial-policy.mjs';
 
@@ -15,18 +15,25 @@ export const iterationPrimaryViews=Object.freeze([
 ].map(Object.freeze));
 
 export function verificationMode(flag){
- assert.ok(flag===undefined||flag==='--iteration','Only --iteration is an optional view selector.');
- return flag?'iteration':'qualification';
+ assert.ok(flag===undefined||flag==='--iteration'||flag==='--qualification','Unknown view selector.');
+ return flag==='--iteration'?'iteration':'qualification';
 }
-export function currentPrimaryViews(mode,fixture){
+export const qualificationViewPolicy='mechanisms-v1';
+export const verificationViewPolicy=flag=>flag==='--qualification'?qualificationViewPolicy:undefined;
+export const reusesOriginalReference=(mode,policy)=>mode==='iteration'||policy===qualificationViewPolicy;
+export function currentPrimaryViews(mode,fixture,policy){
  assert.ok(['iteration','qualification'].includes(mode),'Unknown verification mode.');
- if(mode==='iteration'&&fixture==='smooth-plot-contract')return[...iterationPrimaryViews,
+ assert.ok(policy===undefined||policy===qualificationViewPolicy,'Unknown view policy.');
+ if(policy!==undefined)assert.equal(mode,'qualification','Qualification policy on iteration.');
+ const focused=mode==='iteration'||policy===qualificationViewPolicy;
+ if(focused&&fixture==='smooth-plot-contract')return[...iterationPrimaryViews,
   {capture:'intrinsic-image',frame:'natural',scale:1,background:'transparent'}];
- return mode==='iteration'?iterationPrimaryViews:
+ return focused?iterationPrimaryViews:
   ['intrinsic-image','explicit-viewport'].flatMap(capture=>shapeViews.map(view=>({capture,...view})));
 }
 export function reportVerificationMode(primary,pdf){
  const mode=primary.report.verificationMode??'qualification';
  assert.equal(pdf.report.verificationMode??'qualification',mode,'Split verification modes.');
- currentPrimaryViews(mode);return mode;
+ assert.equal(primary.report.viewPolicy,pdf.report.viewPolicy,'Split view policies.');
+ currentPrimaryViews(mode,undefined,primary.report.viewPolicy);return mode;
 }
