@@ -17,15 +17,27 @@ export const edgePolicyId = 'chromium-153-native-pgf-straight-edges-v1';
 export const edgePolicyScope = 'Only the five fixed straight to/edge fixtures: 99 paths, 90 paints, two clips, four nodes, 64 anchors, one named coordinate and 16 glyphs. Calibrated derived-driver and ordinary-PDF agreement; exact pixels refer only to the independently reconstructed native SVG page.';
 export const edgeGateCounts = {numeric: 2585, frame: 630, primary: 3936, derivedPdf: 1372, candidatePdf: 1372, nativePage: 1332, freshPrimary: 150, freshPdfNative: 50};
 export const edgeAdmissionQualification = {
-  cacheControls: {report: 'artifacts/edge-image-cache-controls/run-c84128f2-ea1d-4cd4-ba2f-fd4bb2e51b6c/report.json', sha256: '22e9adca4d851d90faf2bf8030fc918548fffa6907ef2cd672d0c67607393cf8'},
-  cachedTrial: {report: 'artifacts/edge-cached-trial/run-459761dc-cddc-4e7d-8076-68da5e323deb/report.json', sha256: '7614b5ecd57e02270f7761b28c08298bec062601e69cc13fd83e3b2f738f259d'},
-  trial: {report: 'artifacts/edge-public-trial/run-87083d08-9a81-468a-a7b0-6ad520094ab4/report.json', sha256: 'fefd19eb30e3c436d78bd97701492d78f921b87ecfd00cd4eafacb2637f24fd8'},
-  checker: {report: 'artifacts/edge-public-checks/run-b77f75cb-3d7b-41d5-af83-dfe311da7a03/report.json', sha256: '25025133b532d2fce5b7c9d6bbd8b0340c10055d3f532175f0c529c17c70e990'}
+  "cacheControls": {
+    "report": "artifacts/edge-image-cache-controls/run-95fb5d4e-1647-47e3-b402-0fb11b79eb4e/report.json",
+    "sha256": "cf86a83f4d080f408fab3d3f3751eec2e1d8757ec9e1cfe949befe44b105e464"
+  },
+  "cachedTrial": {
+    "report": "artifacts/edge-cached-trial/run-68ae7211-f9b2-49c1-a269-2edfb75adf40/report.json",
+    "sha256": "1eaaec427675771883aa507c3ca4735afb3c58bc5d7ef5cead0a22c80ab1fa14"
+  },
+  "trial": {
+    "report": "artifacts/edge-public-trial/run-28caa309-a102-435e-bcee-d4cee6846486/report.json",
+    "sha256": "3d8703e6c58ede402ee9632fa6abe8602ea76b876333e1c7eb7ba191c86cf192"
+  },
+  "checker": {
+    "report": "artifacts/edge-public-checks/run-aeb170da-46bf-4d28-86db-cdf2620b766a/report.json",
+    "sha256": "7928724a2ab603d5dcb90d166b9a497e8638c0d25c0bd08da36279f3c2c0174b"
+  }
 };
 const checkerControls = ['false-admission', 'false-converter-role', 'missing-case', 'missing-primary-view', 'missing-PDF-view', 'missing-native-page', 'changed-frame', 'changed-numeric', 'hidden-dot-correction', 'missing-original-diagnostics', 'missing-defect', 'numeric-mask', 'wrong-defect-target', 'false-visibility', 'missing-source-attribution', 'weakened-native-zero-gate', 'false-summary', 'missing-gallery', 'changed-qualification'];
 const extras = ['edge-image-cache.mjs', 'materialize-edge-image-cache.mjs', 'edge-image-owned-child.mjs', 'trial-edge-cached.mjs',
   'edge-admission-policy.mjs', 'edge-admission-owned-child.mjs', 'prepare-edge-admission.mjs', 'compare-edge-conformance.mjs', 'edge-admission-self-test.mjs',
-  'edge-image-cache-self-test.mjs', 'edge-native-source-revisions.json'].map(p => 'tools/TikzVisual/' + p);
+  'edge-image-cache-self-test.mjs', 'edge-native-source-revisions.json', 'qualification-source-guards.mjs'].map(p => 'tools/TikzVisual/' + p);
 export const edgeGuardFiles = e => [...new Set([...Object.keys(e.toolHashes), ...edgeTrialSources, ...edgeInputFiles, ...extras,
   'tools/TikzEdgeOracle/NativeSourceRevisions.cs', 'tools/TikzEdgeComparison/Program.cs', 'tools/TikzEdgeComparison/TikzEdgeComparison.csproj',
   'tools/TikzEdgeComparison/NativeComparison.cs', 'tools/TikzEdgeComparison/packages.lock.json'])].sort();

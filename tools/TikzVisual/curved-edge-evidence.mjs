@@ -7,6 +7,7 @@ import {edgeProfile,edgeIds,curvedInputFiles as edgeInputFiles,edgeManifest,edge
   parseCurvedEdgeLog as parseEdgeLog,edgeBox,edgePdfPage,edgePhysicalOrder} from './curved-edge-log.mjs';
 import {verifyEdgeDriverState} from './curved-edge-driver-state.mjs';
 import {canonicalEdgeSvg as svgDrawing} from './edge-replay.mjs';
+import {edgeNativeRevisionsFile, edgeNativeRevisionsSha256} from './edge-evidence.mjs';
 
 export const edgeSnapshotSha256='5d5730145e1a848d6f22c964d901be3c151bba3ebf5336c258144ec14076e0b1';
 export const edgeReference='tests/Reference/CurvedEdges/';
@@ -34,8 +35,13 @@ export async function loadEdgeEvidence(read=relative=>readFile(path.join(root,re
   assert.equal(snapshot.schemaVersion,1);assert.equal(snapshot.profile,edgeProfile);roles(snapshot);
   assert.deepEqual(snapshot.cases.map(c=>c.id),edgeIds);
   assert.deepEqual(Object.keys(snapshot.sourceHashes).sort(),[...edgeInputFiles,...manifest.cases.map(c=>c.source)].sort());
+  const revisionBytes=edgeCanonical(await get(edgeNativeRevisionsFile));
+  assert.equal(sha256(revisionBytes),edgeNativeRevisionsSha256,'Unreviewed native source revisions.');
+  const revisions=JSON.parse(revisionBytes).sources;
   for(const[file,digest]of Object.entries(snapshot.sourceHashes)){
-    assert.match(digest,hashPattern);assert.equal(sha256(edgeCanonical(await get(file))),digest,'Changed curved-edge reference source: '+file);
+    assert.match(digest,hashPattern);
+    const revision=revisions[file];if(revision)assert.equal(revision.historical,digest,'Changed historical native source: '+file);
+    assert.equal(sha256(edgeCanonical(await get(file))),revision?.current??digest,'Changed curved-edge reference source: '+file);
   }
   assert.deepEqual(Object.keys(snapshot.artifacts).sort(),[...fontFiles,...edgeIds.flatMap(id=>edgeCaseFiles.map(f=>id+'/'+f))].sort());
   for(const[file,digest]of Object.entries(snapshot.artifacts)){

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {root, sha256} from './shape-oracle-bundle.mjs';
-import {edgeCanonical} from './curved-edge-log.mjs';
+import {edgeCanonical, curvedInputFiles} from './curved-edge-log.mjs';
 import {edgeSnapshotSha256} from './curved-edge-evidence.mjs';
 import {edgeImageCacheFile, edgeImageCacheSha256, edgeImageCacheDecodedSha256, edgeImageCacheReports, loadEdgeImageCache} from './curved-edge-image-cache.mjs';
 import {edgePrimaryViews, edgePrimaryViewKey} from './curved-edge-primary-policy.mjs';
@@ -21,26 +21,29 @@ export const edgePolicyScope = 'Only the five fixed curved to/edge fixtures: 70 
 export const edgeGateCounts = {"numeric":2066,"frame":471,"primary":4728,"originalPdf":1636,"candidatePdf":1636,"nativePage":1596,"freshPrimary":210,"freshPdfNative":70};
 export const edgeAdmissionQualification = {
   "cacheControls": {
-    "report": "artifacts/curved-edge-image-cache-controls/run-9a023277-fb13-4e88-9eb4-06e35fdeb6fb/report.json",
-    "sha256": "cba85500602a8de7b41c484bb635438fe34f8d26c5a334fd96e6984e04cb1876"
+    "report": "artifacts/curved-edge-image-cache-controls/run-4659a754-5c2a-4187-8cab-a916377fedc7/report.json",
+    "sha256": "f8297103c8c894faa0fc98850ed4c9181e447decf2781c742e1746258d6e01a8"
   },
   "cachedTrial": {
-    "report": "artifacts/curved-edge-cached-trial/run-cc660086-b013-42d4-af1c-f84725295b39/report.json",
-    "sha256": "2e38cfc2daf710bd377af8ba05a5348c5158c175a294ac21a8715e59e186cb37"
+    "report": "artifacts/curved-edge-cached-trial/run-d016a17c-15d1-4cf4-8112-b695de6c6113/report.json",
+    "sha256": "e5068d7a59c87d59488971c6c43db0d0b142e9c3ee98e95b7e23b08f39c3b3d6"
   },
   "trial": {
-    "report": "artifacts/curved-edge-public-trial/run-a6e27ec4-57e5-4d4c-8816-46989f7f49cb/report.json",
-    "sha256": "e60e35a877e4d9384b12e699f2c0af3b1cf4f83f915bda01e91e9e61b36d4cf1"
+    "report": "artifacts/curved-edge-public-trial/run-bff959f0-c333-4a80-851e-f5ea50ae2397/report.json",
+    "sha256": "743690ca3de0ff7b616c665ff5f1f445a517bd14f010d414cb1d4d47648b5e28"
   },
   "checker": {
-    "report": "artifacts/curved-edge-public-checks/run-a1ec703b-5446-40a1-b2be-4183e1798395/report.json",
-    "sha256": "950537a347e1e5a75155e16e5b6405c9d43cdcc75e9e4f90790013f771da6f5b"
+    "report": "artifacts/curved-edge-public-checks/run-37193cef-b706-4d38-851b-3cac56960b16/report.json",
+    "sha256": "612a5b601fa7f679aef92f23d1af43c038bde1662e3116fc9af32100ac13af76"
   }
 };
 const checkerControls = ['false-admission', 'false-converter-role', 'missing-case', 'missing-primary-view', 'missing-PDF-view', 'missing-native-page', 'changed-frame', 'changed-numeric', 'invented-driver-correction', 'invented-original-diagnostics', 'missing-defect', 'numeric-mask', 'wrong-defect-target', 'false-visibility', 'missing-source-attribution', 'weakened-native-zero-gate', 'false-summary', 'missing-gallery', 'changed-qualification'];
 const extras = ['curved-edge-image-cache.mjs', 'materialize-curved-edge-image-cache.mjs', 'curved-edge-image-owned-child.mjs', 'trial-curved-edge-cached.mjs',
-  'curved-edge-admission-policy.mjs', 'curved-edge-admission-owned-child.mjs', 'prepare-curved-edge-admission.mjs', 'compare-curved-edge-conformance.mjs', 'curved-edge-admission-self-test.mjs', 'curved-edge-agent.mjs', 'curved-edge-agent-viewer.mjs', 'curved-edge-agent-self-test.mjs'].map(p => 'tools/TikzVisual/' + p);
-export const edgeGuardFiles = e => [...new Set([...Object.keys(e.toolHashes), ...edgeTrialSources, ...extras])].sort();
+  'curved-edge-admission-policy.mjs', 'curved-edge-admission-owned-child.mjs', 'prepare-curved-edge-admission.mjs', 'compare-curved-edge-conformance.mjs', 'curved-edge-admission-self-test.mjs', 'curved-edge-agent.mjs', 'curved-edge-agent-viewer.mjs', 'curved-edge-agent-self-test.mjs',
+  'curved-edge-image-cache-self-test.mjs', 'qualification-source-guards.mjs', 'edge-native-source-revisions.json', 'edge-evidence.mjs'].map(p => 'tools/TikzVisual/' + p);
+export const edgeGuardFiles = e => [...new Set([...Object.keys(e.toolHashes), ...edgeTrialSources, ...curvedInputFiles, ...extras,
+  'tools/TikzEdgeOracle/NativeSourceRevisions.cs', 'tools/TikzCurvedEdgeComparison/Program.cs',
+  'tools/TikzCurvedEdgeComparison/TikzCurvedEdgeComparison.csproj', 'tools/TikzCurvedEdgeComparison/packages.lock.json'])].sort();
 const digest = value => sha256(JSON.stringify(value));
 const jsonRecord = value => JSON.parse(JSON.stringify(value));
 export function makeEdgeProfile(e, guardToolHashes) {

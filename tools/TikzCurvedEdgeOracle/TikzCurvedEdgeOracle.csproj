@@ -1,4 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup><OutputType>Exe</OutputType><IsPackable>false</IsPackable></PropertyGroup>
   <ItemGroup><Compile Include="../TikzShapeComparison/NativeGlyphTrace.cs" Link="NativeGlyphTrace.cs" /></ItemGroup>
+  <ItemGroup><Compile Include="../TikzEdgeOracle/NativeSourceRevisions.cs" Link="NativeSourceRevisions.cs" /></ItemGroup>
 </Project>

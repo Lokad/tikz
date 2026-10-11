@@ -140,6 +140,16 @@ Uncached qualifications still require current source equality. Every current
 admission runs fresh conversion and independent frame, numeric, primary/PDF,
 native-page and visible-defect checking before a conformance claim.
 
+Curved-edge admission uses the same small qualification-source guard and the
+same three reviewed native-reader revisions. It preserves its own four reports,
+11,507 assets, uncorrected original-driver policy, PDF registration and eight
+gates. Its primary checker records inherited parent/oracle source hashes; those
+captures remain owned by their pinned parent reports. Straight-edge reports
+retain their own-capture requirement. Shared raw-source and byte/metadata
+corruptions run once in the straight-edge source controls; the curved native
+reader, reference ownership, visible defects and agent checks remain separate.
+Both trial reports capture the shared guard's source before fresh conversion.
+
 The calc coordinator prepares provisional details from its independent checker.
 Before writing a completed report, the saved-receipt validator independently
 recomputes all trial pixels, policy decisions, source recapture and admission

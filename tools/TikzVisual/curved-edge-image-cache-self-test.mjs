@@ -31,8 +31,11 @@ reject('unreviewed empty archive', () => decodeEdgeImageCache(Buffer.alloc(0)));
 reject('compressed size bound', () => decodeEdgeImageCache(Buffer.alloc(96000001)));
 for (const p of ['../outside', '/absolute', 'C:/outside', 'a\\b', 'a//b', 'a/./b']) reject('unsafe path/' + p, () => edgeCacheRelative(p));
 const firstSource = Object.keys(e.toolHashes)[0];
-await assert.rejects(loadEdgeImageCache(async p => p === path.join(root, firstSource) ? Buffer.from('changed source') : readFile(p)));
-controls.push({name: 'changed qualification source before conversion', expected: 'reject', passed: true});
+mutate('rehashed historical producer capture', q => { const h = sha256('changed source');
+  q.assets = {...c.assets, ['primary/source-captures/' + firstSource]: h}; q.blobs = {...c.blobs, [h]: Buffer.from('changed source').toString('base64')}; });
+const nativeReader = 'tools/TikzVisual/curved-edge-driver-state.mjs';
+await assert.rejects(loadEdgeImageCache(async p => p === path.join(root, nativeReader) ? Buffer.from('changed source') : readFile(p)));
+controls.push({name: 'changed curved native reader before conversion', expected: 'reject', passed: true});
 for (const role of Object.keys(e.reports)) for (const [p, h] of Object.entries(e.reports[role].artifacts)) assert.equal(sha256(e.get(role, p)), h);
 controls.push({name: 'all 11507 original artifact digests reproduced', expected: 'pass', passed: true});
 const report = {schemaVersion: 1, comparisonKind: 'curved-edge-image-cache-controls', completed: true, converterInvoked: false,

@@ -7,6 +7,14 @@ import {edgeCanonical} from './curved-edge-log.mjs';
 import {edgePrimaryContract} from './curved-edge-primary-reference.mjs';
 import {deriveEdgePrimaryPolicy} from './curved-edge-primary-policy.mjs';
 import {edgePdfCalibratedRoutes, deriveEdgePdfPolicy} from './curved-edge-pdf-policy.mjs';
+import {edgeImageCacheReports} from './curved-edge-image-cache.mjs';
+import {verifyQualificationSources} from './qualification-source-guards.mjs';
+
+export async function verifyEdgeQualificationSources(role, bytes, report, read = readFile) {
+  // The primary checker also records inherited parent/oracle sources. Their
+  // captures remain owned by those exact pinned reports, not this child.
+  return verifyQualificationSources(edgeImageCacheReports, role, bytes, report, read, !role.endsWith('Check'));
+}
 
 export async function loadEdgeTrialInputs(files, save) {
   assert.deepEqual(Object.keys(files), ['primary', 'primaryCheck', 'pdf', 'pdfCheck']);
@@ -30,15 +38,14 @@ export async function loadEdgeTrialInputs(files, save) {
     } else {
       assert.equal(report.overallVerdict, 'pending'); assert.deepEqual(report.contract, edgePrimaryContract);
       assert.deepEqual(report.cases.map(c => c.id), ['continuation', 'styles', 'coordinates', 'nodes', 'clipping']);
-      for (const [p, h] of Object.entries(report.sourceHashes)) assert.equal(sha256(edgeCanonical(await readFile(path.join(root, p)))), h, 'Qualification source changed: ' + p);
       if (role === 'primary') assert.deepEqual(report.policy, deriveEdgePrimaryPolicy(report.cases));
       else for (const c of report.cases) for (const route of edgePdfCalibratedRoutes)
         assert.deepEqual(c.policies[route], deriveEdgePdfPolicy(c.measurements.filter(o => o.route === route), c.camera, c.regions, c.id + '/' + route));
     }
     const prefix = 'qualification/' + role;
+    await verifyEdgeQualificationSources(role, bytes, report);
     for (const [p, h] of Object.entries(report.artifacts)) {
       const b = await readFile(await outputPath(directory, p)); assert.equal(sha256(b), h, 'Qualification artifact changed: ' + p); await save(prefix + '/' + p, b);
-      if (p.startsWith('source-captures/')) assert.equal(sha256(edgeCanonical(await readFile(path.join(root, p.slice(16))))), h, 'Checker/source capture changed: ' + p);
     }
     await save(prefix + '/report.json', bytes); inputs[role] = {directory, prefix, bytes, report, read};
     records.push({role, input: file, sha256: sha256(bytes), copiedReport: prefix + '/report.json'});

@@ -46,6 +46,8 @@ await verifyEdgeQualificationSources('primary', historicalBytes, historical, asy
 await assert.rejects(verifyEdgeQualificationSources('primary', Buffer.concat([historicalBytes, Buffer.from(' ')]), historical,
   async () => Buffer.from('changed source')));
 controls.push({name: 'unfrozen qualification still requires current sources', expected: 'reject', passed: true});
+await assert.rejects(verifyEdgeQualificationSources('primary', historicalBytes, {...historical, sourceHashes: {}}));
+controls.push({name: 'shared qualification metadata must match its bytes', expected: 'reject', passed: true});
 for (const role of Object.keys(e.reports)) for (const [p, h] of Object.entries(e.reports[role].artifacts)) assert.equal(sha256(e.get(role, p)), h);
 controls.push({name: 'all 10200 original artifact digests reproduced', expected: 'pass', passed: true});
 const report = {schemaVersion: 1, comparisonKind: 'edge-image-cache-controls', completed: true, converterInvoked: false,

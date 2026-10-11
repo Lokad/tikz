@@ -20,6 +20,7 @@ import {buildEdgeDeclaredFrame, evaluateEdgeDeclaredFrame, edgeTrialAttribution}
 import {edgeTrialDefects, mutateEdgeTrial} from './curved-edge-trial-defects.mjs';
 import {edgeNativePageVerdict, finishEdgeTrial} from './curved-edge-trial-policy.mjs';
 import {edgeTrialSources} from './curved-edge-trial-sources.mjs';
+import {verifyEdgeQualificationSources} from './curved-edge-trial-inputs.mjs';
 import {createRenderer} from './compare.mjs';
 import {installShapeMetrics} from './shape-image-pair.mjs';
 
@@ -54,7 +55,7 @@ try {
     for (const k of ['converterInvoked', 'approvedImagePolicy', 'imageConformanceClaim']) assert.equal(q[binding.role][k], false);
     assert.equal(q[binding.role].completed, true);
     for (const [p, h] of Object.entries(q[binding.role].artifacts)) assert.equal(sha256(await read('qualification/' + binding.role + '/' + p)), h);
-    for (const [p, h] of Object.entries(q[binding.role].sourceHashes ?? {})) assert.equal(sha256(edgeCanonical(await readFile(path.join(root, p)))), h);
+    await verifyEdgeQualificationSources(binding.role, b, q[binding.role]);
   }
   for (const role of ['primary', 'pdf']) assert.equal(q[role + 'Check'].inputReportSha256, report.qualification.find(r => r.role === role).sha256);
   const qualificationKinds = {primary: 'oracle-only-curved-edge-primary-calibration', primaryCheck: 'independent-curved-edge-primary-check',

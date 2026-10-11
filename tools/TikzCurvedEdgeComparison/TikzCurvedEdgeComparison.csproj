@@ -4,5 +4,6 @@
     <ProjectReference Include="../../src/Lokad.TikZ/Lokad.TikZ.csproj" />
     <Compile Include="../TikzEdgeComparison/NativeComparison.cs" Link="NativeComparison.cs" />
     <Compile Include="../TikzShapeComparison/NativeGlyphTrace.cs" Link="NativeGlyphTrace.cs" />
+    <Compile Include="../TikzEdgeOracle/NativeSourceRevisions.cs" Link="NativeSourceRevisions.cs" />
   </ItemGroup>
 </Project>

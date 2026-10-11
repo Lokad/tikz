@@ -20,7 +20,7 @@ for (const [role, pin] of Object.entries(edgeAdmissionQualification)) {
   await save('qualification/' + role + '/report.json', bytes);
 }
 const c = inputs.cacheControls; assert.equal(c.converterInvoked, false); assert.equal(c.approvedImagePolicy, false); assert.equal(c.imageConformanceClaim, false);
-assert.equal(c.controls.length, 33); assert.ok(c.controls.every(c => c.passed === true));
+assert.equal(c.controls.length, 34); assert.ok(c.controls.every(c => c.passed === true));
 validateEdgeCheckedTrial(e, inputs.cachedTrial, inputs.trial, inputs.checker, edgeAdmissionQualification.trial.sha256, edgeAdmissionQualification.checker.sha256);
 await verifyEdgeGuards(profile); const bytes = Buffer.from(JSON.stringify(profile, null, 2) + '\n'); await save('profile.json', bytes);
 await writeArtifact(output, 'report.json', JSON.stringify({schemaVersion: 1, completed: true, converterInvoked: false, profileWritten: false,

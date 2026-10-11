@@ -4,11 +4,16 @@
 dotnet run --project tools/TikzCurvedEdgeOracle -c Release
 ```
 
-This separate development project has no reference to Lokad.TikZ. It links only
-the existing bounded DVI/TFM reader and uses the frozen curved native snapshot,
+This separate development project has no reference to Lokad.TikZ. It links the
+bounded DVI/TFM reader and shared native-source validator, using the curved snapshot,
 original SVG definitions and pinned TFM files. The five fixed cases contain ten
 glyphs in four nodes. Source/artifact hashes and framework-only assembly
 references are checked before completion.
+
+The historical snapshot stays exact. Its three revised shared JavaScript helpers
+use the same pinned historical/current pairs as the straight-edge reader; every
+other source difference is rejected. Current sources and the revision record
+are captured and checked again after reading.
 
 An optional `--out artifacts/...` selects a fresh empty output directory. Reports
 retain native inputs, glyph positions, producer/reader sources and assembly

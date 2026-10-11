@@ -18,6 +18,12 @@ and native input captures. The root report hashes these files, records assembly
 identity and rechecks input/source integrity before completion. Public-result
 parity is tested in the ordinary suite. The report grants no image claim.
 
+Both curved development tools link the existing straight-edge native-source
+validator unchanged. Only its three pinned historical/current helper pairs may
+differ from snapshot provenance. Native artifacts, fixtures and wrappers remain
+exact; current tool sources and the shared revision record belong to each fresh
+comparison report.
+
 Use the saved report with the separate
 [diagnostic image command](../TikzVisual/CURVED-EDGE-INSPECTION.md) to inspect
 paired PNGs, crops and overlays. The separate native-only

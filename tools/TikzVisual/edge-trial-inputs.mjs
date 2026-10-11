@@ -8,20 +8,12 @@ import {edgePrimaryContract} from './edge-primary-reference.mjs';
 import {deriveEdgePrimaryPolicy} from './edge-primary-policy.mjs';
 import {edgePdfCalibratedRoutes, deriveEdgePdfPolicy} from './edge-pdf-policy.mjs';
 import {edgeImageCacheReports} from './edge-image-cache.mjs';
+import {verifyQualificationSources} from './qualification-source-guards.mjs';
 
 // The exact frozen report owns historical captures. Other qualifications must
 // still bind current tools; there is no general stale-source exemption.
 export async function verifyEdgeQualificationSources(role, bytes, report, read = readFile) {
-  const frozen = sha256(bytes) === edgeImageCacheReports[role].sha256;
-  const sources = {...report.sourceHashes};
-  for (const [p, h] of Object.entries(report.sourceHashes ?? {}))
-    assert.equal(report.artifacts['source-captures/' + p], h, 'Missing qualification source capture: ' + p);
-  for (const [p, h] of Object.entries(report.artifacts)) if (p.startsWith('source-captures/')) {
-    const file = p.slice(16); assert.ok(!sources[file] || sources[file] === h); sources[file] = h;
-  }
-  if (!frozen) for (const [p, h] of Object.entries(sources))
-    assert.equal(sha256(edgeCanonical(await read(path.join(root, p)))), h, 'Qualification source changed: ' + p);
-  return frozen;
+  return verifyQualificationSources(edgeImageCacheReports, role, bytes, report, read);
 }
 
 export async function loadEdgeTrialInputs(files, save) {
