@@ -49,6 +49,9 @@ export function bindMathPdfImageInputs(bundle,loaded){
   for(const e of mathPrimaryEncodings)assert.ok(bundle.files.get(c.id+'/encodings/'+e+'.svg').equals(loaded.primary.files.get(c.id+'/encodings/'+e+'.svg')));
  }
 }
+function mathPdfRuleViews(pdf){
+ return shapePdfViews.map(view=>({...view,regions:pdf.regions.filter(r=>r.kind==='rule').map(r=>({id:r.id,rectangle:r.rasterRectangles[view.scale+'x']}))}));
+}
 export function mathPdfPolicies(rows,pdf,owner){
  const policies=nativePdfPolicies(rows,pdf,mathPrimaryEncodings);
  if(owner?.caseId!=='flowchart-styled-labels')return policies;
@@ -57,12 +60,12 @@ export function mathPdfPolicies(rows,pdf,owner){
  // rule crops. Native encodings alone supply limits; no converter/fault input.
  for(const mode of ['original','candidate']){
   const encodings=mode==='original'?['original']:mathPrimaryEncodings;
-  policies[mode].rulePixels=shapePdfViews.map(view=>{
+  policies[mode].rulePixels=mathPdfRuleViews(pdf).map(view=>{
    const page=decodeCalcPng(owner.native.files.get(owner.caseId+'/probed-pdf-page-'+view.scale+'x.png'));
    const svgs=encodings.map(e=>decodeCalcPng(owner.files.get(rows.find(r=>r.encoding===e&&mathPdfKey(r)===mathPdfKey(view)).images['svg-page'])));
    for(const svg of svgs)calcEqual([svg.width,svg.height],[page.width,page.height]);
-   return{...view,regions:pdf.regions.filter(r=>r.kind==='rule').map(r=>{
-    const rectangle=r.rasterRectangles[view.scale+'x'],limits=[];
+   return{...view,regions:view.regions.map(r=>{
+    const rectangle=r.rectangle,limits=[];
     for(let y=rectangle.y;y<rectangle.y+rectangle.height;y++)for(let x=rectangle.x;x<rectangle.x+rectangle.width;x++)
      for(let c=0;c<4;c++){const i=(y*page.width+x)*4+c;limits.push(Math.max(...svgs.map(s=>Math.abs(s.rgba[i]-page.rgba[i]))));}
     return{id:r.id,rectangle,limits};
@@ -109,13 +112,27 @@ export function verifyMathPdfImagePixels(bundle){
   const frame=bundle.json(c.id+'/frame.json'),pdf=bundle.json(c.id+'/pdf-frame.json'),read=pdfPagePixelReader(bundle,pdf,'native/'+c.id);
   assert.equal(frame.caseId,c.id);assert.equal(pdf.regions.length,1+c.nodes+c.glyphs+c.rules+c.paths);
   calcEqual(r.cases.find(v=>v.id===c.id),{id:c.id,regions:pdf.regions.length});
-  const records=r.records.filter(v=>v.caseId===c.id),rows=records.map(v=>{
+  const records=r.records.filter(v=>v.caseId===c.id),savedPolicies=bundle.json(c.id+'/policies.json');
+  // Reject inconsistent policy metadata before decoding. Valid reports still
+  // derive every metric and per-pixel limit independently below.
+  const summaries=records.map(v=>{
+   assert.equal(v.file,c.id+'/views/'+v.encoding+'/'+mathPdfKey(v)+'/record.json');
+   const row=bundle.json(v.file);calcEqual({encoding:row.encoding,frame:row.frame,scale:row.scale,background:row.background},
+    {encoding:v.encoding,frame:v.frame,scale:v.scale,background:v.background});return row;
+  });
+  const aggregate=nativePdfPolicies(summaries,pdf,mathPrimaryEncodings);
+  for(const mode of ['original','candidate']){
+   const {rulePixels,...declaredPolicy}=savedPolicies[mode];calcEqual(aggregate[mode],declaredPolicy,'Forged math PDF policy.');
+   if(c.id==='flowchart-styled-labels')calcEqual(rulePixels?.map(({regions,...view})=>({...view,regions:regions.map(({id,rectangle})=>({id,rectangle}))})),mathPdfRuleViews(pdf),'Forged math PDF policy.');
+   else assert.equal(rulePixels,undefined,'Forged math PDF policy.');
+  }
+  const rows=records.map(v=>{
    assert.equal(v.file,c.id+'/views/'+v.encoding+'/'+mathPdfKey(v)+'/record.json');
    const row=read(v.file);calcEqual({encoding:row.encoding,frame:row.frame,scale:row.scale,background:row.background},
     {encoding:v.encoding,frame:v.frame,scale:v.scale,background:v.background});comparisons++;regions+=pdf.regions.length;return row;
   });
   const owner={caseId:c.id,native:{files:new Map([...bundle.files].filter(([f])=>f.startsWith('native/')).map(([f,b])=>[f.slice(7),b]))},files:bundle.files};
-  const policies=mathPdfPolicies(rows,pdf,owner);calcEqual(policies,bundle.json(c.id+'/policies.json'),'Forged math PDF policy.');
+  const policies=mathPdfPolicies(rows,pdf,owner);calcEqual(policies,savedPolicies,'Forged math PDF policy.');
   const controls=r.controls.filter(v=>v.caseId===c.id),declared=mathPrimaryControls(frame);
   calcEqual(controls.map(({caseId,comparisons,numericChecksBypassed,...v})=>v),declared,'Math PDF fault ownership differs.');
   for(const control of controls){

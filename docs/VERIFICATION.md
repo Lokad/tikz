@@ -149,6 +149,14 @@ PDF receipts also declare checking ownership; missing/forged PDF ownership is
 tested once on math. Registration, native ownership and all PDF negatives stay
 separate from primary image policy. Both historical counter formats remain readable.
 
+Frozen math/styled PDF checking rejects inconsistent aggregate policy metadata
+and missing or misowned rule crops before decoding PNGs. This closes the
+demonstrated cost of three malformed-policy controls: deriving unrelated image
+metrics before rejecting their metadata. Valid reports still independently
+decode all reference and fault images and derive every policy, including styled
+per-pixel rule limits. Rehashed pixel metrics and altered rule limits retain their
+independent checks; all 19 math and 22 styled PDF controls remain.
+
 ## Iteration view mapping
 
 Iteration uses eight primary views rather than 24 Cartesian combinations:
