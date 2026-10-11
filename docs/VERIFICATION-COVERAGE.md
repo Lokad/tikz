@@ -7,13 +7,13 @@ camera choices, execution commands and limits of each conformance claim.
 
 | Coverage | Decision | Evidence that must remain |
 | --- | --- | --- |
-| Ordinary feature, diagnostic and resource tests | Retain the original 199 methods / 821 expanded cases; add tests with new features | Native quantities, returned SVG, UTF-16 spans, explicit rejection, shared limits, ongoing cancellation and call isolation observe different boundaries |
+| Ordinary feature, diagnostic and resource tests | Retain all 221 methods / 873 expanded cases across 39 classes | Native quantities, returned SVG, UTF-16 spans, explicit rejection, shared limits, ongoing cancellation and call isolation observe different boundaries |
 | Fixed malformed-input corpus | Preserve the original 5,746 exact UTF-16 inputs in the public development workflow | Conversion invariants and a separate current-input replay; two semantic saved-source/result faults, with shared artifact/process controls reused. Focused ordinary feature limits remain separate |
 | Native scene measurements and returned SVG checking | Retain separately | A correct trace can accompany incorrect serialized output; glyph, border, arrow, dash and math references have distinct quantities and owners |
 | Straight/curved-edge historical/current source provenance | Share the byte/source guard and three reviewed native-reader revisions; retain distinct capture ownership and policies | Exact frozen reports/assets; current guards reject before conversion; raw qualifications require current sources; curved checker inheritance stays explicit; fresh owned conversion receives independent numeric/primary/PDF checking |
 | Unlabelled rectangle-border producer/current source provenance | Preserve frozen producer identities and consolidate current tool/configuration checks into one guard set | Five snapshots and nested precision evidence retain original hashes; consistently rehashed historical-source substitutions fail; current runner/SVG changes fail before conversion; native ink/frame, primary and both PDF gates and image-only defects remain separate |
 | Arrow historical/current source provenance | Authenticate frozen source captures behind exact report/archive pins; guard actual current tools separately | Missing/changed captures and changed report pins fail; raw meet qualifiers require current sources. Comparator/checker byte controls run once in admission, with native fixture checking retained. Fresh conversion and an independent current build/checker retain native geometry, returned SVG, original-driver/native/PDF policies, mass/moments and visible defects |
-| Primary/PDF/current/text generic corruption checks | Consolidate 495 nonmath invocations to 33 existing identities, plus two fill/clip control-omission checks: 16/6/8/5 | Run each verifier/control identity once on a fixture exposing its branch; every fixture keeps its positive checks |
+| Primary/PDF/current/text generic corruption checks | Run 16/6/17/5 controls once per verifier/identity; retain the original consolidation and new policy/reference-ownership faults | Each representative fixture exposes its branch; every fixture keeps its positive checks |
 | Archive transport corruption | Consolidate 56 invocations to two | The shared archive digest rejects before family interpretation; keep the original 28 plus two definition, one arc and one fill-rule positive roundtrips, and all 19 distinct cache controls |
 | Artifact/process machinery | Share existing helpers; run common controls once per matrix | Hashes, ownership, path bounds, timeout, output bound, spawn failure and partial logs; keep native policy semantics in their family readers |
 | Current-output cameras | Eight mechanism/interaction views replace the 24-view product in routine qualification as well as iteration | Both capture mechanisms, natural/expanded frames, 1x/4x, alpha and contrast; smooth plotting adds its measured transparent topology branch. Historical reports retain their original 24-view interpretation |
@@ -43,8 +43,14 @@ Current checks pass and restoring each defect fails its witness, including all
 ten timer cases. This establishes these three regressions. Advertised feature
 coverage also retains focused and complete-diagram checks beyond this replay.
 
-The first pass completed in **3h50m**, within four hours. Observed full qualification
+The initial orthogonalization pass completed in **3h50m**, within four hours. Observed full qualification
 fell **77m35s → 56m56s → 36m14s**; core iteration fell **4m24s → 3m08s**, with a
 later **3m32s** observation. Later reductions are separate accepted work units.
 These are host wall times, not controlled benchmarks. The detailed mapping keeps
 the counts, scope and timing caveats; hosted/release acceptance remains separate.
+
+The current 30-diagram review reduced complete routine qualification from
+**46m14s → 35m50s → 21m09s**. The affected four-diagram loop took **4m47s**.
+The ten-minute complete-routine target remains unmet. Independent current
+checking and reference materialization remain the largest costs; the detailed
+mapping records them and the additional unchanged family-admission costs.

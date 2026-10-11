@@ -119,8 +119,8 @@ unverified until the hosted jobs run.
 
 ## Ordinary requirement mapping
 
-All ordinary tests remain. The 199 methods cover 821 expanded cases at the
-initial audit; their execution was approximately two seconds. Overlapping
+All ordinary tests remain: 221 methods and 873 expanded cases across 39 classes.
+The initial audit covered 199 methods and 821 cases. Overlapping
 conversion calls below have different observations, failure boundaries or
 native witnesses, and do not justify removing assertions.
 
@@ -128,6 +128,7 @@ native witnesses, and do not justify removing assertions.
 | --- | --- |
 | Conversion, DiagnosticPosition | Public result/zero-output contract, physical units, UTF-16 spans, cancellation and resource limits |
 | Geometry, TransformPrecision | Affine composition/reflection, PGF integer precision, physical-unit conversion and overflow |
+| ArcOption | Ordered independent x/y radius assignment versus final geometry; eager validation of overwritten values and explicit unsupported-option rejection |
 | FillRule | Ordered/default fill rules, scope restoration, clip capture independent of later paint, and native-invalid local clip-rule options |
 | Reference, EmittedSvg | Independent primitive measurements versus scene; returned SVG serialization versus scene/native evidence; malformed SVG rejection |
 | FontData, TextLayout | Independent font boxes, spaces/ligatures/overhangs, every glyph position, unsupported text and bounded layout |
@@ -144,6 +145,7 @@ native witnesses, and do not justify removing assertions.
 | CalcCoordinate | Calculated integer anchors and picture bounds, relative-reference updates, explicit unsupported forms, library scope and shared limits |
 | PathLabel, PathLabelNative | Measured label frames/anchors/tangents and unequal orthogonal-leg timer; physical paint order, glyph/shaft clips and candidate corruptions |
 | Positioning, ParameterizedStyle | Directional placement and native anchors; parameter forwarding/append/scope, provenance and expansion limits |
+| Definition | Lazy scoped token templates and aliases, source-order statements, delimiter handling and foreach binding; reserved/unsupported/cyclic invocation, mapped UTF-16 origins, call isolation and bounded/cancellable expansion |
 | Foreach, MathMacro, MathFunction | Scoped/lazy expansion and continuation overflow; finite native scalar/anchor results, sequential definitions, function arity/degrees, provenance and work limits |
 | Plot | Sharp/function/smooth geometry, option precedence, continuation/last-position, variable restoration, complete networks and sample/lowering limits |
 | CompleteDiagramCall | Mixed successes, public-limit failures and caller cancellations across cultures/prefixes; whole-result equality and call-local state/references |
@@ -155,10 +157,10 @@ native witnesses, and do not justify removing assertions.
 | Primary report's six generic corruptions | Run once per primary verifier: candidate-fed calibration, omitted/duplicate views, missing control, rehashed policy and false decoded metric |
 | Nonmath native-path encoding, whole-label, implicit-fill and smooth-root controls | Each distinct control runs once on a fixture exposing its branch; all fixtures retain their own frozen policies/positive comparisons |
 | Nonmath PDF's five common corruptions plus native-path omission | Each control runs once per PDF verifier; both native/candidate gates remain required |
-| Nonmath current-report eight corruptions | Run once per current verifier; every diagram still receives its own numeric, decoded-pixel, framing and fresh-source checks |
+| Nonmath current-report 17 corruptions | Run once per current verifier; retain the original eight faults plus five view/reference-reuse and four calibration-reference ownership faults; every diagram still receives its own numeric, decoded-pixel, framing and fresh-source checks |
 | Complete-text five corruptions | Run once on the common text verifier; both path-label fixtures retain complete-text reference evidence |
-| Shared process and portable-cache controls | Run once per matrix. Canonical positive roundtrips run during materialization of all 31 archive groups. The two faults rejected by the common archive digest run once, replacing 28 identical original repetitions each. Math/styled ownership corruption stays separate; process time/output/spawn failures retain partial logs |
-| Iteration selection controls | Run once per matrix. Reuse checked native qualification and independently decode one visible selected witness for each of 247 retained negatives (126 original, 53 definitions, 32 arc-diagram and 36 fill-rule controls); repeated negative × camera combinations add no value to this criterion |
+| Shared process and portable-cache controls | Run once per matrix. Canonical positive roundtrips run during materialization of all 32 archive groups. The two faults rejected by the common archive digest run once, replacing 28 identical original repetitions each. Math/styled ownership corruption stays separate; process time/output/spawn failures retain partial logs |
+| View selection and negative mechanism controls | Run once per matrix over all 28 bundles: 368 visible and two originally invisible decoded witnesses, plus 527 explicit aliases. The full `--all` audit checks all 895 visible original controls when the view selection or its verifier changes. It extends the original ten-bundle/247-control sample; reuse unchanged independently checked reference evidence between such changes |
 | Native measurements, arrow-color correction, math/styled controls | Retain separately where ownership, fonts, rules, native SVG correction or policy semantics differ |
 | Existing shape/border/edge/curve/dash/arrow/calc suites | Retain their own independent references, image policies, negatives, admissions and inspection tests. Matching test names alone do not prove equivalent semantics |
 
@@ -294,36 +296,6 @@ decode all reference and fault images and derive every policy, including styled
 per-pixel rule limits. Rehashed pixel metrics and altered rule limits retain their
 independent checks; all 19 math and 22 styled PDF controls remain.
 
-## Iteration view mapping
-
-Iteration uses eight primary views rather than 24 Cartesian combinations:
-
-| Capture | Frame | Scale | Background | Mechanism or interaction |
-| --- | --- | --- | --- | --- |
-| Intrinsic | Natural | 1x | White | Intrinsic root, ordinary ink/label comparison; smooth-root policy's measured white branch |
-| Intrinsic | Natural | 4x | White | Fine glyph/stroke placement with natural clipping |
-| Intrinsic | Expanded | 1x | Transparent | Alpha/premultiplication and padded camera |
-| Intrinsic | Expanded | 4x | Black | Paint/alpha contrast at fine resolution |
-| Viewport | Natural | 1x | White | Independent viewport capture and registration |
-| Viewport | Natural | 4x | Black | Viewport, fine resolution and contrast interaction |
-| Viewport | Expanded | 1x | Transparent | Viewport alpha and outside-picture ink |
-| Viewport | Expanded | 4x | White | Fine expanded view: missing glyph/label/tip, shifted ink and dropped visible shaft/glyph clips |
-
-The focused `smooth-plot-contract` adds one intrinsic natural 1x transparent
-view. Its independently measured topology exception specifically covers that
-combination; it is a justified policy interaction rather than another product.
-
-Every view uses its original, independently derived policy; no new margin is
-fitted to converter errors. Candidate PDF keeps natural/expanded frames at 1x
-and 4x. Iteration reuses the four checked original native SVG/PDF observations
-byte-for-byte, including decoded pixel validation and reference binding, and
-rerenders all new converter views. Missing mode, false qualification, split
-sources, omitted routes, forged metrics/verdicts and altered reused observations
-must fail. Qualification retains all 24 primary and eight PDF views and their
-complete source recaptures. Its unoptimized combinations are a separate measured
-cost; reducing them requires evidence for every historical negative and policy
-branch, including smooth-root transparent topology and styled rule envelopes.
-
 ## Recorded outcomes
 
 The first pass completed in 3h50m within its four-hour limit at `71f9e03`.
@@ -340,10 +312,32 @@ receipts, rather than controlled benchmark results.
 | Nonmath corruption invocations | 495 | 33 | Same distinct controls retained |
 | Identical archive transport faults | 56 | 2 | All 28 positive roundtrips retained |
 
-The retained final matrix has 26 diagrams, 624 primary views, 208 PDF views,
+The historical pre-feature matrix had 26 diagrams, 624 primary views, 208 PDF views,
 832 source recaptures and 821 ordinary cases. All 126 visible
 negatives remain detected. The later matrix's 832 records and 5,008 PNGs match
 the prior accepted output byte for byte.
+
+The current 30-diagram review at `765ae68` reduced observed complete routine
+qualification from **46m14s** through **35m50s** to **21m09s**. The final affected
+four-diagram loop took **4m47s** without another acceptance process running.
+The complete routine remains above the requested ten minutes; the affected
+loop's timing does not establish the complete-routine target. Native-reference
+regeneration was not performed. The full run's first part overlapped a separate
+arrow admission-control run, so the reduction is an observed result rather than
+a controlled benchmark.
+
+All 873 ordinary cases and 30 fixtures remain. The full frozen-fault audit
+covers all 28 bundles and 895 visible controls; the routine basis has 368 visible
+and two originally invisible witnesses plus 527 explicit aliases. This extends
+the earlier ten-bundle/247-control sample. Native and current pixel policies
+remain unchanged. The largest remaining aggregate costs are independent current
+checking (1,011s), materialization/roundtrips (471s), PDF production (360s),
+primary production (345s), family/harness corruption controls (176s) and the
+negative basis (153s). Parallel child costs are not additive parent wall time.
+Fresh family admissions remain additional required costs when their dependencies
+or coverage gaps change: observed straight/curved/border admissions were
+11m38s/15m56s/1m57s, and arrow admission was 2h35m. These have not been removed
+from their required scopes to satisfy the routine target.
 
 Historical replay covers three named defects: the shortest-decimal PDF dimension
 reader (`c3682f8`), PDF text paint (`57c7ce7`) and unequal-leg orthogonal label
