@@ -6,8 +6,33 @@ using Lokad.TikZ.Svg;
 
 namespace Lokad.TikZ;
 
+/// <summary>Synchronous, in-memory conversion of a bounded TikZ subset to self-contained SVG.</summary>
+/// <remarks>
+/// Uses only .NET and embedded font data, with no production TeX, filesystem,
+/// process, network or console dependency. Concurrent calls keep conversion state
+/// local; shared caller options and collections must remain stable.
+/// </remarks>
 public static class TikzConverter
 {
+    /// <summary>Parses, resolves and serializes supported source using one shared budget and cancellation token.</summary>
+    /// <param name="source">Original source string in the selected input mode.</param>
+    /// <param name="options">Explicit input mode, limits and SVG options; see <see cref="TikzOptions.Default"/>.</param>
+    /// <param name="cancellationToken">Caller token observed before conversion and during charged work.</param>
+    /// <returns>
+    /// A <see cref="TikzSuccess"/> with SVG or <see cref="TikzFailure"/> for explicit
+    /// syntax, unsupported-feature, name, arithmetic or resource diagnostics.
+    /// Failure has no SVG. Current conversion stops at its first explicit failure.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">Source, options or a required option member is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Input mode, padding or resource ceilings are invalid.</exception>
+    /// <exception cref="ArgumentException">ID prefix or a library-list entry is invalid.</exception>
+    /// <exception cref="OperationCanceledException">Cancellation is requested; the exception carries the supplied token.</exception>
+    /// <remarks>
+    /// Caller options are validated before cancellation checking. Labels are measured
+    /// before node geometry. Unsupported constructs have no native fallback. Output
+    /// is culture-invariant under a fixed library/runtime profile; pixel conformance
+    /// remains specific to the independently qualified fixtures and renderers.
+    /// </remarks>
     public static TikzConversionResult Convert(string source, TikzOptions options, CancellationToken cancellationToken)
         => ConvertWithTrace(source, options, cancellationToken, _ => { });
 

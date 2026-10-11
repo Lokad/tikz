@@ -9,6 +9,7 @@
     <PackageTags>tikz;pgf;svg;diagrams;compiler</PackageTags>
     <RepositoryType>git</RepositoryType>
     <DebugType>portable</DebugType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageOutputPath>../../artifacts/nuget</PackageOutputPath>
