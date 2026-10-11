@@ -40,7 +40,7 @@ for each SVG when combining repeated conversions into one document.
 
 | Area | Bounded contracts |
 | --- | --- |
-| Geometry and paint | [Base grammar](docs/compatibility.md#statements-and-base-geometry), [RGB colors](docs/COLORS.md), [dash state and geometry](docs/DASHES.md) |
+| Geometry and paint | [Base grammar](docs/compatibility.md#statements-and-base-geometry), [arc syntax/radius order](docs/ARCS.md), [RGB colors](docs/COLORS.md), [dash state and geometry](docs/DASHES.md) |
 | Nodes and labels | [Nodes/anchors/borders](docs/NODES.md), [prose/multiline text](docs/TEXT.md), [inline math](docs/MATH-LABELS.md) |
 | Connections | [Straight edges](docs/EDGES.md), [curved edges](docs/CURVED-EDGES.md), [arrows](docs/ARROWS.md), [attached path labels](docs/PATH-LABELS.md) |
 | Libraries | [Positioning](docs/POSITIONING.md), [calculated coordinates](docs/CALC.md), plus the declared `arrows.meta` and `shapes.geometric` subsets |

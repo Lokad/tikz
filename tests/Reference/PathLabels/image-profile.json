@@ -100,8 +100,8 @@
     }
   },
   "transportSources": {
-    "tools/TikzVisual/path-label-cache-codec.mjs": "27c8d63e8a8178fde225184072e8d9756375ae407ff6454f3537f83e8a1309f2",
+    "tools/TikzVisual/path-label-cache-codec.mjs": "177a0016648d4f2343dfae357c56767008ed0dcd8a8ca19005a4703a7c1c1149",
     "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
-    "tools/TikzVisual/path-label-cache.mjs": "61bf48c9b622bd5adb7f15e246fb84e528f0c39d3fa92cb22441f87b7a93326f"
+    "tools/TikzVisual/path-label-cache.mjs": "912fe512c121431fafc72d7ee034fe12154c1ebc6aaa25328a94e795c6f3811f"
   }
 }

@@ -12,6 +12,8 @@
   functions, inline math/multiline labels and bounded sharp/smooth plotting.
 - Scoped zero-argument token definitions, with lazy statement/value expansion,
   source provenance, cycle diagnostics and shared limits/cancellation.
+- Modern arc radii follow option order, preserving eager shared-radius validation
+  and the final independent axis assignments.
 - Independent native/reference, primary/PDF and visible-negative comparisons for
   fixed fixtures and complete flowchart/network interactions. Fast iteration is
   separate from final qualification, with unchanged reference evidence reused.

@@ -356,7 +356,12 @@ internal sealed partial class Evaluator(Budget budget)
                     break;
                 case ArcOperation arc:
                     Flush();
-                    var arcAxes = Axes(arc.X, arc.Y, state);
+                    // TikZ's shared radius key evaluates eagerly, including values
+                    // later overwritten by other radius keys. Axis keys store values.
+                    Number radiusValue = default;
+                    foreach (var assignment in arc.RadiusAssignments)
+                        radiusValue = assignment.Evaluate(state.Variables, budget);
+                    var arcAxes = Axes(arc.X, arc.Y, state, arc.RadiusAssignments.LastOrDefault(), radiusValue);
                     var start = arc.Start.Evaluate(state.Variables, budget).Value;
                     var finish = arc.End.Evaluate(state.Variables, budget).Value;
                     ShapePaths.Arc(path, arcAxes.X, arcAxes.Y, start, finish, budget, arc.Source);
@@ -480,10 +485,11 @@ internal sealed partial class Evaluator(Budget budget)
         const double spPerBp = 72.27 * 65536 / 72;
         return (long)Math.Round(width * spPerBp, MidpointRounding.AwayFromZero) / 2 / spPerBp;
     }
-    private (Point X, Point Y) Axes(Expression xRadius, Expression yRadius, EvaluationState state)
+    private (Point X, Point Y) Axes(Expression xRadius, Expression yRadius, EvaluationState state,
+        Expression? resolvedRadius = null, Number resolvedValue = default)
     {
-        var x = xRadius.Evaluate(state.Variables, budget);
-        var y = yRadius.Evaluate(state.Variables, budget);
+        var x = ReferenceEquals(xRadius, resolvedRadius) ? resolvedValue : xRadius.Evaluate(state.Variables, budget);
+        var y = ReferenceEquals(yRadius, resolvedRadius) ? resolvedValue : yRadius.Evaluate(state.Variables, budget);
         if (x.HasUnit != y.HasUnit) throw new CompileError("TIKZ001", "Cannot mix physical and dimensionless radii.", yRadius.Source);
         var xAxis = Vector(x.HasUnit ? new(x.Bp, 0) : PgfTransform.Scale(state.XBasis, x.Value, budget, xRadius.Source), xRadius.Source);
         var yAxis = Vector(y.HasUnit ? new(0, y.Bp) : PgfTransform.Scale(state.YBasis, y.Value, budget, yRadius.Source), yRadius.Source);

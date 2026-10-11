@@ -278,25 +278,35 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             {
                 Source start;
                 Source end;
-                Source x;
-                Source y;
+                Expression x;
+                Expression y;
+                List<Expression> radiusAssignments = [];
                 if (_reader.Peek == '[')
                 {
                     var values = ReadOptions();
                     start = RequiredValue(values, "start angle", origin);
                     end = RequiredValue(values, "end angle", origin);
-                    var radius = values.FirstOrDefault(v => v.Key == "radius");
-                    x = radius is null ? RequiredValue(values, "x radius", origin) : radius.Value;
-                    y = radius is null ? RequiredValue(values, "y radius", origin) : radius.Value;
                     CheckShapeKeys(values, "start angle", "end angle", "radius", "x radius", "y radius");
+                    foreach (var option in values)
+                        if (option.Key == "radius") radiusAssignments.Add(Expression.Parse(option.Value, budget));
+                    x = Axis("x radius");
+                    y = Axis("y radius");
+
+                    Expression Axis(string key)
+                    {
+                        var option = values.LastOrDefault(v => v.Key == key || v.Key == "radius")
+                            ?? throw new CompileError("TIKZ001", $"Missing '{key}'.", origin);
+                        return option.Key == "radius" ? radiusAssignments[^1] : Expression.Parse(option.Value, budget);
+                    }
                 }
                 else
                 {
                     var parts = Options.Split(_reader.Group('(', ')'), ':', budget);
                     if (parts.Count != 3) throw new CompileError("TIKZ001", "Expected arc(start:end:radius).", origin);
-                    start = parts[0]; end = parts[1]; x = parts[2]; y = x;
+                    start = parts[0]; end = parts[1]; x = Expression.Parse(parts[2], budget); y = Expression.Parse(parts[2], budget);
                 }
-                operations.Add(new ArcOperation(Expression.Parse(start, budget), Expression.Parse(end, budget), Expression.Parse(x, budget), Expression.Parse(y, budget), origin));
+                operations.Add(new ArcOperation(Expression.Parse(start, budget), Expression.Parse(end, budget), x, y, origin)
+                    { RadiusAssignments = radiusAssignments });
             }
             else if (_reader.Peek == '[') operations.Add(new PathOptionsOperation(ReadOptions(), origin));
             else throw new CompileError("TIKZ002", "Unsupported path operation.", origin);

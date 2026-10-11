@@ -33,7 +33,7 @@ async function bundle(fixture){
  return{bytes,sha256:sha256(bytes),report,files,json:f=>JSON.parse(files.get(f)),
   qualification:{inputSha256:descriptor.sha256,checkedSha256:sha256(checkedBytes),sourceRecaptures:checked.sourceRecaptures}};
 }
-for(const fixture of ['placement','arrow-color-contract','flowchart-draw-color','smooth-plot-contract','math-labels-primary','styled-labels-primary','definitions-contract','flowchart-definitions']){
+for(const fixture of ['placement','arrow-color-contract','flowchart-draw-color','smooth-plot-contract','math-labels-primary','styled-labels-primary','definitions-contract','flowchart-definitions','flowchart-arc-order']){
  const b=await bundle(fixture),math=b.report.role==='math-label-native-primary-calibration';
  // Reuse unchanged independent qualification and decode the selected negative
  // pairs. Replaying every original calibration view would test another gap.

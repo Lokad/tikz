@@ -17,6 +17,7 @@ const cases={
  interactions:['seed','first','second','reuse','clipped','continued','nested','escaped']
 };
 const diagrams={
+ 'flowchart-arc-order':{hash:'100b692e54a9d58c6296bf07083755768bbc4e7dfb642b2d2766b46f77bb0481',nodes:['input','check','output','retry'].map(id=>[id,'rectangle']),labels:3,coordinates:['return'],constructionOrder:['input','check','output','retry','diagram-label-1','diagram-label-2','diagram-label-3','return']},
  'definitions-contract':{folder:'Definitions',hash:'faf64f77406ae68829cb3a6d6b4ed24cca3f0630806e08a95ea898ec45ffd5b5',nodes:['early','late','local','restored','boundary','placed','row1','row2'].map(id=>[id,'rectangle']),labels:0,coordinates:[],constructionOrder:['early','late','local','restored','boundary','placed','row1','row2']},
  'flowchart-definitions':{hash:'3ce3467719edad6c46f13e153c26dcd080e6ce2868c588c59244b11d27148483',nodes:['input','check','retry','output'].map(id=>[id,'rectangle']),labels:3,coordinates:['return'],constructionOrder:['input','check','retry','output','diagram-label-1','diagram-label-2','diagram-label-3','return']},
  'flowchart-draw-color':{hash:'00382dca733736532da904d9246c7354565d22e91673a951218a229e052b5137',nodes:['input','check','store','review'].map(id=>[id,'rectangle']),labels:5,coordinates:['return'],constructionOrder:['input','check','store','review','diagram-label-1','diagram-label-2','diagram-label-3','diagram-label-4','return','diagram-label-5']},

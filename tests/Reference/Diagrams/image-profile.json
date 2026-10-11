@@ -115,11 +115,49 @@
         "converterInvoked": false,
         "imageConformanceClaim": false
       }
+    },
+    "flowchart-arc-order": {
+      "file": "tests/Reference/Diagrams/flowchart-arc-order.images.cache.gz",
+      "manifest": {
+        "schemaVersion": 1,
+        "fixture": "flowchart-arc-order",
+        "reports": [
+          {
+            "role": "path-label-native-primary-calibration",
+            "file": "artifacts/path-label-primary-calibration/run-00a9f6da-fdff-47fe-934b-5253553ce587/report.json",
+            "sha256": "64f3cc0a6d3bc4ae8579c41ebcb34dd1039d9703afb56d8e7177a0eaf3c15bf4"
+          },
+          {
+            "role": "path-label-independent-primary-check",
+            "file": "artifacts/path-label-primary-check/run-1a3b1d2b-6fd4-4b7b-a97c-f32f0b7d7657/report.json",
+            "sha256": "e553b6efeff8cac16d88056f7d3435c8d37b05f1387be78c40ecaa69267e35cd"
+          },
+          {
+            "role": "path-label-native-pdf-calibration",
+            "file": "artifacts/path-label-pdf-calibration/run-70c5a9fb-48bd-4666-9ef7-5b3676ea525f/report.json",
+            "sha256": "de284cc427c3109150b0fa3f3355e3457c72bd68a7803ba557111bde5b532d5f"
+          },
+          {
+            "role": "path-label-independent-pdf-check",
+            "file": "artifacts/path-label-pdf-check/run-9d19df4f-674e-4768-9d54-d07db957163d/report.json",
+            "sha256": "7aad36ba2fd3c2656459a4dbe5e4821077d6b0144b2b6c455b52173c3419e188"
+          }
+        ],
+        "compressedSha256": "d3cc69b1da5861a82736d4c54b68f9e4a9eeb82363eb58fcfb9c1430ff739e03",
+        "decodedSha256": "19175218ee8897cb8318d2d1084cabe2db99e88dd992a7a1f054afea2a6446ae",
+        "compressedBytes": 9594239,
+        "decodedBytes": 35131498,
+        "logicalFiles": 1696,
+        "uniqueBlobs": 722,
+        "logicalBytes": 52389568,
+        "converterInvoked": false,
+        "imageConformanceClaim": false
+      }
     }
   },
   "transportSources": {
-    "tools/TikzVisual/path-label-cache-codec.mjs": "27c8d63e8a8178fde225184072e8d9756375ae407ff6454f3537f83e8a1309f2",
+    "tools/TikzVisual/path-label-cache-codec.mjs": "177a0016648d4f2343dfae357c56767008ed0dcd8a8ca19005a4703a7c1c1149",
     "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
-    "tools/TikzVisual/path-label-cache.mjs": "61bf48c9b622bd5adb7f15e246fb84e528f0c39d3fa92cb22441f87b7a93326f"
+    "tools/TikzVisual/path-label-cache.mjs": "912fe512c121431fafc72d7ee034fe12154c1ebc6aaa25328a94e795c6f3811f"
   }
 }

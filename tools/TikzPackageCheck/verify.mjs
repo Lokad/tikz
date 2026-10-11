@@ -35,7 +35,7 @@ try{
  const readme=await readFile(root+'/README.md','utf8'),sample=/```csharp\r?\n([\s\S]*?)\r?\n```/.exec(readme);assert.ok(sample);
  const program=(await readFile(tool+'/Consumer.cs.template','utf8')).replace('// README_SAMPLE',sample[1].replace(/^using Lokad\.TikZ;\s*/,''));
  await save('readme-sample.cs',sample[1]);
- const ids=['flowchart-draw-color','flowchart-styled-labels','network-math-labels','network-smooth-plot','flowchart-definitions'],consumers={};
+ const ids=['flowchart-draw-color','flowchart-styled-labels','network-math-labels','network-smooth-plot','flowchart-definitions','flowchart-arc-order'],consumers={};
  for(const kind of['source','packed']){
   const consumer=output+'/'+kind;await mkdir(consumer);
   const reference=kind==='packed'?`<PackageReference Include="Lokad.TikZ" Version="${escapeXml(audit.version)}" />`:

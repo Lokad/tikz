@@ -1,7 +1,7 @@
 # Grounding against TikZ
 
 Use the [verification coverage and execution index](VERIFICATION.md) for fast
-affected-feature checks and the separate final 28-case qualification matrix.
+affected-feature checks and the separate final 29-case qualification matrix.
 It maps retained requirements, consolidated corruptions and iteration views.
 
 The required corpus currently contains nine independently authored fixtures:

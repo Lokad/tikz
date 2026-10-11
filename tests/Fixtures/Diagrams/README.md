@@ -23,3 +23,9 @@ definitions in widths, styles, labels, coordinates and statement calls, with
 source-order/scoped redefinition. Its [focused mechanism corpus](../Definitions/definitions-contract.tikz)
 and [frozen native references](../../Reference/Definitions/README.md) retain
 independent measurements, original SVG, unmodified PDF and image-negative checks.
+
+`flowchart-arc-order.tikz` adds five ordered-radius mechanisms to the positioned
+flowchart, path labels, arrows and calc return. [Arc syntax](../../../docs/ARCS.md)
+defines the bounded contract; its frozen reference includes omission/displacement
+and historical radius-reduction controls while retaining the common label/tip
+controls. It joins full qualification without multiplying shared corruptions.

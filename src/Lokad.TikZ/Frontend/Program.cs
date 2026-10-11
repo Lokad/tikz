@@ -33,7 +33,10 @@ internal sealed record EdgeOperation(Coordinate Target, List<Option> Options, So
 internal sealed record CurveOperation(Coordinate A, Coordinate B, Coordinate End, Source Origin) : PathOperation(Origin);
 internal sealed record RectangleOperation(Coordinate End, Source Origin) : PathOperation(Origin);
 internal sealed record EllipseOperation(Expression X, Expression Y, Source Origin) : PathOperation(Origin);
-internal sealed record ArcOperation(Expression Start, Expression End, Expression X, Expression Y, Source Origin) : PathOperation(Origin);
+internal sealed record ArcOperation(Expression Start, Expression End, Expression X, Expression Y, Source Origin) : PathOperation(Origin)
+{
+    internal IReadOnlyList<Expression> RadiusAssignments { get; init; } = [];
+}
 internal sealed record CloseOperation(Source Origin) : PathOperation(Origin);
 internal sealed record PathOptionsOperation(List<Option> Options, Source Origin) : PathOperation(Origin);
 internal sealed record Coordinate(Expression? X, Expression? Y, string Name, bool Polar, int Relative, Source Source)

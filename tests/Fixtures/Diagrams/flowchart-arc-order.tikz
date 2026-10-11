@@ -1,0 +1,25 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=9mm,
+  box/.style={draw,rectangle,minimum width=14mm,inner sep=3pt}]
+  \node[box] (input) {Input};
+  \node[box,right=of input] (check) {Check};
+  \node[box,right=of check] (output) {Output};
+  \node[box,below=of check] (retry) {Retry};
+  \draw[-{Stealth}] (input) -- node[midway,above] {read} (check);
+  \draw[-{Stealth}] (check) -- node[midway,above] {ok} (output);
+  \draw[-{Stealth}] (check) -- node[midway,right] {again} (retry);
+  \coordinate (return) at ($(input.south)+(0,-12mm)$);
+  \draw[-{Stealth}] (retry.west) -| (return) -- (input.south);
+  \begin{scope}[x=10mm,y=6mm,line width=.8pt]
+    % Later axis keys override a shared radius independently.
+    \draw[blue] (0,-4) arc[start angle=0,end angle=90,radius=4mm,x radius=8mm,y radius=5mm];
+    % A later shared radius resets both axes.
+    \draw[red] (2,-4) arc[start angle=0,end angle=90,x radius=8mm,y radius=5mm,radius=4mm];
+    % Repeated shared radii use the last assignment.
+    \draw[green!50!black] (4,-4) arc[start angle=0,end angle=90,radius=2mm,radius=5mm];
+    % Interleaved assignments retain each axis's final value.
+    \draw[magenta] (6,-4) arc[start angle=0,end angle=90,radius=2mm,x radius=8mm,radius=4mm,y radius=7mm,x radius=6mm];
+    % Unitless radii keep their own nonuniform coordinate basis.
+    \draw[black] (8,-4) arc[start angle=0,end angle=90,radius=.4,x radius=.8,y radius=.6];
+  \end{scope}
+\end{tikzpicture}

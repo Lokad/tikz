@@ -195,6 +195,12 @@ export function pathLabelImageControls(frame,glyphs){
   }offset+=node.glyphs.length;
  }
  if(diagram)for(const r of frame.regions.filter(r=>r.role==='tip'))controls.push(...['missing','quarter-pixel-shift'].map(kind=>({nodeId:r.id,target:r.id,kind})));
+ if(frame.caseId==='flowchart-arc-order'){
+  for(const [target,kinds]of [['native-paint-12',['missing','quarter-pixel-shift']],['native-paint-14',['radius-reduction']]]){
+   assert.equal(frame.regions.find(r=>r.id===target)?.kind,'path','Expected the fixed arc stroke.');
+   controls.push(...kinds.map(kind=>({nodeId:target,target,kind})));
+  }
+ }
  if(requiresSvgArrowFillCorrection(frame.caseId)){
   const target='native-paint-'+svgArrowFillChangedPaintIndices(frame.caseId)[0],region=frame.regions.find(r=>r.id===target);
   assert.equal(region?.role,'tip');assert.equal(region.clips?.length??0,0,'Wrong-fill control requires a visible unclipped tip.');
@@ -213,13 +219,23 @@ export function pathLabelControlViews(frame){
  return frame.regions.some(r=>r.role==='tip')||isRectangleImageCase(frame.caseId)||isPlotImageCase(frame.caseId)?[1,4].map(scale=>({frame:'expanded',scale,background:'white'})):null;
 }
 export async function mutatePathLabelImage(renderer,svg,{target,kind,targets}){
- assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label','missing-clip','wrong-default-fill'].includes(kind));
+ assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label','missing-clip','wrong-default-fill','radius-reduction'].includes(kind));
  if(kind==='missing-label')assert.ok(targets.length>0&&targets.every(t=>/^native-glyph-\d+$/.test(t))&&targets[0]===target);
- return renderer.page.evaluate(({svg,target,kind,targets})=>{const doc=new DOMParser().parseFromString(svg,'image/svg+xml'),p=doc.getElementById(target);if(!p)throw Error('Missing native control element.');
+ let replacement;
+ if(kind==='radius-reduction'){
+  const d=await renderer.page.evaluate(({svg,target})=>new DOMParser().parseFromString(svg,'image/svg+xml').getElementById(target)?.getAttribute('d'),{svg,target});
+  const segments=parsePath(d);assert.equal(segments[0].kind,'move');assert.ok(segments.length>1&&segments.slice(1).every(s=>s.kind==='cubic'));
+  const center=segments[0].to;
+  // The historical repeated-radius defect used 2mm instead of 5mm. Keep
+  // the starting point and stroke state while shrinking only curve geometry.
+  replacement=pathData(transformSegments(segments,[.4,0,0,.4,.6*center.x,.6*center.y]));
+ }
+ return renderer.page.evaluate(({svg,target,kind,targets,replacement})=>{const doc=new DOMParser().parseFromString(svg,'image/svg+xml'),p=doc.getElementById(target);if(!p)throw Error('Missing native control element.');
   if(kind==='missing')p.remove();else if(kind==='missing-label')for(const id of targets){const e=doc.getElementById(id);if(!e)throw Error('Missing label glyph.');e.remove();}
   else if(kind==='missing-clip'){let removed=0;for(let e=p;e&&e.localName!=='svg';e=e.parentElement)if(e.hasAttribute('clip-path')){e.removeAttribute('clip-path');removed++;}if(!removed)throw Error('Missing controlled clip.');}
   else if(kind==='wrong-default-fill'){if(p.localName!=='path')throw Error('Expected an arrow path.');p.setAttribute('fill','#000000');}
+  else if(kind==='radius-reduction')p.setAttribute('d',replacement);
   else p.setAttribute('transform','translate(0.25 0) '+p.getAttribute('transform'));
   return new XMLSerializer().serializeToString(doc);
- },{svg,target,kind,targets});
+ },{svg,target,kind,targets,replacement});
 }

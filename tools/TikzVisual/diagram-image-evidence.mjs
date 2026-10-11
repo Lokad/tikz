@@ -10,6 +10,7 @@ import {parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 import {edgePdfPage,edgeCanonical} from './edge-log.mjs';
 const frozen={
+ 'flowchart-arc-order':'1d0ebe5df8956679f1785ce02ef84403bc5672b5d6b28bad658219f8c77aa7c8',
  'definitions-contract':'8a330cec15dc405fb700804aef3d88a5f286502278e30380d920c2ae4fac3df8',
  'flowchart-definitions':'5d9e24038b319f2c08fc080e095afa8b8c075fc216efb3dd1a34c10f2f4963e9',
  'flowchart-draw-color':'3d142d85514ee246f7c5eb87496af146af70a35b958e954ab793b5b020742218',
