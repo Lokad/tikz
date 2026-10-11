@@ -55,7 +55,7 @@ native witnesses, and do not justify removing assertions.
 | MathLayout | Native integer boxes/glyphs/rules, their order/paint/clips, corrupt native traces, deterministic cache charges and concurrent layout |
 | NodeLayout, NodeConversion | Rectangle geometry/anchors versus native integers; public mode reset, styles, glyph/output budgets and unsupported nodes |
 | RectangleBorder, NativeStrokeBounds | Border intersections and singular transforms; independent stroke ink/natural frame rather than layout boxes |
-| NodeInteraction, CurvedNode | Transformed paint/clip order and miter ink; ellipse/diamond geometry, anchors, borders, shape-library scope and bounds |
+| NodeInteraction, CurvedNode | Transformed paint/clip order and miter ink; circle/ellipse geometry, anchors, borders, shape-library scope and bounds; explicit diamond rejection |
 | ShapeGlyphTrace, ShapePdfEvidence | Independent glyph affine placement and damaged evidence; ordinary PDF registration/operand agreement and bounded raster headers |
 | LabelledBorderInteraction, Edge, CurvedEdge | Independent border crossings, straight/curved controls, paint/continuation, returned-public parity, one-sp defects and edge budgets |
 | Dash, DashGeometry | Native dash state versus curved/compound/clip geometry; malformed native input and excessive patterns |
@@ -186,3 +186,30 @@ must fail. Qualification retains all 24 primary and eight PDF views and their
 complete source recaptures. Its unoptimized combinations are a separate measured
 cost; reducing them requires evidence for every historical negative and policy
 branch, including smooth-root transparent topology and styled rule envelopes.
+
+## Recorded outcomes
+
+The first pass completed in 3h50m within its four-hour limit at `71f9e03`.
+Later cost reductions are separate accepted work units. These are observed
+development wall times on the same host, with overlap documented in local
+receipts, rather than controlled benchmark results.
+
+| Check | Before | First-pass result | Later accepted observation |
+| --- | ---: | ---: | ---: |
+| Full 26-diagram qualification | 77m35s | 56m56s | 36m14s at `bfc87c8` |
+| Default affected iteration | Initial eight-diagram attempt: 13m21s | Four complete diagrams: 4m24s | 3m08s at `bfc87c8`; latest 3m32s at `4254cb0` |
+| Single paint-flowchart workflow | 2m51s | 59s | — |
+| Shared portable-cache controls | 3m30s | 21.3s | — |
+| Nonmath corruption invocations | 495 | 33 | Same distinct controls retained |
+| Identical archive transport faults | 56 | 2 | All 28 positive roundtrips retained |
+
+The retained final matrix has 26 diagrams, 624 primary views, 208 PDF views,
+832 source recaptures and 821 ordinary cases. All 126 visible
+negatives remain detected. The later matrix's 832 records and 5,008 PNGs match
+the prior accepted output byte for byte.
+
+Historical replay covers three named defects: the shortest-decimal PDF dimension
+reader (`c3682f8`), PDF text paint (`57c7ce7`) and unequal-leg orthogonal label
+timing (`5bf5a9d`). Current checks pass; restoring each defect fails the retained
+check, including all ten timer cases. This establishes those three regressions;
+it does not claim replay of every historical defect or hosted qualification.
