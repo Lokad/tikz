@@ -425,7 +425,7 @@
     "tools/TikzVisual/check-calc-pdf.mjs": "6ed1a684187436c6decf3918473038ab521630dc6e5766c9cbdfcaadc1b8b3e3",
     "tools/TikzVisual/check-calc-primary.mjs": "880b9e1cdf7585e3026d264c053c7d133791794221d263456bd80a28b5eba2fa",
     "tools/TikzVisual/check-calc-trial.mjs": "8145cfce9e4af01f3812b67ea5e5b485637e04446b11bfa1c8a682f67fa752cd",
-    "tools/TikzVisual/compare-calc-conformance.mjs": "af6a7a5a7521ecd834713f7de994c92334b958c61a333cdb964d19cc8a193ce8",
+    "tools/TikzVisual/compare-calc-conformance.mjs": "4b5993bb9c5251935ac171cf006fd2c24156547bf6b203539def83f936200db5",
     "tools/TikzVisual/compare.mjs": "d5ff938976a29c9311366c38260da88c66aae6c05a14c76b92cc3ad9eb0a9197",
     "tools/TikzVisual/edge-oracle-pair.mjs": "fce2f037171eb45fa304870174fedf9f50ad7b90332c8547e40b1d5b48c00b31",
     "tools/TikzVisual/edge-pdf-image-pair.mjs": "e26db98beba5e2750e6635ffa7699a36a156d6461a954496a0a4b06deed34c6f",

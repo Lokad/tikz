@@ -102,6 +102,13 @@ fails without decoding unrelated pixels. The declared verdict, metrics and
 recapture summary must still equal independently computed values; metadata
 checks alone cannot establish conformance. All admission controls remain.
 
+The calc coordinator prepares provisional details from its independent checker.
+Before writing a completed report, the saved-receipt validator independently
+recomputes all trial pixels, policy decisions, source recapture and admission
+details. This avoids a second invocation of that same computation inside the
+coordinator. Standalone receipt validation and the checker retain their full
+passes; a fully rehashed false checker measurement still fails.
+
 Math primary checks validate every owned frame and fault contract before
 decoding pixels. Structural faults in a later case therefore fail immediately;
 well-formed reports retain the full independent pixel and policy checks.

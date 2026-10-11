@@ -4,7 +4,7 @@ import {randomUUID} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {calcHash,loadCalcSavedReport} from './calc-saved-images.mjs';
-import {loadCalcPolicy,verifyCalcProfileGuards,validateCalcCheckedTrial,finishCalcAdmission,calcPolicyId,calcPolicyScope} from './calc-admission-policy.mjs';
+import {loadCalcPolicy,verifyCalcProfileGuards,finishCalcAdmission,calcPolicyId,calcPolicyScope} from './calc-admission-policy.mjs';
 import {calcTrialOwned} from './calc-trial-saved.mjs';
 import {runCalcChild,readCalcChild,ownCalcBundle} from './calc-admission-child.mjs';
 import {makeCalcAdmissionAgent} from './calc-admission-agent.mjs';
@@ -31,7 +31,10 @@ try{
   const checker=await readCalcChild(root,checkHandle,'independent-calc-current-candidate-check');await ownCalcBundle(checker,'checker',save);inputs.checker={sourceFile:checkHandle.report,report:'checker/report.json',sha256:checker.sha256};
   const log=checker.files.get('source-recapture-command.log').toString(),handle=JSON.parse(log.slice(log.lastIndexOf('{"completed":')).trim()),recaptured=await readCalcChild(root,handle,'calc-current-candidate-trial');
   await ownCalcBundle(recaptured,'recaptured',save);inputs.recaptured={sourceFile:handle.report,report:'recaptured/report.json',sha256:recaptured.sha256};
-  phase='fixed-family-admission';const combined=validateCalcCheckedTrial(e,trial,checker,recaptured),result=finishCalcAdmission(e.profile,combined);assert.equal(result.passed,true);
+  // Provisional checker details: publish(true) independently recomputes and
+  // validates the entire owned receipt before writing a completed report.
+  phase='fixed-family-admission';const combined={passed:true,gates:Object.fromEntries(Object.entries(e.profile.gateCounts).map(([name,counts])=>[name,{state:'passed',...counts}])),
+    metrics:checker.report.metrics,reproduction:checker.report.reproduction},result=finishCalcAdmission(e.profile,combined);assert.equal(result.passed,true);
   Object.assign(sourceHashes,calcTrialOwned(trial,'candidate').json('candidate-source-hashes.json'));
   for(const[f,h]of Object.entries(sourceHashes)){const b=await readFile(path.join(root,f));assert.equal(calcHash(b),h);await save('source-captures/'+f,b);}
   await save('agent-inspection.json',Buffer.from(JSON.stringify(makeCalcAdmissionAgent(trial,e.profile,result),null,2)+'\n'));await verifyCalcProfileGuards(e.profile,root);
