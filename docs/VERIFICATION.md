@@ -104,6 +104,14 @@ This consolidates the same reader's duplicate pass on the same images. Missing
 or forged checking ownership fails; these common controls run once on math.
 Historical receipts with the producer's additional pass remain readable.
 
+Math/styled qualification runs current corruption checks with `--controls-only`
+after the fresh independent checker passes. Their four input hashes must match
+that check, under the run's unchanged source snapshot. Standalone corruption
+commands retain the full positive check by default. Failed/incomplete baselines
+and mismatched inputs are tested once on math; every existing pixel, frame,
+route, dimension and styled-rule fault remains. A controls-only result alone
+does not establish positive conformance.
+
 Current PDF production delegates its repeated PNG reader and decoded-policy
 evaluation to that same independent checker. It retains initial policy checks,
 styled per-pixel rule envelopes, both routes and complete source recaptures.

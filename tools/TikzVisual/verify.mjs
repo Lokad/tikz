@@ -12,6 +12,7 @@ import {loadCalcSavedReport,calcEqual} from './calc-saved-images.mjs';
 import {pathLabelPrimaryDefects} from './path-label-primary-self-test.mjs';
 import {pathLabelPdfDefects} from './path-label-pdf-self-test.mjs';
 import {mathLabelCacheReports,styledLabelCacheReports} from './math-label-cache-inputs.mjs';
+import {bindControlBaseline} from './primary-report-controls.mjs';
 
 const features={
  core:['flowchart-draw-color','network-bent','flowchart-transformed','network-smooth-plot'],
@@ -146,8 +147,8 @@ try{
   const primary=await node(family+'-primary','math-label-primary-images.mjs',[native.file,pc.file,exported.report,...viewFlag],'report','math-label-current-primary-iteration');
   const pdf=await node(family+'-pdf','compare-math-label-pdf.mjs',[dc.file,dcheck.file,exported.report,...viewFlag],'report','math-label-current-pdf-iteration');
   const checked=await node(family+'-check','check-math-label-current.mjs',[primary.report,pdf.report,pc.file,dc.file],'report','math-label-independent-current-check');
-  const result=JSON.parse(await readFile(path.join(root,checked.report))).result;assert.equal(result.passed,true);assert.equal(result.verificationMode,mode);
-  if(qualification)await node(family+'-current-controls','math-label-current-self-test.mjs',[primary.report,pdf.report,pc.file,dc.file],'controls');
+  const checkedReport=JSON.parse(await readFile(path.join(root,checked.report))),result=checkedReport.result;assert.equal(result.passed,true);assert.equal(result.verificationMode,mode);
+  if(qualification){const controlled=await node(family+'-current-controls','math-label-current-self-test.mjs',[primary.report,pdf.report,pc.file,dc.file,'--controls-only'],'controls');bindControlBaseline(controlled,checkedReport);}
   rows.push({family,fixtures:family==='math'?mathIds:['flowchart-styled-labels'],exported,primary,pdf,checked,result});await publish(false);
  }
  if(qualification){await node('process-controls','qualification-process-self-test.mjs',[],'process');await node('cache-controls','path-label-cache-self-test.mjs',['--controls-only'],'controls');

@@ -4,12 +4,13 @@ import path from 'node:path';
 import {root} from './shape-oracle-bundle.mjs';
 import {loadCalcSavedReport} from './calc-saved-images.mjs';
 import {verifyMathCurrentPixels,verifyMathCurrentAnchors,verifyMathCurrentLabels} from './check-math-label-current.mjs';
-import {runPrimaryReportControls} from './primary-report-controls.mjs';
-assert.equal(process.argv.length,6,'Usage: math-label-current-self-test.mjs <current-primary> <current-PDF> <native-primary-calibration> <native-PDF-calibration>');
+import {runPrimaryReportControls,bindControlBaseline} from './primary-report-controls.mjs';
+const controlsOnly=process.argv[6]==='--controls-only';
+assert.equal(process.argv.length,controlsOnly?7:6,'Usage: math-label-current-self-test.mjs <current-primary> <current-PDF> <native-primary-calibration> <native-PDF-calibration> [--controls-only]');
 const roles=['math-label-current-primary-iteration','math-label-current-pdf-iteration','math-label-native-primary-calibration','math-label-native-pdf-calibration'],bundles=[];
-for(const[i,f]of process.argv.slice(2).entries())bundles.push(await loadCalcSavedReport(path.resolve(root,f),roles[i]));
+for(const[i,f]of process.argv.slice(2,6).entries())bundles.push(await loadCalcSavedReport(path.resolve(root,f),roles[i]));
 const[primary,pdf,pc,dc]=bundles;
-verifyMathCurrentPixels(primary,pdf,pc,dc);
+if(!controlsOnly)verifyMathCurrentPixels(primary,pdf,pc,dc);
 const id=primary.report.cases[0].id,sceneFile='public/'+id+'/actual-scene.json',scene=primary.json(sceneFile),measurements=pc.json('events/'+id+'/measurements.json'),anchor=measurements.anchors[0];
 scene.nodes[measurements.nodes.findIndex(n=>n.name===anchor.name)].anchorsBp[anchor.anchor].x+=72/(72.27*65536);
 assert.throws(()=>verifyMathCurrentAnchors(scene,measurements),undefined,'Accepted altered integer math anchor.');
@@ -41,4 +42,19 @@ if(id==='flowchart-styled-labels')controls.push(...runPrimaryReportControls(pdf,
  ['missing-styled-rule-envelope',(r,json)=>json('calibration/'+id+'/policies.json',p=>delete p.candidate.rulePixels)],
  ['rehashed-styled-rule-envelope',(r,json)=>json('calibration/'+id+'/policies.json',p=>p.candidate.rulePixels[0].regions[0].limits[0]++)]
 ]));
-console.log(JSON.stringify({validated:true,controls}));
+const inputs=bundles.map(b=>b.sha256);
+// Shared caller-binding faults run once. This metadata baseline tests the
+// binding helper; the caller's independent check establishes pixel conformance.
+if(id!=='flowchart-styled-labels'){
+ const controlled={validated:true,positiveCheck:'caller-required',inputs},checked={completed:true,result:{passed:true},inputs};
+ bindControlBaseline(controlled,checked);
+ for(const[name,edit]of[
+  ['failed-control-baseline',r=>r.result.passed=false],
+  ['incomplete-control-baseline',r=>r.completed=false],
+  ['changed-control-baseline-inputs',r=>r.inputs[0]='0'.repeat(64)]
+ ]){
+  const altered=structuredClone(checked);edit(altered);
+  assert.throws(()=>bindControlBaseline(controlled,altered),undefined,'Accepted '+name);controls.push(name);
+ }
+}
+console.log(JSON.stringify({validated:true,positiveCheck:controlsOnly?'caller-required':'included',inputs,controls}));

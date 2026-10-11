@@ -1,6 +1,15 @@
 // Shared report/JSON overlays. Native ownership and policy semantics stay in callers.
 import assert from 'node:assert/strict';
 import {calcHash} from './calc-saved-images.mjs';
+// A controls-only run must share the four inputs of its fresh positive check.
+export function bindControlBaseline(controls,checked){
+ assert.equal(checked.completed,true,'Incomplete positive baseline.');
+ assert.equal(checked.result.passed,true,'Failed positive baseline.');
+ assert.equal(controls.validated,true);
+ assert.equal(controls.positiveCheck,'caller-required');
+ assert.equal(controls.inputs.length,4);
+ assert.deepEqual(controls.inputs,checked.inputs,'Control inputs differ from fresh positive baseline.');
+}
 export function primaryReportCorruptions(policyFile,editPolicy){
  return[
   ['candidate-fed-calibration',r=>r.converterInvoked=true],
