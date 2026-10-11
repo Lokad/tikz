@@ -35,6 +35,7 @@ export function edgeSvgPaints(bytes,{includeGlyphs=false}={}){
       else if(key==='stroke-dasharray')next.dash=value==='none'?[]:value.split(',').map(number);
       else if(key==='stroke-dashoffset')next.phase=number(value);
       else if(key==='clip-path'){assert.match(value,/^url\(#[a-zA-Z0-9-]+\)$/);next.clips.push(value.slice(5,-1));}
+      else if(key==='fill-rule'||key==='clip-rule')assert.ok(['nonzero','evenodd'].includes(value));
       else if(key==='transform'&&includeGlyphs)next.transforms.push(value);
       else assert.ok(['xmlns','xmlns:xlink','version','width','height','viewBox','id','transform','d','x','y','xlink:href','clip-path','clipPathUnits'].includes(key),'Unsupported edge SVG attribute: '+key);
     }
@@ -74,7 +75,7 @@ export function edgePdfPaints(bytes){
   for(const m of ext.matchAll(/\/(pgf@[Cc][Aa][\d.]*)\s*<<\s*\/(CA|ca)\s*([\d.]+)\s*>>/g))alphas[m[1]]={[m[2]==='CA'?'strokeOpacity':'fillOpacity']:number(m[3])};
   const stack=[],paints=[],clips=[];let state={...initial(),stroke:[0,0,0],miter:10},args=[],segments=0,pendingClip=false,inText=false;
   const nums=n=>{assert.equal(args.length,n);assert.ok(args.every(Number.isFinite));return args;};
-  for(const token of labelledPdfTokens(content)){
+  for(const token of labelledPdfTokens(content,{allowStarOperators:true})){
     if(token?.type!=='operator'){args.push(token);assert.ok(args.length<=16);continue;}
     const op=token.name;
     if(op==='q'){assert.equal(segments,0);stack.push(structuredClone(state));assert.ok(stack.length<=64);}
@@ -85,9 +86,9 @@ export function edgePdfPaints(bytes){
     else if(op==='gs'){assert.equal(args.length,1);assert.equal(args[0]?.type,'name');assert.ok(Object.hasOwn(alphas,args[0].name));Object.assign(state,alphas[args[0].name]);}
     else if(op==='m'||op==='l'||op==='c'||op==='re'){assert.ok(!inText);nums({m:2,l:2,c:6,re:4}[op]);segments++;assert.ok(segments<1000);}
     else if(op==='h'){assert.ok(segments);nums(0);segments++;}
-    else if(op==='W'||op==='Wstar'){assert.ok(segments&&!pendingClip);nums(0);pendingClip=true;}
-    else if(['S','f','B'].includes(op)){assert.ok(segments&&!inText);nums(0);if(pendingClip){state.clips.push(clips.length);clips.push(segments);}
-      paints.push({...structuredClone(state),operation:{S:'stroke',f:'fill',B:'fillstroke'}[op]});segments=0;pendingClip=false;}
+    else if(op==='W'||op==='W*'){assert.ok(segments&&!pendingClip);nums(0);pendingClip=true;}
+    else if(['S','f','f*','B','B*'].includes(op)){assert.ok(segments&&!inText);nums(0);if(pendingClip){state.clips.push(clips.length);clips.push(segments);}
+      paints.push({...structuredClone(state),operation:op==='S'?'stroke':op.startsWith('f')?'fill':'fillstroke'});segments=0;pendingClip=false;}
     else if(op==='n'){nums(0);if(pendingClip){state.clips.push(clips.length);clips.push(segments);}segments=0;pendingClip=false;}
     else if(op==='BT'){nums(0);assert.ok(!inText);inText=true;}
     else if(op==='ET'){nums(0);assert.ok(inText);inText=false;}

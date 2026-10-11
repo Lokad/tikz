@@ -98,9 +98,9 @@
     }
   },
   "transportSources": {
-    "tools/TikzVisual/path-label-cache-codec.mjs": "177a0016648d4f2343dfae357c56767008ed0dcd8a8ca19005a4703a7c1c1149",
+    "tools/TikzVisual/path-label-cache-codec.mjs": "82b0e88f02bdab656f9c244bbbe1bb47c81ba53ed1e9f9522dbe257db99c8dee",
     "tools/TikzVisual/calc-trial-cache-codec.mjs": "ed77884306eb6a322cc9d49f7ef6f5518bdcdcb0686b5988a739f9a4e04d7fda",
-    "tools/TikzVisual/path-label-cache.mjs": "912fe512c121431fafc72d7ee034fe12154c1ebc6aaa25328a94e795c6f3811f",
+    "tools/TikzVisual/path-label-cache.mjs": "b1545c0c8d13fc038fb3a8828280e665535ec194b2f6c777bf7499a858b3ca3c",
     "tools/TikzVisual/math-label-cache-inputs.mjs": "96e60ee7410121cd90c62fe9de66cdd167397f5329c99306b2df6244463aed1f"
   }
 }

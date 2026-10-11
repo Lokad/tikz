@@ -9,6 +9,9 @@ import {primaryReportCorruptions,runPrimaryReportControls} from './primary-repor
 
 export function pathLabelPrimaryDefects(original){
 const defects=primaryReportCorruptions('policies.json',p=>p['intrinsic-image'].rows[0].whole.rawChangedPixels++);
+for(const kind of ['wrong-fill-rule','wrong-clip-rule'])if(original.report.controls.some(c=>c.kind===kind))defects.push(
+ ['missing-'+kind+'-control',r=>r.controls.splice(r.controls.findIndex(c=>c.kind===kind),1)]
+);
 if(original.report.controls.some(c=>c.kind==='wrong-default-fill'))defects.push(
  ['missing-wrong-default-fill-control',r=>r.controls.splice(r.controls.findIndex(c=>c.kind==='wrong-default-fill'),1)]
 );

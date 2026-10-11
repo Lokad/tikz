@@ -43,7 +43,9 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
   }
   const clips=[...doc.querySelectorAll('clipPath')].map(e=>{
    const p=e.querySelector('path');if(!p||e.children.length!==1)throw Error('Unexpected native clip vocabulary.');
-   return{id:e.id,d:p.getAttribute('d'),transforms:transforms(p)};
+   let rule='nonzero';for(let a=p;a&&a!==root;a=a.parentElement)if(a.hasAttribute('clip-rule')){rule=a.getAttribute('clip-rule');break;}
+   if(!['nonzero','evenodd'].includes(rule))throw Error('Unexpected native clipping rule.');
+   return{id:e.id,d:p.getAttribute('d'),transforms:transforms(p),...(rule==='evenodd'?{rule}:{})};
   });
   return{origin:{x:Number(match[1]),y:Number(match[2])},view:root.getAttribute('viewBox').split(/[ ,]+/).map(Number),paths,uses,operations,clips,
    definitions:[...doc.querySelectorAll('defs path')].map(e=>({id:e.id,d:e.getAttribute('d')})),defs:doc.querySelector('defs')?.outerHTML};
@@ -113,7 +115,7 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
    s.setAttribute('width',root[2]+'px');s.setAttribute('height',root[3]+'px');s.setAttribute('viewBox',root.join(' '));
    const defs=new DOMParser().parseFromString(metadata.defs,'image/svg+xml').documentElement;s.append(doc.importNode(defs,true));
    for(const clip of instructions.clips){const c=doc.createElementNS(ns,'clipPath'),p=doc.createElementNS(ns,'path');c.id=clip.id;c.setAttribute('clipPathUnits','userSpaceOnUse');
-    p.setAttribute('d',clip.d);p.setAttribute('transform','matrix('+clip.matrix.join(' ')+')');c.append(p);s.firstChild.append(c);}
+    p.setAttribute('d',clip.d);p.setAttribute('transform','matrix('+clip.matrix.join(' ')+')');if(clip.rule)p.setAttribute('clip-rule',clip.rule);c.append(p);s.firstChild.append(c);}
    for(const op of metadata.operations){const p=op.kind==='path'?instructions.paths[op.index]:instructions.uses[op.index],e=doc.createElementNS(ns,op.kind==='path'?'path':'use');
     e.id=p.id;for(const[k,v]of Object.entries(p.paint))e.setAttribute(k,v);
     e.setAttribute('transform','matrix('+p.matrix.join(' ')+')');if(op.kind==='path')e.setAttribute('d',p.d);else e.setAttribute('href',p.href);
@@ -142,7 +144,7 @@ export async function buildPathLabelImageReference(renderer,bundle,glyphs,native
    for(const[i,clip]of nativeClips.entries()){
     const c=doc.getElementById(clipIds[i]);if(c?.localName!=='clipPath'||c.children.length!==1||c.firstElementChild.localName!=='path')throw Error('Missing native clip.');
     const p=c.firstElementChild;for(const a of [...p.attributes])p.removeAttribute(a.name);
-    p.setAttribute('d',clip.d);if(clip.transform)p.setAttribute('transform',clip.transform);
+    p.setAttribute('d',clip.d);if(clip.transform)p.setAttribute('transform',clip.transform);if(clip.rule)p.setAttribute('clip-rule',clip.rule);
    }
    for(const[i,p]of paints.entries()){
     const e=doc.getElementById('native-paint-'+i);if(!e||e.localName!=='path')throw Error('Missing native paint.');
@@ -201,6 +203,11 @@ export function pathLabelImageControls(frame,glyphs){
    controls.push(...kinds.map(kind=>({nodeId:target,target,kind})));
   }
  }
+ if(frame.caseId==='flowchart-fill-rules')for(const [target,kind]of [['native-paint-12','wrong-fill-rule'],['native-paint-15','wrong-clip-rule']]){
+  const region=frame.regions.find(r=>r.id===target);assert.equal(region?.kind,'path');
+  assert.equal(region.clips?.length??0,kind==='wrong-clip-rule'?1:0);
+  controls.push({nodeId:target,target,kind});
+ }
  if(requiresSvgArrowFillCorrection(frame.caseId)){
   const target='native-paint-'+svgArrowFillChangedPaintIndices(frame.caseId)[0],region=frame.regions.find(r=>r.id===target);
   assert.equal(region?.role,'tip');assert.equal(region.clips?.length??0,0,'Wrong-fill control requires a visible unclipped tip.');
@@ -219,7 +226,7 @@ export function pathLabelControlViews(frame){
  return frame.regions.some(r=>r.role==='tip')||isRectangleImageCase(frame.caseId)||isPlotImageCase(frame.caseId)?[1,4].map(scale=>({frame:'expanded',scale,background:'white'})):null;
 }
 export async function mutatePathLabelImage(renderer,svg,{target,kind,targets}){
- assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label','missing-clip','wrong-default-fill','radius-reduction'].includes(kind));
+ assert.ok(/^native-(glyph|paint)-\d+$/.test(target));assert.ok(['missing','quarter-pixel-shift','missing-label','missing-clip','wrong-default-fill','radius-reduction','wrong-fill-rule','wrong-clip-rule'].includes(kind));
  if(kind==='missing-label')assert.ok(targets.length>0&&targets.every(t=>/^native-glyph-\d+$/.test(t))&&targets[0]===target);
  let replacement;
  if(kind==='radius-reduction'){
@@ -234,6 +241,13 @@ export async function mutatePathLabelImage(renderer,svg,{target,kind,targets}){
   if(kind==='missing')p.remove();else if(kind==='missing-label')for(const id of targets){const e=doc.getElementById(id);if(!e)throw Error('Missing label glyph.');e.remove();}
   else if(kind==='missing-clip'){let removed=0;for(let e=p;e&&e.localName!=='svg';e=e.parentElement)if(e.hasAttribute('clip-path')){e.removeAttribute('clip-path');removed++;}if(!removed)throw Error('Missing controlled clip.');}
   else if(kind==='wrong-default-fill'){if(p.localName!=='path')throw Error('Expected an arrow path.');p.setAttribute('fill','#000000');}
+  else if(kind==='wrong-fill-rule'){if(p.localName!=='path'||p.getAttribute('fill-rule')!=='evenodd')throw Error('Expected the controlled even-odd fill.');p.setAttribute('fill-rule','nonzero');}
+  else if(kind==='wrong-clip-rule'){
+   const chain=[];for(let e=p;e&&e.localName!=='svg';e=e.parentElement)if(e.hasAttribute('clip-path'))chain.push(e.getAttribute('clip-path'));
+   if(chain.length!==1)throw Error('Expected one controlled clip.');
+   const id=/^url\(#([^)]*)\)$/.exec(chain[0])?.[1],clip=doc.getElementById(id)?.firstElementChild;
+   if(clip?.localName!=='path'||clip.getAttribute('clip-rule')!=='evenodd')throw Error('Expected the controlled even-odd clip.');clip.setAttribute('clip-rule','nonzero');
+  }
   else if(kind==='radius-reduction')p.setAttribute('d',replacement);
   else p.setAttribute('transform','translate(0.25 0) '+p.getAttribute('transform'));
   return new XMLSerializer().serializeToString(doc);

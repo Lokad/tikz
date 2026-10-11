@@ -204,8 +204,8 @@ internal sealed partial class Evaluator(Budget budget)
             Stroke = state.Paint.Stroke || statement.Command is "\\draw" or "\\filldraw",
             Fill = state.Paint.Fill || statement.Command is "\\fill" or "\\filldraw"
         };
-        KeyRegistry.ApplyStyle("every path", state, budget, statement.Source);
-        KeyRegistry.Apply(statement.Options, state, budget);
+        KeyRegistry.ApplyStyle("every path", state, budget, statement.Source, clipping: statement.Command == "\\clip");
+        KeyRegistry.Apply(statement.Options, state, budget, clipping: statement.Command == "\\clip");
         var firstLabel = statement.Operations.SelectMany(operation => operation.Labels).FirstOrDefault();
         if (firstLabel is not null && (statement.Command == "\\clip" || statement.Operations.Any(operation => operation is EdgeOperation)))
             throw new CompileError("TIKZ002", "Path labels combined with a new clip or separate edges are unsupported.", firstLabel.Source);
@@ -371,7 +371,7 @@ internal sealed partial class Evaluator(Budget budget)
                 case CloseOperation close:
                     Flush(); path.Close(); position = PgfCoordinates.ToLocal(path.Current, state.Transform, close.Source); reference = position;
                     break;
-                case PathOptionsOperation options: KeyRegistry.Apply(options.Options, state, budget); break;
+                case PathOptionsOperation options: KeyRegistry.Apply(options.Options, state, budget, clipping: statement.Command == "\\clip"); break;
                 default: throw new InvalidOperationException("Unknown path operation.");
             }
         }

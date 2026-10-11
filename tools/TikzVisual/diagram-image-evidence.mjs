@@ -9,7 +9,9 @@ import {loadPathLabelEvidence,verifyPathLabelEvidence} from './path-label-eviden
 import {parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 import {edgePdfPage,edgeCanonical} from './edge-log.mjs';
+import {fillRuleCase,fillRuleObservationHooks,correctedClipRuleSvg,verifyNativeFillRules} from './fill-rule-evidence.mjs';
 const frozen={
+ 'flowchart-fill-rules':'70a338ef81769259c62facee5b05c95ef0485c19e6f23e52ab8e118c0a8a1c47',
  'flowchart-arc-order':'1d0ebe5df8956679f1785ce02ef84403bc5672b5d6b28bad658219f8c77aa7c8',
  'definitions-contract':'8a330cec15dc405fb700804aef3d88a5f286502278e30380d920c2ae4fac3df8',
  'flowchart-definitions':'5d9e24038b319f2c08fc080e095afa8b8c075fc216efb3dd1a34c10f2f4963e9',
@@ -65,7 +67,13 @@ export async function loadLabelImageEvidence(input){
  const options={allowWrapperGlue:true,allowNoArrows:isPlotImageCase(id)&&id.endsWith('-contract')};
  const arrows=parseArrowLog(text('svg-probed.log'),options);calcEqual(arrows,parseArrowLog(text('pdf-probed.log'),options));
  arrows.driverState=verifyArrowDriverState(arrows,b.files.get('supplemental-reference.svg'),b.files.get('supplemental-reference.pdf'),edgePdfPage(text('pdf-probed.log')),
-  {allowText:true,wrapperExtraWidthSp:b.report.wrapperExtraWidthSp,allowDegenerateLine:id==='function-plot-contract',allowTrailingDegenerateLine:id==='smooth-plot-contract'});calcEqual(arrows,b.json('arrow-metrics.json'));
+  {allowText:true,wrapperExtraWidthSp:b.report.wrapperExtraWidthSp,allowDegenerateLine:id==='function-plot-contract',allowTrailingDegenerateLine:id==='smooth-plot-contract'});
+ if(id===fillRuleCase){
+  assert.equal(text('fill-rule-hooks.tex'),fillRuleObservationHooks,'Changed native rule observer.');
+  assert.ok(correctedClipRuleSvg(b.files.get('original-supplemental-reference.svg')).equals(b.files.get('supplemental-reference.svg')));
+  arrows.driverState.fillRuleEvidence=verifyNativeFillRules(arrows,b.files.get('supplemental-reference.svg'),b.files.get('supplemental-reference.pdf'),text('svg-probed.log'),text('pdf-probed.log'));
+ }
+ calcEqual(arrows,b.json('arrow-metrics.json'));
  // Supply the original backend files to existing image/PDF readers. Ownership
  // still covers the outer frozen bundle, including every original artifact.
  for(const[f,bytes]of files)if(!b.files.has(f))b.files.set(f,bytes);

@@ -14,6 +14,8 @@
   source provenance, cycle diagnostics and shared limits/cancellation.
 - Modern arc radii follow option order, preserving eager shared-radius validation
   and the final independent axis assignments.
+- Explicit nonzero/even-odd fill and captured clipping rules, with local clip-rule
+  options rejected and independently grounded compound-contour image controls.
 - Independent native/reference, primary/PDF and visible-negative comparisons for
   fixed fixtures and complete flowchart/network interactions. Fast iteration is
   separate from final qualification, with unchanged reference evidence reused.

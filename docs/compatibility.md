@@ -21,7 +21,7 @@ restore local options; library availability is ordered within a conversion.
 | Path operations | Moves, `--`, `|-`, `-|`, `.. controls (a) [and (b)] .. (end)`, `rectangle`, `circle`, `ellipse`, `arc` and `cycle`; connections, labels and plots use their narrower guides below |
 | Shape syntax | Circle radius, paired ellipse radii and [legacy/modern arcs with ordered radii](ARCS.md); modern arcs accept `start angle`, `end angle`, `radius`, `x radius`, `y radius`; mixed physical/unitless ellipse/arc radii reject |
 | Coordinates/transforms | Physical `pt`, `bp`, `cm`, `mm`, `in`, `sp`, `px`, contextual `em`/`ex`, basis vectors `x`/`y`; ordered `scale`, `xscale`, `yscale`, `xslant`, `yslant`, `rotate`, `shift`, `xshift`, `yshift`, `cm`; [finite native precision cases](../tests/Lokad.TikZ.Tests/TransformPrecisionTests.cs) |
-| Paint | `draw`/`fill`/`color`, nonnegative line widths and thickness presets, opacity channels, caps/joins/miter limits and nonzero/even-odd fill rules; [colors](COLORS.md), [dashes](DASHES.md), [complete paint fixtures](../tests/Reference/PaintDiagrams/README.md) |
+| Paint | `draw`/`fill`/`color`, nonnegative line widths and thickness presets, opacity channels, caps/joins/miter limits and [nonzero/even-odd fill and clip rules](FILL-RULES.md); [colors](COLORS.md), [dashes](DASHES.md), [complete paint fixtures](../tests/Reference/PaintDiagrams/README.md) |
 | Arithmetic | Expressions are bounded and context-dependent; coordinate calculations, numeric assignments and function plots have distinct contracts below. Division by zero, nonfinite results, unresolved names and undeclared contextual operations diagnose explicitly |
 
 The [parser](../src/Lokad.TikZ/Frontend/Parser.cs) and

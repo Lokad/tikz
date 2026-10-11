@@ -36,11 +36,11 @@ export function makeArrowNativeSvg(metrics,frame,variant,rootMode){
   for(const [i,n]of coefficients.entries())checks.push({quantity:id+'.matrix.'+i,expected:n,serialized:String(n),error:0,passed:true});
   return(variant.units==='pt'?'scale('+edgePtToCss+' '+(-edgePtToCss)+') ':'')+'matrix('+[...coefficients,tx,ty].join(' ')+')';
  };
- const clipRows=metrics.clips.map((id,i)=>({id:'native-clip-'+i,pathId:id,d:data(paths.get(id),'clip-'+i),transform:transform(null,'clip-'+i)}));
+ const clipRows=metrics.clips.map((id,i)=>({id:'native-clip-'+i,pathId:id,d:data(paths.get(id),'clip-'+i),transform:transform(null,'clip-'+i),...(metrics.driverState.clipRules?.[i]==='evenodd'?{rule:'evenodd'}:{})}));
  const paintRows=metrics.driverState.paints.map(p=>{
   const path=paths.get(p.pathId);assert.ok(path);const placement=p.placementId===null?null:placements.get(p.placementId);assert.ok(p.placementId===null||placement);
   const id='paint-'+p.ordinal,attributes={id,fill:p.operation==='stroke'?'none':rgb(p.fillRgb),stroke:p.operation==='fill'?'none':rgb(p.strokeRgb),
-   'fill-rule':'nonzero','stroke-width':coordinate(p.widthSp,'x',id+'.width'),
+   'fill-rule':p.fillRule??'nonzero','stroke-width':coordinate(p.widthSp,'x',id+'.width'),
    'stroke-linecap':['butt','round','square'][p.cap],'stroke-linejoin':['miter','round','bevel'][p.join],
    'stroke-miterlimit':String(p.miter),'stroke-opacity':String(p.strokeOpacity),'fill-opacity':String(p.fillOpacity),
    'stroke-dasharray':p.dashSp.length?p.dashSp.map((v,i)=>coordinate(v,'x',id+'.dash.'+i)).join(' '):'none',
@@ -50,7 +50,7 @@ export function makeArrowNativeSvg(metrics,frame,variant,rootMode){
  });
  const attrs=a=>Object.entries(a).map(([k,v])=>' '+k+'="'+v+'"').join('');
  const element=row=>'<path'+attrs({...row.attributes,d:row.d,...(row.transform?{transform:row.transform}:{})})+'/>';
- const defs='<defs>'+clipRows.map(c=>'<clipPath id="'+c.id+'" clipPathUnits="userSpaceOnUse">'+element({...c,attributes:{}})+'</clipPath>').join('')+'</defs>';
+ const defs='<defs>'+clipRows.map(c=>'<clipPath id="'+c.id+'" clipPathUnits="userSpaceOnUse">'+element({...c,attributes:c.rule?{'clip-rule':c.rule}:{}})+'</clipPath>').join('')+'</defs>';
  const drawing=defs+paintRows.map(p=>p.clips.reduceRight((s,id)=>'<g clip-path="url(#native-clip-'+id+')">'+s+'</g>',element(p))).join('');
  const b=rootMode==='picture'?frame.picture:frame.inkRoot,view=[b.minX,b.minY,b.maxX-b.minX,b.maxY-b.minY].map(x=>edgeDecimal(x,12));
  assert.ok(Number(view[2])>0&&Number(view[3])>0);

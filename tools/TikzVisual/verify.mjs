@@ -21,6 +21,7 @@ const features={
  styles:['style-contract','flowchart-parameterized'],
  definitions:['definitions-contract','flowchart-definitions'],
  arcs:['flowchart-arc-order'],
+ fillrules:['flowchart-fill-rules'],
  foreach:['foreach-contract','flowchart-foreach'],
  macros:['math-macro-contract','flowchart-math-macros'],
  functions:['math-functions-contract','network-math-functions'],
@@ -115,7 +116,7 @@ try{
   const profile=JSON.parse(await readFile(path.join(root,'tests/Reference/'+directory+'/image-profile.json')));
   for(const [fixture,entry]of Object.entries(profile.fixtures)){assert.ok(!cases.has(fixture));cases.set(fixture,{...entry,legacy:directory==='PathLabels',correction:directory==='ArrowColors'});}
  }
- const mathIds=['network-math-labels','math-label-contract','math-atom-contract'],all=[...cases.keys(),...mathIds,'flowchart-styled-labels'];assert.equal(all.length,29);
+ const mathIds=['network-math-labels','math-label-contract','math-atom-contract'],all=[...cases.keys(),...mathIds,'flowchart-styled-labels'];assert.equal(all.length,30);
  if(onlyCase)assert.ok(all.includes(onlyCase),'Unknown trusted fixture.');
  selected=onlyCase?[onlyCase]:qualification?all:features[feature];
  // Math's independent frozen contract binds its three-case family together.

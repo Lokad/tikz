@@ -27,7 +27,7 @@ function objects(bytes){
   assert.ok(map.size>0);assert.ok([...map.values()].every(o=>!o.body.includes('/ObjStm')),'Object streams are outside this fixed reference profile.');return map;
 }
 
-export function labelledPdfTokens(content){
+export function labelledPdfTokens(content,{allowStarOperators=false}={}){
   assert.ok(typeof content==='string'&&content.length<=1000000);const result=[];let index=0;
   function token(){while(index<content.length&&/\s/.test(content[index]))index++;assert.ok(index<content.length);const c=content[index];
     if(c==='['){index++;const a=[];while(true){while(/\s/.test(content[index]??''))index++;if(content[index]===']'){index++;return a;}assert.ok(index<content.length&&a.length<256);const t=token();assert.ok(typeof t==='number'||t?.type==='string');a.push(t);}}
@@ -38,7 +38,9 @@ export function labelledPdfTokens(content){
       assert.ok(ch.charCodeAt(0)<=255);slots.push(ch.charCodeAt(0));}return{type:'string',slots};}
     const tail=content.slice(index);let m;if((m=/^\/([A-Za-z][A-Za-z0-9@.-]*)/.exec(tail))){index+=m[0].length;return{type:'name',name:m[1]};}
     if((m=/^[+-]?(?:\d+(?:\.\d{1,5})?|\.\d{1,5})/.exec(tail))){index+=m[0].length;assert.ok(!/[\d.]/.test(content[index]??''));const n=Number(m[0]);assert.ok(Number.isFinite(n)&&Math.abs(n)<=10000);return n;}
-    m=/^[A-Za-z]+/.exec(tail);assert.ok(m,'Unsupported fixed PDF token.');index+=m[0].length;return{type:'operator',name:m[0]};
+    m=(allowStarOperators?/^[A-Za-z]+\*?/:/^[A-Za-z]+/).exec(tail);assert.ok(m,'Unsupported fixed PDF token.');
+    if(m[0].endsWith('*'))assert.ok(['f*','B*','W*'].includes(m[0]),'Unsupported starred PDF operator.');
+    index+=m[0].length;return{type:'operator',name:m[0]};
   }
   while(index<content.length){while(index<content.length&&/\s/.test(content[index]))index++;if(index===content.length)break;assert.ok(result.length<10000);result.push(token());}return result;
 }

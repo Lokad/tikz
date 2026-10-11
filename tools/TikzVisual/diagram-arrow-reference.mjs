@@ -14,8 +14,10 @@ import {arrowHooks,parseArrowLog} from './arrow-log.mjs';
 import {verifyArrowDriverState} from './arrow-driver-state.mjs';
 import {requiresSvgArrowFillCorrection} from './svg-arrow-color-evidence.mjs';
 import {verifyPathLabelEvidence} from './path-label-evidence.mjs';
+import {fillRuleCase,fillRuleObservationHooks,correctedClipRuleSvg,verifyNativeFillRules} from './fill-rule-evidence.mjs';
 assert.equal(process.argv.length,3,'Usage: node tools/TikzVisual/diagram-arrow-reference.mjs <exact-original-diagram-report>');
 const expected={
+ 'flowchart-fill-rules':'2f172f22c97ce4f1927e3962860e04310ff8029309cb32fd832b0a1a8fe7d53b',
  'flowchart-arc-order':'100b692e54a9d58c6296bf07083755768bbc4e7dfb642b2d2766b46f77bb0481',
  'flowchart-definitions':'3ce3467719edad6c46f13e153c26dcd080e6ce2868c588c59244b11d27148483',
  'flowchart-draw-color':'00382dca733736532da904d9246c7354565d22e91673a951218a229e052b5137',
@@ -35,6 +37,7 @@ const expected={
  'network-bent':'da163c256834b3c94477f4e368cbe69cc700a867b93a0b73a210d3e7a4aa0e54',
  'flowchart-transformed':'481e44ba361e36319fadb8f75f2dc73049fa3b14a428baefb8f8ce11efc2c5aa'};
 const probeHashes={
+ 'flowchart-fill-rules':'fe84112e509396c76b3e71aeff2fe17d559603a23d88e95c321713aa37bc3ce9',
  'flowchart-arc-order':'7db0d9c2af22c608401bb2049e2f0cbee66739f36ff8a6062d73b2a8d5cc4437',
  'flowchart-definitions':'5f4be2e8497e1659a9af51daf4bfa02dbc11b18ee58a250d8dc47ef5c4308076',
  'flowchart-draw-color':'9f405de1c802ffa12553cf096d0e681ffdaee5d24607ca582e3d59f8b0659988',
@@ -74,6 +77,7 @@ try{
  for(const[f,b]of original.files)if(f==='metrics.json'||f==='probed-reference.svg'||f==='native-positions.log'||f.startsWith('fonts/')||f.startsWith('source-captures/'))await save(f,b);
  const sourceHashes={...original.report.sourceHashes};
  for(const f of[arrowHooks,'tools/TikzVisual/diagram-arrow-reference.mjs','tools/TikzVisual/arrow-log.mjs','tools/TikzVisual/arrow-driver-state.mjs']){const b=edgeCanonical(await readFile(path.join(root,f)));sourceHashes[f]=sha256(b);await save('source-captures/'+f,b);}
+ if(id===fillRuleCase){const f='tools/TikzVisual/fill-rule-evidence.mjs',b=edgeCanonical(await readFile(path.join(root,f)));sourceHashes[f]=sha256(b);await save('source-captures/'+f,b);await save('fill-rule-hooks.tex',fillRuleObservationHooks);}
  const tools={};
  for(const name of['latex','pdflatex','dvisvgm']){
   const dirs=(process.env.PATH??'').split(path.delimiter);if(process.platform==='win32')dirs.push(path.join(process.env.LOCALAPPDATA,'Programs/MiKTeX/miktex/bin/x64'));
@@ -84,24 +88,26 @@ try{
  for(const route of['svg','pdf']){
   phase=route+'-supplemental';const folder=path.join(output,'work/'+route);await mkdir(folder,{recursive:true});
   let wrapper=original.files.get(route+'-wrapper.tex').toString('utf8');
-  const hooks='\\AtBeginDocument{\\input{arrow-hooks.tex}\\typeout{ARROW-PGF \\pgfversion|END}\\let\\diagramarrowend\\endtikzpicture\\def\\endtikzpicture{\\typeout{ARROW-BOUNDS \\number\\pgf@picminx|\\number\\pgf@picminy|\\number\\pgf@picmaxx|\\number\\pgf@picmaxy|END}\\diagramarrowend}}\n';
+  const hooks='\\AtBeginDocument{\\input{arrow-hooks.tex}'+(id===fillRuleCase?'\\input{fill-rule-hooks.tex}':'')+'\\typeout{ARROW-PGF \\pgfversion|END}\\let\\diagramarrowend\\endtikzpicture\\def\\endtikzpicture{\\typeout{ARROW-BOUNDS \\number\\pgf@picminx|\\number\\pgf@picminy|\\number\\pgf@picmaxx|\\number\\pgf@picmaxy|END}\\diagramarrowend}}\n';
   assert.ok(wrapper.includes('\\begin{document}'));wrapper=wrapper.replace('\\begin{document}',hooks+'\\begin{document}');
   const box='\\typeout{LOKAD-BOX \\number\\wd\\lokadpicture|\\number\\ht\\lokadpicture|\\number\\dp\\lokadpicture|END}';assert.ok(wrapper.includes(box));wrapper=wrapper.replace(box,box+'\n'+box.replace('LOKAD-BOX','ARROW-BOX'));
   await save(route+'-wrapper.tex',wrapper);
   for(const[f,b]of[['case.tikz',source],['case.tex',Buffer.from('\\AtBeginDocument{\\lokadprobestrue}\n'+wrapper)],['arrow-hooks.tex',await readFile(path.join(root,arrowHooks))],['edge-hooks.tex',original.files.get('source-captures/tools/TikzEdgeReference/edge-hooks.tex')],['probes.tex',original.files.get('probes.tex')]])await writeFile(path.join(folder,f),b);
+  if(id===fillRuleCase)await writeFile(path.join(folder,'fill-rule-hooks.tex'),fillRuleObservationHooks);
   await execute(tools[route==='svg'?'latex':'pdflatex'],['-disable-write18','-disable-installer','-interaction=nonstopmode','-halt-on-error','-recorder','case.tex'],folder,route+'-compile');
   const log=edgeSanitize(await readFile(path.join(folder,'case.log'),'utf8'));await save(route+'-probed.log',log);
   const fls=await readFile(path.join(folder,'case.fls'),'utf8'),inputs={};await save(route+'-inputs.fls',edgeSanitize(fls));
   for(const line of fls.split(/\r?\n/).filter(l=>l.startsWith('INPUT '))){const f=path.resolve(folder,line.slice(6));if(f.startsWith(output+path.sep))continue;const key=path.basename(f),h=sha256(await readFile(f));if(inputs[key])assert.equal(inputs[key],h);inputs[key]=h;}
   const prior=original.json(route+'-probed-inputs.json');assert.deepEqual(inputs,prior,'Native engine inputs changed.');await save(route+'-inputs.json',JSON.stringify(inputs,null,2)+'\n');
   let bytes;
-  if(route==='svg'){await execute(tools.dvisvgm,['--no-fonts','--exact-bbox','--bbox=min','--page=1','--output=reference.svg','case.dvi'],folder,'svg-outline');bytes=await readFile(path.join(folder,'reference.svg'));await save('supplemental-reference.svg',bytes);assert.equal(canonicalEdgeSvg(bytes),canonicalEdgeSvg(original.files.get('plain-reference.svg')));}
+  if(route==='svg'){await execute(tools.dvisvgm,['--no-fonts','--exact-bbox','--bbox=min','--page=1','--output=reference.svg','case.dvi'],folder,'svg-outline');bytes=await readFile(path.join(folder,'reference.svg'));if(id===fillRuleCase){await save('original-supplemental-reference.svg',bytes);bytes=correctedClipRuleSvg(bytes);}await save('supplemental-reference.svg',bytes);assert.equal(canonicalEdgeSvg(bytes),canonicalEdgeSvg(original.files.get('plain-reference.svg')));}
   else{bytes=await readFile(path.join(folder,'case.pdf'));await save('supplemental-reference.pdf',bytes);assert.ok(bytes.equals(original.files.get('plain-reference.pdf')),'Arrow probes changed original PDF bytes.');}
   observations[route]={log,bytes,metrics:parseArrowLog(log,{allowWrapperGlue:true,allowNoArrows:plottingContract})};
  }
  phase='native-checking';assert.deepEqual(observations.svg.metrics,observations.pdf.metrics);
  const metrics=observations.svg.metrics,extra=metrics.pictureBox.widthSp-(metrics.pictureBounds.maxXSp-metrics.pictureBounds.minXSp);
  metrics.driverState=verifyArrowDriverState(metrics,observations.svg.bytes,observations.pdf.bytes,edgePdfPage(observations.pdf.log),{allowText:true,wrapperExtraWidthSp:extra,allowDegenerateLine:id==='function-plot-contract',allowTrailingDegenerateLine:id==='smooth-plot-contract'});
+ if(id===fillRuleCase)metrics.driverState.fillRuleEvidence=verifyNativeFillRules(metrics,observations.svg.bytes,observations.pdf.bytes,observations.svg.log,observations.pdf.log);
  await save('arrow-metrics.json',JSON.stringify(metrics,null,2)+'\n');
  await publish(true,{definition:original.report.definition,sourceHashes,tools:original.report.tools,originalInputSha256:original.sha256,invariance:{svgDrawing:true,pdfBytes:true,pdfPixelsUnchangedByByteIdentity:true},counts:{paths:metrics.paths.length,paints:metrics.driverState.paints.length,tips:metrics.placements.length,shortening:metrics.shortening.length},wrapperExtraWidthSp:extra});
 }catch(e){await save('failure.log',edgeSanitize(e.stack??String(e)));await publish(false,{error:edgeSanitize(e.message)});process.exitCode=1;}

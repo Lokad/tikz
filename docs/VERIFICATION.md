@@ -16,9 +16,10 @@ node tools/TikzVisual/verify.mjs iterate --feature math
 node tools/TikzVisual/verify.mjs iterate --feature styled
 node tools/TikzVisual/verify.mjs iterate --feature definitions
 node tools/TikzVisual/verify.mjs iterate --feature arcs
+node tools/TikzVisual/verify.mjs iterate --feature fillrules
 node tools/TikzVisual/verify.mjs iterate --case flowchart-draw-color
 
-# All 29 diagrams, all original image views, independent checking and controls.
+# All 30 diagrams, all original image views, independent checking and controls.
 node tools/TikzVisual/verify.mjs qualify
 # A selected fixture has selected-scope qualification, never full-matrix status.
 node tools/TikzVisual/verify.mjs qualify --case smooth-plot-contract
@@ -29,7 +30,7 @@ node tools/TikzPackageCheck/verify.mjs artifacts/nuget --controls
 ```
 
 Features are `core`, `labels`, `positioning`, `styles`, `foreach`, `macros`,
-`functions`, `plots`, `paint`, `math`, `styled`, `definitions` and `arcs`. Core exercises four complete
+`functions`, `plots`, `paint`, `math`, `styled`, `definitions`, `arcs` and `fillrules`. Core exercises four complete
 diagrams: implicit paint/clips, bent network, transformed nodes and smooth plots.
 These cover positioning, path labels, arrows and calc together, including curved
 and transformed interactions. Math and styled labels have separate affected
@@ -37,7 +38,9 @@ commands; their native ownership/font work is not repeated on every geometry
 iteration. Math's frozen three-case contract remains together, including its
 focused cases. Definitions retain a focused mechanism corpus and complete
 flowchart. Arc ordering adds one complete diagram with independent axis assignment
-and historical radius-shrink evidence. All 29 fixtures remain in final qualification.
+and historical radius-shrink evidence. Fill rules add one complete diagram with
+compound contour winding and captured clip state, independent PGF/SVG/PDF rule
+checking and visible wrong-fill/clip-rule controls. All 30 fixtures remain in final qualification.
 Iteration runs the entire ordinary suite before the affected comparisons.
 No command above runs TeX. Only pinned repository fixtures are materialized.
 
@@ -46,13 +49,14 @@ failed regions and links to paired PNGs/crops. Changed source during a run is a
 failure. An iteration report cannot establish final qualification. At feature
 completion, run required qualification on a clean committed source export;
 check that its files match the final tree and run existing family/release checks
-required by the change. The 29-case runner does not replace the other families'
+required by the change. The 30-case runner does not replace the other families'
 admission policies or the hosted workflow.
 
 Package acceptance checks the actual nupkg/snupkg against current Release
 DLL/XML, README, licenses and font data. An isolated consumer restores only
 from that checked local feed into a fresh cache, compiles the README sample,
-and converts six complete diagrams, including token definitions and arc ordering. SVG hashes/statistics and loaded assembly
+and converts seven complete diagrams, including token definitions, arc ordering
+and fill/clip rules. SVG hashes/statistics and loaded assembly
 must equal a separate source consumer. Missing XML, added dependency, changed
 DLL and unexpected payload controls run once on the Windows ordinary job;
 both ordinary platforms run positive package acceptance. This checks package
@@ -70,6 +74,7 @@ native witnesses, and do not justify removing assertions.
 | --- | --- |
 | Conversion, DiagnosticPosition | Public result/zero-output contract, physical units, UTF-16 spans, cancellation and resource limits |
 | Geometry, TransformPrecision | Affine composition/reflection, PGF integer precision, physical-unit conversion and overflow |
+| FillRule | Ordered/default fill rules, scope restoration, clip capture independent of later paint, and native-invalid local clip-rule options |
 | Reference, EmittedSvg | Independent primitive measurements versus scene; returned SVG serialization versus scene/native evidence; malformed SVG rejection |
 | FontData, TextLayout | Independent font boxes, spaces/ligatures/overhangs, every glyph position, unsupported text and bounded layout |
 | MathFontData, MathParser | Declared font slots/styles/radicals; atom grammar, groups/scripts, exact unsupported diagnostics and mapped provenance |
@@ -99,7 +104,7 @@ native witnesses, and do not justify removing assertions.
 | Nonmath current-report eight corruptions | Run once per current verifier; every diagram still receives its own numeric, decoded-pixel, framing and fresh-source checks |
 | Complete-text five corruptions | Run once on the common text verifier; both path-label fixtures retain complete-text reference evidence |
 | Shared process and portable-cache controls | Run once per matrix. Canonical positive roundtrips run during materialization of all 31 archive groups. The two faults rejected by the common archive digest run once, replacing 28 identical original repetitions each. Math/styled ownership corruption stays separate; process time/output/spawn failures retain partial logs |
-| Iteration selection controls | Run once per matrix. Reuse checked native qualification and independently decode one visible selected witness for each of 211 retained negatives (126 original, 53 definitions and 32 arc-diagram controls); repeated negative × camera combinations add no value to this criterion |
+| Iteration selection controls | Run once per matrix. Reuse checked native qualification and independently decode one visible selected witness for each of 247 retained negatives (126 original, 53 definitions, 32 arc-diagram and 36 fill-rule controls); repeated negative × camera combinations add no value to this criterion |
 | Native measurements, arrow-color correction, math/styled controls | Retain separately where ownership, fonts, rules, native SVG correction or policy semantics differ |
 | Existing shape/border/edge/curve/dash/arrow/calc suites | Retain their own independent references, image policies, negatives, admissions and inspection tests. Matching test names alone do not prove equivalent semantics |
 

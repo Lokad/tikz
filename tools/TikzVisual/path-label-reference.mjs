@@ -10,6 +10,7 @@ import {canonicalEdgeSvg} from './edge-replay.mjs';
 import {parsePathLabelNative,parseDiagramNative,pathLabelPhysicalCalls,pathLabelDriverState} from './path-label-native.mjs';
 import {requiresSvgArrowFillCorrection,svgArrowFillChangedPaintIndices,correctedArrowFillWrapper,verifySvgArrowFillCorrection} from './svg-arrow-color-evidence.mjs';
 import {svgDefaultArrowFillWorkaroundKind} from './svg-arrow-color-workaround.mjs';
+import {requiresSvgClipRuleCorrection,correctedClipRuleSvg,clipRuleCorrectionKind,verifySvgClipRuleCorrection} from './fill-rule-evidence.mjs';
 
 assert.ok(process.argv.length===2||process.argv.length===3,'Usage: node tools/TikzVisual/path-label-reference.mjs [fixed fixture name]');
 const cases={
@@ -17,6 +18,7 @@ const cases={
  interactions:['seed','first','second','reuse','clipped','continued','nested','escaped']
 };
 const diagrams={
+ 'flowchart-fill-rules':{hash:'2f172f22c97ce4f1927e3962860e04310ff8029309cb32fd832b0a1a8fe7d53b',nodes:[['input','rectangle'],['check','rectangle'],['output','rectangle'],['retry','rectangle']],labels:4,coordinates:['return'],constructionOrder:['input','check','output','retry','diagram-label-1','diagram-label-2','diagram-label-3','return','diagram-label-4']},
  'flowchart-arc-order':{hash:'100b692e54a9d58c6296bf07083755768bbc4e7dfb642b2d2766b46f77bb0481',nodes:['input','check','output','retry'].map(id=>[id,'rectangle']),labels:3,coordinates:['return'],constructionOrder:['input','check','output','retry','diagram-label-1','diagram-label-2','diagram-label-3','return']},
  'definitions-contract':{folder:'Definitions',hash:'faf64f77406ae68829cb3a6d6b4ed24cca3f0630806e08a95ea898ec45ffd5b5',nodes:['early','late','local','restored','boundary','placed','row1','row2'].map(id=>[id,'rectangle']),labels:0,coordinates:[],constructionOrder:['early','late','local','restored','boundary','placed','row1','row2']},
  'flowchart-definitions':{hash:'3ce3467719edad6c46f13e153c26dcd080e6ce2868c588c59244b11d27148483',nodes:['input','check','retry','output'].map(id=>[id,'rectangle']),labels:3,coordinates:['return'],constructionOrder:['input','check','retry','output','diagram-label-1','diagram-label-2','diagram-label-3','return']},
@@ -43,6 +45,7 @@ const diagrams={
 };
 const id=process.argv[2]??'placement',diagram=Object.hasOwn(diagrams,id);assert.ok(diagram||Object.hasOwn(cases,id),'Only fixed trusted repository fixtures are accepted.');
 const correctSvgFill=requiresSvgArrowFillCorrection(id);
+const correctSvgClip=requiresSvgClipRuleCorrection(id);
 const source='tests/Fixtures/'+(diagram?(diagrams[id].folder??'Diagrams'):'PathLabels')+'/'+id+'.tikz';
 const definition=diagram?{id,nodes:[...diagrams[id].nodes.map(([id,shape])=>({id,shape})),...Array.from({length:diagrams[id].labels},(_,i)=>({id:'diagram-label-'+(i+1),shape:'rectangle',sourceName:''}))],coordinates:diagrams[id].coordinates,constructionOrder:diagrams[id].constructionOrder}:{id,nodes:cases[id].map(id=>({id,shape:'rectangle'})),coordinates:[]};
 const ids=definition.nodes.map(n=>n.id);
@@ -74,6 +77,7 @@ try{
  const tools={};for(const[n,v]of Object.entries({latex:native.latexVersion,pdflatex:pdf.pdfLatexVersion,dvisvgm:native.dvisvgmVersion,dvitype:native.dviTypeVersion,pdftoppm:pdf.pdfRasterizerVersion}))tools[n]=await identify(n,v);
  const sources=[source,edgeWrapper,edgeHooks,'tools/TikzVisual/path-label-reference.mjs','tools/TikzVisual/path-label-native.mjs','tools/TikzVisual/qualification-process.mjs','tools/TikzVisual/edge-log.mjs','tools/TikzVisual/edge-replay.mjs','tools/TikzVisual/edge-driver-state.mjs','tools/TikzFontData/font-profile.json'];
  if(correctSvgFill)sources.push('tools/TikzVisual/svg-arrow-color-workaround.mjs','tools/TikzVisual/svg-arrow-color-evidence.mjs','tools/TikzVisual/arrow-driver-state.mjs');
+ if(correctSvgClip)sources.push('tools/TikzVisual/fill-rule-evidence.mjs','tools/TikzVisual/arrow-driver-state.mjs','tools/TikzVisual/labelled-border-pdf-vector.mjs');
  const sourceHashes={};for(const file of sources){const b=edgeCanonical(await readFile(path.join(root,file)));sourceHashes[file]=sha256(b);await save('source-captures/'+file,b);}
  if(diagram)assert.equal(sourceHashes[source],diagrams[id].hash,'Changed trusted diagram source.');
  const profile=JSON.parse(await readFile(path.join(root,'tools/TikzFontData/font-profile.json')));
@@ -114,7 +118,9 @@ try{
   await json(phase+'-inputs.json',inputs);
   if(svgRoute){
    await execute(tools.dvisvgm.executable,['--no-fonts','--exact-bbox','--bbox=min','--page=1','--output=reference.svg','case.dvi'],folder,phase+'-outline');
-   const bytes=await readFile(path.join(folder,'reference.svg'));await save((route==='original-svg'?'original-':'')+state+'-reference.svg',bytes);
+   let bytes=await readFile(path.join(folder,'reference.svg'));
+   if(correctSvgClip){await save('original-'+state+'-reference.svg',bytes);bytes=correctedClipRuleSvg(bytes);}
+   await save((route==='original-svg'?'original-':'')+state+'-reference.svg',bytes);
    let trace=null;if(state==='probed'&&route==='svg'){trace=edgeSanitize(await execute(tools.dvitype.executable,['-disable-installer','-out-mode=4','case.dvi'],folder,'glyph-trace'));await save('native-positions.log',trace);}
    observations[phase]={log,bytes,trace};
   }else{
@@ -138,7 +144,15 @@ try{
   const files=new Map(await Promise.all(Object.keys(artifacts).map(async file=>[file,await readFile(await outputPath(output,file))])));
   verifySvgArrowFillCorrection({report:{definition,artifacts,sourceHashes,nativeSvgCorrection},files});
  }
+ let nativeSvgClipRuleCorrection;
+ if(correctSvgClip){
+  nativeSvgClipRuleCorrection={kind:clipRuleCorrectionKind,changedClipIndices:[0],pdfUnmodified:true};
+  await json('native-svg-clip-rule-correction.json',nativeSvgClipRuleCorrection);
+  const hook='tools/TikzVisual/fill-rule-evidence.mjs',bytes=edgeCanonical(await readFile(path.join(root,hook)));sourceHashes[hook]=sha256(bytes);await save('source-captures/'+hook,bytes);
+  const files=new Map(await Promise.all(Object.keys(artifacts).map(async file=>[file,await readFile(await outputPath(output,file))])));
+  verifySvgClipRuleCorrection({report:{definition,artifacts,sourceHashes,nativeSvgClipRuleCorrection},files});
+ }
  await json('metrics.json',metrics);
  await publish(true,{sourceHashes,tools:Object.fromEntries(Object.entries(tools).map(([n,t])=>[n,{version:t.version,sha256:t.sha256}])),definition,pdfPage:pdfObserved.page,
-  ...(nativeSvgCorrection?{nativeSvgCorrection}:{}),invariance:{svgDrawing:true,pdfBytes:true,pdfPixels:true},counts:{nodes:metrics.nodes.length,pathCalls:metrics.constructionPaths.length,paintedPaths:metrics.driverState.pathPaints,anchors:metrics.nodes.length*edgeAnchors.length}});
+  ...(nativeSvgCorrection?{nativeSvgCorrection}:{}),...(nativeSvgClipRuleCorrection?{nativeSvgClipRuleCorrection}:{}),invariance:{svgDrawing:true,pdfBytes:true,pdfPixels:true},counts:{nodes:metrics.nodes.length,pathCalls:metrics.constructionPaths.length,paintedPaths:metrics.driverState.pathPaints,anchors:metrics.nodes.length*edgeAnchors.length}});
 }catch(error){await save('failure.log',edgeSanitize(error.stack??String(error)));await publish(false,{error:edgeSanitize(error.message)});process.exitCode=1;}

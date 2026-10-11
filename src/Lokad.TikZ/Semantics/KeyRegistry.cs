@@ -7,12 +7,12 @@ namespace Lokad.TikZ.Semantics;
 
 internal static class KeyRegistry
 {
-    public static void ApplyStyle(string name, EvaluationState state, Budget budget, Source source)
+    public static void ApplyStyle(string name, EvaluationState state, Budget budget, Source source, bool clipping = false)
     {
         if (state.Styles.TryGetValue(name, out var style))
-            Apply(StyleExpansion.Instantiate(style, new(name, source.Slice(0, 0), source), budget), state, budget, 1);
+            Apply(StyleExpansion.Instantiate(style, new(name, source.Slice(0, 0), source), budget), state, budget, 1, clipping);
     }
-    public static void Apply(IEnumerable<Option> options, EvaluationState state, Budget budget, int depth = 0)
+    public static void Apply(IEnumerable<Option> options, EvaluationState state, Budget budget, int depth = 0, bool clipping = false)
     {
         foreach (var original in options)
         {
@@ -45,7 +45,7 @@ internal static class KeyRegistry
             }
             if (state.Styles.TryGetValue(key, out var style))
             {
-                Apply(StyleExpansion.Instantiate(style, option, budget), state, budget, depth + 1);
+                Apply(StyleExpansion.Instantiate(style, option, budget), state, budget, depth + 1, clipping);
                 continue;
             }
             var value = Options.Clean(option.Value);
@@ -168,8 +168,8 @@ internal static class KeyRegistry
                 case "min distance": var minDistance = state.Dimension(option.Value, budget); state.Connection = state.Connection with { Curved = true, InMin = minDistance, OutMin = minDistance }; break;
                 case "max distance": var maxDistance = state.Dimension(option.Value, budget); state.Connection = state.Connection with { Curved = true, InMax = maxDistance, OutMax = maxDistance }; break;
                 case "distance": var distance = state.Dimension(option.Value, budget); state.Connection = state.Connection with { Curved = true, InMin = distance, InMax = distance, OutMin = distance, OutMax = distance }; break;
-                case "nonzero rule": state.Paint = paint with { FillRule = "nonzero" }; break;
-                case "even odd rule": state.Paint = paint with { FillRule = "evenodd" }; break;
+                case "nonzero rule": Rule("nonzero"); break;
+                case "even odd rule": Rule("evenodd"); break;
                 case "solid": DashPattern.Set(state, [], option.Source, budget); break;
                 case "dashed": Dash(3, 3); break;
                 case "densely dashed": Dash(3, 2); break;
@@ -206,6 +206,12 @@ internal static class KeyRegistry
                     if (Color.IsName(key) || key.Contains('!')) { var c = Color.Parse(new Source(key, 0, key.Length), budget); state.Paint = paint with { StrokeColor = c, FillColor = c }; state.Node = state.Node with { TextColor = c }; }
                     else throw Unsupported(option);
                     break;
+            }
+            void Rule(string rule)
+            {
+                if (clipping)
+                    throw new CompileError("TIKZ002", "Select clipping fill rules on a surrounding scope.", option.Source);
+                state.Paint = paint with { FillRule = rule };
             }
             void Width(double points)
             {

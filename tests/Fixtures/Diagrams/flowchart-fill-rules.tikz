@@ -1,0 +1,34 @@
+\usetikzlibrary{positioning,arrows.meta,calc}
+\begin{tikzpicture}[node distance=9mm,
+  box/.style={draw,rectangle,minimum width=14mm,inner sep=3pt}]
+  \node[box] (input) {Input};
+  \node[box,right=of input] (check) {Check};
+  \node[box,right=of check] (output) {Output};
+  \node[box,below=of check] (retry) {Retry};
+  \draw[-{Stealth}] (input) -- node[midway,above] {read} (check);
+  \draw[-{Stealth}] (check) -- node[midway,above] {ok} (output);
+  \draw[-{Stealth}] (check) -- node[midway,right] {again} (retry);
+  \coordinate (return) at ($(input.south)+(0,-12mm)$);
+  \draw[-{Stealth}] (retry.west) -| (return) -- (input.south);
+  \begin{scope}[yshift=-35mm,even odd rule]
+    \fill[fill=blue] (0,0) rectangle (12mm,12mm)
+      (3mm,3mm) rectangle (9mm,9mm);
+    \fill[even odd rule,nonzero rule,fill=green!60!black]
+      (16mm,0) rectangle (28mm,12mm)
+      (19mm,3mm) rectangle (25mm,9mm);
+    \fill[nonzero rule,fill=orange] (32mm,0) rectangle (44mm,12mm)
+      (35mm,3mm) -- (41mm,3mm) -- (41mm,9mm) -- (35mm,9mm) -- cycle;
+    \begin{scope}[xshift=48mm]
+      \clip (0,0) rectangle (12mm,12mm)
+        (3mm,3mm) rectangle (9mm,9mm);
+      \fill[nonzero rule,fill=teal] (-2mm,-2mm) rectangle (14mm,14mm);
+      \draw[nonzero rule,-{Stealth}] (1mm,6mm) -- (11mm,6mm);
+      \node[anchor=west,inner sep=0pt,text=black] at (0,6mm) {Gate};
+    \end{scope}
+    \begin{scope}[xshift=64mm,nonzero rule]
+      \clip (0,0) rectangle (12mm,12mm)
+        (3mm,3mm) rectangle (9mm,9mm);
+      \fill[even odd rule,fill=gray] (-2mm,-2mm) rectangle (14mm,14mm);
+    \end{scope}
+  \end{scope}
+\end{tikzpicture}

@@ -36,9 +36,10 @@ export function arrowSvgSegments(text){
  }
  return segments;
 }
-export function arrowSvgVectors(bytes,{allowText=false}={}){
+export function arrowSvgVectors(bytes,{allowText=false,trackRules=false}={}){
  assert.ok(bytes.length<=1000000);const text=bytes.toString('utf8').replace(/<\?xml[^>]+\?>|<!--[\s\S]*?-->/g,''),stack=[],paths=[],clips=[];
  let state={matrix:[...identity],clipId:null,defs:false},rootMatrix;
+ if(trackRules){state.fillRule='nonzero';state.clipRule='nonzero';}
  for(const token of text.match(/<[^>]+>|[^<]+/g)??[]){
   if(!token.startsWith('<')){assert.equal(token.trim(),'');continue;}
   const name=/^<\/?([a-zA-Z]+)/.exec(token)?.[1];assert.ok(['svg','g','path','defs','clipPath',...(allowText?['use']:[])].includes(name),'Unexpected arrow SVG element: '+name);
@@ -46,16 +47,17 @@ export function arrowSvgVectors(bytes,{allowText=false}={}){
   const attrs={},body=token.slice(name.length+1).replace(/\/?\s*>$/,'');
   assert.equal(body.replace(/([a-zA-Z][a-zA-Z0-9:_-]*)='([^']*)'/g,(_,k,v)=>{assert.ok(!Object.hasOwn(attrs,k));attrs[k]=v;return'';}).trim(),'');
   const next=structuredClone(state);
+  if(trackRules)for(const [key,field]of [['fill-rule','fillRule'],['clip-rule','clipRule']])if(attrs[key]){assert.ok(['nonzero','evenodd'].includes(attrs[key]));next[field]=attrs[key];}
   if(attrs.transform){const m=transform(attrs.transform);if(rootMatrix===undefined){assert.equal(name,'g');assert.equal(m[1],0);assert.equal(m[2],0);assert.equal(m[0],.996264);assert.equal(m[3],-.996264);rootMatrix=m;}
    else next.matrix=multiply(next.matrix,m);}
   if(name==='defs')next.defs=true;
   if(name==='clipPath'){assert.ok(attrs.id);next.clipId=attrs.id;}
-  if(name==='path'&&!(allowText&&next.defs&&!next.clipId)){assert.ok(attrs.d);const row={segments:arrowSvgSegments(attrs.d),matrix:next.matrix};if(next.clipId)clips.push({...row,id:next.clipId});else{assert.equal(next.defs,false);paths.push(row);}}
+  if(name==='path'&&!(allowText&&next.defs&&!next.clipId)){assert.ok(attrs.d);const row={segments:arrowSvgSegments(attrs.d),matrix:next.matrix,...(trackRules?{rule:next.clipId?next.clipRule:next.fillRule}:{})};if(next.clipId)clips.push({...row,id:next.clipId});else{assert.equal(next.defs,false);paths.push(row);}}
   if(!token.endsWith('/>')){assert.ok(stack.length<64);stack.push({name,state});state=next;}
  }
  assert.ok(rootMatrix);assert.equal(stack.length,0);return{rootMatrix,paths,clips};
 }
-export function arrowPdfVectors(bytes,{allowText=false}={}){
+export function arrowPdfVectors(bytes,{allowText=false,trackRules=false}={}){
  assert.ok(bytes.length<=1000000);const text=bytes.toString('latin1'),objects=new Map();assert.ok(text.startsWith('%PDF-1.5'));let cursor=0;const header=/(\d+) 0 obj\s*/g;
  while(cursor<text.length){header.lastIndex=cursor;const m=header.exec(text);if(!m)break;const start=header.lastIndex,end=text.indexOf('endobj',start),stream=text.indexOf('stream\n',start),id=Number(m[1]);assert.ok(end>start&&!objects.has(id)&&objects.size<256);
   if(stream>=0&&stream<end){const body=text.slice(start,stream).trim(),length=Number(/\/Length\s+(\d+)\b/.exec(body)?.[1]);assert.ok(length>0&&length<=1000000&&/\/Filter\s*\/FlateDecode/.test(body));
@@ -65,10 +67,11 @@ export function arrowPdfVectors(bytes,{allowText=false}={}){
  assert.ok([...objects.values()].every(o=>!o.body.includes('/ObjStm')));const pages=[...objects.values()].filter(o=>/\/Type\s*\/Page\b/.test(o.body));assert.equal(pages.length,1);
  const contentId=Number(/\/Contents\s+(\d+) 0 R/.exec(pages[0].body)?.[1]),content=objects.get(contentId)?.stream?.toString('latin1');assert.ok(content);
  const paths=[],clips=[],stack=[];let matrix=[...identity],rootMatrix,segments=[],pendingClip=false,args=[],textActive=false;
+ let clipRule;
  const nums=n=>{assert.equal(args.length,n);assert.ok(args.every(Number.isFinite));return args;};
  const idle=()=>{assert.equal(segments.length,0);assert.equal(textActive,false);};
  const point=(x,y)=>({x,y});
- for(const t of labelledPdfTokens(content)){
+ for(const t of labelledPdfTokens(content,{allowStarOperators:true})){
   if(t?.type!=='operator'){assert.ok(args.length<16);args.push(t);continue;}const op=t.name;let a;
   if(op==='q'){nums(0);idle();assert.ok(stack.length<64);stack.push([...matrix]);}
   else if(op==='Q'){nums(0);idle();assert.ok(stack.length>0);matrix=stack.pop();}
@@ -77,9 +80,9 @@ export function arrowPdfVectors(bytes,{allowText=false}={}){
   else if(op==='c'){assert.equal(textActive,false);a=nums(6);segments.push({kind:'cubic',a:point(a[0],a[1]),b:point(a[2],a[3]),point:point(a[4],a[5])});}
   else if(op==='re'){assert.equal(textActive,false);a=nums(4);const [x,y,w,h]=a;segments.push({kind:'move',point:point(x,y)},{kind:'line',point:point(x+w,y)},{kind:'line',point:point(x+w,y+h)},{kind:'line',point:point(x,y+h)},{kind:'close'});}
   else if(op==='h'){assert.equal(textActive,false);nums(0);assert.ok(segments.length);segments.push({kind:'close'});}
-  else if(['S','f','f*','B','B*'].includes(op)){assert.equal(textActive,false);nums(0);assert.ok(rootMatrix&&segments.length&&!pendingClip);paths.push({segments,matrix:[...matrix],operation:op==='S'?'stroke':op.startsWith('f')?'fill':'fillstroke'});segments=[];}
-  else if(op==='W'||op==='W*'){assert.equal(textActive,false);nums(0);assert.ok(segments.length&&!pendingClip);pendingClip=true;}
-  else if(op==='n'){assert.equal(textActive,false);nums(0);if(pendingClip)clips.push({segments,matrix:[...matrix]});segments=[];pendingClip=false;}
+  else if(['S','f','f*','B','B*'].includes(op)){assert.equal(textActive,false);nums(0);assert.ok(rootMatrix&&segments.length&&!pendingClip);paths.push({segments,matrix:[...matrix],operation:op==='S'?'stroke':op.startsWith('f')?'fill':'fillstroke',...(trackRules?{rule:op.endsWith('*')?'evenodd':'nonzero'}:{})});segments=[];}
+  else if(op==='W'||op==='W*'){assert.equal(textActive,false);nums(0);assert.ok(segments.length&&!pendingClip);pendingClip=true;clipRule=op==='W*'?'evenodd':'nonzero';}
+  else if(op==='n'){assert.equal(textActive,false);nums(0);if(pendingClip)clips.push({segments,matrix:[...matrix],...(trackRules?{rule:clipRule}:{})});segments=[];pendingClip=false;}
   else if(['w','M','J','j'].includes(op)){idle();nums(1);}
   // pdfTeX can change text color/opacity inside BT/ET. The separate paint
   // reader retains that state; these operators cannot change path geometry.

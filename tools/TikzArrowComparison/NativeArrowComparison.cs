@@ -61,7 +61,12 @@ internal static class NativeArrowComparison
                 Equal(name + ".shaft-source", true, tip.ShaftSource.Length > 0 && tip.ShaftSource.Text == actual.Source.Text);
             }
         }
-        for (var i = 0; i < Math.Min(clips.Length, scene.Clips.Count); i++) Path("clip-" + i, paths[clips[i]].GetProperty("segments"), scene.Clips[i].Path);
+        for (var i = 0; i < Math.Min(clips.Length, scene.Clips.Count); i++)
+        {
+            Path("clip-" + i, paths[clips[i]].GetProperty("segments"), scene.Clips[i].Path);
+            if (native.GetProperty("driverState").TryGetProperty("clipRules", out var rules))
+                Equal("clip-" + i + ".rule", rules[i].GetString()!, scene.Clips[i].FillRule);
+        }
         var picture = native.GetProperty("pictureBounds");
         Number("picture.minX", picture.GetProperty("minXSp").GetInt64(), scene.PictureBounds.MinX * SpPerBp, .000001);
         Number("picture.minY", picture.GetProperty("minYSp").GetInt64(), scene.PictureBounds.MinY * SpPerBp, .000001);
@@ -93,6 +98,8 @@ internal static class NativeArrowComparison
             var operation = expected.GetProperty("operation").GetString();
             Equal(name + ".stroke", operation is "stroke" or "fillstroke", actual.Stroke);
             Equal(name + ".fill", operation is "fill" or "fillstroke", actual.Fill);
+            if (actual.Fill && expected.TryGetProperty("fillRule", out var rule))
+                Equal(name + ".fill-rule", rule.GetString()!, actual.FillRule);
             Number(name + ".width", expected.GetProperty("widthSp").GetInt64(), actual.Width * SpPerBp, .000001);
             Equal(name + ".cap", expected.GetProperty("cap").GetInt32(), actual.Cap switch { "butt" => 0, "round" => 1, "square" => 2, _ => -1 });
             Equal(name + ".join", expected.GetProperty("join").GetInt32(), actual.Join switch { "miter" => 0, "round" => 1, "bevel" => 2, _ => -1 });
