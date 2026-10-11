@@ -22,6 +22,8 @@
 - Development benchmarks for conversion phases, labels, startup/warm behavior,
   allocations, cancellation and resource-limit calibration.
 - Current public contract and compatibility index linked from the README.
+- Reproducible bounded adversarial-input workflow, exact saved UTF-16 replay
+  and contribution guidance, with shared process/artifact handling.
 
 This is a development record, not a published-release announcement. Supported
 syntax and qualification boundaries are in [SPEC](SPEC.md) and the

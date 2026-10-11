@@ -8,6 +8,7 @@ camera choices, execution commands and limits of each conformance claim.
 | Coverage | Decision | Evidence that must remain |
 | --- | --- | --- |
 | Ordinary feature, diagnostic and resource tests | Retain the original 199 methods / 821 expanded cases; add tests with new features | Native quantities, returned SVG, UTF-16 spans, explicit rejection, shared limits, ongoing cancellation and call isolation observe different boundaries |
+| Fixed malformed-input corpus | Preserve the original 5,746 exact UTF-16 inputs in the public development workflow | Conversion invariants and a separate current-input replay; two semantic saved-source/result faults, with shared artifact/process controls reused. Focused ordinary feature limits remain separate |
 | Native scene measurements and returned SVG checking | Retain separately | A correct trace can accompany incorrect serialized output; glyph, border, arrow, dash and math references have distinct quantities and owners |
 | Primary/PDF/current/text generic corruption checks | Consolidate 495 nonmath invocations to 33 existing identities, plus two fill/clip control-omission checks: 16/6/8/5 | Run each verifier/control identity once on a fixture exposing its branch; every fixture keeps its positive checks |
 | Archive transport corruption | Consolidate 56 invocations to two | The shared archive digest rejects before family interpretation; keep the original 28 plus two definition, one arc and one fill-rule positive roundtrips, and all 19 distinct cache controls |

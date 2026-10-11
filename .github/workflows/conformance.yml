@@ -23,6 +23,13 @@ jobs:
       - run: dotnet restore tools/TikzCurvedEdgeOracle --locked-mode
       - run: dotnet restore tools/TikzArrowComparison --locked-mode
       - run: dotnet test Lokad.TikZ.slnx -c Release --no-restore
+      - name: Check bounded adversarial inputs and saved UTF-16 replay
+        shell: pwsh
+        run: |
+          $adversarialArgs = @('tools/TikzVisual/verify-adversarial.mjs')
+          if ('${{ matrix.os }}' -eq 'windows-2025') { $adversarialArgs += '--controls' }
+          node @adversarialArgs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/labelled-border-reference.mjs check-cached
       - run: node tools/TikzVisual/labelled-border-evidence-self-test.mjs
       - run: node tools/TikzVisual/edge-reference.mjs check-cached
@@ -81,6 +88,7 @@ jobs:
         with:
           name: tikz-node-layout-${{ matrix.os }}
           path: |
+            artifacts/adversarial/
             artifacts/package-check/
             artifacts/nuget/
             artifacts/node-layout/

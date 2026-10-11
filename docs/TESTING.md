@@ -37,6 +37,18 @@ browser. They cover independent bounds, anchors, path segments and paint,
 error behavior, limits, cancellation, culture independence, and
 repeated/concurrent conversion.
 
+The [bounded adversarial workflow](../tools/TikzAdversarial/README.md) adds the
+fixed 5,746-input malformed UTF-16 corpus and a fresh replay of every saved input:
+
+```text
+node tools/TikzVisual/verify-adversarial.mjs
+```
+
+This command uses .NET and Node built-ins only, retains bounded worker logs and
+hashed artifacts, and never sends generated inputs to TeX. Focused ordinary
+feature/limit tests remain separate. See [contribution guidance](../CONTRIBUTING.md)
+for affected iteration and final acceptance.
+
 The independent [straight `to`/`edge` corpus](../tools/TikzEdgeReference/README.md)
 adds five trusted native fixtures, 99 path calls, 90 paints, four measured nodes,
 64 node anchors and one named coordinate. The public straight connection
