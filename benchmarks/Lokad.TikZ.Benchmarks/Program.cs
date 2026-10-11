@@ -9,6 +9,26 @@ internal static class Program
 {
     public static void Main(string[] args)
     {
+        if (args is ["--check-phases"])
+        {
+            Console.WriteLine(JsonSerializer.Serialize(PerformanceProbes.CheckPhases()));
+            return;
+        }
+        if (args is ["--check-limits"])
+        {
+            Console.WriteLine(JsonSerializer.Serialize(LimitProbes.Check()));
+            return;
+        }
+        if (args is ["--first-warm", var id, var repeats])
+        {
+            Console.WriteLine(JsonSerializer.Serialize(PerformanceProbes.FirstAndWarm(id, int.Parse(repeats, System.Globalization.CultureInfo.InvariantCulture))));
+            return;
+        }
+        if (args is ["--cancel-ongoing", var samples])
+        {
+            Console.WriteLine(JsonSerializer.Serialize(PerformanceProbes.CancelOngoing(int.Parse(samples, System.Globalization.CultureInfo.InvariantCulture))));
+            return;
+        }
         if (args is ["--check"])
         {
             var records = Workloads.Ids.Select(id =>

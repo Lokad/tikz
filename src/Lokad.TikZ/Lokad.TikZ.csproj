@@ -22,6 +22,7 @@
     <None Include="../../tools/TikzFontData/math-font-profile.json" Pack="true" PackagePath="font-data/" />
     <None Update="Resources/Fonts/*.json" Pack="true" PackagePath="font-data/%(Filename)%(Extension)" />
     <InternalsVisibleTo Include="Lokad.TikZ.Tests" />
+    <InternalsVisibleTo Include="Lokad.TikZ.Benchmarks" />
     <InternalsVisibleTo Include="TikzReference" />
     <InternalsVisibleTo Include="TikzFontData" />
     <InternalsVisibleTo Include="TikzShapeComparison" />
