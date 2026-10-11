@@ -1,73 +1,15 @@
 # Lokad.TikZ
 
-A standalone C#/.NET 10 compiler for a documented TikZ subset, producing
-self-contained SVG without TeX, native libraries, or runtime package dependencies.
+A standalone C#/.NET 10 compiler for a bounded TikZ subset, producing
+self-contained SVG. The production library depends only on .NET: conversion
+uses no TeX engine, installed fonts, files, processes or network services.
 
-The project is in active development. Nine geometry fixtures are grounded
-against PGF 3.1.11a with independent numeric measurements and SVG comparisons
-at 1x and 4x. Lines, relative coordinates, and scoped clipping have exact
-primary pixels; transformed coordinates, curves, ellipses/arcs, and rectangle cropping use
-small, independently calibrated allowances. This evidence covers the listed
-fixtures. A [node prototype](docs/NODES.md) now emits outlined labels
-and passes native layout and primary SVG checks for 22 actual TikZ rectangle nodes.
-Circle and ellipse nodes also match native sizing, anchors, background paths,
-and border queries across 28 cases. Their separately calibrated
-[cached combined profile](tools/TikzVisual/CURVED-NODE-ADMISSION.md) requires
-native/frame, whole/local primary, both PDF and fresh sensitivity gates.
-Broader node/shape coverage, arrows, and libraries remain.
-Unsupported source constructs produce diagnostics.
-The [dash prototype and differential harness](docs/DASHES.md) match
-forty native dash-state cases and sixteen curved/closed/transformed/clipped
-paths. Both fixed corpora now have separate immutable primary/PDF profiles;
-raw differences and earlier failed trials remain available. Further
-path/label/node interactions remain pending.
-The declared [RGB color profile](docs/COLORS.md) has independent path/glyph
-checks for all nineteen supported names and selected mixtures.
+The project is a preview. The [public contract](SPEC.md) and
+[compatibility index](docs/compatibility.md) describe supported forms and limits;
+feature guides retain their independently grounded scopes. General TeX/TikZ and
+arbitrary-renderer pixel compatibility are outside those claims.
 
-The experimental [calculated-coordinate subset](docs/CALC.md) adds arithmetic,
-interpolation, distance and projection. All 25 cached native anchors match in
-integer scaled points. Its fixed glyph-free fixture passes independently
-calibrated primary/PDF acceptance; broader calculated-coordinate coverage remains.
-
-The [attached path-label subset](docs/PATH-LABELS.md) and
-[bounded positioning](docs/POSITIONING.md) now make three complete authored
-flowchart/network diagrams convert. Their nine named nodes match all 144 native
-anchors, including transformed placement. Focused positioning adds 28 nodes and
-448 native anchors. All 72 complete-diagram primary views and 24 PDF views pass
-their native-only limits. Wider positioning and diagram coverage remains.
-
-[Single-argument styles](docs/STYLES.md) now convert an additional complete
-flowchart. Eleven new named nodes match 176 independently measured native
-anchors. Both style fixtures pass independent image/PDF policies and fresh-output
-acceptance in a clean source export.
-
-[Bounded statement loops](docs/FOREACH.md) now convert a repeated-stage
-flowchart using lists/ranges, scoped bindings, positioning, labels, arrows and
-calculated coordinates. Both loop fixtures pass independent numeric/image/PDF
-policies and fresh-output acceptance in a clean source export.
-
-[Bounded numeric assignments](docs/MATH-MACROS.md) now convert a computed-spacing
-flowchart using scoped arithmetic, positioning, path labels, arrows and calc.
-Both fixed supported fixtures pass independent numeric, primary and PDF
-policies, fresh-output acceptance in a clean source export, and integration.
-Broader PGF math remains release scope.
-
-[Selected scalar functions](docs/MATH-FUNCTIONS.md) now convert a trigonometric
-worker network. Three fixed native corpora match 1,490 printed results and 688
-named-node anchors; the network and focused comparison pass 5,866 numeric checks.
-Paired 1x/4x images retain raw differences. Both function fixtures pass 48 primary,
-16 PDF and 64 independent fresh-source views in final clean-export acceptance.
-The full thirteen-case matrix passes in the clean export; all 651 tests pass
-in the export and integrated tree. Portable archives preserve checked native evidence.
-
-[Bounded math labels](docs/MATH-LABELS.md) now render inline scripts, Greek
-symbols, fractions, roots and mixed prose in node and path labels. Three fixed
-sources match all 64 native text boxes, 1,024 anchors, 459 glyph placements and
-37 rules. The three sources pass 72 primary/local views, 24 original/candidate
-PDF views and 96 source recaptures against frozen native-derived policies.
-Final sixteen-case acceptance passes 384 primary views, 128 PDF views and 512
-source recaptures; all 734 tests pass in the clean export and integrated tree.
-Raw differences remain available. Broader math and hosted qualification remain open.
+## Convert a picture
 
 ```csharp
 using Lokad.TikZ;
@@ -84,81 +26,59 @@ else if (result is TikzFailure failure)
         Console.WriteLine($"{diagnostic.Code}: {diagnostic.Message}");
 ```
 
-The [diagnostics guide](docs/diagnostics.md) lists failure codes, explains
-original UTF-16 source positions and distinguishes cancellation from conversion failures.
+Use `TikzInputKind.PictureBody` in the options for statements without a picture
+wrapper. Conversion is synchronous; cancellation throws with the supplied token.
+Failures contain source diagnostics and no SVG. The [diagnostics guide](docs/diagnostics.md)
+explains original UTF-16 spans, caller errors and cancellation.
 
-Build and run the ordinary tests with `dotnet test Lokad.TikZ.slnx`. These tests
-do not require a TeX installation. Release packages are produced explicitly with
-`dotnet pack src/Lokad.TikZ -c Release`.
+Labels use measured bundled glyph outlines. Output includes local definitions,
+clips and XML-escaped readable titles, so rendering needs no installed font.
+The viewport encloses picture and ink bounds. Use a different valid `IdPrefix`
+for each SVG when combining repeated conversions into one document.
 
-The [reference and visual harness](docs/TESTING.md) is development tooling.
-The [verification execution index](docs/VERIFICATION.md) separates affected
-iteration from final qualification and explains each retained coverage boundary.
-It produces comparison PNGs, failure crops, machine-readable metrics, source
-traces, and a local inspection viewer. Its browser and TeX dependencies are
-isolated from the production library.
+## Supported feature guides
 
-A separate [straight `to`/`edge` reference corpus](tools/TikzEdgeReference/README.md)
-now retains independent native paths, node measurements, effective paint state,
-physical paint order and SVG/PDF inspection images. This prepares the compiler
-comparisons for the [straight connection prototype](docs/EDGES.md). The public
-converter now passes 2,585 native numeric assertions across the fixed corpus.
-Candidate images retain original-driver differences. A separate
-[fixed conformance command](tools/TikzVisual/EDGE-CONFORMANCE.md) requires all
-eight native/frame/image/sensitivity gates and an owned independent checker
-under a pinned profile. Its calibrated SVG/PDF and exact native-SVG-page claims
-apply only to those five fixtures; hosted validation and broader coverage remain
-pending.
+| Area | Bounded contracts |
+| --- | --- |
+| Geometry and paint | [Base grammar](docs/compatibility.md#statements-and-base-geometry), [RGB colors](docs/COLORS.md), [dash state and geometry](docs/DASHES.md) |
+| Nodes and labels | [Nodes/anchors/borders](docs/NODES.md), [prose/multiline text](docs/TEXT.md), [inline math](docs/MATH-LABELS.md) |
+| Connections | [Straight edges](docs/EDGES.md), [curved edges](docs/CURVED-EDGES.md), [arrows](docs/ARROWS.md), [attached path labels](docs/PATH-LABELS.md) |
+| Libraries | [Positioning](docs/POSITIONING.md), [calculated coordinates](docs/CALC.md), plus the declared `arrows.meta` and `shapes.geometric` subsets |
+| Scoped computation | [Parameterized styles](docs/STYLES.md), [statement loops](docs/FOREACH.md), [numeric assignments](docs/MATH-MACROS.md), [selected functions](docs/MATH-FUNCTIONS.md) |
+| Plots | [Sharp/smooth coordinate and finite function plots](docs/PLOTTING.md) |
 
-The [curved connection prototype](docs/CURVED-EDGES.md) adds bends, `in`/`out`
-angles, looseness and distance controls. Five separate fixtures retain 70 native
-path calls and pass 2,066 numeric assertions. A dedicated
-[inspection command](tools/TikzVisual/CURVED-EDGE-INSPECTION.md) saves paired
-PNGs, raw differences, crops and overlay viewers. The separate
-[fixed-family conformance command](tools/TikzVisual/CURVED-EDGE-CONFORMANCE.md)
-requires all eight numeric/image gates and its owned independent checker under
-an externally pinned profile. Its agent report ranks 6,224 source-attributed
-regions and exposes a local paired-image viewer. Calibrated original-SVG/PDF
-and exact reconstructed-native-page claims apply only to these five fixtures;
-wider interactions and hosted qualification remain pending.
+The [complete diagram corpus](tests/Fixtures/Diagrams/README.md) combines these
+features in small flowcharts and networks. Supported syntax does not imply
+full upstream-library behavior or every combination of implemented primitives.
+Unknown or unsupported constructs fail explicitly; there is no production fallback.
 
-The [arrow prototype](docs/ARROWS.md) adds legacy/modern `To`, `Stealth`, `Latex`,
-physical dimensions and native path shortening. Six frozen fixtures pass 12,062
-scene/public-SVG numeric checks. A separate inspection command owns paired
-images and source-attributed tip crops. Arrow image admission remains pending.
+## Grounding and development
 
-Three labeled-border interaction fixtures now have independent native ink/root
-calibration, a passing [prospective primary trial](tools/TikzVisual/LABELLED-BORDER-INK.md)
-and image-only defect checks. Their original-driver differences remain visible.
-A separate [PDF investigation](tools/TikzVisual/LABELLED-BORDER-PDF.md) now checks
-native instructions and page registration and retains whole/local raw images.
-Its [rasterizer investigation](tools/TikzVisual/LABELLED-BORDER-PDF-RASTERIZERS.md)
-also compares pinned Cairo/Splash pages and isolated glyph/path operations.
-A separate [PDF calibration and native-page guard](tools/TikzVisual/LABELLED-BORDER-PDF-CALIBRATION.md)
-freeze independent limits and expose two faint 1x losses that PDF-only checks
-miss. Exact native-page comparison detects them; the failed PDF-only trial
-remains available. A [fresh public combined trial](tools/TikzVisual/LABELLED-BORDER-COMBINED-TRIAL.md)
-passes all six numeric/image gates. Its [fresh public PDF/native-page controls](tools/TikzVisual/LABELLED-BORDER-PUBLIC-PDF-SENSITIVITY.md)
-now pass the independently specified visibility expectations. A separate
-[portable cache and scoped admission](tools/TikzVisual/LABELLED-BORDER-CACHE.md)
-uses checked-in evidence, reproduces the independent control PNGs and owns a
-fresh eight-gate trial plus its saved-image checker. Its immutable profile admits
-only the three fixed labeled-border fixtures; hosted CI remains unverified.
+The [reference/testing guide](docs/TESTING.md) describes independent native
+measurements, original/corrected SVG and ordinary PDF routes, whole/local image
+comparisons, visible defect controls, traces and agent-readable inspection images.
+Exact and independently calibrated policies apply to concrete fixtures under
+pinned renderers. Broader interaction and hosted/release qualification remains
+separate. Native generation accepts only trusted repository fixtures.
 
-The [bundled font-data prototype](tools/TikzFontData/README.md) has six
-Latin Modern faces with independent TeX metric checks and exact atlas
-comparisons. Its resources now supply the node prototypes' labels.
-The internal [label layout](docs/TEXT.md) also matches sixteen native TeX
-box/glyph-position cases exactly, with independently calibrated image checks.
-The node corpus also has native glyph-position measurements and its own
-oracle-calibrated CSS raster policy. This scope covers the concrete fixtures;
-The [primary interaction policy](tools/TikzVisual/INTERACTION-PRIMARY.md) now
-requires native numeric and global/local image gates for 41 RGB nodes, including
-transformed and clipped labels. A separately calibrated
-[combined PDF gate](tools/TikzVisual/INTERACTION-PDF.md) now passes those three
-fixtures against ordinary TikZ PDF, with all numeric/primary checks required.
-Wider labeled-diagram coverage remains pending.
+The [verification coverage mapping](docs/VERIFICATION.md) separates affected
+iteration from final qualification and explains the distinct requirements behind
+retained checks. Unchanged native evidence is reused; new converter output is
+checked independently. Run ordinary tests with:
 
-The code is MIT licensed. Bundled font data retains its separate
-[GUST Font License / LPPL notices](THIRD-PARTY-NOTICES.md).
-Upstream reference implementations are not bundled.
+```text
+dotnet test Lokad.TikZ.slnx
+```
+
+Ordinary tests need no TeX installation or browser. Explicit Release packages use
+`dotnet pack src/Lokad.TikZ -c Release`. Native/browser tooling is development-only
+and isolated from the production dependency graph.
+
+[Performance measurements](docs/performance.md) define phase boundaries,
+startup/warm behavior, allocations, cancellation and resource-limit calibration.
+BenchmarkDotNet is confined to the [development project](benchmarks/Lokad.TikZ.Benchmarks/README.md).
+The [changelog](CHANGELOG.md) records the current development preview.
+
+Library code is MIT licensed. Bundled font resources retain their separate
+[GUST Font License / LPPL notices](THIRD-PARTY-NOTICES.md). Upstream reference
+implementations are not bundled.
