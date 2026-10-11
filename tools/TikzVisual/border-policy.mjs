@@ -24,10 +24,24 @@ const tools = {
   primaryTrial: ['tools/TikzVisual/trial-border-regions.mjs', 'tools/TikzVisual/compare.mjs'],
   pdfTrial: ['tools/TikzVisual/trial-border-pdf-regions.mjs', 'tools/TikzVisual/compare.mjs', 'tools/TikzVisual/pdf-region-renderer.mjs', 'tools/TikzVisual/pdf-region-viewer.mjs']
 };
-export const borderGuardTools = ['tools/TikzVisual/border-policy.mjs', 'tools/TikzVisual/border-numeric.mjs',
+// Historical producer identities stay independent of current consumer guards.
+const producerSourceIdentities = {
+  frame: 'd6ef34b46951084e1c10f9fbef44eb8e3c9dbfce0de3f413e4cc78a175d0f68c',
+  primary: '2ba77de7b096bcc468518d58072781ccec004a96466bbf3ee036da222bf17459',
+  basePrecision: 'fdae0f44d8db4904485e758ba76fe68b13fb74f908f4b249b146ef7fe338294e',
+  pdf: 'a9c5d401a4fc81ff034609968d0422fea3058cea67604b3c6a9475c2f9d6e5d8',
+  primaryTrial: 'f5fd706c60152d190e9cf8f00996c1c109db5e271a48832c685b4f07c6ba04c1',
+  pdfTrial: '0809bcbb0694b51d4909fa1932c53a58fd245ae882274a2aabf21eb47f972ecc'
+};
+function requireProducerSources(value, role) {
+  const entries = Object.entries(value.toolHashes).sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0);
+  assert.equal(hash(Buffer.from(JSON.stringify(entries))), producerSourceIdentities[role], 'Changed historical border producer: ' + role);
+}
+export const borderGuardTools = [...new Set(['tools/TikzVisual/border-policy.mjs', 'tools/TikzVisual/border-numeric.mjs',
   'tools/TikzVisual/border-conformance.mjs', 'tools/TikzVisual/compare-border-conformance.mjs', 'tools/TikzVisual/border-self-test.mjs',
   'tools/TikzVisual/compare.mjs', 'tools/TikzVisual/browser-profile.json',
-  'tools/TikzVisual/pdf-region-renderer.mjs', 'tools/TikzVisual/pdf-region-verdict.mjs', 'tools/TikzVisual/pdf-native-geometry.mjs'];
+  'tools/TikzVisual/pdf-region-renderer.mjs', 'tools/TikzVisual/pdf-region-verdict.mjs', 'tools/TikzVisual/pdf-native-geometry.mjs',
+  ...Object.values(tools).flat(), 'tools/TikzReference/TikzReference.csproj', 'Directory.Build.props', 'global.json'])];
 
 export function requireBorderRenderer(actual, expected) {
   for (const key of ['profile', 'playwright', 'browser', 'browserSha256', 'profileSha256', 'os', 'architecture', 'node'])
@@ -84,8 +98,7 @@ export async function loadBorderPolicy(read = readFile) {
     if (!key.endsWith('Trial')) { assert.equal(value.converterInvoked, false); assert.deepEqual(value.cases.map(c => c.caseId), borderIds); }
     else { assert.equal(value.passed, true); assert.equal(value.trials.length, 27); }
     assert.deepEqual(Object.keys(value.toolHashes).toSorted(), tools[key].toSorted(), 'Missing calibration tool provenance.');
-    for (const [file, sha256] of Object.entries(value.toolHashes))
-      assert.equal(hash(await read(path.join(root, file))), sha256, 'Changed border calibration tool: ' + file);
+    requireProducerSources(value, key);
   }
   assert.deepEqual(Object.keys(declared.guardToolHashes).toSorted(), borderGuardTools.toSorted());
   for (const [file, sha256] of Object.entries(declared.guardToolHashes))
@@ -105,7 +118,7 @@ export async function loadBorderPolicy(read = readFile) {
   const baseTools = ['tools/TikzVisual/browser-profile.json', 'tools/TikzVisual/compare.mjs', 'tools/TikzReference/Program.cs',
     'tools/TikzReference/ReferenceCalibration.cs', 'tests/Reference/NodeBorders/path-cases.json'];
   assert.deepEqual(Object.keys(base.toolHashes).toSorted(), baseTools.toSorted());
-  for (const [file, sha256] of Object.entries(base.toolHashes)) assert.equal(hash(await read(path.join(root, file))), sha256);
+  requireProducerSources(base, 'basePrecision');
   const manifest = JSON.parse(await read(path.join(root, 'tests/Reference/NodeBorders/path-cases.json')));
   assert.deepEqual(manifest.cases.map(c => c.id), borderIds);
   for (const id of borderIds) {

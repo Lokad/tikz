@@ -76,15 +76,29 @@
     }
   },
   "guardToolHashes": {
-    "tools/TikzVisual/border-policy.mjs": "f773658b7bc1a3189a24f5f3424be123ef686fb8b3a20567e0b747b021574290",
-    "tools/TikzVisual/border-numeric.mjs": "cfe9aa29b3e8bc46a39ab13cbe4ef513cf668b3ec5eaf191d64c7a82b1bf51cb",
+    "Directory.Build.props": "98e3d5ccc9e3bb57654b334f141886b192aea9e534cfb3328d88f1e0c52229f6",
+    "global.json": "f8895c3e857eaa25f38be5e57a7581cc624727b527c94f2701fa1ba57e64f100",
+    "tests/Reference/NodeBorders/path-cases.json": "b7f4d86cd97b24145be26aaf4e5beee27a6f1b6aacca4da1a99b262f3675fd61",
+    "tools/TikzReference/BorderFraming.cs": "623e9d46454bdaacac832f3e3455f2ba8ed3ebe46daf2de69dbda59d2b6435e6",
+    "tools/TikzReference/OracleStrokeFrame.cs": "4135a907d28a2d83149eec395edb156e4846db28f57690fa821c88a7547a2d74",
+    "tools/TikzReference/Program.cs": "53297ae818ffbd5cc2f1042e8dd846633698ff79318a8e067af4289ff7134517",
+    "tools/TikzReference/ReferenceCalibration.cs": "4b9737bc73544a9e7dc3cfc9016cb4507dc32d656cfe4205be935c36088a9b5e",
+    "tools/TikzReference/ReferenceMeasurements.cs": "10528e6e42b05ba245864625237f2724427c46965370136a41a025db1b022f2e",
+    "tools/TikzReference/TikzReference.csproj": "ae97f409e920a84deaeab8e1d73ae9e02b88741fbbb7d503c6378f20aed7f979",
     "tools/TikzVisual/border-conformance.mjs": "fa5fff8b2659985c4ad2d5a0a8ee96f48aca94345cd4c98774d75ff32385b01b",
-    "tools/TikzVisual/compare-border-conformance.mjs": "73b2626cd0ddd754158c19d62b546759cb6078f9de802e0b9bb26d8c318f4fd7",
-    "tools/TikzVisual/border-self-test.mjs": "2a2455765e8bd78dd9d6c2b0838f742851d7be35d0ccdda45aa745cb5f43a1cf",
-    "tools/TikzVisual/compare.mjs": "3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687",
+    "tools/TikzVisual/border-numeric.mjs": "cfe9aa29b3e8bc46a39ab13cbe4ef513cf668b3ec5eaf191d64c7a82b1bf51cb",
+    "tools/TikzVisual/border-policy.mjs": "caa89ccb7bd9929fb4b4b3813d5e636b077ea9daac51039febc017f553d9f4c1",
+    "tools/TikzVisual/border-self-test.mjs": "ef08431af19e16307b1ae8035917a547794900c83ea1b4f6296431649b1b9bc7",
     "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
+    "tools/TikzVisual/calibrate-border-pdf-regions.mjs": "bc501aa8620d3f727bc3fd00012a6e7335e1c208dfc9fd92df14b2720cf8761b",
+    "tools/TikzVisual/calibrate-border-regions.mjs": "abac553b91392c4e831628514e8d5c447b5d110a9cb84038937873d743eea1eb",
+    "tools/TikzVisual/compare-border-conformance.mjs": "73b2626cd0ddd754158c19d62b546759cb6078f9de802e0b9bb26d8c318f4fd7",
+    "tools/TikzVisual/compare.mjs": "d5ff938976a29c9311366c38260da88c66aae6c05a14c76b92cc3ad9eb0a9197",
+    "tools/TikzVisual/pdf-native-geometry.mjs": "5882f621580b80e579b8c73b4578d50abb3c332d408d5b3016b2cac52dd41089",
     "tools/TikzVisual/pdf-region-renderer.mjs": "4fcd4cf232ba9a6927def4ff64dc908021f7f3271e39f9236da2200e43e39b5b",
     "tools/TikzVisual/pdf-region-verdict.mjs": "c58d7082e7a62be8e66f4033914ebaf157cacac7adf588b4329d5235038bc6f6",
-    "tools/TikzVisual/pdf-native-geometry.mjs": "5882f621580b80e579b8c73b4578d50abb3c332d408d5b3016b2cac52dd41089"
+    "tools/TikzVisual/pdf-region-viewer.mjs": "5166333ba2115ecd20d543bb61e16857a916df0b4bfb109f8b32129f581f776a",
+    "tools/TikzVisual/trial-border-pdf-regions.mjs": "35cc3ec01f530b5b0a86a0b8bfc226614e4fa85348f4db7e17848622c2c0009a",
+    "tools/TikzVisual/trial-border-regions.mjs": "76ed175bf16ffdee52a07b6400f032915f02c51b2fb48fac21e814a878a97d04"
   }
 }

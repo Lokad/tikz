@@ -23,8 +23,8 @@ async function main() {
       ['missing-' + key, pin.file, () => { throw new Error('Controlled missing evidence'); }],
       ['changed-' + key, pin.file, bytes => Buffer.concat([bytes, Buffer.from(' ')])]
     ]),
-    ['changed-numeric-guard', 'tools/TikzVisual/border-numeric.mjs', bytes => Buffer.concat([bytes, Buffer.from(' ')])],
-    ['changed-PDF-renderer', 'tools/TikzVisual/pdf-region-renderer.mjs', bytes => Buffer.concat([bytes, Buffer.from(' ')])]
+    // One byte-corruption witness covers the identical current-source guard loop.
+    ['changed-current-reference-runner', 'tools/TikzReference/Program.cs', bytes => Buffer.concat([bytes, Buffer.from(' ')])],
   ]) {
     await assert.rejects(() => loadBorderPolicy(async f => rel(f) === file ? edit(await readFile(f)) : readFile(f)));
     results.push({ name, passed: true, category: 'immutable evidence rejection' });
@@ -55,6 +55,8 @@ async function main() {
   await loadBorderPolicy(await rehashed('primary', () => {}));
   results.push({ name: 'consistent-rehashed-unchanged-control', passed: true, category: 'structural validation positive control' });
   for (const [name, key, edit] of [
+    ['changed-historical-producer', 'frame', e => { e.toolHashes['tools/TikzReference/Program.cs'] = '0'.repeat(64); }],
+    ['changed-historical-base-producer', 'primary', e => { e.basePrecisionEvidence.toolHashes['tools/TikzReference/Program.cs'] = '0'.repeat(64); }],
     ['widened-primary-region', 'primary', e => { e.cases[0].regions[0].limits[0].maxMeanForegroundError = 255; }],
     ['shifted-primary-region', 'primary', e => { e.cases[0].regions[0].rectanglePixels.x += .25; }],
     ['missing-primary-measurement', 'primary', e => { e.cases[0].variants[0].regions.pop(); }],

@@ -108,6 +108,20 @@ native witnesses, and do not justify removing assertions.
 | Native measurements, arrow-color correction, math/styled controls | Retain separately where ownership, fonts, rules, native SVG correction or policy semantics differ |
 | Existing shape/border/edge/curve/dash/arrow/calc suites | Retain their own independent references, image policies, negatives, admissions and inspection tests. Matching test names alone do not prove equivalent semantics |
 
+The three unlabelled rectangle-border fixtures preserve five frozen calibration
+snapshots and their nested precision evidence. Historical producer source
+identities are checked separately from the unique current tool/configuration
+guards. This removes repeated producer/current equality checks without changing
+native ink/frame, cameras, primary/PDF thresholds or defect policies. Existing
+structural rehash positives and semantic negatives remain; rehashed historical
+source changes and changed current runner/SVG sources reject explicitly. The
+former numeric-source and PDF-renderer byte controls exercise the same current
+guard loop; one reference-runner byte control covers that loop and its newly
+promoted producer source. Exact guard membership and the independent numeric/PDF
+semantic faults preserve their distinct coverage. The ordinary affected-feature
+loop and final border conformance/negative controls
+remain separate, and the comparison uses frozen native artifacts without TeX.
+
 The nonmath suite consolidates by **verifier and control identity**. Reports
 record the representative fixture for each omitted repetition. The underlying
 standalone self-tests remain callable without a selector and still run all their
