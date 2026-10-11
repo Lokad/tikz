@@ -88,7 +88,7 @@ async function command(name,executable,args,kind='report',role){
  steps.push({name,command:{executable:path.basename(executable),arguments:args.map(a=>a.replaceAll(root,'<repo>'))},wallSeconds:(performance.now()-t)/1000,result});await publish(false);return result;
 }
 const node=(name,file,args=[],kind='report',role)=>command(name,process.execPath,['tools/TikzVisual/'+file,...args],kind,role);
-async function fixtureWork(fixtures,run,limit=qualification?4:1){
+async function fixtureWork(fixtures,run,limit=qualification?6:1){
  let index=0,failed=false;
  const workers=await Promise.allSettled(Array.from({length:Math.min(limit,fixtures.length)},async()=>{
   while(!failed&&index<fixtures.length){const fixture=fixtures[index++];try{await run(fixture);}catch(error){failed=true;throw error;}}
@@ -109,13 +109,7 @@ async function nativeControls(fixture,pc,dc,text){
  for(const [family,descriptor,role,definitions,file]of [
   ['primary',pc,'path-label-native-primary-calibration',pathLabelPrimaryDefects,'path-label-primary-self-test.mjs'],
   ['pdf',dc,'path-label-native-pdf-calibration',pathLabelPdfDefects,'path-label-pdf-self-test.mjs']]){
-  // Discovery only needs pinned report/frame metadata. Full owned evidence is
-  // validated during restoration, selected controls and each current checker.
-  const bytes=await readFile(path.join(root,descriptor.file));assert.equal(sha256(bytes),descriptor.sha256);
-  const report=JSON.parse(bytes);assert.equal(report.role,role);
-  const frameBytes=await readFile(path.join(root,path.posix.dirname(descriptor.file),'frame.json'));
-  assert.equal(sha256(frameBytes),report.artifacts['frame.json']);
-  const frame=JSON.parse(frameBytes),bundle={report,json:file=>{assert.equal(file,'frame.json');return frame;}},defects=definitions(bundle),fresh=[];
+  const bundle=await loadCalcSavedReport(path.join(root,descriptor.file),role),defects=definitions(bundle),fresh=[];
   for(const [name]of defects){const key=family+'/'+name;if(seen.has(key))consolidated.push({fixture,control:key,representative:seen.get(key)});else fresh.push(name);}
   if(fresh.length){const name=fixture+'-'+family+'-controls',result=await node(name,file,[descriptor.file,'--only',fresh.join(',')],'controls');
    calcEqual(result.controls,fresh);for(const control of fresh)seen.set(family+'/'+control,fixture);}
