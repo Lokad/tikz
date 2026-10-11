@@ -16,7 +16,7 @@ function raster(width, height, points, background = 'transparent') {
 }
 const result = (r, a, options = {}) => compare(r, a, { width: 12, height: 12, background: 'transparent', ...options });
 const point = raster(12, 12, [[2, 2]]), blank = raster(12, 12, []);
-check('unchanged RGBA', () => { const m = result(point, point); assert.equal(m.exactRgbaMatch, true); assert.equal(m.topology.maxEdgeDisplacementRasterPixels, 0); });
+check('unchanged RGBA', () => { const m = result(point, point.slice()); assert.equal(m.exactRgbaMatch, true); assert.equal(m.topology.referenceComponents, 1); assert.equal(m.topology.actualComponents, 1); assert.equal(m.topology.maxEdgeDisplacementRasterPixels, 0); });
 check('unchanged blank', () => { const m = result(blank, blank); assert.equal(m.meanForegroundChannelError, 0); assert.equal(m.topology.edgeState, 'both-empty'); });
 check('Euclidean 3-4-5 displacement and scale', () => { const m = result(point, raster(12, 12, [[5, 6]]), { scale: 4 }); assert.equal(m.topology.maxEdgeDisplacementRasterPixels, 5); assert.equal(m.topology.maxEdgeDisplacementCssPixels, 1.25); });
 check('symmetric directed edge distance', () => { const m = result(point, raster(12, 12, [[2, 2], [8, 10]])); assert.equal(m.topology.maxEdgeDisplacementRasterPixels, 10); assert.equal(m.topology.componentDifference, 1); });
@@ -36,7 +36,7 @@ check('blank area cannot dilute foreground error', () => {
   assert.equal(a.meanForegroundChannelError, b.meanForegroundChannelError); assert.equal(b.foregroundPixels, 1);
 });
 check('zero-alpha RGB remains a raw discrepancy', () => { const a = blank.slice(); a[0] = 255; const m = result(blank, a); assert.equal(m.exactRgbaMatch, false); assert.equal(m.maxRawChannelError, 255); assert.equal(m.maxPremultipliedChannelError, 0); });
-check('alpha-only difference', () => { const a = point.slice(); a[4 * (2 * 12 + 2) + 3] = 128; const m = result(point, a); assert.equal(m.maxRawChannelError, 127); assert.equal(m.maxPremultipliedChannelError, 127); });
+check('alpha-only difference', () => { const a = point.slice(); a[4 * (2 * 12 + 2) + 3] = 128; const m = result(point, a); assert.equal(m.exactRgbaMatch, false); assert.equal(m.rawChangedPixels, 1); assert.equal(m.maxRawChannelError, 127); assert.equal(m.maxPremultipliedChannelError, 127); assert.equal(m.topology.referenceComponents, 1); assert.equal(m.topology.actualComponents, 1); assert.equal(m.topology.maxEdgeDisplacementRasterPixels, 0); });
 check('integer region excludes unrelated errors', () => { const a = point.slice(); a[4 * (9 * 12 + 9) + 3] = 255; assert.equal(result(point, a, { rectangle: { x: 0, y: 0, width: 5, height: 5 } }).exactRgbaMatch, true); });
 check('region does not reuse whole-picture foreground denominator', () => { const r = raster(12, 12, [[2, 2, 3], [9, 9]]), a = raster(12, 12, [[9, 9]]); assert.ok(result(r, a, { rectangle: { x: 1, y: 1, width: 3, height: 3 } }).meanForegroundChannelError > result(r, a).meanForegroundChannelError); });
 for (const [name, options] of [

@@ -88,6 +88,14 @@ standalone self-tests remain callable without a selector and still run all their
 controls. PDF/current overlays reuse the existing rehashed-artifact helper.
 No native calibration, image-negative fixture or per-region threshold is removed.
 
+The shared raster comparator retains every observation and repeat render. Equal
+RGBA pixels skip zero channel-error arithmetic; identical foreground masks share
+one topology calculation. Different colors/alpha with the same mask still have
+their own raw and premultiplied errors. Invalid inputs, faint ink, absent edges
+and independent distances remain checked. Calc reviews this changed dependency
+through its existing exact source-pair and admission machinery before changing
+tool guards; native archives, policies, thresholds and scope remain frozen.
+
 Math primary checks validate every owned frame and fault contract before
 decoding pixels. Structural faults in a later case therefore fail immediately;
 well-formed reports retain the full independent pixel and policy checks.

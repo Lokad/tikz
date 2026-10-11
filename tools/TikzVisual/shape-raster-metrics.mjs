@@ -77,12 +77,16 @@ export function createShapeRasterMetrics() {
     require(['x', 'y', 'width', 'height'].every(k => Number.isInteger(box[k])) && box.x >= 0 && box.y >= 0 && box.width > 0 && box.height > 0
       && box.x + box.width <= width && box.y + box.height <= height, 'Invalid integer raster region.');
     const referenceMask = new Uint8Array(box.width * box.height), actualMask = new Uint8Array(referenceMask.length);
+    let masksEqual = true;
     let rawChanged = 0, rawMax = 0, premultipliedChanged = 0, premultipliedMax = 0, sum = 0, foregroundPixels = 0, referencePixels = 0, actualPixels = 0;
     for (let y = 0; y < box.height; y++) for (let x = 0; x < box.width; x++) {
       const i = 4 * ((y + box.y) * width + x + box.x), p = y * box.width + x;
-      const rf = foreground(reference, i, background), af = foreground(actual, i, background);
+      const identical = reference[i] === actual[i] && reference[i + 1] === actual[i + 1] && reference[i + 2] === actual[i + 2] && reference[i + 3] === actual[i + 3];
+      const rf = foreground(reference, i, background), af = identical ? rf : foreground(actual, i, background);
       referenceMask[p] = Number(rf >= maskThreshold); actualMask[p] = Number(af >= maskThreshold);
+      masksEqual &&= referenceMask[p] === actualMask[p];
       referencePixels += rf > 0; actualPixels += af > 0; foregroundPixels += rf > 0 || af > 0;
+      if (identical) continue;
       let raw = 0, premultiplied = 0;
       for (let c = 0; c < 4; c++) {
         raw = Math.max(raw, Math.abs(reference[i + c] - actual[i + c]));
@@ -94,9 +98,9 @@ export function createShapeRasterMetrics() {
       rawChanged += raw !== 0; rawMax = Math.max(rawMax, raw);
       premultipliedChanged += premultiplied !== 0; premultipliedMax = Math.max(premultipliedMax, premultiplied);
     }
-    const r = topology(referenceMask, box.width, box.height), a = topology(actualMask, box.width, box.height);
+    const r = topology(referenceMask, box.width, box.height), a = masksEqual ? r : topology(actualMask, box.width, box.height);
     const edgeState = !r.edgePixels && !a.edgePixels ? 'both-empty' : !r.edgePixels ? 'reference-empty' : !a.edgePixels ? 'actual-empty' : 'measured';
-    const sameEdges = r.edgePixels === a.edgePixels && r.edges.every((value, i) => value === a.edges[i]);
+    const sameEdges = masksEqual || r.edgePixels === a.edgePixels && r.edges.every((value, i) => value === a.edges[i]);
     const distance = sameEdges ? 0 : edgeState !== 'measured' ? null
       : Math.max(directedEdgeDistance(r.edges, a.edges, box.width, box.height), directedEdgeDistance(a.edges, r.edges, box.width, box.height));
     return { exactRgbaMatch: rawChanged === 0, rawChangedPixels: rawChanged, maxRawChannelError: rawMax,

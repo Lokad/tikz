@@ -1,2 +1,2 @@
 // Profile review pin stays outside its captured comparison source graph.
-export const calcProfileSha256='856d14d06e036503d19c0da2ca5670b700364bc99c9295eeed2b92b7150a42e0';
+export const calcProfileSha256='26aff88b9120bfef82c1a12b5d245199f92bbdb247eb374e2f4e352d6c9452bc';
