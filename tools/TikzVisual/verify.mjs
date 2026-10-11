@@ -88,9 +88,9 @@ async function command(name,executable,args,kind='report',role){
  steps.push({name,command:{executable:path.basename(executable),arguments:args.map(a=>a.replaceAll(root,'<repo>'))},wallSeconds:(performance.now()-t)/1000,result});await publish(false);return result;
 }
 const node=(name,file,args=[],kind='report',role)=>command(name,process.execPath,['tools/TikzVisual/'+file,...args],kind,role);
-async function fixtureWork(fixtures,run){
+async function fixtureWork(fixtures,run,limit=qualification?6:1){
  let index=0,failed=false;
- const workers=await Promise.allSettled(Array.from({length:Math.min(qualification?3:1,fixtures.length)},async()=>{
+ const workers=await Promise.allSettled(Array.from({length:Math.min(limit,fixtures.length)},async()=>{
   while(!failed&&index<fixtures.length){const fixture=fixtures[index++];try{await run(fixture);}catch(error){failed=true;throw error;}}
  }));
  for(const worker of workers)if(worker.status==='rejected')throw worker.reason;
@@ -134,11 +134,11 @@ try{
  await command('ordinary','dotnet',['test','Lokad.TikZ.slnx','-c','Release','--logger','trx;LogFileName=verification.trx','--results-directory',path.join(output,'tests')],'tests');
  const diagramFixtures=selected.filter(id=>cases.has(id));
  if(qualification){
-  for(const project of ['TikzPathLabelComparison','TikzReference'])await command(project+'-build','dotnet',['build','tools/'+project,'-c','Release'],'build');
+  for(const project of ['TikzPathLabelComparison','TikzReference','TikzPathLabelOracle'])await command(project+'-build','dotnet',['build','tools/'+project,'-c','Release'],'build');
  }
  await fixtureWork(diagramFixtures,async fixture=>{
   await node(fixture+'-materialize','materialize-path-label-cache.mjs',[fixture],'report','path-label-portable-cache-materialization');
- });
+ },qualification?3:1);
  if(qualification)for(const fixture of diagramFixtures){
   const entry=cases.get(fixture),[pc,,dc,,text]=entry.manifest.reports;
   await nativeControls(fixture,pc,dc,text);
@@ -147,7 +147,7 @@ try{
    else consolidated.push({fixture,control:'arrow-correction/11-controls',representative:seen.get('arrow-correction')});
   }
  }
- await fixtureWork(diagramFixtures,async fixture=>{
+ const work=diagramFixtures.map(fixture=>async()=>{
   const entry=cases.get(fixture),[pc,pcheck,dc,dcheck]=entry.manifest.reports;
   const numeric=entry.legacy?await node(fixture+'-numeric','compare-path-label-numeric.mjs',[fixture,...(qualification?['--no-build']:[])],'report','path-label-numeric-iteration'):
    await command(fixture+'-numeric','dotnet',['run','--project','tools/TikzPathLabelComparison','-c','Release',...(qualification?['--no-build']:[]),'--',path.posix.dirname(pc.file)+'/native/report.json'],'report','diagram-current-numeric');
@@ -156,14 +156,13 @@ try{
   const checked=await node(fixture+'-check','check-path-label-current.mjs',[primary.report,pcheck.file,pdf.report,dcheck.file],'report','path-label-independent-current-check');
   const result=JSON.parse(await readFile(path.join(root,checked.report))).result;assert.equal(result.passed,true);assert.equal(result.verificationMode,mode);
   rows.push({fixture,numeric,primary,pdf,checked,result});await publish(false);
+  if(qualification&&fixture===diagramFixtures[0]){
+   await node(fixture+'-current-controls','path-label-current-self-test.mjs',[primary.report,pdf.report],'controls');
+   for(const other of diagramFixtures.slice(1))consolidated.push({fixture:other,control:'current/shared-controls',representative:fixture});
+  }
  });
- if(qualification&&diagramFixtures.length){
-  const fixture=diagramFixtures[0],row=rows.find(r=>r.fixture===fixture);
-  await node(fixture+'-current-controls','path-label-current-self-test.mjs',[row.primary.report,row.pdf.report],'controls');
-  for(const other of diagramFixtures.slice(1))consolidated.push({fixture:other,control:'current/shared-controls',representative:fixture});
- }
  const labelFamilies=[['math',mathLabelCacheReports],['styled',styledLabelCacheReports]].filter(([family])=>selected.some(id=>family==='math'?mathIds.includes(id):id==='flowchart-styled-labels'));
- await fixtureWork(labelFamilies,async([family,owners])=>{
+ for(const[family,owners]of labelFamilies)work.push(async()=>{
   for(const part of ['native','primary','pdf'])await node(family+'-'+part+'-materialize','materialize-path-label-cache.mjs',[(family==='math'?'math':'styled')+'-labels-'+part],'report','path-label-portable-cache-materialization');
   const [wrappers,native,pc,,pdfNative,pdfNativeCheck,dc,dcheck]=owners;
   if(qualification){await node(family+'-primary-controls','math-label-primary-self-test.mjs',[pc.file],'controls');
@@ -180,7 +179,8 @@ try{
   if(qualification){const controlled=await node(family+'-current-controls','math-label-current-self-test.mjs',[primary.report,pdf.report,pc.file,dc.file,'--controls-only'],'controls');bindControlBaseline(controlled,checkedReport);}
   rows.push({family,fixtures:family==='math'?mathIds:['flowchart-styled-labels'],exported,primary,pdf,checked,result});await publish(false);
  });
- if(qualification){await node('process-controls','qualification-process-self-test.mjs',[],'process');await node('cache-controls','path-label-cache-self-test.mjs',['--controls-only'],'controls');
-  await node('view-negative-controls','verification-views-self-test.mjs',[],'controls');}
+ if(qualification)work.unshift(async()=>{await node('process-controls','qualification-process-self-test.mjs',[],'process');await node('cache-controls','path-label-cache-self-test.mjs',['--controls-only'],'controls');
+  await node('view-negative-controls','verification-views-self-test.mjs',[],'controls');});
+ await fixtureWork(work,run=>run());
  calcEqual(await snapshot(),sourceHashes,'Source changed during verification.');rows.sort((a,b)=>selected.indexOf(a.fixture??a.fixtures[0])-selected.indexOf(b.fixture??b.fixtures[0]));phase='complete';await publish(true);
 }catch(error){await save('failure.log',String(error.stack??error).replaceAll(root,'<repo>'));await publish(false,error.message);process.exitCode=1;}

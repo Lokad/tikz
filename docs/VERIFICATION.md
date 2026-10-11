@@ -90,13 +90,20 @@ substituting old converter output. The new matrix has 241 current primary
 views, 240 PDF observations and 361 fresh source recaptures. The larger frozen
 reference matrices continue to establish reference policies and sensitivity.
 
-The existing runner limits fixture work to three concurrent children, builds
-numeric/export tools once and runs their fresh conversions without repeated
+The existing runner limits restoration to three fixture jobs and comparison
+work to six jobs, builds numeric/export/native-observation tools once and runs
+fresh conversions without repeated
 builds. It still awaits all in-flight children on failure and retains their logs.
 Shared report, process, archive and arrow-correction corruption identities run
 once; native numeric, math/styled ownership and reference policies keep their
 distinct checks. Live native-reference regeneration is a separate development
 operation and never part of this routine command.
+
+The independent shared process/cache/negative controls and the math/styled
+families use the same comparison queue. This overlaps independent mechanisms
+without removing their executions; per-family dependency order and native
+policy/control deduplication remain separate. Every in-flight job is awaited
+before aggregate success or failure is published.
 
 Materialization restores disjoint assets with eight bounded filesystem workers
 per fixture and awaits every in-flight operation before reporting a failure.
