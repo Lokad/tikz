@@ -96,7 +96,7 @@ export async function loadArrowMeetImageCache(read = readFile) {
   const file = path.join(root, arrowMeetImageCacheFile);
   if (read === readFile) assert.ok((await stat(file)).size <= arrowMeetCacheBounds.compressed);
   const cache = decodeArrowMeetImageCache(await read(file)), base = await loadArrowImageCache(read);
-  const owned = await loadArrowMeetPdfOwned(arrowMeetImageCacheReports.pdf.origin, base, name => cache.get(name));
+  const owned = await loadArrowMeetPdfOwned(arrowMeetImageCacheReports.pdf.origin, base, name => cache.get(name), arrowMeetImageCacheReports);
   assert.equal(owned.sha256, arrowMeetImageCacheReports.pdf.sha256);
   const primaryRecords = arrowSourcePrimaryPlan().map(view => ({...JSON.parse(owned.input.primary.files.get('views/' + view.id + '/record.json')),
     numbers: JSON.parse(owned.input.primary.files.get('views/' + view.id + '/numbers.json'))}));

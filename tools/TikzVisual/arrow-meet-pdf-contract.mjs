@@ -4,6 +4,7 @@ import {isDeepStrictEqual} from 'node:util';
 import path from 'node:path';
 import {root, sha256, outputPath} from './shape-oracle-bundle.mjs';
 import {arrowCanonical} from './arrow-native-contract.mjs';
+import {arrowQualifiedSources} from './arrow-qualified-sources.mjs';
 import {arrowAgentPath} from './arrow-agent-evidence.mjs';
 import {arrowMeetSources, loadArrowMeetOwned, rewriteArrowMeetRoot} from './arrow-meet-source-contract.mjs';
 import {arrowImageCacheSha256} from './arrow-image-cache.mjs';
@@ -41,8 +42,8 @@ export async function arrowMeetPdfSources(evidence) {
   return new Map([...sources].sort(([a], [b]) => a.localeCompare(b)));
 }
 
-export async function loadArrowMeetPdfInput(evidence, producer, checker, readOverride) {
-  const primary = await loadArrowMeetOwned(producer, evidence, readOverride ? f => readOverride('primary', f) : undefined);
+export async function loadArrowMeetPdfInput(evidence, producer, checker, readOverride, qualificationPin) {
+  const primary = await loadArrowMeetOwned(producer, evidence, readOverride ? f => readOverride('primary', f) : undefined, qualificationPin);
   arrowAgentPath(checker); assert.match(checker, /^artifacts\/arrow-meet-source-checks\/run-[a-f0-9-]+\/report\.json$/);
   const checkerPath = await outputPath(path.dirname(path.join(root, checker)), 'report.json');
   if (!readOverride) assert.ok((await stat(checkerPath)).size < 100000);
@@ -114,14 +115,17 @@ export function validateArrowMeetPdfEntry(report, evidence, sources) {
   assert.match(report.manifest.sha256, /^[a-f0-9]{64}$/);
 }
 
-export async function loadArrowMeetPdfOwned(file, evidence, readOverride) {
+export async function loadArrowMeetPdfOwned(file, evidence, readOverride, qualificationPins) {
   arrowAgentPath(file); assert.match(file, /^artifacts\/arrow-meet-pdf-calibration\/run-[a-f0-9-]+\/report\.json$/);
   const folder = path.dirname(path.join(root, file)); await outputPath(folder);
   const read = async (name, bound) => {
     const full = await outputPath(folder, arrowAgentPath(name)); if (!readOverride) assert.ok((await stat(full)).size <= bound);
     const bytes = readOverride ? await readOverride(name) : await readFile(full); assert.ok(Buffer.isBuffer(bytes) && bytes.length <= bound, 'Missing or oversized certificate artifact: ' + name); return bytes;
   };
-  const bytes = await read('report.json', 100000), report = JSON.parse(bytes), sources = await arrowMeetPdfSources(evidence);
+  const bytes = await read('report.json', 100000), report = JSON.parse(bytes);
+  const sources = qualificationPins
+    ? await arrowQualifiedSources(bytes, qualificationPins.pdf, p => read(p, 5000000))
+    : await arrowMeetPdfSources(evidence);
   validateArrowMeetPdfEntry(report, evidence, sources);
   const mb = await read('manifest.json', 5000000); assert.equal(sha256(mb), report.manifest.sha256);
   const manifest = JSON.parse(mb); assert.equal(manifest.schemaVersion, 1); assert.equal(Object.keys(manifest.artifacts).length, report.manifest.files); assert.ok(report.manifest.files <= 14000);
@@ -132,7 +136,7 @@ export async function loadArrowMeetPdfOwned(file, evidence, readOverride) {
   }
   for (const [name, source] of sources) assert.equal(sha256(files.get('source-captures/' + name)), source.sha256);
   assertNativeEqual(JSON.parse(files.get('record-index.json')), arrowSourcePdfPlan().map(v => 'views/' + v.id + '/record.json'));
-  const input = await loadArrowMeetPdfInput(evidence, report.inputs.producer, report.inputs.checker, (kind, name) => files.get('upstream/' + kind + '/' + name));
+  const input = await loadArrowMeetPdfInput(evidence, report.inputs.producer, report.inputs.checker, (kind, name) => files.get('upstream/' + kind + '/' + name), qualificationPins?.primary);
   assertNativeEqual(report.inputs, input.bindings);
   return {folder, bytes, sha256: sha256(bytes), report, manifest, files, sources, input};
 }

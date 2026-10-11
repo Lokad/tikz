@@ -4,6 +4,7 @@ import {readFile, stat} from 'node:fs/promises';
 import path from 'node:path';
 import {root, sha256, outputPath} from './shape-oracle-bundle.mjs';
 import {arrowCanonical} from './arrow-native-contract.mjs';
+import {arrowQualifiedSources} from './arrow-qualified-sources.mjs';
 import {arrowAgentPath} from './arrow-agent-evidence.mjs';
 import {arrowImageCacheSha256, arrowImageCacheDecodedSha256} from './arrow-image-cache.mjs';
 import {arrowSourcePrimaryPlan, buildArrowSourcePrimaryExperiment, evaluateArrowSourcePrimary} from './arrow-source-primary-contract.mjs';
@@ -22,10 +23,9 @@ export const arrowMeetSourceContract = {
 
 export async function arrowMeetSources(evidence) {
   const sources = new Map();
-  for (const [file, hash] of Object.entries(evidence.sourceHashes)) {
+  for (const file of Object.keys(evidence.sourceHashes)) {
     const bytes = arrowCanonical(await readFile(path.join(root, file)));
-    assert.equal(sha256(bytes), hash, 'Changed original native source: ' + file);
-    sources.set(file, {bytes, sha256: hash});
+    sources.set(file, {bytes, sha256: sha256(bytes)});
   }
   const queue = ['arrow-meet-source-contract.mjs', 'calibrate-arrow-meet-source.mjs', 'check-arrow-meet-source.mjs'].map(f => 'tools/TikzVisual/' + f);
   for (let i = 0; i < queue.length; i++) {
@@ -119,7 +119,7 @@ export function validateArrowMeetEntry(report, evidence, sources) {
   assert.match(report.manifest.sha256, /^[a-f0-9]{64}$/);
 }
 
-export async function loadArrowMeetOwned(file, evidence, readOverride) {
+export async function loadArrowMeetOwned(file, evidence, readOverride, qualificationPin) {
   arrowAgentPath(file); assert.match(file, /^artifacts\/arrow-meet-source-calibration\/run-[a-f0-9-]+\/report\.json$/);
   const folder = path.dirname(path.join(root, file)); await outputPath(folder);
   const read = async (name, bound) => {
@@ -129,7 +129,10 @@ export async function loadArrowMeetOwned(file, evidence, readOverride) {
     assert.ok(Buffer.isBuffer(bytes) && bytes.length <= bound, 'Oversized or missing meet artifact: ' + name);
     return bytes;
   };
-  const bytes = await read('report.json', 100000), report = JSON.parse(bytes), sources = await arrowMeetSources(evidence);
+  const bytes = await read('report.json', 100000), report = JSON.parse(bytes);
+  const sources = qualificationPin
+    ? await arrowQualifiedSources(bytes, qualificationPin, p => read(p, 5000000))
+    : await arrowMeetSources(evidence);
   validateArrowMeetEntry(report, evidence, sources);
   const mb = await read('manifest.json', 3000000); assert.equal(sha256(mb), report.manifest.sha256);
   const manifest = JSON.parse(mb); assert.equal(manifest.schemaVersion, 1);

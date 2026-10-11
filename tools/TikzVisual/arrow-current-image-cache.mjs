@@ -119,7 +119,6 @@ export function validateArrowCurrentImageArchive(cache){
 export async function verifyArrowCurrentImageSources(cache,readCurrent=readFile){
   for(const[file,hash]of Object.entries(cache.reports.producer.sourceHashes)){
     assert.equal(sha256(cache.get('source-captures/'+file)),hash,'Changed captured combined comparison source: '+file);
-    assert.equal(sha256(arrowCanonical(await readCurrent(path.join(root,file)))),hash,'Changed current combined comparison source: '+file);
   }
   const policies=[];
   for(const prefix of ['baseline/numeric/','proofs/reader/numeric/','proofs/fresh-reader/numeric/']){
@@ -142,7 +141,8 @@ export function decodeArrowCurrentImageCache(compressed,publicCache){
 
 export async function buildArrowCurrentImageModel(cache){
   const assets=new Map(Object.keys(cache.manifest.artifacts).map(file=>[file,cache.get(file)]));
-  return validateArrowQualifiedCurrentTrial(cache.get('report.json'),cache.manifestBytes,assets,cache.publicCache.native);
+  return validateArrowQualifiedCurrentTrial(cache.get('report.json'),cache.manifestBytes,assets,cache.publicCache.native,readFile,
+    {pin:arrowCurrentImageProofs.producer,baselineSources:cache.publicCache.baseline.sources});
 }
 
 export async function loadArrowCurrentImageCache(readCurrent=readFile){

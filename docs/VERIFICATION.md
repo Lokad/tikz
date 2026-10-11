@@ -164,6 +164,21 @@ corruptions run once in the straight-edge source controls; the curved native
 reader, reference ownership, visible defects and agent checks remain separate.
 Both trial reports capture the shared guard's source before fresh conversion.
 
+Arrow admission preserves the four exact native, meet, public and combined
+qualification archives. Captured tools establish historical provenance behind
+pinned reports, manifests and byte hashes; they need not equal current tools.
+The small arrow capture helper serves the nested meet and combined readers.
+Raw meet qualifications still require current source equality. Current
+admission guards cover the actual tool graph and numeric comparison/build
+inputs; native engine fixtures and outputs remain independently pinned.
+Duplicate comparator/checker byte probes run once in admission controls.
+Missing or changed captures, forged report pins and stale raw qualifications
+have separate controls. Every current claim requires fresh public conversion,
+an independent numeric build and image checker, all 16 gates, 306 primary and
+396 PDF controls. Original-driver SVG, independent native presentation, source
+and scene PDF registration, RGB mass/moments and image-only defects keep their
+distinct policies and negative controls.
+
 The calc coordinator prepares provisional details from its independent checker.
 Before writing a completed report, the saved-receipt validator independently
 recomputes all trial pixels, policy decisions, source recapture and admission

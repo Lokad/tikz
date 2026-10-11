@@ -34,19 +34,23 @@ const entries=['arrow-admission-policy.mjs','prepare-arrow-admission.mjs','compa
 const digest=value=>sha256(JSON.stringify(value));
 
 export async function arrowAdmissionSources(e){
-  const sources=new Map(e.model.sources);
-  for(const file of e.sourcePolicy.currentGuards){const bytes=e.model.baseline.read('numeric/source-captures/'+file);sources.set(file,{bytes,sha256:sha256(bytes)});}
-  const queue=entries.map(file=>'tools/TikzVisual/'+file);
+  const sources=new Map();
+  for(const file of e.sourcePolicy.currentGuards){const bytes=arrowCanonical(await readFile(path.join(root,file)));sources.set(file,{bytes,sha256:sha256(bytes)});}
+  const queue=[...e.model.sources.keys(),...entries.map(file=>'tools/TikzVisual/'+file)];
   for(let i=0;i<queue.length;i++){
     const file=queue[i];if(file===arrowProfilePinFile||sources.has(file))continue;
-    assert.match(file,/^tools\/TikzVisual\/[a-z0-9.-]+\.mjs$/);
+    arrowCachePath(file);assert.ok(e.model.sources.has(file)||/^tools\/TikzVisual\/[a-z0-9.-]+\.mjs$/.test(file));
     const bytes=arrowCanonical(await readFile(path.join(root,file)));sources.set(file,{bytes,sha256:sha256(bytes)});
-    for(const m of bytes.toString().matchAll(/\bfrom\s+['"](\.[^'"]+)['"]/g))queue.push(path.posix.normalize(path.posix.join(path.posix.dirname(file),m[1])));
+    if(file.endsWith('.mjs'))for(const m of bytes.toString().matchAll(/\bfrom\s+['"](\.[^'"]+)['"]/g))queue.push(path.posix.normalize(path.posix.join(path.posix.dirname(file),m[1])));
   }
   return new Map([...sources].sort(([a],[b])=>a<b?-1:a>b?1:0));
 }
 export function makeArrowProfile(e,guardToolHashes){
   const native=e.publicCache.native;
+  const inputHashes=Object.fromEntries(Object.entries(e.model.baseline.numeric.inputs).filter(([file])=>{
+    if(!file.startsWith('tools/TikzVisual/'))return true;
+    assert.ok(Object.hasOwn(guardToolHashes,file),'Missing current input tool guard: '+file);return false;
+  }));
   return{schemaVersion:1,id:arrowPolicyId,scope:arrowPolicyScope,approvedImagePolicy:true,
     qualification:{file:arrowCurrentImageCacheFile,sha256:arrowCurrentImageCacheSha256,decodedSha256:arrowCurrentImageCacheDecodedSha256,
       commit:e.header.qualification.commit,tree:e.header.qualification.tree,proofHashes:Object.fromEntries(Object.entries(arrowCurrentImageProofs).map(([k,p])=>[k,p.sha256]))},
@@ -60,7 +64,7 @@ export function makeArrowProfile(e,guardToolHashes){
     sensitivity:{primarySha256:digest(e.model.report.primarySummary),pdfSha256:digest(e.model.report.pdfSummary),focusSha256:digest(e.model.pdf.focus)},
     independent:{baseline:[17928,24000,24000,24192,384,2136,1368,1248],primary:{views:306,measurements:39528,images:3057,deltas:210},
       pdf:[396,100908,100908,792,7228,568,4356,2080],controlNames:e.reports.reader.controls.map(c=>c.name)},
-    inputHashes:e.model.baseline.numeric.inputs,guardToolHashes};
+    inputHashes,guardToolHashes};
 }
 export async function validateArrowProfile(profile,e){
   const sources=await arrowAdmissionSources(e);assertNativeEqual(Object.keys(profile.guardToolHashes),[...sources.keys()]);
@@ -96,7 +100,7 @@ export async function validateArrowCheckedTrial(e,b,checker,readChecker,trialSha
     [1,'independent-current-public-arrow-combined-check',true,'complete',true,false,false,false,'pending']);
   assert.equal(c.inputReportSha256,trialSha256);assert.match(c.inputReport,/^artifacts\/arrow-current-trials\/run-[a-f0-9-]+\/report\.json$/);
   assertNativeEqual(c.renderer,p.renderer);assertNativeEqual(b.report.renderer,p.renderer);assertNativeEqual(c.sourceHashes,b.report.sourceHashes);
-  for(const[file,hash]of Object.entries(c.sourceHashes))assert.equal(hash,p.guardToolHashes[file]);
+  if(mode!=='historical-qualification')for(const[file,hash]of Object.entries(c.sourceHashes))assert.equal(hash,p.guardToolHashes[file]);
   assertNativeEqual(baselineFields.map(k=>c.baseline[k]),p.independent.baseline);assertNativeEqual(c.baseline.combined,b.baseline.combined);
   assertNativeEqual(c.primary,p.independent.primary);assertNativeEqual(pdfFields.map(k=>c.pdf[k]),p.independent.pdf);
   assertNativeEqual(c.pdf.summary,b.report.pdfSummary);

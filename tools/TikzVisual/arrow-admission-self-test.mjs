@@ -7,6 +7,10 @@ import {root,sha256,writeArtifact} from './shape-oracle-bundle.mjs';
 import {arrowCanonical} from './arrow-native-contract.mjs';
 import {assertNativeEqual} from './arrow-meet-pdf-contract.mjs';
 import {arrowCurrentImageProofs} from './arrow-current-image-cache.mjs';
+import {arrowQualifiedSources} from './arrow-qualified-sources.mjs';
+import {loadArrowMeetOwned} from './arrow-meet-source-contract.mjs';
+import {loadArrowMeetPdfOwned} from './arrow-meet-pdf-contract.mjs';
+import {arrowMeetImageCacheReports} from './arrow-meet-image-cache-pin.mjs';
 import {loadArrowPolicy,validateArrowProfile,verifyArrowGuards,decodeArrowProfile,validateArrowCheckedTrial,finishArrowAdmission} from './arrow-admission-policy.mjs';
 import {loadArrowAdmissionReport,validateArrowAdmissionBundle} from './arrow-admission-reader.mjs';
 
@@ -24,6 +28,13 @@ try{
   for(const[file,hash]of Object.entries(ownSources)){const bytes=arrowCanonical(await readFile(path.join(root,file)));assert.equal(sha256(bytes),hash);await writeArtifact(output,'source-captures/'+file,bytes);}
   assertNativeEqual([e.profile.requiredGates.length,e.profile.counts.primaryControls,e.profile.counts.pdfControls,e.profile.counts.focusSelections],[16,306,396,520]);
   pass('fixed profile, native-only bindings, complete qualified proof and current guards');
+  const qualifiedBytes=e.get('report.json'),qualifiedPin=arrowCurrentImageProofs.producer;
+  await reject('changed pinned historical report',()=>arrowQualifiedSources(Buffer.concat([qualifiedBytes,Buffer.from(' ')]),qualifiedPin,p=>e.get(p)));
+  await reject('missing historical source capture',()=>arrowQualifiedSources(qualifiedBytes,qualifiedPin,()=>undefined));
+  await reject('changed historical source capture',()=>arrowQualifiedSources(qualifiedBytes,qualifiedPin,()=>Buffer.from('changed captured source')));
+  const meet=e.publicCache.native;
+  await reject('raw meet primary qualification requires current sources',()=>loadArrowMeetOwned(arrowMeetImageCacheReports.primary.origin,meet.base,p=>meet.get('upstream/primary/'+p)));
+  await reject('raw meet PDF qualification requires current sources',()=>loadArrowMeetPdfOwned(arrowMeetImageCacheReports.pdf.origin,meet.base,p=>meet.get(p)));
   const fields=[['false policy approval',p=>p.approvedImagePolicy=false],['changed profile identity',p=>p.id+='-changed'],['broadened scope',p=>p.scope+=' all TikZ'],
     ['changed renderer',p=>p.renderer.browser='changed'],['changed native limits',p=>p.nativeBindingsSha256='0'.repeat(64)],['changed qualification',p=>p.qualification.sha256='0'.repeat(64)],
     ['lost qualified proof',p=>delete p.qualification.proofHashes.reader],['lost gate',p=>p.requiredGates.pop()],['undercounted numeric',p=>p.numericChecks--],
@@ -53,7 +64,7 @@ try{
   }
   let productionReads=0;const differentProduction=async file=>{if(path.relative(root,file).split(path.sep).join('/').startsWith('src/Lokad.TikZ/')){productionReads++;return Buffer.from('different production');}return readFile(file);};
   await verifyArrowGuards(e,differentProduction);assert.equal(productionReads,0);pass('historical policy guards exclude current production');
-  for(const file of ['tools/TikzArrowComparison/NativeArrowComparison.cs','tests/Reference/Arrows/meta-defaults/source.tikz','tools/TikzVisual/compare-arrow-conformance.mjs'])
+  for(const file of ['tools/TikzArrowComparison/NativeArrowComparison.cs','tests/Reference/Arrows/meta-defaults/source.tikz','tools/TikzVisual/compare-arrow-conformance.mjs','tools/TikzVisual/check-arrow-current.mjs'])
     await reject('changed current guarded input/'+file,()=>verifyArrowGuards(e,current=>path.relative(root,current).split(path.sep).join('/')===file?Promise.resolve(Buffer.from('changed guarded input')):readFile(current)));
   for(const[key,value]of Object.entries({completed:false,converterInvoked:false,approvedImagePolicy:true,imageConformanceClaim:true,imageAdmission:'passed'})){
     const c=structuredClone(e.reports.reader);c[key]=value;await reject('raw qualification role/'+key,()=>validateArrowCheckedTrial(e,e.model,c,file=>e.get('proofs/reader/'+file),arrowCurrentImageProofs.producer.sha256,'historical-qualification'));

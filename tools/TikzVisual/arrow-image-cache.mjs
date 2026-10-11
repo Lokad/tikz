@@ -14,7 +14,6 @@ import {arrowSourceEnvelope} from './arrow-source-envelope.mjs';
 import {arrowViewportFrameCheck} from './arrow-viewport-model.mjs';
 import {arrowSourcePrimaryContract} from './arrow-source-primary-reference.mjs';
 import {arrowSourcePrimaryPlan, buildArrowSourcePrimaryExperiment} from './arrow-source-primary-contract.mjs';
-import {arrowSourcePdfSources} from './arrow-source-pdf-contract.mjs';
 import {arrowSourcePdfContract, arrowSourcePdfPlan, buildArrowSourcePdfExperiment, arrowSourcePdfPolicyIndex, arrowSourcePdfVisibilityIndex} from './arrow-source-pdf-model.mjs';
 
 export {arrowImageCacheFile, arrowImageCacheSha256, arrowImageCacheDecodedSha256, arrowImageCacheReports};
@@ -124,10 +123,7 @@ function cachedModels(cache, verified, native) {
 
 export async function loadArrowImageCache(read = readFile) {
   const cache = decodeArrowImageCache(await read(path.join(root, arrowImageCacheFile))), verified = validateArrowImageCache(cache);
-  const sources = await arrowSourcePdfSources();
-  assert.deepEqual(Object.fromEntries([...sources].map(([p, s]) => [p, s.sha256])), verified.reports.pdf.sourceHashes);
-  for (const [p, s] of sources) assert.equal(sha256(arrowCanonical(await read(path.join(root, p)))), s.sha256, 'Changed native qualification source: ' + p);
-  const native = await loadArrowEvidence(), models = cachedModels(cache, verified, native);
+  const native = await loadArrowEvidence(read === readFile ? undefined : p => read(path.join(root, p))), models = cachedModels(cache, verified, native);
   return {...cache, ...verified, ...models, native, sourceHashes: verified.reports.pdf.sourceHashes,
     getRole(role, p) {
       assert.ok(Object.hasOwn(arrowImageCacheReports, role));

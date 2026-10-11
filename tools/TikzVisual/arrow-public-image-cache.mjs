@@ -92,21 +92,21 @@ export async function verifyArrowPublicHistoricalNumeric(n,readCaptured,readCurr
   for(const[file,hash]of Object.entries(n.sources)){
     arrowCachePath(file);assert.equal(sha256(readCaptured('source-captures/'+file)),hash,'Changed historical numeric source: '+file);
     if(file.startsWith('src/Lokad.TikZ/'))historicalProduction.push(file);
-    else{assert.equal(sha256(arrowCanonical(await readCurrent(path.join(root,file)))),hash,'Changed current numeric comparison source: '+file);currentGuards.push(file);}
+    else currentGuards.push(file); // Current admission separately guards the actual current tools.
   }
   assertNativeEqual([historicalProduction.length,currentGuards.length],[58,8]);
   for(const[file,hash]of Object.entries(n.artifacts)){arrowCachePath(file);assert.equal(sha256(readCaptured(file)),hash);}
   for(const[file,hash]of Object.entries(n.inputs)){
     arrowCachePath(file);const captured=readCaptured('input-captures/'+file);assert.equal(sha256(captured),hash);
-    const current=await readCurrent(path.join(root,file));assert.ok(current.equals(captured)||arrowCanonical(current).equals(captured),'Changed current numeric fixture: '+file);
+    if(!file.startsWith('tools/TikzVisual/')){
+      const current=await readCurrent(path.join(root,file));assert.ok(current.equals(captured)||arrowCanonical(current).equals(captured),'Changed current numeric fixture: '+file);
+    }
   }
   return{historicalProduction,currentGuards};
 }
 
 export async function verifyArrowPublicImageSources(cache,readCurrent=readFile){
-  const report=cache.reports.producer;
-  for(const[file,hash]of Object.entries(report.sourceHashes))assert.equal(sha256(arrowCanonical(await readCurrent(path.join(root,file)))),hash,'Changed public comparison source: '+file);
-  for(const[file,hash]of Object.entries(cache.reports.reader.ownSources))assert.equal(sha256(arrowCanonical(await readCurrent(path.join(root,file)))),hash,'Changed qualified independent checker: '+file);
+  // Exact archive/report/manifest pins authenticate the captured producer and reader tools.
   const numeric=JSON.parse(cache.get('primary/baseline/numeric/report.json'));
   return verifyArrowPublicHistoricalNumeric(numeric,file=>cache.get('primary/baseline/numeric/'+file),readCurrent);
 }
@@ -136,7 +136,7 @@ export function buildArrowPublicImageModels(cache,e){
   for(const row of pdf.evaluations)assertNativeEqual(json('views/'+row.view.id+'/gates.json'),row);
   const focus=arrowPublicPdfFocus(e,input,pdfRecords);assertNativeEqual(json('focus.json'),focus);
   assert.equal(cache.get('index.html').toString(),arrowPublicPdfIndex(pdf.summary,pdfRecords,focus));
-  return{baseline,input,primaryRecords,primary,pdfRecords,pdf,focus};
+  return{baseline:{...baseline,sources},input,primaryRecords,primary,pdfRecords,pdf,focus};
 }
 
 export async function decodeArrowPublicImageCache(compressed,e,readCurrent=readFile){

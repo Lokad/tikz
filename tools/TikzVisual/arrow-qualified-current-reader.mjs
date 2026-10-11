@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {sha256} from './shape-oracle-bundle.mjs';
 import {arrowCachePath} from './arrow-image-cache-codec.mjs';
+import {arrowQualifiedSources} from './arrow-qualified-sources.mjs';
 import {assertNativeEqual} from './arrow-meet-pdf-contract.mjs';
 import {verifyArrowPublicHistoricalNumeric} from './arrow-public-image-cache.mjs';
 import {arrowPublicImageCacheFile,arrowPublicImageCacheSha256} from './arrow-public-image-cache-pin.mjs';
@@ -20,7 +21,7 @@ import {arrowSourcePdfControl} from './arrow-source-pdf-model.mjs';
 import {arrowPrimaryVisibility} from './arrow-primary-defects.mjs';
 
 const encode=value=>Buffer.from(JSON.stringify(value)+'\n');
-export async function validateArrowQualifiedCurrentTrial(reportBytes,manifestBytes,assets,e,readCurrent=readFile){
+export async function validateArrowQualifiedCurrentTrial(reportBytes,manifestBytes,assets,e,readCurrent=readFile,qualification){
   assert.ok(reportBytes.length<=200000&&manifestBytes.length<=5000000);
   const report=JSON.parse(reportBytes),manifest=JSON.parse(manifestBytes);
   assertNativeEqual(Object.keys(report).sort(),['schemaVersion','comparisonKind','completed','phase','converterInvoked','nativeToolInvoked','numericGatesBypassedForMutations','approvedImagePolicy','imageConformanceClaim','imageAdmission','renderer','qualification','sourceHashes','numericReport','baseline','primary','pdf','focus','inspection','viewer','baselinePassed','primarySummary','pdfSummary','pendingGates','manifest'].sort());
@@ -35,7 +36,8 @@ export async function validateArrowQualifiedCurrentTrial(reportBytes,manifestByt
   assertNativeEqual(Object.keys(manifest.artifacts),[...assets.keys()]);
   for(const[file,hash]of Object.entries(manifest.artifacts)){arrowCachePath(file);assert.match(hash,/^[a-f0-9]{64}$/);assert.equal(sha256(assets.get(file)),hash,'Changed current trial artifact: '+file);}
   const expected=new Set(),read=file=>{arrowCachePath(file);assert.ok(assets.has(file),'Missing current trial artifact: '+file);expected.add(file);return assets.get(file);},json=file=>JSON.parse(read(file));
-  const sources=await arrowCurrentTrialSources(e);assertNativeEqual(report.sourceHashes,Object.fromEntries([...sources].map(([p,s])=>[p,s.sha256])));
+  const sources=qualification?await arrowQualifiedSources(reportBytes,qualification.pin,read):await arrowCurrentTrialSources(e);
+  assertNativeEqual(report.sourceHashes,Object.fromEntries([...sources].map(([p,s])=>[p,s.sha256])));
   for(const[file,s]of sources)assert.ok(read('source-captures/'+file).equals(s.bytes),'Changed current comparison source: '+file);
   for(const[file,hash]of [['qualification/public-controls.bin.gz',arrowPublicImageCacheSha256],['qualification/native-meet.bin.gz',arrowMeetImageCacheSha256],['qualification/native-source.bin.gz',arrowImageCacheSha256]])assert.equal(sha256(read(file)),hash);
   assertNativeEqual(json('native-limit-bindings.json'),arrowPublicMeetBindings(e));read('numeric-command.log');
@@ -45,7 +47,8 @@ export async function validateArrowQualifiedCurrentTrial(reportBytes,manifestByt
   for(const file of ba.keys())read('baseline/'+file);
   ba.set('native-meet-cache.bin.gz',read('qualification/native-meet.bin.gz'));ba.set('native-base-cache.bin.gz',read('qualification/native-source.bin.gz'));
   ba.set('native-limit-bindings.json',read('native-limit-bindings.json'));ba.set('numeric-command.log',read('numeric-command.log'));ba.set('index.html',Buffer.alloc(0));
-  const bs=await arrowPublicMeetSources(e);for(const[file,s]of bs)ba.set('source-captures/'+file,read('source-captures/'+file));
+  const bs=qualification?qualification.baselineSources:await arrowPublicMeetSources(e);
+  for(const[file,s]of bs)ba.set('source-captures/'+file,read('source-captures/'+file));
   const bm=encode({schemaVersion:1,artifacts:Object.fromEntries([...ba].map(([p,b])=>[p,sha256(b)]))});
   const br={schemaVersion:1,comparisonKind:'public-arrow-meet-baseline-trial',completed:true,phase:'complete',converterInvoked:true,approvedImagePolicy:false,imageConformanceClaim:false,overallVerdict:'pending',
     cache:{file:'native-meet-cache.bin.gz',sha256:arrowMeetImageCacheSha256},baseCache:{file:'native-base-cache.bin.gz',sha256:arrowImageCacheSha256},renderer:report.renderer,sourceHashes:Object.fromEntries([...bs].map(([p,s])=>[p,s.sha256])),

@@ -72,9 +72,9 @@ try {
   const changed = Buffer.from(e.compressed); changed[changed.length - 1] ^= 1;
   reject('changed compressed cache', () => decodeArrowImageCache(changed));
   reject('empty compressed cache', () => decodeArrowImageCache(Buffer.alloc(0)));
-  const firstSource = Object.keys(e.sourceHashes)[0];
+  const firstSource = 'tests/Reference/Arrows/meta-defaults/source.tikz';
   await assert.rejects(loadArrowImageCache(p => p === path.join(root, firstSource) ? Promise.resolve(Buffer.from('changed source')) : readFile(p)));
-  passed('changed captured qualification source rejected through loader');
+  passed('changed current native engine input rejected through loader');
 
   let originalBytes = 0;
   for (const [p, h] of Object.entries(e.manifest.artifacts)) {const b = e.get(p); assert.equal(sha256(b), h); originalBytes += b.length;}

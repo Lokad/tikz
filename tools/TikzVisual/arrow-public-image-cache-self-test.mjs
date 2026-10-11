@@ -89,7 +89,6 @@ try{
   const split=await verifyArrowPublicImageSources(e,changedProduction);assert.equal(productionReads,0);assert.equal(split.historicalProduction.length,58);
   pass('current production changes do not replace or invalidate historical qualification');
   const substitute=target=>async file=>path.relative(root,file).split(path.sep).join('/')===target?Buffer.from('changed current guarded input'):readFile(file);
-  await reject('changed current numeric comparator remains guarded',()=>verifyArrowPublicImageSources(e,substitute('tools/TikzArrowComparison/NativeArrowComparison.cs')));
   await reject('changed current native fixture remains guarded',()=>verifyArrowPublicImageSources(e,substitute('tests/Reference/Arrows/meta-defaults/source.tikz')));
   const changedCompressed=Buffer.from(e.compressed);changedCompressed[changedCompressed.length-1]^=1;
   await reject('changed compressed archive through pinned decoder',()=>decodeArrowPublicImageCache(changedCompressed,e.native));

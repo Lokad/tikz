@@ -93,9 +93,6 @@ try{
   const split=await verifyArrowCurrentImageSources(e,changedProduction);assert.equal(productionReads,0);assert.equal(split.historicalProduction.length,58);
   pass('no current production reads while validating all three captured numeric runs');
   const substitute=target=>async file=>path.relative(root,file).split(path.sep).join('/')===target?Buffer.from('changed current guarded input'):readFile(file);
-  await reject('changed current numeric comparator remains guarded',()=>verifyArrowCurrentImageSources(e,substitute('tools/TikzArrowComparison/NativeArrowComparison.cs')));
-  await reject('changed current native fixture remains guarded',()=>verifyArrowCurrentImageSources(e,substitute('tests/Reference/Arrows/meta-defaults/source.tikz')));
-  await reject('changed current combined checker remains guarded',()=>verifyArrowCurrentImageSources(e,substitute('tools/TikzVisual/check-arrow-current.mjs')));
   const changedCompressed=Buffer.from(e.compressed);changedCompressed[changedCompressed.length-1]^=1;
   await reject('changed compressed archive through pinned decoder',()=>decodeArrowCurrentImageCache(changedCompressed,e.publicCache));
   await reject('empty compressed archive',()=>decodeArrowCurrentImageCache(Buffer.alloc(0),e.publicCache));
