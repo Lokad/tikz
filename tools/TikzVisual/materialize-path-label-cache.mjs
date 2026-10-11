@@ -18,12 +18,18 @@ try{
  const {cache,manifest}=await loadPathLabelCache(root,fixture);
  assert.equal(sha256(encodePathLabelCache(cache.files,fixture)),manifest.decodedSha256,'Changed canonical archive roundtrip.');
  phase='materialization';let restored=0;
- for(const[file,bytes]of cache.files){
-  const folder=path.join(root,path.posix.dirname(file)),name=path.posix.basename(file),target=await outputPath(folder,name);
-  const existing=await readFile(target).catch(e=>{if(e.code!=='ENOENT')throw e;return null;});
-  if(existing)assert.ok(existing.equals(bytes),'Refusing to replace different existing evidence: '+file);else await writeArtifact(folder,name,bytes);
-  restored++;if(restored%1000===0)console.log(JSON.stringify({phase,restored,total:cache.files.size}));
- }
+ const files=cache.files.entries();let failed=false;
+ const workers=await Promise.allSettled(Array.from({length:8},async()=>{
+  while(!failed){const item=files.next();if(item.done)return;const[file,bytes]=item.value;
+   try{
+    const folder=path.join(root,path.posix.dirname(file)),name=path.posix.basename(file),target=await outputPath(folder,name);
+    const existing=await readFile(target).catch(e=>{if(e.code!=='ENOENT')throw e;return null;});
+    if(existing)assert.ok(existing.equals(bytes),'Refusing to replace different existing evidence: '+file);else await writeArtifact(folder,name,bytes);
+    restored++;if(restored%1000===0)console.log(JSON.stringify({phase,restored,total:cache.files.size}));
+   }catch(error){failed=true;throw error;}
+  }
+ }));
+ for(const worker of workers)if(worker.status==='rejected')throw worker.reason;
  for(const descriptor of manifest.reports){const saved=await loadCalcSavedReport(path.join(root,descriptor.file),descriptor.role);assert.equal(saved.sha256,descriptor.sha256);}
  await save('restored-assets.json',JSON.stringify(cache.header.assets,null,2)+'\n');
  await save('source-captures/tools/TikzVisual/materialize-path-label-cache.mjs',await readFile(path.join(root,'tools/TikzVisual/materialize-path-label-cache.mjs')));

@@ -10,9 +10,11 @@ export function pathLabelPdfPixelReader(bundle,pdf,nativePrefix='native'){
 }
 // Family readers choose owned page paths; decoding and metric checks are identical.
 export function pdfPagePixelReader(bundle,pdf,pagePrefix){
- const compare=createShapeRasterMetrics().compare;
+ const compare=createShapeRasterMetrics().compare,pages=new Map();
  return file=>{
-  const row=bundle.json(file),a=decodeCalcPng(bundle.files.get(pagePrefix+'/probed-pdf-page-'+row.scale+'x.png')),
+  const row=bundle.json(file),page=pagePrefix+'/probed-pdf-page-'+row.scale+'x.png';
+  if(!pages.has(page))pages.set(page,decodeCalcPng(bundle.files.get(page)));
+  const a=pages.get(page),
    b=decodeCalcPng(bundle.files.get(row.images['svg-page']));
   calcEqual([a.width,a.height],[b.width,b.height]);calcEqual(row.pageSize,{width:a.width,height:a.height});calcEqual(row.pageSize,pdf.camera.rasterSizes[row.scale+'x']);
   let changed=0,maximum=0;for(let i=0;i<a.rgba.length;i+=4){let error=0;for(let c=0;c<4;c++)error=Math.max(error,Math.abs(a.rgba[i+c]-b.rgba[i+c]));changed+=error!==0;maximum=Math.max(maximum,error);}

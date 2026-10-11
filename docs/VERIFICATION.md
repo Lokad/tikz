@@ -98,6 +98,14 @@ once; native numeric, math/styled ownership and reference policies keep their
 distinct checks. Live native-reference regeneration is a separate development
 operation and never part of this routine command.
 
+Materialization restores disjoint assets with eight bounded filesystem workers
+per fixture and awaits every in-flight operation before reporting a failure.
+Path checks, refusal to replace different existing bytes, canonical roundtrips
+and all owned-report checks still run. The independent PDF reader decodes each
+unchanged native page once within that reader, as the primary reader already
+does for reference images; all candidate images, full-page metrics, regions and
+verdicts are still independently checked on every observation.
+
 The report retains exact commands, child receipts, wall times, source hashes,
 failed regions and links to paired PNGs/crops. Changed source during a run is a
 failure. An iteration report cannot establish final qualification. At feature
