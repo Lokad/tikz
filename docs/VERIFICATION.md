@@ -144,6 +144,12 @@ and whole-image metrics. It keeps every view and avoids regenerating local
 metrics already checked by initial capture and independent PNG decoding.
 Calibration and targeted sensitivity captures retain their full region sets.
 
+Nonmath current-source recapture uses the same whole-picture approach for both
+primary and PDF images. Its independent readers first decode every required local
+region and derive its policy verdict. Recapture then checks complete PNG identity,
+whole metrics, frames and repeats without calculating those local metrics again.
+All views, native policies, source captures and corruption checks remain required.
+
 Current math/styled primary producers capture all browser metrics and recapture
 the complete source PNGs. Their receipts explicitly leave independent PNG
 validation to the current checker, which decodes every whole/local observation.

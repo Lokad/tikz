@@ -129,18 +129,20 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
   calcEqual(renderer.identity,calibration.report.renderer);calcEqual(renderer.identity,pdfCalibration.report.renderer);
   await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
   const svg=fresh.files.get('public.svg').toString('utf8'),reference=native.files.get('probed-reference.svg').toString('utf8');
+  // The independent pixel readers above check every local region. Exact full
+  // PNG identity binds those checks to fresh source; recapture needs only whole metrics.
   for(const record of primary.report.records){const row=primary.json(record.file),measure=row.capture==='intrinsic-image'?measureEdgeTrialPrimary:measureArrowVectorPair;
-   const pair=await measure(renderer,{reference,actual:svg,leftIsDriver:true,origin:frame.origin,camera:frame.camera,regions:frame.regions,
+   const pair=await measure(renderer,{reference,actual:svg,leftIsDriver:true,origin:frame.origin,camera:frame.camera,regions:frame.regions.slice(0,1),
     frame:row.frame,scale:row.scale,background:row.background,cropLimit:0});
-   for(const k of['metrics','regions','repeat','actualRepeat'])calcEqual(pair[k],row[k],'Current primary source recapture differs: '+k);
+   for(const k of['metrics','repeat','actualRepeat'])calcEqual(pair[k],row[k],'Current primary source recapture differs: '+k);
    for(const k of['reference','actual'])assert.ok(Buffer.from(pair.images[k],'base64').equals(primary.files.get(row.images[k])),'Changed source-bound primary PNG.');recaptured++;
   }
   console.log(JSON.stringify({phase:'current-source-recapture',primaryViews:pixels.primaryViews}));
   for(const record of pdf.report.records){const row=pdf.json(record.file),original=row.mode==='original';
    if(original&&pixels.verificationMode==='iteration')continue;
    const pair=await measureEdgePdfPair(renderer,{svg:original?reference:svg,pdfPage:'data:image/png;base64,'+native.files.get('probed-pdf-page-'+row.scale+'x.png').toString('base64'),
-    ...pdfFrame,frame:row.frame,scale:row.scale,units:original?'bp':'cssPixels',svgOriginBp:original?frame.origin:{x:0,y:0},cropLimit:0});
-   for(const k of['sourceFrame','clipFrame','whole','regions','fullPage','outsideWholeChangedPixels','repeat'])calcEqual(pair[k],row[k],'Current PDF source recapture differs: '+k);
+    ...pdfFrame,regions:pdfFrame.regions.slice(0,1),frame:row.frame,scale:row.scale,units:original?'bp':'cssPixels',svgOriginBp:original?frame.origin:{x:0,y:0},cropLimit:0});
+   for(const k of['sourceFrame','clipFrame','whole','fullPage','outsideWholeChangedPixels','repeat'])calcEqual(pair[k],row[k],'Current PDF source recapture differs: '+k);
    assert.ok(Buffer.from(pair.images['svg-page'],'base64').equals(pdf.files.get(row.images['svg-page'])),'Changed source-bound PDF PNG.');recaptured++;
   }
  }finally{await renderer.browser.close();}

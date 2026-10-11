@@ -17,7 +17,7 @@ camera choices, execution commands and limits of each conformance claim.
 | Final complete-diagram qualification | Keep 26 diagrams, 624 primary / 208 PDF views and 832 source recaptures | Every originally required view and per-region policy; complete diagrams retain positioning, labels, arrows and calc interactions |
 | Math/styled, arrow correction and other family admission controls | Retain where semantics differ | Font/rule ownership, PDF registration, corrected/original SVG evidence, geometry and admission policies are separate requirements |
 | Release archive and isolated consumer | Retain four payload faults once on Windows; positive consumers on both platforms | Missing API XML, added dependency, changed DLL and unexpected asset fail; actual package restore and source/packed output parity close separate packaging requirements |
-| Duplicate raster/PNG work | Share equal-operand arithmetic; assign one full independent decoded pass to its checker | All metrics, images, regions, repeat renders and decisions remain; altered pixels and forged checking ownership still fail |
+| Duplicate raster/PNG work | Share equal-operand arithmetic; assign one full independent decoded pass to its checker; avoid repeating local metrics when recapture proves complete PNG identity | All independently decoded local metrics, images, regions, repeat renders and decisions remain; altered pixels and forged checking ownership still fail |
 | Positive evidence inside corruption runs | Reuse an exact fresh checked baseline | Bind receipt hashes, inputs and unchanged sources; reject false/incomplete/mismatched baselines; standalone commands retain full validation |
 
 Run `node tools/TikzVisual/verify.mjs iterate` during implementation, selecting an
