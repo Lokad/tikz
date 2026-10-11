@@ -68,12 +68,21 @@ jobs:
       - run: dotnet run --project tools/TikzShapeComparison -c Release --no-restore -- compare-numeric
       - run: dotnet run --project tools/TikzShapeCalibration -c Release --no-restore -- derive-svg
       - run: dotnet run --project tools/TikzReference -c Release --no-restore -- compare-node-layout
-      - run: dotnet pack src/Lokad.TikZ -c Release --no-restore
+      - run: dotnet pack src/Lokad.TikZ -c Release --no-restore --output artifacts/nuget
+      - name: Verify isolated NuGet consumer and package payload
+        shell: pwsh
+        run: |
+          $packageCheckArgs = @('tools/TikzPackageCheck/verify.mjs', 'artifacts/nuget')
+          if ('${{ matrix.os }}' -eq 'windows-2025') { $packageCheckArgs += '--controls' }
+          node @packageCheckArgs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: tikz-node-layout-${{ matrix.os }}
           path: |
+            artifacts/package-check/
+            artifacts/nuget/
             artifacts/node-layout/
             artifacts/node-shape-cache-tests/
             artifacts/node-shape-pdf-cache-tests/

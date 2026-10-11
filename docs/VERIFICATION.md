@@ -17,6 +17,10 @@ node tools/TikzVisual/verify.mjs iterate --case flowchart-draw-color
 node tools/TikzVisual/verify.mjs qualify
 # A selected fixture has selected-scope qualification, never full-matrix status.
 node tools/TikzVisual/verify.mjs qualify --case smooth-plot-contract
+
+# Actual Release archive and isolated .NET-only consumer; no browser or TeX.
+dotnet pack src/Lokad.TikZ -c Release --output artifacts/nuget
+node tools/TikzPackageCheck/verify.mjs artifacts/nuget --controls
 ```
 
 Features are `core`, `labels`, `positioning`, `styles`, `foreach`, `macros`,
@@ -37,6 +41,16 @@ completion, run required qualification on a clean committed source export;
 check that its files match the final tree and run existing family/release checks
 required by the change. The 26-case runner does not replace the other families'
 admission policies or the hosted workflow.
+
+Package acceptance checks the actual nupkg/snupkg against current Release
+DLL/XML, README, licenses and font data. An isolated consumer restores only
+from that checked local feed into a fresh cache, compiles the README sample,
+and converts four complete diagrams. SVG hashes/statistics and loaded assembly
+must equal a separate source consumer. Missing XML, added dependency, changed
+DLL and unexpected payload controls run once on the Windows ordinary job;
+both ordinary platforms run positive package acceptance. This checks package
+parity, independently of native/image conformance. Hosted execution remains
+unverified until the hosted jobs run.
 
 ## Ordinary requirement mapping
 

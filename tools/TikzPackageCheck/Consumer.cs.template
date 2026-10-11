@@ -1,0 +1,39 @@
+using System.Xml.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+using Lokad.TikZ;
+
+var sampleConsole = Console.Out;
+using var sampleBuffer = new StringWriter();
+try { Console.SetOut(sampleBuffer); ReadmeSample(); }
+finally { Console.SetOut(sampleConsole); }
+var sampleSvg = sampleBuffer.ToString().Trim();
+if (XDocument.Parse(sampleSvg).Root?.Name != XName.Get("svg", "http://www.w3.org/2000/svg"))
+    throw new InvalidOperationException("README sample did not emit SVG.");
+
+var assembly = typeof(TikzConverter).Assembly;
+if (assembly.GetReferencedAssemblies().Any(a =>
+    !a.Name!.StartsWith("System.", StringComparison.Ordinal) &&
+    a.Name != "System" && a.Name != "netstandard"))
+    throw new InvalidOperationException("Production assembly references a non-.NET dependency.");
+var records = args.Select(file =>
+{
+    var result = TikzConverter.Convert(File.ReadAllText(file), TikzOptions.Default, CancellationToken.None);
+    if (result is not TikzSuccess { Diagnostics.Count: 0 } success || success.Statistics.Glyphs == 0)
+        throw new InvalidOperationException("Complete-diagram conversion failed.");
+    return new { id = Path.GetFileNameWithoutExtension(file), success.Statistics,
+        svgSha256 = Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(success.Svg))) };
+}).ToArray();
+if (records.Length != 4) throw new InvalidOperationException("Incomplete consumer corpus.");
+Console.WriteLine(JsonSerializer.Serialize(new
+{
+    completed = true, records,
+    readmeSampleSvgSha256 = Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(sampleSvg))),
+    productionAssemblySha256 = Convert.ToHexStringLower(SHA256.HashData(File.ReadAllBytes(assembly.Location)))
+}));
+
+static void ReadmeSample()
+{
+// README_SAMPLE
+}
