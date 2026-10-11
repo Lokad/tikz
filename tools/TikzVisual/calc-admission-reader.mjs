@@ -16,7 +16,7 @@ export function calcAdmissionBundle(files,prefix,role){
   for(const[f,h]of Object.entries(report.artifacts)){calcTrialCachePath(f);assert.equal(calcHash(selected.get(f)),h,'Owned calc proof artifact differs: '+prefix+'/'+f);}
   return{bytes,sha256:calcHash(bytes),report,files:selected,json:f=>JSON.parse(selected.get(f)),png:f=>decodeCalcPng(selected.get(f))};
 }
-export function validateCalcAdmissionReport(bytes,files,e){
+function calcAdmissionMetadata(bytes,files,e){
   assert.ok(Buffer.isBuffer(bytes)&&bytes.length<=16000000);const r=JSON.parse(bytes);
   calcEqual([r.schemaVersion,r.role,r.completed,r.phase,r.passed,r.converterInvoked,r.nativeToolInvoked,r.approvedImagePolicy,r.imageConformanceClaim,r.imageAdmission],
     [1,'current-calc-conformance',true,'complete',true,true,false,true,true,'passed'],'Saved calc conformance role differs');
@@ -39,15 +39,27 @@ export function validateCalcAdmissionReport(bytes,files,e){
   // Reject invalid ownership/entry metadata before full PNG validation. The
   // declared result is still compared with the independent result below.
   validateCalcAdmissionAgent(JSON.parse(files.get('agent-inspection.json')),trial,e.profile,r.result,files);
+  return{bytes,sha256:calcHash(bytes),report:r,files,trial,checker,recaptured};
+}
+export function validateCalcAdmissionReport(bytes,files,e){
+  const saved=calcAdmissionMetadata(bytes,files,e),{report:r,trial,checker,recaptured}=saved;
   const combined=validateCalcCheckedTrial(e,trial,checker,recaptured),result=finishCalcAdmission(e.profile,combined);calcEqual(r.result,result,'Saved calc verdict differs');
   calcEqual(r.metrics,combined.metrics);calcEqual(r.reproduction,combined.reproduction);
   return{bytes,sha256:calcHash(bytes),report:r,files,trial,checker,recaptured,combined,result};
 }
-export async function loadCalcAdmissionReport(file,e){
-  assert.ok((await stat(file)).size<=16000000);const bytes=await readFile(file),r=JSON.parse(bytes);assert.ok(r.artifacts&&Object.keys(r.artifacts).length<=8192);
+async function readCalcAdmissionFiles(file,checkedSha256){
+  assert.ok((await stat(file)).size<=16000000);const bytes=await readFile(file);if(checkedSha256!==undefined)assert.equal(calcHash(bytes),checkedSha256,'Control input differs from checked calc receipt');const r=JSON.parse(bytes);assert.ok(r.artifacts&&Object.keys(r.artifacts).length<=8192);
   const files=new Map();let total=0;for(const f of Object.keys(r.artifacts)){calcTrialCachePath(f);const full=path.join(path.dirname(file),f),size=(await stat(full)).size;
     total+=size;assert.ok(size<=100000000&&total<=512000000,'Calc conformance artifact bound exceeded');files.set(f,await readFile(full));}
-  return validateCalcAdmissionReport(bytes,files,e);
+  return{bytes,files};
+}
+export async function loadCalcAdmissionReport(file,e){
+  const{bytes,files}=await readCalcAdmissionFiles(file);return validateCalcAdmissionReport(bytes,files,e);
+}
+export async function loadCalcAdmissionControlInput(file,e,checkedSha256){
+  assert.match(checkedSha256,/^[a-f0-9]{64}$/);
+  const{bytes,files}=await readCalcAdmissionFiles(file,checkedSha256);
+  return{...calcAdmissionMetadata(bytes,files,e),positiveCheck:'caller-required'};
 }
 export async function verifyCalcAdmissionCurrentSources(saved,root,read=readFile){
   for(const[f,h]of Object.entries(saved.report.sourceHashes)){

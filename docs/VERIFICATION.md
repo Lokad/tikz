@@ -109,6 +109,15 @@ details. This avoids a second invocation of that same computation inside the
 coordinator. Standalone receipt validation and the checker retain their full
 passes; a fully rehashed false checker measurement still fails.
 
+After fresh calc admission passes, its control command may use `--checked-sha`
+with the exact successful child receipt hash. It still checks artifact bounds,
+hashes, ownership, current sources, profile and agent links. Only the repeated
+positive pixel pass is supplied by the caller. Bound control reports explicitly
+require that positive check and keep image claims false; callers must verify
+the receipt binding under the unchanged source snapshot. Standalone controls
+retain full positive validation. A mismatched checked receipt is tested once;
+all previous corruption controls remain.
+
 Math primary checks validate every owned frame and fault contract before
 decoding pixels. Structural faults in a later case therefore fail immediately;
 well-formed reports retain the full independent pixel and policy checks.

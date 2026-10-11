@@ -5,8 +5,9 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {calcHash} from './calc-saved-images.mjs';
 import {loadCalcPolicy,validateCalcProfile,verifyCalcProfileGuards,decodeCalcProfile,finishCalcAdmission} from './calc-admission-policy.mjs';
-import {loadCalcAdmissionReport,validateCalcAdmissionReport,verifyCalcAdmissionCurrentSources} from './calc-admission-reader.mjs';
-const args=process.argv.slice(2);assert.ok(args.length===0||args.length===2&&args[0]==='--report');
+import {loadCalcAdmissionReport,loadCalcAdmissionControlInput,validateCalcAdmissionReport,verifyCalcAdmissionCurrentSources} from './calc-admission-reader.mjs';
+const args=process.argv.slice(2);assert.ok(args.length===0||args[0]==='--report'&&(args.length===2||args.length===4&&args[2]==='--checked-sha'));
+const checkedSha256=args.length===4?args[3]:null;
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..'),output=path.join(root,'artifacts/calc-admission-controls/run-'+randomUUID());await mkdir(output,{recursive:true});
 const controls=[],artifacts={};let phase='profile';
 const bytes=o=>Buffer.from(JSON.stringify(o,null,2)+'\n');
@@ -38,7 +39,8 @@ try{
   controls.push({name:'frozen-profile-does-not-freeze-current-production',passed:true});
   await reject('changed-current-profile-tool',()=>verifyCalcProfileGuards(e.profile,root,async f=>f.endsWith('calc-admission-policy.mjs')?Buffer.from('changed'):readFile(f)));
   if(args.length){
-    phase='saved-conformance';const saved=await loadCalcAdmissionReport(path.resolve(root,args[1]),e);controls.push({name:'complete-owned-admitted-result-and-agent-links',passed:true});
+    phase='saved-conformance';const saved=checkedSha256===null?await loadCalcAdmissionReport(path.resolve(root,args[1]),e):await loadCalcAdmissionControlInput(path.resolve(root,args[1]),e,checkedSha256);controls.push({name:'complete-owned-admitted-result-and-agent-links',passed:true});
+    await reject('changed-checked-report-input',()=>loadCalcAdmissionControlInput(path.resolve(root,args[1]),e,'0'.repeat(64)));
     const sourceGuards=await verifyCalcAdmissionCurrentSources(saved,root);assert.ok(sourceGuards.production>0,'Missing current production source guards');controls.push({name:'current-public-production-and-tool-source-guards',passed:true});
     const production=Object.keys(saved.report.sourceHashes).find(f=>f.startsWith('src/Lokad.TikZ/'));
     await reject('stale-current-production',()=>verifyCalcAdmissionCurrentSources(saved,root,async f=>f.endsWith(production.replaceAll('/',path.sep))?Buffer.from('changed current compiler'):readFile(f)));
@@ -50,5 +52,6 @@ try{
     const b=bytes(agent);files.set('agent-inspection.json',b);r.artifacts['agent-inspection.json']=calcHash(b);
     await reject('fully-rehashed-agent-image-substitution',()=>validateCalcAdmissionReport(bytes(r),files,e));
   }
-  for(const[f,h]of Object.entries(artifacts))assert.equal(calcHash(await readFile(path.join(output,f))),h);phase='complete';await publish(true,{profileSha256:e.profileSha256,savedReport:args[1]??null});
+  for(const[f,h]of Object.entries(artifacts))assert.equal(calcHash(await readFile(path.join(output,f))),h);phase='complete';await publish(true,{profileSha256:e.profileSha256,savedReport:args[1]??null,
+    positiveCheck:args.length===0?'not-requested':checkedSha256===null?'included':'caller-required',checkedReportSha256:checkedSha256});
 }catch(error){process.exitCode=1;await publish(false,{error:error.message.replaceAll(root,'<repo>').slice(0,2000)});console.error(error.stack);}
