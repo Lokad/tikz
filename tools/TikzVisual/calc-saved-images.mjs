@@ -1,6 +1,6 @@
 // Independent PNG decoding and metric recomputation; producer verdicts are inputs.
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {readFile,stat} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {isDeepStrictEqual} from 'node:util';
 import path from 'node:path';
@@ -14,8 +14,20 @@ export async function loadCalcSavedReport(file,role){
   assert.equal(report.schemaVersion,1);assert.equal(report.role,role);assert.equal(report.completed,true);assert.equal(report.phase,'complete');
   assert.equal(report.approvedImagePolicy,false);assert.equal(report.imageConformanceClaim,false);assert.equal(report.imageAdmission,'pending');
   const files=new Map(),entries=Object.entries(report.artifacts);assert.ok(entries.length>0&&entries.length<=4096);
-  let size=0;for(const[name,digest]of entries){safe(name);assert.match(digest,/^[a-f0-9]{64}$/);const item=await readFile(path.join(path.dirname(file),name));
-    size+=item.length;assert.ok(item.length<=100000000&&size<=1000000000);assert.equal(calcHash(item),digest,'Artifact hash differs: '+name);files.set(name,item);}
+  for(const[name,digest]of entries){safe(name);assert.match(digest,/^[a-f0-9]{64}$/);}
+  const items=new Array(entries.length);let size=0,next=0,failed=false;
+  const workers=await Promise.allSettled(Array.from({length:Math.min(8,entries.length)},async()=>{
+    while(!failed&&next<entries.length){const index=next++,[name,digest]=entries[index];
+      try{
+        const target=path.join(path.dirname(file),name),metadata=await stat(target);
+        size+=metadata.size;assert.ok(metadata.size<=100000000&&size<=1000000000);
+        const item=await readFile(target);size+=item.length-metadata.size;
+        assert.ok(item.length<=100000000&&size<=1000000000);assert.equal(calcHash(item),digest,'Artifact hash differs: '+name);items[index]=item;
+      }catch(error){failed=true;throw error;}
+    }
+  }));
+  for(const worker of workers)if(worker.status==='rejected')throw worker.reason;
+  for(let index=0;index<entries.length;index++)files.set(entries[index][0],items[index]);
   return{file,bytes,sha256:calcHash(bytes),report,files,json:name=>JSON.parse(files.get(name).toString()),png:name=>{assert.ok(files.has(name),'Missing PNG '+name);return decodeCalcPng(files.get(name));}};
 }
 const compare=createShapeRasterMetrics().compare;

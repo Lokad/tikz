@@ -21,6 +21,8 @@ export const calcCaptureCompatibility=Object.fromEntries([
  ['shape-raster-metrics.mjs','bb4becb5e6025fe3d296b7536214536e486c127ffd46a4adf62fc11778861936','ce624b7232b134cd3eae243ad5f99521b5dde7b6e9fba8e802cb01b00743c38a']
 ].map(([file,historical,current])=>['tools/TikzVisual/'+file,{historical,current}]));
 calcCaptureCompatibility['tools/TikzReference/Program.cs']={historical:'b479bbfaf21f000d36179d39fe3dc5d80e2f976e1cbfd9a0c13aedaa83dd191e',current:'83139733b32015f914ad2196ab0fa5e33885559776ca367774af065febf3d80c'};
+// Bounded artifact reads preserve all fixed calc metrics and source ownership.
+calcCaptureCompatibility['tools/TikzVisual/calc-saved-images.mjs']={historical:'2fb2d423cca9edf733211b57f99a97b47c6d0fd6572dd7035c16b1f2756267dd',current:'185395b3fbf850e82b6fd79ab2d8828c6f25ac3dcfcbdceeece065f8cd968ec9'};
 // The public-trial consumer now uses this same exact-pair check.
 calcCaptureCompatibility['tools/TikzVisual/calc-trial-reference.mjs']={historical:'a94f03a04694ddd1f7639a96ab54b0db4edc4513b07bffea2dac7e37118c9b6e',current:'94c117ee0bf4bf762b22f709bb56b026522b7c0bcac97d2f661df2fc744819dc'};
 
