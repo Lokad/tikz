@@ -22,14 +22,13 @@ internal static class ArrowGeometry
             if (segment.Kind == SegmentKind.Close) return new(path, []);
         }
         budget.Charge(source, path.Segments.Count);
-        var segments = path.Segments.ToArray();
-        var first = Array.FindLastIndex(segments, s => s.Kind == SegmentKind.Move);
+        var segments = new List<Segment>(path.Segments);
+        var first = segments.FindLastIndex(s => s.Kind == SegmentKind.Move);
         if (first < 0) throw new InvalidOperationException("Arrow path has no move.");
         ArrowPlacement? end = Prepare("end", state.Arrows.End, state.Arrows.ShortenEndSp);
         ArrowPlacement? start = Prepare("start", state.Arrows.Start, state.Arrows.ShortenStartSp);
-        var shaft = new GraphicPath(budget, source);
-        foreach (var segment in segments) shaft.Add(segment);
-        return new(shaft, new[] { start, end }.OfType<ArrowPlacement>().ToArray());
+        var shaft = GraphicPath.FromOwnedSegments(segments, budget, source);
+        return new(shaft, start is null ? end is null ? [] : [end] : end is null ? [start] : [start, end]);
 
         ArrowPlacement? Prepare(string side, ArrowSpec? spec, long additional)
         {
@@ -38,10 +37,10 @@ internal static class ArrowGeometry
             var template = spec is null ? null : ArrowTemplates.Create(spec, state, budget);
             var distance = PgfDirection.Checked((template is null ? 0 : template.TipEndSp - template.LineEndSp) + additional, source);
             var total = PgfDirection.Checked((template is null ? 0 : template.TipEndSp - template.BackEndSp) + additional, source);
-            var index = side == "end" ? segments.Length - 1 : first;
+            var index = side == "end" ? segments.Count - 1 : first;
             var endpoint = segments[index].End;
             var reference = endpoint;
-            if (first != segments.Length - 1)
+            if (first != segments.Count - 1)
             {
                 if (side == "end")
                 {

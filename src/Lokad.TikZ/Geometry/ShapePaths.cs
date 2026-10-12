@@ -50,19 +50,11 @@ internal static class ShapePaths
             var control = Math.Abs(delta) == 90 ? QuarterControl : 4.0 / 3 * Math.Tan(Math.Abs(delta) * Math.PI / 720);
             control = Math.CopySign(control, delta);
             var origin = path.Current;
-            var target = origin + At(b) - At(a);
-            path.Cubic(origin + PgfTransform.Scale(Tangent(a), control, budget, source),
-                target - PgfTransform.Scale(Tangent(b), control, budget, source), target);
-        }
-        Point At(double degrees)
-        {
-            var (sin, cos) = Math.SinCos(degrees % 360 * Math.PI / 180);
-            return xAxis * cos + yAxis * sin;
-        }
-        Point Tangent(double degrees)
-        {
-            var (sin, cos) = Math.SinCos(degrees % 360 * Math.PI / 180);
-            return xAxis * -sin + yAxis * cos;
+            var (sinB, cosB) = Math.SinCos(b % 360 * Math.PI / 180);
+            var (sinA, cosA) = Math.SinCos(a % 360 * Math.PI / 180);
+            var target = origin + (xAxis * cosB + yAxis * sinB) - (xAxis * cosA + yAxis * sinA);
+            path.Cubic(origin + PgfTransform.Scale(xAxis * -sinA + yAxis * cosA, control, budget, source),
+                target - PgfTransform.Scale(xAxis * -sinB + yAxis * cosB, control, budget, source), target);
         }
     }
 }
