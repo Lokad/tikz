@@ -162,7 +162,9 @@ try{
   }
  });
  const labelFamilies=[['math',mathLabelCacheReports],['styled',styledLabelCacheReports]].filter(([family])=>selected.some(id=>family==='math'?mathIds.includes(id):id==='flowchart-styled-labels'));
- for(const[family,owners]of labelFamilies)work.push(async()=>{
+ // Start the longer label jobs early to avoid a final math-only queue tail.
+ // Shared controls still lead the queue; each family's dependencies stay ordered.
+ for(const[family,owners]of labelFamilies.slice().reverse())work.unshift(async()=>{
   for(const part of ['native','primary','pdf'])await node(family+'-'+part+'-materialize','materialize-path-label-cache.mjs',[(family==='math'?'math':'styled')+'-labels-'+part],'report','path-label-portable-cache-materialization');
   const [wrappers,native,pc,,pdfNative,pdfNativeCheck,dc,dcheck]=owners;
   if(qualification){await node(family+'-primary-controls','math-label-primary-self-test.mjs',[pc.file],'controls');
