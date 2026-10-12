@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {gunzipSync} from 'node:zlib';
 import path from 'node:path';
 import {root,sha256} from './shape-oracle-bundle.mjs';
-import {canonical,labelledCombinedInputs,verifyLabelledSourceHashes} from './labelled-border-combined-common.mjs';
+import {canonical,labelledCombinedInputs} from './labelled-border-combined-common.mjs';
 import {labelledPublicPdfEvidence} from './labelled-border-public-pdf-coverage.mjs';
 import {labelledPdfQualification} from './labelled-border-pdf-calibration-common.mjs';
 import {validateLabelledInkCalibration} from './labelled-border-coverage.mjs';
@@ -114,7 +114,9 @@ export async function loadLabelledCache(read=readFile){
     const raw=await read(path.join(root,p)),b=d.encoding==='raw'?raw:canonical(raw);
     assert.equal(sha256(b),d.sha256,'Changed independent input: '+p);
   }
-  await verifyLabelledSourceHashes(c.toolHashes);const native=await loadLabelledBorderEvidence();
+  // Original producer hashes are authenticated by the immutable cache above.
+  // Current execution belongs to loadLabelledPolicy's separate profile guards.
+  const native=await loadLabelledBorderEvidence();
   assert.equal(native.snapshotSha256,c.snapshotSha256);
   return {...e,reports,get,native};
 }

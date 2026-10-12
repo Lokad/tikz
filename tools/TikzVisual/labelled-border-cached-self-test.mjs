@@ -5,7 +5,8 @@ import {randomUUID} from 'node:crypto';
 import path from 'node:path';
 import {root,sha256,outputPath,writeArtifact} from './shape-oracle-bundle.mjs';
 import {canonical,verifyLabelledSourceHashes} from './labelled-border-combined-common.mjs';
-import {loadLabelledCache,labelledSame,requireLabelledRenderer,labelledCacheSha256} from './labelled-border-cache.mjs';
+import {labelledSame,requireLabelledRenderer,labelledCacheSha256} from './labelled-border-cache.mjs';
+import {loadLabelledPolicy} from './labelled-border-admission-policy.mjs';
 import {decodeLabelledPngPair} from './labelled-border-cache-images.mjs';
 import {validateLabelledCachedTrial,finishLabelledCachedGates} from './labelled-border-cached-coverage.mjs';
 import {finishLabelledCombinedGates} from './labelled-border-combined-coverage.mjs';
@@ -40,7 +41,7 @@ try{
   toolHashes[own]=sha256(ownBytes);await save('tool-sources/'+own,ownBytes);
   await publish({completed:false,passed:false,converterInvoked:false,toolHashes,artifacts});
   assert.ok(process.argv.length===2||(process.argv.length===4&&process.argv[2]==='--report'));
-  const e=await loadLabelledCache(),folder=path.join(root,'artifacts/labelled-border-cached-trial');
+  const e=await loadLabelledPolicy(),folder=path.join(root,'artifacts/labelled-border-cached-trial');
   let input,bytes;
   if(process.argv.length===4){
     assert.match(process.argv[3],/^artifacts\/labelled-border-cached-trial\/run-[a-f0-9-]+\/report.json$/);

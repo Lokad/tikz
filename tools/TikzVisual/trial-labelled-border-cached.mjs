@@ -5,7 +5,8 @@ import {randomUUID} from 'node:crypto';
 import path from 'node:path';
 import {root,sha256,writeArtifact} from './shape-oracle-bundle.mjs';
 import {canonical,captureLabelledCombinedSources,verifyLabelledSourceHashes} from './labelled-border-combined-common.mjs';
-import {loadLabelledCache,labelledCacheSha256,labelledCacheDecodedSha256} from './labelled-border-cache.mjs';
+import {labelledCacheSha256,labelledCacheDecodedSha256} from './labelled-border-cache.mjs';
+import {loadLabelledPolicy} from './labelled-border-admission-policy.mjs';
 import {remeasureLabelledCache} from './labelled-border-cache-images.mjs';
 import {runLabelledResearchTool,saveLabelledImages} from './labelled-border-research.mjs';
 import {labelledCombinedGateReport,finishLabelledCombinedGates} from './labelled-border-combined-coverage.mjs';
@@ -33,9 +34,9 @@ try{
     const p='tools/TikzVisual/'+file,b=canonical(await readFile(path.join(root,p)));toolHashes[p]=sha256(b);await save('tool-sources/'+p,b);
   }
   await publish({completed:false,phase,converterInvoked:false,approvedImagePolicy:false,toolHashes,artifacts});assert.equal(process.argv.length,2);
-  phase='portable-independent-inputs';const e=await loadLabelledCache();
-  Object.assign(toolHashes,e.calibration.toolHashes);
-  for(const[p,h]of Object.entries(e.calibration.toolHashes)){const b=canonical(await readFile(path.join(root,p)));assert.equal(sha256(b),h);await save('tool-sources/'+p,b);}
+  phase='portable-independent-inputs';const e=await loadLabelledPolicy();
+  Object.assign(toolHashes,e.profile.guardToolHashes);
+  for(const[p,h]of Object.entries(e.profile.guardToolHashes)){const b=canonical(await readFile(path.join(root,p)));assert.equal(sha256(b),h);await save('tool-sources/'+p,b);}
   await save('independent-calibration.json.gz',e.compressed);
   const renderer=await createRenderer();
   try{

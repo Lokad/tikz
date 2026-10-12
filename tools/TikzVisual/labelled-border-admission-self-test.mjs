@@ -82,6 +82,15 @@ try{
   }
   await verifyLabelledGuards(e.profile,async p=>Buffer.from(canonical(await savedRead(p)).toString('utf8').replaceAll('\n','\r\n')));
   controls.push({name:'Declared CRLF to LF source contract',expected:'pass',passed:true});
+  // Pinned original producer hashes cannot stand for reviewed current tools.
+  const historical=JSON.parse(e.bytes).toolHashes;
+  historical['tools/TikzShapeComparison/NativeGlyphTrace.cs']='2695161667fdb35dcb3948e8d02c8c5fe035bfdd12cdddb7e8a43c375ff6e8b1';
+  assert.equal(Object.entries(historical).filter(([file,h])=>h!==e.profile.guardToolHashes[file]).length,6);
+  for(const[file,h]of Object.entries(historical))if(h!==e.profile.guardToolHashes[file]){
+    const p=structuredClone(e.profile);p.guardToolHashes[file]=h;
+    await rejectAsync('historical-guard-substitution/'+file,()=>verifyLabelledGuards(p,savedRead));
+  }
+  await rejectAsync('Historical producer hashes are not a current source check',()=>verifyLabelledSourceHashes(historical));
   phase='report-binding';
   const outerChanges={completion:q=>q.completed=false,role:q=>q.converterInvoked=false,approval:q=>q.approvedImagePolicy=false,
     claim:q=>q.imageConformanceClaim=false,verdict:q=>q.overallVerdict='pending',policy:q=>q.policyId='different-family',
