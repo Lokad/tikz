@@ -40,7 +40,7 @@ public sealed class NodeLayoutTests
         var dimensions = definition.TryGetProperty("dimensions", out var explicitDimensions)
             ? JsonSerializer.Deserialize<NodeDimensions>(explicitDimensions.GetRawText(), new JsonSerializerOptions(JsonSerializerDefaults.Web))!
             : NodeDimensions.Default(nodeFont, width);
-        var text = new TextLayout().Layout(new LabelParser(source, budget).Parse(), source, textFont,
+        var text = TextLayout.Layout(new LabelParser(source, budget).Parse(), source, textFont,
             Enum.Parse<TextAlignment>(definition.GetProperty("alignment").GetString()!, true), budget);
         var shape = RectangleNodeLayout.Resolve(text, dimensions, budget, source);
         var values = expected.GetProperty("values");

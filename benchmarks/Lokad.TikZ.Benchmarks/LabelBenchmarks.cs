@@ -56,7 +56,7 @@ public class LabelBenchmarks
     // Includes text/math measurement and placed marks, with warmed font data.
     // Excludes label parsing, outline decoding, node geometry and SVG writing.
     [Benchmark]
-    public object Layout() => new TextLayout().Layout(_program, _source, TextFont.Default,
+    public object Layout() => TextLayout.Layout(_program, _source, TextFont.Default,
         TextAlignment.Left, FreshBudget());
 
     private static Budget FreshBudget() => new(TikzLimits.Default, CancellationToken.None);

@@ -257,7 +257,7 @@ internal static partial class ReferenceTool
             var nodeFont = NodeFontMetrics.Resolve(NodeFont(definition.NodeFont), budget, source);
             var queryFont = NodeFontMetrics.Resolve(TextFont.Default, budget, source);
             var dimensions = definition.Dimensions ?? NodeDimensions.Default(nodeFont, definition.LineWidthSp);
-            var text = new TextLayout().Layout(new LabelParser(source, budget).Parse(), source, font,
+            var text = TextLayout.Layout(new LabelParser(source, budget).Parse(), source, font,
                 Enum.Parse<TextAlignment>(definition.Alignment, true), budget);
             var layout = RectangleNodeLayout.Resolve(text, dimensions, budget, source);
             var atAnchor = layout.Anchor(definition.Anchor, nodeFont, budget, source);

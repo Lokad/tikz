@@ -163,7 +163,7 @@ public sealed class MathLayoutTests
         var source = new Source(label, 0, label.Length);
         var budget = new Budget(TikzLimits.Default, CancellationToken.None);
         var program = new LabelParser(source, budget).Parse();
-        var glyphs = new TextLayout().Layout(program, source, TextFont.Default, TextAlignment.Center, budget).Glyphs;
+        var glyphs = TextLayout.Layout(program, source, TextFont.Default, TextAlignment.Center, budget).Glyphs;
         Assert.Equal(count, glyphs.Length);
         Assert.All(glyphs, g => { Assert.Equal("math-roman-10", g.FontId); Assert.Equal("ffi", g.Source.Value); });
         Assert.Single(glyphs.Select(g => g.Slot).Distinct());

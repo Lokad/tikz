@@ -18,13 +18,7 @@ internal sealed record MeasuredText(int WidthSp, int HeightSp, int DepthSp, stri
     internal int[] PaintOrder { get; init; } = [];
 }
 
-internal interface ITextLayout
-{
-    MeasuredText Layout(List<LabelItem> program, Source source, TextFont initialFont,
-        TextAlignment alignment, Budget budget);
-}
-
-internal sealed class TextLayout : ITextLayout
+internal static class TextLayout
 {
     private sealed record Face(FontData Data, FrozenDictionary<int, FontPair> Pairs);
     private static readonly FrozenDictionary<string, Lazy<Face>> Faces = new[] {
@@ -40,7 +34,7 @@ internal sealed class TextLayout : ITextLayout
     internal static FontData Font(string id) => Faces.TryGetValue(id, out var face)
         ? face.Value.Data : throw new ArgumentException("Unknown bundled font face.", nameof(id));
 
-    public MeasuredText Layout(List<LabelItem> program, Source source, TextFont initialFont,
+    public static MeasuredText Layout(List<LabelItem> program, Source source, TextFont initialFont,
         TextAlignment alignment, Budget budget)
         => new Builder(source, initialFont, alignment, budget).Build(program);
 

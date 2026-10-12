@@ -89,7 +89,7 @@ internal sealed partial class Evaluator
         var label = new LabelParser(statement.Label, budget).Parse();
         if (state.Node.Alignment is null && label.Any(item => item is LabelBreak))
             throw new CompileError("TIKZ002", "Explicit node line breaks require align=left, center or right.", statement.Label);
-        var text = new TextLayout().Layout(label, statement.Label, textFont, state.Node.Alignment ?? TextAlignment.Left, budget);
+        var text = TextLayout.Layout(label, statement.Label, textFont, state.Node.Alignment ?? TextAlignment.Left, budget);
         INodeLayout layout = state.Node.Shape == NodeShape.Rectangle
             ? RectangleNodeLayout.Resolve(text, dimensions, budget, statement.Source)
             : CurvedNodeLayout.Resolve(state.Node.Shape, text, dimensions, budget, statement.Source);

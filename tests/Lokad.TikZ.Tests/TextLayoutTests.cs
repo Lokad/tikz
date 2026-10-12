@@ -124,7 +124,7 @@ public sealed class TextLayoutTests
     {
         var source = new Source(text, 0, text.Length);
         var budget = new Budget(limits ?? TikzLimits.Default, cancellation);
-        return new TextLayout().Layout(new LabelParser(source, budget).Parse(), source, initial ?? TextFont.Default, alignment, budget);
+        return TextLayout.Layout(new LabelParser(source, budget).Parse(), source, initial ?? TextFont.Default, alignment, budget);
     }
 
     private static string Reference(params string[] paths) => Path.Combine([AppContext.BaseDirectory, "Reference", "Text", .. paths]);

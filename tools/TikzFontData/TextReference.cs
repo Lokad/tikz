@@ -204,7 +204,7 @@ internal static partial class FontGenerator
         {
             var budget = new Budget(TikzLimits.Default, CancellationToken.None);
             var program = new LabelParser(origin, budget).Parse();
-            measured = new TextLayout().Layout(program, origin, InitialFont(c.Font), Enum.Parse<TextAlignment>(c.Alignment, true), budget);
+            measured = TextLayout.Layout(program, origin, InitialFont(c.Font), Enum.Parse<TextAlignment>(c.Alignment, true), budget);
         }
         var checks = new List<object>();
         var passed = true;
