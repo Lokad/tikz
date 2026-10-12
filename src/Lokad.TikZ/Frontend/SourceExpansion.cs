@@ -39,8 +39,18 @@ internal sealed class SourceMapping(Source fallback, SourcePiece[] pieces)
 
 internal static class SourceExpansion
 {
+    // Without controls/comments neither expansion grammar can alter the text.
+    // Logical expanded input remains bounded even when its storage is reused.
+    internal static bool Literal(Source source, Budget budget)
+    {
+        if (source.Span.IndexOfAny('\\', '%') >= 0) return false;
+        for (var i = 0; i < source.Length; i++) budget.Charge(source.Slice(i, 1));
+        budget.Expand(source, source.Length);
+        return true;
+    }
     internal static Source Bind(Source source, IReadOnlyDictionary<string, Source> bindings, Budget budget, bool removeComments = false)
     {
+        if (Literal(source, budget)) return source;
         var text = new StringBuilder();
         var pieces = new List<SourcePiece>();
         var start = 0;

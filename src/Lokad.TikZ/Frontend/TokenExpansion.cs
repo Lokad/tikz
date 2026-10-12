@@ -9,6 +9,7 @@ internal sealed class TokenExpansion(EvaluationState state, Budget budget)
 {
     internal Source Expand(Source source, bool protectOptions = false, bool protectGroups = false)
     {
+        if (SourceExpansion.Literal(source, budget)) return source;
         var text = new StringBuilder();
         var pieces = new List<SourcePiece>();
         var active = new HashSet<(string Name, int Offset)>();
