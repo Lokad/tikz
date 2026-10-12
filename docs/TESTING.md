@@ -50,7 +50,7 @@ node tools/TikzVisual/verify-adversarial.mjs
 
 This command uses .NET and Node built-ins only, retains bounded worker logs and
 hashed artifacts, and never sends generated inputs to TeX. Focused ordinary
-feature/limit tests remain separate. See [contribution guidance](../CONTRIBUTING.md)
+feature/limit tests remain separate. See the [verification mapping](VERIFICATION.md)
 for affected iteration and final acceptance.
 
 The independent [straight `to`/`edge` corpus](../tools/TikzEdgeReference/README.md)

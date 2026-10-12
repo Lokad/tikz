@@ -46,5 +46,5 @@ source; completion requires both workers and all current-input bindings to pass.
 This is a bounded regression corpus, not exhaustive malformed-input coverage or
 a native/image conformance claim. Add a targeted case for a demonstrated gap;
 keep focused mechanisms separate from a small justified interaction set. Preserve
-existing seed identities when extending the corpus. See the [contribution guide](../../CONTRIBUTING.md)
-and [verification mapping](../../docs/VERIFICATION.md) for the required checks.
+existing seed identities when extending the corpus. See the
+[verification mapping](../../docs/VERIFICATION.md) for the required checks.
