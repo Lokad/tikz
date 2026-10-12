@@ -376,7 +376,7 @@ internal sealed partial class Evaluator(Budget budget)
             }
         }
         DashPattern.Resolve(state, budget);
-        var bounds = path.Bounds;
+        Bounds? bounds = statement.Command == "\\clip" ? path.Bounds : null;
         if (state.RelevantForPictureSize)
         {
             var picture = path.ControlBounds;
@@ -385,7 +385,7 @@ internal sealed partial class Evaluator(Budget budget)
         if (statement.Command == "\\clip")
         {
             var id = _scene.Clips.Count;
-            _scene.Clips.Add(new(path, state.Paint.FillRule, statement.Source));
+            _scene.Clips.Add(new(path, state.Paint.FillRule, statement.Source, bounds!.Value));
             parent.Clips.Add(id);
             parent.RelevantForPictureSize = false;
         }
@@ -463,9 +463,10 @@ internal sealed partial class Evaluator(Budget budget)
     {
         var lowering = arrows ? ArrowGeometry.Lower(original, state, budget, source) : new ArrowLowering(original, []);
         var path = lowering.Shaft;
-        var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, source)
+        var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, source,
+                ReferenceEquals(path, original) ? originalBounds : null)
             : ReferenceEquals(path, original) && originalBounds is { } existingBounds ? existingBounds : path.Bounds;
-        foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Path.Bounds);
+        foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Bounds);
         _scene.InkBounds = _scene.InkBounds.Union(ink);
         _scene.Add(new(path, state.Paint, [.. state.Clips], source, ink));
         foreach (var tip in lowering.Tips)
@@ -475,7 +476,7 @@ internal sealed partial class Evaluator(Budget budget)
                 foreach (var point in tip.Template.Hull)
                     _scene.PictureBounds = _scene.PictureBounds.Add(PgfTransform.Apply(tip.Transform, point.Bp, budget, tip.Source));
             var tipInk = ArrowGeometry.InkBounds(tip, budget);
-            foreach (var clip in state.Clips) tipInk = tipInk.Intersect(_scene.Clips[clip].Path.Bounds);
+            foreach (var clip in state.Clips) tipInk = tipInk.Intersect(_scene.Clips[clip].Bounds);
             _scene.InkBounds = _scene.InkBounds.Union(tipInk);
             _scene.Add(new(tip.Template.Path, tip.Template.Paint, [.. state.Clips], tip.Source, tipInk) { Transform = tip.Transform, Arrow = tip });
         }

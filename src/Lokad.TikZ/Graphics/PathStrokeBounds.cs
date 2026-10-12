@@ -10,10 +10,10 @@ namespace Lokad.TikZ.Graphics;
 // joins across the gaps between their independently resolved border points.
 internal static class PathStrokeBounds
 {
-    internal static Bounds Calculate(GraphicPath path, Paint paint, Budget budget, Source source)
+    internal static Bounds Calculate(GraphicPath path, Paint paint, Budget budget, Source source, Bounds? tightBounds = null)
     {
         var radius = paint.Width / 2;
-        var bounds = path.Bounds.Inflate(radius * (paint.Cap == "square" ? Math.Sqrt(2) : 1));
+        var bounds = (tightBounds ?? path.Bounds).Inflate(radius * (paint.Cap == "square" ? Math.Sqrt(2) : 1));
         if (radius == 0 || paint.Join != "miter") return bounds;
         Point current = default, first = default, previous = default;
         var hasEdge = false;

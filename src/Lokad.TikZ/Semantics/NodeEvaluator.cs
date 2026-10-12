@@ -193,7 +193,7 @@ internal sealed partial class Evaluator
         int Dimension(Source? source, int fallback) => source is { } value ? ToSp(state.Dimension(value, budget), value) : fallback;
         Bounds Clipped(Bounds ink)
         {
-            foreach (var clip in state.Clips) { budget.Charge(statement.Source); ink = ink.Intersect(_scene.Clips[clip].Path.Bounds); }
+            foreach (var clip in state.Clips) { budget.Charge(statement.Source); ink = ink.Intersect(_scene.Clips[clip].Bounds); }
             return ink;
         }
     }

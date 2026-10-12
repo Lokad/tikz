@@ -22,7 +22,8 @@ internal sealed record PaintedGlyphRun(ResolvedGlyph[] Glyphs, string Readable, 
 }
 internal sealed record ResolvedNode(string Name, INodeLayout Layout, Affine Transform,
     TextFont Font, TextFont NodeFont, Source Source);
-internal sealed record ClipPath(GraphicPath Path, string FillRule, Source Source);
+// Registered clips are complete; their paths are never subsequently edited.
+internal sealed record ClipPath(GraphicPath Path, string FillRule, Source Source, Bounds Bounds);
 internal sealed record NumericAssignment(string Name, string Printed, Source Source);
 internal sealed class GraphicsScene
 {

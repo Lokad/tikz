@@ -67,7 +67,8 @@ internal static class EmittedArrowSvg
             var path = clipPaths[i].Elements().Single(p => p.Name.LocalName == "path");
             if (path.Attribute("transform")?.Value != "scale(1.32835201328352 -1.32835201328352)")
                 throw new InvalidDataException("Invalid public clip units.");
-            scene.Clips.Add(new(Path(path, budget, trace.Clips[i].Source), path.Attribute("clip-rule")?.Value ?? "", trace.Clips[i].Source));
+            var geometry = Path(path, budget, trace.Clips[i].Source);
+            scene.Clips.Add(new(geometry, path.Attribute("clip-rule")?.Value ?? "", trace.Clips[i].Source, geometry.Bounds));
         }
         return scene;
     }
