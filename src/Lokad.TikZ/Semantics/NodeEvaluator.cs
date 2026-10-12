@@ -140,10 +140,11 @@ internal sealed partial class Evaluator
             _scene.InkBounds = _scene.InkBounds.Union(ink);
             drawables.Add(new PaintedPath(background, state.Paint, [.. state.Clips], statement.Source, ink));
         }
-        var glyphs = new List<ResolvedGlyph>();
+        var glyphs = text.Glyphs.Length == 0 ? [] : new ResolvedGlyph[text.Glyphs.Length];
         var opacity = state.Node.TextOpacity ?? state.Paint.FillOpacity;
-        foreach (var glyph in text.Glyphs)
+        for (var index = 0; index < text.Glyphs.Length; index++)
         {
+            var glyph = text.Glyphs[index];
             budget.Charge(glyph.Source);
             if (!_outlines.TryGetValue((glyph.FontId, glyph.Slot), out var outline))
             {
@@ -154,12 +155,13 @@ internal sealed partial class Evaluator
             var local = new NodePoint(glyph.XSp, -glyph.YSp).Bp;
             var transform = frame.Then(Affine.Translation(local.X, local.Y)).Then(Affine.Scale(1, -1));
             var ink = Clipped(_scene.Outlines[outline].Ink(transform, budget, glyph.Source));
-            glyphs.Add(new(outline, glyph, transform, ink));
+            glyphs[index] = new(outline, glyph, transform, ink);
             if (opacity > 0) _scene.InkBounds = _scene.InkBounds.Union(ink);
         }
-        var rules = new List<ResolvedRule>();
-        foreach (var rule in text.Rules)
+        var rules = text.Rules.Length == 0 ? [] : new ResolvedRule[text.Rules.Length];
+        for (var index = 0; index < text.Rules.Length; index++)
         {
+            var rule = text.Rules[index];
             budget.Charge(rule.Source);
             var local = new NodePoint(rule.XSp, -rule.YSp).Bp;
             var transform = frame.Then(Affine.Translation(local.X, local.Y)).Then(Affine.Scale(1, -1));
@@ -176,10 +178,10 @@ internal sealed partial class Evaluator
                 ink = Clipped(ink);
                 if (opacity > 0) _scene.InkBounds = _scene.InkBounds.Union(ink);
             }
-            rules.Add(new(rule, transform, ink));
+            rules[index] = new(rule, transform, ink);
         }
-        drawables.Add(new PaintedGlyphRun([.. glyphs], text.Readable, state.Node.TextColor, opacity,
-            [.. state.Clips], statement.Label, id) { Rules = [.. rules], PaintOrder = text.PaintOrder });
+        drawables.Add(new PaintedGlyphRun(glyphs, text.Readable, state.Node.TextColor, opacity,
+            [.. state.Clips], statement.Label, id) { Rules = rules, PaintOrder = text.PaintOrder });
         if (deferred is null) PaintNode(); else deferred.Add(PaintNode);
 
         void PaintNode()
