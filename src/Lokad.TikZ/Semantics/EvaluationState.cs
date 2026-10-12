@@ -10,41 +10,62 @@ internal sealed class EvaluationState
     // TikZ initializes each basis with TeX's native 1cm dimension.
     public Point XBasis { get; set; } = new NodePoint(1864679, 0).Bp;
     public Point YBasis { get; set; } = new NodePoint(0, 1864679).Bp;
-    public Paint Paint { get; set; } = new();
-    public ConnectionSettings Connection { get; set; } = new();
-    public ArrowSettings Arrows { get; set; } = new();
+    public Paint Paint { get; set; }
+    public ConnectionSettings Connection { get; set; }
+    public ArrowSettings Arrows { get; set; }
     public PlotSettings Plot { get; set; } = PlotSettings.Default;
     public PaintChanges PaintChanges { get; set; }
     public DashLength[] ConfiguredDash { get; set; } = [];
     public DashLength ConfiguredDashPhase { get; set; }
     public PendingDash? PendingDash { get; set; }
-    public NodeSettings Node { get; set; } = new();
+    public NodeSettings Node { get; set; }
     public Source NodeDistance { get; set; } = new("1cm", 0, 3);
     // Load registration is per conversion. Positioning key definitions are
     // local to their loading scope, even though the library remains registered.
-    public HashSet<string> Libraries { get; set; } = new(StringComparer.Ordinal);
+    public HashSet<string> Libraries { get; set; }
     public bool PositioningAvailable { get; set; }
     public bool IsNodeContext { get; set; }
     public bool IsPathLabel { get; set; }
     public List<Option> NodeTransforms { get; } = [];
     public Source? NodeLineWidth { get; set; }
-    public List<int> Clips { get; set; } = [];
+    public List<int> Clips { get; set; }
     public bool RelevantForPictureSize { get; set; } = true;
-    public Dictionary<string, List<Option>> Styles { get; set; } = new(StringComparer.Ordinal);
-    public Dictionary<string, Number> Variables { get; set; } = new(StringComparer.Ordinal);
-    public Dictionary<string, Source> NumericBindings { get; set; } = new(StringComparer.Ordinal);
-    public Dictionary<string, DefinitionStatement> Definitions { get; set; } = new(StringComparer.Ordinal);
+    public Dictionary<string, List<Option>> Styles { get; set; }
+    public Dictionary<string, Number> Variables { get; set; }
+    public Dictionary<string, Source> NumericBindings { get; set; }
+    public Dictionary<string, DefinitionStatement> Definitions { get; set; }
     public IReadOnlyDictionary<string, Source>? TemplateBindings { get; set; }
     public Func<Coordinate, EvaluationState, Point>? CoordinateValue { get; set; }
+
+    public EvaluationState()
+    {
+        Paint = new(); Connection = new(); Arrows = new(); Node = new();
+        Libraries = new(StringComparer.Ordinal); Clips = [];
+        Styles = new(StringComparer.Ordinal); Variables = new(StringComparer.Ordinal);
+        NumericBindings = new(StringComparer.Ordinal); Definitions = new(StringComparer.Ordinal);
+    }
+
+    private EvaluationState(EvaluationState state)
+    {
+        Transform = state.Transform; XBasis = state.XBasis; YBasis = state.YBasis;
+        Paint = state.Paint; Connection = state.Connection; Arrows = state.Arrows;
+        Plot = state.Plot; Node = state.Node; NodeDistance = state.NodeDistance;
+        Libraries = state.Libraries; PositioningAvailable = state.PositioningAvailable;
+        RelevantForPictureSize = state.RelevantForPictureSize;
+        ConfiguredDash = state.ConfiguredDash; ConfiguredDashPhase = state.ConfiguredDashPhase;
+        PendingDash = state.PendingDash;
+        Clips = [.. state.Clips]; Styles = new(state.Styles, StringComparer.Ordinal);
+        Variables = new(state.Variables, StringComparer.Ordinal);
+        NumericBindings = new(state.NumericBindings, StringComparer.Ordinal);
+        Definitions = new(state.Definitions, StringComparer.Ordinal);
+        TemplateBindings = state.TemplateBindings; CoordinateValue = state.CoordinateValue;
+        // Node context/options and paint-change flags intentionally start fresh.
+    }
+
     public EvaluationState Clone(Budget budget, Source source)
     {
         budget.Charge(source, Styles.Count + Variables.Count + NumericBindings.Count + Definitions.Count + Clips.Count + 1);
-        return new()
-        {
-            Transform = Transform, XBasis = XBasis, YBasis = YBasis, Paint = Paint, Connection = Connection, Arrows = Arrows, Plot = Plot, Node = Node, NodeDistance = NodeDistance, Libraries = Libraries, PositioningAvailable = PositioningAvailable, RelevantForPictureSize = RelevantForPictureSize,
-            ConfiguredDash = ConfiguredDash, ConfiguredDashPhase = ConfiguredDashPhase, PendingDash = PendingDash,
-            Clips = [.. Clips], Styles = new(Styles, StringComparer.Ordinal), Variables = new(Variables, StringComparer.Ordinal), NumericBindings = new(NumericBindings, StringComparer.Ordinal), Definitions = new(Definitions, StringComparer.Ordinal), TemplateBindings = TemplateBindings, CoordinateValue = CoordinateValue
-        };
+        return new(this);
     }
     public Number Number(Source source, Budget budget) => Expression.Parse(source, budget).Evaluate(Variables, budget);
     public double Scalar(Source source, Budget budget)
