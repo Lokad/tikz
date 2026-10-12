@@ -24,6 +24,7 @@ export const dashPdfCalibrationTools = ['inspect-dash-geometry-pdf.mjs', 'dash-g
   'dash-geometry-image-defects.mjs', 'prepare-dash-geometry-pdf-admission.mjs'].map(p => 'tools/TikzVisual/' + p);
 export const dashPdfGuardTools = ['dash-geometry-pdf-policy.mjs', 'compare-dash-geometry-conformance.mjs',
   'dash-geometry-pdf-policy-self-test.mjs', 'promote-dash-geometry-pdf.mjs'].map(p => 'tools/TikzVisual/' + p);
+export const dashPdfGuardFiles = c => [...new Set([...Object.keys(c.toolHashes), ...dashPdfGuardTools])].sort();
 
 const modes = ['original-svg', ...dashPrimaryNames, 'pdf-instructions'];
 function requireViews(rows, expected = shapePdfViews) {
@@ -111,10 +112,16 @@ export async function loadDashPdfPolicy(renderer, read = readFile) {
   assert.deepEqual(profile.requiredViews, shapePdfViews); assert.deepEqual(profile.calibration, { file: dashPdfCalibrationFile, sha256: dashPdfCalibrationSha256 });
   const calibrationBytes = await read(path.join(root, dashPdfCalibrationFile)); assert.equal(sha256(calibrationBytes), dashPdfCalibrationSha256);
   const calibration = JSON.parse(calibrationBytes);
-  assert.deepEqual(Object.keys(profile.guardToolHashes).sort(), [...dashPdfGuardTools].sort());
-  for (const [p, h] of Object.entries({ ...calibration.toolHashes, ...profile.guardToolHashes })) assert.equal(sha256(await read(path.join(root, p))), h, 'Changed PDF tool: ' + p);
   const primary = await loadDashPrimaryPolicy(renderer, read), native = primary.native;
   assert.equal(profile.primaryPolicyId, primary.profile.id); assert.equal(profile.primaryPolicySha256, primary.profileSha256);
+  assert.deepEqual(Object.keys(profile.guardToolHashes).sort(), dashPdfGuardFiles(calibration));
+  for (const [p, h] of Object.entries(profile.guardToolHashes)) {
+    assert.match(h, /^[a-f0-9]{64}$/);
+    // The linked primary profile has already checked shared current bytes.
+    if (Object.hasOwn(primary.profile.guardToolHashes, p))
+      assert.equal(h, primary.profile.guardToolHashes[p], 'Split current primary/PDF source: ' + p);
+    else assert.equal(sha256(await read(path.join(root, p))), h, 'Changed PDF tool: ' + p);
+  }
   assert.deepEqual(calibration.native, { snapshotSha256: native.snapshotSha256, metricsSha256: native.metricsSha256, referenceSha256: native.referenceSha256, pdfSha256: native.snapshot.artifacts['reference.pdf'] });
   assert.equal(calibration.qualification.tools.pdftoppm.sha256, native.snapshot.tools.find(t => t.name === 'pdftoppm').sha256);
   const pdf = await read(path.join(root, 'tests/Reference/DashGeometry/native/reference.pdf'));

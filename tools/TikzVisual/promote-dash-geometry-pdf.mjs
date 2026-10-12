@@ -8,7 +8,7 @@ import { loadDashPrimaryPolicy } from './dash-geometry-primary-policy.mjs';
 import { parseDashGeometryPdf, verifyDashGeometryPdf } from './dash-geometry-pdf-vector.mjs';
 import { shapePdfViews } from './shape-pdf-trial-policy.mjs';
 import { dashPdfId, dashPdfScope, dashPdfProfileFile, dashPdfCalibrationFile, dashPdfCalibrationSha256,
-  dashPdfGuardTools, reconstructDashPdfGeometry, validateDashPdfCalibration } from './dash-geometry-pdf-policy.mjs';
+  dashPdfGuardFiles, reconstructDashPdfGeometry, validateDashPdfCalibration } from './dash-geometry-pdf-policy.mjs';
 
 assert.equal(process.argv.length, 2);
 const base = path.join(root, 'artifacts/dash-geometry-pdf-prepared'), pointer = JSON.parse(await readFile(path.join(base, 'latest.json')));
@@ -26,7 +26,7 @@ try {
   assert.equal(sha256(pdf), calibration.native.pdfSha256); assert.equal(native.snapshotSha256, calibration.native.snapshotSha256);
   const numeric = verifyDashGeometryPdf(parsed, native, primary.reconstruction.styles), geometry = reconstructDashPdfGeometry(native, primary.reconstruction, parsed);
   const derived = await validateDashPdfCalibration(calibration, geometry, numeric, renderer), guardToolHashes = {};
-  for (const p of dashPdfGuardTools) guardToolHashes[p] = sha256(await readFile(path.join(root, p)));
+  for (const p of dashPdfGuardFiles(calibration)) guardToolHashes[p] = sha256(await readFile(path.join(root, p)));
   const profile = { schemaVersion: 1, id: dashPdfId, scope: dashPdfScope, approvedPdfPolicy: true,
     nativeChecks: 1090, frameChecks: 6, pdfInstructionChecks: 446, requiredViews: shapePdfViews,
     primaryPolicyId: primary.profile.id, primaryPolicySha256: primary.profileSha256,

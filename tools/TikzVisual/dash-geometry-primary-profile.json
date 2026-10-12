@@ -74,10 +74,27 @@
     "sha256": "a4247ca293673cb32df6aba2130da0362481fb9d7592638db0177b5bf63e17cb"
   },
   "guardToolHashes": {
-    "tools/TikzVisual/dash-geometry-primary-policy.mjs": "34a17c4d677490dfc07a701054fce3cd973bf7d840226c9ab132be06e3cc717e",
+    "tools/TikzDashComparison/DashGeometryComparison.cs": "2271d6158eb7a9a4b69f092ec6e9c372193193aed9a4d969b6db1bad5d45adc9",
+    "tools/TikzDashComparison/EmittedSvgEvidence.cs": "01cde86c1dda88b5e68269d3146087e407d1d93853b87a7637948110bfe60dd3",
+    "tools/TikzDashComparison/Program.cs": "c9a2d2914ff1d9ea46d49395855204299460e30160700d35d78b032d692ae98a",
+    "tools/TikzDashComparison/TikzDashComparison.csproj": "2a1903c96e607ac59b3106eb2350662f51542e47e29e40c85088a91831ca7465",
+    "tools/TikzDashComparison/packages.lock.json": "65df2f460d407c1487f98513f3524286a8fd66b0806b42717c4c92e649241d1c",
+    "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
+    "tools/TikzVisual/calibrate-dash-geometry-primary.mjs": "58bd1e9fa05221edaf1f2ef0ac4d632a17d27c10a9201379a4e593c786359aa1",
     "tools/TikzVisual/compare-dash-geometry-primary.mjs": "a501f0ff1ce4a1fb8fcb2b7672c31b16d7eab5571e36115eeabcd4933edfd540",
-    "tools/TikzVisual/dash-geometry-primary-self-test.mjs": "7e5d20d476c79ce89830e7e4ae194a63fb75663c8175d8b1b616df7621617d66",
-    "tools/TikzVisual/promote-dash-geometry-primary.mjs": "538152f78ce4d300e0602bbedb6cb20a42ef8f7232737bd2f257a1a44a00804b"
+    "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
+    "tools/TikzVisual/dash-geometry-image-defects.mjs": "c038cdcf4eeef463c73bc02df811ca949b4eea9bc7cdbac1585506fb0ba8744e",
+    "tools/TikzVisual/dash-geometry-image-pair.mjs": "541afd902cb48428c43a8c007a79df96fe9ef5490dd32a5af8de39e5a092646d",
+    "tools/TikzVisual/dash-geometry-primary-common.mjs": "2b675b3df1ce11eea194d1b6a4f33f2804cde05218d746ba3901906ac48ad07d",
+    "tools/TikzVisual/dash-geometry-primary-policy.mjs": "dc427e2abe9c77a1945ca4ff4188568a2a884234cd24b8a11426dc9ee91aacb7",
+    "tools/TikzVisual/dash-geometry-primary-reconstruction.mjs": "833189bd6a067fb7b4cab631614edd0a7a7bc32023ccb2c776f450e6d2a8c465",
+    "tools/TikzVisual/dash-geometry-primary-self-test.mjs": "a2f8e788278b018b46456008ce17c1d098eed550a8785bffd0b2f50aeb3095bc",
+    "tools/TikzVisual/package-lock.json": "1493ab1a08080e8e7434844c2ff7feff20da79de3ea2c13df399d426b82316f1",
+    "tools/TikzVisual/package.json": "a7562ff94fff07cf54821025a58dec5b9bf9e3c2cae836d6d9516eae90072b9f",
+    "tools/TikzVisual/promote-dash-geometry-primary.mjs": "781c73603f7ca4241ed296349da7130e85e7792cd09ea7d62e199d2ac17a6e13",
+    "tools/TikzVisual/shape-oracle-bundle.mjs": "bc0e2657627ff5caf8405cb6005da2f645b4fe3f398655c58cb867e5d38d8125",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "5942f8eb07c5ceca56cf3a28eef1263929ff7cfd39ed51ec6630a70c404a4e60",
+    "tools/TikzVisual/shape-raster-metrics.mjs": "ce624b7232b134cd3eae243ad5f99521b5dde7b6e9fba8e802cb01b00743c38a"
   },
   "camera": {
     "x": -21,

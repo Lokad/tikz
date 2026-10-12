@@ -15,7 +15,11 @@ export const dashPrimaryCalibrationFile = 'tests/Reference/DashGeometry/primary/
 export const dashPrimaryCalibrationSha256 = 'a4247ca293673cb32df6aba2130da0362481fb9d7592638db0177b5bf63e17cb';
 export const dashPrimaryNativeSha256 = '443a23351d67de1f21558d3694540a9e1763af169b30d15daef08cae6d86f047';
 export const dashPrimaryGuardTools = ['dash-geometry-primary-policy.mjs', 'compare-dash-geometry-primary.mjs',
-  'dash-geometry-primary-self-test.mjs', 'promote-dash-geometry-primary.mjs'].map(p => 'tools/TikzVisual/' + p);
+  'dash-geometry-primary-self-test.mjs', 'promote-dash-geometry-primary.mjs'].map(p => 'tools/TikzVisual/' + p).concat([
+    'tools/TikzDashComparison/Program.cs', 'tools/TikzDashComparison/EmittedSvgEvidence.cs',
+    'tools/TikzDashComparison/DashGeometryComparison.cs', 'tools/TikzDashComparison/TikzDashComparison.csproj',
+    'tools/TikzDashComparison/packages.lock.json']);
+export const dashPrimaryGuardFiles = c => [...new Set([...Object.keys(c.toolHashes), ...dashPrimaryGuardTools])].sort();
 const hashPattern = /^[a-f0-9]{64}$/;
 const whiteViews = shapeViews.filter(v => v.background === 'white');
 
@@ -113,9 +117,12 @@ export async function loadDashPrimaryPolicy(renderer, read = readFile) {
   const calibrationBytes = await read(path.join(root, dashPrimaryCalibrationFile));
   assert.equal(sha256(calibrationBytes), dashPrimaryCalibrationSha256, 'Changed immutable primary calibration.');
   const calibration = JSON.parse(calibrationBytes);
-  assert.deepEqual(Object.keys(profile.guardToolHashes).sort(), [...dashPrimaryGuardTools].sort(), 'Missing policy guard provenance.');
-  for (const [p, h] of Object.entries({ ...calibration.toolHashes, ...profile.guardToolHashes }))
-    assert.equal(sha256(await read(path.join(root, p))), h, 'Changed primary tool: ' + p);
+  // Original calibration pins retain producer identities; current profiles
+  // bind actual tools, including the independent numeric/SVG comparison.
+  assert.deepEqual(Object.keys(profile.guardToolHashes).sort(), dashPrimaryGuardFiles(calibration), 'Missing policy guard provenance.');
+  for (const [p, h] of Object.entries(profile.guardToolHashes)) {
+    assert.match(h, hashPattern); assert.equal(sha256(await read(path.join(root, p))), h, 'Changed primary tool: ' + p);
+  }
   const native = await readDashGeometryNative(read);
   assert.equal(native.snapshotSha256, dashPrimaryNativeSha256, 'Different reviewed native snapshot.');
   assert.deepEqual(calibration.native, { snapshotSha256: native.snapshotSha256, metricsSha256: native.metricsSha256, referenceSha256: native.referenceSha256 });

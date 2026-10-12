@@ -8,7 +8,7 @@ import { reconstructDashGeometryPrimary } from './dash-geometry-primary-reconstr
 import { readDashGeometryNative, dashPrimaryScope } from './dash-geometry-primary-common.mjs';
 import { shapeViews } from './shape-primary-trial-policy.mjs';
 import { dashPrimaryPolicyId, dashPrimaryProfileFile, dashPrimaryCalibrationFile, dashPrimaryCalibrationSha256, dashPrimaryNativeSha256,
-  dashPrimaryGuardTools, validateDashPrimaryCalibration, requireDashPrimaryRenderer } from './dash-geometry-primary-policy.mjs';
+  dashPrimaryGuardFiles, validateDashPrimaryCalibration, requireDashPrimaryRenderer } from './dash-geometry-primary-policy.mjs';
 
 assert.equal(process.argv.length, 2);
 const base = path.join(root, 'artifacts/dash-geometry-primary-calibration');
@@ -26,7 +26,7 @@ try {
   requireDashPrimaryRenderer(renderer.identity, calibration.renderer);
   const reconstruction = await reconstructDashGeometryPrimary(renderer, native), limits = await validateDashPrimaryCalibration(calibration, reconstruction, renderer);
   const guardToolHashes = {};
-  for (const p of dashPrimaryGuardTools) guardToolHashes[p] = sha256(await readFile(path.join(root, p)));
+  for (const p of dashPrimaryGuardFiles(calibration)) guardToolHashes[p] = sha256(await readFile(path.join(root, p)));
   const profile = { schemaVersion: 1, id: dashPrimaryPolicyId, scope: dashPrimaryScope, approvedPrimaryPolicy: true, approvedPdfPolicy: false,
     overallVerdict: 'pending', nativeChecks: 1090, frameChecks: 6, requiredViews: shapeViews, calibration: { file: dashPrimaryCalibrationFile, sha256: sha256(calibrationBytes) },
     guardToolHashes, camera: reconstruction.camera, regions: reconstruction.regions, limits };

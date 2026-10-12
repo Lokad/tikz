@@ -13,6 +13,7 @@ import { loadDashPdfPolicy, validateDashPdfCalibration, combineDashPdf, dashPdfP
   dashPdfCalibrationFile, dashPdfGuardTools } from './dash-geometry-pdf-policy.mjs';
 
 const base = path.join(root, 'artifacts/dash-geometry-pdf-policy-controls'), output = path.join(base, 'run-' + randomUUID()), artifacts = {}, controls = [];
+const consolidatedSourceControls = [];
 const save = (p, b) => writeArtifact(output, p, b, artifacts), relative = p => path.relative(root, p).split(path.sep).join('/');
 async function main() {
   assert.equal(process.argv.length, 2); const renderer = await createRenderer();
@@ -22,11 +23,21 @@ async function main() {
     for (const file of [dashPdfCalibrationFile, 'tests/Reference/DashGeometry/pdf-cairo/pdf-page-1x.png',
       'tests/Reference/DashGeometry/pdf-cairo/pdf-page-4x.png', 'tests/Reference/DashGeometry/native/reference.pdf',
       ...Object.keys(e.calibration.toolHashes), ...dashPdfGuardTools]) {
+      // The linked primary loader and its controls own identical shared reads.
+      if (Object.hasOwn(e.primary.profile.guardToolHashes, file)) {
+        consolidatedSourceControls.push({ file, controls: ['missing-' + file, 'changed-' + file], owner: 'dash-geometry-primary-self-test.mjs' });
+        continue;
+      }
       await reject('missing-' + file, () => loadDashPdfPolicy(renderer, p => relative(p) === file ? Promise.reject(new Error('Controlled missing evidence')) : readFile(p)), 'missing evidence');
       await reject('changed-' + file, () => loadDashPdfPolicy(renderer, async p => {
         const b = await readFile(p); return relative(p) === file ? Buffer.concat([b, Buffer.from(' ')]) : b;
       }), 'changed evidence');
     }
+    const [shared, historical] = Object.entries(e.calibration.toolHashes).find(([file, h]) =>
+      Object.hasOwn(e.primary.profile.guardToolHashes, file) && h !== e.profile.guardToolHashes[file]);
+    const split = structuredClone(e.profile); split.guardToolHashes[shared] = historical;
+    await reject('split-current-primary-PDF-guard', () => loadDashPdfPolicy(renderer,
+      p => relative(p) === dashPdfProfileFile ? Buffer.from(JSON.stringify(split)) : readFile(p)), 'shared current-source binding');
     for (const [name, change] of [
       ['borrowed-policy', p => p.id = 'different-fixture-policy'], ['borrowed-scope', p => p.scope = 'All TikZ'],
       ['unapproved-pdf', p => p.approvedPdfPolicy = false], ['partial-native', p => p.nativeChecks--],
@@ -88,7 +99,7 @@ async function main() {
     }
     for (const [p, h] of Object.entries(e.profile.guardToolHashes)) { const b = await readFile(path.join(root, p)); assert.equal(sha256(b), h); await save('tool-sources/' + p, b); }
     await writeArtifact(output, 'report.json', JSON.stringify({ completed: true, passed: true, approvedImagePolicy: true, policyId: e.profile.id,
-      policySha256: e.profileSha256, controls, artifacts }, null, 2) + '\n');
+      policySha256: e.profileSha256, controls, consolidatedSourceControls, artifacts }, null, 2) + '\n');
     await writeArtifact(base, 'latest.json', JSON.stringify({ completed: true, report: path.relative(base, path.join(output, 'report.json')).split(path.sep).join('/'),
       sha256: sha256(await readFile(path.join(output, 'report.json'))) }, null, 2) + '\n');
     console.log('Dash PDF policy controls: ' + controls.length + ' pass, including nineteen fresh candidate image-only defects.');

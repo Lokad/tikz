@@ -30,6 +30,13 @@ async function main() {
         const bytes = await readFile(p); return relative(p) === file ? Buffer.concat([bytes, Buffer.from(' ')]) : bytes;
       }), 'changed evidence');
     }
+    const changedTools = Object.entries(evidence.calibration.toolHashes).filter(([file, h]) => h !== evidence.profile.guardToolHashes[file]);
+    assert.equal(changedTools.length, 3, 'Review changed original/current dash-geometry identities.');
+    for (const [file, historical] of changedTools) {
+      const profile = structuredClone(evidence.profile); profile.guardToolHashes[file] = historical;
+      await rejected('historical-guard-substitution/' + file, () => loadDashPrimaryPolicy(renderer,
+        p => relative(p) === dashPrimaryProfileFile ? Buffer.from(JSON.stringify(profile)) : readFile(p)), 'historical/current sources');
+    }
     for (const [name, change] of [
       ['borrowed-policy', p => { p.id = 'chromium-153-rectangle-borders-ink-pdf-v1'; }],
       ['borrowed-scope', p => { p.scope = 'All paths and TikZ libraries'; }],
