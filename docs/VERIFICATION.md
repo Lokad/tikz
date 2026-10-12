@@ -332,23 +332,47 @@ The historical pre-feature matrix had 26 diagrams, 624 primary views, 208 PDF vi
 negatives remain detected. The later matrix's 832 records and 5,008 PNGs match
 the prior accepted output byte for byte.
 
-The current 30-diagram review at `765ae68` reduced observed complete routine
-qualification from **46m14s** through **35m50s** to **21m09s**. The final affected
-four-diagram loop took **4m47s** without another acceptance process running.
-The complete routine remains above the requested ten minutes; the affected
-loop's timing does not establish the complete-routine target. Native-reference
-regeneration was not performed. The full run's first part overlapped a separate
-arrow admission-control run, so the reduction is an observed result rather than
-a controlled benchmark.
+The current 30-diagram review reduced observed complete routine qualification
+from **46m14s → 35m50s → 21m09s → 15m58s → 13m59s**. The last run took
+**838.533s** at `df0d257`; `9a7e827` restores its exact tracked tree after a
+slower four-job/metadata trial (943.230s) was withdrawn. All 2,083 source files
+match the qualified export. The final affected four-diagram loop took **4m47s**,
+which does not establish the complete-routine target.
+
+The review closed after **3h45m33s**, within four hours; the 600s target remains
+unmet by **238.533s**. The last two accepted full runs began without another
+acceptance process active. Earlier runs overlapped other acceptance work. These
+are observed host wall times, not controlled attribution of every saving.
+Native-reference regeneration and completed performance calibration were not
+reopened. Further optimization must address a measured cost and retain the
+required checks through the existing machinery.
 
 All 873 ordinary cases and 30 fixtures remain. The full frozen-fault audit
 covers all 28 bundles and 895 visible controls; the routine basis has 368 visible
 and two originally invisible witnesses plus 527 explicit aliases. This extends
 the earlier ten-bundle/247-control sample. Native and current pixel policies
-remain unchanged. The largest remaining aggregate costs are independent current
-checking (1,011s), materialization/roundtrips (471s), PDF production (360s),
-primary production (345s), family/harness corruption controls (176s) and the
-negative basis (153s). Parallel child costs are not additive parent wall time.
+remain unchanged. The accepted run retains 241 primary and 240 PDF observations,
+361 fresh source recaptures and all family/harness control identities. Its 481
+observations, 722 source rasters and 56 returned SVGs match the previous accepted
+export exactly. Reusing unchanged reference evidence never substitutes old
+converter output.
+
+| Remaining stage | Executions | Aggregate child seconds |
+| --- | ---: | ---: |
+| Independent current checking | 28 | 1,345.792 |
+| PDF production | 28 | 576.989 |
+| Primary production | 28 | 548.238 |
+| Frozen-reference materialization/roundtrip | 32 | 298.760 |
+| Negative mechanism basis | 1 | 222.026 |
+| Family/harness corruption controls | 18 | 185.597 |
+| Numeric comparison | 26 | 129.446 |
+| Ordinary tests | 1 | 20.629 |
+
+Parallel child costs overlap and are not additive parent wall time. Independent
+decoded checking and raster generation are the largest remaining costs; higher
+parallelism also increases individual child times. The slower trial does not
+justify another scheduling change in this time-boxed review.
+
 Fresh family admissions remain additional required costs when their dependencies
 or coverage gaps change: observed straight/curved/border admissions were
 11m38s/15m56s/1m57s, and arrow admission was 2h35m. These have not been removed

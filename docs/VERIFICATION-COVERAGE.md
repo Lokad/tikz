@@ -50,7 +50,20 @@ These are host wall times, not controlled benchmarks. The detailed mapping keeps
 the counts, scope and timing caveats; hosted/release acceptance remains separate.
 
 The current 30-diagram review reduced complete routine qualification from
-**46m14s → 35m50s → 21m09s**. The affected four-diagram loop took **4m47s**.
-The ten-minute complete-routine target remains unmet. Independent current
-checking and reference materialization remain the largest costs; the detailed
-mapping records them and the additional unchanged family-admission costs.
+**46m14s → 35m50s → 21m09s → 15m58s → 13m59s**. The best accepted
+configuration is `df0d257`, restored byte for byte at `9a7e827`; a slower
+15m43s scheduling trial was withdrawn. The affected four-diagram loop took
+**4m47s**, which is a separate scope. These are observed current-machine wall
+times, not controlled benchmarks.
+
+This review closed after **3h45m33s**, within its four-hour limit. The complete
+routine still exceeds 600s by **238.533s**. All 873 ordinary cases, 30 fixtures,
+241 primary and 240 PDF observations, 361 fresh source recaptures and retained
+controls pass. All 481 observations, 722 source rasters and 56 returned SVGs
+match the previous accepted output. Historical-defect witnesses and the full
+unchanged 895-visible-control audit remain applicable.
+
+Independent checking and raster generation dominate the remaining costs. The
+[detailed mapping](VERIFICATION.md#recorded-outcomes) records their measured
+costs and the unchanged family-admission requirements. Native regeneration is
+separate; no required scope or pixel policy was removed to claim ten minutes.
