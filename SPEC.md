@@ -118,8 +118,10 @@ of font-cache warm-up. Default IDs use
 `t` plus the first sixteen lowercase SHA-256 hex digits of the UTF-8 source,
 followed by local definition suffixes. Supply different valid `IdPrefix` values
 when embedding multiple identical conversions into one document. Library,
-symbol, style, clipping and generated-outline state belongs to each call;
-bounded embedded-font caches are shared across calls.
+symbol, style, clipping, used-outline membership and generated SVG IDs belong to
+each call. Bounded embedded-font and parsed bundled-glyph geometry caches are
+shared across calls; cached geometry contains no conversion source or result.
+Outline work/segment admission and cancellation remain per conversion.
 
 Independent native measurements and primary/PDF comparisons qualify concrete
 fixtures under pinned tools, cameras and pixel policies. Some comparisons are

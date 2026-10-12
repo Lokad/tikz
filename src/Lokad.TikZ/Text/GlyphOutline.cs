@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Collections.Concurrent;
 using Lokad.TikZ.Frontend;
 using Lokad.TikZ.Geometry;
 using Lokad.TikZ.Graphics;
@@ -10,6 +11,28 @@ namespace Lokad.TikZ.Text;
 // Outlines are trusted embedded data, never submitted SVG or installed fonts.
 internal sealed record GlyphOutline(string FontId, int Slot, string PathBp, Segment[] Segments)
 {
+    private static readonly ConcurrentDictionary<(string FontId, int Slot), GlyphOutline> Embedded = new();
+
+    internal static GlyphOutline Get(string fontId, int slot, Budget budget, Source source)
+    {
+        // Validate against the finite bundled catalogue before touching the
+        // cache. Retained entries contain font geometry, never caller sources.
+        var glyph = fontId.StartsWith("math-", StringComparison.Ordinal) ? MathLayout.Glyph(fontId, slot)
+            : TextLayout.Font(fontId).Glyphs[slot];
+        var key = (fontId, slot);
+        if (Embedded.TryGetValue(key, out var outline))
+        {
+            // Admit the same logical outline on every conversion, regardless
+            // of cache warmth. Source-aware failures/cancellation stay local.
+            budget.Charge(source, glyph.PathBp.Length);
+            foreach (var _ in outline.Segments) budget.Segment(source);
+            return outline;
+        }
+        var parsed = Parse(fontId, slot, glyph.PathBp, budget, source);
+        // Interrupted/limited parsing never populates or poisons an entry.
+        return Embedded.GetOrAdd(key, parsed);
+    }
+
     internal Bounds Ink(Affine transform, Budget budget, Source source)
         => PathBounds.Calculate(TransformSegments(transform, budget, source), budget, source);
     private IEnumerable<Segment> TransformSegments(Affine transform, Budget budget, Source source)

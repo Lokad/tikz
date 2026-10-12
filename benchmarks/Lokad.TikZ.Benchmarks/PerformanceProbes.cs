@@ -71,7 +71,7 @@ internal static class PerformanceProbes
             counters = pipeline is null ? null : new { pipeline.ParsedStatements, pipeline.ParsedPathOperations,
                 pipeline.ExpandedCharacters, pipeline.Drawables, pipeline.Coordinates, pipeline.UniqueOutlines,
                 pipeline.PlacedGlyphs, pipeline.PlacedRules }, identity = Identity(),
-            scope = "First converter call includes its JIT/font first use, excluding process launch and fixture IO. Process memory includes harness/runtime and untimed checking; font census precedes warm calls. Outline cache is per conversion." };
+            scope = "First converter call includes JIT/font/outline first use, excluding process launch and fixture IO. Process memory includes harness/runtime and untimed checking; font census precedes warm calls. Parsed bundled outlines share a finite cache; used definitions/IDs stay per conversion." };
 
         CallObservation ConvertOnce()
         {

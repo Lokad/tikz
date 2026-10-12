@@ -147,10 +147,8 @@ internal sealed partial class Evaluator
             budget.Charge(glyph.Source);
             if (!_outlines.TryGetValue((glyph.FontId, glyph.Slot), out var outline))
             {
-                var resource = glyph.FontId.StartsWith("math-", StringComparison.Ordinal) ? MathLayout.Glyph(glyph.FontId, glyph.Slot)
-                    : TextLayout.Font(glyph.FontId).Glyphs[glyph.Slot];
                 outline = _scene.Outlines.Count;
-                _scene.Outlines.Add(GlyphOutline.Parse(glyph.FontId, glyph.Slot, resource.PathBp, budget, glyph.Source));
+                _scene.Outlines.Add(GlyphOutline.Get(glyph.FontId, glyph.Slot, budget, glyph.Source));
                 _outlines.Add((glyph.FontId, glyph.Slot), outline);
             }
             var local = new NodePoint(glyph.XSp, -glyph.YSp).Bp;

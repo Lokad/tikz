@@ -35,8 +35,12 @@ fixture IO, process launch and report work are outside the converter timer.
 Parent process wall time is recorded separately. Subsequent outputs, diagnostics
 and counters must equal the first result. Font census uses lazy-value creation
 flags, never loads a face, and checks same-input cache stability. The six prose
-and nineteen math faces are bounded process caches. Distinct glyph outlines are
-deduplicated within each evaluator and rebuilt in the next conversion.
+and nineteen math faces are bounded process caches. Parsed glyph geometry shares
+a lazy cache limited to validated bundled face/slot pairs. It retains font paths
+and segments; conversion sources, used definitions and SVG IDs stay local.
+Every conversion admits its used outlines against the same source-aware work and
+segment limits, regardless of cache warmth. Distinct definitions are deduplicated
+within each evaluator. The 25 bundled faces contain 4,748 glyph slots in total.
 
 Allocation probes count bytes allocated by the converter's calling thread.
 BenchmarkDotNet's MemoryDiagnoser independently measures each warm operation.
