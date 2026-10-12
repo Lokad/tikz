@@ -9,7 +9,7 @@ namespace Lokad.TikZ.Geometry;
 // separate layout quantity, while these bounds keep visible ink in the SVG.
 internal static class PolygonStrokeBounds
 {
-    internal static Bounds Calculate(Point[] vertices, Paint paint, Budget budget, Source source)
+    internal static Bounds Calculate(ReadOnlySpan<Point> vertices, Paint paint, Budget budget, Source source)
     {
         var geometry = Bounds.Empty;
         foreach (var point in vertices) { budget.Charge(source); geometry = geometry.Add(point); }

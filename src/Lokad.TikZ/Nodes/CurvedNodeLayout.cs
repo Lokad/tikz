@@ -16,8 +16,9 @@ internal sealed record CurvedNodeLayout(NodeShape Shape, MeasuredText Text, Node
     {
         if (shape is not (NodeShape.Circle or NodeShape.Ellipse)) throw new ArgumentOutOfRangeException(nameof(shape));
         budget.Node(source);
-        foreach (var value in new[] { dimensions.InnerXSp, dimensions.InnerYSp, dimensions.OuterXSp,
-            dimensions.OuterYSp, dimensions.MinimumWidthSp, dimensions.MinimumHeightSp }) Dimension(value);
+        ReadOnlySpan<int> checks = [dimensions.InnerXSp, dimensions.InnerYSp, dimensions.OuterXSp,
+            dimensions.OuterYSp, dimensions.MinimumWidthSp, dimensions.MinimumHeightSp];
+        foreach (var value in checks) Dimension(value);
         var center = new NodePoint(Dimension(text.WidthSp / 2), Dimension((long)text.HeightSp / 2 - text.DepthSp / 2));
         var x = Dimension((long)text.WidthSp / 2 + dimensions.InnerXSp);
         var y = Dimension((long)text.HeightSp / 2 + text.DepthSp / 2 + dimensions.InnerYSp);
@@ -47,7 +48,8 @@ internal sealed record CurvedNodeLayout(NodeShape Shape, MeasuredText Text, Node
             radius = new(Dimension((long)x + dimensions.OuterXSp), Dimension((long)y + dimensions.OuterYSp));
         }
         // Bound every generated anchor/background coordinate, not just its radius.
-        foreach (var size in new[] { radius, background })
+        ReadOnlySpan<NodePoint> sizes = [radius, background];
+        foreach (var size in sizes)
         {
             Dimension((long)center.X - Math.Abs((long)size.X)); Dimension((long)center.X + Math.Abs((long)size.X));
             Dimension((long)center.Y - Math.Abs((long)size.Y)); Dimension((long)center.Y + Math.Abs((long)size.Y));

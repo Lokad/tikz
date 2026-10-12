@@ -11,8 +11,9 @@ internal static class ShapePaths
 
     public static void Ellipse(GraphicPath path, Point center, Point xAxis, Point yAxis, Budget budget, Source source)
     {
-        Point[] axes = [xAxis, yAxis, xAxis * -1, yAxis * -1];
-        var controls = axes.Select(axis => PgfTransform.Scale(axis, QuarterControl, budget, source)).ToArray();
+        ReadOnlySpan<Point> axes = [xAxis, yAxis, xAxis * -1, yAxis * -1];
+        Span<Point> controls = stackalloc Point[4];
+        for (var i = 0; i < axes.Length; i++) controls[i] = PgfTransform.Scale(axes[i], QuarterControl, budget, source);
         path.Move(center + xAxis);
         for (var i = 0; i < axes.Length; i++)
         {

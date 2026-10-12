@@ -121,8 +121,9 @@ internal sealed partial class Evaluator
         if (state.RelevantForPictureSize)
         {
             var box = Bounds.Empty;
-            foreach (var point in new[] { new NodePoint(0, -text.DepthSp), new NodePoint(text.WidthSp, -text.DepthSp),
-                new NodePoint(0, text.HeightSp), new NodePoint(text.WidthSp, text.HeightSp) })
+            ReadOnlySpan<NodePoint> corners = [new(0, -text.DepthSp), new(text.WidthSp, -text.DepthSp),
+                new(0, text.HeightSp), new(text.WidthSp, text.HeightSp)];
+            foreach (var point in corners)
                 box = box.Add(PgfTransform.Apply(frame, point.Bp, budget, statement.Source));
             var shapeBounds = state.Paint.Stroke ? background.ControlBounds.Inflate(state.Paint.Width / 2) : background.ControlBounds;
             _scene.PictureBounds = _scene.PictureBounds.Union(box).Union(shapeBounds);
@@ -131,7 +132,8 @@ internal sealed partial class Evaluator
         {
             var ink = state.Paint.Stroke
                 ? layout is RectangleNodeLayout
-                    ? PolygonStrokeBounds.Calculate(background.Segments.Take(4).Select(segment => segment.End).ToArray(), state.Paint, budget, statement.Source)
+                    ? PolygonStrokeBounds.Calculate([background.Segments[0].End, background.Segments[1].End,
+                        background.Segments[2].End, background.Segments[3].End], state.Paint, budget, statement.Source)
                     : PathStrokeBounds.Calculate(background, state.Paint, budget, statement.Source)
                 : background.Bounds;
             ink = Clipped(ink);
@@ -167,7 +169,8 @@ internal sealed partial class Evaluator
             if (rule.WidthSp > 0 && rule.HeightSp > 0)
             {
                 var width = new NodePoint(rule.WidthSp, rule.HeightSp).Bp;
-                foreach (var corner in new[] { default(Point), new Point(width.X, 0), width, new Point(0, width.Y) })
+                ReadOnlySpan<Point> corners = [default, new(width.X, 0), width, new(0, width.Y)];
+                foreach (var corner in corners)
                 {
                     budget.Segment(rule.Source);
                     ink = ink.Add(PgfTransform.Apply(transform, corner, budget, rule.Source));

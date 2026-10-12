@@ -113,13 +113,29 @@ internal sealed record Function(string Name, IReadOnlyList<Expression> Arguments
     public override Number Evaluate(IReadOnlyDictionary<string, Number> variables, Budget budget)
     {
         budget.Charge(Source);
-        var values = Arguments.Select(a => a.Evaluate(variables, budget)).ToArray();
+        Number first = default, second = default;
+        // Extra arguments still evaluate before the arity diagnostic, just as
+        // before. Supported one/two-argument calls need no temporary array.
+        var extra = Arguments.Count > 2 ? new Number[Arguments.Count - 2] : null;
+        var hasUnit = false;
+        var hasOrigin = false;
+        for (var i = 0; i < Arguments.Count; i++)
+        {
+            var number = Arguments[i].Evaluate(variables, budget);
+            if (i == 0) first = number;
+            else if (i == 1) second = number;
+            else extra![i - 2] = number;
+            hasUnit |= number.HasUnit; hasOrigin |= number.Origin is not null;
+        }
         var origin = Source;
-        foreach (var number in values) origin = number.Relate(origin, budget);
+        // Keep provenance charges after all argument evaluations: moving them
+        // into the first loop would reorder resource/arithmetic failures.
+        for (var i = 0; i < Arguments.Count; i++)
+            origin = (i == 0 ? first : i == 1 ? second : extra![i - 2]).Relate(origin, budget);
         var expected = Name is "min" or "max" or "pow" or "mod" or "atan2" or "veclen" ? 2 : 1;
-        if (values.Length != expected) throw new CompileError("TIKZ001", $"'{Name}' requires {expected} argument(s).", origin);
-        var a = values[0].Value;
-        var b = values.Length > 1 ? values[1].Value : 0;
+        if (Arguments.Count != expected) throw new CompileError("TIKZ001", $"'{Name}' requires {expected} argument(s).", origin);
+        var a = first.Value;
+        var b = second.Value;
         var value = Name switch
         {
             "sin" => Math.Sin(a * Math.PI / 180), "cos" => Math.Cos(a * Math.PI / 180),
@@ -134,7 +150,7 @@ internal sealed record Function(string Name, IReadOnlyList<Expression> Arguments
             _ => throw new CompileError("TIKZ002", $"Unsupported math function '{Name}'.", Source)
         };
         if (!double.IsFinite(value)) throw new CompileError("TIKZ004", "Undefined or non-finite arithmetic.", origin);
-        return new(value, values.Any(v => v.HasUnit)) { Origin = values.Any(v => v.Origin is not null) ? origin : null };
+        return new(value, hasUnit) { Origin = hasOrigin ? origin : null };
     }
 }
 

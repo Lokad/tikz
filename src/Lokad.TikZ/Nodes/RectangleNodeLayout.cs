@@ -43,9 +43,9 @@ internal sealed record RectangleNodeLayout(MeasuredText Text, NodeDimensions Dim
         Budget budget, Source source)
     {
         budget.Node(source);
-        foreach (var dimension in new[] { dimensions.InnerXSp, dimensions.InnerYSp,
-            dimensions.OuterXSp, dimensions.OuterYSp, dimensions.MinimumWidthSp, dimensions.MinimumHeightSp })
-            Dimension(dimension);
+        ReadOnlySpan<int> checks = [dimensions.InnerXSp, dimensions.InnerYSp,
+            dimensions.OuterXSp, dimensions.OuterYSp, dimensions.MinimumWidthSp, dimensions.MinimumHeightSp];
+        foreach (var dimension in checks) Dimension(dimension);
         var width = Dimension((long)text.WidthSp + 2L * dimensions.InnerXSp);
         var height = Dimension((long)text.HeightSp + text.DepthSp + 2L * dimensions.InnerYSp);
         width = Dimension(Math.Max(width, dimensions.MinimumWidthSp));

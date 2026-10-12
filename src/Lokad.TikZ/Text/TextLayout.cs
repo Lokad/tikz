@@ -125,8 +125,9 @@ internal static class TextLayout
 
         private void Walk(List<LabelItem> items, int depth)
         {
-            foreach (var (item, index) in items.Select((item, index) => (item, index)))
+            for (var index = 0; index < items.Count; index++)
             {
+                var item = items[index];
                 budget.Depth(item.Source, depth, budget.Limits.MaxNesting);
                 if (_ignoreLeading && item is LabelSpace { Normal: true }) continue;
                 _ignoreLeading = false;
@@ -142,7 +143,7 @@ internal static class TextLayout
                             budget.Charge(origin);
                             if (rune.Value == 0x00a0) Space(new(false, "\u00a0", origin));
                             else Append(TextProfile.Slot(rune.Value, origin), origin);
-                            _readable.Append(rune.ToString());
+                            _readable.Append(origin.Span);
                             offset += consumed;
                         }
                         break;
@@ -162,7 +163,7 @@ internal static class TextLayout
                         if (correct && !StartsWithPunctuation(group.Items.FirstOrDefault())) Correction(group.Source, true);
                         Walk(group.Items, depth + 1);
                         Flush(); _font = previous;
-                        if (correct && !StartsWithPunctuation(items.ElementAtOrDefault(index + 1))) Correction(group.Source, true);
+                        if (correct && !StartsWithPunctuation(index + 1 < items.Count ? items[index + 1] : null)) Correction(group.Source, true);
                         break;
                     case LabelMath math:
                         Flush();

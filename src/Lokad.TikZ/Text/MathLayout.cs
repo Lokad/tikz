@@ -45,7 +45,7 @@ internal sealed class MathLayout(Budget budget)
     private Face Get(string family, Style style, Source source)
     {
         var size = family == "extension" ? 10 : Size(style);
-        var id = "math-" + family + "-" + size.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        var id = FaceId(family, size);
         if (_loaded.Add(id))
         {
             budget.Charge(source, family switch { "roman" => 256 + 2455 + 21, "italic" => 128 + 164 + 6,
@@ -54,7 +54,22 @@ internal sealed class MathLayout(Budget budget)
         budget.Charge(source);
         return Faces[id].Value;
     }
-    private Face Get(MathFamily family, Style style, Source source) => Get(family.ToString().ToLowerInvariant(), style, source);
+    private static string FaceId(string family, int size) => (family, size) switch
+    {
+        ("roman", 5) => "math-roman-5", ("roman", 6) => "math-roman-6",
+        ("roman", 7) => "math-roman-7", ("roman", 8) => "math-roman-8",
+        ("roman", 10) => "math-roman-10", ("roman", 12) => "math-roman-12",
+        ("italic", 5) => "math-italic-5", ("italic", 6) => "math-italic-6",
+        ("italic", 7) => "math-italic-7", ("italic", 8) => "math-italic-8",
+        ("italic", 10) => "math-italic-10", ("italic", 12) => "math-italic-12",
+        ("symbol", 5) => "math-symbol-5", ("symbol", 6) => "math-symbol-6",
+        ("symbol", 7) => "math-symbol-7", ("symbol", 8) => "math-symbol-8",
+        ("symbol", 10) => "math-symbol-10", ("symbol", 12) => "math-symbol-12",
+        ("extension", 10) => "math-extension-10",
+        _ => throw new InvalidOperationException("Invalid bundled math face.")
+    };
+    private Face Get(MathFamily family, Style style, Source source) => Get(family switch
+        { MathFamily.Roman => "roman", MathFamily.Italic => "italic", MathFamily.Symbol => "symbol", _ => throw new InvalidOperationException() }, style, source);
     private int Parameter(string family, int number, Style style, Source source)
     {
         var face = Get(family, style, source);
@@ -100,7 +115,8 @@ internal sealed class MathLayout(Budget budget)
         budget.Charge(atom.Source);
         if (atom is MathGroup { Body.Items: [MathAtom { Class: MathClass.Ordinary } single] } group)
             return Simple(single, group.Alphabet == MathAlphabet.Inherit ? alphabet : group.Alphabet);
-        return atom is MathGlyph g ? g with { Family = alphabet == MathAlphabet.Roman && g.Alphabetic ? MathFamily.Roman : g.Family } : null;
+        return atom is MathGlyph g ? alphabet == MathAlphabet.Roman && g.Alphabetic && g.Family != MathFamily.Roman
+            ? g with { Family = MathFamily.Roman } : g : null;
     }
     private Box List(MathList list, Style style, MathAlphabet alphabet, int depth)
     {
