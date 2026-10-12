@@ -1,0 +1,20 @@
+\begin{tikzpicture}[thick,fine/.style={ultra thin},ordered/.style={very thin,line width=0.9pt}]
+  \coordinate (start) at (0pt,0pt);
+  \coordinate (end) at (30pt,39pt);
+  \draw[ultra thin] (0pt,0pt) -- (30pt,0pt);
+  \draw[very thin] (0pt,3pt) -- (30pt,3pt);
+  \draw[thin] (0pt,6pt) -- (30pt,6pt);
+  \draw[semithick] (0pt,9pt) -- (30pt,9pt);
+  \draw[thick] (0pt,12pt) -- (30pt,12pt);
+  \draw[very thick] (0pt,15pt) -- (30pt,15pt);
+  \draw[ultra thick] (0pt,18pt) -- (30pt,18pt);
+  \draw[ultra thick,line width=0.3pt] (0pt,21pt) -- (30pt,21pt);
+  \draw[line width=0.3pt,ultra thick] (0pt,24pt) -- (30pt,24pt);
+  \draw[very thin,ultra thin] (0pt,27pt) -- (30pt,27pt);
+  \begin{scope}[semithick]
+    \draw (0pt,30pt) -- (30pt,30pt);
+    \draw[ordered] (0pt,33pt) -- (30pt,33pt);
+  \end{scope}
+  \draw (0pt,36pt) -- (30pt,36pt);
+  \draw[fine] (0pt,39pt) -- (30pt,39pt);
+\end{tikzpicture}

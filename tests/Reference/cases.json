@@ -10,6 +10,7 @@
     { "id": "clip-scope", "source": "tests/Fixtures/clip-scope.tikz", "features": ["clipping", "clip-scope", "picture-bounds", "fill"], "numericTolerancePixels": 0.02 },
     { "id": "circle-ellipse", "source": "tests/Fixtures/circle-ellipse.tikz", "features": ["circles", "ellipses", "basis-radii", "physical-radii", "shape-continuation"], "numericTolerancePixels": 0.02 },
     { "id": "ellipse-basis", "source": "tests/Fixtures/ellipse-basis.tikz", "features": ["ellipses", "oblique-basis", "affine-transform", "physical-radii", "shape-continuation"], "numericTolerancePixels": 0.02 },
-    { "id": "arc-sweeps", "source": "tests/Fixtures/arc-sweeps.tikz", "features": ["arcs", "sweep-direction", "arc-subdivision", "basis-radii", "physical-radii", "arc-continuation"], "numericTolerancePixels": 0.02 }
+    { "id": "arc-sweeps", "source": "tests/Fixtures/arc-sweeps.tikz", "features": ["arcs", "sweep-direction", "arc-subdivision", "basis-radii", "physical-radii", "arc-continuation"], "numericTolerancePixels": 0.02 },
+    { "id": "width-presets", "source": "tests/Fixtures/width-presets.tikz", "features": ["thickness-presets", "scaled-point-widths", "ordered-width-overrides", "scoped-widths", "style-widths"], "numericTolerancePixels": 0.000021 }
   ]
 }

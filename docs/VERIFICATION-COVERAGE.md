@@ -7,7 +7,8 @@ camera choices, execution commands and limits of each conformance claim.
 
 | Coverage | Decision | Evidence that must remain |
 | --- | --- | --- |
-| Ordinary feature, diagnostic and resource tests | Retain all 221 methods / 873 expanded cases across 39 classes | Native quantities, returned SVG, UTF-16 spans, explicit rejection, shared limits, ongoing cancellation and call isolation observe different boundaries |
+| Ordinary feature, diagnostic and resource tests | Retain all 222 methods / 875 expanded cases across 40 classes | Native quantities, returned SVG, UTF-16 spans, explicit rejection, shared limits, ongoing cancellation and call isolation observe different boundaries |
+| Width-preset native grid | One whole-corpus conversion observes seven presets and seven ordered/style/scope mechanisms | Exact scene and emitted-SVG sp widths/bounds supplement the generic source/path/paint checks. New-case PDF image admission remains open; preserve its native-only failure |
 | Fixed malformed-input corpus | Preserve the original 5,746 exact UTF-16 inputs in the public development workflow | Conversion invariants and a separate current-input replay; two semantic saved-source/result faults, with shared artifact/process controls reused. Focused ordinary feature limits remain separate |
 | Native scene measurements and returned SVG checking | Retain separately | A correct trace can accompany incorrect serialized output; glyph, border, arrow, dash and math references have distinct quantities and owners |
 | Straight/curved-edge historical/current source provenance | Share the byte/source guard and three reviewed native-reader revisions; retain distinct capture ownership and policies | Exact frozen reports/assets; current guards reject before conversion; raw qualifications require current sources; curved checker inheritance stays explicit; fresh owned conversion receives independent numeric/primary/PDF checking |

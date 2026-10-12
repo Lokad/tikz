@@ -1,0 +1,685 @@
+{
+  "schemaVersion": 2,
+  "units": "Independent PGF bounds, anchors, soft-path coordinates and widths in TeX pt; paint from the pinned SVG driver; SVG translation in bp; PDF registration from shipped-out positions",
+  "pictureBoundsPt": {
+    "minX": -0.8,
+    "minY": -0.05,
+    "maxX": 30.8,
+    "maxY": 39.05
+  },
+  "boxPt": {
+    "width": 31.6,
+    "height": 39.1,
+    "depth": 0
+  },
+  "anchorsPt": {
+    "start": {
+      "x": 0,
+      "y": 0
+    },
+    "end": {
+      "x": 30,
+      "y": 39
+    }
+  },
+  "svgOriginBp": {
+    "x": 62.565383,
+    "y": 91.706105
+  },
+  "pdfOriginPixels": {
+    "x": 179.420491840494,
+    "y": 218.27480170065388
+  },
+  "stroke": {
+    "widthPt": 0.1,
+    "color": "#000000",
+    "opacity": 1
+  },
+  "paths": [
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 0
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.1,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 3
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 3
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.2,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 6
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 6
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.4,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 9
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 9
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.6,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 12
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 12
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.8,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 15
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 15
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 1.2,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 18
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 18
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 1.6,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 21
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 21
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.3,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 24
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 24
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 1.6,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 27
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 27
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.1,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 30
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 30
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.6,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 33
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 33
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.9,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 36
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 36
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.8,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    },
+    {
+      "segments": [
+        {
+          "kind": "Move",
+          "end": {
+            "x": 0,
+            "y": 39
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "kind": "Line",
+          "end": {
+            "x": 30,
+            "y": 39
+          },
+          "control1": {
+            "x": 0,
+            "y": 0
+          },
+          "control2": {
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "stroke": true,
+      "fill": false,
+      "widthPt": 0.1,
+      "strokeColor": "#000000",
+      "fillColor": "none",
+      "strokeOpacity": 1,
+      "fillOpacity": 1,
+      "cap": "butt",
+      "join": "miter",
+      "fillRule": "nonzero",
+      "dashPt": [],
+      "dashPhasePt": 0
+    }
+  ],
+  "clips": []
+}

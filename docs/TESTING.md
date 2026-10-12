@@ -4,7 +4,8 @@ Use the [verification coverage and execution index](VERIFICATION.md) for fast
 affected-feature checks and the separate final 30-case qualification matrix.
 It maps retained requirements, consolidated corruptions and iteration views.
 
-The required corpus currently contains nine independently authored fixtures:
+The required primitive corpus contains nine image-qualified fixtures and a new
+width corpus whose PDF image admission remains open:
 
 | Fixture | Grounded behavior |
 | --- | --- |
@@ -17,9 +18,12 @@ The required corpus currently contains nine independently authored fixtures:
 | `circle-ellipse` | Four cubic quadrants, unitless/physical radii, circle continuation and named-anchor precision |
 | `ellipse-basis` | Oblique basis vectors, affine ellipse axes, physical radii independent of basis lengths |
 | `arc-sweeps` | Clockwise/counterclockwise sweeps, PGF segment subdivision, physical/basis radii and relative continuation |
+| `width-presets` | Exact native sp widths for seven presets, ordered overrides, styles and scope restoration; primary SVG agreement, unresolved native PDF raster-policy gap |
 
 These fixtures establish behavior for their concrete forms. Separate text,
 node, and dash corpora have their own scoped evidence and admission states.
+The [width corpus](../tests/Reference/width-presets/README.md) remains required;
+the cached comparison reports its PDF mismatch until that gap is resolved.
 Additional shape options and combinations still need oracle evidence.
 Named coordinates remain stored globally; path references reproduce
 PGF's bounded reciprocal/scaled-point round trip through the local frame.
