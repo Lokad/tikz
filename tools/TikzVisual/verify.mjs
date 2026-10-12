@@ -53,8 +53,8 @@ async function command(name,executable,args,kind='report',role){
  phase=name;console.log(JSON.stringify({phase,started:new Date().toISOString()}));const t=performance.now();
  let result,r,markers;
  if(kind==='report'){
-  result=await runCalcChild(root,executable,args,name,save,1800000);
-  const bytes=await readFile(path.join(root,result.report));assert.equal(sha256(bytes),result.sha256);const report=JSON.parse(bytes);
+  const child=await runCalcChild(root,executable,args,name,save,1800000,true);
+  result=child.handle;const {bytes,report}=child;
   assert.equal(report.completed,true);if(role)assert.equal(report.role,role);
   if(role==='path-label-portable-cache-materialization')assert.equal(report.canonicalRoundtripVerified,true);
   await save('receipts/'+name+'.json',bytes);
