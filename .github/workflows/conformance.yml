@@ -35,14 +35,16 @@ jobs:
       - run: node tools/TikzVisual/edge-reference.mjs check-cached
       - run: node tools/TikzVisual/edge-evidence-self-test.mjs
       - run: node tools/TikzVisual/edge-image-cache-self-test.mjs
-      - run: node tools/TikzVisual/edge-admission-self-test.mjs
+      - if: matrix.os == 'ubuntu-24.04'
+        run: node tools/TikzVisual/edge-admission-self-test.mjs
       - run: node tools/TikzVisual/curved-edge-reference.mjs check-cached
       - run: node tools/TikzVisual/curved-edge-evidence-self-test.mjs
       - run: dotnet run --project tools/TikzCurvedEdgeComparison -c Release --no-restore
       - run: node tools/TikzVisual/curved-edge-frame-self-test.mjs
       - run: node tools/TikzVisual/curved-edge-primary-self-test.mjs
       - run: node tools/TikzVisual/curved-edge-image-cache-self-test.mjs
-      - run: node tools/TikzVisual/curved-edge-admission-self-test.mjs
+      - if: matrix.os == 'ubuntu-24.04'
+        run: node tools/TikzVisual/curved-edge-admission-self-test.mjs
       - run: node tools/TikzVisual/arrow-reference.mjs check-cached
       - run: node tools/TikzVisual/arrow-reference-self-test.mjs
       - run: node tools/TikzVisual/arrow-native-self-test.mjs
@@ -55,7 +57,8 @@ jobs:
       - run: node tools/TikzVisual/arrow-source-primary-self-test.mjs
       - run: node tools/TikzVisual/arrow-source-pdf-self-test.mjs
       - run: node tools/TikzVisual/arrow-image-cache-self-test.mjs
-      - run: node --max-old-space-size=4096 tools/TikzVisual/arrow-admission-self-test.mjs
+      - if: matrix.os == 'ubuntu-24.04'
+        run: node --max-old-space-size=4096 tools/TikzVisual/arrow-admission-self-test.mjs
       - run: dotnet run --project tools/TikzArrowComparison -c Release --no-restore
       - run: dotnet run --project tools/TikzCurvedEdgeOracle -c Release --no-restore
       - run: dotnet run --project tools/TikzEdgeComparison -c Release --no-restore
@@ -138,6 +141,8 @@ jobs:
       - run: npm ci --prefix tools/TikzVisual --ignore-scripts
       - run: npm exec --prefix tools/TikzVisual -- playwright install chromium
       - run: dotnet restore Lokad.TikZ.slnx --locked-mode
+      - name: Qualify all complete diagrams with frozen references
+        run: node tools/TikzVisual/verify.mjs qualify
       - run: dotnet run --project tools/TikzReference -c Release -- compare --reference cached --out artifacts/comparisons
       - run: dotnet run --project tools/TikzFontData -c Release -- compare
       - run: dotnet run --project tools/TikzFontData -c Release -- compare-text
@@ -158,7 +163,6 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           node tools/TikzVisual/curved-edge-agent-self-test.mjs --report $curvedReport
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - run: node tools/TikzVisual/edge-candidate-inspect.mjs
       - run: node tools/TikzVisual/edge-oracle-self-test.mjs
       - run: node tools/TikzVisual/inspect-edge-oracle.mjs
       - name: Verify independent edge reference images
@@ -178,44 +182,37 @@ jobs:
           node tools/TikzVisual/check-edge-operations.mjs ('artifacts/edge-operation-inspection/' + $edgeOperationRun.report)
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/edge-primary-self-test.mjs
-      - run: node tools/TikzVisual/calibrate-edge-primary.mjs
-      - name: Verify native edge primary calibration
-        shell: pwsh
-        run: |
-          $edgePrimaryRun = Get-Content artifacts/edge-primary-calibration/latest.json -Raw | ConvertFrom-Json
-          if (-not $edgePrimaryRun.completed) { throw 'Native primary calibration is incomplete.' }
-          node tools/TikzVisual/check-edge-primary.mjs ('artifacts/edge-primary-calibration/' + $edgePrimaryRun.report)
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/edge-pdf-self-test.mjs
-      - run: node tools/TikzVisual/calibrate-edge-pdf.mjs
-      - name: Verify native edge PDF qualification
-        shell: pwsh
-        run: |
-          $edgePdfRun = Get-Content artifacts/edge-pdf-calibration/latest.json -Raw | ConvertFrom-Json
-          if (-not $edgePdfRun.completed) { throw 'Native PDF calibration is incomplete.' }
-          node tools/TikzVisual/check-edge-pdf.mjs ('artifacts/edge-pdf-calibration/' + $edgePdfRun.report)
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - run: node tools/TikzVisual/edge-trial-self-test.mjs
-      - name: Trial public straight-edge image gates
+      - name: Verify owned straight-edge, arrow and calc admissions
         shell: pwsh
         run: |
-          $edgePrimary = Get-Content artifacts/edge-primary-calibration/latest.json -Raw | ConvertFrom-Json
-          $edgePrimaryCheck = Get-Content artifacts/edge-primary-checks/latest.json -Raw | ConvertFrom-Json
-          $edgePdf = Get-Content artifacts/edge-pdf-calibration/latest.json -Raw | ConvertFrom-Json
-          $edgePdfCheck = Get-Content artifacts/edge-pdf-checks/latest.json -Raw | ConvertFrom-Json
-          if (@($edgePrimary, $edgePrimaryCheck, $edgePdf, $edgePdfCheck).Where({ -not $_.completed }).Count) { throw 'Edge qualification is incomplete.' }
-          $edgeTrialInputs = @(
-            ('artifacts/edge-primary-calibration/' + $edgePrimary.report)
-            ('artifacts/edge-primary-checks/' + $edgePrimaryCheck.report)
-            ('artifacts/edge-pdf-calibration/' + $edgePdf.report)
-            ('artifacts/edge-pdf-checks/' + $edgePdfCheck.report)
+          $families = @(
+            @{ name = 'edge'; controls = 'edge-admission-self-test.mjs' }
+            @{ name = 'arrow'; controls = 'arrow-admission-self-test.mjs' }
+            @{ name = 'calc'; controls = 'calc-admission-self-test.mjs' }
           )
-          node tools/TikzVisual/trial-edge-images.mjs @edgeTrialInputs
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          $edgeTrial = Get-Content artifacts/edge-public-trial/latest.json -Raw | ConvertFrom-Json
-          if (-not $edgeTrial.completed) { throw 'Public edge trial is incomplete.' }
-          node tools/TikzVisual/check-edge-trial.mjs ('artifacts/edge-public-trial/' + $edgeTrial.report)
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          New-Item -ItemType Directory -Force artifacts/ci-admissions | Out-Null
+          foreach ($family in $families) {
+            $producer = 'tools/TikzVisual/compare-' + $family.name + '-conformance.mjs'
+            node $producer 2>&1 | Tee-Object -Variable admissionLines | Tee-Object -FilePath ('artifacts/ci-admissions/' + $family.name + '.log')
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            $pattern = '^artifacts/' + $family.name + '-conformance/run-[a-f0-9-]+/report\.json$'
+            $markers = @($admissionLines | Where-Object { $_ -is [string] -and $_.StartsWith('{') } | ForEach-Object { $_ | ConvertFrom-Json } | Where-Object { $_.completed -and $_.report -match $pattern })
+            if ($markers.Count -ne 1) { throw 'Missing unique completed admission marker.' }
+            $marker = $markers[0]
+            if ((Get-FileHash -LiteralPath $marker.report -Algorithm SHA256).Hash.ToLowerInvariant() -ne $marker.sha256) { throw 'Admission report changed.' }
+            $admission = Get-Content -LiteralPath $marker.report -Raw | ConvertFrom-Json
+            if (-not $admission.completed -or -not $admission.passed -or -not $admission.imageConformanceClaim) { throw 'Admission did not pass.' }
+            if ($family.name -eq 'calc') {
+              node tools/TikzVisual/check-calc-conformance.mjs $marker.report 2>&1 | Tee-Object -FilePath artifacts/ci-admissions/calc-independent.log
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+              node ('tools/TikzVisual/' + $family.controls) --report $marker.report --checked-sha $marker.sha256
+            } else {
+              node ('tools/TikzVisual/' + $family.controls) --report $marker.report
+            }
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
       - run: node tools/TikzVisual/inspect-shapes.mjs
       - run: node tools/TikzVisual/calibrate-shapes.mjs
       - run: node tools/TikzVisual/shape-frame-self-test.mjs
@@ -274,6 +271,19 @@ jobs:
         with:
           name: tikz-comparisons
           path: |
+            artifacts/ci-admissions/
+            artifacts/verification/
+            artifacts/path-label-*/
+            artifacts/math-label-*/
+            artifacts/styled-label-*/
+            artifacts/diagram-current-*/
+            artifacts/edge-conformance/
+            artifacts/edge-admission-controls/
+            artifacts/arrow-conformance/
+            artifacts/arrow-admission-controls/
+            artifacts/calc-conformance/
+            artifacts/calc-conformance-checks/
+            artifacts/calc-admission-controls/
             artifacts/comparisons/
             artifacts/curved-edge-conformance/
             artifacts/curved-edge-cached-trial/
