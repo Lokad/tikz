@@ -50,7 +50,7 @@ later **3m32s** observation. Later reductions are separate accepted work units.
 These are host wall times, not controlled benchmarks. The detailed mapping keeps
 the counts, scope and timing caveats; hosted/release acceptance remains separate.
 
-The current 30-diagram review reduced complete routine qualification from
+The earlier 30-diagram review reduced complete routine qualification from
 **46m14s → 35m50s → 21m09s → 15m58s → 13m59s**. The best accepted
 configuration is `df0d257`, restored byte for byte at `9a7e827`; a slower
 15m43s scheduling trial was withdrawn. The affected four-diagram loop took
@@ -58,7 +58,7 @@ configuration is `df0d257`, restored byte for byte at `9a7e827`; a slower
 times, not controlled benchmarks.
 
 This review closed after **3h45m33s**, within its four-hour limit. The complete
-routine still exceeds 600s by **238.533s**. All 873 ordinary cases, 30 fixtures,
+routine at that checkpoint exceeded 600s by **238.533s**. All 873 ordinary cases, 30 fixtures,
 241 primary and 240 PDF observations, 361 fresh source recaptures and retained
 controls pass. All 481 observations, 722 source rasters and 56 returned SVGs
 match the previous accepted output. Historical-defect witnesses and the full
@@ -68,3 +68,19 @@ Independent checking and raster generation dominate the remaining costs. The
 [detailed mapping](VERIFICATION.md#recorded-outcomes) records their measured
 costs and the unchanged family-admission requirements. Native regeneration is
 separate; no required scope or pixel policy was removed to claim ten minutes.
+
+The subsequent bounded saved-report read change at `996e085` passes complete
+fresh qualification in **595.844s (9m56s)**, external 596.511s. All 875 ordinary
+cases, 30 diagrams, 241 primary/240 PDF observations and 361 fresh source
+recaptures pass. All 481 observations, 722 source/reference rasters and 56
+returned SVGs match the accepted baseline exactly. Eight bounded read/hash
+workers retain every asset and check; a shared failure-settlement control
+detects deliberately early rejection with reads still active. Required affected
+calc admission, independent replay and all 84 bound controls also pass. Native
+calibration, pixel policies and historical-defect coverage remain unchanged.
+
+This observed run meets 600s with only 4.156s internal/3.489s external margin;
+it does not guarantee every subsequent run stays below ten minutes. The scoped
+read-cost review closed in 56m44s, within two hours. Independent checking and
+raster generation remain the largest costs; fresh family admission and hosted
+release requirements retain their distinct scopes.

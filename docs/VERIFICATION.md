@@ -333,7 +333,7 @@ The historical pre-feature matrix had 26 diagrams, 624 primary views, 208 PDF vi
 negatives remain detected. The later matrix's 832 records and 5,008 PNGs match
 the prior accepted output byte for byte.
 
-The current 30-diagram review reduced observed complete routine qualification
+The earlier 30-diagram review reduced observed complete routine qualification
 from **46m14s → 35m50s → 21m09s → 15m58s → 13m59s**. The last run took
 **838.533s** at `df0d257`; `9a7e827` restores its exact tracked tree after a
 slower four-job/metadata trial (943.230s) was withdrawn. All 2,083 source files
@@ -341,7 +341,7 @@ match the qualified export. The final affected four-diagram loop took **4m47s**,
 which does not establish the complete-routine target.
 
 The review closed after **3h45m33s**, within four hours; the 600s target remains
-unmet by **238.533s**. The last two accepted full runs began without another
+unmet by **238.533s** at its closure. The last two accepted full runs began without another
 acceptance process active. Earlier runs overlapped other acceptance work. These
 are observed host wall times, not controlled attribution of every saving.
 Native-reference regeneration and completed performance calibration were not
@@ -384,3 +384,36 @@ reader (`c3682f8`), PDF text paint (`57c7ce7`) and unequal-leg orthogonal label
 timing (`5bf5a9d`). Current checks pass; restoring each defect fails the retained
 check, including all ten timer cases. This establishes those three regressions;
 it does not claim replay of every historical defect or hosted qualification.
+
+The subsequent saved-report loading change at `996e085` passes complete fresh
+routine qualification in **595.844s (9m56s)**, external stopwatch 596.511s.
+It started without another acceptance process active. All 875 ordinary cases,
+30 fixtures/28 rows, 241 primary and 240 PDF observations, 361 fresh source
+recaptures and retained controls pass. All 481 observations, 722 compared
+source/reference rasters and 56 returned SVGs match the prior accepted export.
+The required changed-dependency calc admission, independent 540-pair/13,212-region
+replay, 2,196 exact PNG reproductions and 84 bound controls also pass. All 2,096
+committed/export/original source hashes reconcile.
+
+The existing loader reads every declared asset through eight bounded stat/read/hash
+workers, preserving path, digest, role, UTF-8 and asset-byte limits, map order and
+settled in-flight work after failure. A shared control detects deliberately early
+rejection. Native calibration and pixel policies remain fixed; no diagram, view
+or required check was removed. The scoped read-cost review closed in 56m44s,
+within two hours. The observed margin below 600s is only 4.156s internal/3.489s
+external; this is a host measurement rather than a guarantee or controlled
+attribution of every saving.
+
+| Remaining stage after bounded reads | Executions | Aggregate child seconds |
+| --- | ---: | ---: |
+| Independent current checking | 28 | 906.247 |
+| PDF production | 28 | 358.913 |
+| Primary production | 28 | 292.150 |
+| Frozen-reference materialization/roundtrip | 32 | 236.688 |
+| Negative mechanism basis | 1 | 198.565 |
+| Family/harness corruption controls | 18 | 146.875 |
+| Numeric comparison | 26 | 112.987 |
+
+These child costs overlap and are not additive parent wall time. Unchanged
+reference evidence stays reusable; newly converted output still receives its
+independent checks. Hosted and broader release acceptance remain open.
