@@ -21,7 +21,11 @@ export const dashLinesDecodedSha256 = '65bb93ef9e336d09e7c4864dc38d5630da6a1def1
 export const dashLinesNativeSha256 = '1990bc5b72914cb50437e189dfdcc0e6c8185279595f8863d22c23baae36d85c';
 export const dashLinesQualificationSha256 = 'e8232f106c8fce33089602448937f7f633344889353a30dd2680573452068aae';
 export const dashLinesGuardTools = ['dash-lines-policy.mjs', 'compare-dash-lines-conformance.mjs', 'dash-lines-policy-self-test.mjs',
-  'promote-dash-lines.mjs'].map(p => 'tools/TikzVisual/' + p);
+  'promote-dash-lines.mjs'].map(p => 'tools/TikzVisual/' + p).concat([
+    'tools/TikzDashComparison/Program.cs', 'tools/TikzDashComparison/EmittedSvgEvidence.cs',
+    'tools/TikzDashComparison/DashGeometryComparison.cs', 'tools/TikzDashComparison/TikzDashComparison.csproj',
+    'tools/TikzDashComparison/packages.lock.json']);
+export const dashLinesGuardFiles = c => [...new Set([...Object.keys(c.toolHashes), ...dashLinesGuardTools])].sort();
 const extraTools = ['calibrate-dash-lines-pdf-cairo.mjs', 'dash-lines-pdf-trial-policy.mjs', 'dash-lines-pdf-evidence.mjs',
   'fixed-pdf-diagnostics.mjs', 'dash-lines-pdf-image-pair.mjs', 'shape-pdf-image-pair.mjs', 'shape-pdf-trial-policy.mjs',
   'inspect-dash-lines-pdf-rasterizers.mjs', 'dash-lines-pdf-viewport.mjs', 'prepare-dash-lines-admission.mjs'].map(p => 'tools/TikzVisual/' + p);
@@ -167,8 +171,12 @@ export async function loadDashLinesPolicy(renderer, read = readFile) {
   assert.deepEqual(profile.calibration, { file: dashLinesCalibrationFile, sha256: dashLinesCalibrationSha256, decodedSha256: dashLinesDecodedSha256 });
   const compressed = await read(path.join(root, dashLinesCalibrationFile)); assert.ok(compressed.length <= 8000000); assert.equal(sha256(compressed), dashLinesCalibrationSha256);
   const bytes = gunzipSync(compressed, { maxOutputLength: 64000000 }); assert.equal(sha256(bytes), dashLinesDecodedSha256); const c = JSON.parse(bytes);
-  assert.deepEqual(Object.keys(profile.guardToolHashes).sort(), [...dashLinesGuardTools].sort());
-  for (const [p, h] of Object.entries({ ...c.toolHashes, ...profile.guardToolHashes })) assert.equal(sha256(await read(path.join(root, p))), h, 'Changed line tool: ' + p);
+  // Exact calibration pins authenticate original producers; the profile owns
+  // today's consumers, including the converter-side numeric/SVG checker.
+  assert.deepEqual(Object.keys(profile.guardToolHashes).sort(), dashLinesGuardFiles(c));
+  for (const [p, h] of Object.entries(profile.guardToolHashes)) {
+    assert.match(h, hashPattern); assert.equal(sha256(await read(path.join(root, p))), h, 'Changed line tool: ' + p);
+  }
   const native = await readDashLinesNative(read); assert.equal(native.snapshotSha256, dashLinesNativeSha256);
   const pdf = await read(path.join(root, 'tests/Reference/Dashes/native/reference.pdf')); assert.equal(sha256(pdf), c.native.pdfSha256);
   const reconstruction = await reconstructDashLines(renderer, native), validated = await validateDashLinesCalibration(c, native, reconstruction, renderer);

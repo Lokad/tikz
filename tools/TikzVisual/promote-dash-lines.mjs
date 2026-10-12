@@ -9,7 +9,7 @@ import { readDashLinesNative, reconstructDashLines } from './dash-lines-oracle.m
 import { shapeViews } from './shape-primary-trial-policy.mjs';
 import { shapePdfViews } from './shape-pdf-trial-policy.mjs';
 import { dashLinesPolicyId, dashLinesScope, dashLinesProfileFile, dashLinesCalibrationFile,
-  dashLinesCalibrationSha256, dashLinesDecodedSha256, dashLinesGuardTools, validateDashLinesCalibration } from './dash-lines-policy.mjs';
+  dashLinesCalibrationSha256, dashLinesDecodedSha256, dashLinesGuardFiles, validateDashLinesCalibration } from './dash-lines-policy.mjs';
 
 assert.equal(process.argv.length, 2);
 const base = path.join(root, 'artifacts/dash-lines-prepared'), pointer = JSON.parse(await readFile(path.join(base, 'latest.json')));
@@ -25,7 +25,7 @@ const renderer = await createRenderer();
 try {
   const native = await readDashLinesNative(), reconstruction = await reconstructDashLines(renderer, native);
   const validated = await validateDashLinesCalibration(calibration, native, reconstruction, renderer), guardToolHashes = {};
-  for (const p of dashLinesGuardTools) guardToolHashes[p] = sha256(await readFile(path.join(root, p)));
+  for (const p of dashLinesGuardFiles(calibration)) guardToolHashes[p] = sha256(await readFile(path.join(root, p)));
   const profile = { schemaVersion: 1, id: dashLinesPolicyId, scope: dashLinesScope, approvedImagePolicy: true,
     counts: { native: 927, frame: 6, primary: 492, pdfPerRoute: 176, pdfInstructions: 444 }, requiredViews: { primary: shapeViews, pdf: shapePdfViews },
     calibration: { file: dashLinesCalibrationFile, sha256: dashLinesCalibrationSha256, decodedSha256: dashLinesDecodedSha256 }, guardToolHashes,

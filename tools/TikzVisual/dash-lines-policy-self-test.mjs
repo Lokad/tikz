@@ -40,6 +40,13 @@ async function main() {
       }), 'changed evidence');
     }
     console.log('Missing/changed evidence controls passed: ' + controls.length);
+    const changedTools = Object.entries(e.calibration.toolHashes).filter(([file, h]) => h !== e.profile.guardToolHashes[file]);
+    assert.equal(changedTools.length, 3, 'Review changed original/current dash-line identities.');
+    for (const [file, historical] of changedTools) {
+      const profile = structuredClone(e.profile); profile.guardToolHashes[file] = historical;
+      await reject('historical-guard-substitution/' + file, () => loadDashLinesPolicy(renderer,
+        p => relative(p) === dashLinesProfileFile ? Buffer.from(JSON.stringify(profile)) : readFile(p)), 'historical/current sources');
+    }
     for (const [name, change] of [
       ['borrowed-policy', p => p.id = 'different-fixture-policy'], ['borrowed-scope', p => p.scope = 'All TikZ'],
       ['unapproved-images', p => p.approvedImagePolicy = false], ['partial-native', p => p.counts.native--],
