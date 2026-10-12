@@ -8,7 +8,7 @@ import path from 'node:path';
 import {root,sha256,writeArtifact} from './shape-oracle-bundle.mjs';
 import {createRenderer} from './compare.mjs';
 import {loadCurvedPolicy,validateCurvedCalibration,combineCurvedNodes,evaluateCurvedPrimary,
-  requireCurvedRenderer,curvedCanonical,curvedProfileFile,curvedCalibrationFile,curvedGuardTools} from './curved-node-admission-policy.mjs';
+  requireCurvedRenderer,curvedCanonical,curvedProfileFile,curvedCalibrationFile,curvedGuardTools,readCurvedInputs} from './curved-node-admission-policy.mjs';
 
 const base=path.join(root,'artifacts/curved-node-admission-controls'),output=path.join(base,'run-'+randomUUID()),artifacts={},controls=[];
 const relative=p=>path.relative(root,p).split(path.sep).join('/');let phase='immutable-evidence';
@@ -31,6 +31,14 @@ async function main(){
     }
     console.log('Missing/changed evidence: '+controls.length+' controls passed.');
     phase='profile-corruption';
+    const changedTools=Object.keys(c.toolHashes).filter(file=>e.profile.guardToolHashes[file]!==c.toolHashes[file]);
+    assert.equal(changedTools.length,6,'Review changed curved-node producer/current identities.');
+    for(const file of changedTools){
+      const profile=structuredClone(e.profile);profile.guardToolHashes[file]=c.toolHashes[file];
+      await reject('historical-guard-substitution/'+file,()=>loadCurvedPolicy(renderer,workspace,
+        p=>relative(p)===curvedProfileFile?Promise.resolve(Buffer.from(JSON.stringify(profile))):read(p)),'historical/current source boundary');
+    }
+    await reject('strict-calibration-producer-replay',()=>readCurvedInputs(c,read),'historical/current source boundary');
     for(const[name,change]of[
       ['borrowed-id',p=>p.id='different-family'],['borrowed-scope',p=>p.scope='All TikZ'],['unapproved',p=>p.approvedImagePolicy=false],
       ['partial-numeric',p=>p.counts.numeric--],['partial-frame',p=>p.counts.frame--],['partial-primary',p=>p.counts.primary--],['partial-PDF',p=>p.counts.pdfPerRoute--],

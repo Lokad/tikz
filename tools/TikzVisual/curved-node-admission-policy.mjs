@@ -23,7 +23,10 @@ export const curvedScope='Only the fixed 28 circle/ellipse nodes and 70 glyphs i
 export const curvedCounts={numeric:4461,frame:406,primary:1188,pdfPerRoute:408,serialization:812,regions:98,sensitivity:15};
 export const curvedGuardTools=['curved-node-admission-policy.mjs','promote-curved-nodes.mjs',
   'compare-curved-node-conformance.mjs','curved-node-admission-self-test.mjs'].map(p=>'tools/TikzVisual/'+p)
-  .concat(['tools/TikzVisual/shape-pdf-trial-policy.mjs','tools/TikzShapeComparison/Program.cs','tools/TikzShapeComparison/TikzShapeComparison.csproj','tools/TikzShapeComparison/packages.lock.json']);
+  .concat(['tools/TikzVisual/shape-pdf-trial-policy.mjs','tools/TikzShapeComparison/Program.cs','tools/TikzShapeComparison/TikzShapeComparison.csproj','tools/TikzShapeComparison/packages.lock.json',
+    'tools/TikzShapeCalibration/MathEvents.cs','tools/TikzShapeComparison/NativeMathLabelTrace.cs',
+    'tools/TikzShapeComparison/NativeMathFaces.cs','tools/TikzShapeComparison/NativeMathSvg.cs']);
+export const curvedGuardFiles=c=>[...new Set([...curvedGuardTools,...Object.keys(c.toolHashes)])].sort();
 export const curvedCanonical=b=>Buffer.from(b.toString('utf8').replaceAll('\r\n','\n'));
 export const curvedView=r=>({frame:r.frame,scale:r.scale,background:r.background});
 const hashPattern=/^[a-f0-9]{64}$/;
@@ -48,7 +51,7 @@ export function decodeCurvedCalibration(compressed){
   const bytes=gunzipSync(compressed,{maxOutputLength:64000000});assert.equal(sha256(bytes),curvedDecodedSha256);
   return{calibration:JSON.parse(bytes),bytes,compressed};
 }
-export async function readCurvedInputs(c,read=readFile){
+export async function readCurvedInputs(c,read=readFile,currentToolHashes=c.toolHashes){
   assert.equal(Object.keys(c.inputs).length,41);assert.equal(Object.keys(c.toolHashes).length,33);
   const buffers={};
   for(const[p,d]of Object.entries(c.inputs)){
@@ -59,7 +62,10 @@ export async function readCurvedInputs(c,read=readFile){
   }
   for(const[p,h]of Object.entries(c.toolHashes)){
     assert.match(h,hashPattern);assert.ok(/^(tools\/[\w./-]+|Directory\.Build\.props|global\.json)$/.test(p)&&!p.split('/').includes('..'));
-    assert.equal(sha256(curvedCanonical(await read(path.join(root,p)))),h,'Changed curved-node calibration tool: '+p);
+    // The immutable calibration retains its original producer identities.
+    // An admitted current profile separately binds every actual consumer.
+    const current=currentToolHashes[p];assert.match(current,hashPattern);
+    assert.equal(sha256(curvedCanonical(await read(path.join(root,p)))),current,'Changed curved-node current tool: '+p);
   }
   return buffers;
 }
@@ -199,11 +205,11 @@ export async function loadCurvedPolicy(renderer,workspace,read=readFile){
   assert.equal(profile.schemaVersion,1);assert.equal(profile.id,curvedPolicyId);assert.equal(profile.scope,curvedScope);assert.equal(profile.approvedImagePolicy,true);
   assert.deepEqual(profile.counts,curvedCounts);assert.deepEqual(profile.requiredViews,{primary:shapeViews,pdf:shapePdfViews});
   assert.deepEqual(profile.calibration,{file:curvedCalibrationFile,sha256:curvedCalibrationSha256,decodedSha256:curvedDecodedSha256});
-  assert.deepEqual(Object.keys(profile.guardToolHashes).sort(),[...curvedGuardTools].sort());
-  for(const[p,h]of Object.entries(profile.guardToolHashes)){assert.match(h,hashPattern);assert.equal(sha256(curvedCanonical(await read(path.join(root,p)))),h,'Changed curved-node gate: '+p);}
   const decoded=decodeCurvedCalibration(await read(path.join(root,curvedCalibrationFile))),c=decoded.calibration;
+  assert.deepEqual(Object.keys(profile.guardToolHashes).sort(),curvedGuardFiles(c));
+  for(const[p,h]of Object.entries(profile.guardToolHashes)){assert.match(h,hashPattern);assert.equal(sha256(curvedCanonical(await read(path.join(root,p)))),h,'Changed curved-node gate: '+p);}
   curvedSame(profile,curvedProfile(c,profile.guardToolHashes),'Changed reviewed curved-node profile.');
-  const buffers=await readCurvedInputs(c,read),validated=await validateCurvedCalibration(c,renderer,buffers,workspace),pdfPages={};
+  const buffers=await readCurvedInputs(c,read,profile.guardToolHashes),validated=await validateCurvedCalibration(c,renderer,buffers,workspace),pdfPages={};
   for(const scale of[1,4]){
     const b=buffers['tests/Reference/NodeShapes/pdf/pdf-page-'+scale+'x.png'],size=c.camera.rasterSizes[scale+'x'];
     assert.equal(b.subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.equal(b.subarray(12,16).toString(),'IHDR');

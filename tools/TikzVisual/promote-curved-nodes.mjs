@@ -5,7 +5,7 @@ import path from 'node:path';
 import {randomUUID} from 'node:crypto';
 import {root,sha256} from './shape-oracle-bundle.mjs';
 import {createRenderer} from './compare.mjs';
-import {curvedCalibrationFile,curvedProfileFile,curvedGuardTools,curvedCanonical,
+import {curvedCalibrationFile,curvedProfileFile,curvedGuardFiles,curvedCanonical,
   decodeCurvedCalibration,readCurvedInputs,validateCurvedCalibration,curvedProfile} from './curved-node-admission-policy.mjs';
 
 assert.equal(process.argv.length,2);
@@ -16,7 +16,7 @@ const read=filename=>filename.startsWith(path.join(root,'tests/Reference/NodeSha
 const buffers=await readCurvedInputs(c,read),renderer=await createRenderer();
 try{
   await validateCurvedCalibration(c,renderer,buffers,path.join(root,'artifacts/curved-node-promotion/run-'+randomUUID()));
-  const guards={};for(const p of curvedGuardTools)guards[p]=sha256(curvedCanonical(await readFile(path.join(root,p))));
+  const guards={};for(const p of curvedGuardFiles(c))guards[p]=sha256(curvedCanonical(await readFile(path.join(root,p))));
   const files={[curvedCalibrationFile]:decoded.compressed,[curvedProfileFile]:Buffer.from(JSON.stringify(curvedProfile(c,guards),null,2)+'\n')};
   for(const file of Object.values(c.frozen))files[file]=buffers[file];
   for(const[file,bytes]of Object.entries(files)){
