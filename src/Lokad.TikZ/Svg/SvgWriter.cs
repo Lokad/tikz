@@ -19,6 +19,11 @@ internal static class SvgWriter
         => (Math.Abs(value) < .0000005 ? 0 : value).ToString("0.######", CultureInfo.InvariantCulture);
     private static string PathNumber(double value, Budget budget, Source source)
     {
+        value = RoundedPathNumber(value, budget, source, out var format);
+        return value.ToString(format, CultureInfo.InvariantCulture);
+    }
+    private static double RoundedPathNumber(double value, Budget budget, Source source, out string format)
+    {
         // A shorter decimal can recover the exact native dimension even when
         // it differs from its ideal real value. Keep precision for values
         // between scaled points, such as analytic curve coordinates.
@@ -31,10 +36,18 @@ internal static class SvgWriter
                 budget.Charge(source);
                 var candidate = Math.Round(value, places, MidpointRounding.AwayFromZero);
                 if (Math.Round(candidate * 65536, MidpointRounding.AwayFromZero) == integer)
-                    return candidate.ToString("0.#####", CultureInfo.InvariantCulture);
+                { format = "0.#####"; return candidate; }
             }
         }
-        return (Math.Abs(value) < .0000000000005 ? 0 : value).ToString("0.############", CultureInfo.InvariantCulture);
+        format = "0.############";
+        return Math.Abs(value) < .0000000000005 ? 0 : value;
+    }
+    private static void AppendPathNumber(StringBuilder output, double value, Budget budget, Source source)
+    {
+        value = RoundedPathNumber(value, budget, source, out var format);
+        Span<char> buffer = stackalloc char[64];
+        if (value.TryFormat(buffer, out var written, format, CultureInfo.InvariantCulture)) output.Append(buffer[..written]);
+        else output.Append(value.ToString(format, CultureInfo.InvariantCulture));
     }
     public static string PathData(GraphicPath path, Budget budget, Source source)
     {
@@ -51,19 +64,23 @@ internal static class SvgWriter
                 default: throw new InvalidOperationException();
             }
         }
-        return data.ToString().TrimEnd();
+        if (data.Length > 0 && data[^1] == ' ') data.Length--;
+        return data.ToString();
         void Point(Geometry.Point point)
         {
             budget.Check(point.X, source); budget.Check(point.Y, source);
-            data.Append(PathNumber(point.X * BpToPt, budget, source)).Append(' ').Append(PathNumber(point.Y * BpToPt, budget, source)).Append(' ');
+            AppendPathNumber(data, point.X * BpToPt, budget, source); data.Append(' ');
+            AppendPathNumber(data, point.Y * BpToPt, budget, source); data.Append(' ');
             if (data.Length > budget.Limits.MaxOutputBytes) Budget.Fail(source, "SVG bytes");
         }
     }
     public static string Write(GraphicsScene scene, string sourceText, TikzOptions options, Budget budget)
+        => Write(scene, sourceText, options, budget, out _);
+    public static string Write(GraphicsScene scene, string sourceText, TikzOptions options, Budget budget, out int outputBytes)
     {
         var source = new Source(sourceText, 0, 0);
         var prefix = options.IdPrefix.Length > 0 ? options.IdPrefix
-            : "t" + Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(sourceText)))[..16];
+            : "t" + Convert.ToHexStringLower(SHA256.HashData(Encoding.UTF8.GetBytes(sourceText)).AsSpan(0, 8));
         var box = scene.PictureBounds.Union(scene.InkBounds).Pixels;
         var minX = box.IsEmpty ? 0 : box.MinX - options.PaddingPixels;
         var minY = box.IsEmpty ? 0 : box.MinY - options.PaddingPixels;
@@ -171,7 +188,13 @@ internal static class SvgWriter
                     writer.WriteAttributeString("stroke-miterlimit", Number(paint.Miter));
                     if (paint.Dash.Length > 0)
                     {
-                        writer.WriteAttributeString("stroke-dasharray", string.Join(' ', paint.Dash.Select(d => PathNumber(d * BpToPt, budget, path.Source))));
+                        var dash = new StringBuilder();
+                        for (var i = 0; i < paint.Dash.Length; i++)
+                        {
+                            if (i > 0) dash.Append(' ');
+                            AppendPathNumber(dash, paint.Dash[i] * BpToPt, budget, path.Source);
+                        }
+                        writer.WriteAttributeString("stroke-dasharray", dash.ToString());
                         writer.WriteAttributeString("stroke-dashoffset", PathNumber(paint.DashPhase * BpToPt, budget, path.Source));
                     }
                 }
@@ -180,29 +203,43 @@ internal static class SvgWriter
             }
             writer.WriteEndElement();
         }
-        return output.ToString();
+        var svg = output.ToString();
+        outputBytes = output.ByteCount;
+        return svg;
     }
 
-    private sealed class LimitedWriter(Budget budget, Source source) : TextWriter
+    internal sealed class LimitedWriter(Budget budget, Source source) : TextWriter
     {
         private readonly StringBuilder _text = new();
-        private readonly Encoder _encoder = new UTF8Encoding(false, true).GetEncoder();
+        private static readonly Encoding Utf8 = new UTF8Encoding(false, true);
+        private char _pendingHighSurrogate;
         private long _bytes;
+        internal int ByteCount => checked((int)_bytes);
         public override Encoding Encoding => Encoding.UTF8;
-        public override void Write(char value) => Write(value.ToString());
+        public override void Write(char value)
+        {
+            ReadOnlySpan<char> single = [value];
+            Write(single);
+        }
         public override void Write(char[] buffer, int index, int count) => Write(buffer.AsSpan(index, count));
         public override void Write(string? value) { if (value is not null) Write(value.AsSpan()); }
         public override void Write(ReadOnlySpan<char> buffer)
         {
             budget.Charge(source, buffer.Length);
-            Span<byte> encoded = stackalloc byte[1024];
             var remaining = buffer;
-            while (!remaining.IsEmpty)
+            if (_pendingHighSurrogate != '\0' && !remaining.IsEmpty)
             {
-                _encoder.Convert(remaining, encoded, false, out var chars, out var bytes, out _);
-                Count(bytes);
-                remaining = remaining[chars..];
+                ReadOnlySpan<char> pair = [_pendingHighSurrogate, remaining[0]];
+                Count(Utf8.GetByteCount(pair));
+                _pendingHighSurrogate = '\0';
+                remaining = remaining[1..];
             }
+            if (!remaining.IsEmpty && char.IsHighSurrogate(remaining[^1]))
+            {
+                _pendingHighSurrogate = remaining[^1];
+                remaining = remaining[..^1];
+            }
+            Count(Utf8.GetByteCount(remaining));
             _text.Append(buffer);
         }
         private void Count(int bytes)
@@ -212,9 +249,11 @@ internal static class SvgWriter
         }
         public override string ToString()
         {
-            Span<byte> final = stackalloc byte[4];
-            _encoder.Convert(ReadOnlySpan<char>.Empty, final, true, out _, out var bytes, out _);
-            Count(bytes);
+            if (_pendingHighSurrogate != '\0')
+            {
+                ReadOnlySpan<char> pending = [_pendingHighSurrogate];
+                Count(Utf8.GetByteCount(pending));
+            }
             return _text.ToString();
         }
     }

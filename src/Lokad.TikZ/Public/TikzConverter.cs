@@ -1,4 +1,3 @@
-using System.Text;
 using Lokad.TikZ.Frontend;
 using Lokad.TikZ.Graphics;
 using Lokad.TikZ.Semantics;
@@ -54,9 +53,9 @@ public static class TikzConverter
             if (source.Length > options.Limits.MaxSourceCharacters) Budget.Fail(origin.Slice(0, 0), "source characters");
             var program = new Parser(origin, budget).Parse(options.InputKind);
             var scene = new Evaluator(budget).Evaluate(program, options);
-            var svg = SvgWriter.Write(scene, source, options, budget);
+            var svg = SvgWriter.Write(scene, source, options, budget, out var outputBytes);
             var result = new TikzSuccess(svg, scene.PictureBounds.Pixels, scene.InkBounds.Pixels,
-                Array.Empty<TikzDiagnostic>(), budget.Statistics(Encoding.UTF8.GetByteCount(svg)));
+                Array.Empty<TikzDiagnostic>(), budget.Statistics(outputBytes));
             trace(scene);
             return result;
         }
