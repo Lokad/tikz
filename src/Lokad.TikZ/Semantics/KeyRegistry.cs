@@ -48,15 +48,16 @@ internal static class KeyRegistry
                 Apply(StyleExpansion.Instantiate(style, option, budget), state, budget, depth + 1, clipping);
                 continue;
             }
-            var value = Options.Clean(option.Value);
-            if (ArrowOptions.Apply(option with { Key = key }, state, budget)) continue;
+            if (ArrowOptions.Apply(option.Key == key ? option : option with { Key = key }, state, budget)) continue;
+            string? normalizedValue = null;
+            string Value() => normalizedValue ??= Options.Clean(option.Value);
             var paint = state.Paint;
             // A deferred edge overrides only commands it actually issues.
             // Equality with the inherited value does not mean an option is absent.
             state.PaintChanges |= key switch
             {
-                "draw" when value.Length > 0 && value is not ("none" or "false" or "true") => PaintChanges.StrokeColor,
-                "fill" when value.Length > 0 && value is not ("none" or "false" or "true") => PaintChanges.FillColor,
+                "draw" when Value().Length > 0 && Value() is not ("none" or "false" or "true") => PaintChanges.StrokeColor,
+                "fill" when Value().Length > 0 && Value() is not ("none" or "false" or "true") => PaintChanges.FillColor,
                 "color" => PaintChanges.StrokeColor | PaintChanges.FillColor,
                 "opacity" => PaintChanges.StrokeOpacity | PaintChanges.FillOpacity,
                 "draw opacity" => PaintChanges.StrokeOpacity,
@@ -74,14 +75,14 @@ internal static class KeyRegistry
             if (state.IsNodeContext)
             {
                 if (key is "scale" or "xscale" or "yscale" or "xslant" or "yslant" or "rotate" or "shift" or "xshift" or "yshift" or "cm")
-                { state.NodeTransforms.Add(option with { Key = key }); continue; }
+                { state.NodeTransforms.Add(option.Key == key ? option : option with { Key = key }); continue; }
                 if (key is "x" or "y") throw Unsupported(option);
                 if (key == "line width") { state.NodeLineWidth = option.Value; continue; }
                 if (key is "above" or "below" or "left" or "right" or "above left" or "above right" or "below left" or "below right")
                 {
-                    if (value.Length == 0 && (key is "above" or "below" or "left" or "right"))
+                    if (Value().Length == 0 && (key is "above" or "below" or "left" or "right"))
                         state.Node = state.Node with { Anchor = key switch { "above" => "south", "below" => "north", "left" => "east", _ => "west" }, AnchorSource = option.Source };
-                    else if (!state.IsPathLabel && state.PositioningAvailable) PositioningOptions.Apply(option with { Key = key }, state, budget);
+                    else if (!state.IsPathLabel && state.PositioningAvailable) PositioningOptions.Apply(option.Key == key ? option : option with { Key = key }, state, budget);
                     else throw Unsupported(option);
                     continue;
                 }
@@ -95,7 +96,7 @@ internal static class KeyRegistry
                 if (key is "sloped" or "allow upside down")
                 {
                     if (!state.IsPathLabel) throw Unsupported(option);
-                    var enabled = value switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) };
+                    var enabled = Value() switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) };
                     state.Node = key == "sloped" ? state.Node with { Sloped = enabled } : state.Node with { AllowUpsideDown = enabled }; continue;
                 }
             }
@@ -110,27 +111,27 @@ internal static class KeyRegistry
                 case "samples": state.Plot = state.Plot.Count(option.Value, state, budget); break;
                 case "samples at": state.Plot = state.Plot with { Values = option.Value }; break;
                 case "variable": state.Plot = state.Plot.SetVariable(option.Value, budget); break;
-                case "draw": state.Paint = paint with { Stroke = value is not ("none" or "false"), StrokeColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.StrokeColor : Color.Parse(option.Value, budget) }; break;
-                case "fill": state.Paint = paint with { Fill = value is not ("none" or "false"), FillColor = value.Length == 0 || value is "none" or "false" or "true" ? paint.FillColor : Color.Parse(option.Value, budget) }; break;
-                case "color": var color = Color.Parse(option.Value, budget); state.Paint = paint with { StrokeColor = color, FillColor = color }; state.Node = state.Node with { TextColor = color }; break;
+                case "draw": state.Paint = paint with { Stroke = Value() is not ("none" or "false"), StrokeColor = Value().Length == 0 || Value() is "none" or "false" or "true" ? paint.StrokeColor : Color.Parse(option.Value, budget, Value()) }; break;
+                case "fill": state.Paint = paint with { Fill = Value() is not ("none" or "false"), FillColor = Value().Length == 0 || Value() is "none" or "false" or "true" ? paint.FillColor : Color.Parse(option.Value, budget, Value()) }; break;
+                case "color": var color = Color.Parse(option.Value, budget, Value()); state.Paint = paint with { StrokeColor = color, FillColor = color }; state.Node = state.Node with { TextColor = color }; break;
                 case "rectangle" or "circle" or "ellipse": Shape(key); break;
-                case "shape": Shape(value); break;
+                case "shape": Shape(Value()); break;
                 case "font": state.Node = state.Node with { Font = option.Value }; break;
                 case "node font": state.Node = state.Node with { NodeFont = option.Value }; break;
-                case "text": state.Node = state.Node with { TextColor = Color.Parse(option.Value, budget) }; break;
+                case "text": state.Node = state.Node with { TextColor = Color.Parse(option.Value, budget, Value()) }; break;
                 case "text opacity": state.Node = state.Node with { TextOpacity = Alpha() }; break;
-                case "anchor": state.Node = state.Node with { Anchor = value, AnchorSource = option.Value }; break;
-                case "align": state.Node = state.Node with { Alignment = value switch { "left" => TextAlignment.Left, "center" => TextAlignment.Center, "right" => TextAlignment.Right, _ => throw Unsupported(option) } }; break;
+                case "anchor": state.Node = state.Node with { Anchor = Value(), AnchorSource = option.Value }; break;
+                case "align": state.Node = state.Node with { Alignment = Value() switch { "left" => TextAlignment.Left, "center" => TextAlignment.Center, "right" => TextAlignment.Right, _ => throw Unsupported(option) } }; break;
                 case "inner sep": state.Node = state.Node with { InnerX = option.Value, InnerY = option.Value }; break;
                 case "inner xsep": state.Node = state.Node with { InnerX = option.Value }; break;
                 case "inner ysep": state.Node = state.Node with { InnerY = option.Value }; break;
-                case "outer sep": if (value == "auto") throw Unsupported(option); state.Node = state.Node with { OuterX = option.Value, OuterY = option.Value }; break;
+                case "outer sep": if (Value() == "auto") throw Unsupported(option); state.Node = state.Node with { OuterX = option.Value, OuterY = option.Value }; break;
                 case "outer xsep": state.Node = state.Node with { OuterX = option.Value }; break;
                 case "outer ysep": state.Node = state.Node with { OuterY = option.Value }; break;
                 case "minimum size": state.Node = state.Node with { MinimumWidth = option.Value, MinimumHeight = option.Value }; break;
                 case "minimum width": state.Node = state.Node with { MinimumWidth = option.Value }; break;
                 case "minimum height": state.Node = state.Node with { MinimumHeight = option.Value }; break;
-                case "transform shape": state.Node = state.Node with { TransformShape = value switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) } }; break;
+                case "transform shape": state.Node = state.Node with { TransformShape = Value() switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) } }; break;
                 case "node distance":
                     if (!state.PositioningAvailable) throw Unsupported(option);
                     state.NodeDistance = option.Value; break;
@@ -145,17 +146,17 @@ internal static class KeyRegistry
                 case "opacity": var alpha = Alpha(); state.Paint = paint with { StrokeOpacity = alpha, FillOpacity = alpha }; break;
                 case "draw opacity": state.Paint = paint with { StrokeOpacity = Alpha() }; break;
                 case "fill opacity": state.Paint = paint with { FillOpacity = Alpha() }; break;
-                case "line cap": state.Paint = paint with { Cap = value switch { "butt" or "round" => value, "rect" => "square", _ => throw Unsupported(option) } }; break;
-                case "line join": state.Paint = paint with { Join = value switch { "miter" or "round" or "bevel" => value, _ => throw Unsupported(option) } }; break;
+                case "line cap": state.Paint = paint with { Cap = Value() switch { "butt" or "round" => Value(), "rect" => "square", _ => throw Unsupported(option) } }; break;
+                case "line join": state.Paint = paint with { Join = Value() switch { "miter" or "round" or "bevel" => Value(), _ => throw Unsupported(option) } }; break;
                 case "miter limit": var miter = state.Scalar(option.Value, budget); if (miter < 1 || miter > 1000) Invalid(option); state.Paint = paint with { Miter = miter }; break;
                 case "bend angle": state.Connection = state.Connection with { Bend = state.Scalar(option.Value, budget) }; break;
                 case "bend left" or "bend right":
-                    var bend = value.Length == 0 ? state.Connection.Bend : state.Scalar(option.Value, budget);
+                    var bend = Value().Length == 0 ? state.Connection.Bend : state.Scalar(option.Value, budget);
                     var outgoing = key == "bend left" ? bend : -bend;
                     state.Connection = state.Connection with { Curved = true, Relative = true, Bend = bend, Out = outgoing, In = 180 - outgoing }; break;
                 case "in": state.Connection = state.Connection with { Curved = true, In = state.Scalar(option.Value, budget) }; break;
                 case "out": state.Connection = state.Connection with { Curved = true, Out = state.Scalar(option.Value, budget) }; break;
-                case "relative": state.Connection = state.Connection with { Relative = value switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) } }; break;
+                case "relative": state.Connection = state.Connection with { Relative = Value() switch { "" or "true" => true, "false" => false, _ => throw Unsupported(option) } }; break;
                 case "looseness": var looseness = state.Scalar(option.Value, budget); state.Connection = state.Connection with { Curved = true, InLooseness = looseness, OutLooseness = looseness }; break;
                 case "in looseness": state.Connection = state.Connection with { Curved = true, InLooseness = state.Scalar(option.Value, budget) }; break;
                 case "out looseness": state.Connection = state.Connection with { Curved = true, OutLooseness = state.Scalar(option.Value, budget) }; break;

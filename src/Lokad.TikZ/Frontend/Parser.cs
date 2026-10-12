@@ -21,7 +21,8 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         while (!_reader.End)
         {
             var command = _reader.Command();
-            switch (command.Value)
+            var commandName = command.Value;
+            switch (commandName)
             {
                 case "\\usetikzlibrary": result.Add(new LibraryStatement(_reader.Group('{', '}'), command)); break;
                 case "\\tikzset": result.Add(ReadSet(command)); break;
@@ -33,7 +34,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
                     result.Add(ReadScope(command, "tikzpicture", 1));
                     _reader.Complete();
                     return result;
-                default: throw new CompileError("TIKZ002", $"Unsupported command '{command.Value}' before the picture.", command);
+                default: throw new CompileError("TIKZ002", $"Unsupported command '{commandName}' before the picture.", command);
             }
         }
         throw new CompileError("TIKZ001", "Expected a tikzpicture environment.", source.Slice(source.Length, 0));
@@ -51,12 +52,13 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
                 continue;
             }
             var command = _reader.Command();
-            if (_templates && command.Value is "\\node" or "\\coordinate" or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip")
+            var commandName = command.Value;
+            if (_templates && commandName is "\\node" or "\\coordinate" or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip")
             {
                 result.Add(new TemplateStatement(ReadStatementTemplate(command)));
                 continue;
             }
-            if (bindings is not null && command.Value is "\\node" or "\\coordinate" or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip")
+            if (bindings is not null && commandName is "\\node" or "\\coordinate" or "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip")
             {
                 // Parse one bound statement at a time. Nested foreach headers and
                 // bodies remain templates until their own scoped binding exists.
@@ -64,7 +66,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
                 result.AddRange(new Parser(Bind(template), budget).Body(depth));
                 continue;
             }
-            switch (command.Value)
+            switch (commandName)
             {
                 case "\\end":
                     var end = Options.Clean(_reader.Group('{', '}'));
@@ -89,11 +91,11 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
                     result.Add(new CoordinateStatement(name, point, command));
                     break;
                 case "\\path" or "\\draw" or "\\fill" or "\\filldraw" or "\\clip":
-                    result.Add(ReadPath(command));
+                    result.Add(ReadPath(command, commandName));
                     break;
                 default:
-                    if (_templates && _definitions.Contains(command.Value)) result.Add(new DefinitionCallStatement(command));
-                    else throw new CompileError("TIKZ002", $"Unsupported command '{command.Value}'.", command);
+                    if (_templates && _definitions.Contains(commandName)) result.Add(new DefinitionCallStatement(command));
+                    else throw new CompileError("TIKZ002", $"Unsupported command '{commandName}'.", command);
                     break;
             }
         }
@@ -217,7 +219,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         if (!pathLabel) _reader.Require(";");
         return new(name, at, options, label, command with { Length = source.Offset + _reader.Position - command.Offset });
     }
-    private PathStatement ReadPath(Source command)
+    private PathStatement ReadPath(Source command, string commandName)
     {
         var options = ReadOptions();
         var operations = new List<PathOperation>();
@@ -312,7 +314,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             else throw new CompileError("TIKZ002", "Unsupported path operation.", origin);
             if (operations.Count > budget.Limits.MaxSegments) Budget.Fail(origin, "path operations");
         }
-        return new(command.Value, options, operations, command with { Length = source.Offset + _reader.Position - command.Offset });
+        return new(commandName, options, operations, command with { Length = source.Offset + _reader.Position - command.Offset });
     }
     private Source ShapeOptions(string key)
     {

@@ -12,10 +12,10 @@ internal readonly record struct Color(double R, double G, double B)
     public string PgfSvg => $"#{PgfByte(R):x2}{PgfByte(G):x2}{PgfByte(B):x2}";
     private static int Byte(double value) => (int)Math.Round(Math.Clamp(value, 0, 1) * 255, MidpointRounding.AwayFromZero);
     private static int PgfByte(double value) => Math.Min(255, (int)Math.Round(Math.Clamp(value, 0, 1) * 65536, MidpointRounding.AwayFromZero) / 256);
-    public static Color Parse(Source source, Budget budget)
+    public static Color Parse(Source source, Budget budget, string? normalized = null)
     {
         budget.Charge(source, source.Length);
-        var parts = Options.Clean(source).Split('!');
+        var parts = (normalized ?? Options.Clean(source)).Split('!');
         var color = Named(parts[0], source);
         for (var i = 1; i < parts.Length; i += 2)
         {
