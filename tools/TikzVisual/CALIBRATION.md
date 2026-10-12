@@ -2,6 +2,10 @@
 
 The versioned `chromium-153-geometry-v3` profile covers nine concrete geometry
 fixtures. It establishes no text or general TikZ compatibility claim.
+The added [width corpus](../../tests/Reference/width-presets/README.md) has a
+separate authenticated native-only calibration and per-scale PDF policy. Its
+recorded `shape` rasterizer mode and strict primary/4x topology checks do not
+change any policy or renderer identity in the nine-fixture profile below.
 Raw measurements, tool hashes, renderer identity, source/reference hashes,
 and derived SVG hashes are recorded in
 [`tests/Reference/calibration.json`](../../tests/Reference/calibration.json).

@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 import { createRenderer, compareBundle, profile } from './compare.mjs';
 import assert from 'node:assert/strict';
 import { canonicalEdgeSvg } from './edge-replay.mjs';
+import { edgeSvgPaints, edgePdfPaints } from './edge-driver-state.mjs';
+import { pgfPdfPoint } from './dash-pdf-vector.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const baseline = path.join(root, 'artifacts/comparisons/line-units');
@@ -20,23 +22,27 @@ const renderer = await createRenderer();
 const results = [];
 const hash = value => createHash('sha256').update(value).digest('hex');
 
-async function check(name, svg, expected, synthetic = false, toleranceProfile = 'line-units', actualUnits = undefined) {
+const defaultBasis = { folder: baseline, input: originalInput, scene: originalScene, svg: original, keepPdf: false };
+const transformed = (svg, transform) => svg.replace(/(<svg[^>]+>)/, `$1<g transform="${transform}">`).replace('</svg>', '</g></svg>');
+
+async function check(name, svg, expected, synthetic = false, toleranceProfile = 'line-units', actualUnits = undefined, basis = defaultBasis) {
   const folder = path.join(output, name);
   if (!folder.startsWith(output + path.sep)) throw new Error('Mutation output escapes its directory.');
   await rm(folder, { recursive: true, force: true });
   await mkdir(folder, { recursive: true });
-  for (const file of ['reference.svg', 'reference-metrics.json', 'provenance.json', 'oracle.log', 'source.tikz'])
-    await cp(path.join(baseline, file), path.join(folder, file));
-  const input = structuredClone(originalInput);
+  for (const file of ['reference.svg', 'reference-metrics.json', 'provenance.json', 'oracle.log', 'source.tikz',
+    ...(basis.keepPdf ? ['reference.pdf', 'pdf-page-1x.png', 'pdf-page-4x.png'] : [])])
+    await cp(path.join(basis.folder, file), path.join(folder, file));
+  const input = structuredClone(basis.input);
   input.caseId = name;
   input.toleranceProfile = toleranceProfile;
   input.referenceMode = synthetic ? 'comparator-synthetic' : 'cached-with-controlled-candidate-mutation';
   // Test raster/dimension rejection independently: never force a mismatch via
   // a fabricated numeric failure and never send mutated source to TeX.
   input.numeric = { passed: true, checks: [], note: 'Comparator-only mutation; numeric checking exercised separately.' };
-  delete input.pdf;
+  if (!basis.keepPdf) delete input.pdf;
   if (actualUnits) input.actualUnits = actualUnits;
-  let actual = svg, scene = originalScene;
+  let actual = svg, scene = basis.scene;
   if (synthetic) {
     input.referenceOriginBp = { x: 0, y: 0 };
     const [reference, candidate] = svg;
@@ -53,8 +59,15 @@ async function check(name, svg, expected, synthetic = false, toleranceProfile = 
   await writeFile(path.join(folder, 'actual.svg'), actual);
   await writeFile(path.join(folder, 'actual-scene.json'), JSON.stringify(scene, null, 2));
   await writeFile(path.join(folder, 'comparison-input.json'), JSON.stringify(input, null, 2));
-  await writeFile(path.join(folder, 'mutation.json'), JSON.stringify({ schemaVersion: 1, name, expected, candidateSha256: hash(actual), originalCandidateSha256: hash(original) }, null, 2));
-  const report = await compareBundle(folder, renderer);
+  await writeFile(path.join(folder, 'mutation.json'), JSON.stringify({ schemaVersion: 1, name, expected, candidateSha256: hash(actual), originalCandidateSha256: hash(basis.svg) }, null, 2));
+  if (basis.mutateBundle) await basis.mutateBundle(folder);
+  let report;
+  try { report = await compareBundle(folder, renderer); }
+  catch (error) {
+    if (expected !== 'harness-failure' || !error.message.includes('Width')) throw error;
+    results.push({ name, verdict: 'harness-failure', expected: true, error: error.message });
+    return null;
+  }
   if (report.verdict !== expected) throw new Error(`${name}: expected ${expected}, got ${report.verdict}`);
   for (const file of ['reference.png', 'actual.png', 'comparison.png', 'diff.png', 'diff-amplified.png', 'overlay.png', 'report.json', 'index.html'])
     await access(path.join(folder, file));
@@ -85,8 +98,8 @@ try {
   await check('unchanged', original, 'pass');
   const repeat = await check('unchanged-repeat', original, 'pass');
   if (!repeat.primary.checks.every(c => c.exactMatch)) throw new Error('Unchanged elementary pair must be pixel identical.');
-  await check('fractional-translation', original.replace('<path ', '<path transform="translate(.5 .25)" '), 'mismatch');
-  await check('physical-units', original.replace('<path ', '<path transform="scale(1.00375)" '), 'mismatch');
+  await check('fractional-translation', transformed(original, 'translate(.5 .25)'), 'mismatch');
+  await check('physical-units', transformed(original, 'scale(1.00375)'), 'mismatch');
   await check('stroke-scaling', original.replace(/stroke-width="([^"]+)"/, (_, width) => `stroke-width="${Number(width) * 2}"`), 'mismatch');
   await check('color', original.replace('stroke="#000099"', 'stroke="#ff0000"'), 'mismatch');
   await check('opacity', original.replace('stroke-opacity="0.8"', 'stroke-opacity="0.5"'), 'mismatch');
@@ -128,10 +141,54 @@ try {
   // stroke scaling, and disappearing low-opacity content. The mean error uses
   // all visible samples, including alpha below the edge-mask threshold.
   for (const name of Object.keys(profile.cases ?? {})) {
-    await check(`${name}-translation`, original.replace('<path ', '<path transform="translate(.5 .25)" '), 'mismatch', false, name);
+    await check(`${name}-translation`, transformed(original, 'translate(.5 .25)'), 'mismatch', false, name);
     await check(`${name}-stroke-scaling`, original.replace(/stroke-width="([^"]+)"/, (_, width) => `stroke-width="${Number(width) * 2}"`), 'mismatch', false, name);
     const faint = svg('<path d="M5 10H20" stroke="#000" stroke-width="1" stroke-opacity=".01"/>', 1000, 200);
     await check(`${name}-missing-faint-stroke`, [faint, svg('', 1000, 200)], 'mismatch', true, name);
+  }
+
+  // Reuse the same artifact/mutation handling on the actual width corpus.
+  // Keep numeric checks positive so primary/PDF sensitivity is observed directly.
+  const widthFolder = path.join(root, 'artifacts/comparisons/width-presets');
+  const widthBasis = { folder: widthFolder, keepPdf: true,
+    input: JSON.parse(await readFile(path.join(widthFolder, 'comparison-input.json'))),
+    scene: JSON.parse(await readFile(path.join(widthFolder, 'actual-scene.json'))),
+    svg: await readFile(path.join(widthFolder, 'actual.svg'), 'utf8') };
+  const widthCheck = (name, svg, expected) => check('width-' + name, svg, expected, false, 'width-presets', undefined, widthBasis);
+  const positiveWidth = await widthCheck('unchanged', widthBasis.svg, 'pass');
+  assert.equal(positiveWidth.pdf.passed, true);
+  const widths = JSON.parse(await readFile(path.join(widthFolder, 'reference-metrics.json'))).paths;
+  const nativeSvg = edgeSvgPaints(await readFile(path.join(widthFolder, 'reference.svg')));
+  const nativePdf = edgePdfPaints(await readFile(path.join(widthFolder, 'reference.pdf')));
+  assert.equal(widths.length, 14); assert.equal(nativeSvg.paints.length, 14); assert.equal(nativePdf.paints.length, 14);
+  for (let index = 0; index < widths.length; index++) {
+    const sp = Math.round(widths[index].widthPt * 65536);
+    assert.equal(Math.round(nativeSvg.paints[index].width * 65536), sp);
+    assert.ok(Math.abs(nativePdf.paints[index].width - pgfPdfPoint(sp)) <= 1 / (2 * 65536), 'Native PDF width differs: ' + index);
+  }
+  for (const [name, svg] of [
+    ['translation-quarter', transformed(widthBasis.svg, 'translate(.25 .25)')],
+    ['translation-half', transformed(widthBasis.svg, 'translate(.5 .5)')],
+    ['doubled-strokes', widthBasis.svg.replace(/stroke-width="([^"]+)"/g, (_, value) => `stroke-width="${Number(value) * 2}"`)],
+    ['missing-thin-boundary', widthBasis.svg.replace(/<path\b[^>]*id="candidate-p0"[^>]*\/>/, '')],
+    ['missing-thin-interior', widthBasis.svg.replace(/<path\b[^>]*id="candidate-p9"[^>]*\/>/, '')]
+  ]) {
+    assert.notEqual(svg, widthBasis.svg, 'Width control did not change its operand.');
+    const report = await widthCheck(name, svg, 'mismatch');
+    assert.equal(report.primary.passed, false, name + ': primary failed to detect the defect.');
+    assert.equal(report.pdf.passed, false, name + ': independent PDF failed to detect the defect.');
+  }
+  const differentPdf = await readFile(path.join(baseline, 'pdf-page-1x.png'));
+  for (const rehash of [false, true]) {
+    await check('width-' + (rehash ? 'rehashed-reference-page' : 'changed-reference-page'), widthBasis.svg,
+      'harness-failure', false, 'width-presets', undefined, { ...widthBasis, mutateBundle: async folder => {
+        await writeFile(path.join(folder, 'pdf-page-1x.png'), differentPdf);
+        if (rehash) {
+          const provenance = JSON.parse(await readFile(path.join(folder, 'provenance.json')));
+          provenance.artifacts['pdf-page-1x.png'] = hash(differentPdf);
+          await writeFile(path.join(folder, 'provenance.json'), JSON.stringify(provenance));
+        }
+      } });
   }
 
   // A malformed or missing artifact is an infrastructure error, never a pass.

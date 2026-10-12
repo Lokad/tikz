@@ -33,13 +33,29 @@ The curved-edge corpus separately exercises `thick` with clipped curved paths.
 Their qualified evidence remains unchanged; these interactions do not require
 another complete diagram for every preset.
 
-Image admission of the new width corpus remains **open**. Its fresh primary SVG
-is pixel-identical to native dvisvgm at 1x and 4x, but the ordinary PDF raster
-comparison exceeds the existing geometry policy. The same failure occurs in
-converter-free native-SVG/PDF calibration. Independent SVG/PDF vector readers
-agree on all fourteen pen widths, so this is an unresolved reference-policy
-boundary, not evidence of a converter width discrepancy.
+The width corpus has its own native-only [calibration](../tests/Reference/width-presets/calibration.json)
+and [pixel policy](../tools/TikzVisual/width-profile.json). It keeps exact primary
+SVG agreement at 1x/4x and exact integer-sp widths. Ordinary PDF uses recorded
+Poppler `-thinlinemode shape`, which preserves fractional stroke intensity rather
+than promoting subpixel pens to opaque pixels. The nine older geometry fixtures
+retain their existing rasterization and policies.
 
-The required cached comparison still reports that PDF failure. No pixel limits
-have been relaxed and no PDF agreement or complete width qualification is
-claimed. Preserve the failing evidence while resolving its admission policy.
+| PDF scale | Channel bound | Mean foreground bound | Edge bound, native pixels | Component difference |
+| --- | ---: | ---: | ---: | ---: |
+| 1x | 145 | 28 | 4 | 2 |
+| 4x | 129 | 23 | 1.5 | 0 |
+
+These bounds come from converter-free canonical and ±4sp native representations:
+one channel level of serialization margin, the next integer foreground mean,
+the next half native pixel for the chamfer edge, and the measured component
+difference. No converter output selects an allowance. The calibration and
+reference provenance/assets are authenticated before comparison; altered policy
+limits must match that fixed derivation.
+
+At 1x, native SVG viewport clipping leaves the two boundary hairlines below the
+16/255 edge-mask threshold during PDF registration. All raw samples still enter
+foreground error and exact primary checking; all fourteen components must agree
+at 4x. The shared comparator controls independently reject quarter/half-pixel
+translation, doubled widths and omitted boundary/interior thin strokes in both
+primary and PDF comparisons. Native SVG/PDF vector readers also agree on every
+pen width. This is scoped antialiasing agreement, with no exact-PDF-pixel claim.

@@ -39,8 +39,45 @@ export async function compareBundle(bundle, renderer) {
   const pdfImages = input.pdf ? Object.fromEntries(await Promise.all(profile.scales.map(async scale => [scale,
     'data:image/png;base64,' + (await readFile(path.join(bundle, `pdf-page-${scale}x.png`))).toString('base64')]))) : null;
   if (input.rasterProfile && !['text', 'node'].includes(input.rasterProfile)) throw new Error('Unknown raster profile.');
-  const rasterProfile = input.rasterProfile === 'text' ? textProfile : input.rasterProfile === 'node' ? nodeProfile : profile;
   const profileKey = input.toleranceProfile ?? input.caseId;
+  const widthProfileBytes = !input.rasterProfile && profileKey === 'width-presets'
+    ? await readFile(path.join(directory, 'width-profile.json')) : null;
+  const rasterProfile = input.rasterProfile === 'text' ? textProfile : input.rasterProfile === 'node' ? nodeProfile
+    : widthProfileBytes ? JSON.parse(widthProfileBytes) : profile;
+  if (widthProfileBytes) {
+    if (rasterProfile.schemaVersion !== 1 || Object.keys(rasterProfile.cases).join() !== 'width-presets'
+      || Object.keys(rasterProfile.cases['width-presets'].pdf.byScale).join() !== profile.scales.join())
+      throw new Error('Incomplete independently calibrated width policy.');
+    const bytes = await readFile(path.resolve(directory, rasterProfile.calibrationFile));
+    if (hash(bytes) !== rasterProfile.calibrationSha256) throw new Error('Width calibration evidence hash differs from its reviewed policy.');
+    const provenanceBytes = await readFile(path.join(bundle, 'provenance.json'));
+    if (hash(provenanceBytes) !== rasterProfile.referenceProvenanceSha256) throw new Error('Width reference provenance differs from the native calibration.');
+    for (const [name, digest] of Object.entries(JSON.parse(provenanceBytes).artifacts))
+      if (path.basename(name) !== name || hash(await readFile(path.join(bundle, name))) !== digest)
+        throw new Error('Width native reference asset differs: ' + name);
+    const calibration = JSON.parse(bytes), native = calibration.cases?.[0];
+    if (calibration.converterInvoked !== false || calibration.cases.length !== 1 || native.caseId !== 'width-presets'
+      || native.sourceSha256 !== hash(await readFile(path.join(bundle, 'source.tikz')))
+      || JSON.stringify(calibration.renderer) !== JSON.stringify(renderer.identity)
+      || native.variants.length !== 3 || native.variants.some(v => !v.numeric.passed || !v.dimensions.passed))
+      throw new Error('Width calibration inputs or renderer differ from the current comparison.');
+    for (const [name, digest] of [['reference.svg', native.referenceSvgSha256], ['reference.pdf', native.referencePdfSha256], ['reference-metrics.json', native.referenceMetricsSha256]])
+      if (hash(await readFile(path.join(bundle, name))) !== digest) throw new Error('Width calibration reference artifact differs: ' + name);
+    if (Object.values(rasterProfile.primary).some(value => value !== 0) || Object.keys(rasterProfile.primary).length !== 4)
+      throw new Error('Width primary comparison must remain exact.');
+    for (const scale of profile.scales) {
+      const measured = native.variants.flatMap(v => v.oracleSvgVersusPdf.filter(c => c.scale === scale));
+      if (measured.length !== 3) throw new Error('Incomplete native width PDF scale evidence.');
+      const expected = {
+        maxChannelError: Math.max(...measured.map(c => c.maxChannelError)) + 1,
+        maxMeanForegroundError: Math.ceil(Math.max(...measured.map(c => c.meanForegroundError))),
+        maxEdgeDisplacementRasterPixels: Math.ceil(Math.max(...measured.map(c => c.maxEdgeDisplacementPixels)) * scale * 2) / 2,
+        maxComponentDifference: Math.max(...measured.map(c => Math.abs(c.referenceComponents - c.actualComponents)))
+      };
+      if (JSON.stringify(rasterProfile.cases['width-presets'].pdf.byScale[scale]) !== JSON.stringify(expected))
+        throw new Error('Width PDF limits differ from the fixed native-only rounding policy.');
+    }
+  }
   if (input.rasterProfile === 'text' && (textProfile.schemaVersion !== 1 || !textProfile.cases[profileKey]))
     throw new Error('Text case has no independently calibrated policy.');
   if (input.rasterProfile === 'node' && (nodeProfile.schemaVersion !== 1 || !nodeProfile.cases[profileKey]))
@@ -334,8 +371,9 @@ export async function compareBundle(bundle, renderer) {
           return canvas;
         };
         const pdfActual = pdfAligned(actualImage, actualBox);
-        const pdfResult = compare(pdfCanvas, pdfActual, scale, policy.pdf, 'white');
-        const driverResult = compare(pdfCanvas, pdfAligned(referenceImage, referenceBox), scale, policy.pdf, 'white');
+        const pdfLimits = policy.pdf.byScale?.[scale] ?? policy.pdf;
+        const pdfResult = compare(pdfCanvas, pdfActual, scale, pdfLimits, 'white');
+        const driverResult = compare(pdfCanvas, pdfAligned(referenceImage, referenceBox), scale, pdfLimits, 'white');
         save(`reference-pdf${suffix}.png`, pdfCanvas); save(`actual-pdf${suffix}.png`, pdfActual); save(`diff-pdf${suffix}.png`, pdfResult.amplified);
         pdfChecks.push(pdfResult.metrics);
         driverChecks.push(driverResult.metrics);
@@ -379,7 +417,7 @@ export async function compareBundle(bundle, renderer) {
     scope: input.scope,
     numeric: input.numeric, actualLabel: input.actualLabel ?? 'Lokad.TikZ', toleranceProfile: input.toleranceProfile ?? input.caseId,
     rasterPolicy: { id: rasterProfile.id, sha256: input.rasterProfile === 'text' ? hash(textProfileBytes)
-      : input.rasterProfile === 'node' ? hash(nodeProfileBytes) : renderer.identity.profileSha256 },
+      : input.rasterProfile === 'node' ? hash(nodeProfileBytes) : widthProfileBytes ? hash(widthProfileBytes) : renderer.identity.profileSha256 },
     renderer: renderer.identity, ...result, artifacts, sourceHash: hash(await readFile(path.join(bundle, 'source.tikz'))) };
   await writeFile(path.join(bundle, 'report.json'), JSON.stringify(report, null, 2) + '\n');
   await writeFile(path.join(bundle, 'index.html'), viewer(report, await readFile(path.join(bundle, 'source.tikz'), 'utf8')));

@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "chromium-153-width-presets-v1",
+  "scope": "Fourteen trusted width-preset paths; exact primary SVG and native sp widths; Poppler shape-mode PDF with explicit 1x thin-stroke mask residuals and stricter 4x topology.",
+  "primary": {
+    "maxChannelError": 0,
+    "maxMeanForegroundError": 0,
+    "maxEdgeDisplacementPixels": 0,
+    "maxComponentDifference": 0
+  },
+  "cases": {
+    "width-presets": {
+      "pdf": {
+        "byScale": {
+          "1": {
+            "maxChannelError": 145,
+            "maxMeanForegroundError": 28,
+            "maxEdgeDisplacementRasterPixels": 4,
+            "maxComponentDifference": 2
+          },
+          "4": {
+            "maxChannelError": 129,
+            "maxMeanForegroundError": 23,
+            "maxEdgeDisplacementRasterPixels": 1.5,
+            "maxComponentDifference": 0
+          }
+        }
+      }
+    }
+  },
+  "calibrationFile": "../../tests/Reference/width-presets/calibration.json",
+  "calibrationSha256": "32ad29df49a12cd64f926f0d2d59fec271994aa3531086e728d9dbd5a3bf0c7c",
+  "referenceProvenanceSha256": "3b569a8f1e04926e1357ff9f55639e50d03d39787b0767b2b6b8b1c609f83a3e"
+}

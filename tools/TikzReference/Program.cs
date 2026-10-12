@@ -56,7 +56,7 @@ internal static partial class ReferenceTool
             if (selected.Select(c => c.Id).Distinct().Count() != selected.Length)
                 throw new InvalidOperationException("Duplicate case identifiers.");
             foreach (var c in selected)
-                if (!Regex.IsMatch(c.Id, "^[a-z][a-z0-9-]*$") || !File.Exists(At(c.Source)))
+                if (!Regex.IsMatch(c.Id, "^[a-z][a-z0-9-]*$") || !File.Exists(At(c.Source)) || c.PdfThinLineMode is not (null or "shape"))
                     throw new InvalidOperationException("Invalid trusted fixture manifest.");
             var exitCode = 0;
             var reports = new List<object>();
@@ -122,6 +122,7 @@ internal static partial class ReferenceTool
         var pdfLatex = await Identify("pdflatex", ["--version"], Profile.LatexVersion);
         var dvisvgm = await Identify("dvisvgm", ["--version"], Profile.DvisvgmVersion);
         var rasterizer = await Identify("pdftoppm", ["-v"], Profile.PdfRasterizerVersion);
+        string[] rasterArguments = c.PdfThinLineMode is null ? [] : ["-thinlinemode", c.PdfThinLineMode];
         string[] texArgs = ["-disable-write18", "-disable-installer", "-interaction=nonstopmode", "-halt-on-error", "-recorder"];
         var unprobed = Path.Combine(work, "plain");
         var probed = Path.Combine(work, "probed");
@@ -170,7 +171,7 @@ internal static partial class ReferenceTool
         File.WriteAllText(Path.Combine(generated, "oracle.log"), Sanitize(log + "\n--- Ordinary PDF oracle ---\n" + pdfLog));
         foreach (var scale in Profile.Scales)
         {
-            await Require(rasterizer.Executable, ["-r", (96 * scale).ToString(CultureInfo.InvariantCulture), "-png", "-singlefile", "case.pdf", $"pdf-page-{scale}x"], pdf);
+            await Require(rasterizer.Executable, [.. rasterArguments, "-r", (96 * scale).ToString(CultureInfo.InvariantCulture), "-png", "-singlefile", "case.pdf", $"pdf-page-{scale}x"], pdf);
             File.Copy(Path.Combine(pdf, $"pdf-page-{scale}x.png"), Path.Combine(generated, $"pdf-page-{scale}x.png"));
         }
         var inputs = new[] { probed, pdf }.SelectMany(RecordedInputs).DistinctBy(i => i.Path).OrderBy(i => i.Path, StringComparer.Ordinal).ToArray();
@@ -181,7 +182,7 @@ internal static partial class ReferenceTool
             Directory.GetFiles(generated).ToDictionary(f => Path.GetFileName(f), HashFile, StringComparer.Ordinal),
             ["latex: -disable-write18 -disable-installer -interaction=nonstopmode -halt-on-error -recorder case.tex",
              "dvisvgm: --no-fonts --exact-bbox --bbox=min --output=reference.svg case.dvi",
-             "pdflatex: same engine flags, ordinary PDF driver", "pdftoppm: -r 96/384 -png -singlefile case.pdf pdf-page-1x/4x"]);
+             "pdflatex: same engine flags, ordinary PDF driver", $"pdftoppm: {(c.PdfThinLineMode is null ? "" : "-thinlinemode " + c.PdfThinLineMode + " ")}-r 96/384 -png -singlefile case.pdf pdf-page-1x/4x"]);
         Write(Path.Combine(generated, "provenance.json"), provenance);
         var baseline = At($"tests/Reference/{c.Id}");
         Directory.CreateDirectory(baseline);
@@ -482,6 +483,7 @@ internal static partial class ReferenceTool
     {
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public string[]? Anchors { get; init; }
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public AnchorBinding[]? AnchorBindings { get; init; }
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)] public string? PdfThinLineMode { get; init; }
         [JsonIgnore] public string[] AnchorNames => Anchors ?? ["start", "end"];
     }
     private sealed record AnchorBinding(int Path, int Segment, string Anchor);

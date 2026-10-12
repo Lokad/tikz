@@ -356,7 +356,7 @@
     "tools/TikzVisual/check-edge-primary.mjs": "5bbd99e52324ba5cf261e6c27e8a0e56c8f9305f600de133d45b9ced4f21d53f",
     "tools/TikzVisual/check-edge-trial.mjs": "6f4cba8c61e7f90ba5dbe3717bd2054ed6d23c20b5bd59b1e221860b1804331d",
     "tools/TikzVisual/compare-edge-conformance.mjs": "1a39d72f51814a13e264a9cdc91c78e70cef815866a601c8ae3854beabe4e659",
-    "tools/TikzVisual/compare.mjs": "d5ff938976a29c9311366c38260da88c66aae6c05a14c76b92cc3ad9eb0a9197",
+    "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
     "tools/TikzVisual/curved-node-path-units.mjs": "89e4f26565a054eda254ffbde48d7a1b08fa655ed5b3a2a1425a2fb026e53b04",
     "tools/TikzVisual/dash-pdf-vector.mjs": "9c2c9b5a94813e2264268c8e76af44bda352ef1ae8bc4e9e7ebb72a2ae566fcd",
     "tools/TikzVisual/edge-admission-owned-child.mjs": "b0355042187a682c3cf93fe6686bc3f07b5fbb7985f0f0cd5427a54a8e145e78",

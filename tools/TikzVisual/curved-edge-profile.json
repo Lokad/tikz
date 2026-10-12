@@ -405,7 +405,7 @@
     "tools/TikzVisual/check-curved-edge-primary.mjs": "1666d6224f7ddefee0738af1c1fb20ac1600475f2609047ada7f6ce719a9e5f0",
     "tools/TikzVisual/check-curved-edge-trial.mjs": "38d796554d93e6970afc61aee0193c09851e0bce1af48bf3a9c5a60b1a7119ba",
     "tools/TikzVisual/compare-curved-edge-conformance.mjs": "047c28e4e262618449bf35ac2097c18bf98f8a2e169066760fd0470b351b5f3f",
-    "tools/TikzVisual/compare.mjs": "d5ff938976a29c9311366c38260da88c66aae6c05a14c76b92cc3ad9eb0a9197",
+    "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
     "tools/TikzVisual/curved-edge-admission-owned-child.mjs": "80424136691ce42b0ff27548cec106b9f7effbe1096250eb7b56ba42a5ae7ab5",
     "tools/TikzVisual/curved-edge-admission-policy.mjs": "9ffb965d13e593cda5fdc9f217ef30a8566f560709477ddbc1a22c696f0f9d35",
     "tools/TikzVisual/curved-edge-admission-self-test.mjs": "b725f4e734621690042cf3ea81c25b170e83a057fbf012945c144425ee9caddd",

@@ -9617,7 +9617,7 @@
     "tools/TikzVisual/check-arrow-source-pdf.mjs": "641a979a87da7065df2dc72a68014d46ee0ff009c287f88d9323d9a28aaab5d8",
     "tools/TikzVisual/check-arrow-source-primary.mjs": "ba4b2a6eaf6d1f9920c9630dfefdf4ebe92784278248a47e7d2e34291b6f8d4b",
     "tools/TikzVisual/compare-arrow-conformance.mjs": "30b363ae6ff388896b9a21884c5703c6e5bfde643ebd76b138e0fb08ce2ee662",
-    "tools/TikzVisual/compare.mjs": "d5ff938976a29c9311366c38260da88c66aae6c05a14c76b92cc3ad9eb0a9197",
+    "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
     "tools/TikzVisual/curved-edge-frame.mjs": "2e2fbfd654519f63e9f97bb7362817934a1a13d73cb7968ea01fa5c0c756d49c",
     "tools/TikzVisual/curved-edge-pdf-policy.mjs": "82ade30c20a00ee26ca1bba8fc6da8dd63169f1c0b1e26eb6860afd151034e77",
     "tools/TikzVisual/curved-edge-pdf-registration.mjs": "fb1d1304c1eae78d165cba689c2e9a36fe403bea7ada280019de6bfbcca224ea",

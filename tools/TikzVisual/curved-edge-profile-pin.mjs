@@ -1,2 +1,2 @@
 // Deliberate acceptance pin, outside the self-referential profile guard graph.
-export const edgeProfileSha256='bc0750573a8b73c43eb6149dfd7d0a23e5a0583358b15fda29475d12dbf2cdea';
+export const edgeProfileSha256='9248463253c11c8a7abe7d1ee5045758235322c1bd9e20fc5520ca596d09e4b8';

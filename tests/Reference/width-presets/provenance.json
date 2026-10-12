@@ -4,8 +4,8 @@
   "sourceSha256": "88174621f5cc3be344b4af12c9011d2cc32d2d57681977fe5a1e3d4f207dc399",
   "wrapperSha256": "667822c1763abd8e71df88f954e81bed5bbc78b8a012419392e991a844c38d11",
   "profileSha256": "f8b9bb01f9719a968ea6d839d6cfe026d5043dfa3c86c7cc2104f6ec3add7085",
-  "caseDefinition": "{\n  \u0022id\u0022: \u0022width-presets\u0022,\n  \u0022source\u0022: \u0022tests/Fixtures/width-presets.tikz\u0022,\n  \u0022features\u0022: [\n    \u0022thickness-presets\u0022,\n    \u0022scaled-point-widths\u0022,\n    \u0022ordered-width-overrides\u0022,\n    \u0022scoped-widths\u0022,\n    \u0022style-widths\u0022\n  ],\n  \u0022numericTolerancePixels\u0022: 2.1E-05\n}",
-  "generatedUtc": "2026-10-12T00:06:02.6824634\u002B00:00",
+  "caseDefinition": "{\n  \u0022id\u0022: \u0022width-presets\u0022,\n  \u0022source\u0022: \u0022tests/Fixtures/width-presets.tikz\u0022,\n  \u0022features\u0022: [\n    \u0022thickness-presets\u0022,\n    \u0022scaled-point-widths\u0022,\n    \u0022ordered-width-overrides\u0022,\n    \u0022scoped-widths\u0022,\n    \u0022style-widths\u0022\n  ],\n  \u0022numericTolerancePixels\u0022: 2.1E-05,\n  \u0022pdfThinLineMode\u0022: \u0022shape\u0022\n}",
+  "generatedUtc": "2026-10-12T01:58:41.2748457\u002B00:00",
   "tools": [
     {
       "name": "latex",
@@ -368,17 +368,17 @@
     "plainSvgSha256": "f1d3af7b6317e3e89590711a0ea6c161903ba8aa236e93563f1cc2947794c55d"
   },
   "artifacts": {
-    "oracle.log": "0eaa051a3c1138fc8599a71480af5c8b0448eb6288b5757f0a73e0a01f71af7b",
-    "pdf-page-1x.png": "7d39ca61f6decb87fd296943f67c1e0e985b1d008aa953467174646f35c30b0d",
-    "pdf-page-4x.png": "a4fd0303911d8c37201b7874fe973f8724e60013621e2e781973e0ea0eb0fff6",
+    "oracle.log": "df075d85b2d642815dc5752cfee7cb8a821954108a2a2d2083f7933da1bf9d9c",
+    "pdf-page-1x.png": "d69ec35ec216951d25d621c28816816c23b615a0184141495a781eedc6158b89",
+    "pdf-page-4x.png": "b25eede828f8b9289cb55a37e1ed5847ac7d9ed0471fc25296dbb741975ee87a",
     "reference-metrics.json": "907d9df60aebbedc40731eddd9e261f4efc877dbbf57ea10796392e3dd0c3a7f",
-    "reference.pdf": "12df9bc8e154b5d29b8f872538e9de47404e0d5b5df17755c24246025ddceb53",
+    "reference.pdf": "389dbe40fb250ceccd3432d1ab25f3eb0e77a744f98283151bb987b29fdf9b6a",
     "reference.svg": "f1d3af7b6317e3e89590711a0ea6c161903ba8aa236e93563f1cc2947794c55d"
   },
   "commands": [
     "latex: -disable-write18 -disable-installer -interaction=nonstopmode -halt-on-error -recorder case.tex",
     "dvisvgm: --no-fonts --exact-bbox --bbox=min --output=reference.svg case.dvi",
     "pdflatex: same engine flags, ordinary PDF driver",
-    "pdftoppm: -r 96/384 -png -singlefile case.pdf pdf-page-1x/4x"
+    "pdftoppm: -thinlinemode shape -r 96/384 -png -singlefile case.pdf pdf-page-1x/4x"
   ]
 }

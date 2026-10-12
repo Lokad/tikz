@@ -146,7 +146,7 @@ native witnesses, and do not justify removing assertions.
 | ArcOption | Ordered independent x/y radius assignment versus final geometry; eager validation of overwritten values and explicit unsupported-option rejection |
 | FillRule | Ordered/default fill rules, scope restoration, clip capture independent of later paint, and native-invalid local clip-rule options |
 | Reference, EmittedSvg | Independent primitive measurements versus scene; returned SVG serialization versus scene/native evidence; malformed SVG rejection |
-| WidthPreset | Seven named thicknesses and seven ordered/style/scope mechanisms; exact integer-sp scene/emitted widths and bounds detect errors within the generic primitive numeric allowance. Image admission remains open |
+| WidthPreset | Seven named thicknesses and seven ordered/style/scope mechanisms; exact integer-sp scene/emitted widths and bounds detect errors within the generic primitive numeric allowance. Exact primary plus native-calibrated PDF, with independent thin-content/width/position and reference-substitution controls |
 | FontData, TextLayout | Independent font boxes, spaces/ligatures/overhangs, every glyph position, unsupported text and bounded layout |
 | MathFontData, MathParser | Declared font slots/styles/radicals; atom grammar, groups/scripts, exact unsupported diagnostics and mapped provenance |
 | MathLayout | Native integer boxes/glyphs/rules, their order/paint/clips, corrupt native traces, deterministic cache charges and concurrent layout |

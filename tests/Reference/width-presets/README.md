@@ -3,6 +3,9 @@
 Trusted input: [`width-presets.tikz`](../../Fixtures/width-presets.tikz).
 PGF 3.1.11a / MiKTeX 25.4 / dvisvgm 3.4.3 / pdftoppm 24.04.0 generate the
 native soft-path, SVG, ordinary PDF and registered 96/384-DPI page evidence.
+This fixture explicitly records Poppler `-thinlinemode shape`; older fixtures
+retain their default rasterizer flags. Null optional manifest fields are omitted
+from serialization, preserving the older native case definitions.
 `provenance.json` binds the source, wrapper, profile, case definition and every
 asset. Probe-enabled and probe-free SVGs and picture boxes are identical.
 
@@ -22,11 +25,13 @@ dotnet test Lokad.TikZ.slnx
 dotnet run --project tools/TikzReference -c Release -- compare --case width-presets --reference cached --out artifacts/comparisons/width-presets
 ```
 
-The comparison currently reports **mismatch**: numeric and exact primary SVG
-checks pass, but the existing PDF raster gate fails equally for the native SVG
-and converter output. Converter-free calibration also fails that gate. Native
-SVG and PDF vector pen widths agree on all fourteen paths. Image admission is
-pending; this case remains required and its failure must not be hidden.
+The comparison uses the authenticated converter-free [`calibration.json`](calibration.json)
+and [width policy](../../../tools/TikzVisual/width-profile.json). Primary SVG is
+exact at both scales. PDF has separate native-derived 1x/4x bounds, with strict
+component agreement at 4x; all fourteen native SVG/PDF vector pen widths also
+agree. The [shared comparator controls](../../../tools/TikzVisual/self-test.mjs)
+retain positive numeric evidence and independently reject width/content/position
+defects through primary and PDF. There is no exact-PDF-pixel claim.
 
 Explicit native regeneration and converter-free investigation are separate:
 
@@ -35,6 +40,8 @@ dotnet run --project tools/TikzReference -c Release -- generate-reference --case
 dotnet run --project tools/TikzReference -c Release -- calibrate-reference --case width-presets --out artifacts/calibration/width-presets
 ```
 
-Only this trusted repository source may enter the native engine. Do not change
-frozen policies, regenerate other fixtures or use converter output to select
-allowances. The new width corpus does not establish general TikZ/PDF conformance.
+Only this trusted repository source may enter the native engine. Deliberate
+precision variants correctly fail the exact primary policy while recording
+their PDF measurements. Replacing the reviewed calibration/provenance pins is
+a separate review step. Preserve older fixtures and policies; no candidate may
+select allowances. This corpus does not establish general TikZ/PDF conformance.
