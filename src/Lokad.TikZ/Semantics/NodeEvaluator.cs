@@ -115,7 +115,7 @@ internal sealed partial class Evaluator
         var node = new ResolvedNode(statement.Name, layout, frame, textFont, nodeFont, statement.Source);
         var id = _scene.Nodes.Count;
         _scene.Nodes.Add(node);
-        if (statement.Name.Length > 0) { _coordinates.Remove(statement.Name); _scene.Coordinates.Remove(statement.Name); _nodes[statement.Name] = node; }
+        if (statement.Name.Length > 0) { _coordinates.Remove(statement.Name); _nodes[statement.Name] = node; }
         var background = layout.Background(frame, budget, statement.Source);
         var drawables = new List<Drawable>();
         if (state.RelevantForPictureSize)

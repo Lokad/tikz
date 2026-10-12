@@ -8,7 +8,7 @@ internal sealed partial class Evaluator(Budget budget)
 {
     private readonly HashSet<(string Name, int Offset)> _definitionCalls = [];
     private readonly GraphicsScene _scene = new();
-    private readonly Dictionary<string, Point> _coordinates = new(StringComparer.Ordinal);
+    private Dictionary<string, Point> _coordinates => _scene.Coordinates;
     public GraphicsScene Evaluate(List<Statement> statements, TikzOptions options)
     {
         var state = new EvaluationState
@@ -113,7 +113,6 @@ internal sealed partial class Evaluator(Budget budget)
                     var point = Resolve(coordinate.Point, state, default, out _);
                     _nodes.Remove(coordinate.Name);
                     _coordinates[coordinate.Name] = point;
-                    _scene.Coordinates[coordinate.Name] = point;
                     break;
                 case NodeStatement node: Node(node with { Source = state.Relate(node.Source, budget) }, state); break;
                 case PathStatement path: Path(path with { Source = state.Relate(path.Source, budget) }, state); break;
