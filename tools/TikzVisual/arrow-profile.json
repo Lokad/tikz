@@ -9521,7 +9521,7 @@
     "tests/Reference/Arrows/meta-defaults/source.tikz": "3ab95d4aeaaf81aee7307cd37337b9e15b744e49532e0d22634ea01c1ae7d23e",
     "tests/Reference/Arrows/paint-boundaries/source.tikz": "c9a10ae6f2789f2ea15a82d40d856c3bd41bb8eb199326ba62acf07b3a3cdeb6",
     "tests/Reference/Arrows/transforms/source.tikz": "ad82d6feaabd020ec158fb30f095f83e4b43d4463ddc87af5ed4adcacc39486a",
-    "tools/TikzArrowComparison/EmittedArrowSvg.cs": "499e445309463bc798fdbec6b092cd062890de217d9df806d21803d43a2f7ae2",
+    "tools/TikzArrowComparison/EmittedArrowSvg.cs": "5ad39d3b422b0aed90b439d3b29aad30d7eb4671d525842877f36d787f714315",
     "tools/TikzArrowComparison/NativeArrowComparison.cs": "151cb6ec51867373dd5639166e663c87a38792e435e66f41b69fe9b0f025d7e7",
     "tools/TikzArrowComparison/Program.cs": "6bdfa61db451745c74f19ab7e6616bf8088b0c54f331866751d7414ed494439b",
     "tools/TikzArrowComparison/TikzArrowComparison.csproj": "ae97f409e920a84deaeab8e1d73ae9e02b88741fbbb7d503c6378f20aed7f979",
