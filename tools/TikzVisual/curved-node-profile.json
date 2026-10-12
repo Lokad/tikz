@@ -126,7 +126,7 @@
     "tools/TikzVisual/calibrate-shape-pdf.mjs": "6ba6997f9938a567e00846159de7617c654fd92123aaf3733047a37bb9a1f3e9",
     "tools/TikzVisual/compare-curved-node-conformance.mjs": "218b9fd9a08aec07558a3c7955034c1fb97d19c40be51b6febcd840bf8add1e5",
     "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
-    "tools/TikzVisual/curved-node-admission-policy.mjs": "0cbf345110cb84044276203e3c1c8be6a812e659e81a73f1653a3afb5befd461",
+    "tools/TikzVisual/curved-node-admission-policy.mjs": "228e6ac7895adbb814a6e7b62c648f36799bb0f9654848e7062b717944a998fa",
     "tools/TikzVisual/curved-node-admission-self-test.mjs": "d45bd6897f6f3d79f92cb4fa5b22db092d4ff3cc9f875b4a5c274628e63cb678",
     "tools/TikzVisual/curved-node-image-defects.mjs": "4abd5a19f31fc9409336678b2bdb18507f82d0e9d78dbfaf36771bd24b81f424",
     "tools/TikzVisual/curved-node-ink-policy.mjs": "5baf44c512cd673f420d0a60c906770b1c631a1973ec5f312ea7d2f8b1e571b0",

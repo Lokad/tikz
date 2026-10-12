@@ -207,7 +207,10 @@ export async function loadCurvedPolicy(renderer,workspace,read=readFile){
   assert.deepEqual(profile.calibration,{file:curvedCalibrationFile,sha256:curvedCalibrationSha256,decodedSha256:curvedDecodedSha256});
   const decoded=decodeCurvedCalibration(await read(path.join(root,curvedCalibrationFile))),c=decoded.calibration;
   assert.deepEqual(Object.keys(profile.guardToolHashes).sort(),curvedGuardFiles(c));
-  for(const[p,h]of Object.entries(profile.guardToolHashes)){assert.match(h,hashPattern);assert.equal(sha256(curvedCanonical(await read(path.join(root,p)))),h,'Changed curved-node gate: '+p);}
+  // Calibrated tool paths are checked once by readCurvedInputs below.
+  for(const[p,h]of Object.entries(profile.guardToolHashes))if(!Object.hasOwn(c.toolHashes,p)){
+    assert.match(h,hashPattern);assert.equal(sha256(curvedCanonical(await read(path.join(root,p)))),h,'Changed curved-node gate: '+p);
+  }
   curvedSame(profile,curvedProfile(c,profile.guardToolHashes),'Changed reviewed curved-node profile.');
   const buffers=await readCurvedInputs(c,read,profile.guardToolHashes),validated=await validateCurvedCalibration(c,renderer,buffers,workspace),pdfPages={};
   for(const scale of[1,4]){
