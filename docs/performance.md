@@ -124,6 +124,15 @@ comparisons. Accept clear allocation savings from simpler ownership without a
 required percentage speedup, and investigate credible representative regressions.
 Do not use these measurements as performance or timing CI gates.
 
+A follow-up label-result experiment replaced four growing lists/final copies
+with exact arrays. Emission counts reduced representative allocations by roughly
+2.5–41.6 KB, but the initial and reverse comparisons showed slower paint, styled,
+math and dense conversions. Counting existing marks instead retained allocation
+savings but did not remove the isolated prose/math layout regression. Both
+prototypes preserved ordinary tests, output and counters and were reverted.
+This is a deferred optimization, not a shipped gain; simpler ownership must not
+be claimed from allocation savings while representative execution regresses.
+
 Initial goals on this reference class are warm conversion below 20 ms and
 allocation below 2 MiB for the four ordinary complete diagrams, and below 50 ms/
 16 MiB for the larger stress inputs. First-call conversion targets below 500 ms
