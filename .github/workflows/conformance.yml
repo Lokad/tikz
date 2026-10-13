@@ -1,15 +1,22 @@
-name: Conformance
+name: Full qualification
 on:
-  push:
-  pull_request:
   workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qualification-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   ordinary:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-24.04, windows-2025]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
@@ -90,6 +97,7 @@ jobs:
         if: always()
         with:
           name: tikz-node-layout-${{ matrix.os }}
+          retention-days: 7
           path: |
             artifacts/adversarial/
             artifacts/package-check/
@@ -128,6 +136,7 @@ jobs:
 
   visual:
     runs-on: windows-2025
+    timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
@@ -269,6 +278,7 @@ jobs:
         if: always()
         with:
           name: tikz-comparisons
+          retention-days: 7
           path: |
             artifacts/ci-admissions/
             artifacts/verification/

@@ -14,6 +14,17 @@ recorded as host provenance, as in the curved-node and dash checks. A compatible
 host still has to pass the required native image replays, fresh converter captures
 and independent checks with the unchanged pixel policies.
 
+Pushes and pull requests run the `ci` workflow: locked restore, explicit Release
+build, all ordinary tests, Release pack and isolated package consumers on Windows
+and Linux. Package corruption controls run once on Windows. Results and packages
+are retained for seven days.
+
+Run `Full qualification` explicitly from GitHub Actions when hosted final
+conformance evidence is required. It retains the complete diagram matrix, family
+admissions, independent image/reference checks and corruption controls. This
+scheduling split does not establish complete conformance or meet the local
+ten-minute routine target; final qualification remains separate from push CI.
+
 ```sh
 # Ordinary tests plus affected numeric/images and independent pixel checking.
 node tools/TikzVisual/verify.mjs iterate
