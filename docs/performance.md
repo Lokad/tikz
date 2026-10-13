@@ -99,6 +99,31 @@ token during evaluation, with first-catch/JIT cost visible in the first sample.
 Keep the full cancellation distribution and scheduling context, rather than
 presenting the shortest sample as a guaranteed response time.
 
+The next representative warm baseline, recorded on 2026-10-13 at `4ffb002`, uses
+the existing public-conversion BenchmarkDotNet suite on the same reference
+machine, .NET 10.0.12 / SDK 10.0.401 and Release builds. Each workload has three
+warmups and eight measured iterations, with outliers retained. Setup admits the
+source and warms fonts/JIT. These means and caller allocations are distinct from
+the earlier first/warm probe medians above; they do not establish a speedup over
+that different measurement method.
+
+| Representative workload | Mean ms | Allocated bytes/conversion |
+| --- | ---: | ---: |
+| 100-node dense network | 8.807 | 6,096,684 |
+| Complete paint diagram | 0.706 | 459,587 |
+| Complete styled-label diagram | 1.017 | 621,843 |
+| Nested styles | 0.454 | 388,081 |
+| Complete math-label network | 0.803 | 520,741 |
+| Complete smooth-plot network | 0.870 | 405,309 |
+| 100 repeated-text labels | 5.764 | 2,407,824 |
+
+This corpus prioritizes ordinary and moderately complex supported pictures.
+Phase/label measurements locate residual costs; their overlapping times are not
+additive. Use matching input/build/runtime/cache boundaries for subsequent paired
+comparisons. Accept clear allocation savings from simpler ownership without a
+required percentage speedup, and investigate credible representative regressions.
+Do not use these measurements as performance or timing CI gates.
+
 Initial goals on this reference class are warm conversion below 20 ms and
 allocation below 2 MiB for the four ordinary complete diagrams, and below 50 ms/
 16 MiB for the larger stress inputs. First-call conversion targets below 500 ms
