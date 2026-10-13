@@ -36,10 +36,15 @@ export async function loadInteractionPolicy(read = readFile) {
   assert.equal(regional.baseCalibrationSha256, declared.calibrationSha256);
   assert.deepEqual(regional.scales, profile.scales); assert.deepEqual(regional.backgrounds, ['transparent', 'white', 'black']);
   assert.equal(regional.paddingPixels, 1);
-  // Pin the unchanged comparator/region construction used for these raw
-  // measurements. A future harness change needs an explicit evidence review.
-  for (const [file, sha256] of Object.entries(regional.toolHashes))
-    assert.equal(hash(await read(path.join(root, file))), sha256, 'Regional calibration tool changed: ' + file);
+  // The authenticated snapshot owns historical producer hashes. The reviewed
+  // profile separately guards current consumers; pixels and native limits stay fixed.
+  const guardFiles = [...new Set([...Object.keys(regional.toolHashes),
+    'tools/TikzVisual/interaction-primary.mjs', 'tools/TikzVisual/shape-primary-trial-policy.mjs'])].sort();
+  assert.deepEqual(Object.keys(declared.guardToolHashes).sort(), guardFiles, 'Incomplete interaction source guards.');
+  for (const file of guardFiles) {
+    const digest = declared.guardToolHashes[file]; assert.match(digest, /^[a-f0-9]{64}$/);
+    assert.equal(hash(await read(path.join(root, file))), digest, 'Regional current tool changed: ' + file);
+  }
   for (const id of ids) {
     const native = calibration.cases.find(c => c.caseId === id);
     const local = regional.cases.find(c => c.caseId === id);

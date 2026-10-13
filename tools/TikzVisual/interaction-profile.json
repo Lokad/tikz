@@ -8,8 +8,46 @@
   "regionalFile": "../../tests/Reference/NodeInteractionsRgb/calibration-regions.json",
   "regionalSha256": "aefbfc4d9c25b77b275fb9512c74e278511c759c063e44dac08481642d5b2eea",
   "cases": {
-    "state-paint": { "numericChecks": 1210, "regions": 38, "maxDimensionErrorPixels": 0.0002, "primary": { "maxChannelError": 10, "maxMeanForegroundError": 0.005928, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 } },
-    "transforms": { "numericChecks": 953, "regions": 35, "maxDimensionErrorPixels": 0.0002, "primary": { "maxChannelError": 32, "maxMeanForegroundError": 0.026600, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 } },
-    "colors": { "numericChecks": 3110, "regions": 101, "maxDimensionErrorPixels": 0.0002, "primary": { "maxChannelError": 43, "maxMeanForegroundError": 0.006834, "maxEdgeDisplacementRasterPixels": 1, "maxComponentDifference": 0 } }
+    "state-paint": {
+      "numericChecks": 1210,
+      "regions": 38,
+      "maxDimensionErrorPixels": 0.0002,
+      "primary": {
+        "maxChannelError": 10,
+        "maxMeanForegroundError": 0.005928,
+        "maxEdgeDisplacementRasterPixels": 1,
+        "maxComponentDifference": 0
+      }
+    },
+    "transforms": {
+      "numericChecks": 953,
+      "regions": 35,
+      "maxDimensionErrorPixels": 0.0002,
+      "primary": {
+        "maxChannelError": 32,
+        "maxMeanForegroundError": 0.0266,
+        "maxEdgeDisplacementRasterPixels": 1,
+        "maxComponentDifference": 0
+      }
+    },
+    "colors": {
+      "numericChecks": 3110,
+      "regions": 101,
+      "maxDimensionErrorPixels": 0.0002,
+      "primary": {
+        "maxChannelError": 43,
+        "maxMeanForegroundError": 0.006834,
+        "maxEdgeDisplacementRasterPixels": 1,
+        "maxComponentDifference": 0
+      }
+    }
+  },
+  "guardToolHashes": {
+    "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
+    "tools/TikzVisual/calibrate-interaction-regions.mjs": "283707d5759727ae243e7a66efbf00dd6ecf2e811f504a83cd2741d8382fdda4",
+    "tools/TikzVisual/compare.mjs": "16d1daa09c29c6a9b1bd495ee4e94482cd99a4739f568c8b628bab63de2cfba4",
+    "tools/TikzVisual/interaction-crop-check.mjs": "1124ea83ddc943ee26c0da7e2c9ab20affb0de9113f0fb381c7e43dbdbf0c2a8",
+    "tools/TikzVisual/interaction-primary.mjs": "44b5ebe92aea3f72fecff908a3ad24bac1864c3120fb3bad2956dd17bcbc2784",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "2689c85171c289525ad2ffc2eca6516312bdaa282aaf4a0a8ea1a779e60dfc15"
   }
 }

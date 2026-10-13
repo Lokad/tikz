@@ -46,8 +46,15 @@ export async function loadInteractionPdfPolicy(read = readFile) {
   assert.equal(viewportProbe.pageCoordinateControlsPassed, true);
   requirePdfRenderer(calibration.renderer, primary.regional.renderer);
   requirePdfRenderer(viewportProbe.renderer, calibration.renderer);
-  for (const evidence of [calibration, viewportProbe]) for (const [file, sha256] of Object.entries(evidence.toolHashes))
-    assert.equal(hash(await read(path.join(root, file))), sha256, 'PDF evidence tool changed: ' + file);
+  const guardFiles = [...new Set([...Object.keys(calibration.toolHashes), ...Object.keys(viewportProbe.toolHashes),
+    'tools/TikzVisual/interaction-pdf-policy.mjs'])].sort();
+  assert.deepEqual(Object.keys(declared.guardToolHashes).sort(), guardFiles, 'Incomplete interaction PDF source guards.');
+  for (const file of guardFiles) {
+    const digest = declared.guardToolHashes[file]; assert.match(digest, /^[a-f0-9]{64}$/);
+    if (Object.hasOwn(primary.declared.guardToolHashes, file))
+      assert.equal(digest, primary.declared.guardToolHashes[file], 'Split primary/PDF source guard: ' + file);
+    else assert.equal(hash(await read(path.join(root, file))), digest, 'PDF current tool changed: ' + file);
+  }
   for (const id of ids) {
     const c = calibration.cases.find(c => c.caseId === id), original = originalCalibration.cases.find(c => c.caseId === id);
     const native = primary.calibration.cases.find(c => c.caseId === id), local = primary.regional.cases.find(c => c.caseId === id);

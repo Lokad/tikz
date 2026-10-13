@@ -18,6 +18,12 @@ for (const [name, suffix, edit] of [
   ['changed-regional-evidence', 'calibration-regions.json', value => Buffer.concat([value, Buffer.from(' ')])],
   ['missing-regional-evidence', 'calibration-regions.json', () => { throw new Error('Controlled missing evidence'); }],
   ['changed-comparator', 'compare.mjs', value => Buffer.concat([value, Buffer.from(' ')])],
+  ['changed-primary-reader', 'interaction-primary.mjs', value => Buffer.concat([value, Buffer.from(' ')])],
+  ['changed-shared-renderer-contract', 'shape-primary-trial-policy.mjs', value => Buffer.concat([value, Buffer.from(' ')])],
+  ['historical-comparator-as-current-guard', 'interaction-profile.json', value => {
+    const policy = JSON.parse(value); policy.guardToolHashes['tools/TikzVisual/compare.mjs'] = '3a63ac3f22ec1c500c02a6e6679ac9664a78981dd2dd0867a23c435970c0a687';
+    return Buffer.from(JSON.stringify(policy));
+  }],
   ['widened-global-policy', 'interaction-profile.json', value => {
     const policy = JSON.parse(value); policy.cases.transforms.primary.maxChannelError = 255; return Buffer.from(JSON.stringify(policy));
   }],

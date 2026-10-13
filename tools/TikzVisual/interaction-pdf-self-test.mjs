@@ -17,6 +17,10 @@ for (const [name, suffix, edit] of [
   ['missing-PDF-evidence', 'pdf-calibration-page.json', () => { throw new Error('Controlled missing evidence'); }],
   ['changed-viewport-evidence', 'pdf-viewport-probe.json', b => Buffer.concat([b, Buffer.from(' ')])],
   ['changed-PDF-renderer', 'pdf-region-renderer.mjs', b => Buffer.concat([b, Buffer.from(' ')])],
+  ['changed-PDF-reader', 'interaction-pdf-policy.mjs', b => Buffer.concat([b, Buffer.from(' ')])],
+  ['split-primary-PDF-guard', 'interaction-pdf-profile.json', b => {
+    const p = JSON.parse(b); p.guardToolHashes['tools/TikzVisual/compare.mjs'] = '0'.repeat(64); return Buffer.from(JSON.stringify(p));
+  }],
   ['changed-native-SVG', 'native-css.svg', b => Buffer.concat([b, Buffer.from(' ')])],
   ['unapproved-render-mode', 'interaction-pdf-profile.json', b => { const p = JSON.parse(b); p.renderMode = 'picture-image'; return Buffer.from(JSON.stringify(p)); }],
   ['missing-policy-case', 'interaction-pdf-profile.json', b => { const p = JSON.parse(b); delete p.cases.colors; return Buffer.from(JSON.stringify(p)); }],
