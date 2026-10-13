@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
@@ -90,7 +91,7 @@ export function validateCalcCheckedTrial(e,trial,checker,recaptured){
   const c=checker.report;calcEqual([c.role,c.completed,c.phase,c.converterInvoked,c.nativeToolInvoked,c.rendererRecaptured,c.approvedImagePolicy,c.imageConformanceClaim,c.imageAdmission],
     ['independent-calc-current-candidate-check',true,'complete',true,false,true,false,false,'pending'],'Current calc checker role differs');
   assert.equal(c.input.sha256,trial.sha256);assert.equal(calcHash(checker.files.get('input-report.json')),trial.sha256);assert.equal(calcHash(checker.files.get('recapture-report.json')),recaptured.sha256);
-  calcEqual(trial.report.renderer,e.profile.renderer,'Current calc renderer differs');calcEqual(recaptured.report.renderer,e.profile.renderer,'Recaptured calc renderer differs');
+  requireRenderer(trial.report.renderer, e.profile.renderer, 'Current calc renderer differs');requireRenderer(recaptured.report.renderer, e.profile.renderer, 'Recaptured calc renderer differs');
   const reference=calcTrialOwned(trial,'reference');assert.equal(reference.sha256,e.reference.sha256,'Current calc native projection differs');
   const metrics=verifyCalcTrialPixels(trial);calcEqual(metrics,c.metrics);calcEqual(metrics,checker.json('decoded-metrics.json'));
   const command=c.commands.find(row=>row.log==='source-recapture-command.log');assert.ok(command&&command.exitCode===0&&command.executable==='node');

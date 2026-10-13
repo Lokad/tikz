@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Explicit completed run only: native reconstruction, saved PNG measurements and corruption controls.
 import assert from 'node:assert/strict';
 import {readFile,stat} from 'node:fs/promises';
@@ -47,7 +48,7 @@ try{
   assert.equal(fresh.approvedImagePolicy,false);assert.equal(fresh.imageConformanceClaim,false);
   assert.ok(fresh.oracleAssemblyReferences.length>0&&fresh.oracleAssemblyReferences.every(n=>n==='System'||n.startsWith('System.')));
   for(const[p,h]of Object.entries(fresh.artifacts)){const b=await readFile(await outputPath(path.join(output,'oracle'),p));assert.equal(sha256(b),h);artifacts['oracle/'+p]=h;}artifacts['oracle/report.json']=sha256(freshBytes);
-  renderer=await createRenderer();assert.deepEqual(renderer.identity,r.renderer);await installShapeMetrics(renderer);const frames=[];
+  renderer=await createRenderer();requireRenderer(renderer.identity, r.renderer);await installShapeMetrics(renderer);const frames=[];
   phase='native-reconstruction';for(const c of e.cases){const id=c.fixture.id,reference=e.files.get(edgeReference+id+'/plain-reference.svg').toString('utf8'),glyphBytes=await readFile(path.join(output,'oracle',id,'native-glyphs.json'));
     assert.ok(glyphBytes.equals(await read('oracle/'+id+'/native-glyphs.json')),'Independent glyph replay changed.');const glyphs=JSON.parse(glyphBytes),original=await readCurvedEdgeOriginal(renderer,reference,c.metrics,glyphs),frame=await buildCurvedEdgeFrame(renderer,reference,c.metrics,glyphs,original);
     assert.deepEqual(original,JSON.parse(await read(id+'/original-operations.json')));assert.deepEqual(frame,JSON.parse(await read(id+'/frame.json')));frames.push(frame);

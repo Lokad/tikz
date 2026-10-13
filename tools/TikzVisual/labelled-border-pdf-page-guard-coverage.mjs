@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Research coverage for the exact native-page/PDF conjunction.
 import assert from 'node:assert/strict';
 import {labelledBorderSnapshotSha256} from './labelled-border-evidence.mjs';
@@ -36,7 +37,7 @@ export function validateLabelledPdfPageGuard(r,source,calibration) {
   assert.equal(r.sourceSha256,labelledPdfFailedTrial.sha256);
   assert.equal(r.calibrationSha256,labelledPdfFailedTrial.calibrationSha256);
   assert.equal(r.calibrationSha256,source.calibrationSha256);
-  assert.deepEqual(r.renderer,calibration.renderer);
+  requireRenderer(r.renderer, calibration.renderer);
   assert.deepEqual(r.renderer,source.renderer);
   for(const[p,h]of Object.entries(r.artifacts)){link(r,p);assert.match(h,/^[a-f0-9]{64}$/);}
   for(const[p,h]of Object.entries(r.toolHashes)){

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createShapeRasterMetrics } from './shape-raster-metrics.mjs';
-import { deriveShapeTrialPolicy, evaluateShapeTrial, combineShapeTrial } from './shape-primary-trial-policy.mjs';
+import { deriveShapeTrialPolicy, evaluateShapeTrial, combineShapeTrial, requireRenderer } from './shape-primary-trial-policy.mjs';
 
 const { compare } = createShapeRasterMetrics(), view = { frame: 'natural', scale: 1, background: 'white' };
 const width = 100, height = 100, reference = new Uint8ClampedArray(width * height * 4).fill(255);
@@ -17,6 +17,18 @@ const policy = deriveShapeTrialPolicy([measurement], 'Synthetic comparator-only 
 const evaluate = (actual, v = view) => evaluateShapeTrial(policy, v, measure(actual));
 let checks = 0;
 function check(name, action) { action(); checks++; console.log(name + ': pass'); }
+// Historical CI failure: identical Windows browser on a different host release.
+const renderer = { profile: 'pinned', playwright: '1.63.0', browser: '153.0.8010.12', browserSha256: 'a'.repeat(64),
+  os: 'win32', osRelease: '10.0.19045', architecture: 'x64', node: 'v24.12.0', headless: true,
+  deviceScaleFactor: 1, viewport: { width: 1200, height: 900 }, launchArguments: ['--disable-gpu'], profileSha256: 'b'.repeat(64) };
+check('host release remains provenance', () => {
+  const hosted = { ...renderer, osRelease: '10.0.26100' };
+  requireRenderer(hosted, renderer); assert.equal(hosted.osRelease, '10.0.26100');
+});
+for (const field of Object.keys(renderer).filter(k => k !== 'osRelease'))
+  check('reject different renderer ' + field, () => assert.throws(() => requireRenderer({ ...renderer, [field]: null }, renderer)));
+check('reject missing host provenance', () => assert.throws(() => requireRenderer({ ...renderer, osRelease: undefined }, renderer)));
+check('reject unknown renderer field', () => assert.throws(() => requireRenderer({ ...renderer, unknown: true }, renderer)));
 check('independent reconstruction passes its measured bounds', () => assert.equal(evaluate(reconstructed).passed, true));
 check('exact reference passes', () => assert.equal(evaluate(reference).passed, true));
 check('faint loss passes global but fails independent local gate', () => {

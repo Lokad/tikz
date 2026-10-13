@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Owned public trial verification: fresh conversion, native frames and saved PNGs.
 import assert from 'node:assert/strict';
 import {readFile, stat} from 'node:fs/promises';
@@ -79,7 +80,7 @@ try {
         assert.deepEqual(c.policies[route], deriveEdgePdfPolicy(c.measurements.filter(o => o.route === route), c.camera, c.regions, c.id + '/' + route));
     }
   }
-  renderer = await createRenderer(); assert.deepEqual(renderer.identity, report.renderer); assert.deepEqual(renderer.identity, q.primary.renderer); await installShapeMetrics(renderer);
+  renderer = await createRenderer(); requireRenderer(renderer.identity, report.renderer); requireRenderer(renderer.identity, q.primary.renderer); await installShapeMetrics(renderer);
   const originalNumeric = JSON.parse(await read('numeric/report.json'));
   for (const [p, h] of Object.entries({...originalNumeric.converterSources, ...originalNumeric.toolHashes})) assert.equal(sha256(edgeCanonical(await readFile(path.join(root, p)))), h);
   phase = 'fresh-public-conversion'; let command;
@@ -111,7 +112,7 @@ try {
   const linked = (r, p) => { assert.ok(typeof p === 'string' && p && !p.includes(':') && !p.includes('\\') && !p.startsWith('/') && !p.split('/').includes('..')); assert.match(r.artifacts[p] ?? '', /^[a-f0-9]{64}$/); };
   function coverage(r) {
     assert.deepEqual([r.schemaVersion, r.comparisonKind, r.completed, r.converterInvoked, r.approvedImagePolicy, r.imageConformanceClaim, r.overallVerdict], [1, 'public-curved-edge-image-trial', true, true, false, false, 'pending']);
-    assert.equal(r.snapshotSha256, evidence.snapshotSha256); assert.deepEqual(r.renderer, renderer.identity); assert.deepEqual(r.qualification, report.qualification);
+    assert.equal(r.snapshotSha256, evidence.snapshotSha256); requireRenderer(r.renderer, renderer.identity); assert.deepEqual(r.qualification, report.qualification);
     assert.deepEqual(r.sourceHashes, report.sourceHashes); assert.equal(r.numericReport, 'numeric/report.json'); linked(r, 'index.html');
     for (const [i, c] of r.cases.entries()) { assert.deepEqual(c.declared, declarations[i]); assert.deepEqual(c.sourceFrame, frames[i]); assert.deepEqual(c.numeric, report.cases[i].numeric);
       assert.deepEqual(c.frameEvaluation, report.cases[i].frameEvaluation); assert.deepEqual(c.sources, report.cases[i].sources); assert.deepEqual(c.corrections, q.primary.cases[i].corrections);

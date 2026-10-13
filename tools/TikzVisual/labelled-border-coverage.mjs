@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Structural, geometric and policy contracts for unapproved research reports.
 import assert from 'node:assert/strict';
 import {labelledBorderSnapshotSha256} from './labelled-border-evidence.mjs';
@@ -69,7 +70,7 @@ export function validateLabelledInkCalibration(r,frames){
 }
 
 export function validateLabelledInkTrial(r,calibration){
-  research(r,'public-labelled-border-primary-trial');digest(r.calibrationSha256);assert.deepEqual(r.renderer,calibration.renderer);assert.deepEqual(r.cases.map(c=>c.caseId),ids);
+  research(r,'public-labelled-border-primary-trial');digest(r.calibrationSha256);requireRenderer(r.renderer, calibration.renderer);assert.deepEqual(r.cases.map(c=>c.caseId),ids);
   assert.equal(r.numeric.checks,1624);assert.equal(typeof r.numeric.passed,'boolean');relative(r,r.numeric.report);assert.deepEqual(r.pdf,{state:'pending'});
   for(let i=0;i<3;i++){const c=r.cases[i],source=calibration.cases[i],checks=c.nativeInkChecks;
     const expected=source.ink.records.flatMap(q=>keys.map(k=>({quantity:q.id+'.'+k,expected:q.bound[k],limit:1e-8}))).concat(source.rootChecks.map(q=>({quantity:'root.'+q.quantity,expected:q.serialized,limit:.000001})));
@@ -84,7 +85,7 @@ export function validateLabelledInkTrial(r,calibration){
 }
 
 export function validateLabelledSensitivity(r,calibration){
-  research(r,'labelled-border-image-only-sensitivity');digest(r.calibrationSha256);assert.equal(typeof r.converterInvoked,'boolean');assert.equal(r.sourceKind,r.converterInvoked?'fresh-public':'independent-native');assert.deepEqual(r.renderer,calibration.renderer);
+  research(r,'labelled-border-image-only-sensitivity');digest(r.calibrationSha256);assert.equal(typeof r.converterInvoked,'boolean');assert.equal(r.sourceKind,r.converterInvoked?'fresh-public':'independent-native');requireRenderer(r.renderer, calibration.renderer);
   const white=shapeViews.filter(v=>v.background==='white');assert.deepEqual(r.baselines.map(b=>b.caseId),ids);
   for(let i=0;i<3;i++){const b=r.baselines[i],source=calibration.cases[i];rows(r,b.views,source.frame,white,0);for(const row of b.views){assert.deepEqual(row.evaluation,evaluateShapeTrial(source.policy,viewOf(row),row));assert.equal(row.evaluation.passed,true);}}
   const defects=labelledBorderDefects();assert.equal(r.controls.length,defects.length);

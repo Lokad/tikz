@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Rebuild source captures from frozen native SVGs and re-decode saved pixels.
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -88,7 +89,7 @@ function corruptBundle(owned, change) {
 try {
   const evidence = await loadArrowImageCache(), owned = await loadArrowMeetOwned(process.argv[2], evidence);
   inputReportSha256 = owned.sha256;
-  renderer = await createRenderer(); assert.deepEqual(renderer.identity, owned.report.renderer); await installShapeMetrics(renderer);
+  renderer = await createRenderer(); requireRenderer(renderer.identity, owned.report.renderer); await installShapeMetrics(renderer);
   for (const view of arrowSourcePrimaryPlan()) {
     phase = view.id; const record = await verifyView(owned, evidence, view), frame = evidence.frames.find(f => f.caseId === view.caseId);
     if (['defect', 'visibility-missing'].includes(view.kind)) {

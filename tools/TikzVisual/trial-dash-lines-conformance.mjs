@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Research-only public comparison. Independent limits are validated before
 // invoking the converter. A trial pass remains pending immutable admission.
 import assert from 'node:assert/strict';
@@ -49,7 +50,7 @@ async function main() {
   await save('reference.svg', native.referenceBytes); await save('native-snapshot.json', native.snapshotBytes);
   const renderer = await createRenderer();
   try {
-    await installShapeMetrics(renderer); assert.deepEqual(renderer.identity, primary.renderer); assert.deepEqual(renderer.identity, pdf.renderer);
+    await installShapeMetrics(renderer); requireRenderer(renderer.identity, primary.renderer); requireRenderer(renderer.identity, pdf.renderer);
     const reconstruction = await reconstructDashLines(renderer, native), { representations, ...geometry } = reconstruction;
     assert.deepEqual(geometry, primary.geometry); assert.deepEqual(dashLinesPdfCamera(native, reconstruction), { camera: pdf.camera, regions: pdf.regions });
     assert.deepEqual(representations.map(({ mode, ...r }) => ({ name: mode, ...r })), primary.representations);

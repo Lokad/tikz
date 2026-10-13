@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Browser qualification of the fixed family's report-to-image navigation.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -50,7 +51,7 @@ failure.rankedRegions=[{...base,passed:false,metrics:damaged.evaluation.checks.f
 const defectImages=await edgeAgentImages(failure,artifacts,readAgent);await save('defect.html',edgeAgentViewer(failure,'Visible native image-only defect: '+defect.name,defectImages));
 const renderer=await createRenderer(),page=renderer.page,errors=[],selected=[];page.on('pageerror',e=>errors.push(e.message));
 try{
- if(mode==='--report')assert.deepEqual(renderer.identity,input.renderer);
+ if(mode==='--report')requireRenderer(renderer.identity, input.renderer);
  await page.unroute('**/*');const bundleUrls=[output,folder].map(p=>pathToFileURL(p+path.sep).href);
  await page.route('**/*',route=>bundleUrls.some(p=>route.request().url().startsWith(p))?route.continue():route.abort());
  await page.goto(pathToFileURL(path.join(mode==='--report'?folder:output,'index.html')).href);

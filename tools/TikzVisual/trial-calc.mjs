@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Public SVG trial against frozen native research; never selects an allowance.
 import assert from 'node:assert/strict';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
@@ -70,8 +71,8 @@ try{
     'shape-primary-trial-policy.mjs','shape-pdf-trial-policy.mjs','shape-pdf-camera.mjs','edge-trial-images.mjs','edge-oracle-pair.mjs','arrow-vector-pair.mjs','edge-pdf-image-pair.mjs','shape-oracle-bundle.mjs',
     'compare.mjs','browser-profile.json','text-profile.json','node-profile.json','package.json','package-lock.json'];
   for(const f of modules){const key='tools/TikzVisual/'+f,b=await readFile(path.join(root,key));sourceHashes[key]=calcHash(b);await save('source-captures/'+key,b);}
-  renderer=await createRenderer();calcEqual(renderer.identity,reference.bundle.json('primaryCalibration/report.json').renderer,'Frozen primary renderer differs');
-  calcEqual(renderer.identity,reference.bundle.json('pdfCalibration/report.json').renderer,'Frozen PDF renderer differs');
+  renderer=await createRenderer();requireRenderer(renderer.identity, reference.bundle.json('primaryCalibration/report.json').renderer, 'Frozen primary renderer differs');
+  requireRenderer(renderer.identity, reference.bundle.json('pdfCalibration/report.json').renderer, 'Frozen PDF renderer differs');
   await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
   const original=candidate.files.get('reference.svg').toString(),actual=candidate.files.get('actual.svg').toString();
   const built=await buildCalcPrimaryReference(renderer,original,reference.cache);

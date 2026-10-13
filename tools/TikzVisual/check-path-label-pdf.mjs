@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Acceptance gap: independent native PDF policy derivation, registration and source binding.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -39,7 +40,7 @@ export async function checkPathLabelPdf(file){
  const frame=calibration.json('frame.json');calcEqual(frame,bundle.json('frame.json'));const pdf=pathLabelPdfFrame(native,frame);calcEqual(pdf,bundle.json('pdf-frame.json'),'Changed native PDF registration.');
  const pixels=verifyPathLabelPdfPixels(bundle),renderer=await createRenderer();let recaptured=0;
  try{
-  calcEqual(renderer.identity,r.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
+  requireRenderer(renderer.identity, r.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
   const rebuilt=await buildPathLabelImageReference(renderer,native,calibration.json('oracle/native-glyphs.json'),!!frame.nativePathEncoding);
   calcEqual({...rebuilt,encodings:rebuilt.encodings.map(({svg,...e})=>e)},frame,'Current native primary frame differs.');
   for(const encoding of pathLabelImageEncodingIds(frame)){const original=rebuilt.encodings.find(e=>e.id===encoding).svg;

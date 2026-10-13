@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Remeasure retained PNGs independently of the guard producer and test coverage.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -58,7 +59,7 @@ try{
     &&!p.split('/').some(s=>['..','.',''].includes(s)));return path.join(sourceFolder,p);}
   const renderer=await createRenderer();let pagesRecomputed=0,metricsRecomputed=0;
   try{
-    assert.deepEqual(renderer.identity,r.renderer);await installShapeMetrics(renderer);
+    requireRenderer(renderer.identity, r.renderer);await installShapeMetrics(renderer);
     async function measure(c,o){
       const anchor=c.observations.find(v=>v.mode==='native-ink'&&labelledPdfViewKey(v)===labelledPdfViewKey(o));
       assert.ok(anchor);

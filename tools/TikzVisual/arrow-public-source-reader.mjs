@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Validate the completed public baseline bundle before trusting any saved verdict.
 import assert from 'node:assert/strict';
 import {readFile, stat} from 'node:fs/promises';
@@ -21,7 +22,7 @@ export function validateArrowPublicBaselineBundle(reportBytes, manifestBytes, as
     [1,'public-arrow-source-baseline-trial',true,'complete',true,false,false,'pending']);
   assert.deepEqual(report.pendingGates,pending);
   assert.deepEqual(report.cache,{file:'native-cache.bin.gz',sha256:arrowImageCacheSha256});
-  assert.deepEqual(report.renderer,e.reports.primary.renderer);
+  requireRenderer(report.renderer, e.reports.primary.renderer);
   assert.deepEqual(report.sourceHashes,Object.fromEntries([...sources].map(([p,s]) => [p,s.sha256])));
   assert.deepEqual([report.numericReport,report.frames,report.primary,report.pdf,report.viewer],['numeric/report.json','frames.json','primary.json','pdf.json','index.html']);
   assert.deepEqual(report.manifest,{file:'manifest.json',sha256:sha256(manifestBytes),files:assets.size});

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Full-diagram PDF image-only defects. Numeric gates cannot hide a blind spot.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -22,7 +23,7 @@ async function main(){
   assert.equal(process.argv.length,2);await publish({completed:false,phase,converterInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,toolHashes,artifacts});const evidence=await loadLabelledBorderEvidence(),qualification=await loadLabelledPdfQualification(),folder=path.join(root,'artifacts/labelled-border-pdf-calibration'),p=JSON.parse(await readFile(path.join(folder,'latest.json')));assert.equal(p.completed,true);assert.match(p.report,/^run-[a-f0-9-]+\/report.json$/);const input=path.dirname(path.join(folder,p.report)),bytes=await readFile(path.join(input,'report.json'));assert.equal(sha256(bytes),p.sha256);const calibration=JSON.parse(bytes);validateLabelledPdfCalibration(calibration,qualification.report);await save('calibration/report.json',bytes);
   for(const[file,h]of Object.entries(calibration.artifacts)){const b=await readFile(await outputPath(input,file));assert.equal(sha256(b),h,file);await save('calibration/'+file,b);}for(const[file,h]of Object.entries(calibration.toolHashes))assert.equal(sha256(Buffer.from((await readFile(path.join(root,file),'utf8')).replaceAll('\r\n','\n'))),h,file);
   const renderer=await createRenderer();try{
-    assert.deepEqual(renderer.identity,calibration.renderer);await installShapeMetrics(renderer);const baseline=new Map();
+    requireRenderer(renderer.identity, calibration.renderer);await installShapeMetrics(renderer);const baseline=new Map();
     for(const c of calibration.cases){const source=(await read('calibration/'+c.svg.native)).toString('utf8'),pages=Object.fromEntries(await Promise.all([1,4].map(async s=>[s,'data:image/png;base64,'+(await read('calibration/'+c.pdfPages[s])).toString('base64')])));baseline.set(c.caseId,{source,pages,hashes:new Map()});const views=[];
       for(const view of shapePdfViews){const m=await measureShapePdfPair(renderer,{svg:source,units:'cssPixels',svgOriginBp:{x:0,y:0},camera:c.camera,regions:c.regions,...view,pdfPage:pages[view.scale],cropLimit:0});const evaluation=evaluateShapePdfTrial(c.policies.native,view,m);assert.equal(evaluation.passed,true);baseline.get(c.caseId).hashes.set(labelledPdfViewKey(view),sha256(Buffer.from(m.images['svg-page'],'base64')));views.push({mode:'native-ink',...await saveLabelledPdfImages(save,c.caseId+'/baseline/'+labelledPdfViewKey(view),m),evaluation});}
       baselines.push({caseId:c.caseId,views});

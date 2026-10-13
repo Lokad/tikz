@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Public combined trial against separately checked native-only qualifications.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -70,7 +71,7 @@ try {
   phase = 'checked-independent-inputs'; qualification = await loadEdgeTrialInputs(Object.fromEntries(['primary', 'primaryCheck', 'pdf', 'pdfCheck'].map((k, i) => [k, process.argv[i + 2]])), save);
   evidence = await loadEdgeEvidence(); assert.equal(evidence.snapshotSha256, qualification.primary.report.snapshotSha256);
   for (const [p, b] of evidence.files) await save('native-inputs/' + p, b);
-  renderer = await createRenderer(); assert.deepEqual(renderer.identity, qualification.primary.report.renderer); await installShapeMetrics(renderer);
+  renderer = await createRenderer(); requireRenderer(renderer.identity, qualification.primary.report.renderer); await installShapeMetrics(renderer);
   // Declare every expected frame before candidate conversion, using native data.
   const declarations = evidence.cases.map(n => buildEdgeDeclaredFrame(n.metrics, qualification.primary.report.cases.find(c => c.id === n.fixture.id).frame));
   await json('declared-frames.json', declarations);

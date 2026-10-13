@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Unapproved fixture-only primary policy trial. Independent expectations and
 // limits are established before invoking the public converter.
 import assert from 'node:assert/strict';
@@ -73,7 +74,7 @@ async function main() {
   await writeArtifact(output, 'source.tikz', await readFile(path.join(calibrationFolder, 'oracle/source.tikz')), artifacts);
   await writeArtifact(output, 'prospective-policy.json', JSON.stringify({ ...policy, independentEvidenceSha256: sha256(evidenceBytes) }, null, 2) + '\n', artifacts);
   try {
-    assert.deepEqual(renderer.identity, evidence.renderer); await installShapeMetrics(renderer);
+    requireRenderer(renderer.identity, evidence.renderer); await installShapeMetrics(renderer);
     async function compareCase(name, reference, actual, activePolicy, views, expectedPassed, cropRegionIds = [], sources = null) {
       const comparisons = [];
       for (const view of views) {

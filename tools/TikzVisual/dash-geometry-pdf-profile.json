@@ -29,7 +29,7 @@
     }
   ],
   "primaryPolicyId": "chromium-153-dash-geometry-primary-v1",
-  "primaryPolicySha256": "f397db995cd0cd2107bc982c2c849f0c9829fb256474683d24678cde86ad60bf",
+  "primaryPolicySha256": "1bd15ed3dbb685cc719ebb9ec24eb40caf31b83f7c69ac25c27c4c84068e1a71",
   "calibration": {
     "file": "tests/Reference/DashGeometry/pdf-cairo/calibration.json",
     "sha256": "36cfa5c12a6434813e681df8c4791017a689b2e9d2a4972e8fa8f13d8794001e"
@@ -38,7 +38,7 @@
     "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
     "tools/TikzVisual/calibrate-dash-geometry-pdf-cairo.mjs": "57e0372111712332135a426727fac88e9317a9d3fc46be15de5977a4d3a03945",
     "tools/TikzVisual/compare-dash-geometry-conformance.mjs": "27154d6246f759432e62c534180601825bd0f314b8ccb96a247e6dd08a0e9c0d",
-    "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
+    "tools/TikzVisual/compare.mjs": "16d1daa09c29c6a9b1bd495ee4e94482cd99a4739f568c8b628bab63de2cfba4",
     "tools/TikzVisual/dash-geometry-image-defects.mjs": "c038cdcf4eeef463c73bc02df811ca949b4eea9bc7cdbac1585506fb0ba8744e",
     "tools/TikzVisual/dash-geometry-image-pair.mjs": "541afd902cb48428c43a8c007a79df96fe9ef5490dd32a5af8de39e5a092646d",
     "tools/TikzVisual/dash-geometry-pdf-policy-self-test.mjs": "4440d65175c4165650c85ad3379c2e0bfd521eaf60f07d4bb3b394397a651d52",
@@ -59,7 +59,7 @@
     "tools/TikzVisual/shape-pdf-camera.mjs": "9941c14fb2783d41a82c29c4899cac9f0d4a137008d00ffefc22c89a30613658",
     "tools/TikzVisual/shape-pdf-image-pair.mjs": "e0cb5dc44d789dba524349c7595c6569ddd7c1c3cc61fe68bd9598daf4d260ec",
     "tools/TikzVisual/shape-pdf-trial-policy.mjs": "fcd52ca4f9caa1512bed5b68760b541ee5be29f3a91286ef892cef42a854b4e4",
-    "tools/TikzVisual/shape-primary-trial-policy.mjs": "5942f8eb07c5ceca56cf3a28eef1263929ff7cfd39ed51ec6630a70c404a4e60",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "2689c85171c289525ad2ffc2eca6516312bdaa282aaf4a0a8ea1a779e60dfc15",
     "tools/TikzVisual/shape-raster-metrics.mjs": "ce624b7232b134cd3eae243ad5f99521b5dde7b6e9fba8e802cb01b00743c38a"
   },
   "camera": {

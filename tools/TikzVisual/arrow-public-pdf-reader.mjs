@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 import assert from 'node:assert/strict';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
@@ -24,7 +25,7 @@ export async function validateArrowPublicPdfBundle(reportBytes,manifestBytes,ass
   assert.equal(manifest.schemaVersion,1);assertNativeEqual(Object.keys(manifest).sort(),['artifacts','schemaVersion']);assertNativeEqual(Object.keys(manifest.artifacts),[...assets.keys()]);
   for(const[name,digest]of Object.entries(manifest.artifacts)){arrowCachePath(name);assert.match(digest,/^[a-f0-9]{64}$/);assert.equal(sha256(assets.get(name)),digest,'Changed public PDF artifact: '+name);}
   const read=name=>{arrowCachePath(name);assert.ok(assets.has(name),'Missing public PDF artifact: '+name);return assets.get(name);},json=name=>JSON.parse(read(name));
-  const input=await loadArrowPublicPdfInput(e,read),sources=await arrowPublicPdfSources(e);assertNativeEqual(report.renderer,input.primary.report.renderer);
+  const input=await loadArrowPublicPdfInput(e,read),sources=await arrowPublicPdfSources(e);requireRenderer(report.renderer, input.primary.report.renderer);
   assertNativeEqual(report.sourceHashes,Object.fromEntries([...sources].map(([name,s])=>[name,s.sha256])));const expected=new Set(input.files.keys());
   for(const[name,s]of sources){const file='source-captures/'+name;assert.ok(read(file).equals(s.bytes));expected.add(file);}
   for(const name of ['record-index.json','focus.json','native-limit-bindings.json','summary.json','index.html'])expected.add(name);

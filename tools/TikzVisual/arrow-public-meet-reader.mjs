@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Validate the completed public baseline bundle before trusting any saved verdict.
 import assert from 'node:assert/strict';
 import {readFile, stat} from 'node:fs/promises';
@@ -25,7 +26,7 @@ export function validateArrowPublicMeetBaselineBundle(reportBytes, manifestBytes
   assertNativeEqual(report.pendingGates,pending);
   assertNativeEqual(report.cache,{file:'native-meet-cache.bin.gz',sha256:arrowMeetImageCacheSha256});
   assertNativeEqual(report.baseCache,{file:'native-base-cache.bin.gz',sha256:arrowImageCacheSha256});
-  assertNativeEqual(report.renderer,e.reports.primary.renderer);
+  requireRenderer(report.renderer, e.reports.primary.renderer);
   assertNativeEqual(report.sourceHashes,Object.fromEntries([...sources].map(([p,s]) => [p,s.sha256])));
   assertNativeEqual([report.numericReport,report.frames,report.primary,report.pdf,report.viewer],['numeric/report.json','frames.json','primary.json','pdf.json','index.html']);
   assertNativeEqual(report.manifest,{file:'manifest.json',sha256:sha256(manifestBytes),files:assets.size});

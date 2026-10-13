@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Reconstruct independent evidence and audit fresh public/image-only trials.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -24,7 +25,7 @@ function check(group,name,source,validate,change,reject=true){const r=structured
 try{
   assert.equal(process.argv.length,2);const calibration=await load('ink-calibration'),trial=await load('primary-trial'),native=await load('oracle-sensitivity'),publicTrial=await load('public-sensitivity'),evidence=await loadLabelledBorderEvidence();
   const renderer=await createRenderer();try{
-    assert.deepEqual(renderer.identity,calibration.report.renderer);const frames=[];
+    requireRenderer(renderer.identity, calibration.report.renderer);const frames=[];
     for(const c of evidence.cases)frames.push(await buildLabelledBorderFrame(renderer,c,evidence.files.get('tests/Reference/LabelledBorders/'+c.fixture.id+'/probed-reference.svg').toString('utf8')));
     const validate=r=>validateLabelledInkCalibration(r,frames);validate(calibration.report);
     const oracle=JSON.parse(await readFile(path.join(calibration.directory,'oracle/report.json')));assert.equal(oracle.completed,true);assert.equal(oracle.converterInvoked,false);assert.equal(oracle.glyphs,40);assert.equal(oracle.snapshotSha256,evidence.snapshotSha256);

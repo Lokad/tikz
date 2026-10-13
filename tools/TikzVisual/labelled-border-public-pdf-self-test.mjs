@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independent PNG decoding and corruption controls for fresh public defects.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -43,7 +44,7 @@ try{
   assert.equal(r.sensitivityPassed,true);await save('input-report.json',bytes);
   const renderer=await createRenderer();let metricsRecomputed=0,pagesRecomputed=0;
   try{
-    assert.deepEqual(renderer.identity,r.renderer);await installShapeMetrics(renderer);
+    requireRenderer(renderer.identity, r.renderer);await installShapeMetrics(renderer);
     async function measure(images,size,rectangles,scale,scanPage){
       return renderer.page.evaluate(async({images,size,rectangles,scale,scanPage})=>{
         const buffers=[];

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Saved-page reader, strict-attempt replay and independent native ink outcomes.
 import assert from 'node:assert/strict';
 import {readFile,mkdir,stat} from 'node:fs/promises';
@@ -28,7 +29,7 @@ try{
  const frames=e.cases.map(c=>{const f=buildArrowNativeFrame(c.id,e.artifacts.get(c.id+'/plain-reference.svg').toString(),c.metrics);return{...f,paper:arrowPdfRegions(c.metrics,f)};});
  const validate=()=>assert.deepEqual(validateArrowPaperReport(r,e,frames),r.coverage);validate();for(const f of frames){assert.deepEqual(JSON.parse(await read(f.caseId+'/paper-frame.json')),f);
   for(const scale of[1,4])assert.ok((await read('reference/'+f.caseId+'/pdf-page-'+scale+'x.png')).equals(e.artifacts.get(f.caseId+'/plain-pdf-page-'+scale+'x.png')));}
- assert.deepEqual(JSON.parse(await read('policies.json')),r.policies);renderer=await createRenderer();assert.deepEqual(renderer.identity,r.renderer);await installShapeMetrics(renderer);
+ assert.deepEqual(JSON.parse(await read('policies.json')),r.policies);renderer=await createRenderer();requireRenderer(renderer.identity, r.renderer);await installShapeMetrics(renderer);
  assert.deepEqual(JSON.parse(await read('ink-controls.json')),await runArrowPaperInkControls(renderer));const baselines=[],saved=new Map(),sensitivity=[],visibilityRows=new Map(),visibilityPolicies=new Map();let independentlyDerived;
  for(const o of r.observations){const v=o.view,c=e.cases.find(c=>c.id===v.caseId),f=frames.find(f=>f.caseId===v.caseId),input=arrowPaperInputs(v,c,f,e.artifacts.get(c.id+'/plain-reference.svg').toString()),n=JSON.parse(await read(o.numbers));phase=v.id;
   if(v.kind!=='calibration'&&!independentlyDerived){independentlyDerived={strict:[],fingerprints:[]};for(const frame of frames)for(const route of arrowPaperRoutes){const rows=baselines.filter(q=>q.view.caseId===frame.caseId&&q.view.route===route&&q.view.raster===arrowPaperRasters[0]);

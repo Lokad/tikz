@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independent saved-pixel checks and source recapture; no converter invocation.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -101,7 +102,7 @@ export async function checkPathLabelPrimary(file,save=async()=>{}){
  assert.ok(fresh.files.get('native-glyphs.json').equals(bundle.files.get('oracle/native-glyphs.json')),'Fresh independent DVI/TFM glyph evidence differs.');
  const renderer=await createRenderer();let recaptured=0;
  try{
-  calcEqual(renderer.identity,bundle.report.renderer,'Renderer identity differs.');
+  requireRenderer(renderer.identity, bundle.report.renderer, 'Renderer identity differs.');
   await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
   const frame=await buildPathLabelImageReference(renderer,native,bundle.json('oracle/native-glyphs.json'),!!bundle.json('frame.json').nativePathEncoding);
   calcEqual({...frame,encodings:frame.encodings.map(({svg,...e})=>e)},bundle.json('frame.json'),'Native frame reconstruction differs.');

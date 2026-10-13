@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Explicit owned report; re-decode saved RGBA and rederive limits/outcomes.
 import assert from 'node:assert/strict';
 import {readFile,mkdir,stat} from 'node:fs/promises';
@@ -31,7 +32,7 @@ try{
  const frames=e.cases.map(c=>buildArrowNativeFrame(c.id,e.artifacts.get(c.id+'/plain-reference.svg').toString(),c.metrics));
  const validate=()=>assert.deepEqual(validateArrowPrimaryReport(r,e,frames),r.coverage);validate();for(const f of frames)assert.deepEqual(JSON.parse(await read(f.caseId+'/frame.json')),f);
  assert.deepEqual(JSON.parse(await read('trial-policy.json')),r.policy);
- renderer=await createRenderer();assert.deepEqual(renderer.identity,r.renderer);await installShapeMetrics(renderer);
+ renderer=await createRenderer();requireRenderer(renderer.identity, r.renderer);await installShapeMetrics(renderer);
  phase='saved-measurements';const saved=new Map(),baselines=[],visibilityRows=new Map(),visibilityPolicies=new Map(),sensitivity=[];let independentlyDerivedPolicy;
  for(const o of r.observations){const v=o.view,c=e.cases.find(c=>c.id===v.caseId),f=frames.find(f=>f.caseId===v.caseId),inputs=arrowPrimaryInputs(v,c,f,e.artifacts.get(c.id+'/plain-reference.svg').toString()),n=JSON.parse(await read(o.numbers));
   if(v.kind!=='calibration'&&!independentlyDerivedPolicy){independentlyDerivedPolicy=deriveArrowPrimaryPolicy(e.cases.map(c=>({id:c.id,measurements:baselines.filter(o=>o.view.caseId===c.id).map(o=>({...o,...o.view}))})));assert.deepEqual(independentlyDerivedPolicy,r.policy);}

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Acceptance gap: loss/displacement of every glyph in each complete path-label text.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -39,7 +40,7 @@ try{
  for(const file of['compare-path-label-text-sensitivity.mjs','path-label-text-controls.mjs','path-label-qualified-primary.mjs','path-label-primary-policy.mjs'])
   await save('source-captures/tools/TikzVisual/'+file,await readFile(path.join(root,'tools/TikzVisual/'+file)));
  const frame=calibration.json('frame.json'),policies=readPathLabelPrimaryPolicies(calibration),original=calibration.files.get('encodings/'+pathLabelImageEncodings[0]+'.svg').toString('utf8');
- renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer,'Changed frozen renderer.');
+ renderer=await createRenderer();requireRenderer(renderer.identity, calibration.report.renderer, 'Changed frozen renderer.');
  await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');phase='whole-text-controls';
  for(const label of pathLabelTextTargets(calibration.json('oracle/native-glyphs.json')))for(const kind of['missing','quarter-pixel-shift']){
   const control={...label,kind,numericChecksBypassed:true,comparisons:[]};controls.push(control);

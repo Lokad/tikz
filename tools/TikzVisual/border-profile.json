@@ -4,7 +4,7 @@
   "scope": "Three unlabelled rectangle-border path fixtures only; independent stroke-ink frame; calibrated primary SVG and white-paper ordinary PDF; native numeric, ink/frame, whole-picture and all regional gates required",
   "approvedPrimaryPolicy": true,
   "approvedPdfPolicy": true,
-  "numericTolerancePixels": 0.00004,
+  "numericTolerancePixels": 4e-05,
   "renderMode": "page-coordinates",
   "scales": [
     1,
@@ -93,7 +93,7 @@
     "tools/TikzVisual/calibrate-border-pdf-regions.mjs": "bc501aa8620d3f727bc3fd00012a6e7335e1c208dfc9fd92df14b2720cf8761b",
     "tools/TikzVisual/calibrate-border-regions.mjs": "abac553b91392c4e831628514e8d5c447b5d110a9cb84038937873d743eea1eb",
     "tools/TikzVisual/compare-border-conformance.mjs": "73b2626cd0ddd754158c19d62b546759cb6078f9de802e0b9bb26d8c318f4fd7",
-    "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
+    "tools/TikzVisual/compare.mjs": "16d1daa09c29c6a9b1bd495ee4e94482cd99a4739f568c8b628bab63de2cfba4",
     "tools/TikzVisual/pdf-native-geometry.mjs": "5882f621580b80e579b8c73b4578d50abb3c332d408d5b3016b2cac52dd41089",
     "tools/TikzVisual/pdf-region-renderer.mjs": "4fcd4cf232ba9a6927def4ff64dc908021f7f3271e39f9236da2200e43e39b5b",
     "tools/TikzVisual/pdf-region-verdict.mjs": "c58d7082e7a62be8e66f4033914ebaf157cacac7adf588b4329d5235038bc6f6",

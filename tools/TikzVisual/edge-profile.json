@@ -352,15 +352,15 @@
     "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
     "tools/TikzVisual/calibrate-edge-pdf.mjs": "b2aa31068659b479b9f125258dfb7a40c27947e651bb57fc3738d75bd09174f8",
     "tools/TikzVisual/calibrate-edge-primary.mjs": "4bd16f697d7d3b5b2b036c32a81eed9dfbd25048ad68efb7cbacc64564130acb",
-    "tools/TikzVisual/check-edge-pdf.mjs": "27e26a186ab62524f3f34f18672a2628970a3e7469f7144da5a464d7c22e0daa",
-    "tools/TikzVisual/check-edge-primary.mjs": "5bbd99e52324ba5cf261e6c27e8a0e56c8f9305f600de133d45b9ced4f21d53f",
-    "tools/TikzVisual/check-edge-trial.mjs": "6f4cba8c61e7f90ba5dbe3717bd2054ed6d23c20b5bd59b1e221860b1804331d",
+    "tools/TikzVisual/check-edge-pdf.mjs": "29bba7b031a9952b3cdb6035acc6fdb661a4b9417d7570caed64139a65f486ca",
+    "tools/TikzVisual/check-edge-primary.mjs": "3c473dad5c75515daf221d3c56c3de6375610cf1610cf42226c6813a0a97438b",
+    "tools/TikzVisual/check-edge-trial.mjs": "36dbdd5278ce5c3ffcd5d3fe88b3440a9a4dfca806673a4146fbc58d150f8d24",
     "tools/TikzVisual/compare-edge-conformance.mjs": "1a39d72f51814a13e264a9cdc91c78e70cef815866a601c8ae3854beabe4e659",
-    "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
+    "tools/TikzVisual/compare.mjs": "16d1daa09c29c6a9b1bd495ee4e94482cd99a4739f568c8b628bab63de2cfba4",
     "tools/TikzVisual/curved-node-path-units.mjs": "89e4f26565a054eda254ffbde48d7a1b08fa655ed5b3a2a1425a2fb026e53b04",
     "tools/TikzVisual/dash-pdf-vector.mjs": "9c2c9b5a94813e2264268c8e76af44bda352ef1ae8bc4e9e7ebb72a2ae566fcd",
     "tools/TikzVisual/edge-admission-owned-child.mjs": "b0355042187a682c3cf93fe6686bc3f07b5fbb7985f0f0cd5427a54a8e145e78",
-    "tools/TikzVisual/edge-admission-policy.mjs": "e78440364f37fc55b1c431f58a9cb9c03703c424b21cb3dc23fcacfdae243790",
+    "tools/TikzVisual/edge-admission-policy.mjs": "9fb902b40de12c237ddd36def01a45662864f1fc39ca39000b2a909294f9d870",
     "tools/TikzVisual/edge-admission-self-test.mjs": "c399f69e0ce8846080ecc330c756121558761ead39e83c70ab4088c7418c60c8",
     "tools/TikzVisual/edge-driver-state.mjs": "41286e81d674e3a2701ec4cfd650e10cb2e0afaec936c026c6dac917032f9487",
     "tools/TikzVisual/edge-evidence.mjs": "386fd613a568821b714a1ec479b086fb52d1a046679f8ce12867e4f228609c0f",
@@ -406,10 +406,10 @@
     "tools/TikzVisual/shape-pdf-camera.mjs": "9941c14fb2783d41a82c29c4899cac9f0d4a137008d00ffefc22c89a30613658",
     "tools/TikzVisual/shape-pdf-image-pair.mjs": "e0cb5dc44d789dba524349c7595c6569ddd7c1c3cc61fe68bd9598daf4d260ec",
     "tools/TikzVisual/shape-pdf-trial-policy.mjs": "fcd52ca4f9caa1512bed5b68760b541ee5be29f3a91286ef892cef42a854b4e4",
-    "tools/TikzVisual/shape-primary-trial-policy.mjs": "5942f8eb07c5ceca56cf3a28eef1263929ff7cfd39ed51ec6630a70c404a4e60",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "2689c85171c289525ad2ffc2eca6516312bdaa282aaf4a0a8ea1a779e60dfc15",
     "tools/TikzVisual/shape-raster-metrics.mjs": "ce624b7232b134cd3eae243ad5f99521b5dde7b6e9fba8e802cb01b00743c38a",
     "tools/TikzVisual/text-profile.json": "5d51a7482e3cec8896b02ebe8f9a872f8cb0bc535ddced6312bbad10f87231e1",
     "tools/TikzVisual/trial-edge-cached.mjs": "3c9efca79526a85d2855b46cf39f78654fa311f8f69f0830d28eb29610b105c5",
-    "tools/TikzVisual/trial-edge-images.mjs": "b38c9ac8a1a92d633eb6d411d0a0507822b0356a38fcb653d113e21d1d416847"
+    "tools/TikzVisual/trial-edge-images.mjs": "e29c6097d2171024babdfc2aec0fb4c549fb7ef3173b33654da0b79e3f728ffc"
   }
 }

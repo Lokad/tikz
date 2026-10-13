@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Acceptance gap: current primary/PDF pixels, verdicts and fresh public source binding.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -127,7 +128,7 @@ export async function checkPathLabelCurrent(args,save,markConverter=()=>{}){
  if(diagram)assert.ok(fresh.files.get('source-map.json').equals(numeric.files.get('source-map.json')),'Changed fresh source spans.');
  const renderer=await createRenderer(),frame=calibration.json('frame.json'),pdfFrame=pdfCalibration.json('pdf-frame.json');let recaptured=0;
  try{
-  calcEqual(renderer.identity,calibration.report.renderer);calcEqual(renderer.identity,pdfCalibration.report.renderer);
+  requireRenderer(renderer.identity, calibration.report.renderer);requireRenderer(renderer.identity, pdfCalibration.report.renderer);
   await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
   const svg=fresh.files.get('public.svg').toString('utf8'),reference=native.files.get('probed-reference.svg').toString('utf8');
   // The independent pixel readers above check every local region. Exact full

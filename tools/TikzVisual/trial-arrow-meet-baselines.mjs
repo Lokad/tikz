@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Separate public meet baselines consume frozen native limits; admission remains pending.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -47,7 +48,7 @@ try {
   await save('native-base-cache.bin.gz',await readFile(path.join(root,arrowImageCacheFile)));
   for(const [p,s] of tools){sourceHashes[p]=s.sha256;await save('source-captures/'+p,s.bytes);}
   await json('native-limit-bindings.json',arrowPublicMeetBindings(e));
-  renderer=await createRenderer();assert.deepEqual(renderer.identity,e.reports.primary.renderer);await installShapeMetrics(renderer);
+  renderer=await createRenderer();requireRenderer(renderer.identity, e.reports.primary.renderer);await installShapeMetrics(renderer);
   phase='public-numeric';converterInvoked=true;
   let command;
   try {command=await promisify(execFile)('dotnet',['run','--project','tools/TikzArrowComparison','-c','Release','--','--out',relative(path.join(output,'numeric'))],{cwd:root,windowsHide:true,timeout:180000,maxBuffer:1000000});}

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Rebuild projections, decode public pixels, and exercise the linked offline viewer.
 import assert from 'node:assert/strict';
 import {mkdir} from 'node:fs/promises';
@@ -24,7 +25,7 @@ try{
  const expectedManifest=Buffer.from(JSON.stringify({schemaVersion:1,artifacts:expectedArtifacts},null,2)+'\n');assert.equal(sha256(expectedManifest),owned.report.manifest.sha256);
  const expected={...core,manifest:{file:'manifest.json',sha256:sha256(expectedManifest),files:Object.keys(expectedArtifacts).length}},savedCases=owned.report.cases.map(c=>JSON.parse(owned.files.get(c.report)));
  const validate=()=>{assert.deepEqual(savedCases,cases);return validateArrowAgent(owned.report,savedCases,expected,owned.manifest.artifacts);};const coverage=validate();
- phase='public-saved-pixels';renderer=await createRenderer();assert.deepEqual(renderer.identity,owned.report.renderer);await installShapeMetrics(renderer);
+ phase='public-saved-pixels';renderer=await createRenderer();requireRenderer(renderer.identity, owned.report.renderer);await installShapeMetrics(renderer);
  const prototype=bundle.loaded[4];for(const c of cases){for(const row of c.rows.filter(r=>r.family==='prototype')){
   const original=prototype.report.observations.find(o=>row.id==='prototype/'+o.id),rectangles=c.regions.prototype.map(r=>arrowAgentRectangle(c,row,r.id));
   const decoded=await decodeEdgeOraclePngPair(renderer,Object.values(row.images).map(f=>owned.files.get(f)),row.size,rectangles,row.view.scale,row.view.background);

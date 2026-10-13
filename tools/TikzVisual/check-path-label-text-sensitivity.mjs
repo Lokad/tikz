@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independent whole/local pixel checks and exact source recapture for complete text controls.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -55,7 +56,7 @@ export async function checkPathLabelText(file){
  }
  const pixels=verifyPathLabelTextPixels(bundle),frame=bundle.json('basis/frame.json'),renderer=await createRenderer();let recaptured=0;
  try{
-  calcEqual(renderer.identity,calibration.report.renderer,'Changed renderer.');await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
+  requireRenderer(renderer.identity, calibration.report.renderer, 'Changed renderer.');await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
   const original=bundle.files.get('basis/encodings/'+pathLabelImageEncodings[0]+'.svg').toString('utf8');
   for(const control of bundle.report.controls){
    const svg=await mutatePathLabelText(renderer,original,control);

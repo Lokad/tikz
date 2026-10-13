@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independently reconstruct native inputs/limits/defects and re-decode saved samples.
 import assert from 'node:assert/strict';
 import {readFile,stat} from 'node:fs/promises';
@@ -44,7 +45,7 @@ try{
   assert.ok(glyphReport.oracleAssemblyReferences.length>0&&glyphReport.oracleAssemblyReferences.every(n=>n==='System'||n.startsWith('System.')));
   for(const[p,h]of Object.entries(glyphReport.artifacts)){assert.equal(sha256(await readFile(path.join(glyphOutput,p))),h);artifacts['oracle/'+p]=h;}artifacts['oracle/report.json']=sha256(await readFile(path.join(glyphOutput,'report.json')));
   Object.assign(checkedSources,report.sourceHashes,ownHashes,glyphReport.sourceHashes);
-  renderer=await createRenderer();assert.deepEqual(renderer.identity,report.renderer);await installShapeMetrics(renderer);
+  renderer=await createRenderer();requireRenderer(renderer.identity, report.renderer);await installShapeMetrics(renderer);
   phase='reference-reconstruction';for(const c of evidence.cases){const id=c.fixture.id,reference=evidence.files.get(edgeReference+id+'/plain-reference.svg').toString('utf8'),glyphs=JSON.parse(await readFile(path.join(glyphOutput,id,'native-glyphs.json')));
     assert.deepEqual(glyphs,JSON.parse(await read('oracle/'+id+'/native-glyphs.json')));const original=await readCurvedEdgeOriginal(renderer,reference,c.metrics,glyphs),frame=await buildCurvedEdgeFrame(renderer,reference,c.metrics,glyphs,original);frame.regions=frame.regions.map(r=>({...r,nodeId:r.nodeId??null}));
     const built=await buildEdgePrimaryReference(renderer,reference,c.metrics,glyphs,original,frame),row=report.cases.find(c=>c.id===id);assert.deepEqual(original,JSON.parse(await read(id+'/original.json')));assert.deepEqual(frame,row.frame);

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independent decoding, native rederivation and source replay; no TeX invocation.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -96,7 +97,7 @@ export async function checkMathPrimary(file,nativeFile){
   assert.ok(bundle.files.get('source-captures/tools/TikzVisual/'+file).equals(await readFile(path.join(root,'tools/TikzVisual/'+file))),'Changed calibration environment: '+file);
  const renderer=await createRenderer();let recaptured=0;
  try{
-  calcEqual(renderer.identity,bundle.report.renderer,'Changed calibration renderer.');await installShapeMetrics(renderer);
+  requireRenderer(renderer.identity, bundle.report.renderer, 'Changed calibration renderer.');await installShapeMetrics(renderer);
   for(const declared of declaredCases){
    const id=declared.id,native=await mathPrimaryNativeCase(renderer,nativeBundle,id,bundle.json(id+'/supplement.json'),bundle.json(id+'/path-supplement.json'));
    calcEqual(JSON.parse(JSON.stringify(native.frame)),bundle.json(id+'/frame.json'),'Native math frame reconstruction differs.');

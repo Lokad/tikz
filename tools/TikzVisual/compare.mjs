@@ -1,4 +1,5 @@
 import { chromium } from 'playwright';
+import { requireRenderer } from './shape-primary-trial-policy.mjs';
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
@@ -56,9 +57,9 @@ export async function compareBundle(bundle, renderer) {
       if (path.basename(name) !== name || hash(await readFile(path.join(bundle, name))) !== digest)
         throw new Error('Width native reference asset differs: ' + name);
     const calibration = JSON.parse(bytes), native = calibration.cases?.[0];
+    requireRenderer(renderer.identity, calibration.renderer, 'Width calibration renderer differs.');
     if (calibration.converterInvoked !== false || calibration.cases.length !== 1 || native.caseId !== 'width-presets'
       || native.sourceSha256 !== hash(await readFile(path.join(bundle, 'source.tikz')))
-      || JSON.stringify(calibration.renderer) !== JSON.stringify(renderer.identity)
       || native.variants.length !== 3 || native.variants.some(v => !v.numeric.passed || !v.dimensions.passed))
       throw new Error('Width calibration inputs or renderer differ from the current comparison.');
     for (const [name, digest] of [['reference.svg', native.referenceSvgSha256], ['reference.pdf', native.referencePdfSha256], ['reference-metrics.json', native.referenceMetricsSha256]])

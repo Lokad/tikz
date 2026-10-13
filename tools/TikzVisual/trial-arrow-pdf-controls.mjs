@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Public PDF mutations use the qualified primary input and fixed native policies.
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -27,7 +28,7 @@ async function publish(completed,error){
 try{
   const e=await loadArrowMeetImageCache(),input=args.length?(await loadArrowPublicPdfOwned(args[1],e)).input:await loadArrowPublicPdfInput(e),sources=await arrowPublicPdfSources(e);inputBindings=input.bindings;
   for(const[file,bytes]of input.files)await save(file,bytes);for(const[file,s]of sources){sourceHashes[file]=s.sha256;await save('source-captures/'+file,s.bytes);}
-  await json('native-limit-bindings.json',arrowPublicMeetBindings(e));renderer=await createRenderer();assertNativeEqual(renderer.identity,input.primary.report.renderer);await installShapeMetrics(renderer);
+  await json('native-limit-bindings.json',arrowPublicMeetBindings(e));renderer=await createRenderer();requireRenderer(renderer.identity, input.primary.report.renderer);await installShapeMetrics(renderer);
   for(const view of arrowPublicPdfControlPlan()){
     phase=view.id;const{record,captures,pdf}=await captureArrowPublicPdfControl(renderer,e,input.input,view);await save(record.files.pdf,pdf);saved.set(record.files.pdf,pdf);
     for(const type of ['source','scene']){

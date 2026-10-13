@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Affected iteration: both independently calibrated PDF gates on fresh public converter output.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -39,7 +40,7 @@ try{
  await ownCalcBundle(numeric,'numeric',save);
  for(const file of ['compare-path-label-pdf.mjs','verification-views.mjs'])await save('source-captures/tools/TikzVisual/'+file,await readFile(path.join(root,'tools/TikzVisual/'+file)));
  const frame=calibration.json('frame.json'),pdf=calibration.json('pdf-frame.json'),policies=calibration.json('policies.json');
- renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');phase='current-pdf';
+ renderer=await createRenderer();requireRenderer(renderer.identity, calibration.report.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');phase='current-pdf';
  for(const mode of['original','candidate'])for(const view of shapePdfViews){
   if(mode==='original'&&reuseReference){
    const file='views/original/'+view.frame+'/'+view.scale+'x/record.json',original=calibration.json(file);

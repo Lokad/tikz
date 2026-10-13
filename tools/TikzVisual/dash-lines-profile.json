@@ -119,7 +119,7 @@
     "tools/TikzVisual/calibrate-dash-lines-pdf-cairo.mjs": "842966ba31d3af3f25cc81b45cf1dff6b483e42a0757d0a8b4f933512be75d8d",
     "tools/TikzVisual/calibrate-dash-lines-primary.mjs": "971063ffe39f2b94b42cc59250164b5f8436fbc928a7ce2a143e3edc8023876b",
     "tools/TikzVisual/compare-dash-lines-conformance.mjs": "30f67977a1f8594b38cf4164e676a3e9e5e5fcda20721c95f533b1909502ff92",
-    "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
+    "tools/TikzVisual/compare.mjs": "16d1daa09c29c6a9b1bd495ee4e94482cd99a4739f568c8b628bab63de2cfba4",
     "tools/TikzVisual/dash-geometry-image-pair.mjs": "541afd902cb48428c43a8c007a79df96fe9ef5490dd32a5af8de39e5a092646d",
     "tools/TikzVisual/dash-lines-image-defects.mjs": "851a87ad5622be8f89713917bcecdcb5cf10e9e6fb9416c84a1cd600ba8dfc21",
     "tools/TikzVisual/dash-lines-oracle.mjs": "7409dd9e60d6f73f68176562b73c8db614a064044fda7b6aff4d1de90261fd06",
@@ -143,7 +143,7 @@
     "tools/TikzVisual/shape-pdf-camera.mjs": "9941c14fb2783d41a82c29c4899cac9f0d4a137008d00ffefc22c89a30613658",
     "tools/TikzVisual/shape-pdf-image-pair.mjs": "e0cb5dc44d789dba524349c7595c6569ddd7c1c3cc61fe68bd9598daf4d260ec",
     "tools/TikzVisual/shape-pdf-trial-policy.mjs": "fcd52ca4f9caa1512bed5b68760b541ee5be29f3a91286ef892cef42a854b4e4",
-    "tools/TikzVisual/shape-primary-trial-policy.mjs": "5942f8eb07c5ceca56cf3a28eef1263929ff7cfd39ed51ec6630a70c404a4e60",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "2689c85171c289525ad2ffc2eca6516312bdaa282aaf4a0a8ea1a779e60dfc15",
     "tools/TikzVisual/shape-raster-metrics.mjs": "ce624b7232b134cd3eae243ad5f99521b5dde7b6e9fba8e802cb01b00743c38a",
     "tools/TikzVisual/text-profile.json": "5d51a7482e3cec8896b02ebe8f9a872f8cb0bc535ddced6312bbad10f87231e1"
   },

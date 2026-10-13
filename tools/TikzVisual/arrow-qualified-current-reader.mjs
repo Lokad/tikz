@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Historical structure uses captured production sources; fresh admission keeps the original current reader.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -28,7 +29,7 @@ export async function validateArrowQualifiedCurrentTrial(reportBytes,manifestByt
   assertNativeEqual([report.schemaVersion,report.comparisonKind,report.completed,report.phase],[1,'current-public-arrow-combined-trial',true,'complete']);
   assertNativeEqual([report.converterInvoked,report.nativeToolInvoked,report.numericGatesBypassedForMutations,report.approvedImagePolicy,report.imageConformanceClaim,report.imageAdmission],[true,false,true,false,false,'pending']);
   assertNativeEqual(report.pendingGates,arrowCurrentTrialPending);assert.equal(report.baselinePassed,true);
-  assertNativeEqual(report.renderer,e.reports.primary.renderer);
+  requireRenderer(report.renderer, e.reports.primary.renderer);
   assertNativeEqual(report.qualification,{publicCacheSha256:arrowPublicImageCacheSha256,nativeMeetCacheSha256:arrowMeetImageCacheSha256,nativeBaseCacheSha256:arrowImageCacheSha256});
   assertNativeEqual([report.numericReport,report.baseline,report.primary,report.pdf,report.focus,report.inspection,report.viewer],['baseline/numeric/report.json','baseline/combined.json','primary/summary.json','pdf/summary.json','pdf/focus.json','agent-inspection.json','index.html']);
   assertNativeEqual(report.manifest,{file:'manifest.json',sha256:sha256(manifestBytes),files:assets.size});

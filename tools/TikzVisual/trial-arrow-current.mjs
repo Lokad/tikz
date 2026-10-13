@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // One owned fresh converter run, complete baselines and both sensitivity matrices.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -44,7 +45,7 @@ try{
   for(const[file,target]of [[arrowPublicImageCacheFile,'qualification/public-controls.bin.gz'],[arrowMeetImageCacheFile,'qualification/native-meet.bin.gz'],[arrowImageCacheFile,'qualification/native-source.bin.gz']])await save(target,await readFile(path.join(root,file)));
   for(const[file,s]of sources){sourceHashes[file]=s.sha256;await save('source-captures/'+file,s.bytes);}
   await json('native-limit-bindings.json',arrowPublicMeetBindings(e));
-  renderer=await createRenderer();assertNativeEqual(renderer.identity,e.reports.primary.renderer);await installShapeMetrics(renderer);
+  renderer=await createRenderer();requireRenderer(renderer.identity, e.reports.primary.renderer);await installShapeMetrics(renderer);
   phase='fresh-current-numeric';converterInvoked=true;
   const command=await promisify(execFile)('dotnet',['run','--project','tools/TikzArrowComparison','-c','Release','--','--out',relative(path.join(out,'baseline/numeric'))],{cwd:root,windowsHide:true,timeout:180000,maxBuffer:1000000});
   await save('numeric-command.log',(command.stdout+command.stderr).replaceAll(root,'<repo>').replaceAll(relative(out),'<trial>'));

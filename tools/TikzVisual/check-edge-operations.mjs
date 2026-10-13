@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Saved native-only observations: strict coverage, source/PNG integrity and remeasurement.
 import assert from 'node:assert/strict';
 import {readFile,stat} from 'node:fs/promises';
@@ -41,7 +42,7 @@ try{
   assert.equal(freshGlyphReport.snapshotSha256,evidence.snapshotSha256);for(const k of['converterInvoked','approvedImagePolicy','imageConformanceClaim'])assert.equal(freshGlyphReport[k],false);
   assert.ok(freshGlyphReport.oracleAssemblyReferences.length>0&&freshGlyphReport.oracleAssemblyReferences.every(n=>n==='System'||n.startsWith('System.')));
   for(const[p,h]of Object.entries(freshGlyphReport.artifacts)){assert.equal(sha256(await readFile(path.join(glyphOutput,p))),h);artifacts['oracle/'+p]=h;}artifacts['oracle/report.json']=sha256(await readFile(path.join(glyphOutput,'report.json')));
-  renderer=await createRenderer();assert.deepEqual(renderer.identity,report.renderer);await installShapeMetrics(renderer);const native=[];
+  renderer=await createRenderer();requireRenderer(renderer.identity, report.renderer);await installShapeMetrics(renderer);const native=[];
   for(const c of evidence.cases){const id=c.fixture.id,glyphs=JSON.parse(await read('oracle/'+id+'/native-glyphs.json')),reference=evidence.files.get(edgeReference+id+'/plain-reference.svg').toString('utf8');
     assert.deepEqual(glyphs,JSON.parse(await readFile(path.join(glyphOutput,id,'native-glyphs.json'))));
     const original=await readEdgeOriginal(renderer,reference,c.metrics,glyphs),frame=await buildEdgeOracleFrame(renderer,reference,c.metrics,glyphs,original);assert.deepEqual(original,JSON.parse(await read(id+'/original.json')));

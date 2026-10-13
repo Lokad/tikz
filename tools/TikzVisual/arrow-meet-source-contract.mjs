@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independent native root encoding. The original cache and its policies stay intact.
 import assert from 'node:assert/strict';
 import {readFile, stat} from 'node:fs/promises';
@@ -110,7 +111,7 @@ export function validateArrowMeetEntry(report, evidence, sources) {
   assert.equal(report.cacheSha256, arrowImageCacheSha256); assert.equal(report.cacheDecodedSha256, arrowImageCacheDecodedSha256);
   assert.equal(report.nativePrimaryReportSha256, evidence.header.sourceReports.primary.sha256);
   assert.equal(report.nativePrimaryCheckSha256, evidence.header.sourceReports.primaryCheck.sha256);
-  assert.equal(report.snapshotSha256, evidence.native.snapshotSha256); assert.deepEqual(report.renderer, evidence.reports.primary.renderer);
+  assert.equal(report.snapshotSha256, evidence.native.snapshotSha256); requireRenderer(report.renderer, evidence.reports.primary.renderer);
   assert.deepEqual(report.sourceHashes, Object.fromEntries([...sources].map(([f, s]) => [f, s.sha256])));
   assert.deepEqual([report.manifest.file, report.policies, report.records, report.viewer], ['manifest.json', 'policies.json', 'record-index.json', 'index.html']);
   assert.deepEqual(report.pendingGates, ['independent-meet-reader', 'source-PDF-meet-qualification', 'public-image-only-controls', 'public-combined-admission']);

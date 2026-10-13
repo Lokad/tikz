@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 import assert from 'node:assert/strict';
 import {mkdir} from 'node:fs/promises';
 import {randomUUID} from 'node:crypto';
@@ -26,7 +27,7 @@ try{
  const {input,files}=owned,records=[],bases=new Map(),expectedArtifacts={};
  const read=async f=>{assert.ok(files.has(f),f);return files.get(f);},expectedJson=(f,v)=>expectedArtifacts[f]=sha256(Buffer.from(JSON.stringify(v)+'\n'));
  for(const [f,b]of input.files)expectedArtifacts['upstream/'+f]=sha256(b);for(const [f,s]of owned.sources)expectedArtifacts['source-captures/'+f]=s.sha256;
- renderer=await createRenderer();assert.deepEqual(renderer.identity,owned.report.renderer);await installShapeMetrics(renderer);
+ renderer=await createRenderer();requireRenderer(renderer.identity, owned.report.renderer);await installShapeMetrics(renderer);
  controls=[...await runArrowSourcePdfControls(),...await runArrowSourcePdfBrowserControls(renderer)];expectedJson('controls.json',controls);
  for(const c of input.evidence.cases){
   const f=input.frames.find(f=>f.caseId===c.id),base=await arrowSourcePrimaryReference(renderer,c.metrics,f,input.evidence.artifacts.get(c.id+'/plain-reference.svg').toString());bases.set(c.id,base);

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 import assert from 'node:assert/strict';
 import {readFile, stat} from 'node:fs/promises';
 import {isDeepStrictEqual} from 'node:util';
@@ -107,7 +108,7 @@ export function validateArrowMeetPdfEntry(report, evidence, sources) {
   assertNativeEqual([report.converterInvoked, report.nativeToolInvoked, report.approvedImagePolicy, report.imageConformanceClaim, report.imageAdmission], [false, false, false, false, 'pending']);
   assertNativeEqual(report.contract, arrowMeetPdfContract); assert.equal(report.cacheSha256, arrowImageCacheSha256);
   assert.equal(report.nativePdfReportSha256, evidence.header.sourceReports.pdf.sha256); assert.equal(report.snapshotSha256, evidence.native.snapshotSha256);
-  assertNativeEqual(report.renderer, evidence.reports.pdf.renderer); assertNativeEqual(report.sourceHashes, Object.fromEntries([...sources].map(([f, s]) => [f, s.sha256])));
+  requireRenderer(report.renderer, evidence.reports.pdf.renderer); assertNativeEqual(report.sourceHashes, Object.fromEntries([...sources].map(([f, s]) => [f, s.sha256])));
   assertNativeEqual([report.views, report.sourceSceneCaptures, report.exactQualifiedPages, report.physicalLimitsUnchanged], [396, 792, 792, true]);
   assertNativeEqual(report.summary, evidence.pdf.summary); assertNativeEqual(report.eligibility, evidence.pdf.eligibility);
   assertNativeEqual([report.manifest.file, report.records, report.policies, report.viewer], ['manifest.json', 'record-index.json', 'policies.json', 'index.html']);

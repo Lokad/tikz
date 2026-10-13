@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {randomUUID} from 'node:crypto';
@@ -38,7 +39,7 @@ async function main(){
     if(row.scale===1)assert.equal(evaluateShapePdfTrial(r.policies.native,row,row).passed,true);pass('faint-period-new-gate-'+row.frame+'-'+row.scale);
   }
   const renderer=await createRenderer();try{
-    assert.deepEqual(renderer.identity,r.renderer);
+    requireRenderer(renderer.identity, r.renderer);
     const images=await renderer.page.evaluate(()=>{const c=document.createElement('canvas');c.width=c.height=16;const ctx=c.getContext('2d');ctx.fillStyle='white';ctx.fillRect(0,0,16,16);const reference=c.toDataURL('image/png'),d=ctx.getImageData(0,0,16,16),i=4*(2*16+3);d.data[i]=252;d.data[i+1]=254;d.data[i+2]=250;ctx.putImageData(d,0,0);return{reference,actual:c.toDataURL('image/png')};});
     const regions=[{id:'whole-picture',rasterRectangles:{'1x':{x:0,y:0,width:16,height:16}}},...Array.from({length:98},(_,i)=>({id:'r'+i,rasterRectangles:{'1x':{x:i%8,y:Math.floor(i/8),width:1,height:1}}}))];
     const input={...images,regions,scale:1,pageSize:{width:16,height:16}},coverage=await measureCurvedNodeInk(renderer,input);

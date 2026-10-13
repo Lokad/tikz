@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independent representation experiment. No converter, candidate-derived
 // allowance or admission. Existing references and policies remain fixed.
 import assert from 'node:assert/strict';
@@ -38,7 +39,7 @@ async function main(){
   assert.throws(()=>shortNativeDimension(.5));
   phase='fresh-independent-reconstruction';const oracleFolder=path.join(output,'oracle'),oracle=await readFreshOracle(oracleFolder),native=JSON.parse(await readFile(path.join(oracleFolder,'metrics.json')));
   const renderer=await createRenderer();try{
-    assert.deepEqual(renderer.identity,source.r.renderer);await installShapeMetrics(renderer);const r=await reconstructCurvedNodes(renderer,oracleFolder,oracle.derivation);assert.deepEqual(r,source.r.geometry);
+    requireRenderer(renderer.identity, source.r.renderer);await installShapeMetrics(renderer);const r=await reconstructCurvedNodes(renderer,oracleFolder,oracle.derivation);assert.deepEqual(r,source.r.geometry);
     await save('native-semantic.svg',r.semanticSvg);for(const[p,h]of Object.entries(oracle.derivation.evidence.artifacts))artifacts['oracle/'+p]=h;artifacts['oracle/derivation.json']=sha256(oracle.bytes);
     const pages={};for(const scale of[1,4]){const b=await readFile(path.join(source.folder,'pdf-page-'+scale+'x.png'));await save('pdf-page-'+scale+'x.png',b);pages[scale]='data:image/png;base64,'+b.toString('base64');}
     const primaryBaseline=new Map(),pdfBaseline=new Map();

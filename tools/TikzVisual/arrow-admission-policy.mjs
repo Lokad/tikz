@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Admission binds independently frozen native limits and complete fresh evidence.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -99,7 +100,7 @@ export async function validateArrowCheckedTrial(e,b,checker,readChecker,trialSha
   assertNativeEqual([c.schemaVersion,c.comparisonKind,c.completed,c.phase,c.converterInvoked,c.nativeToolInvoked,c.approvedImagePolicy,c.imageConformanceClaim,c.imageAdmission],
     [1,'independent-current-public-arrow-combined-check',true,'complete',true,false,false,false,'pending']);
   assert.equal(c.inputReportSha256,trialSha256);assert.match(c.inputReport,/^artifacts\/arrow-current-trials\/run-[a-f0-9-]+\/report\.json$/);
-  assertNativeEqual(c.renderer,p.renderer);assertNativeEqual(b.report.renderer,p.renderer);assertNativeEqual(c.sourceHashes,b.report.sourceHashes);
+  requireRenderer(c.renderer, p.renderer);requireRenderer(b.report.renderer, p.renderer);assertNativeEqual(c.sourceHashes,b.report.sourceHashes);
   if(mode!=='historical-qualification')for(const[file,hash]of Object.entries(c.sourceHashes))assert.equal(hash,p.guardToolHashes[file]);
   assertNativeEqual(baselineFields.map(k=>c.baseline[k]),p.independent.baseline);assertNativeEqual(c.baseline.combined,b.baseline.combined);
   assertNativeEqual(c.primary,p.independent.primary);assertNativeEqual(pdfFields.map(k=>c.pdf[k]),p.independent.pdf);

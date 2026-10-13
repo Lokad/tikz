@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independent or fresh-public image-only trials under the same frozen policy.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -29,7 +30,7 @@ async function main(){
     const p='tools/TikzVisual/'+file,b=Buffer.from((await readFile(path.join(root,p),'utf8')).replaceAll('\r\n','\n'));toolHashes[p]=sha256(b);await save('tool-sources/'+p,b);}
   const numeric=publicCandidate?await runLabelledResearchTool(output,'TikzLabelledBorderComparison','candidate',save,artifacts):null;if(numeric)assert.equal(numeric.numericPassed,true);
   const renderer=await createRenderer();try{
-    assert.deepEqual(renderer.identity,source.renderer);await installShapeMetrics(renderer);const baseline=new Map(),baselines=[];
+    requireRenderer(renderer.identity, source.renderer);await installShapeMetrics(renderer);const baseline=new Map(),baselines=[];
     for(const c of source.cases){const actual=publicCandidate?(await read('candidate/'+c.caseId+'/actual.svg')).toString('utf8'):(await readFile(path.join(folder,c.svg))).toString('utf8');baseline.set(c.caseId,{actual,rows:new Map()});
       const reference=evidence.files.get('tests/Reference/LabelledBorders/'+c.caseId+'/probed-reference.svg').toString('utf8');
       const views=[];for(const view of shapeViews.filter(v=>v.background==='white')){const m=await measureShapePair(renderer,{reference,actual,leftIsDriver:true,origin:c.frame.origin,camera:c.frame.camera,regions:c.frame.regions,...view,cropLimit:0});

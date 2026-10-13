@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Prospective limits and independent replays precede public conversion.
 // Failed sensitivity controls remain evidence; this tool approves no policy.
 import assert from 'node:assert/strict';
@@ -89,7 +90,7 @@ async function main() {
   await verify();
   const renderer = await createRenderer();
   try {
-    assert.deepEqual(renderer.identity, evidence.renderer); await installShapeMetrics(renderer);
+    requireRenderer(renderer.identity, evidence.renderer); await installShapeMetrics(renderer);
     const pdfPages = {};
     for (const scale of [1, 4]) { const bytes = await readFile(path.join(folder, 'pdf-page-' + scale + 'x.png')); pdfPages[scale] = 'data:image/png;base64,' + bytes.toString('base64'); await save('pdf-page-' + scale + 'x.png', bytes); }
     async function compareCase(name, svg, units, origin, policy, views, expectedPassed, targets = [], sources = null) {

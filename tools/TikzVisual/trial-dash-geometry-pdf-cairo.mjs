@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Fresh public conversion against independent, still unapproved PDF limits.
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -68,7 +69,7 @@ async function main() {
   }
   const actual = await readFile(path.join(output, 'actual.svg'), 'utf8'), renderer = await createRenderer();
   try {
-    await installShapeMetrics(renderer); assert.deepEqual(renderer.identity, c.renderer); assert.deepEqual(p.renderer, c.renderer);
+    await installShapeMetrics(renderer); requireRenderer(renderer.identity, c.renderer); requireRenderer(p.renderer, c.renderer);
     phase = 'both-SVG-PDF-comparisons'; const rows = [];
     for (const variant of [{ mode: 'original-svg', svg: native.reference, units: 'bp', origin: native.metrics.driverOriginBp, policy: derived.policies.original },
       { mode: 'public-candidate', svg: actual, units: 'cssPixels', origin: { x: 0, y: 0 }, policy: derived.policies.native }]) for (const view of shapePdfViews) {

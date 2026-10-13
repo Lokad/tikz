@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Explicit owned run only. Reconstruct native bindings and re-decode every raster.
 import assert from 'node:assert/strict';
 import {readFile,stat,mkdir} from 'node:fs/promises';
@@ -54,7 +55,7 @@ try{
   assert.equal((await read(d.svg)).toString('utf8'),result.svg,'Saved reconstruction changed.');
   assert.deepEqual(JSON.parse(await read(d.instructions)),JSON.parse(JSON.stringify(result.instructions)));assert.equal(d.serializationChecks,result.instructions.checks.length);svgReconstructions++;
  }
- phase='browser';renderer=await createRenderer();assert.deepEqual(renderer.identity,r.renderer,'Saved rasterizer identity changed.');await installShapeMetrics(renderer);
+ phase='browser';renderer=await createRenderer();requireRenderer(renderer.identity, r.renderer, 'Saved rasterizer identity changed.');await installShapeMetrics(renderer);
  for(const f of frames){const actual=await checkArrowBrowserBoxes(renderer,f),row=r.browserChecks.find(b=>b.caseId===f.caseId);assert.deepEqual(row.checks,actual);
   assert.deepEqual(JSON.parse(await read(f.caseId+'/browser-boxes.json')),actual);}
  phase='saved-primary';

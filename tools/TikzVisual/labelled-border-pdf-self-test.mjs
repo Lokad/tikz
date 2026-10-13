@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independently regenerate the cached investigation and exercise its readers.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -37,7 +38,7 @@ try{
   for(const[name,content]of Object.entries({restore:'1 0 0 1 0 0 cm Q',scope:'1 0 0 1 0 0 cm q',text:'1 0 0 1 0 0 cm BT',operands:'1 0 0 1 0 0 cm 1',font:'1 0 0 1 0 0 cm BT /F9 10 Tf ET',glyph:'1 0 0 1 0 0 cm BT /F1 9.9626 Tf [(B)]TJ ET',noFont:'1 0 0 1 0 0 cm BT [(A)]TJ ET',showOutside:'1 0 0 1 0 0 cm [(A)]TJ',lineWithoutMove:'1 0 0 1 0 0 cm 1 1 l',activePath:'1 0 0 1 0 0 cm 0 0 m q',pathWithoutPaint:'1 0 0 1 0 0 cm 0 0 m',color:'1 0 0 1 0 0 cm 2 g',dash:'1 0 0 1 0 0 cm [0 0] 0 d',unsupported:'1 0 0 1 0 0 cm 0 0 m 1 1 l f',textScope:'1 0 0 1 0 0 cm BT q',fractionalTJ:'1 0 0 1 0 0 cm BT /F1 9.9626 Tf [(A)1.5(V)]TJ ET'}))negative('content/'+name,()=>parseLabelledPdfContent(content,fonts));
   for(const[name,content]of Object.entries({unterminated:'(A',array:'[(A)',hex:'<41>',number:'1.000001',nestedArray:'[[(A)]]'}))negative('tokens/'+name,()=>labelledPdfTokens(content));negative('unsupported font grid',()=>labelledPdfFontGrid(11));negative('nonfinite font grid',()=>labelledPdfFontGrid(10,NaN));
   const renderer=await createRenderer();try{
-    assert.deepEqual(renderer.identity,r.renderer);const frames=[],cameras=[],tfms=new Map([...evidence.files].filter(([p])=>p.endsWith('.tfm')).map(([p,b])=>[p.split('/').at(-1),b]));let numericChecks=0,viewportSources=0;
+    requireRenderer(renderer.identity, r.renderer);const frames=[],cameras=[],tfms=new Map([...evidence.files].filter(([p])=>p.endsWith('.tfm')).map(([p,b])=>[p.split('/').at(-1),b]));let numericChecks=0,viewportSources=0;
     for(const c of evidence.cases){const id=c.fixture.id,reference=evidence.files.get('tests/Reference/LabelledBorders/'+id+'/probed-reference.svg').toString('utf8'),g=JSON.parse(await read('oracle/'+id+'/native-glyphs.json')),frame=await buildLabelledBorderFrame(renderer,c,reference),original=await readLabelledOriginal(renderer,reference,c.metrics,g,frame),ink=await buildLabelledInk(renderer,reference,c.metrics,g,original,frame),saved=r.cases.find(c=>c.caseId===id);
       frames.push(frame);const camera=shapePdfPageCamera({...c.metrics,page:c.metrics.pdfCamera.page,pdfOriginPixels:c.metrics.pdfCamera.origin},c.metrics.pdfCamera.rasterSizes);cameras.push(camera);
       assert.deepEqual(original,JSON.parse(await read(id+'/original-operations.json')));assert.deepEqual(ink,saved.ink);assert.deepEqual(ink,JSON.parse(await read(id+'/ink.json')));

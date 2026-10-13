@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Public prospective trial. Independent limits are validated before conversion.
 // Every report remains unapproved until separate immutable admission.
 import assert from 'node:assert/strict';
@@ -43,7 +44,7 @@ async function main(){
   for(const q of r.checks){const op=q.kind==='glyph'?scene.glyphs[Number(q.id.slice(6))]:scene.paths[scene.nodes.findIndex(n=>n.name===q.nodeId)];bounds(q.id,q.native,op.inkBounds);}
   bounds('public.picture',r.frames.picture,scene.pictureBounds);bounds('public.ink',r.frames.nativeInk,scene.inkBounds);
   const renderer=await createRenderer();try{
-    assert.deepEqual(renderer.identity,c.renderer);await installShapeMetrics(renderer);
+    requireRenderer(renderer.identity, c.renderer);await installShapeMetrics(renderer);
     const rootFrame=await renderer.page.evaluate(svg=>{const d=new DOMParser().parseFromString(svg,'image/svg+xml'),s=d.documentElement;return{view:s.getAttribute('viewBox').split(/[ ,]+/).map(Number),width:parseFloat(s.getAttribute('width')),height:parseFloat(s.getAttribute('height'))};},actual),wanted=unionBounds([r.frames.picture,r.frames.nativeInk]);
     [wanted.minX,wanted.minY,wanted.maxX-wanted.minX,wanted.maxY-wanted.minY].forEach((v,i)=>scalar('svg.root.'+i,v,rootFrame.view[i],.000000500001));scalar('svg.width',rootFrame.view[2],rootFrame.width,0);scalar('svg.height',rootFrame.view[3],rootFrame.height,0);assert.equal(frameChecks.length,406);
     const saveImages=async(prefix,m,pdf)=>{const links={},crops=new Map();for(const[k,png]of Object.entries(m.images)){links[k]=prefix+'-'+k+'.png';await save(links[k],Buffer.from(png,'base64'));}

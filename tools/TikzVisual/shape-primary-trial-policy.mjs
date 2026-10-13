@@ -1,5 +1,20 @@
 import assert from 'node:assert/strict';
 
+// Match the existing curved-node/dash contract: the host release is provenance.
+// Keep the exact platform, binary, runtime, launch state and profile mandatory.
+// This check grants no pixel allowance; native replay and fresh output still run.
+export function requireRenderer(actual, expected, message = 'Incompatible renderer.') {
+  const fields = ['profile', 'playwright', 'browser', 'browserSha256', 'os', 'architecture', 'node', 'headless',
+    'deviceScaleFactor', 'viewport', 'launchArguments', 'profileSha256', 'osRelease'].sort();
+  assert.deepEqual(Object.keys(actual).sort(), fields, message);
+  assert.deepEqual(Object.keys(expected).sort(), fields, message);
+  const { osRelease: actualRelease, ...actualContract } = actual;
+  const { osRelease: expectedRelease, ...expectedContract } = expected;
+  assert.equal(typeof actualRelease, 'string');
+  assert.equal(typeof expectedRelease, 'string');
+  assert.deepEqual(actualContract, expectedContract, message);
+}
+
 export const shapeViews = ['natural', 'expanded'].flatMap(frame => [1, 4].flatMap(scale => ['transparent', 'white', 'black'].map(background => ({ frame, scale, background }))));
 const key = v => `${v.frame}-${v.scale}x-${v.background}`;
 const metricKeys = ['rawChangedPixels', 'maxRawChannelError', 'premultipliedChangedPixels', 'maxPremultipliedChannelError', 'meanForegroundChannelError'];

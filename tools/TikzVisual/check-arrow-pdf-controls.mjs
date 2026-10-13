@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independently bind saved primary/PDF images and decode their pixel quantities.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -53,7 +54,7 @@ async function decodeNumbers(e,b,record,type){
 try{
   const codeName='tools/TikzVisual/check-arrow-pdf-controls.mjs',code=arrowCanonical(await readFile(path.join(root,codeName)));ownSources[codeName]=sha256(code);await writeArtifact(out,'source-captures/'+codeName,code);
   const e=await loadArrowMeetImageCache(),b=await loadArrowPublicPdfOwned(process.argv[2],e);inputReportSha256=b.inputReportSha256;
-  renderer=await createRenderer();assertNativeEqual(renderer.identity,b.report.renderer);await installShapeMetrics(renderer);
+  renderer=await createRenderer();requireRenderer(renderer.identity, b.report.renderer);await installShapeMetrics(renderer);
   phase='bound-primary';primary=await verifyArrowPublicPdfPrimary(renderer,e,b.input.primary,view=>{phase='primary/'+view.id;if(view.scale===4&&view.background==='black')console.log('Bound public primary checked: '+view.id);});
   for(const record of b.records){
     phase=record.view.id;const capture=await captureArrowPublicPdfControl(renderer,e,b.input.input,record.view);matchCapture(record,capture,b.read);

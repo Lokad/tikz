@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 import assert from 'node:assert/strict';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
@@ -21,7 +22,7 @@ function calcAdmissionMetadata(bytes,files,e){
   calcEqual([r.schemaVersion,r.role,r.completed,r.phase,r.passed,r.converterInvoked,r.nativeToolInvoked,r.approvedImagePolicy,r.imageConformanceClaim,r.imageAdmission],
     [1,'current-calc-conformance',true,'complete',true,true,false,true,true,'passed'],'Saved calc conformance role differs');
   calcEqual([r.policyId,r.policyScope,r.profileSha256,r.acceptancePinSha256],[calcPolicyId,calcPolicyScope,e.profileSha256,e.pinSha256]);
-  calcEqual(r.renderer,e.profile.renderer);assert.ok(r.artifacts&&Object.keys(r.artifacts).length>0);calcEqual([...files.keys()].sort(),Object.keys(r.artifacts).sort(),'Saved calc conformance coverage differs');
+  requireRenderer(r.renderer, e.profile.renderer);assert.ok(r.artifacts&&Object.keys(r.artifacts).length>0);calcEqual([...files.keys()].sort(),Object.keys(r.artifacts).sort(),'Saved calc conformance coverage differs');
   for(const[f,h]of Object.entries(r.artifacts)){calcTrialCachePath(f);assert.match(h,/^[a-f0-9]{64}$/);assert.equal(calcHash(files.get(f)),h,'Saved calc conformance artifact differs: '+f);}
   assert.equal(calcHash(files.get('profile.json')),e.profileSha256);decodeCalcProfile(files.get('profile.json'));assert.equal(calcHash(files.get('acceptance-pin.mjs')),e.pinSha256);
   assert.equal(calcHash(files.get('qualification/native-calibration.bin.gz')),calcNativeCacheSha256);assert.equal(calcHash(files.get('qualification/public-trial.bin.gz')),calcTrialCacheSha256);

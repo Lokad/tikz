@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // All public gates are mandatory. These reports still grant no admission.
 import assert from 'node:assert/strict';
 import {labelledBorderSnapshotSha256} from './labelled-border-evidence.mjs';
@@ -36,7 +37,7 @@ export function validateLabelledCombinedRole(r,kind,inputs){
   assert.deepEqual([r.converterInvoked,r.approvedImagePolicy,r.imageConformanceClaim,r.overallVerdict],
     [true,false,false,'pending']);
   assert.equal(r.snapshotSha256,labelledBorderSnapshotSha256);assert.deepEqual(r.inputs,labelledCombinedInputs);
-  assert.deepEqual(r.renderer,inputs.primary.report.renderer);assert.deepEqual(r.renderer,inputs.pdf.report.renderer);
+  requireRenderer(r.renderer, inputs.primary.report.renderer);requireRenderer(r.renderer, inputs.pdf.report.renderer);
   for(const[p,h]of Object.entries(r.artifacts)){link(r,p);assert.match(h,/^[a-f0-9]{64}$/);}
   for(const[p,h]of Object.entries(r.toolHashes)){
     assert.ok(p.startsWith('tools/TikzVisual/')&&!p.includes('..'));link(r,'tool-sources/'+p);

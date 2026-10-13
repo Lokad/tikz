@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Affected iteration matrix against frozen native-only limits; final qualification is separate.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -39,7 +40,7 @@ try{
  for(const f of ['math-label-primary-images.mjs','verification-views.mjs',...mathPrimarySources]){
   const file='tools/TikzVisual/'+f,bytes=await readFile(path.join(root,file));sources[file]=sha256(bytes);await save('source-captures/'+file,bytes);
  }
- renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer,'Changed primary renderer.');await installShapeMetrics(renderer);
+ renderer=await createRenderer();requireRenderer(renderer.identity, calibration.report.renderer, 'Changed primary renderer.');await installShapeMetrics(renderer);
  for(const declared of declaredCases){
   const id=declared.id,native=await mathPrimaryNativeCase(renderer,nativeBundle,id,calibration.json(id+'/supplement.json'),calibration.json(id+'/path-supplement.json'));
   calcEqual(JSON.parse(JSON.stringify(native.frame)),calibration.json(id+'/frame.json'),'Changed native framing.');

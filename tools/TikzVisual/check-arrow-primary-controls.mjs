@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Check original public SVG bytes, recaptured images and independently decoded data.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -32,7 +33,7 @@ function matchCapture(record,capture,read){
 try{
   const codeName='tools/TikzVisual/check-arrow-primary-controls.mjs',code=arrowCanonical(await readFile(path.join(root,codeName)));ownSources[codeName]=sha256(code);await writeArtifact(out,'source-captures/'+codeName,code);
   const e=await loadArrowMeetImageCache(),b=await loadArrowPublicPrimaryOwned(process.argv[2],e);inputReportSha256=b.inputReportSha256;
-  renderer=await createRenderer();assertNativeEqual(renderer.identity,b.report.renderer);await installShapeMetrics(renderer);
+  renderer=await createRenderer();requireRenderer(renderer.identity, b.report.renderer);await installShapeMetrics(renderer);
   for(const record of b.records){
     phase=record.view.id;const capture=await captureArrowPublicPrimaryControl(renderer,e,b.input,record.view);matchCapture(record,capture,b.read);
     const view=record.view,frame=capture.frame,regions=arrowPrimaryRegions(frame),size={width:frame.camera.width*view.scale,height:frame.camera.height*view.scale};

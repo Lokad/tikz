@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Full public primary fault matrix with frozen native policies and checked inputs.
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
@@ -33,7 +34,7 @@ try{
   for(const [file,bytes]of input.files)await save(file,bytes);
   for(const [file,s]of sources){sourceHashes[file]=s.sha256;await save('source-captures/'+file,s.bytes);}
   await json('native-limit-bindings.json',arrowPublicMeetBindings(e));
-  renderer=await createRenderer();assertNativeEqual(renderer.identity,input.bundle.report.renderer);await installShapeMetrics(renderer);
+  renderer=await createRenderer();requireRenderer(renderer.identity, input.bundle.report.renderer);await installShapeMetrics(renderer);
   for(const view of arrowPublicPrimaryControlPlan()){
     phase=view.id;const capture=await captureArrowPublicPrimaryControl(renderer,e,input,view),{record,numbers,images,crops,reference,actual,frame}=capture;
     const png=Buffer.from(images.actual,'base64');

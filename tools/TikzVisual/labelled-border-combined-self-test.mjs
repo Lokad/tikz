@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independent saved-image measurements and source/gate corruption controls.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -109,7 +110,7 @@ try{
   assert.equal(numericChecks,1624);
   const renderer=await createRenderer();let metricsRecomputed=0,pagesRecomputed=0;
   try{
-    assert.deepEqual(renderer.identity,r.renderer);await installShapeMetrics(renderer);
+    requireRenderer(renderer.identity, r.renderer);await installShapeMetrics(renderer);
     async function measure(images,size,regions,scale,background,scanPage=false){
       return renderer.page.evaluate(async({images,size,regions,scale,background,scanPage})=>{
         const buffers=[];

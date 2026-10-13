@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
 import path from 'node:path';
@@ -78,7 +79,7 @@ function corrupt(owned, change) {
 
 try {
   const evidence = await loadArrowImageCache(), owned = await loadArrowMeetPdfOwned(process.argv[2], evidence); inputReportSha256 = owned.sha256;
-  renderer = await createRenderer(); assertNativeEqual(renderer.identity, owned.report.renderer); await installShapeMetrics(renderer);
+  renderer = await createRenderer(); requireRenderer(renderer.identity, owned.report.renderer); await installShapeMetrics(renderer);
   phase = 'bound-primary'; primaryAudit = await verifyArrowMeetPrimaryBinding(renderer, evidence, owned.input.primary, owned.input.check, view => {
     phase = 'primary/' + view.id; if (view.background === 'black' && view.scale === 4) console.log('Bound meet primary checked: ' + view.id);
   });

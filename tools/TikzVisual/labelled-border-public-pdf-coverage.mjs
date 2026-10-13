@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Frozen independent image controls, applied to fresh actual public SVGs.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -39,7 +40,7 @@ export function validateLabelledPublicPdfSensitivity(r,inputs,independent,baseli
   assert.deepEqual([r.converterInvoked,r.numericGatesBypassed,r.approvedImagePolicy,r.imageConformanceClaim,r.overallVerdict],
     [true,true,false,false,'pending']);
   assert.deepEqual(r.inputs,labelledCombinedInputs);assert.deepEqual(r.independentInputs,labelledPublicPdfEvidence);
-  assert.equal(r.snapshotSha256,baseline.snapshotSha256);assert.deepEqual(r.renderer,baseline.renderer);
+  assert.equal(r.snapshotSha256,baseline.snapshotSha256);requireRenderer(r.renderer, baseline.renderer);
   for(const[p,h]of Object.entries(r.artifacts)){link(r,p);assert.match(h,/^[a-f0-9]{64}$/);}
   for(const[p,h]of Object.entries(r.toolHashes)){
     assert.ok(p.startsWith('tools/TikzVisual/')&&!p.includes('..'));link(r,'tool-sources/'+p);

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Fixed independent limits; admission never changes raw research roles.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -90,7 +91,7 @@ export function validateEdgeCheckedTrial(e, cached, trial, checker, trialSha256,
   assert.equal(cached.passed, true); assert.equal(cached.overallVerdict, 'pending'); assert.equal(trial.overallVerdict, 'pending');
   assert.equal(cached.cacheSha256, edgeImageCacheSha256); assert.equal(cached.decodedCacheSha256, edgeImageCacheDecodedSha256);
   assert.equal(trial.snapshotSha256, edgeSnapshotSha256);
-  assert.deepEqual(trial.renderer, e.calibration.renderer); assert.deepEqual(checker.renderer, trial.renderer);
+  requireRenderer(trial.renderer, e.calibration.renderer); assert.deepEqual(checker.renderer, trial.renderer);
   assert.equal(cached.inputs.trial.sha256, trialSha256); assert.equal(cached.inputs.checker.sha256, checkerSha256);
   for (const role of ['trial', 'checker']) assert.deepEqual([cached.inputs[role].completed, cached.inputs[role].passed], [true, true]);
   assert.equal(checker.inputReportSha256, trialSha256);
@@ -150,7 +151,7 @@ export function validateEdgeAdmissionViewer(html, artifacts) {
 export function validateEdgeAdmissionReport(r, e, cached, trial, checker) {
   assert.deepEqual([r.schemaVersion, r.comparisonKind, r.completed, r.passed, r.converterInvoked], [1, 'cached-public-curved-edge-conformance', true, true, true]);
   assert.equal(r.policyId, edgePolicyId); assert.equal(r.policyScope, edgePolicyScope); assert.equal(r.profileSha256, e.profileSha256); assert.equal(r.cacheSha256, edgeImageCacheSha256);
-  assert.deepEqual(r.renderer, e.calibration.renderer); assert.equal(r.artifacts['profile.json'], e.profileSha256);
+  requireRenderer(r.renderer, e.calibration.renderer); assert.equal(r.artifacts['profile.json'], e.profileSha256);
   assert.equal(r.acceptancePinSha256, e.acceptancePinSha256); assert.equal(r.artifacts['acceptance-pin.mjs'], e.acceptancePinSha256);
   for (const [role, child] of Object.entries({cached, trial, checker})) {
     assert.equal(r.inputs[role].report, role + '/report.json'); assert.equal(r.artifacts[r.inputs[role].report], r.inputs[role].sha256);

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independent native/current PDF page decoding and SVG source recapture; no native regeneration.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -19,7 +20,7 @@ export async function checkMathPdfImages(file){
  for(const name of ['pdflatex','pdftoppm','pdfinfo'])assert.equal(sha256(await readFile(path.join(process.env.LOCALAPPDATA,'Programs/MiKTeX/miktex/bin/x64',name+'.exe'))),loaded.native.report.tools[name].sha256);
  const pixels=verifyMathPdfImagePixels(bundle),renderer=await createRenderer();let recaptured=0;
  try{
-  calcEqual(renderer.identity,r.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
+  requireRenderer(renderer.identity, r.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
   for(const c of mathFramingFamily(r.cases.map(c=>c.id))){
    const frame=bundle.json(c.id+'/frame.json'),pdf=bundle.json(c.id+'/pdf-frame.json'),context={native:loaded.native,caseId:c.id,frame,pdf};
    const recapture=async(index,svg,encoding)=>{

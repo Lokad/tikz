@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Fresh public conversion through all independently calibrated image gates.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -36,7 +37,7 @@ try{
   await verifyLabelledSourceHashes({...numeric.converterSources,...numeric.toolHashes});
   const renderer=await createRenderer();
   try{
-    assert.deepEqual(renderer.identity,inputs.primary.report.renderer);await installShapeMetrics(renderer);
+    requireRenderer(renderer.identity, inputs.primary.report.renderer);await installShapeMetrics(renderer);
     for(let i=0;i<3;i++){
       const p=inputs.primary.report.cases[i],pdf=inputs.pdf.report.cases[i],id=p.caseId;
       const actual=(await read('candidate/'+id+'/actual.svg')).toString('utf8');

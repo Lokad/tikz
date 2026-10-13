@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Structural proof loading is followed by the independent full replay command.
 import assert from 'node:assert/strict';
 import {readFile,stat} from 'node:fs/promises';
@@ -18,7 +19,7 @@ export async function validateArrowAdmissionBundle(reportBytes,assets,e){
     [1,'current-arrow-conformance',true,'complete',true,true,false,true,true,'passed','pass']);
   assertNativeEqual([r.policyId,r.policyScope,r.profileSha256,r.acceptancePinSha256,r.qualificationCacheSha256],
     [arrowPolicyId,arrowPolicyScope,e.profileSha256,e.acceptancePinSha256,arrowCurrentImageCacheSha256]);
-  assertNativeEqual(r.renderer,e.profile.renderer);assertNativeEqual(r.sourceHashes,e.profile.guardToolHashes);
+  requireRenderer(r.renderer, e.profile.renderer);assertNativeEqual(r.sourceHashes,e.profile.guardToolHashes);
   assert.ok(read('profile.json').equals(e.profileBytes));assert.ok(read('acceptance-pin.mjs').equals(e.acceptancePinBytes));
   assert.ok(read('qualification/current-combined.bin.gz').equals(e.compressed));
   for(const[file,hash]of Object.entries(r.sourceHashes))assert.equal(sha256(read('source-captures/'+file)),hash);

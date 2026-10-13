@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Validate complete owned controls before trusting saved outcomes or pixels.
 import assert from 'node:assert/strict';
 import {readFile,stat} from 'node:fs/promises';
@@ -29,7 +30,7 @@ export async function validateArrowPublicPrimaryBundle(reportBytes,manifestBytes
   for(const [name,digest]of Object.entries(manifest.artifacts)){arrowCachePath(name);assert.match(digest,/^[a-f0-9]{64}$/);assert.equal(sha256(assets.get(name)),digest,'Changed public control artifact: '+name);}
   const read=name=>{arrowCachePath(name);assert.ok(assets.has(name),'Missing public control artifact: '+name);return assets.get(name);},json=name=>JSON.parse(read(name));
   const input=await loadArrowPublicControlInput(e,read),sources=await arrowPublicControlSources(e,arrowPublicPrimarySourceEntries);
-  assertNativeEqual(report.renderer,input.bundle.report.renderer);
+  requireRenderer(report.renderer, input.bundle.report.renderer);
   assertNativeEqual(report.sourceHashes,Object.fromEntries([...sources].map(([name,s])=>[name,s.sha256])));
   const expected=new Set(input.files.keys());
   for(const [name,s]of sources){const file='source-captures/'+name;assert.ok(read(file).equals(s.bytes),'Changed public control source: '+name);expected.add(file);}

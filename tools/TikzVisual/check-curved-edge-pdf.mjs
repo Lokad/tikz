@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Fresh native reconstruction and independent saved-PNG measurement.
 import assert from 'node:assert/strict';
 import {readFile, stat} from 'node:fs/promises';
@@ -61,7 +62,7 @@ try {
   assert.ok(glyphReport.oracleAssemblyReferences.length > 0 && glyphReport.oracleAssemblyReferences.every(n => n === 'System' || n.startsWith('System.')));
   for (const [p, h] of Object.entries(glyphReport.artifacts)) { assert.equal(sha256(await readFile(path.join(output, 'oracle', p))), h); artifacts['oracle/' + p] = h; }
   artifacts['oracle/report.json'] = sha256(await readFile(path.join(output, 'oracle/report.json')));
-  renderer = await createRenderer(); assert.deepEqual(renderer.identity, report.renderer); await installShapeMetrics(renderer);
+  renderer = await createRenderer(); requireRenderer(renderer.identity, report.renderer); await installShapeMetrics(renderer);
   phase = 'native-reconstruction';
   for (const n of evidence.cases) {
     const id = n.fixture.id, reference = evidence.files.get(edgeReference + id + '/plain-reference.svg').toString('utf8');
@@ -93,7 +94,7 @@ try {
   assert.equal(svgsReconstructed, 34);
   function coverage(r) {
     assert.equal(r.schemaVersion, 1); assert.equal(r.comparisonKind, 'oracle-only-curved-edge-pdf-calibration'); assert.equal(r.completed, true); assert.equal(r.overallVerdict, 'pending');
-    assert.equal(r.snapshotSha256, evidence.snapshotSha256); assert.deepEqual(r.renderer, renderer.identity); assert.deepEqual(Object.keys(r.sourceHashes).sort(), edgePdfSources);
+    assert.equal(r.snapshotSha256, evidence.snapshotSha256); requireRenderer(r.renderer, renderer.identity); assert.deepEqual(Object.keys(r.sourceHashes).sort(), edgePdfSources);
     for (const p of edgePdfSources) assert.equal(r.sourceHashes[p], report.sourceHashes[p]);
     for (const k of ['converterInvoked', 'approvedImagePolicy', 'imageConformanceClaim']) assert.equal(r[k], false);
     assert.deepEqual(r.contract, edgePrimaryContract); assert.deepEqual(r.requiredViews, edgePdfViews); assert.deepEqual(r.routes, edgePdfRoutes); assert.deepEqual(r.calibratedRoutes, edgePdfCalibratedRoutes);

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Public prospective trial against previously frozen independent ink limits.
 // A trial pass is research evidence; it does not admit a primary/PDF profile.
 import assert from 'node:assert/strict';
@@ -30,7 +31,7 @@ async function main(){
     const p='tools/TikzVisual/'+file,b=Buffer.from((await readFile(path.join(root,p),'utf8')).replaceAll('\r\n','\n'));toolHashes[p]=sha256(b);await save('tool-sources/'+p,b);}
   phase='public-conversion';const numeric=await runLabelledResearchTool(output,'TikzLabelledBorderComparison','candidate',save,artifacts),renderer=await createRenderer();
   try{
-    assert.deepEqual(renderer.identity,calibration.renderer);await installShapeMetrics(renderer);const cases=[];
+    requireRenderer(renderer.identity, calibration.renderer);await installShapeMetrics(renderer);const cases=[];
     for(const c of calibration.cases){const id=c.caseId,frame=c.frame,reference=evidence.files.get('tests/Reference/LabelledBorders/'+id+'/probed-reference.svg').toString('utf8'),actual=(await read('candidate/'+id+'/actual.svg')).toString('utf8');
       const scene=JSON.parse(await read('candidate/'+id+'/actual-scene.json')),bounds=[];
       for(const r of c.ink.records){const candidate=r.kind==='glyph'?scene.glyphs[r.glyphIndex]:scene.paths[r.nativePathIndex];assert.ok(candidate);for(const k of['minX','minY','maxX','maxY']){

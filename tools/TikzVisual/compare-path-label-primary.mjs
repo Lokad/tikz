@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Affected iteration check against native-only limits; final feature admission is separate.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -47,7 +48,7 @@ try{
   const m=/^native-(paint|glyph)-(\d+)$/.exec(id);if(!m)return[];
   const row=sources[m[1]==='paint'?'paths':'glyphs'][Number(m[2])];assert.equal(row.index,Number(m[2]));return[{id,source:row.source}];
  }):[];
- renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer,'Native renderer changed.');
+ renderer=await createRenderer();requireRenderer(renderer.identity, calibration.report.renderer, 'Native renderer changed.');
  await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');phase='current-images';
  for(const {capture,...view} of currentPrimaryViews(mode,id,viewPolicy)){
   const measure=capture==='intrinsic-image'?measureEdgeTrialPrimary:measureArrowVectorPair;

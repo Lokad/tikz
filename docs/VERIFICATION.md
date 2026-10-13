@@ -8,6 +8,12 @@ failure. Frozen reference qualification and checking current converter output
 are different tasks. Cached evidence is reusable only with its reviewed hashes,
 native inputs, fonts, renderer and per-view pixel policies intact.
 
+Renderer compatibility pins the exact browser binary, Playwright and Node versions,
+platform, architecture, launch settings, viewport and profile. The OS release is
+recorded as host provenance, as in the curved-node and dash checks. A compatible
+host still has to pass the required native image replays, fresh converter captures
+and independent checks with the unchanged pixel policies.
+
 ```sh
 # Ordinary tests plus affected numeric/images and independent pixel checking.
 node tools/TikzVisual/verify.mjs iterate

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Affected current PDF gates; final clean-source feature qualification remains separate.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -40,7 +41,7 @@ try{
  await ownCalcBundle(calibration,'calibration',save);await ownCalcBundle(publicBundle,'public',save);await save('inputs/calibration-check.json',checked.bytes);
  for(const [f,b]of calibration.files)files.set('calibration/'+f,b);
  for(const f of ['compare-math-label-pdf.mjs','verification-views.mjs',...mathPdfSources]){const file='tools/TikzVisual/'+f,b=await readFile(path.join(root,file));sources[file]=sha256(b);await save('source-captures/'+file,b);}
- renderer=await createRenderer();calcEqual(renderer.identity,calibration.report.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
+ renderer=await createRenderer();requireRenderer(renderer.identity, calibration.report.renderer);await renderer.page.evaluate('globalThis.shapeRasterMetrics=('+createShapeRasterMetrics.toString()+')()');
  const native={files:new Map([...calibration.files].filter(([f])=>f.startsWith('native/')).map(([f,b])=>[f.slice(7),b]))};
  for(const c of family){
   const id=c.id,frame=calibration.json(id+'/frame.json'),pdf=calibration.json(id+'/pdf-frame.json'),policies=calibration.json(id+'/policies.json'),context={native,caseId:id,frame,pdf};

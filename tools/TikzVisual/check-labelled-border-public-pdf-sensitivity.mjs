@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Numeric gates are bypassed for mutations of freshly exported public SVGs.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -64,7 +65,7 @@ try{
   await verifyLabelledSourceHashes({...numeric.converterSources,...numeric.toolHashes});
   const renderer=await createRenderer();
   try{
-    assert.deepEqual(renderer.identity,baseline.renderer);await installShapeMetrics(renderer);
+    requireRenderer(renderer.identity, baseline.renderer);await installShapeMetrics(renderer);
     for(const d of labelledPdfDefects()){
       phase=d.caseId+'/'+d.name;const c=inputs.pdf.report.cases.find(c=>c.caseId===d.caseId);
       const b=baseline.cases.find(c=>c.caseId===d.caseId),source=(await read('baseline/'+b.svg)).toString('utf8');

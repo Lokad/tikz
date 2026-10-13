@@ -82,7 +82,7 @@
     "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
     "tools/TikzVisual/calibrate-dash-geometry-primary.mjs": "58bd1e9fa05221edaf1f2ef0ac4d632a17d27c10a9201379a4e593c786359aa1",
     "tools/TikzVisual/compare-dash-geometry-primary.mjs": "a501f0ff1ce4a1fb8fcb2b7672c31b16d7eab5571e36115eeabcd4933edfd540",
-    "tools/TikzVisual/compare.mjs": "7ef4d55f5a82f1033a397ddcb0d59578de16ea9fa4f854dd248b5cc5eeb6bcd3",
+    "tools/TikzVisual/compare.mjs": "16d1daa09c29c6a9b1bd495ee4e94482cd99a4739f568c8b628bab63de2cfba4",
     "tools/TikzVisual/dash-geometry-image-defects.mjs": "c038cdcf4eeef463c73bc02df811ca949b4eea9bc7cdbac1585506fb0ba8744e",
     "tools/TikzVisual/dash-geometry-image-pair.mjs": "541afd902cb48428c43a8c007a79df96fe9ef5490dd32a5af8de39e5a092646d",
     "tools/TikzVisual/dash-geometry-primary-common.mjs": "2b675b3df1ce11eea194d1b6a4f33f2804cde05218d746ba3901906ac48ad07d",
@@ -93,7 +93,7 @@
     "tools/TikzVisual/package.json": "a7562ff94fff07cf54821025a58dec5b9bf9e3c2cae836d6d9516eae90072b9f",
     "tools/TikzVisual/promote-dash-geometry-primary.mjs": "781c73603f7ca4241ed296349da7130e85e7792cd09ea7d62e199d2ac17a6e13",
     "tools/TikzVisual/shape-oracle-bundle.mjs": "bc0e2657627ff5caf8405cb6005da2f645b4fe3f398655c58cb867e5d38d8125",
-    "tools/TikzVisual/shape-primary-trial-policy.mjs": "5942f8eb07c5ceca56cf3a28eef1263929ff7cfd39ed51ec6630a70c404a4e60",
+    "tools/TikzVisual/shape-primary-trial-policy.mjs": "2689c85171c289525ad2ffc2eca6516312bdaa282aaf4a0a8ea1a779e60dfc15",
     "tools/TikzVisual/shape-raster-metrics.mjs": "ce624b7232b134cd3eae243ad5f99521b5dde7b6e9fba8e802cb01b00743c38a"
   },
   "camera": {
@@ -2363,7 +2363,7 @@
           "maxRawChannelError": 1,
           "premultipliedChangedPixels": 1,
           "maxPremultipliedChannelError": 1,
-          "meanForegroundChannelError": 0.00000394,
+          "meanForegroundChannelError": 3.94e-06,
           "maxEdgeDisplacementRasterPixels": 0,
           "componentDifference": 0
         },
@@ -2387,7 +2387,7 @@
               "maxRawChannelError": 1,
               "premultipliedChangedPixels": 1,
               "maxPremultipliedChannelError": 1,
-              "meanForegroundChannelError": 0.000098581,
+              "meanForegroundChannelError": 9.8581e-05,
               "maxEdgeDisplacementRasterPixels": 0,
               "componentDifference": 0
             }
@@ -2571,7 +2571,7 @@
           "maxRawChannelError": 1,
           "premultipliedChangedPixels": 1,
           "maxPremultipliedChannelError": 1,
-          "meanForegroundChannelError": 0.000011819,
+          "meanForegroundChannelError": 1.1819e-05,
           "maxEdgeDisplacementRasterPixels": 0,
           "componentDifference": 0
         },

@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Current compilation, independent image decoding and hostile fully rehashed bundles.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -60,7 +61,7 @@ async function decodeNumbers(e,b,record,type){
 try{
   const b=await loadArrowCurrentTrial(process.argv[2]),e=b.e;inputReportSha256=b.inputReportSha256;
   const sources=await arrowCurrentTrialSources(e);for(const[file,s]of sources){sourceHashes[file]=s.sha256;await save('source-captures/'+file,s.bytes);}
-  renderer=await createRenderer();assertNativeEqual(renderer.identity,b.report.renderer);await installShapeMetrics(renderer);
+  renderer=await createRenderer();requireRenderer(renderer.identity, b.report.renderer);await installShapeMetrics(renderer);
   phase='independent-current-compilation';converterInvoked=true;
   const command=await promisify(execFile)('dotnet',['run','--project','tools/TikzArrowComparison','-c','Release','--','--out',relative(path.join(out,'numeric'))],{cwd:root,windowsHide:true,timeout:180000,maxBuffer:1000000});
   await save('numeric-command.log',(command.stdout+command.stderr).replaceAll(root,'<repo>').replaceAll(relative(out),'<check>'));

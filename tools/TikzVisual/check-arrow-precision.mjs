@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 import assert from 'node:assert/strict';
 import {readFile,mkdir,stat} from 'node:fs/promises';
 import {randomUUID} from 'node:crypto';
@@ -32,7 +33,7 @@ try{
  const frames=e.cases.map(c=>buildArrowNativeFrame(c.id,e.artifacts.get(c.id+'/plain-reference.svg').toString(),c.metrics));
  const validate=()=>assert.deepEqual(validateArrowPrecisionReport(r,e,frames),r.coverage);validate();
  for(const f of frames)assert.deepEqual(JSON.parse(await read(f.caseId+'/frame.json')),f);
- renderer=await createRenderer();assert.deepEqual(renderer.identity,r.renderer);await installShapeMetrics(renderer);
+ renderer=await createRenderer();requireRenderer(renderer.identity, r.renderer);await installShapeMetrics(renderer);
  assert.deepEqual(JSON.parse(await read('controls.json')),await runArrowViewportControls(renderer));
  phase='saved-measurements';const expanded=new Map();
  for(const o of r.observations){const v=o.view,c=e.cases.find(c=>c.id===v.caseId),f=frames.find(f=>f.caseId===v.caseId),original=e.artifacts.get(c.id+'/plain-reference.svg').toString();

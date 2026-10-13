@@ -1,3 +1,4 @@
+import {requireRenderer} from './shape-primary-trial-policy.mjs';
 // Independently decode saved baselines, including failed ones. This grants no admission.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
@@ -81,7 +82,7 @@ try{
     const name='tools/TikzVisual/'+p,bytes=arrowCanonical(await readFile(path.join(root,name)));sourceHashes[name]=sha256(bytes);await save('source-captures/'+name,bytes);
   }
   const e=await loadArrowMeetImageCache(),b=await loadArrowPublicMeetBaseline(process.argv[2],e);inputReportSha256=b.inputReportSha256;
-  renderer=await createRenderer();assertNativeEqual(renderer.identity,b.report.renderer);await installShapeMetrics(renderer);
+  renderer=await createRenderer();requireRenderer(renderer.identity, b.report.renderer);await installShapeMetrics(renderer);
   phase='fresh-public-numeric';converterInvoked=true;
   let command;try{command=await promisify(execFile)('dotnet',['run','--project','tools/TikzArrowComparison','-c','Release','--','--out',relative(path.join(output,'numeric'))],{cwd:root,windowsHide:true,timeout:180000,maxBuffer:1000000});}
   catch(error){await save('numeric-command.log',(String(error.stdout??'')+String(error.stderr??'')).replaceAll(root,'<repo>'));if(error.code!==1)throw error;}
