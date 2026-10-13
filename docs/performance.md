@@ -133,6 +133,13 @@ prototypes preserved ordinary tests, output and counters and were reverted.
 This is a deferred optimization, not a shipped gain; simpler ownership must not
 be claimed from allocation savings while representative execution regresses.
 
+A style-provenance change replaces iterator wrappers and a capturing duplicate
+search with direct ordered loops. Representative allocation falls from 388,081
+to 344,076 bytes for nested styles (11.3%) and by about 4.4% for the dense network.
+The ordinary tests, public/phase parity and affected style pictures pass. Initial
+and reverse timing comparisons vary, including an unchanged control; no throughput
+gain is established. The change adds no cache or new provenance representation.
+
 Initial goals on this reference class are warm conversion below 20 ms and
 allocation below 2 MiB for the four ordinary complete diagrams, and below 50 ms/
 16 MiB for the larger stress inputs. First-call conversion targets below 500 ms

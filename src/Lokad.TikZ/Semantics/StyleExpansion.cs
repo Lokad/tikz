@@ -54,13 +54,19 @@ internal static class StyleExpansion
         // Retain offsets until an actual diagnostic needs line/column locations.
         // Flatten and charge provenance so nested forwarding cannot grow a graph.
         var related = new List<Source>();
-        foreach (var item in (source.RelatedSources ?? []).Concat(context.RelatedSources ?? []).Append(context))
+        foreach (var item in source.RelatedSources ?? []) Add(item);
+        foreach (var item in context.RelatedSources ?? []) Add(item);
+        Add(context);
+        return source with { RelatedSources = related.ToArray() };
+
+        void Add(Source item)
         {
             budget.Charge(source, related.Count + 1);
-            if (Same(item, source) || related.Any(r => Same(r, item))) continue;
+            if (Same(item, source)) return;
+            foreach (var existing in related)
+                if (Same(existing, item)) return;
             related.Add(item with { RelatedSources = null });
         }
-        return source with { RelatedSources = related.ToArray() };
     }
 
     private static bool Same(Source a, Source b)
