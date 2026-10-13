@@ -140,6 +140,23 @@ The ordinary tests, public/phase parity and affected style pictures pass. Initia
 and reverse timing comparisons vary, including an unchanged control; no throughput
 gain is established. The change adds no cache or new provenance representation.
 
+Bounded attribution identifies repeated body/coordinate parsing as a residual
+cost: the dense network reparses 309 foreach bodies and the expression plot
+parses 200 sample coordinates. General syntax reuse remains deferred because
+bindings are substituted as text before parsing; names, options, source mapping
+and negative-sample precedence can change. A minimal invariant template boundary
+must preserve those semantics before a reuse optimization is justified.
+
+Repeated-label parsing/layout also offers potential in the repetition workload,
+while the ordinary complete pictures have distinct label signatures. A label
+cache needs current-use source binding and logical glyph/work admission; no
+whole-workload benefit justifying that lifetime complexity is established.
+Math copying is modest in the complete pictures. A transient value-entry
+prototype saves about 736 bytes per math-network conversion and 224 bytes per
+isolated math-rules layout, but timing varies and a later layout observation
+slows. It was reverted; these are experiment results, not shipped gains. Deeper
+layout representations, pooling and content caches remain deferred.
+
 Initial goals on this reference class are warm conversion below 20 ms and
 allocation below 2 MiB for the four ordinary complete diagrams, and below 50 ms/
 16 MiB for the larger stress inputs. First-call conversion targets below 500 ms
