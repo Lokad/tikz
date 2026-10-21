@@ -1,7 +1,7 @@
 // Own one cached command and bind its stdout to the exact saved report.
 import assert from 'node:assert/strict';
 import {readFile, stat} from 'node:fs/promises';
-import {spawn} from 'node:child_process';
+import {captureProcess} from './qualification-process.mjs';
 import path from 'node:path';
 import {root, sha256, outputPath} from './shape-oracle-bundle.mjs';
 
@@ -14,16 +14,11 @@ export async function readEdgeAdmissionChild(reportPath, expectedSha256) {
   return {reportPath, sha256: expectedSha256, folder, bytes, report: JSON.parse(bytes)};
 }
 export async function runOwnedEdgeCached(save) {
-  const chunks = []; let size = 0, failure;
-  const status = await new Promise(resolve => {
-    const child = spawn(process.execPath, ['tools/TikzVisual/trial-edge-cached.mjs'], {cwd: root, shell: false, windowsHide: true});
-    const timer = setTimeout(() => {failure = Error('Owned cached edge command timed out.'); child.kill();}, 3600000);
-    const capture = b => {size += b.length; if (size > 2000000) {failure = Error('Owned cached output bound.'); child.kill();} else chunks.push(b);};
-    child.stdout.on('data', capture); child.stderr.on('data', capture); child.on('error', e => failure = e);
-    child.on('close', code => {clearTimeout(timer); resolve(code);});
-  });
-  const text = Buffer.concat(chunks).toString('utf8'); await save('cached-command.log', text.replaceAll(root, '<repo>')); if (failure) throw failure;
-  const markers = text.split(/\r?\n/).filter(s => s.startsWith('{')).map(s => JSON.parse(s)).filter(m => m.kind === 'edge-cached-trial');
+  const result = await captureProcess(process.execPath, ['tools/TikzVisual/trial-edge-cached.mjs'], {cwd: root, timeout: 3600000});
+  const status = result.exitCode;
+  await save('cached-command.log', result.output.replaceAll(root, '<repo>'));
+  if (result.failure !== null) throw Error('Owned cached edge command failed: ' + result.failure);
+  const markers = result.stdout.split(/\r?\n/).filter(s => s.startsWith('{')).map(s => JSON.parse(s)).filter(m => m.kind === 'edge-cached-trial');
   assert.equal(markers.filter(m => m.final === true).length, 1); assert.equal(markers.length, 2);
   assert.equal(new Set(markers.map(m => m.report)).size, 1); const marker = markers.at(-1);
   assert.equal(marker.final, true);

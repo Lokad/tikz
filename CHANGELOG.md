@@ -2,6 +2,12 @@
 
 ## Unreleased — 0.1.0-preview.1 development
 
+- Statement templates can introduce controls used by subsequent statements;
+  calls resolve the current scoped environment. Expanded prose/math labels use
+  expansion, work and glyph limits after original-source length admission.
+- Family admission children share bounded termination, preserve their declared
+  long-running deadlines and parse receipts only from stdout. Windows arrow
+  descendant cleanup is preserved; partial logs and failed bundles are retained.
 - Empty or unexpected environment ends reject in every parsed body. Numeric
   substitution follows the invoked token-template context; unused definitions
   do not enable direct numeric labels, names or loop lists or change arithmetic.

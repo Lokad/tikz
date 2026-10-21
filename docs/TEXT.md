@@ -54,8 +54,10 @@ the supported lexical boundaries; groups/font assignments stop the sequence.
 Resolved glyphs retain the contributing UTF-16 source span, including a
 ligature's combined span. Whitespace never emits the visible EC slot-32 glyph.
 
-Source length, nesting, total work, emitted glyph count, and dimension limits
-share the conversion budget. Cancellation preserves the caller's token.
+Original source length is admitted at the conversion boundary. Generated label
+content uses the shared expansion, nesting, work, glyph and dimension limits;
+it is not measured against the caller-source ceiling again. Cancellation
+preserves the caller's token.
 The process cache contains only the six declared embedded faces; setup work
 is charged consistently regardless of whether another call warmed that cache.
 
@@ -71,18 +73,28 @@ enumerated interactions they exercise. They do not establish general TeX
 typesetting or every combination of the declared primitives. New interactions
 require their own oracle cases; see [grounding instructions](TESTING.md).
 
+## Integration evidence and current checking
+
 The [styled multiline flowchart](../tests/Fixtures/Diagrams/flowchart-styled-labels.tikz)
 qualifies the combined interaction of all six prose faces, three alignments,
 mixed-size rows, normal inline math, positioning, measured borders, arrows,
 sloped path labels and calculated coordinates. Its nine boxes/27 dimensions,
-144 anchors, 75 glyphs and two rules pass independent native checks. Final
-clean-export acceptance and integration at `2efa289` pass 24 primary/local views,
-eight original/candidate PDF views and 32 source recaptures for this case,
-within the full 23-case matrix. The [frozen evidence](../tests/Reference/StyledLabels/README.md)
-uses the existing profile; it adds no fonts, wrapping or general TeX support.
+144 anchors, 75 glyphs and two rules have independent native checks. Historical
+clean-export acceptance at `2efa289` recorded 24 primary/local views, eight
+original/candidate PDF views and 32 source recaptures for this case. Those counts
+describe that revision's camera product. The
+[frozen evidence](../tests/Reference/StyledLabels/README.md) uses the existing
+profile; it adds no fonts, wrapping or general TeX support.
 
-The [rectangle-node prototype](NODES.md) consumes these measured labels and
-matches actual TikZ box, separation, anchor, background-corner, and native glyph
-measurements for 22 nodes. Its CSS raster policy is calibrated separately from
-the whole-label bp policy; transform/state/clip interactions and PDF grounding
-remain separate work.
+The [node implementation](NODES.md) consumes measured labels before resolving
+geometry. Its original rectangle corpus checks boxes, separations, anchors,
+background corners and glyph measurements for 22 nodes. Actual-node CSS raster
+policies and whole-label bp policies remain distinct. Later shape, transform,
+clip and primary/PDF interaction evidence has its own declared scope in the
+node and diagram guides.
+
+Use the [current verification workflow](VERIFICATION.md) to check fresh output.
+The routine `mechanisms-v1` views replace the historical camera product while
+preserving native calibration and independent source recapture. Recorded passes
+refer to their source revision and renderer; ordinary parsing or older images
+do not establish current image conformance.

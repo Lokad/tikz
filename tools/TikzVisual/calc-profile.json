@@ -437,7 +437,7 @@
     "tools/TikzVisual/prepare-calc-native-cache.mjs": "0e2c1c5f36720ebba986921d3ad1635267a39a5bed2bd642426febc542190282",
     "tools/TikzVisual/prepare-calc-trial-cache.mjs": "28da6b947faa8e4ef95db4f5e17b67622abd0374616152b675d7e808f1fe687c",
     "tools/TikzVisual/prepare-calc-trial-reference.mjs": "1ddc75ad652f537e00117b3571d1e7d9f9610e2f68a314b7fcff789453bb1eb0",
-    "tools/TikzVisual/qualification-process.mjs": "17756fb5db88b3adf626ddfc7b6fe9d384ee382e17eadff3dce8cefb2e7bd897",
+    "tools/TikzVisual/qualification-process.mjs": "864bb339951b05f24ff4892e99163ea0e4e8990fe2e9fde91498d6fdcc6ebcca",
     "tools/TikzVisual/shape-frame-math.mjs": "a58534df72c79553763108078400f2010b69c125d394ea6f2628d0d77545fb44",
     "tools/TikzVisual/shape-oracle-bundle.mjs": "bc0e2657627ff5caf8405cb6005da2f645b4fe3f398655c58cb867e5d38d8125",
     "tools/TikzVisual/shape-pdf-camera.mjs": "9941c14fb2783d41a82c29c4899cac9f0d4a137008d00ffefc22c89a30613658",

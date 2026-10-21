@@ -197,11 +197,10 @@ public sealed class MathParserTests
     }
 
     [Fact]
-    public void Shared_source_work_nesting_and_cancellation_limits_apply_to_math_parsing()
+    public void Shared_work_nesting_and_cancellation_limits_apply_to_math_parsing()
     {
         foreach (var (label, limits) in new[] {
             ("$longIdentifier$", TikzLimits.Default with { MaxWork = 8 }),
-            ("$x$", TikzLimits.Default with { MaxSourceCharacters = 2 }),
             ("${x}$", TikzLimits.Default with { MaxNesting = 1 }),
             ("$x^{y_i}$", TikzLimits.Default with { MaxNesting = 2 }),
             ("$" + new string('{', 300) + "x" + new string('}', 300) + "$", TikzLimits.Default)

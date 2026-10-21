@@ -1,7 +1,7 @@
 // Exact owned report paths come from the child stdout, never mutable locators.
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {spawn} from 'node:child_process';
+import {captureProcess} from './qualification-process.mjs';
 import path from 'node:path';
 import {root, sha256, outputPath} from './shape-oracle-bundle.mjs';
 
@@ -11,17 +11,12 @@ export async function runOwnedEdgeImageChild(script, args, save, log) {
   if (trial) for (const [i, base] of ['primary-calibration', 'primary-checks', 'pdf-calibration', 'pdf-checks'].entries())
     assert.match(args[i], new RegExp('^artifacts/curved-edge-' + base + '/run-[a-f0-9-]+/report\\.json$'));
   else assert.match(args[0], /^artifacts\/curved-edge-public-trial\/run-[a-f0-9-]+\/report\.json$/);
-  const chunks = []; let size = 0, failure;
-  const status = await new Promise(resolve => {
-    const child = spawn(process.execPath, ['tools/TikzVisual/' + script, ...args], {cwd: root, shell: false, windowsHide: true});
-    const timer = setTimeout(() => { failure = Error('Owned edge command timed out.'); child.kill(); }, 1800000);
-    const capture = b => { size += b.length; if (size > 2000000) { failure = Error('Owned edge output bound.'); child.kill(); } else chunks.push(b); };
-    child.stdout.on('data', capture); child.stderr.on('data', capture); child.on('error', e => failure = e);
-    child.on('close', code => { clearTimeout(timer); resolve(code); });
-  });
-  const text = Buffer.concat(chunks).toString('utf8'); await save(log, text.replaceAll(root, '<repo>')); if (failure) throw failure;
+  const result = await captureProcess(process.execPath, ['tools/TikzVisual/' + script, ...args], {cwd: root, timeout: 1800000});
+  const status = result.exitCode;
+  await save(log, result.output.replaceAll(root, '<repo>'));
+  if (result.failure !== null) throw Error('Owned edge command failed: ' + result.failure);
   const kind = trial ? 'curved-edge-public-trial' : 'curved-edge-public-check';
-  const markers = text.split(/\r?\n/).filter(s => s.startsWith('{')).map(s => JSON.parse(s)).filter(m => m.kind === kind);
+  const markers = result.stdout.split(/\r?\n/).filter(s => s.startsWith('{')).map(s => JSON.parse(s)).filter(m => m.kind === kind);
   assert.ok(markers.length >= 1 && markers.length <= 2); assert.equal(new Set(markers.map(m => m.report)).size, 1);
   const marker = markers.at(-1); assert.match(marker.report, new RegExp('^artifacts/curved-edge-public-' + (trial ? 'trial' : 'checks') + '/run-[a-f0-9-]+/report\\.json$'));
   assert.match(marker.sha256, /^[a-f0-9]{64}$/); const folder = path.dirname(path.join(root, marker.report)), bytes = await readFile(await outputPath(folder, 'report.json'));

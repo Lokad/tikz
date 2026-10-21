@@ -2,11 +2,14 @@
 import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
 
-export async function captureProcess(executable, args, {cwd, timeout = 60000, maxBytes = 2000000} = {}) {
+export async function captureProcess(executable, args, {cwd, timeout = 60000, maxBytes = 2000000, killTree = false} = {}) {
   assert.ok(typeof executable === 'string' && executable.length > 0);
   assert.ok(Array.isArray(args) && args.every(a => typeof a === 'string'));
-  assert.ok(Number.isSafeInteger(timeout) && timeout > 0 && timeout <= 1800000);
+  // Long arrow reconstruction owns a three-hour budget; all callers remain
+  // explicitly bounded rather than silently shortening a family's deadline.
+  assert.ok(Number.isSafeInteger(timeout) && timeout > 0 && timeout <= 10800000);
   assert.ok(Number.isSafeInteger(maxBytes) && maxBytes > 0 && maxBytes <= 2000000);
+  assert.equal(typeof killTree, 'boolean');
   const chunks = [], stdout = [], stderr = [];
   let size = 0, failure = null, terminationFailure = null, terminationEscalated = false;
   const exitCode = await new Promise(resolve => {
@@ -22,7 +25,16 @@ export async function captureProcess(executable, args, {cwd, timeout = 60000, ma
       failure ??= message;
       if (stopping || settled) return;
       stopping = true;
-      if (!exited) child.kill('SIGTERM');
+      if (!exited) {
+        if (killTree && process.platform === 'win32' && Number.isSafeInteger(child.pid)) {
+          // Preserve Windows descendant cleanup for browser-owning commands.
+          // The cleanup process has its own short bound and cannot hold us open.
+          const killer = spawn('taskkill.exe', ['/PID', String(child.pid), '/T', '/F'],
+            {cwd, shell: false, windowsHide: true, stdio: 'ignore', timeout: 750});
+          killer.on('error', () => { if (!exited && !settled) child.kill('SIGKILL'); });
+          killer.unref();
+        } else child.kill('SIGTERM');
+      }
       // Unix children can handle SIGTERM. Escalate after a short cleanup grace.
       killTimer = setTimeout(() => {
         if (!exited) { terminationEscalated = true; child.kill('SIGKILL'); }

@@ -4,6 +4,7 @@ internal abstract record Statement(Source Source);
 internal sealed record ScopeStatement(List<Option> Options, List<Statement> Body, Source Origin) : Statement(Origin)
 {
     internal Source? OptionsTemplate { get; init; }
+    internal Source? BodyTemplate { get; init; }
 }
 internal sealed record SetStatement(List<Option> Options, Source Origin) : Statement(Origin)
 {

@@ -73,13 +73,12 @@ public sealed class TextLayoutTests
     }
 
     [Fact]
-    public void Glyph_work_dimensions_source_and_nesting_are_bounded()
+    public void Glyph_work_dimensions_and_nesting_are_bounded()
     {
         Assert.Single(Measure("ffi", TikzLimits.Default with { MaxGlyphs = 1 }).Glyphs);
         foreach (var (text, limits) in new[] {
             ("ffi ffi", TikzLimits.Default with { MaxGlyphs = 1 }),
             ("x", TikzLimits.Default with { MaxWork = 100 }),
-            ("xx", TikzLimits.Default with { MaxSourceCharacters = 1 }),
             ("{{x}}", TikzLimits.Default with { MaxNesting = 1 }),
             ("Wide", TikzLimits.Default with { MaxCoordinatePixels = 1.0 })
         }) Assert.Equal("TIKZ005", Assert.Throws<CompileError>(() => Measure(text, limits)).Diagnostic.Code);

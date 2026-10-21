@@ -2,17 +2,10 @@ using Lokad.TikZ.Semantics;
 
 namespace Lokad.TikZ.Frontend;
 
-internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<string, Source>? bindings = null, bool deferTemplates = false,
-    IReadOnlyCollection<string>? definitionNames = null)
+internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<string, Source>? bindings = null, bool deferTemplates = false)
 {
     private readonly Cursor _reader = new(source, budget);
     private bool _templates = deferTemplates;
-    private HashSet<string> _definitions = definitionNames is null ? [] : CopyNames(definitionNames, source, budget);
-    private static HashSet<string> CopyNames(IReadOnlyCollection<string> names, Source origin, Budget budget)
-    {
-        budget.Charge(origin, names.Count);
-        return new(names, StringComparer.Ordinal);
-    }
     internal List<Statement> Body(int depth)
     {
         var result = Statements(null, depth);
@@ -53,7 +46,10 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             if (_reader.Peek == '{')
             {
                 var group = _reader.Group('{', '}');
-                result.Add(new ScopeStatement([], new Parser(group, budget, bindings, _templates, _definitions).Body(depth + 1), group));
+                // In an expansion context, execute preceding calls before
+                // interpreting the following statement group in its environment.
+                result.Add(_templates ? new ScopeStatement([], [], group) { BodyTemplate = group }
+                    : new ScopeStatement([], new Parser(group, budget, bindings).Body(depth + 1), group));
                 continue;
             }
             var command = _reader.Command();
@@ -99,7 +95,9 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
                     result.Add(ReadPath(command, commandName));
                     break;
                 default:
-                    if (_templates && _definitions.Contains(commandName)) result.Add(new DefinitionCallStatement(command));
+                    // Calls can introduce new definitions without adding a group.
+                    // Only evaluation knows the environment at this point of use.
+                    if (_templates) result.Add(new DefinitionCallStatement(command));
                     else throw new CompileError("TIKZ002", $"Unsupported command '{commandName}'.", command);
                     break;
             }
@@ -125,14 +123,12 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
     private ScopeStatement ReadScope(Source command, string environment, int depth)
     {
         var outer = _templates;
-        var names = _definitions.Count == 0 ? null : CopyNames(_definitions, command, budget);
         Source? template = null;
         List<Option> options;
         if (_templates && _reader.Peek == '[') { template = _reader.Group('[', ']'); options = []; }
         else options = ReadOptions();
         var body = Statements(environment, depth);
         _templates = outer;
-        if (names is null) _definitions.Clear(); else _definitions = names;
         return new(options, body, command) { OptionsTemplate = template };
     }
     private SetStatement ReadSet(Source command)
@@ -155,7 +151,6 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             if (body.Span[position] == '#') throw new CompileError("TIKZ002", "Token-definition parameters are unsupported.", body.Slice(position, 1));
         }
         _templates = true;
-        _definitions.Add(variable.Value);
         return new(variable, body, command with { Length = source.Offset + _reader.Position - command.Offset });
     }
     private List<Option> ReadOptions() => _reader.Peek == '[' ? Options.Read(Bind(_reader.Group('[', ']')), budget) : [];
@@ -176,7 +171,6 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         var variable = ReadVariable("Numeric assignment");
         if (_reader.Peek != '{') throw new CompileError("TIKZ001", "Expected a braced numeric expression.", _reader.Here);
         var expression = Bind(_reader.Group('{', '}'));
-        _definitions.Remove(variable.Value);
         return new(variable, expression, command with { Length = source.Offset + _reader.Position - command.Offset });
     }
     private Source ReadVariable(string feature)

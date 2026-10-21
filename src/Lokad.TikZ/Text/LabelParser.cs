@@ -13,11 +13,9 @@ internal sealed class LabelParser(Source source, Budget budget)
     private Source Here => source.Slice(_position, _position < source.Length ? 1 : 0);
     private void Advance() { budget.Charge(Here); _position++; }
 
-    internal List<LabelItem> Parse()
-    {
-        if (source.Length > budget.Limits.MaxSourceCharacters) Budget.Fail(source, "source characters");
-        return Items(0, false);
-    }
+    // The converter admits caller-source length once. This slice may contain
+    // generated text already admitted by expansion; parsing shares its work cap.
+    internal List<LabelItem> Parse() => Items(0, false);
 
     private List<LabelItem> Items(int depth, bool grouped)
     {

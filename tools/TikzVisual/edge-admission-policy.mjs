@@ -38,7 +38,7 @@ export const edgeAdmissionQualification = {
 const checkerControls = ['false-admission', 'false-converter-role', 'missing-case', 'missing-primary-view', 'missing-PDF-view', 'missing-native-page', 'changed-frame', 'changed-numeric', 'hidden-dot-correction', 'missing-original-diagnostics', 'missing-defect', 'numeric-mask', 'wrong-defect-target', 'false-visibility', 'missing-source-attribution', 'weakened-native-zero-gate', 'false-summary', 'missing-gallery', 'changed-qualification'];
 const extras = ['edge-image-cache.mjs', 'materialize-edge-image-cache.mjs', 'edge-image-owned-child.mjs', 'trial-edge-cached.mjs',
   'edge-admission-policy.mjs', 'edge-admission-owned-child.mjs', 'prepare-edge-admission.mjs', 'compare-edge-conformance.mjs', 'edge-admission-self-test.mjs',
-  'edge-image-cache-self-test.mjs', 'edge-native-source-revisions.json', 'qualification-source-guards.mjs'].map(p => 'tools/TikzVisual/' + p);
+  'edge-image-cache-self-test.mjs', 'edge-native-source-revisions.json', 'qualification-source-guards.mjs', 'qualification-process.mjs'].map(p => 'tools/TikzVisual/' + p);
 export const edgeGuardFiles = e => [...new Set([...Object.keys(e.toolHashes), ...edgeTrialSources, ...edgeInputFiles, ...extras,
   'tools/TikzEdgeOracle/NativeSourceRevisions.cs', 'tools/TikzEdgeComparison/Program.cs', 'tools/TikzEdgeComparison/TikzEdgeComparison.csproj',
   'tools/TikzEdgeComparison/NativeComparison.cs', 'tools/TikzEdgeComparison/packages.lock.json'])].sort();

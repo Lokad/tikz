@@ -25,6 +25,8 @@ recursive bodies are harmless; invoked direct or indirect cycles produce
 `TIKZ003`. Redefining a control with a different body may terminate a statement
 template. Each statement sees the current definitions in source order; later
 redefinition does not alter already resolved output.
+An executed statement template may introduce a previously undeclared command
+for a later call in the same scope; no dummy predeclaration is required.
 
 Supported uses include complete statement calls, coordinate/path fragments,
 prose/math labels, option values and individual key names. Expanded content must

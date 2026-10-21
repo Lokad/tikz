@@ -15,6 +15,17 @@ cancellation and shared resource limits. A passing scene comparison does not
 replace checking the returned SVG: serialization can introduce its own defects.
 Use a focused filter while editing, then run the full ordinary suite.
 
+Development child-process checks run separately:
+
+```text
+node tools/TikzVisual/qualification-process-self-test.mjs
+```
+
+They exercise shared capture and the actual family adapters, including stdout-only
+receipts, ordered partial logs, failed-bundle retention and bounded termination.
+Unix checks include ignored SIGTERM and inherited pipes; Windows checks include
+arrow-command descendant cleanup. These controls invoke no reference engine.
+
 The fixed adversarial corpus adds malformed-input invariants, culture and
 concurrency checks, and exact saved UTF-16 replay:
 

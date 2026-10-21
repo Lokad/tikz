@@ -41,7 +41,7 @@ export const edgeAdmissionQualification = {
 const checkerControls = ['false-admission', 'false-converter-role', 'missing-case', 'missing-primary-view', 'missing-PDF-view', 'missing-native-page', 'changed-frame', 'changed-numeric', 'invented-driver-correction', 'invented-original-diagnostics', 'missing-defect', 'numeric-mask', 'wrong-defect-target', 'false-visibility', 'missing-source-attribution', 'weakened-native-zero-gate', 'false-summary', 'missing-gallery', 'changed-qualification'];
 const extras = ['curved-edge-image-cache.mjs', 'materialize-curved-edge-image-cache.mjs', 'curved-edge-image-owned-child.mjs', 'trial-curved-edge-cached.mjs',
   'curved-edge-admission-policy.mjs', 'curved-edge-admission-owned-child.mjs', 'prepare-curved-edge-admission.mjs', 'compare-curved-edge-conformance.mjs', 'curved-edge-admission-self-test.mjs', 'curved-edge-agent.mjs', 'curved-edge-agent-viewer.mjs', 'curved-edge-agent-self-test.mjs',
-  'curved-edge-image-cache-self-test.mjs', 'qualification-source-guards.mjs', 'edge-native-source-revisions.json', 'edge-evidence.mjs'].map(p => 'tools/TikzVisual/' + p);
+  'curved-edge-image-cache-self-test.mjs', 'qualification-source-guards.mjs', 'qualification-process.mjs', 'edge-native-source-revisions.json', 'edge-evidence.mjs'].map(p => 'tools/TikzVisual/' + p);
 export const edgeGuardFiles = e => [...new Set([...Object.keys(e.toolHashes), ...edgeTrialSources, ...curvedInputFiles, ...extras,
   'tools/TikzEdgeOracle/NativeSourceRevisions.cs', 'tools/TikzCurvedEdgeComparison/Program.cs',
   'tools/TikzCurvedEdgeComparison/TikzCurvedEdgeComparison.csproj', 'tools/TikzCurvedEdgeComparison/packages.lock.json'])].sort();

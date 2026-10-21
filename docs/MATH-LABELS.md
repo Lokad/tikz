@@ -1,14 +1,13 @@
 # Bounded math labels
 
-The converter now measures and renders the bounded grammar below using nineteen
-bundled math font/size resources. Three authored sources match native boxes,
-anchors, glyph positions, rules and paint order exactly in scaled points: 64
-labels, 1,024 anchors, 459 glyphs and 37 rules. Unsupported or malformed math
-reports its offending source span and emits no partial SVG. The
-[native observations](../tests/Reference/MathLabels/README.md) ground this fixed
-profile. The fixed primary/local and both PDF matrices pass native-derived
-policies. Final clean-source acceptance and integration pass for this fixed
-profile, including fresh public/traced output and the earlier diagram families.
+The converter measures and renders the bounded grammar below using nineteen
+bundled math font/size resources. Three authored sources ground native boxes,
+anchors, glyph positions, rules and paint order in scaled points: 64 labels,
+1,024 anchors, 459 glyphs and 37 rules. Unsupported or malformed math reports
+its offending source span and emits no partial SVG. The
+[native observations](../tests/Reference/MathLabels/README.md) retain the fixed
+profile's evidence, including its original primary/local and PDF acceptance.
+Historical acceptance and current-output checking have distinct roles below.
 
 The first profile supports inline `$...$` runs within existing node and path
 labels, including mixed prose and math. It uses a small source-aware math AST,
@@ -65,7 +64,7 @@ Every glyph and rule retains its source location. Native DVI movements and
 rules supply an independent check of the resulting boxes and positions;
 reusing the text-only native reader without math semantics is insufficient.
 
-## Rejections and completion
+## Rejections and qualification
 
 Unknown commands, unlisted symbols, display math, `\left`/`\right`, indexed
 roots, general TeX macros, AMS environments, arrays, accents, large operators,
@@ -74,22 +73,28 @@ groups, missing arguments/base atoms and duplicate scripts produce source-aware
 syntax diagnostics. Shared cancellation, nesting, work, glyph and graphics
 limits apply throughout; exhaustion produces no partial SVG.
 
-The fixed profile completes final clean-export acceptance and integration:
+Historical clean-export acceptance for the fixed profile recorded
 72 primary/local views, 24 original/candidate PDF views and 96 source recaptures
 for its original three cases. The separate
 [styled multiline flowchart](../tests/Reference/StyledLabels/README.md) combines
 normal math with all six existing prose faces, mixed-size rows, three alignments,
 positioning, path labels, arrows and calculated coordinates. At `2efa289` it
-passes 24 primary/eight PDF/32 source views and independent checks of nine boxes,
+passed 24 primary/eight PDF/32 source views and independent checks of nine boxes,
 27 dimensions, 144 anchors, 75 glyphs and two rules. Its thin-rule PDF checking
 also retains native-only per-pixel error envelopes, so endpoint errors cannot
 cancel in aggregate regional metrics.
 
-The full 23-case clean-export regression and main integration pass 552 primary
-views, 184 PDF views, 736 source recaptures and 26,977 previous-family numeric
-checks; both ordinary suites pass all 808 tests. Independent math checks retain
-native box, anchor, glyph, rule, paint and framing semantics. Frozen calibration
-is preserved, including the original three-case limits.
+That historical 23-case integration recorded 552 primary views, 184 PDF views,
+736 source recaptures and 26,977 previous-family numeric checks. These are
+revision-specific observations, rather than current suite totals or a required
+camera product. Independent math checks retain native box, anchor, glyph, rule,
+paint and framing semantics. Frozen calibration preserves the original
+three-case limits.
+
+The [current verification workflow](VERIFICATION.md) defines routine
+`mechanisms-v1` views, complete-diagram qualification and independent fresh-source
+recapture. Use fresh reports for the source tree being checked; historical
+acceptance does not substitute for current converter output.
 
 Reopen qualification for a changed dependency, failed regression or identified
 coverage gap. Check fresh converter output before claiming current conformance;

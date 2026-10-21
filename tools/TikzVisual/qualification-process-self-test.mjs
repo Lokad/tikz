@@ -7,6 +7,7 @@ import {randomUUID} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {captureProcess} from './qualification-process.mjs';
+import {verifyFamilyProcessAdapters} from './qualification-family-process-self-test.mjs';
 import {loadCalcSavedReport,calcHash} from './calc-saved-images.mjs';
 import {runCalcChild} from './calc-admission-child.mjs';
 const run=(source,options={})=>captureProcess(process.execPath,['-e',source],{timeout:5000,...options});
@@ -144,3 +145,4 @@ try {
   }
 } finally { childProcesses.spawn = originalSpawn; syncBuiltinESMExports(); }
 console.log('Shared report-child controls: stdout receipt, stderr retention, failed payload retention and interleaved log order passed.');
+await verifyFamilyProcessAdapters();

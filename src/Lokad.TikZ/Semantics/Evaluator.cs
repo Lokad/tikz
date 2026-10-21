@@ -43,7 +43,9 @@ internal sealed partial class Evaluator(Budget budget)
                     var child = state.Clone(budget, scope.Source);
                     KeyRegistry.Apply(scope.OptionsTemplate is { } scopeTemplate ? Options.Read(scopeTemplate, budget) : scope.Options, child, budget);
                     DashPattern.Resolve(child, budget);
-                    Statements(scope.Body, child, depth + 1, bindings, loopDepth);
+                    var scopedBody = scope.BodyTemplate is { } bodyTemplate
+                        ? new Parser(bodyTemplate, budget, bindings, child.HasTokenExpansion).Body(depth + 1) : scope.Body;
+                    Statements(scopedBody, child, depth + 1, bindings, loopDepth);
                     break;
                 case SetStatement set: KeyRegistry.Apply(set.OptionsTemplate is { } setTemplate ? Options.Read(setTemplate, budget) : set.Options, state, budget); break;
                 case DefinitionStatement definition:
@@ -66,7 +68,7 @@ internal sealed partial class Evaluator(Budget budget)
                     {
                         budget.Charge(called.Source, (called.Body.RelatedSources?.Length ?? 0) + 2);
                         var calledBody = called.Body with { RelatedSources = [.. called.Body.RelatedSources ?? [], called.Variable, invocation.Source] };
-                        var expandedBody = new Parser(calledBody, budget, deferTemplates: true, definitionNames: state.Definitions.Keys).Body(depth);
+                        var expandedBody = new Parser(calledBody, budget, deferTemplates: true).Body(depth);
                         Statements(expandedBody, state, depth, bindings, loopDepth);
                     }
                     finally { state.InDefinitionCall = enclosingDefinitionCall; _definitionCalls.Remove(identity); }
@@ -105,8 +107,7 @@ internal sealed partial class Evaluator(Budget budget)
                         local[loop.Variable.Value] = value with { RelatedSources = [.. value.RelatedSources ?? [], loop.Variable] };
                         var iterationState = state.Clone(budget, loop.Source);
                         iterationState.TemplateBindings = local;
-                        var body = new Parser(loop.Body, budget, local, state.HasTokenExpansion,
-                            state.Definitions.Count == 0 ? null : state.Definitions.Keys).Body(depth + 1);
+                        var body = new Parser(loop.Body, budget, local, state.HasTokenExpansion).Body(depth + 1);
                         Statements(body, iterationState, depth + 1, local, loopDepth + 1);
                     }
                     break;
