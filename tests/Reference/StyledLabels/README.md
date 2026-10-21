@@ -58,5 +58,5 @@ PDF/736 source views, 673 declared controls and all 808 ordinary tests in both
 main and the clean export. All 2,008 source files and distinct owned receipts
 are reconciled after the run. Calc retains its accepted qualification and 83
 controls: its 159 dependencies are unchanged, and new functional output matches
-the accepted output. No native calibration is regenerated. Broader M1–M4,
+the accepted output. No native calibration is regenerated. Broader compatibility,
 hosted qualification and release remain open.

@@ -3,8 +3,8 @@
 Lokad.TikZ compiles the bounded forms described here and in the linked guides.
 It implements selected TikZ behavior without a TeX engine. The
 [public contract](../SPEC.md) defines inputs, options, output, diagnostics and
-limits. The project remains a preview; broader M1–M4 and release qualification
-are separate from the fixed fixture evidence.
+limits. The project remains a preview; broader TikZ compatibility and release
+qualification are separate from the fixed fixture evidence.
 
 ## Statements and base geometry
 

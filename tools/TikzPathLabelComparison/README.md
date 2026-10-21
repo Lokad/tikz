@@ -192,3 +192,9 @@ recreates public output and replays 24 primary plus eight PDF views.
 Final feature acceptance combines ordinary tests, controls and fresh comparisons
 in a committed source export. Individual reports make no general feature or
 pixel-identity claim.
+
+Archive maintenance uses [prepare-path-label-cache.mjs](../TikzVisual/prepare-path-label-cache.mjs)
+with a fixture/evidence-group ID and its explicitly enrolled reports in role
+order. It writes an ignored candidate archive. Current materialization and
+checking use the tracked pin; preparation alone neither replaces it nor admits
+a new image policy.

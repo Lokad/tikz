@@ -49,3 +49,9 @@ The emitted-SVG reader checks path/clip coordinates and dimensions after
 serialization, as well as the physical scale, paint/clip bindings and root
 frame. Short decimal values must recover the original scaled-point integer.
 The separate node/font placements use their existing trace and image gates.
+
+The frozen geometry PDF qualification retains its original
+[Cairo trial](../TikzVisual/trial-dash-geometry-pdf-cairo.mjs) and
+[research-policy controls](../TikzVisual/dash-geometry-pdf-trial-self-test.mjs)
+as standalone reconstruction/diagnostic entrypoints. They grant no current
+image admission; use the combined geometry command in [DASHES](../../docs/DASHES.md).

@@ -90,4 +90,4 @@ is bounded to 64 MB. Absolute executable paths are stripped from public data.
 
 Cached visual CI requires comparison and controls and uploads both bundles.
 Hosted execution remains unverified. Label/node interactions, other paths,
-future libraries and the broader M1–M4 release gates remain separate work.
+future libraries and broader compatibility/release qualification remain separate work.

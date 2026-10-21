@@ -1,11 +1,11 @@
-# Bundled font data prototype
+# Bundled font data
 
 ## Math font data
 
 The separate `latin-modern-math-10-12-v1` profile pins nineteen font/size
 combinations: OT1 roman, OML italic and OMS symbols at 5/6/7/8/10/12pt, plus
 fixed 10pt OMX extension. The 12pt symbols use the 10pt design scaled to 12pt.
-These resources support the pending [math-label target](../../docs/MATH-LABELS.md);
+These resources support the [bounded math-label profile](../../docs/MATH-LABELS.md);
 font extraction alone does not implement or qualify math labels.
 
 ```text
@@ -101,38 +101,46 @@ and an incorrect glyph substitution. Each intended defect must fail and
 its image crop must identify the corresponding font glyph slot. They never
 submit mutated source to TeX or update expected output.
 
-This validates the resource extraction and atlas reconstruction. It does
-not establish node layout, word shaping, automatic ink bounds, Unicode
-mapping, or math typesetting. The TikZ converter still rejects labels.
-Text integrated into the converter's CSS-coordinate scene needs its own
-oracle-only rendering calibration: moving a bp root transform into a CSS
-group transform produced small raster differences even with the same
-outlines and glyph positions. No text tolerance has been established by
-this atlas experiment. The secondary PDF text route is also pending.
+The atlas validates resource extraction and reconstruction. It does not by
+itself establish node layout, word shaping, ink bounds, Unicode mapping or
+math typesetting. Public label support and its separate calibration scopes
+are defined by the [text](../../docs/TEXT.md), [node](../../docs/NODES.md) and
+[math-label](../../docs/MATH-LABELS.md) contracts. Moving a bp root transform
+into a CSS group produced measured raster differences even with identical
+outlines and positions; the atlas policy is not a general text tolerance.
 
-Initial node text will explicitly select the 10pt or 12pt optical face;
+Node text explicitly selects the 10pt or 12pt optical face;
 arbitrary optical-size selection and combined bold italic are not implied.
 All EC glyph slots are bundled so reference pair rules remain complete.
-The frontend's accepted Unicode repertoire must be enumerated separately
-before labels are advertised; availability in these resources is not a
-claim that every corresponding input command or character is supported.
+The frontend's accepted Unicode repertoire is defined separately in the
+text contract; bundled slots do not imply support for every corresponding
+input command or character.
 
 ## Native whole-label references
 
-The internal [text frontend](../../docs/TEXT.md) now has a separate sixteen-case
+The [text frontend](../../docs/TEXT.md) has a separate sixteen-case
 word/box experiment. `generate-text-reference` explicitly creates its baselines;
 `verify-text-reference` live-checks them without writing; `compare-text` consumes
 them with only the pinned browser. MiKTeX's pinned DVItype supplies exact native
 integer glyph positions, while dvisvgm supplies independently outlined images.
-See [the commands and inspection workflow](../../docs/TESTING.md#whole-label-layout-experiment).
+Run the cached comparison and its image controls with:
+
+```text
+dotnet run --project tools/TikzFontData -c Release -- compare-text
+npm run test:text --prefix tools/TikzVisual
+```
+
+Reports retain numeric deltas, glyph traces, paired PNGs and inspection images
+under `artifacts/text-comparisons/`. See the [testing guide](../../docs/TESTING.md)
+for renderer setup and the distinction between iteration and qualification.
 
 `calibrate-text-reference` uses the original oracle outlines and DVItype
 positions, never the candidate parser, layout, or glyph resources. Its raw
 exact-policy mismatches measure the SVG driver's fractional-advance difference.
 It saves aggregate evidence under `artifacts/text-calibration/`; a reviewed
 snapshot grounds the separate [text raster policy](../TikzVisual/TEXT-CALIBRATION.md).
-Node layout, converter CSS placement, and secondary PDF text fidelity remain
-pending. The atlas and label experiments establish different boundaries.
+Node layout, converter CSS placement and secondary PDF fidelity have their own
+scopes in the linked contracts. Atlas and label evidence observe different boundaries.
 
 Input and output hashes are in `font-profile.json` and the resource
 `provenance.json`. The upstream README and manifest carry different version

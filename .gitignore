@@ -1,5 +1,6 @@
 # Upstream reference checkouts and local experiments.
 /external/
+/PLAN.md
 **/bin/
 **/obj/
 /artifacts/

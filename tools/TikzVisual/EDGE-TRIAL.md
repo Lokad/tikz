@@ -81,5 +81,5 @@ native-page samples and RGB sums, and rejects weakened or incomplete reports.
 It cannot promote data. [Portable tracked evidence](EDGE-CACHED.md) supplies a
 fresh trial without old research folders. The separate
 [fixed conformance command](EDGE-CONFORMANCE.md) requires that owned trial and
-checker under an immutable profile. Hosted CI and broader M1–M4 compatibility
+checker under an immutable profile. Hosted CI and broader TikZ compatibility
 remain separate work.

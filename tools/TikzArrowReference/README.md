@@ -12,12 +12,12 @@ same semantic records and native check coverage. Historical checker arithmetic
 stays in the snapshot; current PDF rectangle checks convert each `re` operand
 separately, as the PGF PDF driver does. Unchanged native images are preserved.
 
-This development harness grounds arrow geometry before adding arrow support to
-the public converter. It uses six authored, glyph-free TikZ fixtures with legacy
+This development harness supplies native geometry for the
+[public arrow subset](../../docs/ARROWS.md). It uses six authored, glyph-free TikZ fixtures with legacy
 `>` defaults, `arrows.meta` defaults, Stealth and Latex dimensions, explicit
 shortening, transforms, curves, empty nodes, deferred edges, paint, clipping and
 degenerate paths. It establishes native evidence; it admits no candidate image
-policy and does not claim that the production library supports these options.
+policy. Public syntax and current candidate qualification are documented separately.
 
 Run from the repository root:
 
@@ -84,3 +84,20 @@ arrow/label interactions, public converter behavior, independent primary/PDF
 calibration, image-only defects and combined image admission remain required.
 All harness dependencies are development-only; the production package depends
 only on .NET 10.
+
+## Archive maintenance and historical replay
+
+The retained image archives also preserve earlier qualification stages. These
+standalone entrypoints own their preparation, integrity controls and independent
+replay; they are separate from current candidate admission in [ARROWS](../../docs/ARROWS.md).
+
+| Retained stage | Maintenance and replay tools |
+| --- | --- |
+| Native-source image evidence | [Prepare](../TikzVisual/prepare-arrow-image-cache.mjs), [materialize](../TikzVisual/materialize-arrow-image-cache.mjs), [check source baselines](../TikzVisual/check-arrow-source-baselines.mjs), [aspect-ratio investigation](../TikzVisual/probe-arrow-aspect-ratio.mjs) |
+| Native-meet evidence | [Prepare](../TikzVisual/prepare-arrow-meet-image-cache.mjs), [codec/integrity controls](../TikzVisual/arrow-meet-image-cache-self-test.mjs), [independent baseline checking](../TikzVisual/check-arrow-meet-baselines.mjs) |
+| Public-control evidence | [Archive integrity controls](../TikzVisual/arrow-public-image-cache-self-test.mjs), [independent primary controls](../TikzVisual/check-arrow-primary-controls.mjs), [independent PDF controls](../TikzVisual/check-arrow-pdf-controls.mjs) |
+
+Preparation writes ignored output and never silently updates tracked pins.
+Saved-report checkers require the exact report path; run the entrypoint with its
+documented arguments and retain the printed digest. Frozen archives and their
+original pending verdicts remain unchanged when current sources are repaired.

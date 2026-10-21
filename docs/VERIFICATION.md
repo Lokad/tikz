@@ -146,13 +146,13 @@ and fill/clip rules. SVG hashes/statistics and loaded assembly
 must equal a separate source consumer. Missing XML, added dependency, changed
 DLL and unexpected payload controls run once on the Windows ordinary job;
 both ordinary platforms run positive package acceptance. This checks package
-parity, independently of native/image conformance. Hosted execution remains
-unverified until the hosted jobs run.
+parity, independently of native/image conformance. A hosted release claim
+requires results from the relevant hosted jobs.
 
 ## Ordinary requirement mapping
 
-All ordinary tests remain: 222 methods and 875 expanded cases across 40 classes.
-The initial audit covered 199 methods and 821 cases. Overlapping
+Retain ordinary feature, diagnostic and resource regressions. Use the test runner
+for the current case count; historical totals are not a coverage contract. Overlapping
 conversion calls below have different observations, failure boundaries or
 native witnesses, and do not justify removing assertions.
 
@@ -331,106 +331,31 @@ independent checks; all 19 math and 22 styled PDF controls remain.
 
 ## Recorded outcomes
 
-The first pass completed in 3h50m within its four-hour limit at `71f9e03`.
-Later cost reductions are separate accepted work units. These are observed
-development wall times on the same host, with overlap documented in local
-receipts, rather than controlled benchmark results.
+These observations apply to recorded source trees and workloads. They are
+historical development wall times, not controlled converter benchmarks, current
+qualification results or a guarantee about future runs.
 
-| Check | Before | First-pass result | Later accepted observation |
-| --- | ---: | ---: | ---: |
-| Full 26-diagram qualification | 77m35s | 56m56s | 36m14s at `bfc87c8` |
-| Default affected iteration | Initial eight-diagram attempt: 13m21s | Four complete diagrams: 4m24s | 3m08s at `bfc87c8`; latest 3m32s at `4254cb0` |
-| Single paint-flowchart workflow | 2m51s | 59s | — |
-| Shared portable-cache controls | 3m30s | 21.3s | — |
-| Nonmath corruption invocations | 495 | 33 | Same distinct controls retained |
-| Identical archive transport faults | 56 | 2 | All 28 positive roundtrips retained |
+| Revision | Scope | Observed wall time |
+| --- | --- | ---: |
+| `bfc87c8` | Historical 26-diagram qualification | 36m14s |
+| `df0d257` (tree restored at `9a7e827`) | 30-diagram routine, 873 ordinary cases | 838.533s |
+| `996e085` | 30-diagram routine, 875 ordinary cases, bounded saved-report reads | 595.844s |
+| `0683f6e` | Final performance-batch export, 900 ordinary cases, 30 fixtures/167 steps | 1004.960s |
 
-The historical pre-feature matrix had 26 diagrams, 624 primary views, 208 PDF views,
-832 source recaptures and 821 ordinary cases. All 126 visible
-negatives remain detected. The later matrix's 832 records and 5,008 PNGs match
-the prior accepted output byte for byte.
+The sub-ten-minute observation at `996e085` had only 4.156s internal margin.
+The later recorded export exceeds that target. Differences between these host
+observations do not isolate a converter speed change. Independent raster
+production/decoding and source recapture remain material developer-loop costs;
+overlapping child durations must not be added as parent wall time.
 
-The earlier 30-diagram review reduced observed complete routine qualification
-from **46m14s → 35m50s → 21m09s → 15m58s → 13m59s**. The last run took
-**838.533s** at `df0d257`; `9a7e827` restores its exact tracked tree after a
-slower four-job/metadata trial (943.230s) was withdrawn. All 2,083 source files
-match the qualified export. The final affected four-diagram loop took **4m47s**,
-which does not establish the complete-routine target.
+The final routine retains fresh candidate conversions, independent checking,
+241 primary and 240 PDF observations and 361 source recaptures. Frozen native
+calibration and unchanged reference observations remain reusable. Required
+family admission is additional work when relevant dependencies change; neither
+narrow iteration nor ordinary CI substitutes for it. Hosted and broader release
+acceptance remain separate.
 
-The review closed after **3h45m33s**, within four hours; the 600s target remains
-unmet by **238.533s** at its closure. The last two accepted full runs began without another
-acceptance process active. Earlier runs overlapped other acceptance work. These
-are observed host wall times, not controlled attribution of every saving.
-Native-reference regeneration and completed performance calibration were not
-reopened. Further optimization must address a measured cost and retain the
-required checks through the existing machinery.
-
-All 873 ordinary cases and 30 fixtures remain. The full frozen-fault audit
-covers all 28 bundles and 895 visible controls; the routine basis has 368 visible
-and two originally invisible witnesses plus 527 explicit aliases. This extends
-the earlier ten-bundle/247-control sample. Native and current pixel policies
-remain unchanged. The accepted run retains 241 primary and 240 PDF observations,
-361 fresh source recaptures and all family/harness control identities. Its 481
-observations, 722 source rasters and 56 returned SVGs match the previous accepted
-export exactly. Reusing unchanged reference evidence never substitutes old
-converter output.
-
-| Remaining stage | Executions | Aggregate child seconds |
-| --- | ---: | ---: |
-| Independent current checking | 28 | 1,345.792 |
-| PDF production | 28 | 576.989 |
-| Primary production | 28 | 548.238 |
-| Frozen-reference materialization/roundtrip | 32 | 298.760 |
-| Negative mechanism basis | 1 | 222.026 |
-| Family/harness corruption controls | 18 | 185.597 |
-| Numeric comparison | 26 | 129.446 |
-| Ordinary tests | 1 | 20.629 |
-
-Parallel child costs overlap and are not additive parent wall time. Independent
-decoded checking and raster generation are the largest remaining costs; higher
-parallelism also increases individual child times. The slower trial does not
-justify another scheduling change in this time-boxed review.
-
-Fresh family admissions remain additional required costs when their dependencies
-or coverage gaps change: observed straight/curved/border admissions were
-11m38s/15m56s/1m57s, and arrow admission was 2h35m. These have not been removed
-from their required scopes to satisfy the routine target.
-
-Historical replay covers three named defects: the shortest-decimal PDF dimension
-reader (`c3682f8`), PDF text paint (`57c7ce7`) and unequal-leg orthogonal label
-timing (`5bf5a9d`). Current checks pass; restoring each defect fails the retained
-check, including all ten timer cases. This establishes those three regressions;
-it does not claim replay of every historical defect or hosted qualification.
-
-The subsequent saved-report loading change at `996e085` passes complete fresh
-routine qualification in **595.844s (9m56s)**, external stopwatch 596.511s.
-It started without another acceptance process active. All 875 ordinary cases,
-30 fixtures/28 rows, 241 primary and 240 PDF observations, 361 fresh source
-recaptures and retained controls pass. All 481 observations, 722 compared
-source/reference rasters and 56 returned SVGs match the prior accepted export.
-The required changed-dependency calc admission, independent 540-pair/13,212-region
-replay, 2,196 exact PNG reproductions and 84 bound controls also pass. All 2,096
-committed/export/original source hashes reconcile.
-
-The existing loader reads every declared asset through eight bounded stat/read/hash
-workers, preserving path, digest, role, UTF-8 and asset-byte limits, map order and
-settled in-flight work after failure. A shared control detects deliberately early
-rejection. Native calibration and pixel policies remain fixed; no diagram, view
-or required check was removed. The scoped read-cost review closed in 56m44s,
-within two hours. The observed margin below 600s is only 4.156s internal/3.489s
-external; this is a host measurement rather than a guarantee or controlled
-attribution of every saving.
-
-| Remaining stage after bounded reads | Executions | Aggregate child seconds |
-| --- | ---: | ---: |
-| Independent current checking | 28 | 906.247 |
-| PDF production | 28 | 358.913 |
-| Primary production | 28 | 292.150 |
-| Frozen-reference materialization/roundtrip | 32 | 236.688 |
-| Negative mechanism basis | 1 | 198.565 |
-| Family/harness corruption controls | 18 | 146.875 |
-| Numeric comparison | 26 | 112.987 |
-
-These child costs overlap and are not additive parent wall time. Unchanged
-reference evidence stays reusable; newly converted output still receives its
-independent checks. Hosted and broader release acceptance remain open.
+Historical regression witnesses for shortest-decimal PDF dimensions, PDF text
+paint and unequal-leg orthogonal labels are listed in the
+[coverage index](VERIFICATION-COVERAGE.md). Their prior rejecting replays remain
+revision-specific evidence. A new claim requires the applicable fresh checks.
