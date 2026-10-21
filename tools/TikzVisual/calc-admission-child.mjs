@@ -6,7 +6,7 @@ import {calcTrialCachePath} from './calc-trial-cache-codec.mjs';
 import {captureProcess} from './qualification-process.mjs';
 export async function runCalcChild(root,executable,args,name,save,timeout=900000,includeReport=false){
   const r=await captureProcess(executable,args,{cwd:root,timeout,maxBytes:2000000});
-  await save(name+'-command.log',Buffer.from(r.stdout+r.stderr));
+  await save(name+'-command.log',Buffer.from(r.output));
   if(r.failure!==null||r.exitCode!==0){
     const stdout=r.stdout,at=stdout.lastIndexOf('{"completed":');
     if(at>=0){try{const h=JSON.parse(stdout.slice(at).trim());assert.match(h.report,/^artifacts\/[a-z-]+\/run-[a-f0-9-]+\/report\.json$/);

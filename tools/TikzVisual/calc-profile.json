@@ -391,7 +391,7 @@
     "tools/TikzVisual/arrow-vector-pair.mjs": "f814101df3ffdb30d897d6a1d2d51713cac9555192471b54c9f8e026d467408e",
     "tools/TikzVisual/browser-profile.json": "18559e427bfb1182364459aa730d892c41d13bbad59f6b4ce2eef87122ccad7f",
     "tools/TikzVisual/calc-admission-agent.mjs": "42271a346ab1d36e1aec435363ac46e66514a243e336faf492a2f8dea194a70e",
-    "tools/TikzVisual/calc-admission-child.mjs": "e2797ea9f75c50f8c5685ab717351cbd74428cc35cf57acaab7030f2001c2c77",
+    "tools/TikzVisual/calc-admission-child.mjs": "f29d22c10b39815344901b14cc1bc5c07a1c33656f3e1cd4fdeb48f03691cd20",
     "tools/TikzVisual/calc-admission-policy.mjs": "e17b8d41cee1fbb08c770c83e2db50e142d148a172363f9b64dea56f803e4a3b",
     "tools/TikzVisual/calc-admission-reader.mjs": "43fe4c3eee9d606af97a1dfcdef8d6541c8d932f130d04efe50c84c85b19cfc9",
     "tools/TikzVisual/calc-admission-self-test.mjs": "e1aa8f8e0a3c8e0a02d8e38c7073b45e636ad3f4247217c6713a9630f7807888",

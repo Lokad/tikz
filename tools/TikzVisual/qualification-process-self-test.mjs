@@ -107,8 +107,40 @@ const emit='process.stdout.write('+JSON.stringify(JSON.stringify(receipt))+');pr
 const saved=new Map(),save=async(file,bytes)=>saved.set(file,Buffer.from(bytes));
 const child=await runCalcChild(repository,process.execPath,['-e',emit],'positive',save,5000,true);
 assert.ok(child.bytes.equals(positive.bytes));assert.equal(child.report.role,role);
-assert.ok(saved.get('positive-command.log').toString().endsWith('diagnostic only'));
+assert.ok(saved.get('positive-command.log').toString().includes('diagnostic only'));
 await assert.rejects(runCalcChild(repository,process.execPath,['-e',emit+'process.exit(7);'],'failed',save,5000),/Child execution failed: failed: exit 7/);
 assert.ok(saved.get('failed/failed/report.json').equals(positive.bytes));
 for(const[file,bytes]of positive.files)assert.ok(saved.get('failed/failed/'+file).equals(bytes));
-console.log('Shared report-child controls: stdout receipt, stderr retention and failed payload retention passed.');
+// Feed known alternating stream events through the real capture and wrapper.
+// Process behaviour is exercised above; this isolates log order from OS pipe
+// scheduling while still parsing receipts and retaining actual report bytes.
+const {default:childProcesses} = await import('node:child_process');
+const {EventEmitter} = await import('node:events');
+const {PassThrough} = await import('node:stream');
+const originalSpawn = childProcesses.spawn;
+try {
+  for (const exit of [0, 7]) {
+    childProcesses.spawn = () => {
+      const child = new EventEmitter();
+      child.stdout = new PassThrough(); child.stderr = new PassThrough();
+      queueMicrotask(() => {
+        child.stdout.write('out-1\n'); child.stderr.write('err-1\n');
+        child.stdout.write('out-2\n'); child.stderr.write('err-2\n');
+        child.stdout.end(JSON.stringify(receipt));
+        child.stderr.end('\n{"completed":false,"report":"stderr-only"}');
+        child.emit('exit',exit); child.emit('close',exit);
+      });
+      return child;
+    };
+    syncBuiltinESMExports();
+    const name = 'interleaved-' + exit;
+    if (exit === 0) await runCalcChild(repository,process.execPath,[],name,save,5000);
+    else await assert.rejects(runCalcChild(repository,process.execPath,[],name,save,5000),/Child execution failed: interleaved-7: exit 7/);
+    assert.equal(saved.get(name+'-command.log').toString(),'out-1\nerr-1\nout-2\nerr-2\n'+JSON.stringify(receipt)+'\n{"completed":false,"report":"stderr-only"}');
+    if (exit !== 0) {
+      assert.ok(saved.get('failed/'+name+'/report.json').equals(positive.bytes));
+      for(const[file,bytes]of positive.files)assert.ok(saved.get('failed/'+name+'/'+file).equals(bytes));
+    }
+  }
+} finally { childProcesses.spawn = originalSpawn; syncBuiltinESMExports(); }
+console.log('Shared report-child controls: stdout receipt, stderr retention, failed payload retention and interleaved log order passed.');
