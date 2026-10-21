@@ -462,8 +462,9 @@ internal sealed partial class Evaluator(Budget budget)
     {
         var lowering = arrows ? ArrowGeometry.Lower(original, state, budget, source) : new ArrowLowering(original, []);
         var path = lowering.Shaft;
-        var ink = state.Paint.Stroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, source,
+        var ink = state.Paint.VisibleStroke ? PathStrokeBounds.Calculate(path, state.Paint, budget, source,
                 ReferenceEquals(path, original) ? originalBounds : null)
+            : !state.Paint.VisibleFill ? Bounds.Empty
             : ReferenceEquals(path, original) && originalBounds is { } existingBounds ? existingBounds : path.Bounds;
         foreach (var clip in state.Clips) ink = ink.Intersect(_scene.Clips[clip].Bounds);
         _scene.InkBounds = _scene.InkBounds.Union(ink);

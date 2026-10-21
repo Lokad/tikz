@@ -130,12 +130,12 @@ internal sealed partial class Evaluator
         }
         if (state.Paint.Fill || state.Paint.Stroke)
         {
-            var ink = state.Paint.Stroke
+            var ink = state.Paint.VisibleStroke
                 ? layout is RectangleNodeLayout
                     ? PolygonStrokeBounds.Calculate([background.Segments[0].End, background.Segments[1].End,
                         background.Segments[2].End, background.Segments[3].End], state.Paint, budget, statement.Source)
                     : PathStrokeBounds.Calculate(background, state.Paint, budget, statement.Source)
-                : background.Bounds;
+                : state.Paint.VisibleFill ? background.Bounds : Bounds.Empty;
             ink = Clipped(ink);
             _scene.InkBounds = _scene.InkBounds.Union(ink);
             drawables.Add(new PaintedPath(background, state.Paint, [.. state.Clips], statement.Source, ink));

@@ -81,6 +81,7 @@ internal static class ArrowGeometry
 
     public static Bounds InkBounds(ArrowPlacement tip, Budget budget)
     {
+        if (!tip.Template.Paint.VisibleStroke && !tip.Template.Paint.VisibleFill) return Bounds.Empty;
         var transformed = new GraphicPath(budget, tip.Source);
         foreach (var segment in tip.Template.Path.Segments)
         {
@@ -89,7 +90,7 @@ internal static class ArrowGeometry
                 A = tip.Transform.Apply(segment.A), B = tip.Transform.Apply(segment.B) });
         }
         var scale = Math.Sqrt(tip.Transform.A * tip.Transform.A + tip.Transform.B * tip.Transform.B);
-        return tip.Template.Paint.Stroke ? PathStrokeBounds.Calculate(transformed, tip.Template.Paint with { Width = tip.Template.Paint.Width * scale }, budget, tip.Source)
+        return tip.Template.Paint.VisibleStroke ? PathStrokeBounds.Calculate(transformed, tip.Template.Paint with { Width = tip.Template.Paint.Width * scale }, budget, tip.Source)
             : transformed.Bounds;
     }
 }
