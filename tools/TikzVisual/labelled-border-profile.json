@@ -178,7 +178,7 @@
     "tools/TikzVisual/inspect-labelled-border-pdf-rasterizers.mjs": "6e827d209b4d4ea493f76b2960d24bb6ab66317a1726cabefdb824c7858cad7f",
     "tools/TikzVisual/inspect-labelled-border-pdf.mjs": "40fd86eb8d95f54bfca3ce8f6b7096caa293a87381db33d4b7011c069eab3d96",
     "tools/TikzVisual/labelled-border-admission-policy.mjs": "5e9c31bbba129446e94148153d6e73404ac0809f9c292858193104899122b7ac",
-    "tools/TikzVisual/labelled-border-admission-self-test.mjs": "ddeeaec410724ce3675a48d9da0ecd2d633c83c9cbb045a5ca508ff24e32018f",
+    "tools/TikzVisual/labelled-border-admission-self-test.mjs": "9cf3d9cde3f5c0bbe269e2e77f10702b2a5ece019569bc169882c181a928d9c5",
     "tools/TikzVisual/labelled-border-cache-images.mjs": "aacaf808b55c932668a6632a302ecffc69cdad9acd918414507409a5a6035f6c",
     "tools/TikzVisual/labelled-border-cache-self-test.mjs": "68320a0afb8beef22933c18ea9094c7379f9f5b476fbaaecd414fa32e95830cf",
     "tools/TikzVisual/labelled-border-cache.mjs": "a5585c0d0a7272f84daf2d30119827e58c04c5dc0db4171ce6c7a9035282e8e6",

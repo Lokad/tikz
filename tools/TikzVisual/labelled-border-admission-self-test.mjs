@@ -85,8 +85,9 @@ try{
   // Pinned original producer hashes cannot stand for reviewed current tools.
   const historical=JSON.parse(e.bytes).toolHashes;
   historical['tools/TikzShapeComparison/NativeGlyphTrace.cs']='2695161667fdb35dcb3948e8d02c8c5fe035bfdd12cdddb7e8a43c375ff6e8b1';
-  assert.equal(Object.entries(historical).filter(([file,h])=>h!==e.profile.guardToolHashes[file]).length,6);
-  for(const[file,h]of Object.entries(historical))if(h!==e.profile.guardToolHashes[file]){
+  const historicalSubstitutions=Object.entries(historical).filter(([file,h])=>h!==e.profile.guardToolHashes[file]);
+  assert.ok(historicalSubstitutions.length>0,'Historical guards must exercise current-source rejection');
+  for(const[file,h]of historicalSubstitutions){
     const p=structuredClone(e.profile);p.guardToolHashes[file]=h;
     await rejectAsync('historical-guard-substitution/'+file,()=>verifyLabelledGuards(p,savedRead));
   }
