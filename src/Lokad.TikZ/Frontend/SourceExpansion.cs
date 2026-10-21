@@ -39,6 +39,11 @@ internal sealed class SourceMapping(Source fallback, SourcePiece[] pieces)
 
 internal static class SourceExpansion
 {
+    private static readonly IReadOnlyDictionary<string, Source> NoBindings = new Dictionary<string, Source>();
+
+    internal static Source WithoutComments(Source source, Budget budget)
+        => source.Span.Contains('%') ? Bind(source, NoBindings, budget, removeComments: true) : source;
+
     // Without controls/comments neither expansion grammar can alter the text.
     // Logical expanded input remains bounded even when its storage is reused.
     internal static bool Literal(Source source, Budget budget)

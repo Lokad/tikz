@@ -52,6 +52,7 @@ internal sealed partial class Evaluator
 
     private void Node(NodeStatement statement, EvaluationState parent, Func<NodeSettings, Affine>? placement = null, List<Action>? deferred = null)
     {
+        budget.CheckNodeCapacity(statement.Source);
         var at = statement.At is null ? PgfTransform.Apply(parent.Transform, default, budget, statement.Source) : Resolve(statement.At, parent, default, out _);
         var state = parent.Clone(budget, statement.Source);
         state.Transform = Affine.Identity;

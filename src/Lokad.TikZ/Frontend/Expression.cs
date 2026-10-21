@@ -18,7 +18,8 @@ internal readonly record struct Number(double Value, bool HasUnit)
 internal abstract record Expression(Source Source)
 {
     public abstract Number Evaluate(IReadOnlyDictionary<string, Number> variables, Budget budget);
-    public static Expression Parse(Source source, Budget budget) => new ExpressionReader(source, budget).Read();
+    public static Expression Parse(Source source, Budget budget)
+        => new ExpressionReader(SourceExpansion.WithoutComments(source, budget), budget).Read();
 }
 internal sealed record Literal(Number Number, Source Origin) : Expression(Origin)
 {

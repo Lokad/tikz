@@ -33,8 +33,13 @@ internal sealed class Budget(TikzLimits limits, CancellationToken cancellationTo
     public void Node(Source source)
     {
         Charge(source);
-        if (Nodes >= Limits.MaxNodes) Fail(source, "nodes");
+        CheckNodeCapacity(source);
         Nodes++;
+    }
+    internal void CheckNodeCapacity(Source source)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        if (Nodes >= Limits.MaxNodes) Fail(source, "nodes");
     }
     public void Glyph(Source source)
     {
