@@ -57,7 +57,7 @@ trailing move back to the center after a closed background path. Ideal Euclidean
 circles and analytic ray intersections cannot replace those rules without
 checking their measured differences.
 
-The [public numeric prototype](../../docs/NODES.md#circle-and-ellipse-numeric-prototype)
+The [public shape implementation](../../docs/NODES.md#finite-geometry)
 now implements these shapes without changing the original fixture or native
 evidence. [Ordinary tests](../../tests/Lokad.TikZ.Tests/CurvedNodeTests.cs) check
 the measured text boxes, named anchors, complete soft paths, picture bounds,
@@ -70,10 +70,10 @@ query. Native logs show that the horizontal ellipse branch reaches 599sp,
 while the opposite multiplication order reaches 600sp. This is an exploratory
 diagnostic; the unchanged 448-query corpus supplies the regression evidence.
 
-Primary/PDF conformance and raster tolerance remain pending. These cases still
-need focused/interaction measurements, independent precision and PDF
-calibration, and defect controls. The separate
-[candidate harness](../TikzShapeComparison/README.md) now supplies direct glyph
-assertions, source-aware numeric reports, and reproducible agent-viewable
-bundles without changing this oracle or its native evidence. Inspection establishes
-no image policy, and no existing rectangle/path policy is inherited.
+This native oracle and the [candidate inspection harness](../TikzShapeComparison/README.md)
+retain their original roles. Inspection supplies direct glyph assertions,
+source-aware numeric reports and agent-viewable bundles; it grants no image
+policy. Current conversion has a separate
+[fixed primary/PDF admission](../TikzVisual/CURVED-NODE-ADMISSION.md) built on
+the retained independent precision, framing and defect evidence. It does not
+widen this oracle's 28-node scope or inherit rectangle/path tolerances.

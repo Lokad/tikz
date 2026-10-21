@@ -58,12 +58,19 @@ guidance. Corrupted/incomplete reports fail its 27 controls. Captured build logs
 absolute paths while preserving public URLs.
 
 Successful inspection means reproducible artifact production with explicit
-numeric state. It reports `overallVerdict: pending`, with primary/PDF admission
-pending and `imageConformanceClaim: false`. The measured differences need their
-own oracle-only precision/framing experiments, image-only sensitivity and PDF
-policy; no existing shape, border or dash allowance applies. The separate
-[native-ink primary trial](../TikzVisual/LABELLED-BORDER-INK.md) now checks
-independent bounds/roots and previously frozen primary limits, with fresh
-image-only sensitivity. PDF qualification and immutable admission remain pending.
-Both cached numeric
-and visual inspection jobs are prepared in CI; hosted execution remains unverified.
+numeric state. It retains `overallVerdict: pending` and
+`imageConformanceClaim: false`. The
+[native-ink primary trial](../TikzVisual/LABELLED-BORDER-INK.md) and
+[combined research trial](../TikzVisual/LABELLED-BORDER-COMBINED-TRIAL.md)
+keep their historical roles. Current output has a separate
+[portable eight-gate admission](../TikzVisual/LABELLED-BORDER-CACHE.md) with
+independent primary/PDF/native-page policies and fresh visible-defect controls.
+No existing shape, unlabelled-border or dash allowance applies.
+
+```text
+node tools/TikzVisual/compare-labelled-border-conformance.mjs
+```
+
+Use its exact completed report and saved-image checker as described by the
+portable workflow. These commands are configured in CI; a hosted claim still
+requires evidence from the corresponding executed job.
