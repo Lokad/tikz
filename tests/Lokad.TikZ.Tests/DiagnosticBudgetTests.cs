@@ -53,19 +53,35 @@ public sealed class DiagnosticBudgetTests
     }
 
     [Fact]
-    public async Task Cancellation_interrupts_ongoing_diagnostic_materialization()
+    public void Cancellation_interrupts_ongoing_diagnostic_materialization()
     {
         var origin = Chain(100_000);
         var error = new CompileError("TIKZ004", "original failure", origin);
         using var cancellation = new CancellationTokenSource();
         var budget = new Budget(TikzLimits.Default, cancellation.Token);
-        var task = Task.Run(() => error.CreateDiagnostic(budget));
-        var deadline = System.Diagnostics.Stopwatch.StartNew();
-        while (budget.Work < 10_000 && !task.IsCompleted && deadline.Elapsed < TimeSpan.FromSeconds(5)) await Task.Delay(1);
-        cancellation.Cancel();
-        var cancelled = await Assert.ThrowsAnyAsync<OperationCanceledException>(async () => await task);
-        Assert.Equal(cancellation.Token, cancelled.CancellationToken);
-        Assert.True(budget.Work >= 10_000);
+        using var ready = new ManualResetEventSlim();
+        var finished = false;
+        // A thread-pool continuation can be delayed until formatting has
+        // finished on a small CI runner. Keep the observer independently runnable.
+        var observer = new Thread(() =>
+        {
+            ready.Set();
+            SpinWait.SpinUntil(() => budget.Work >= 10_000 || Volatile.Read(ref finished));
+            if (!Volatile.Read(ref finished)) cancellation.Cancel();
+        }) { IsBackground = true };
+        observer.Start();
+        ready.Wait();
+        try
+        {
+            var cancelled = Assert.ThrowsAny<OperationCanceledException>(() => error.CreateDiagnostic(budget));
+            Assert.Equal(cancellation.Token, cancelled.CancellationToken);
+            Assert.True(budget.Work >= 10_000);
+        }
+        finally
+        {
+            Volatile.Write(ref finished, true);
+            observer.Join();
+        }
     }
 
     private static Source Chain(int count)
