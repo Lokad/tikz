@@ -2,6 +2,13 @@
 
 ## Unreleased — 0.1.0-preview.1 development
 
+- Ordinary numeric expressions ignore comments while retaining original source
+  positions. Exhausted node capacity rejects before measuring another label.
+- Packed symbols use matching deterministic SourceLink paths, repository revisions
+  and source checksums; generated source and symbol corruption are checked.
+- Development child execution escalates ignored termination signals and bounds
+  pipe closure; ordinary CI exercises the Unix behavior as well as Windows.
+
 - Standalone .NET 10 TikZ subset to self-contained SVG, with source diagnostics,
   cancellation and shared work/output limits; no runtime package or native dependency.
 - Paths, coordinates, affine transforms, scoped styles/paint/clips and measured

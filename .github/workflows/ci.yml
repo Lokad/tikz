@@ -35,6 +35,8 @@ jobs:
         run: dotnet build Lokad.TikZ.slnx -c Release --no-restore
       - name: Test Release
         run: dotnet test Lokad.TikZ.slnx -c Release --no-build --logger trx --results-directory artifacts/test-results
+      - name: Check bounded child execution and termination
+        run: node tools/TikzVisual/qualification-process-self-test.mjs
       - name: Pack Release
         run: dotnet pack src/Lokad.TikZ/Lokad.TikZ.csproj -c Release --no-build --no-restore
       - name: Verify isolated NuGet consumer and package payload

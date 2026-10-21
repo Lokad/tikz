@@ -139,15 +139,28 @@ required by the change. The 30-case runner does not replace the other families'
 admission policies or the hosted workflow.
 
 Package acceptance checks the actual nupkg/snupkg against current Release
-DLL/XML, README, licenses and font data. An isolated consumer restores only
+DLL/XML, README, licenses and font data. Portable symbols must map every repository
+source to the package's immutable repository revision and match its source
+checksum. Generated assembly/global-using/framework files must have matching
+embedded source; checkout paths are rejected. The complete loose JSON font data
+is intentionally retained alongside its embedded form, provenance and licenses.
+An isolated consumer restores only
 from that checked local feed into a fresh cache, compiles the README sample,
 and converts seven complete diagrams, including token definitions, arc ordering
 and fill/clip rules. SVG hashes/statistics and loaded assembly
-must equal a separate source consumer. Missing XML, added dependency, changed
-DLL and unexpected payload controls run once on the Windows ordinary job;
+must equal a separate source consumer. Missing XML/font source, added dependency,
+changed DLL and unexpected payload controls run once on the Windows ordinary job,
+along with missing/incorrect SourceLink, stale-revision and generated-source controls;
 both ordinary platforms run positive package acceptance. This checks package
 parity, independently of native/image conformance. A hosted release claim
 requires results from the relevant hosted jobs.
+
+Ordinary CI also checks shared child execution on both platforms. A failed or
+timed-out child receives SIGTERM, followed by SIGKILL after 250 ms if it remains
+alive. An additional one-second close bound handles inherited pipes or failed
+termination, retaining the failure and partial logs. Unix controls exercise
+ignored SIGTERM, output exhaustion, cleanup and inherited pipes with independent
+watchdogs. The helper does not accept interactive input.
 
 ## Ordinary requirement mapping
 

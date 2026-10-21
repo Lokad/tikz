@@ -18,6 +18,62 @@ r=await run('process.stdout.write("before overflow");setTimeout(()=>process.stdo
 r=await captureProcess('lokad-no-such-native-tool-5f192d',[],{timeout:1000});assert.equal(r.failure,'ENOENT');assert.equal(r.output,'');
 console.log('Shared bounded process controls: 5 passed.');
 
+// A separate parent watchdog cleans up the exact test child if escalation fails.
+// The child's finite fallback keeps a broken helper from leaving a process alive.
+if (process.platform !== 'win32') {
+  const folder = fileURLToPath(new URL('../../artifacts/process-termination-controls/run-' + randomUUID() + '/', import.meta.url));
+  await mkdir(folder, {recursive: true});
+  for (const overflow of [false, true]) {
+    const pidFile = path.join(folder, overflow ? 'overflow.json' : 'timeout.json');
+    const source = `const fs=require('node:fs');
+      fs.writeFileSync(${JSON.stringify(pidFile)},JSON.stringify({pid:process.pid,parent:process.ppid}));
+      process.on('SIGTERM',()=>{fs.writeFileSync(${JSON.stringify(pidFile + '.signal')},'SIGTERM');process.stdout.write('SIGTERM observed\\n');});
+      process.stdout.write('ready\\n');
+      ${overflow ? "setTimeout(()=>process.stdout.write('x'.repeat(10000)),100);" : ''}
+      setTimeout(()=>process.exit(42),4000);`;
+    let watchdogUsed = false;
+    const watchdog = setTimeout(async () => {
+      watchdogUsed = true;
+      const identity = JSON.parse(await promises.readFile(pidFile, 'utf8'));
+      assert.equal(identity.parent, process.pid);
+      try { process.kill(identity.pid, 'SIGKILL'); } catch (error) { if (error.code !== 'ESRCH') throw error; }
+    }, 2500);
+    try {
+      const result = await run(source, {timeout: 1000, maxBytes: overflow ? 100 : 2000000});
+      assert.equal(watchdogUsed, false, 'Independent termination watchdog was needed');
+      assert.equal(result.failure, overflow ? 'output-bound' : 'timeout');
+      assert.equal(result.terminationEscalated, true);
+      assert.equal(result.terminationFailure, null);
+      assert.ok(result.stdout.includes('ready\n'));
+      assert.equal(await promises.readFile(pidFile + '.signal', 'utf8'), 'SIGTERM');
+      const identity = JSON.parse(await promises.readFile(pidFile, 'utf8'));
+      assert.throws(() => process.kill(identity.pid, 0), {code: 'ESRCH'});
+    } finally { clearTimeout(watchdog); }
+  }
+  const holderFile = path.join(folder, 'pipe-holder.json');
+  const parent = `const fs=require('node:fs'),{spawn}=require('node:child_process');
+    const holder=spawn(process.execPath,['-e','setTimeout(()=>{},4000)'],{stdio:['ignore','inherit','inherit']});
+    fs.writeFileSync(${JSON.stringify(holderFile)},JSON.stringify({pid:holder.pid,owner:${process.pid}}));
+    process.stdout.write('inherited pipe\\n');process.exit(0);`;
+  let watchdog;
+  const deadline = new Promise((resolve, reject) => { watchdog = setTimeout(() => reject(new Error('Independent close watchdog expired')), 2500); });
+  const pending = run(parent, {timeout: 500});
+  try {
+    const result = await Promise.race([pending, deadline]);
+    assert.equal(result.failure, 'timeout');
+    assert.equal(result.terminationFailure, 'close-timeout');
+    assert.equal(result.terminationEscalated, false);
+    assert.equal(result.stdout, 'inherited pipe\n');
+  } finally {
+    clearTimeout(watchdog);
+    const identity = JSON.parse(await promises.readFile(holderFile, 'utf8'));
+    assert.equal(identity.owner, process.pid);
+    try { process.kill(identity.pid, 'SIGKILL'); } catch (error) { if (error.code !== 'ESRCH') throw error; }
+    await pending;
+  }
+  console.log('Shared Unix termination controls: ignored SIGTERM on timeout/output exhaustion, hard kill, child cleanup and inherited-pipe close bound passed.');
+}
+
 // Parallel artifact loading must settle every in-flight read before rejection.
 const folder=fileURLToPath(new URL('../../artifacts/shared-loader-controls/run-'+randomUUID()+'/',import.meta.url));
 await mkdir(folder,{recursive:true});const artifacts={};
