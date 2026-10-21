@@ -33,9 +33,9 @@ diagnosed even if that style is never used. Comments retain their usual meaning.
 
 Argument errors point into the original invocation string. Definition and nested
 forwarding positions are retained in diagnostic `RelatedLocations`; template-key
-errors retain the definition span and related invocation positions. No substitute
-input string is introduced. Recursion and repeated application share the caller's
-cancellation, work and expansion-depth limits. `MaxExpandedTokens` conservatively
+errors retain the definition span and related invocation positions. Diagnostic
+offsets refer to the original source. Recursion and repeated application share
+the caller's cancellation, work and expansion-depth limits. `MaxExpandedTokens` conservatively
 counts each replayed option's key and value UTF-16 lengths plus one separator;
 the count accumulates across style uses in the conversion.
 
@@ -48,10 +48,12 @@ The existing semantic comparer also checks fourteen text nodes and 65 glyphs
 against independent SVG/PDF observations. All 2,053 numeric checks pass, including
 the flowchart's paths, four arrow tips, shortening and calculated waypoint.
 The standalone glyph oracle has only .NET references and loads no converter.
-The two fixtures also pass 48 current primary/local views and 16 views through
-both PDF routes, using policies derived only from native encodings. Independent
-checking exports fresh converter output, repeats all 2,053 numeric checks and
-recaptures all 64 current views. Native sensitivity includes first-glyph and
-whole-label controls for both fixtures and arrow-tip controls for the flowchart.
-Both fixtures also pass final acceptance in a clean committed source export
-and the integrated ordinary suite. Broader TikZ compatibility remains separate.
+Native sensitivity includes first-glyph and whole-label controls for both
+fixtures and arrow-tip controls for the flowchart. The
+[frozen references](../tests/Reference/Diagrams/README.md) retain their original
+SVG/PDF calibration and historical camera products. The current
+[verification workflow](VERIFICATION.md) checks fresh converter output, numeric
+agreement and independent source recapture under its declared view policy.
+Final qualification includes the complete diagram matrix and separate family
+checks in a clean committed source export. Broader TikZ compatibility remains
+separate.

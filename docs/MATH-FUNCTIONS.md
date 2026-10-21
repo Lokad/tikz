@@ -43,18 +43,13 @@ printed results and 688 named-node anchors, including sine and cosine at every
 whole and half degree in one complete turn. The complete network combines
 functions with styles, loops, positioning, five path labels, six arrows and
 calculated coordinates. Its comparison and the focused corpus pass 5,866 numeric
-checks for fresh public output, glyphs, geometry, paint and framing. All 651
-ordinary tests pass. Paired 1x/4x iteration images retain small raster differences.
-Both fixtures now pass 48 primary and 16 PDF iteration views under independent
-native-only policies. The native checkers reproduce all 788 reference/control
-sources; all 28 primary/PDF corruption controls pass. The portable archives restore
-all original evidence bytes, including the focused corpus's packed control JSON.
-Final committed clean-export acceptance and integration pass both fixtures:
-5,866 numeric checks, 48 primary/16 PDF views and 64 independent fresh-source
-recaptures. The required thirteen-case matrix passes 20,194 numeric checks,
-312 primary/104 PDF views, 416 fresh sources and 52 framing checks. All 316
-family/shared corruption controls and calc's twelve gates/83 controls pass
-against preserved native calibration. All 651 tests pass in the clean export
-and integrated tree. This qualifies the declared functions and fixed fixtures
-under their checked native policies. Broader PGF functions, math labels and
-plotting remain release scope.
+checks for fresh public output, glyphs, geometry, paint and framing. The portable
+archives retain the original native observations, image calibration and control
+sources, including the focused corpus's packed control JSON. The
+[verification workflow](VERIFICATION.md) checks current primary/PDF images and
+independent fresh-source recaptures under its declared view policy. Historical
+reports retain their original camera products, matrix sizes and test totals.
+Final qualification includes the complete diagram matrix and separate family
+checks in a clean committed source export. This evidence qualifies the declared
+functions and fixed fixtures. Other PGF functions require separate evidence;
+[math labels](MATH-LABELS.md) and [plotting](PLOTTING.md) have their own contracts.

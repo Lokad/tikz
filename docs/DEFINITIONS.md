@@ -40,6 +40,11 @@ replace the same scoped control name. A token definition cannot replace an activ
 foreach variable. Every conversion has its own environment, including concurrent
 calls.
 
+Numeric bindings can substitute into an invoked token alias or statement body.
+Direct numeric uses outside that template retain their receiving grammar:
+an unrelated token declaration does not enable numeric text, name or list
+expansion. See the [numeric-assignment contract](MATH-MACROS.md).
+
 Parameter definitions, parameter tokens, general argument scanning, `\newcommand`,
 `\edef`, `\gdef`, catcodes and a macro-generated picture wrapper are unsupported.
 TikZ statement controls and names beginning `pgf` or `tikz` cannot be redefined.

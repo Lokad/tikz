@@ -16,15 +16,18 @@ The grammar is `\foreach \name in {values} {statements}`. The variable is a
 control sequence containing ASCII letters. Drawing commands, `\begin`, `\end`,
 `\foreach`, `\tikzset`, `\usetikzlibrary`, and names starting with `pgf` or `tikz`
 are reserved. The list and body must be braced; the body contains complete
-supported statements. Names defined inside iterations remain available later.
+supported statements. Named nodes and coordinates created inside iterations
+remain available later; local styles and token/numeric definitions restore on exit.
 
 Literal lists such as `{1,2,3}`, `{red,blue}` and `{8mm,12mm}` are supported.
 Values may contain ASCII letters/digits, space/tab/CR/LF, signs and decimal points.
 Outer grouping allows a value containing spaces, as in `{{Stage one}}`.
 Comments retain their usual meaning. `{}` performs zero iterations; an empty
 value inside a nonempty list is unsupported. General TeX tokens, structural
-syntax and macro-defined lists are outside this contract. Outer loop variables
-may be used in an inner loop's list.
+syntax and general TeX expansion are outside this contract. A bounded
+[zero-argument token definition](DEFINITIONS.md) can supply a list, for example
+`\def\items{1,2}` followed by `\foreach \i in {\items} {...}`. Outer loop
+variables may also be used in an inner loop's list.
 
 Integer ranges have exactly one of these forms:
 
@@ -81,10 +84,11 @@ checks 2,193 glyph/path/paint/order/bounds quantities and two named coordinates.
 Nodes clear inherited draw/fill modes before applying node styles and local
 options, retaining their inherited pen.
 
-Both fixtures pass all 48 primary SVG views, 16 PDF views and 64 independent
-fresh-source recaptures under their separate native-only policies. Final
-qualification runs against a clean committed export and also passes the seven
-existing diagram/style/path-label cases and calc's required regression gates.
-The export and integrated ordinary suites each pass 588 tests. This calibrated
-evidence covers the two fixed fixtures and declared loop contract; wider TikZ
-coverage and general TeX compatibility remain outside the claim.
+The [frozen references](../tests/Reference/Foreach/README.md) retain the native
+SVG/PDF observations, calibration and visible defect controls for both fixtures.
+Use the [verification workflow](VERIFICATION.md) to check fresh converter output,
+independent source recapture and the current view policy. Historical reports
+retain their original camera products and test totals. Final qualification
+requires the complete diagram matrix and its separate family checks. This
+evidence covers the fixed fixtures and declared loop contract; wider TikZ and
+general TeX compatibility remain outside the claim.

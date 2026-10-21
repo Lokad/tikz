@@ -30,7 +30,9 @@ coordinate, calc and option expressions. The following forms are unsupported:
 
 - Unit-bearing assignment literals, scientific notation, undeclared functions,
   powers, constants and arbitrary TeX definitions or expansion.
-- Using a numeric definition to expand label text, node names or foreach lists.
+- Directly using a numeric definition to expand label text, node names or foreach
+  lists. Substitution inside an invoked [token template](DEFINITIONS.md) follows
+  that template's separate contract; an unused declaration does not enable it.
 - Assigning to an active foreach variable.
 
 These forms fail explicitly with no partial SVG. Unknown or out-of-scope
@@ -60,11 +62,11 @@ assignment results and 496 named-node anchors across a complete flowchart, a foc
 corpus and boundary controls. The complete diagram also exercises positioning,
 styles, loops, path labels, five arrows and calculated coordinates. Its numeric
 comparison and the focused comparison check fresh public output, glyphs,
-paths, paint order and framing. Both fixtures pass 3,227 numeric checks, 48
-current primary and 16 PDF views, and 64 independent fresh-source views in the
-final committed clean export. Required diagram, foreach, style, path-label and
-calc regressions also pass with frozen native calibration. All 623 ordinary
-tests pass in both the export and the integrated source tree. Paired 1x/4x
-iteration images retain raw differences; the [portable reference archives](../tests/Reference/MathMacros/README.md)
-preserve exact native evidence. This evidence covers the declared grammar and
-fixed fixtures; broader PGF math remains release scope.
+paths, paint order and framing, covering 3,227 numeric quantities. The
+[portable reference archives](../tests/Reference/MathMacros/README.md) preserve
+the native observations, original image calibration and visible defect controls.
+Use the [verification workflow](VERIFICATION.md) for fresh output and independent
+source recapture under the current view policy; historical report counts describe
+their recorded revision. Final qualification includes the complete diagram
+matrix and separate family checks. This evidence covers the declared grammar
+and fixed fixtures; broader PGF math requires separate evidence.

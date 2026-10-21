@@ -55,55 +55,37 @@ limits, caller cancellation and concurrent conversions across four cultures.
 The reference uses PGF 3.1.11a and the T1 Latin Modern default font profile;
 measurement probes preserve the exact native SVG and TeX box.
 
-These numeric checks qualify the fixed fixture's anchors. Development tooling
-exports public/traced parity and paired primary images with native framing,
-source regions and initial image-only controls. The fixed 1x captures agree
-exactly; the retained 4x captures expose small serialization/raster differences.
-The public picture bounds also match independently measured PGF bounds exactly
-in scaled points. Native PDF tooling measures the picture's page position
-separately from the surrounding TeX box, including its leading glue, and
-captures both SVG routes against ordinary PDF with full-page overflow controls.
-An independent saved-image checker recomputes the PNG measurements without a
-browser, checks a fresh public conversion and recaptures both research bundles
-with the pinned development renderer. Native PDF bytes and raster pages have
-a separate source pin; hashes and recorded metrics alone cannot establish
-source-to-image correspondence. Corruption controls include fully rehashed
-PNG/metric substitutions that must fail the recapture check.
-These research reports retain pending image policies. Independent image
-calibration tooling now measures three native-only primary encodings and
-twelve defect families under both capture routes. Renderer-only faint and
-clipping controls remain distinct from native TikZ compatibility. Separate
-native-only PDF calibration uses four native encodings on the independently
-measured page, with pixel/edge limits and regional RGB ink/moment ranges.
-Image-only defects include a fixed page-corner overflow region. The independent
-saved-PDF checker recomputes all measurements and recaptures the complete
-native-only calibration, requiring identical PNGs and presentation artifacts.
-A separate public trial uses frozen native research pins, checks every native
-anchor/path and declared frame, and captures both primary routes and the
-original/public SVG against ordinary PDF. Full image-only defect and controlled
-visibility matrices run with numeric gates bypassed. An independent checker
-recomputes saved pixels and gates, requires fresh public-output agreement,
-and recaptures the complete trial from owned inputs. The trial remains
-fixed-fixture research; the separate combined consumer below supplies admission.
-Broader interactions remain required.
-The completed public trial and its independent recapture, fresh export and
-corruption overlays also have a pinned portable development archive. Its loader
-recomputes the saved image evidence, and its controls replay the saved mutations
-through the actual verifiers. This archive records a historical snapshot;
-current production changes need a fresh trial before claiming conformance.
-Complete native primary/PDF calibration images, independent recaptures and
-corruption overlays have their own portable archive. Its verification derives
-the native limits again from decoded evidence and preserves renderer-only
-visibility controls separately. Combined admission must bind both archives
-and still require a fresh public result.
-The fixed combined profile now binds both archives and their independently
-qualified native limits. Current conformance performs fresh public conversion,
-the complete primary/PDF matrix and a full independent source recapture; a
-separate checker validates the owned result and reconstructs it again from
-current public sources. A changed compiler can produce a new result under the
-same profile, while stale saved production hashes are rejected. Admission
-remains limited to the fixed glyph-free, opaque-black 0.4-pt fixture. The
-compact adapter links paired 1x/4x images and source attribution; common failure
-adapters and the interactive viewer remain separate work.
-The [reference and inspection workflow](../tools/TikzCalcReference/README.md)
-records commands for reproducing measurements and paired images.
+## Grounding and validation
+
+The fixed combined profile binds independently qualified native primary/PDF
+limits and the portable native and public-trial archives. Run fresh admission with:
+
+```text
+node tools/TikzVisual/compare-calc-conformance.mjs
+```
+
+Pass its printed report path to `tools/TikzVisual/check-calc-conformance.mjs`
+for independent checking and reconstruction from current public sources. The
+[reference and inspection workflow](../tools/TikzCalcReference/README.md)
+also documents the bound corruption controls and paired inspection images.
+Current admission requires fresh conversion, numeric/frame agreement, both
+primary capture routes, original/public SVG against ordinary PDF, image-only
+defects and controlled visibility. The checker recomputes decoded pixels and
+gates and independently recaptures the source; hashes or recorded metrics alone
+do not establish source-to-image correspondence. Changed production sources
+require a fresh result under the unchanged native policy.
+
+Admission covers only the fixed glyph-free, opaque-black 0.4-pt fixture under
+its pinned renderer. Broader labels, paint, interactions and hosted execution
+need their own evidence. Complete-diagram calc interactions also belong to the
+separate [diagram verification matrix](VERIFICATION.md).
+
+## Historical research
+
+The retained primary/PDF research, native-only calibration and public-trial
+reports keep their original roles and verdicts. They explain native serialization
+differences, independent PDF page placement including wrapper glue, regional
+ink/edge limits and visible overflow/faint/clipping controls. Their archives
+preserve source, images, independent recaptures and fully rehashed corruption
+witnesses. Those snapshots support the fixed profile; current acceptance comes
+from the fresh admission and checker above.

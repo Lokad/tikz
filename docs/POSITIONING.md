@@ -41,9 +41,9 @@ positioning combined with explicit `at`, `on grid`, `base left/right`,
 Positioning uses the same source spans, cancellation and work limits as the
 other conversion phases.
 
-The first implementation work unit makes all three authored complete diagrams
-under `tests/Fixtures/Diagrams` convert. Independent PGF measurements cover
-nine named nodes and 144 anchors, including scoped transformed placement.
+The original positioning corpus includes complete flowchart, network and
+transformed-node diagrams. Independent PGF measurements cover nine named nodes
+and 144 anchors, including scoped transformed placement.
 Focused fixtures additionally ground all directions, default/single/two
 distances, named targets, skew coordinate bases, scope restoration and node
 transform reset/full/local ordering. Native rejection controls cover scoped
@@ -64,10 +64,11 @@ primary comparisons now use natural roots independently derived from PGF picture
 bounds and shipped path/glyph ink, separate from the conservative inspection
 camera. The existing native arrow encoder also supplies a short TeX-point path
 representation, whose decimals recover each original scaled-point dimension.
-Adding that missing calibration variant closes the retained 4x path failures:
-all 72 complete-diagram primary views pass their native-only limits. Both
-original-SVG/PDF and public-SVG/PDF gates also pass all 24 required diagram views.
-Independent checking recreates fresh public output and replays the complete
-primary/PDF images. Complete feature acceptance additionally requires clean
-source-export checks and ordinary integrated tests. These fixed fixtures do not
-establish a general pixel-perfect or image-conformance claim.
+The frozen native policies include that path representation alongside the
+original SVG and ordinary PDF observations. The current
+[verification workflow](VERIFICATION.md) recreates fresh public output and
+independently checks its primary/PDF images and source recaptures under the
+declared view policy. Historical camera products remain attached to their
+original reports. Complete feature acceptance also requires clean source-export
+checks, the complete diagram matrix and separate family checks. These fixed
+fixtures do not establish a general pixel-perfect claim.

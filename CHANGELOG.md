@@ -2,6 +2,11 @@
 
 ## Unreleased — 0.1.0-preview.1 development
 
+- Empty or unexpected environment ends reject in every parsed body. Numeric
+  substitution follows the invoked token-template context; unused definitions
+  do not enable direct numeric labels, names or loop lists or change arithmetic.
+- Development report-child logs retain observed stdout/stderr order while
+  receipts continue to be parsed from stdout alone.
 - Ordinary numeric expressions ignore comments while retaining original source
   positions. Exhausted node capacity rejects before measuring another label.
 - Packed symbols use matching deterministic SourceLink paths, repository revisions
