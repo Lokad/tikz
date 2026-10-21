@@ -11,6 +11,9 @@
     <RepositoryUrl>https://github.com/Lokad/tikz</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Lokad/tikz</PackageProjectUrl>
     <DebugType>portable</DebugType>
+    <!-- Let the SDK generate source paths and SourceLink from the same roots. -->
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <PathMap />
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>

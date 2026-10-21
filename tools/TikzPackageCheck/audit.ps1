@@ -56,6 +56,9 @@ try {
         $null -eq $projectUrl -or $projectUrl.InnerText -ne $project.Project.PropertyGroup.PackageProjectUrl) {
         throw 'Missing or incorrect public package provenance.'
     }
+    $sourceRevision = $repository.GetAttribute('commit')
+    $currentRevision = & git -C $sourceDirectory rev-parse HEAD
+    if ($LASTEXITCODE -ne 0 -or $sourceRevision -cne $currentRevision) { throw 'Package source revision differs from checkout.' }
     if (@($entries | Where-Object { $_.FullName -like '*.dll' }).Count -ne 1) { throw 'Unexpected package assemblies.' }
     $dll = $archive.GetEntry('lib/net10.0/Lokad.TikZ.dll')
     Assert-SourceBytes $dll 'src/Lokad.TikZ/bin/Release/net10.0/Lokad.TikZ.dll'
@@ -111,6 +114,8 @@ try {
     Assert-SourceBytes $pdb 'src/Lokad.TikZ/bin/Release/net10.0/Lokad.TikZ.pdb'
     $pdbBytes = Read-ZipBytes $pdb
     if ([System.Text.Encoding]::ASCII.GetString($pdbBytes, 0, 4) -ne 'BSJB') { throw 'Expected portable PDB.' }
+    $result.symbols = & (Join-Path $PSScriptRoot 'symbols.ps1') -PdbBytes $pdbBytes -SourceRoot $sourceDirectory `
+        -RepositoryUrl $project.Project.PropertyGroup.RepositoryUrl -SourceRevision $sourceRevision
     $result.symbolPackageChecked = $true
 } finally { $symbols.Dispose() }
 $result | ConvertTo-Json -Compress

@@ -2,6 +2,12 @@
 
 The library's C# code is MIT licensed. Bundled font data has its own license.
 
+The NuGet package intentionally distributes the complete renamed font data as
+JSON under `font-data/`, together with its provenance, profiles, manifests and
+notices. The same data is embedded in the assembly so conversion can run entirely
+in memory. The loose JSON supplies the source form of these derived works; it is
+retained as part of their distribution, rather than as a runtime file dependency.
+
 `src/Lokad.TikZ/Resources/Fonts/LokadTikzText-*.json` contains renamed,
 generated subsets of Latin Modern font metrics and outlines, copyright
 2003–2021 by B. Jackowski and J. M. Nowacki on behalf of TeX Users Groups.

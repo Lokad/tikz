@@ -27,7 +27,7 @@ function jsonOutput(text){const last=text.trim().split(/\r?\n/).filter(line=>lin
 const escapeXml=s=>s.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 try{
  await mkdir(output,{recursive:true});await publish();
- const audit=jsonOutput(await command('audit','pwsh',['-NoProfile','-File',tool+'/audit.ps1','-PackageDirectory',packageDirectory,'-SourceRoot',root]));
+ const audit=jsonOutput(await command('audit','pwsh',['-NoProfile','-NonInteractive','-File',tool+'/audit.ps1','-PackageDirectory',packageDirectory,'-SourceRoot',root]));
  assert.equal(audit.completed,true);assert.equal(audit.packageDependencies,0);await save('audit.json',JSON.stringify(audit,null,2)+'\n');report.audit=audit;
  for(const file of[audit.packageFile,audit.symbolFile])await save('feed/'+file,await readFile(path.join(packageDirectory,file)));
  assert.equal(sha256(await readFile(output+'/feed/'+audit.packageFile)),audit.packageSha256);
@@ -59,10 +59,25 @@ try{
  }
  assert.deepEqual(consumers.packed,consumers.source,'Packed output differs from current source consumer');report.consumer=consumers.packed;
  if(flags.length){
-  report.controls=jsonOutput(await command('archive-controls','pwsh',['-NoProfile','-File',tool+'/self-test.ps1','-PackageDirectory',output+'/feed','-SourceRoot',root,'-OutputDirectory',output+'/controls']));
+  report.controls=jsonOutput(await command('archive-controls','pwsh',['-NoProfile','-NonInteractive','-File',tool+'/self-test.ps1','-PackageDirectory',output+'/feed','-SourceRoot',root,'-OutputDirectory',output+'/controls']));
   assert.equal(report.controls.completed,true);assert.equal(report.controls.checkedPackageSha256,audit.packageSha256);
-  assert.deepEqual(report.controls.controls.map(c=>c.name),['missing-xml','dependency','changed-dll','development-asset']);
+  assert.deepEqual(report.controls.controls.map(c=>c.name),['missing-xml','dependency','changed-dll','development-asset','missing-font-source']);
   for(const control of report.controls.controls){assert.equal(control.passed,true);const file='controls/'+control.name+'/'+audit.packageFile,bytes=await readFile(output+'/'+file);assert.equal(sha256(bytes),control.mutatedPackageSha256);await save(file,bytes);}
+  report.symbolControls = jsonOutput(await command('symbol-controls', 'pwsh', [
+   '-NoProfile', '-NonInteractive', '-File', tool + '/symbol-self-test.ps1',
+   '-PackageDirectory', output + '/feed', '-SourceRoot', root, '-OutputDirectory', output + '/symbol-controls'
+  ]));
+  assert.equal(report.symbolControls.completed, true);
+  assert.equal(report.symbolControls.checkedSymbolPackageSha256, audit.symbolSha256);
+  assert.deepEqual(report.symbolControls.controls.map(c => c.name), [
+   'missing-source-link', 'unmapped-documents', 'stale-source-revision', 'missing-generated-source'
+  ]);
+  for (const control of report.symbolControls.controls) {
+   assert.equal(control.passed, true);
+   const file = 'symbol-controls/' + control.name + '.pdb', bytes = await readFile(output + '/' + file);
+   assert.equal(sha256(bytes), control.mutatedPdbSha256);
+   await save(file, bytes);
+  }
  }
  for(const[file,digest]of Object.entries(artifacts))assert.equal(sha256(await readFile(output+'/'+file)),digest);
  report.completed=true;report.wallSeconds=(performance.now()-started)/1000;await publish();

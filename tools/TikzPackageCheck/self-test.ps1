@@ -9,7 +9,7 @@ $packageFiles = @(Get-ChildItem -LiteralPath $PackageDirectory -Filter '*.nupkg'
 $symbolFiles = @(Get-ChildItem -LiteralPath $PackageDirectory -Filter '*.snupkg' -File)
 if ($packageFiles.Count -ne 1 -or $symbolFiles.Count -ne 1) { throw 'Expected the checked package pair.' }
 $controls = @()
-foreach ($fault in @('missing-xml', 'dependency', 'changed-dll', 'development-asset')) {
+foreach ($fault in @('missing-xml', 'dependency', 'changed-dll', 'development-asset', 'missing-font-source')) {
     $directory = Join-Path $OutputDirectory $fault
     $null = New-Item -ItemType Directory -Path $directory -Force
     $packagePath = Join-Path $directory $packageFiles[0].Name
@@ -20,6 +20,7 @@ foreach ($fault in @('missing-xml', 'dependency', 'changed-dll', 'development-as
         $bytes = $null; $entryName = $null
         switch ($fault) {
             'missing-xml' { $archive.GetEntry('lib/net10.0/Lokad.TikZ.xml').Delete(); $expected = 'Missing packed API XML' }
+            'missing-font-source' { $archive.GetEntry('font-data/LokadTikzText-regular-10.json').Delete(); $expected = 'Missing packaged source asset: src/Lokad.TikZ/Resources/Fonts/LokadTikzText-regular-10.json' }
             'changed-dll' {
                 $entryName = 'lib/net10.0/Lokad.TikZ.dll'
                 $archive.GetEntry($entryName).Delete(); $bytes = [byte[]]@(0, 1, 2, 3)
