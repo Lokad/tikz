@@ -49,6 +49,13 @@ try {
     if ($metadata.SelectSingleNode('//*[local-name()="metadata"]/*[local-name()="id"]').InnerText -ne 'Lokad.TikZ') { throw 'Wrong package ID.' }
     $project = [xml](Get-Content -LiteralPath (Join-Path $sourceDirectory 'src/Lokad.TikZ/Lokad.TikZ.csproj') -Raw)
     if ($version -ne $project.Project.PropertyGroup.Version) { throw 'Package version differs from current source.' }
+    $repository = $metadata.SelectSingleNode('//*[local-name()="metadata"]/*[local-name()="repository"]')
+    $projectUrl = $metadata.SelectSingleNode('//*[local-name()="metadata"]/*[local-name()="projectUrl"]')
+    if ($null -eq $repository -or $repository.GetAttribute('type') -ne 'git' -or
+        $repository.GetAttribute('url') -ne $project.Project.PropertyGroup.RepositoryUrl -or
+        $null -eq $projectUrl -or $projectUrl.InnerText -ne $project.Project.PropertyGroup.PackageProjectUrl) {
+        throw 'Missing or incorrect public package provenance.'
+    }
     if (@($entries | Where-Object { $_.FullName -like '*.dll' }).Count -ne 1) { throw 'Unexpected package assemblies.' }
     $dll = $archive.GetEntry('lib/net10.0/Lokad.TikZ.dll')
     Assert-SourceBytes $dll 'src/Lokad.TikZ/bin/Release/net10.0/Lokad.TikZ.dll'

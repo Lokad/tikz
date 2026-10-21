@@ -9,6 +9,10 @@
     <Project Path="tests/Lokad.TikZ.Tests/Lokad.TikZ.Tests.csproj" />
   </Folder>
   <Folder Name="/tools/">
+    <Project Path="tools/TikzAdversarial/TikzAdversarial.csproj" />
+    <Project Path="tools/TikzArrowComparison/TikzArrowComparison.csproj" />
+    <Project Path="tools/TikzCurvedEdgeComparison/TikzCurvedEdgeComparison.csproj" />
+    <Project Path="tools/TikzCurvedEdgeOracle/TikzCurvedEdgeOracle.csproj" />
     <Project Path="tools/TikzPathLabelComparison/TikzPathLabelComparison.csproj" />
     <Project Path="tools/TikzPathLabelOracle/TikzPathLabelOracle.csproj" />
     <Project Path="tools/TikzFontData/TikzFontData.csproj" />

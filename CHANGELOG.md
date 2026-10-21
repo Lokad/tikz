@@ -24,6 +24,15 @@
 - Current public contract and compatibility index linked from the README.
 - Reproducible bounded adversarial-input workflow, exact saved UTF-16 replay
   and contribution guidance, with shared process/artifact handling.
+- Ignored math comments stay out of SVG titles; bare color diagnostics retain
+  original spans and expansion provenance. Style append copies and related
+  diagnostic construction use the shared work budget and cancellation.
+- Painted ink bounds exclude invisible fill/stroke channels while preserving
+  picture geometry, including node backgrounds and arrow tips.
+- Removed the inert preview `MaxDiagnostics` and diagnostic `Feature` properties;
+  conversion continues to return its first failure and optional related locations.
+- All active tools participate in ordinary solution builds; packages declare the
+  public repository and project URLs.
 
 This is a development record, not a published-release announcement. Supported
 syntax and qualification boundaries are in [SPEC](SPEC.md) and the
