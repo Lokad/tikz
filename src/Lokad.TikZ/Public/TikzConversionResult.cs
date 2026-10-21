@@ -12,9 +12,7 @@ public readonly record struct TikzSourceSpan(int Offset, int Length, int Line, i
 /// <param name="Span">Primary original-source location.</param>
 public sealed record TikzDiagnostic(string Code, string Message, TikzSourceSpan Span)
 {
-    /// <summary>A feature-specific identifier or description, when available.</summary>
-    public string Feature { get; init; } = "";
-    /// <summary>Additional original definition/invocation locations for bounded expansion, when available.</summary>
+    /// <summary>Additional original definition/invocation locations collected within the remaining work budget.</summary>
     public IReadOnlyList<TikzSourceSpan> RelatedLocations { get; init; } = Array.Empty<TikzSourceSpan>();
 }
 /// <summary>Axis-aligned bounds in CSS-pixel SVG coordinates, with positive Y downward.</summary>

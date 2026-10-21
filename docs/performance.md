@@ -177,8 +177,9 @@ the identical SVG/statistics at exact usage and rejects one unit below with
 successful positive integer nesting/expression/expansion limits and coordinate
 pixel ceiling by bounded search, checking the adjacent rejection where valid.
 Coordinate calibration is an integer ceiling, not a claimed exact fractional
-maximum. `MaxDiagnostics` is not a request to collect errors: current conversion
-stops at its first explicit failure.
+maximum. Conversion stops at its first explicit failure. Related diagnostic
+locations consume remaining work; primary reporting stays available after
+exhaustion and continues to observe cancellation.
 The measured inputs need nesting depths 1–4, expression depths 1–9 and expansion
 depths 1–4; their minimum integer coordinate ceilings range from 152 to 451 pixels.
 The larger defaults are bounded headroom, rather than measured interactive targets

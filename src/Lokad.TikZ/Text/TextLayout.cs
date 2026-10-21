@@ -179,7 +179,7 @@ internal static class TextLayout
                         }
                         _height = Math.Max(_height, box.Height); _depth = Math.Max(_depth, box.Depth);
                         AddPiece(new(PieceKind.Math, box.Width, null, 0, math.Source));
-                        _spaceFactor = 1000; _readable.Append(math.Source.Value);
+                        _spaceFactor = 1000; AppendMathReadable(math.Source);
                         break;
                     case LabelBreak lineBreak:
                         Flush(); FinishLine(); _readable.Append('\n');
@@ -192,6 +192,21 @@ internal static class TextLayout
 
         private static bool StartsWithPunctuation(LabelItem? item)
             => item is LabelLiteral literal && literal.Source.Length > 0 && literal.Source.Span[0] is ',' or '.';
+
+        private void AppendMathReadable(Source origin)
+        {
+            budget.Charge(origin, origin.Length);
+            var remaining = origin.Span;
+            while (remaining.IndexOf('%') is var comment && comment >= 0)
+            {
+                _readable.Append(remaining[..comment]);
+                remaining = remaining[comment..];
+                var newline = remaining.IndexOfAny('\r', '\n');
+                if (newline < 0) return;
+                remaining = remaining[newline..];
+            }
+            _readable.Append(remaining);
+        }
 
         private void Append(int slot, Source origin)
         {

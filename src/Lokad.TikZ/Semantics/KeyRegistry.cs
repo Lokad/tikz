@@ -35,7 +35,12 @@ internal static class KeyRegistry
             {
                 var name = key[..^14];
                 var additions = StyleExpansion.Read(option.Value, budget);
-                state.Styles[name] = state.Styles.TryGetValue(name, out var old) ? [.. old, .. additions] : additions;
+                if (state.Styles.TryGetValue(name, out var old))
+                {
+                    budget.Charge(option.Source, (long)old.Count + additions.Count);
+                    state.Styles[name] = [.. old, .. additions];
+                }
+                else state.Styles[name] = additions;
                 continue;
             }
             if (state.Definitions.Count != 0 && option.Value.Length > 0)
@@ -204,7 +209,7 @@ internal static class KeyRegistry
                     Transform(new(state.Scalar(parts[0], budget), state.Scalar(parts[1], budget), state.Scalar(parts[2], budget), state.Scalar(parts[3], budget), offset.X, offset.Y));
                     break;
                 default:
-                    if (Color.IsName(key) || key.Contains('!')) { var c = Color.Parse(new Source(key, 0, key.Length), budget); state.Paint = paint with { StrokeColor = c, FillColor = c }; state.Node = state.Node with { TextColor = c }; }
+                    if (Color.IsName(key) || key.Contains('!')) { var c = Color.Parse(option.Source, budget, key); state.Paint = paint with { StrokeColor = c, FillColor = c }; state.Node = state.Node with { TextColor = c }; }
                     else throw Unsupported(option);
                     break;
             }

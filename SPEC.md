@@ -50,10 +50,13 @@ uses a 1×1 pixel viewport.
 
 `TikzFailure` contains diagnostics and partial statistics, has no SVG property
 and reports zero `OutputBytes`. Current conversion stops at the first explicit
-failure. `MaxDiagnostics` is not a request for recovery or multiple-error
-collection. The [diagnostics guide](docs/diagnostics.md) defines `TIKZ001` through
+failure. There is no error-recovery or multiple-error collection option.
+The [diagnostics guide](docs/diagnostics.md) defines `TIKZ001` through
 `TIKZ005`, zero-based UTF-16 offsets/lengths, one-based line/column positions
-and related original-source locations for bounded expansion.
+and related original-source locations for bounded expansion. Related locations
+consume the remaining work budget and may be omitted after exhaustion. Accurate
+primary-location reporting remains available after exhaustion, with cancellation
+checks during bounded source scans; it never recursively reports another limit.
 
 Null arguments and invalid options throw argument exceptions. Validation runs
 before cancellation checking. Cancellation before or during charged work throws
@@ -81,11 +84,10 @@ corresponding standalone operations.
 | `MaxGlyphs` | 100,000 | Layout glyph consumption |
 | `MaxWork` | 10,000,000 | Shared charged work |
 | `MaxOutputBytes` | 16,777,216 | UTF-8 SVG output bytes |
-| `MaxDiagnostics` | 100 | Positive diagnostic cap; current conversion returns its first failure |
 | `MaxCoordinatePixels` | 10,000,000 | Finite coordinate/dimension ceiling in CSS pixels |
 
-Source, expansion, loop, node, segment, glyph and work caps may be zero. Depth,
-output and diagnostic caps must be positive, and the coordinate ceiling must be
+Source, expansion, loop, node, segment, glyph and work caps may be zero. Depth
+and output caps must be positive, and the coordinate ceiling must be
 finite and positive. Exceeding a conversion resource produces `TIKZ005`; invalid
 caller limits throw before parsing. See [performance measurements](docs/performance.md)
 for counter definitions, calibration and provisional latency/allocation goals.

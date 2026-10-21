@@ -12,7 +12,7 @@ public enum TikzInputKind
 /// <summary>Resource ceilings shared by all phases of one conversion.</summary>
 /// <remarks>
 /// Source, expansion, loop, node, segment, glyph and work caps may be zero.
-/// Depth, output and diagnostic caps must be positive; the coordinate ceiling
+/// Depth and output caps must be positive; the coordinate ceiling
 /// must also be finite. Exceeded resources produce TIKZ005, while invalid caller
 /// limits throw before parsing. These caps do not guarantee latency or process memory.
 /// </remarks>
@@ -37,13 +37,10 @@ public sealed record TikzLimits
     public int MaxSegments { get; init; } = 100_000;
     /// <summary>Maximum glyph consumption during label layout. Default: 100,000.</summary>
     public int MaxGlyphs { get; init; } = 100_000;
-    /// <summary>Maximum charged work across parsing, evaluation and serialization. Default: 10,000,000.</summary>
+    /// <summary>Maximum charged work across parsing, evaluation, serialization and related diagnostics. Default: 10,000,000.</summary>
     public long MaxWork { get; init; } = 10_000_000;
     /// <summary>Maximum UTF-8 SVG output bytes. Default: 16,777,216.</summary>
     public int MaxOutputBytes { get; init; } = 16 * 1024 * 1024;
-    /// <summary>Positive diagnostic cap. Default: 100.</summary>
-    /// <remarks>Current conversion stops at its first explicit failure; this does not request error recovery.</remarks>
-    public int MaxDiagnostics { get; init; } = 100;
     /// <summary>Finite coordinate/dimension ceiling in CSS pixels. Default: 10,000,000.</summary>
     public double MaxCoordinatePixels { get; init; } = 10_000_000;
     /// <summary>Gets the default resource ceilings.</summary>

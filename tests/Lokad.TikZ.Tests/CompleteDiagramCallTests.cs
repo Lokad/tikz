@@ -132,7 +132,6 @@ public sealed class CompleteDiagramCallTests
             Assert.Equal(first.Code, second.Code);
             Assert.Equal(first.Message, second.Message);
             Assert.Equal(first.Span, second.Span);
-            Assert.Equal(first.Feature, second.Feature);
             Assert.Equal(first.RelatedLocations.ToArray(), second.RelatedLocations.ToArray());
         }
     }

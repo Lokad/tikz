@@ -1,3 +1,5 @@
+using Lokad.TikZ.Semantics;
+
 namespace Lokad.TikZ.Frontend;
 
 internal readonly record struct Source(string Text, int Offset, int Length)
@@ -31,32 +33,18 @@ internal readonly record struct Source(string Text, int Offset, int Length)
         }
     }
     internal IEnumerable<TikzSourceSpan> RelatedLocations()
-    {
-        // Forwarded range values may share their seeds. Visit each retained
-        // provenance node once rather than unfolding the same graph repeatedly.
-        var seen = new HashSet<Source>();
-        var pending = new Stack<Source>();
-        pending.Push(this);
-        while (pending.TryPop(out var current))
-        {
-            if (!seen.Add(current)) continue;
-            if (current != this) yield return current.Location;
-            if (current.Mapping is not null)
-                foreach (var origin in current.Mapping.Origins(current.Offset, current.Length)) pending.Push(origin);
-            foreach (var origin in current.RelatedSources ?? []) pending.Push(origin);
-        }
-    }
+        => new DiagnosticBuilder(new Budget(TikzLimits.Default, CancellationToken.None)).Build("", "", this).RelatedLocations;
 }
 
 internal sealed class CompileError : Exception
 {
-    public TikzDiagnostic Diagnostic { get; }
+    private readonly string _code;
+    private readonly Source _origin;
+    public TikzDiagnostic Diagnostic => CreateDiagnostic(new Budget(TikzLimits.Default, CancellationToken.None));
     public CompileError(string code, string message, Source source) : base(message)
     {
-        var primary = source.Location;
-        Diagnostic = new(code, message, primary)
-        {
-            RelatedLocations = Array.AsReadOnly(source.RelatedLocations().Where(s => s != primary).Distinct().ToArray())
-        };
+        _code = code;
+        _origin = source;
     }
+    internal TikzDiagnostic CreateDiagnostic(Budget budget) => new DiagnosticBuilder(budget).Build(_code, Message, _origin);
 }

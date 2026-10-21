@@ -15,8 +15,11 @@ calculations and resource limits are ordinary conversion failures.
 
 Use the diagnostic code for programmatic handling and its message for the
 explanation. The current converter stops at the first compilation error.
-`Feature` and `RelatedLocations` are available on diagnostics; callers must
-allow an empty feature and an empty list of related locations.
+`RelatedLocations` may contain additional original-source locations. Callers
+must allow an empty list. Related provenance is collected within the conversion's
+remaining work budget. After exhaustion, the original primary diagnostic still
+reports its exact position; related locations may be omitted. Source-position
+scanning and provenance collection observe cancellation.
 
 ## Original source positions
 

@@ -59,6 +59,6 @@ internal static class LimitProbes
             }
         }
         return new { completed = true, role = "performance-limit-calibration", workloads = 10, records,
-            defaults = TikzLimits.Default, scope = "Counter limits checked exactly at/below usage. Depth limits and coordinate magnitude find minimum successful positive integer. MaxDiagnostics is not a collection target: conversion stops on the first error." };
+            defaults = TikzLimits.Default, scope = "Counter limits checked exactly at/below usage. Depth limits and coordinate magnitude find minimum successful positive integer. Conversion stops on the first error; related diagnostics consume remaining work." };
     }
 }

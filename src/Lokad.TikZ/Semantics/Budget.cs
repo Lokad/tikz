@@ -13,9 +13,16 @@ internal sealed class Budget(TikzLimits limits, CancellationToken cancellationTo
     private int _expandedTokens;
     public void Charge(Source source, long amount = 1)
     {
+        if (!TryCharge(amount)) Fail(source, "work");
+    }
+    // Diagnostic collection stops when the remaining work is unavailable. It
+    // must not recursively diagnose exhaustion while reporting another error.
+    internal bool TryCharge(long amount)
+    {
         cancellationToken.ThrowIfCancellationRequested();
-        if (amount < 0 || amount > Limits.MaxWork - Work) Fail(source, "work");
+        if (amount < 0 || amount > Limits.MaxWork - Work) return false;
         Work += amount;
+        return true;
     }
     public void Segment(Source source)
     {

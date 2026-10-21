@@ -7,6 +7,20 @@ public sealed class ParameterizedStyleTests
     private static readonly TikzOptions Body = TikzOptions.Default with { InputKind = TikzInputKind.PictureBody, IdPrefix = "style" };
 
     [Fact]
+    public void Appending_an_unused_growing_style_consumes_the_copy_work_budget()
+    {
+        var source = @"\tikzset{s/.style={}}" + string.Concat(Enumerable.Repeat(@"\tikzset{s/.append style={draw}}", 1000));
+        var options = Body with { Limits = Body.Limits with { MaxWork = 250_000 } };
+        var failure = Assert.IsType<TikzFailure>(TikzConverter.Convert(source, options, CancellationToken.None));
+        var diagnostic = Assert.Single(failure.Diagnostics);
+        Assert.Equal("TIKZ005", diagnostic.Code);
+        Assert.Contains("work", diagnostic.Message);
+        Assert.Equal("s/.append style={draw}", source.Substring(diagnostic.Span.Offset, diagnostic.Span.Length));
+        Assert.InRange(failure.Statistics.Work, 1, options.Limits.MaxWork);
+        Assert.Equal(0, failure.Statistics.OutputBytes);
+    }
+
+    [Fact]
     public void Complete_parameterized_flowchart_matches_native_node_geometry()
         => PositioningTests.CompareNative("Diagrams", "Diagrams", "flowchart-parameterized", 4);
 

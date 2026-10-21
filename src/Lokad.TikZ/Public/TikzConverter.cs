@@ -61,7 +61,7 @@ public static class TikzConverter
         }
         catch (CompileError error)
         {
-            return new TikzFailure(Array.AsReadOnly(new[] { error.Diagnostic }), budget.Statistics(0));
+            return new TikzFailure(Array.AsReadOnly(new[] { error.CreateDiagnostic(budget) }), budget.Statistics(0));
         }
     }
 
@@ -71,7 +71,7 @@ public static class TikzConverter
         if (!Enum.IsDefined(options.InputKind) || !double.IsFinite(options.PaddingPixels) || options.PaddingPixels < 0
             || l.MaxSourceCharacters < 0 || l.MaxNesting < 1 || l.MaxExpressionDepth < 1 || l.MaxExpansionDepth < 1
             || l.MaxExpandedTokens < 0 || l.MaxLoopIterations < 0 || l.MaxNodes < 0 || l.MaxSegments < 0
-            || l.MaxGlyphs < 0 || l.MaxWork < 0 || l.MaxOutputBytes < 1 || l.MaxDiagnostics < 1
+            || l.MaxGlyphs < 0 || l.MaxWork < 0 || l.MaxOutputBytes < 1
             || !double.IsFinite(l.MaxCoordinatePixels) || l.MaxCoordinatePixels <= 0)
             throw new ArgumentOutOfRangeException(nameof(options), "Invalid conversion options or limits.");
         if (options.IdPrefix.Length > 64 || (options.IdPrefix.Length > 0 && !char.IsAsciiLetter(options.IdPrefix[0]))

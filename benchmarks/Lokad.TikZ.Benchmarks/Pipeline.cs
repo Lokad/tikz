@@ -38,7 +38,8 @@ internal static class Pipeline
         }
         catch (CompileError error)
         {
-            result = new TikzFailure(Array.AsReadOnly(new[] { error.Diagnostic }), budget.Statistics(0));
+            var diagnostic = Measure("diagnostics", () => error.CreateDiagnostic(budget));
+            result = new TikzFailure(Array.AsReadOnly(new[] { diagnostic }), budget.Statistics(0));
         }
         var statements = program is null ? [] : Statements(program).ToArray();
         var runs = scene?.Drawables.OfType<PaintedGlyphRun>().ToArray() ?? [];
