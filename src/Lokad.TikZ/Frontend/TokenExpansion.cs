@@ -16,6 +16,7 @@ internal sealed class TokenExpansion(EvaluationState state, Budget budget)
         var braces = 0;
         var brackets = 0;
         var endsWord = false;
+        var changed = false;
         void Append(Source value, bool controlWord = false)
         {
             if (value.Length == 0) return;
@@ -70,9 +71,10 @@ internal sealed class TokenExpansion(EvaluationState state, Budget budget)
                 {
                     if (state.TemplateBindings?.TryGetValue(name, out replacement) == true) { }
                     else if (state.Definitions.TryGetValue(name, out definition)) replacement = definition.Body;
-                    else if (!state.NumericBindings.TryGetValue(name, out replacement)) found = false;
+                    else if (!(state.InDefinitionCall || depth > 0) || !state.NumericBindings.TryGetValue(name, out replacement)) found = false;
                 }
                 if (!found) { Append(use, true); start = position; continue; }
+                changed = true;
                 budget.Depth(use, depth + 1, budget.Limits.MaxExpansionDepth);
                 var identity = definition is null ? (name, -1) : Identity(definition, budget);
                 if (!active.Add(identity)) throw new CompileError("TIKZ003", $"Recursive token definition '{name}'.", use);
@@ -96,6 +98,9 @@ internal sealed class TokenExpansion(EvaluationState state, Budget budget)
         }
         Visit(source, 0);
         budget.Charge(source, text.Length + pieces.Count);
+        // Replay remains charged, but an unused declaration must not split
+        // unchanged spans into a synthetic source map.
+        if (!changed) return source;
         return new(text.ToString(), 0, text.Length) { Mapping = new(source, pieces.ToArray()), RelatedSources = source.RelatedSources };
     }
 

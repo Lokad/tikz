@@ -34,6 +34,10 @@ internal sealed class EvaluationState
     public Dictionary<string, Number> Variables { get; set; }
     public Dictionary<string, Source> NumericBindings { get; set; }
     public Dictionary<string, DefinitionStatement> Definitions { get; set; }
+    // Direct numeric uses retain their receiving grammar. An invoked token
+    // body may intentionally substitute numeric bindings into other tokens.
+    public bool InDefinitionCall { get; set; }
+    public bool HasTokenExpansion => InDefinitionCall || Definitions.Count != 0;
     public IReadOnlyDictionary<string, Source>? TemplateBindings { get; set; }
     public Func<Coordinate, EvaluationState, Point>? CoordinateValue { get; set; }
 
@@ -58,6 +62,7 @@ internal sealed class EvaluationState
         Variables = new(state.Variables, StringComparer.Ordinal);
         NumericBindings = new(state.NumericBindings, StringComparer.Ordinal);
         Definitions = new(state.Definitions, StringComparer.Ordinal);
+        InDefinitionCall = state.InDefinitionCall;
         TemplateBindings = state.TemplateBindings; CoordinateValue = state.CoordinateValue;
         // Node context/options and paint-change flags intentionally start fresh.
     }

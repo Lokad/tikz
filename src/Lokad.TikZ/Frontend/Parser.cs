@@ -13,10 +13,15 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         budget.Charge(origin, names.Count);
         return new(names, StringComparer.Ordinal);
     }
-    internal List<Statement> Body(int depth) => Statements("", depth);
+    internal List<Statement> Body(int depth)
+    {
+        var result = Statements(null, depth);
+        _reader.Complete();
+        return result;
+    }
     public List<Statement> Parse(TikzInputKind kind)
     {
-        if (kind == TikzInputKind.PictureBody) return Statements("", 0);
+        if (kind == TikzInputKind.PictureBody) return Body(0);
         var result = new List<Statement>();
         while (!_reader.End)
         {
@@ -39,7 +44,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
         }
         throw new CompileError("TIKZ001", "Expected a tikzpicture environment.", source.Slice(source.Length, 0));
     }
-    private List<Statement> Statements(string environment, int depth)
+    private List<Statement> Statements(string? environment, int depth)
     {
         budget.Depth(_reader.Here, depth, budget.Limits.MaxNesting);
         var result = new List<Statement>();
@@ -48,7 +53,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             if (_reader.Peek == '{')
             {
                 var group = _reader.Group('{', '}');
-                result.Add(new ScopeStatement([], new Parser(group, budget, bindings, _templates, _definitions).Statements("", depth + 1), group));
+                result.Add(new ScopeStatement([], new Parser(group, budget, bindings, _templates, _definitions).Body(depth + 1), group));
                 continue;
             }
             var command = _reader.Command();
@@ -70,7 +75,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
             {
                 case "\\end":
                     var end = Options.Clean(_reader.Group('{', '}'));
-                    if (environment != end) throw new CompileError("TIKZ001", $"Unexpected end of '{end}'.", command);
+                    if (environment is null || environment != end) throw new CompileError("TIKZ001", $"Unexpected end of '{end}'.", command);
                     return result;
                 case "\\begin":
                     var begin = Options.Clean(_reader.Group('{', '}'));
@@ -99,7 +104,7 @@ internal sealed class Parser(Source source, Budget budget, IReadOnlyDictionary<s
                     break;
             }
         }
-        if (environment.Length > 0) throw new CompileError("TIKZ001", $"Missing end of '{environment}'.", source.Slice(source.Length, 0));
+        if (environment is not null) throw new CompileError("TIKZ001", $"Missing end of '{environment}'.", source.Slice(source.Length, 0));
         return result;
     }
     private Source Bind(Source value) => bindings is null ? value : SourceExpansion.Bind(value, bindings, budget);

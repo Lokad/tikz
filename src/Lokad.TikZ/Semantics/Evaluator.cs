@@ -60,6 +60,8 @@ internal sealed partial class Evaluator(Budget budget)
                     budget.Depth(invocation.Source, _definitionCalls.Count + 1, budget.Limits.MaxExpansionDepth);
                     var identity = TokenExpansion.Identity(called, budget);
                     if (!_definitionCalls.Add(identity)) throw new CompileError("TIKZ003", $"Recursive token definition '{called.Variable.Value}'.", invocation.Source);
+                    var enclosingDefinitionCall = state.InDefinitionCall;
+                    state.InDefinitionCall = true;
                     try
                     {
                         budget.Charge(called.Source, (called.Body.RelatedSources?.Length ?? 0) + 2);
@@ -67,7 +69,7 @@ internal sealed partial class Evaluator(Budget budget)
                         var expandedBody = new Parser(calledBody, budget, deferTemplates: true, definitionNames: state.Definitions.Keys).Body(depth);
                         Statements(expandedBody, state, depth, bindings, loopDepth);
                     }
-                    finally { _definitionCalls.Remove(identity); }
+                    finally { state.InDefinitionCall = enclosingDefinitionCall; _definitionCalls.Remove(identity); }
                     break;
                 case TemplateStatement templateStatement:
                     var expanded = new TokenExpansion(state, budget).Expand(templateStatement.Source, protectOptions: true);
@@ -76,7 +78,7 @@ internal sealed partial class Evaluator(Budget budget)
                 case MathAssignmentStatement assignment:
                     if (bindings?.ContainsKey(assignment.Variable.Value) == true)
                         throw new CompileError("TIKZ002", "Numeric assignment to an active foreach variable is unsupported.", assignment.Variable);
-                    var assignmentSource = state.Definitions.Count == 0 ? assignment.Expression : new TokenExpansion(state, budget).Expand(assignment.Expression);
+                    var assignmentSource = state.HasTokenExpansion ? new TokenExpansion(state, budget).Expand(assignment.Expression) : assignment.Expression;
                     var expression = SourceExpansion.Bind(assignmentSource, state.NumericBindings, budget, removeComments: true);
                     var printed = PgfScalarArithmetic.Evaluate(expression, budget);
                     var assigned = SourceExpansion.Generated(printed, assignment.Expression, [assignment.Variable, expression], budget);
@@ -87,7 +89,7 @@ internal sealed partial class Evaluator(Budget budget)
                     _scene.NumericAssignments.Add(new(assignment.Variable.Value, printed, assigned));
                     break;
                 case LibraryStatement libraries:
-                    var libraryNames = state.Definitions.Count == 0 ? libraries.Names : new TokenExpansion(state, budget).Expand(libraries.Names);
+                    var libraryNames = state.HasTokenExpansion ? new TokenExpansion(state, budget).Expand(libraries.Names) : libraries.Names;
                     foreach (var name in Options.Split(libraryNames, ',', budget)) LoadLibrary(Options.Clean(name), state, name);
                     break;
                 case ForeachStatement loop:
@@ -95,7 +97,7 @@ internal sealed partial class Evaluator(Budget budget)
                     budget.Charge(loop.Source, (bindings?.Count ?? 0) + 1);
                     var local = bindings is null ? new Dictionary<string, Source>(StringComparer.Ordinal)
                         : bindings.ToDictionary(p => p.Key, p => p.Value, StringComparer.Ordinal);
-                    var loopValues = state.Definitions.Count == 0 ? loop.Values : new TokenExpansion(state, budget).Expand(loop.Values);
+                    var loopValues = state.HasTokenExpansion ? new TokenExpansion(state, budget).Expand(loop.Values) : loop.Values;
                     foreach (var value in ForeachValues.Read(loopValues, bindings, budget))
                     {
                         budget.Iteration(value);
@@ -103,7 +105,7 @@ internal sealed partial class Evaluator(Budget budget)
                         local[loop.Variable.Value] = value with { RelatedSources = [.. value.RelatedSources ?? [], loop.Variable] };
                         var iterationState = state.Clone(budget, loop.Source);
                         iterationState.TemplateBindings = local;
-                        var body = new Parser(loop.Body, budget, local, state.Definitions.Count != 0,
+                        var body = new Parser(loop.Body, budget, local, state.HasTokenExpansion,
                             state.Definitions.Count == 0 ? null : state.Definitions.Keys).Body(depth + 1);
                         Statements(body, iterationState, depth + 1, local, loopDepth + 1);
                     }

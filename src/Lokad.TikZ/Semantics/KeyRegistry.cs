@@ -19,7 +19,7 @@ internal static class KeyRegistry
             var option = original;
             budget.Depth(option.Source, depth, budget.Limits.MaxExpansionDepth);
             var key = option.Key;
-            if (state.Definitions.Count != 0 && key.Contains('\\'))
+            if (state.HasTokenExpansion && key.Contains('\\'))
             {
                 var keySource = Options.Split(option.Source, '=', budget)[0];
                 var expandedKey = new TokenExpansion(state, budget).Expand(keySource);
@@ -43,7 +43,7 @@ internal static class KeyRegistry
                 else state.Styles[name] = additions;
                 continue;
             }
-            if (state.Definitions.Count != 0 && option.Value.Length > 0)
+            if (state.HasTokenExpansion && option.Value.Length > 0)
             {
                 var expandedValue = new TokenExpansion(state, budget).Expand(option.Value);
                 option = option with { Value = Options.Ungroup(expandedValue, budget) };
