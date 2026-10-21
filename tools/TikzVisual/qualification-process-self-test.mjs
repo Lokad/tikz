@@ -8,8 +8,10 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {captureProcess} from './qualification-process.mjs';
 import {loadCalcSavedReport,calcHash} from './calc-saved-images.mjs';
+import {runCalcChild} from './calc-admission-child.mjs';
 const run=(source,options={})=>captureProcess(process.execPath,['-e',source],{timeout:5000,...options});
 let r=await run('process.stdout.write("out");process.stderr.write("err")');assert.equal(r.exitCode,0);assert.equal(r.failure,null);assert.ok(r.output.includes('out')&&r.output.includes('err'));
+assert.equal(r.stdout,'out');assert.equal(r.stderr,'err');
 r=await run('process.stdout.write("before failure");process.exit(7)');assert.equal(r.exitCode,7);assert.equal(r.failure,null);assert.equal(r.output,'before failure');
 r=await run('process.stdout.write("before timeout");setInterval(()=>{},1000)',{timeout:500});assert.equal(r.failure,'timeout');assert.equal(r.output,'before timeout');
 r=await run('process.stdout.write("before overflow");setTimeout(()=>process.stdout.write("x".repeat(10000)),50)',{maxBytes:100});assert.equal(r.failure,'output-bound');assert.equal(r.output,'before overflow');
@@ -39,3 +41,18 @@ try{
   const settledReads=reads;await new Promise(resolve=>setTimeout(resolve,60));assert.equal(reads,settledReads,'Read began after rejection');
 }finally{clearTimeout(fallback);promises.readFile=originalRead;syncBuiltinESMExports();}
 console.log('Shared saved-report controls: order, concurrency bound and failure settlement passed.');
+
+// Report-owning children share the bounded process helper without parsing a
+// diagnostic on stderr as a receipt, and retain failed reports and payloads.
+await writeFile(reportFile,positive.bytes);
+const repository=fileURLToPath(new URL('../../',import.meta.url));
+const receipt={completed:true,report:path.relative(repository,reportFile).replaceAll('\\','/'),sha256:positive.sha256};
+const emit='process.stdout.write('+JSON.stringify(JSON.stringify(receipt))+');process.stderr.write("diagnostic only");';
+const saved=new Map(),save=async(file,bytes)=>saved.set(file,Buffer.from(bytes));
+const child=await runCalcChild(repository,process.execPath,['-e',emit],'positive',save,5000,true);
+assert.ok(child.bytes.equals(positive.bytes));assert.equal(child.report.role,role);
+assert.ok(saved.get('positive-command.log').toString().endsWith('diagnostic only'));
+await assert.rejects(runCalcChild(repository,process.execPath,['-e',emit+'process.exit(7);'],'failed',save,5000),/Child execution failed: failed: exit 7/);
+assert.ok(saved.get('failed/failed/report.json').equals(positive.bytes));
+for(const[file,bytes]of positive.files)assert.ok(saved.get('failed/failed/'+file).equals(bytes));
+console.log('Shared report-child controls: stdout receipt, stderr retention and failed payload retention passed.');
