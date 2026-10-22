@@ -24,6 +24,14 @@ their exact completion records, report paths and SHA-256 values; the checker
 receives an explicit GUID trial report rather than a latest pointer. Both child
 reports and all their artifacts are copied byte-for-byte into the admitted bundle.
 
+The subsequent admission controls capture their own current source under
+`control-sources/` and record its identity separately from the producer's guarded
+dependencies. Editing only that control program allows reuse of an unchanged
+producer bundle after running the current controls against its exact report.
+The controls reject stale/missing control provenance and changed report bindings.
+Producer/checker code, native inputs, renderer, image policies and candidate
+sources retain their existing guards and fresh-evidence requirements.
+
 ## Frozen evidence
 
 The 8,046,719-byte gzip cache has SHA-256

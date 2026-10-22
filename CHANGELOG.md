@@ -2,6 +2,12 @@
 
 ## Unreleased — 0.1.0-preview.1 development
 
+- Basis vectors accept leading whitespace/comments consistently across direct,
+  style and expanded values. Arrow comments cannot create tips or dimension groups.
+- Labelled-border admission controls bind their own current source separately;
+  control-only edits reuse unchanged image evidence after fresh bound controls.
+- Removed the unused continuous affine-rotation helper; native finite rotation
+  remains the geometry contract.
 - Statement templates can introduce controls used by subsequent statements;
   calls resolve the current scoped environment. Expanded prose/math labels use
   expansion, work and glyph limits after original-source length admission.

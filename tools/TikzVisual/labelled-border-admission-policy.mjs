@@ -23,7 +23,7 @@ export const labelledAdmissionQualification={
 };
 export const labelledExtraGuardTools=[
   'labelled-border-admission-policy.mjs','promote-labelled-borders.mjs','compare-labelled-border-conformance.mjs',
-  'labelled-border-admission-self-test.mjs','labelled-border-owned-child.mjs','trial-labelled-border-cached.mjs',
+  'labelled-border-owned-child.mjs','trial-labelled-border-cached.mjs',
   'labelled-border-cached-self-test.mjs','labelled-border-cached-coverage.mjs','labelled-border-combined-common.mjs',
   'labelled-border-combined-coverage.mjs','labelled-border-cache.mjs','labelled-border-cache-images.mjs',
   'labelled-border-cache-self-test.mjs','labelled-border-public-pdf-coverage.mjs','qualification-process.mjs'

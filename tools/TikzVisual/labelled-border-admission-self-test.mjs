@@ -13,7 +13,7 @@ import {decodeLabelledCache,labelledCacheSha256} from './labelled-border-cache.m
 import {finishLabelledCachedGates} from './labelled-border-cached-coverage.mjs';
 
 const base=path.join(root,'artifacts/labelled-border-admission-controls'),output=path.join(base,'run-'+randomUUID());
-const artifacts={},controls=[],toolHashes={};let phase='immutable-evidence',inputReportSha256=null;
+const artifacts={},controls=[],toolHashes={};let phase='immutable-evidence',inputReportSha256=null,controlSource=null;
 const save=(p,b)=>writeArtifact(output,p,b,artifacts);
 async function publish(report){const bytes=Buffer.from(JSON.stringify(report,null,2)+'\n');await writeArtifact(output,'report.json',bytes);
   await writeArtifact(base,'latest.json',JSON.stringify({completed:report.completed,
@@ -21,10 +21,29 @@ async function publish(report){const bytes=Buffer.from(JSON.stringify(report,nul
   return {report:path.relative(root,path.join(output,'report.json')).split(path.sep).join('/'),sha256:sha256(bytes)};}
 function reject(name,action){assert.throws(action,undefined,'Accepted admission control: '+name);controls.push({name,expected:'reject',passed:true});}
 async function rejectAsync(name,action){await assert.rejects(action,undefined,'Accepted admission control: '+name);controls.push({name,expected:'reject',passed:true});}
+async function verifyControlSource(read=readFile){
+  assert.equal(sha256(canonical(await read(path.join(root,controlSource.file)))),controlSource.sha256,controlSource.file);
+}
+function validateControlReport(r,e,expectedControls){
+  assert.deepEqual([r.schemaVersion,r.comparisonKind,r.completed,r.passed,r.converterInvoked,r.approvedImagePolicy,r.imageConformanceClaim,r.overallVerdict],
+    [1,'cached-labelled-border-admission-controls',true,true,false,false,false,'pending']);
+  assert.deepEqual(r.controlSource,controlSource);
+  assert.equal(r.artifacts['control-sources/'+controlSource.file],controlSource.sha256);
+  assert.equal(r.inputReportSha256,inputReportSha256);assert.equal(r.artifacts['input-report.json'],inputReportSha256);
+  assert.equal(r.profileSha256,e.profileSha256);assert.equal(r.cacheSha256,labelledCacheSha256);
+  assert.deepEqual(r.ownedProof,{numericAssertions:1624,metricsRecomputed:22908,pagesRecomputed:138,controls:50});
+  assert.deepEqual(r.controls.map(c=>c.name),expectedControls);
+  assert.equal(new Set(expectedControls).size,expectedControls.length);assert.ok(r.controls.every(c=>c.passed===true));
+  for(const[p,h]of Object.entries(e.profile.guardToolHashes)){assert.equal(r.toolHashes[p],h);assert.equal(r.artifacts['tool-sources/'+p],h);}
+}
 try{
   await publish({completed:false,passed:false,converterInvoked:false,artifacts});
   assert.ok(process.argv.length===2||(process.argv.length===4&&process.argv[2]==='--report'));
+  // Attestation source belongs to this control run, not to the image producer.
+  const controlFile='tools/TikzVisual/labelled-border-admission-self-test.mjs',controlBytes=canonical(await readFile(path.join(root,controlFile)));
+  controlSource={file:controlFile,sha256:sha256(controlBytes)};await save('control-sources/'+controlFile,controlBytes);
   const e=await loadLabelledPolicy();Object.assign(toolHashes,e.profile.guardToolHashes);
+  assert.ok(!Object.hasOwn(toolHashes,controlFile));
   for(const[p,h]of Object.entries(toolHashes)){const b=canonical(await readFile(path.join(root,p)));assert.equal(sha256(b),h);await save('tool-sources/'+p,b);}
   await save('profile.json',e.profileBytes);
   const family=path.join(root,'artifacts/labelled-border-conformance');let bytes,folder;
@@ -82,6 +101,10 @@ try{
   }
   await verifyLabelledGuards(e.profile,async p=>Buffer.from(canonical(await savedRead(p)).toString('utf8').replaceAll('\n','\r\n')));
   controls.push({name:'Declared CRLF to LF source contract',expected:'pass',passed:true});
+  await verifyLabelledGuards(e.profile,p=>p===path.join(root,controlFile)?Promise.resolve(Buffer.concat([controlBytes,Buffer.from('\n// inert control-only edit\n')])):savedRead(p));
+  controls.push({name:'Control-only source edits preserve image-production guards',expected:'pass',passed:true});
+  await rejectAsync('Missing current control source',()=>verifyControlSource(()=>Promise.reject(Error('Controlled missing attestation source'))));
+  await rejectAsync('Stale current control source',()=>verifyControlSource(()=>Promise.resolve(Buffer.concat([controlBytes,Buffer.from(' ')]))));
   // Pinned original producer hashes cannot stand for reviewed current tools.
   const historical=JSON.parse(e.bytes).toolHashes;
   historical['tools/TikzShapeComparison/NativeGlyphTrace.cs']='2695161667fdb35dcb3948e8d02c8c5fe035bfdd12cdddb7e8a43c375ff6e8b1';
@@ -124,11 +147,24 @@ try{
   const failed=finishLabelledAdmission(e,trial,{...checker,completed:false,passed:false});assert.equal(failed.imageConformanceClaim,false);
   assert.equal(failed.firstFailedGate,'evidence');controls.push({name:'Passing images cannot replace the owned independent checker',expected:'fail',passed:true});
   await verifyLabelledSourceHashes({...toolHashes,...numeric.converterSources,...numeric.toolHashes});
-  const location=await publish({schemaVersion:1,comparisonKind:'cached-labelled-border-admission-controls',completed:true,passed:true,
+  const report={schemaVersion:1,comparisonKind:'cached-labelled-border-admission-controls',completed:true,passed:true,
     converterInvoked:false,approvedImagePolicy:false,imageConformanceClaim:false,overallVerdict:'pending',inputReportSha256,
     profileSha256:e.profileSha256,cacheSha256:labelledCacheSha256,ownedProof:{numericAssertions:1624,metricsRecomputed:22908,pagesRecomputed:138,controls:50},
-    controls,toolHashes,artifacts});
+    controlSource,controls,toolHashes,artifacts};
+  phase='control-report-binding';
+  const proof=structuredClone(report),expectedControls=proof.controls.map(c=>c.name);validateControlReport(proof,e,expectedControls);
+  for(const[name,change]of Object.entries({missingSource:q=>delete q.controlSource,staleSource:q=>q.controlSource.sha256='0'.repeat(64),
+    missingSourceBytes:q=>delete q.artifacts['control-sources/'+controlFile],changedSourceBytes:q=>q.artifacts['control-sources/'+controlFile]='0'.repeat(64),
+    wrongInput:q=>q.inputReportSha256='0'.repeat(64),wrongInputBytes:q=>q.artifacts['input-report.json']='0'.repeat(64),
+    staleProfile:q=>q.profileSha256='0'.repeat(64),wrongCache:q=>q.cacheSha256='0'.repeat(64),
+    incomplete:q=>q.completed=false,failed:q=>q.passed=false,claim:q=>q.imageConformanceClaim=true,
+    missingControl:q=>q.controls.pop(),duplicateControl:q=>q.controls[1]=q.controls[0],failedControl:q=>q.controls[0].passed=false,
+    wrongProof:q=>q.ownedProof.pagesRecomputed--,wrongTool:q=>q.toolHashes[Object.keys(q.toolHashes)[0]]='0'.repeat(64)}))
+    reject('control-report/'+name,()=>{const q=structuredClone(proof);change(q);validateControlReport(q,e,expectedControls);});
+  await verifyControlSource();validateControlReport(report,e,controls.map(c=>c.name));
+  for(const[p,h]of Object.entries(artifacts))assert.equal(sha256(await readFile(await outputPath(output,p))),h,p);
+  const location=await publish(report);
   console.log(JSON.stringify({kind:'labelled-border-admission-check-output',completed:true,passed:true,controls:controls.length,...location}));
 }catch(error){process.exitCode=2;console.error(error.stack);await publish({completed:false,passed:false,converterInvoked:false,
-  approvedImagePolicy:false,imageConformanceClaim:false,overallVerdict:'pending',phase,inputReportSha256,
+  approvedImagePolicy:false,imageConformanceClaim:false,overallVerdict:'pending',phase,inputReportSha256,controlSource,
   error:error.message.replaceAll(root,'<repo>'),controls,toolHashes,artifacts});}
