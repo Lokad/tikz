@@ -63,5 +63,7 @@ leaves small node/glyph edge differences. The original SVG still omits the
 blue zero-length round-cap dot that native geometry and ordinary PDF retain.
 The isolated dot has zero original-SVG foreground and nonzero native foreground.
 This backend disagreement remains explicit, rather than becoming a raster
-tolerance. Primary/PDF calibration, image-only defect sensitivity and a fresh
-public-converter combined trial remain required before image admission.
+tolerance. The later [fixed straight-edge admission](EDGE-CONFORMANCE.md)
+combines independent primary/PDF calibration, image-only defect sensitivity and
+a fresh public-converter trial/checker. This diagnostic workflow retains its
+native-only scope and original observations.

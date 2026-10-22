@@ -1,7 +1,10 @@
 # Focused path-label native observations
 
-This is an iteration oracle for the declared attached-label
-[prototype](../../docs/PATH-LABELS.md), not a qualification framework.
+This retained focused oracle grounds the declared attached-label
+[subset](../../docs/PATH-LABELS.md). The later
+[comparison workflow](../TikzPathLabelComparison/README.md) owns the expanded
+native observations and current-output checks; this smaller oracle remains a
+separate regression input.
 It accepts only the repository-authored
 [placement fixture](../../tests/Fixtures/PathLabels/placement.tikz).
 MiKTeX/PGF produce measurements independently of the converter.
@@ -27,9 +30,10 @@ with a Stealth arrow, transform reset/full transformation, endpoint positions
 and multiple labels. Tests compare the text boxes, linear matrices and retained
 anchors. Separate original outlined SVGs supply iteration image inspection.
 
-Native probe noninterference, shipped glyph/paint-order evidence, primary/local
-policies and both ordinary-PDF gates remain required for feature qualification.
-Final acceptance will reuse the existing artifact writer, bounded saved-report
-reader, renderer, image metrics, child ownership and corruption controls. Native
-measurement parsing and label policies retain their own semantics. Unchanged
-calc calibration is preserved.
+The later workflow checks native probe noninterference, shipped glyph/paint
+order, primary/local policies and both ordinary-PDF gates. It reuses the artifact
+writer, bounded saved-report reader, renderer, image metrics, child ownership
+and corruption controls. Native measurement parsing and label policies retain
+their own semantics. See the [current verification guide](../../docs/VERIFICATION.md)
+for iteration and final qualification; the 78 anchors above describe this
+retained six-anchor oracle, rather than the later 208-anchor placement corpus.

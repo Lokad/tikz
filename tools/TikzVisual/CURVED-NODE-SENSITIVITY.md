@@ -5,6 +5,12 @@ calibration workflow. It writes fresh, hashed bundles under `artifacts/`
 and grants no image admission. All reference engines and browser tooling
 remain development dependencies.
 
+This document preserves the sensitivity investigation and its original failures.
+The later [cached curved-node admission](CURVED-NODE-ADMISSION.md) supplies the
+fixed native-unit profile and current-output checks. Prerequisites described
+below belong to this investigation's stage; its reports retain their original
+verdicts.
+
 Run from the repository root:
 
     node tools/TikzVisual/calibrate-curved-node-conformance.mjs

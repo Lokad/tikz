@@ -44,6 +44,7 @@ coverage, roles, camera, root and artifact claims.
 
 These are native-only research observations. Reports retain
 `converterInvoked: false`, `approvedImagePolicy: false` and
-`imageConformanceClaim: false`. Independent primary/PDF acceptance limits,
-visibility expectations for image-only defects and a fresh public candidate
-trial/checker remain required before curved-connection admission.
+`imageConformanceClaim: false`. The later
+[fixed curved-connection admission](CURVED-EDGE-CONFORMANCE.md) supplies independent
+primary/PDF limits, image-only defect expectations and a fresh public candidate
+trial/checker. These research reports retain their original pending status.

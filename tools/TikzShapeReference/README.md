@@ -48,8 +48,9 @@ by their unique IDs; painted content and definition contents are preserved.
 The wrapper's large page avoids an empty first-page reference, and generation
 checks that all 28 painted backgrounds are present. Unknown DVI specials mark
 the original text-box baselines without changing the picture. The raw DVItype
-trace retains glyph slots, fonts, and integer positions for subsequent layout
-comparisons; it has not yet been parsed into candidate glyph assertions.
+trace retains glyph slots, fonts, and integer positions. The separate
+[candidate comparison](../TikzShapeComparison/README.md) parses these records
+and checks all 70 glyphs against independently reconstructed placements.
 
 PGF uses finite angle/trigonometric calculations for circle sizing and border
 intersection, fixed constants for ellipse sizing and diagonal anchors, and a

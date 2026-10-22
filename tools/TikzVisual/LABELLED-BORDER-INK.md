@@ -136,8 +136,10 @@ mutated roles, evidence, coverage, camera, root/bound limits, metrics, policies,
 gate summaries and sensitivity expectations.
 
 All output directories are fresh GUID bundles; failed experiments stay in place.
-Prepared CI commands upload them. Hosted execution remains unverified. Independent
-[PDF instruction and page-registration evidence](LABELLED-BORDER-PDF.md) now adds
+Prepared CI commands upload them; this investigation did not establish hosted
+execution. Independent [PDF instruction and page-registration evidence](LABELLED-BORDER-PDF.md) adds
 908 native checks, 162 exact viewport controls and 36 raw comparison pairs.
-PDF rasterizer/image qualification, both SVG-versus-PDF routes and immutable
-combined admission are still required before a labeled-border conformance claim.
+The later [portable labeled-border admission](LABELLED-BORDER-CACHE.md) combines
+PDF rasterizer/image qualification, both SVG-versus-PDF routes and an immutable
+profile for fresh converter checks. The research reports described here retain
+their original verdicts and grant no combined admission themselves.
