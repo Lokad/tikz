@@ -200,8 +200,8 @@ internal static class KeyRegistry
                 case "xshift": Transform(Affine.Translation(state.Dimension(option.Value, budget), 0)); break;
                 case "yshift": Transform(Affine.Translation(0, state.Dimension(option.Value, budget))); break;
                 case "shift": var shift = PointValue(option.Value, state, budget); Transform(Affine.Translation(shift.X, shift.Y)); break;
-                case "x": state.XBasis = option.Value.Span.StartsWith("(") ? PointValue(option.Value, state, budget) : new(state.Dimension(option.Value, budget), 0); break;
-                case "y": state.YBasis = option.Value.Span.StartsWith("(") ? PointValue(option.Value, state, budget) : new(0, state.Dimension(option.Value, budget)); break;
+                case "x": state.XBasis = new Cursor(option.Value, budget).Peek == '(' ? PointValue(option.Value, state, budget) : new(state.Dimension(option.Value, budget), 0); break;
+                case "y": state.YBasis = new Cursor(option.Value, budget).Peek == '(' ? PointValue(option.Value, state, budget) : new(0, state.Dimension(option.Value, budget)); break;
                 case "cm":
                     var parts = Options.Split(option.Value, ',', budget);
                     if (parts.Count != 5) throw new CompileError("TIKZ001", "Expected cm={a,b,c,d,(x,y)}.", option.Source);

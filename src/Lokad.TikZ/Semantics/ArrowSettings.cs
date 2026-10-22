@@ -55,6 +55,9 @@ internal static class ArrowOptions
 
     private static ArrowSpec? Tip(Source source, EvaluationState state, Budget budget)
     {
+        // Classify empty sides and dimension groups after removing comments;
+        // their punctuation is trivia, with the original source map retained.
+        source = SourceExpansion.WithoutComments(source, budget);
         source = Options.Ungroup(source, budget).Trim();
         if (source.Length == 0) return null;
         var bracket = source.Span.IndexOf('[');
